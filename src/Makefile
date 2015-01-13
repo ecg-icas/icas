@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = build
-WEBAPPDIR     = ..
+WEBAPPDIR     = ../doc/next
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
@@ -44,10 +44,10 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 
 install: html
-	-rm -rf $(WEBAPPDIR)/doc
-	-mv $(BUILDDIR)/html $(WEBAPPDIR)/doc
+	-rm -rf $(WEBAPPDIR)
+	-mv $(BUILDDIR)/html $(WEBAPPDIR)
 	@echo
-	@echo "Install finished. The HTML pages are in $(WEBAPPDIR)/doc."
+	@echo "Install finished. The HTML pages are in $(WEBAPPDIR)."
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html

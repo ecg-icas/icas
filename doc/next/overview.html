@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; Admarkt Sellside API 0.42 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+    <link rel="top" title="Admarkt Sellside API 0.42 documentation" href="index.html"/>
+        <link rel="next" title="Authentication" href="authentication.html"/>
+        <link rel="prev" title="Admarkt Sellside API" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Admarkt Sellside API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#media-types">Media Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customize-response-body">Customize response body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dates-and-times">Dates and Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prices-and-currencies">Prices and Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#http-response-codes-and-error-handling">HTTP Response Codes and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dry-run-request-validation">Dry-Run Request Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#obtaining-an-access-token">Obtaining an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#expiration-times">Expiration Times</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad.html">GET /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id.html">GET /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-ad.html">POST /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id.html">PUT /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category.html">GET /category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Admarkt Sellside API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/overview.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="overview">
+<span id="id1"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>The Admarkt Sellside API is a RESTful API to manage ads on
+Admarkt either for your own account or on behalf of other users.</p>
+<p>The base URLs for the API are:</p>
+<ul class="simple">
+<li><em>Sandbox:</em> <a class="reference external" href="https://mp.lp.icas.ecg.so/api/sellside">https://mp.lp.icas.ecg.so/api/sellside</a></li>
+<li><em>Production:</em> <a class="reference external" href="https://admarkt.marktplaats.nl/api/sellside">https://admarkt.marktplaats.nl/api/sellside</a></li>
+</ul>
+<p>With this the full URL for retrieving ad 1234 for the
+current customer becomes:</p>
+<div class="highlight-python"><div class="highlight"><pre>https://admarkt.marktplaats.nl/api/sellside/ad/1234
+</pre></div>
+</div>
+<div class="section" id="media-types">
+<span id="overview-media-types"></span><h2>Media Types<a class="headerlink" href="#media-types" title="Permalink to this headline">¶</a></h2>
+<p>Each resource has a specific media type of the following form
+to support <em>content negotiation</em> and <em>versioning</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre>application/sellside.{entity}-{version}+json;charset=UTF-8
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">version</span></tt> field is mandatory.</p>
+<p>The media type is used for the <tt class="docutils literal"><span class="pre">Content-Type</span></tt> and <tt class="docutils literal"><span class="pre">Accept</span></tt> headers.</p>
+<p>This allows us to change the structure of a response without breaking
+existing code since you have to request the new content type while
+the old version is still available for some time. For backwards compatible
+changes like adding a new field to an existing structure we will not
+change the version number.</p>
+</div>
+<div class="section" id="content-type-and-accept-headers">
+<span id="overview-accept-headers"></span><h2>Content-Type and Accept Headers<a class="headerlink" href="#content-type-and-accept-headers" title="Permalink to this headline">¶</a></h2>
+<p>Every request must set the <tt class="docutils literal"><span class="pre">Accept</span></tt> header to:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Expected Media Type&gt;, application/json
+</pre></div>
+</div>
+<p>This permits the server to generate the response in the format the caller expects.
+<tt class="docutils literal"><span class="pre">application/json</span></tt> is required to return the error response.</p>
+<p>Additionally, each <tt class="docutils literal"><span class="pre">POST</span></tt> and <tt class="docutils literal"><span class="pre">PUT</span></tt> request must also set the <tt class="docutils literal"><span class="pre">Content-Type</span></tt>
+header to:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Media Type of the body content&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="authentication">
+<span id="overview-authentication"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>Authentication is provided using <em>OAuth2</em> tokens and the so called
+<a class="reference external" href="http://tools.ietf.org/html/rfc6749#section-4.1">Authorization Code Grant</a>
+which means that you need a client id and client secret to access the
+api with an access token that the API provides.</p>
+<p>It is not possible to use username and password to get an access token.</p>
+<p>To request a client id and secret please send an email
+to <a class="reference external" href="mailto:Admarkt-API&#37;&#52;&#48;marktplaats&#46;nl">Admarkt-API<span>&#64;</span>marktplaats<span>&#46;</span>nl</a>.</p>
+<p>The authorization and token endpoints are:</p>
+<ul class="simple">
+<li><em>Sandbox:</em> <a class="reference external" href="https://auth.demo.qa-mp.so/accounts/oauth/authorize">https://auth.demo.qa-mp.so/accounts/oauth/authorize</a></li>
+<li><em>Sandbox:</em> <a class="reference external" href="https://auth.demo.qa-mp.so/accounts/oauth/token">https://auth.demo.qa-mp.so/accounts/oauth/token</a></li>
+<li><em>Production:</em> <a class="reference external" href="https://auth.marktplaats.nl/accounts/oauth/authorize">https://auth.marktplaats.nl/accounts/oauth/authorize</a></li>
+<li><em>Production:</em> <a class="reference external" href="https://auth.marktplaats.nl/accounts/oauth/token">https://auth.marktplaats.nl/accounts/oauth/token</a></li>
+</ul>
+<p>Both access and refresh tokens have a limited lifetime which means
+that if you manage the accounts of other Admarkt customers then you
+need to ensure that you maintain valid refresh tokens for these
+customers in your database. Otherwise, the customers need to
+authenticate every time the token expires.</p>
+<p>See the <a class="reference internal" href="authentication.html#authentication"><em>Authentication</em></a> section for the full details and also
+the <a class="reference external" href="http://oauth.net/2/">OAuth 2.0 website</a>.</p>
+</div>
+<div class="section" id="customize-response-body">
+<span id="overview-customize-response-body"></span><h2>Customize response body<a class="headerlink" href="#customize-response-body" title="Permalink to this headline">¶</a></h2>
+<p>Every call which returns a response body can have this customized using <tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt> parameters. These
+parameters define which fields to include in or exclude from the response body. When both <tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt>
+have a value, the <tt class="docutils literal"><span class="pre">_exclude</span></tt> value will be ignored. By default, <tt class="docutils literal"><span class="pre">_include</span></tt> is set to all fields and <tt class="docutils literal"><span class="pre">_exclude</span></tt> is empty.</p>
+<p>Furthermore, some calls allow for a <tt class="docutils literal"><span class="pre">_body</span></tt> parameter, defining whether there should be any data in the response
+body at all. Default of <tt class="docutils literal"><span class="pre">_body</span></tt> is true (returning data). When <tt class="docutils literal"><span class="pre">_body</span></tt> is false, <tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt> will be ignored.</p>
+</div>
+<div class="section" id="dates-and-times">
+<span id="overview-dates-and-times"></span><h2>Dates and Times<a class="headerlink" href="#dates-and-times" title="Permalink to this headline">¶</a></h2>
+<p>All date/time values are specified in
+<a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 Combined date and time in UTC format</a>.</p>
+</div>
+<div class="section" id="prices-and-currencies">
+<span id="overview-prices-and-currencies"></span><h2>Prices and Currencies<a class="headerlink" href="#prices-and-currencies" title="Permalink to this headline">¶</a></h2>
+<p>All monetary amounts like prices and budgets are currently in Euros and stored as euro cents.
+Currencies are specified as three character <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> code.</p>
+</div>
+<div class="section" id="http-response-codes-and-error-handling">
+<span id="overview-http-response-codes-and-error-handling"></span><h2>HTTP Response Codes and Error Handling<a class="headerlink" href="#http-response-codes-and-error-handling" title="Permalink to this headline">¶</a></h2>
+<p>To retrieve, update and delete resources with the Sellside API you use the
+standard HTTP verbs <tt class="docutils literal"><span class="pre">GET</span></tt>, <tt class="docutils literal"><span class="pre">PUT</span></tt> and <tt class="docutils literal"><span class="pre">DELETE</span></tt>. If the resource exists
+and the request was successful the server responds with <tt class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></tt>. If the
+resource does not exist the server responds with <tt class="docutils literal"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></tt>.</p>
+<p>To create a new resource you perform a <tt class="docutils literal"><span class="pre">POST</span></tt> request to which the server
+responds with <tt class="docutils literal"><span class="pre">201</span> <span class="pre">Created</span></tt> and a <tt class="docutils literal"><span class="pre">Location</span></tt> header containing the URL of
+the new resource.</p>
+<p>All requests are validated before they are being executed by the server. If
+the validation fails the server responds with <tt class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></tt> and an error
+response which contains a list of the errors. More information can be found under
+<a class="reference internal" href="error-handling.html"><em>Error Handling</em></a>.</p>
+</div>
+<div class="section" id="dry-run-request-validation">
+<span id="dryrun-validation"></span><h2>Dry-Run Request Validation<a class="headerlink" href="#dry-run-request-validation" title="Permalink to this headline">¶</a></h2>
+<p>The API supports dry-run validation of requests which modify resources.
+To validate a request without executing it add <tt class="docutils literal"><span class="pre">_validate=true</span></tt> to the
+request URL. If the validation succeeds the server returns <tt class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></tt>
+and an empty body. Otherwise, the server returns <tt class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></tt> with
+the list of errors. The following endpoints support dry-run validation:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="reference/post-ad.html#post-ad"><em>POST /ad</em></a></li>
+<li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id"><em>PUT /ad/{id}</em></a></li>
+<li><a class="reference internal" href="reference/put-ad-id-status.html#put-ad-id-status"><em>PUT /ad/{id}/status</em></a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="authentication.html" class="btn btn-neutral float-right" title="Authentication"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Admarkt Sellside API"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2014 The Admarkt Team.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.42',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/custom.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
