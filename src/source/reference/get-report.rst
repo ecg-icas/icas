@@ -14,7 +14,7 @@ v2
 Version 2 of this URL returns a performance report for a date period. The
 report contains statistics for performance events like impressions, clicks,
 url clicks, emails for all ads which match the filter criteria. To use it set
-the ``Content-Type`` header to ``application/sellside.report-v2+json``.
+the ``Accept`` header to ``application/sellside.report-v2+json``.
 
 .. note::
 
@@ -70,7 +70,7 @@ v1
 Version 1 of this URL returns a performance report for a specific date.
 The report contains statistics for performance events like impressions,
 clicks, url clicks, emails for all ads which received at least one event that
-day.  To use it set the ``Content-Type`` header to
+day.  To use it set the ``Accept`` header to
 ``application/sellside.report-v1+json``.
 
 .. warning::

@@ -15,7 +15,7 @@ v2
 
 Version 2 of this URL returns a list of ads for the current user and the
 total size of the result set matching the filter criteria. To use it set the
-``Content-Type`` header to ``application/sellside.ad.list-v2+json``.
+``Accept`` header to ``application/sellside.ad.list-v2+json``.
 
 The number of ads returned can be limited with the ``limit`` parameter.
 The ``offset`` parameter allows to skip some ads and together with ``limit``
@@ -89,7 +89,7 @@ v1
 --
 
 Version 1 of this URL returns returns a list of ads. To use it set the
-``Content-Type`` header to ``application/sellside.ad.list-v1+json``.
+``Accept`` header to ``application/sellside.ad.list-v1+json``.
 
 .. warning::
 
