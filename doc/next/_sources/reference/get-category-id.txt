@@ -4,6 +4,8 @@
 GET /category/{id}
 ==================
 
+:ref:`scopes` **read**
+
 This URL returns the category tree or parts of it starting from the node
 with the given category ``id``. If the category does not exist the server
 returns **404 Not Found**. If the ``id`` is invalid, i.e. not a positive

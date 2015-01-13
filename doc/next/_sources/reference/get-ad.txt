@@ -13,6 +13,8 @@ GET /ad
 v2
 --
 
+:ref:`scopes` **read**
+
 Version 2 of this URL returns a list of ads for the current user and the
 total size of the result set matching the filter criteria. To use it set the
 ``Accept`` header to ``application/sellside.ad.list-v2+json``.
@@ -87,6 +89,8 @@ Example
 
 v1
 --
+
+:ref:`scopes` **read**
 
 Version 1 of this URL returns returns a list of ads. To use it set the
 ``Accept`` header to ``application/sellside.ad.list-v1+json``.

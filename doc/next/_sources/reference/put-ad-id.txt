@@ -4,6 +4,8 @@
 PUT /ad/{id}
 ============
 
+:ref:`scopes` **write**
+
 This URL updates the ad with the given ``id``. If the ad was successfully
 updated then a **200 OK** is returned. The **optional** query parameter
 ``_body`` with value ``true`` or ``false`` can be used to influence
@@ -13,7 +15,7 @@ does not belong to the user the server returns **404 Not Found**. If the
 ``id`` is invalid, i.e. not a positive integer the server returns **400 Bad
 Request**.
 
-All writeable fields listed in :ref:`ad-fields` can be changed. Attempting to 
+All writeable fields listed in :ref:`ad-fields` can be changed. Attempting to
 change a non-writeable field results in a **400 Bad Request**
 
 All validation rules for creating an ad apply exactly the same.

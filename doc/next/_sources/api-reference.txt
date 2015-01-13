@@ -12,9 +12,9 @@ API Reference
    reference/get-category
    reference/get-category-id
    reference/get-category-id-attributes
-   reference/get-report
-   reference/post-image
    reference/get-image
+   reference/post-image
+   reference/get-report
    reference/ad-status
    reference/price-types
    reference/error-codes

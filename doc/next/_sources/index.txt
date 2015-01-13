@@ -48,16 +48,11 @@ History
 ..  role:: strike
 
 
-
 * v0.43 - 13 Jan 2015 - ak
 
- * Added :ref:`scopes`
- * Corrected typos and text formatting
-
-   * :ref:`index`: from ``vrsion`` to ``version``
-   * :ref:`get_ad` and :ref:`get_report`: from ``Content-Type`` to ``Access``
-   * :ref:`post_image`: fixed bad paragraph formatting
-   * :ref:`expiration_times`: removed duplicate paragraph
+ * Added :ref:`scopes` section and scopes to all resources
+ * :ref:`get_ad` and :ref:`get_report`: from ``Content-Type`` to ``Access``
+ * :ref:`expiration_times`: removed duplicate paragraph
 
 * v0.42 - 12 Dec 2014 - ak
 

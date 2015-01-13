@@ -96,7 +96,7 @@ Redirect the resource owner (user) to the authorization url with the following G
 
  * - scope
    - Required
-   - The requested scope (see :ref:`scopes`)
+   - The requested scope as in :ref:`scopes`
 
  * - redirect_uri
    - Optional
@@ -209,7 +209,7 @@ format if the token request at step 3 is valid.
    - The refresh token for obtaining a new access token
 
  * - scope
-   - The scope of the access token (see :ref:`scopes`)
+   - The scope of the access token as in :ref:`scopes`
 
 .. note::
 
@@ -260,7 +260,7 @@ In order to obtain a new access token the following *POST* request to the *token
 with the following parameters is necessary.
 
 .. list-table::
- :widths: 10 30 60
+ :widths: 20 30 60
  :header-rows: 1
 
  * - Field
@@ -340,12 +340,26 @@ is no longer valid.
 Scopes
 ------
 
-The API authorizes access to specific resources based on the ``scope`` parameter which gets requested when obtaining
-an access token. Each API client is granted with a set of scopes and each API resource requires one (or more) scopes.
-This way access to particular API resources can be granted to only a subset of clients.
+Scopes determine whether you can access a certain resource. The actual scope
+depends on the requested scope as defined in `obtaining_an_access_token`_ and
+the scope assigned to the client making the request.
 
-Most API resources can be read with the ``read`` scope, and overwritten - with the ``write`` scope. The following
-resources require different scopes:
+.. list-table::
+ :widths: 20 80
+ :header-rows: 1
 
- * :ref:`get_report_v2` of :ref:`get_report` requires ``report`` scope
- * :ref:`get_image` and :ref:`post_image` require ``image`` scope
+ * - Scope
+   - Description
+
+ * - read
+   - Grants read access to most resources
+
+ * - write
+   - Grants write access to most resources
+
+ * - image
+   - Grants access to :ref:`get_image` and :ref:`post_image`
+
+ * - report
+   - Grants access to :ref:`get_report` v2 only
+

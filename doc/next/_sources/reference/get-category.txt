@@ -4,6 +4,8 @@
 GET /category
 =============
 
+:ref:`scopes` **read**
+
 This URL returns the category tree or parts of it starting from the **root
 node**. The **root node** is a category node in which you cannot place any
 ads.

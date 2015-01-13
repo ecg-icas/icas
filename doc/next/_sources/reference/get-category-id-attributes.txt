@@ -4,6 +4,8 @@
 GET /category/{id}/attributes
 =============================
 
+:ref:`scopes` **read**
+
 This URL returns the known :ref:`category_attributes` for the given category.
 
 Only categories which have ``canPlaceAds`` set to ``true`` have attributes.

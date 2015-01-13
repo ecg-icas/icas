@@ -11,6 +11,8 @@ GET /report
 v2
 --
 
+:ref:`scopes` **report**
+
 Version 2 of this URL returns a performance report for a date period. The
 report contains statistics for performance events like impressions, clicks,
 url clicks, emails for all ads which match the filter criteria. To use it set
@@ -66,6 +68,8 @@ Example
 
 v1
 --
+
+:ref:`scopes` **read**
 
 Version 1 of this URL returns a performance report for a specific date.
 The report contains statistics for performance events like impressions,
