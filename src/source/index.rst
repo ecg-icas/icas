@@ -1,15 +1,5 @@
 .. _index:
 
-Admarkt Sellside API
-====================
-
-.. note::
-
-    This document is work in progress and will change until its final version
-    is released. The `History`_ section will describe which changes were made.
-    However, the changes should be gradual and the document should give you a
-    good idea what the API looks like.
-
 .. _introduction:
 
 Introduction
