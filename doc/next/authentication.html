@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Authentication &mdash; Admarkt Sellside API 0.42 documentation</title>
+  <title>Authentication &mdash; Admarkt Sellside API 0.43 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="Admarkt Sellside API 0.42 documentation" href="index.html"/>
+    <link rel="top" title="Admarkt Sellside API 0.43 documentation" href="index.html"/>
         <link rel="next" title="Advertisements" href="ads.html"/>
         <link rel="prev" title="Overview" href="overview.html"/> 
 
@@ -79,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#using-an-access-token">Using an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#refreshing-an-access-token">Refreshing an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scopes">Scopes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
@@ -232,7 +233,7 @@ your client library.</p>
 </tr>
 <tr class="row-even"><td>scope</td>
 <td>Required</td>
-<td>The requested scope. Should be set to <tt class="docutils literal"><span class="pre">read</span> <span class="pre">write</span></tt></td>
+<td>The requested scope (see <a class="reference internal" href="#scopes"><em>Scopes</em></a>)</td>
 </tr>
 <tr class="row-odd"><td>redirect_uri</td>
 <td>Optional</td>
@@ -359,7 +360,7 @@ format if the token request at step 3 is valid.</p>
 <td>The refresh token for obtaining a new access token</td>
 </tr>
 <tr class="row-even"><td>scope</td>
-<td>The scope of the access token</td>
+<td>The scope of the access token (see <a class="reference internal" href="#scopes"><em>Scopes</em></a>)</td>
 </tr>
 </tbody>
 </table>
@@ -463,11 +464,9 @@ Content-Type: application/json
 </div>
 </div>
 <div class="section" id="expiration-times">
-<h2>Expiration Times<a class="headerlink" href="#expiration-times" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Expiration Times<a class="headerlink" href="#expiration-times" title="Permalink to this headline">¶</a></h2>
 <p>Both access and refresh tokens expire after the time listed in the table below. After this period the token
 is no longer valid.</p>
-<p>Also note that every time you request a new access token you also receive a new refresh token and
-your current refresh token is automatically invalidated even if it has not expired yet.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
@@ -491,6 +490,20 @@ your current refresh token is automatically invalidated even if it has not expir
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="scopes">
+<span id="id6"></span><h2>Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h2>
+<p>The API authorizes access to specific resources based on the <tt class="docutils literal"><span class="pre">scope</span></tt> parameter which gets requested when obtaining
+an access token. Each API client is granted with a set of scopes and each API resource requires one (or more) scopes.
+This way access to particular API resources can be granted to only a subset of clients.</p>
+<p>Most API resources can be read with the <tt class="docutils literal"><span class="pre">read</span></tt> scope, and overwritten - with the <tt class="docutils literal"><span class="pre">write</span></tt> scope. The following
+resources require different scopes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="reference/get-report.html#get-report-v2"><em>v2</em></a> of <a class="reference internal" href="reference/get-report.html#get-report"><em>GET /report</em></a> requires <tt class="docutils literal"><span class="pre">report</span></tt> scope</li>
+<li><a class="reference internal" href="reference/get-image.html#get-image"><em>GET /image/{id}</em></a> and <a class="reference internal" href="reference/post-image.html#post-image"><em>POST /image</em></a> require <tt class="docutils literal"><span class="pre">image</span></tt> scope</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
@@ -532,7 +545,7 @@ your current refresh token is automatically invalidated even if it has not expir
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.42',
+            VERSION:'0.43',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

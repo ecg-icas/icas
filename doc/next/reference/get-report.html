@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /report &mdash; Admarkt Sellside API 0.42 documentation</title>
+  <title>GET /report &mdash; Admarkt Sellside API 0.43 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="Admarkt Sellside API 0.42 documentation" href="../index.html"/>
+    <link rel="top" title="Admarkt Sellside API 0.43 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="POST /image" href="post-image.html"/>
         <link rel="prev" title="GET /category/{id}/attributes" href="get-category-id-attributes.html"/> 
@@ -80,6 +80,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#using-an-access-token">Using an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
@@ -159,7 +160,7 @@
 <p>Version 2 of this URL returns a performance report for a date period. The
 report contains statistics for performance events like impressions, clicks,
 url clicks, emails for all ads which match the filter criteria. To use it set
-the <tt class="docutils literal"><span class="pre">Content-Type</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.report-v2+json</span></tt>.</p>
+the <tt class="docutils literal"><span class="pre">Accept</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.report-v2+json</span></tt>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Contrary to the rest of the API all dates are in <strong>GMT+1</strong> timezone.
@@ -345,7 +346,7 @@ This will be fixed in a later release.</p>
 <p>Version 1 of this URL returns a performance report for a specific date.
 The report contains statistics for performance events like impressions,
 clicks, url clicks, emails for all ads which received at least one event that
-day.  To use it set the <tt class="docutils literal"><span class="pre">Content-Type</span></tt> header to
+day.  To use it set the <tt class="docutils literal"><span class="pre">Accept</span></tt> header to
 <tt class="docutils literal"><span class="pre">application/sellside.report-v1+json</span></tt>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -576,7 +577,7 @@ day.  To use it set the <tt class="docutils literal"><span class="pre">Content-T
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.42',
+            VERSION:'0.43',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

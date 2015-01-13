@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /ad &mdash; Admarkt Sellside API 0.42 documentation</title>
+  <title>GET /ad &mdash; Admarkt Sellside API 0.43 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="Admarkt Sellside API 0.42 documentation" href="../index.html"/>
+    <link rel="top" title="Admarkt Sellside API 0.43 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /ad/{id}" href="get-ad-id.html"/>
         <link rel="prev" title="API Reference" href="../api-reference.html"/> 
@@ -80,6 +80,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#using-an-access-token">Using an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
@@ -158,7 +159,7 @@
 <span id="get-ad-v2"></span><h2>v2<a class="headerlink" href="#v2" title="Permalink to this headline">¶</a></h2>
 <p>Version 2 of this URL returns a list of ads for the current user and the
 total size of the result set matching the filter criteria. To use it set the
-<tt class="docutils literal"><span class="pre">Content-Type</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.ad.list-v2+json</span></tt>.</p>
+<tt class="docutils literal"><span class="pre">Accept</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.ad.list-v2+json</span></tt>.</p>
 <p>The number of ads returned can be limited with the <tt class="docutils literal"><span class="pre">limit</span></tt> parameter.
 The <tt class="docutils literal"><span class="pre">offset</span></tt> parameter allows to skip some ads and together with <tt class="docutils literal"><span class="pre">limit</span></tt>
 allows for pagination.</p>
@@ -234,7 +235,7 @@ load on the system.</p>
 <div class="section" id="v1">
 <span id="get-ad-v1"></span><h2>v1<a class="headerlink" href="#v1" title="Permalink to this headline">¶</a></h2>
 <p>Version 1 of this URL returns returns a list of ads. To use it set the
-<tt class="docutils literal"><span class="pre">Content-Type</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.ad.list-v1+json</span></tt>.</p>
+<tt class="docutils literal"><span class="pre">Accept</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.ad.list-v1+json</span></tt>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Version 1 is deprecated and will be removed on 1<sup>st</sup> March 2015.</p>
@@ -441,7 +442,7 @@ load on the system.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.42',
+            VERSION:'0.43',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -1,10 +1,12 @@
+.. _index:
+
 Admarkt Sellside API
 ====================
 
 .. note::
 
-    This document is work in progress and will change until its final vrsion
-    is released. The History section will describe which changes were made.
+    This document is work in progress and will change until its final version
+    is released. The `History`_ section will describe which changes were made.
     However, the changes should be gradual and the document should give you a
     good idea what the API looks like.
 
@@ -37,10 +39,25 @@ Contents
    api-reference
 
 
+.. _History:
+
 History
 =======
 
+
 ..  role:: strike
+
+
+
+* v0.43 - 13 Jan 2015 - ak
+
+ * Added :ref:`scopes`
+ * Corrected typos and text formatting
+
+   * :ref:`index`: from ``vrsion`` to ``version``
+   * :ref:`get_ad` and :ref:`get_report`: from ``Content-Type`` to ``Access``
+   * :ref:`post_image`: fixed bad paragraph formatting
+   * :ref:`expiration_times`: removed duplicate paragraph
 
 * v0.42 - 12 Dec 2014 - ak
 

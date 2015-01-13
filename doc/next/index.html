@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Admarkt Sellside API &mdash; Admarkt Sellside API 0.42 documentation</title>
+  <title>Admarkt Sellside API &mdash; Admarkt Sellside API 0.43 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="Admarkt Sellside API 0.42 documentation" href="#"/>
+    <link rel="top" title="Admarkt Sellside API 0.43 documentation" href="#"/>
         <link rel="next" title="Overview" href="overview.html"/> 
 
   
@@ -78,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
@@ -148,11 +149,11 @@
           <div role="main">
             
   <div class="section" id="admarkt-sellside-api">
-<h1>Admarkt Sellside API<a class="headerlink" href="#admarkt-sellside-api" title="Permalink to this headline">¶</a></h1>
+<span id="index"></span><h1>Admarkt Sellside API<a class="headerlink" href="#admarkt-sellside-api" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This document is work in progress and will change until its final vrsion
-is released. The History section will describe which changes were made.
+<p class="last">This document is work in progress and will change until its final version
+is released. The <a class="reference internal" href="#history">History</a> section will describe which changes were made.
 However, the changes should be gradual and the document should give you a
 good idea what the API looks like.</p>
 </div>
@@ -189,6 +190,7 @@ email to <a class="reference external" href="mailto:Admarkt-API&#37;&#52;&#48;ma
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
@@ -228,7 +230,22 @@ email to <a class="reference external" href="mailto:Admarkt-API&#37;&#52;&#48;ma
 </div>
 </div>
 <div class="section" id="history">
-<h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
+<span id="id2"></span><h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>v0.43 - 13 Jan 2015 - ak</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Added <a class="reference internal" href="authentication.html#scopes"><em>Scopes</em></a></li>
+<li>Corrected typos and text formatting<ul>
+<li><a class="reference internal" href="#index"><em>Admarkt Sellside API</em></a>: from <tt class="docutils literal"><span class="pre">vrsion</span></tt> to <tt class="docutils literal"><span class="pre">version</span></tt></li>
+<li><a class="reference internal" href="reference/get-ad.html#get-ad"><em>GET /ad</em></a> and <a class="reference internal" href="reference/get-report.html#get-report"><em>GET /report</em></a>: from <tt class="docutils literal"><span class="pre">Content-Type</span></tt> to <tt class="docutils literal"><span class="pre">Access</span></tt></li>
+<li><a class="reference internal" href="reference/post-image.html#post-image"><em>POST /image</em></a>: fixed bad paragraph formatting</li>
+<li><a class="reference internal" href="authentication.html#expiration-times"><em>Expiration Times</em></a>: removed duplicate paragraph</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
 <ul class="simple">
 <li>v0.42 - 12 Dec 2014 - ak</li>
 </ul>
@@ -702,7 +719,7 @@ error instead of a 406 NOT ACCEPTED.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.42',
+            VERSION:'0.43',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

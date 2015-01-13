@@ -96,7 +96,7 @@ Redirect the resource owner (user) to the authorization url with the following G
 
  * - scope
    - Required
-   - The requested scope. Should be set to ``read write``
+   - The requested scope (see :ref:`scopes`)
 
  * - redirect_uri
    - Optional
@@ -209,7 +209,7 @@ format if the token request at step 3 is valid.
    - The refresh token for obtaining a new access token
 
  * - scope
-   - The scope of the access token
+   - The scope of the access token (see :ref:`scopes`)
 
 .. note::
 
@@ -311,15 +311,13 @@ response is identical to the token response explained at step 4 of :ref:`obtaini
         "scope"         : "read write"
     }
 
+.. _expiration_times:
 
 Expiration Times
 ----------------
 
 Both access and refresh tokens expire after the time listed in the table below. After this period the token
 is no longer valid.
-
-Also note that every time you request a new access token you also receive a new refresh token and
-your current refresh token is automatically invalidated even if it has not expired yet.
 
 .. list-table::
  :widths: 20  40 40
@@ -336,3 +334,18 @@ your current refresh token is automatically invalidated even if it has not expir
  * - Production
    - 5 minutes/300 seconds
    - 1 day/86400 seconds
+
+.. _scopes:
+
+Scopes
+------
+
+The API authorizes access to specific resources based on the ``scope`` parameter which gets requested when obtaining
+an access token. Each API client is granted with a set of scopes and each API resource requires one (or more) scopes.
+This way access to particular API resources can be granted to only a subset of clients.
+
+Most API resources can be read with the ``read`` scope, and overwritten - with the ``write`` scope. The following
+resources require different scopes:
+
+ * :ref:`get_report_v2` of :ref:`get_report` requires ``report`` scope
+ * :ref:`get_image` and :ref:`post_image` require ``image`` scope
