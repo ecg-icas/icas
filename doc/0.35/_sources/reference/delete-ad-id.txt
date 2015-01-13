@@ -1,0 +1,41 @@
+.. index:: DELETE /ad/{id}
+.. _delete_ad_id:
+
+DELETE /ad/{id}
+===============
+
+**DEPRECATED**. Please use :doc:`/reference/put-ad-id-status` instead with status DELETED.
+Scheduled to be removed at Sept 1st, 2014.
+
+This URL deletes the ad with the given ``id``. If the ad does
+not exist or does not belong to the user the server returns **404 Not Found**.
+If the ``id`` is invalid, i.e. not a positive integer the server returns **400
+Bad Request**.
+
+This is the same as setting the status to **DELETED** through :doc:`put-ad-id` or
+using :doc:`/reference/put-ad-id-status` with status DELETED.
+
+=======
+Example
+=======
+
+.. code-block :: http
+
+    DELETE /ad/42
+    
+==========
+Parameters
+==========
+
+None
+
+======
+Errors
+======
+
+====================    ====    =======================     ==============================================================================
+Field                   Code    Error message               Description
+====================    ====    =======================     ==============================================================================
+id                      2001    invalid argument            not a valid number
+id                      2002    out of range                the number provided is not in the correct range
+====================    ====    =======================     ==============================================================================

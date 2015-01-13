@@ -1,0 +1,134 @@
+.. _overview:
+
+Overview
+========
+
+The Admarkt Sellside API is a RESTful API to manage ads on
+Admarkt either for your own account or on behalf of other users.
+
+The base URLs for the API are:
+
+* *Sandbox:* https://mp.lp.icas.ecg.so/api/sellside
+* *Production:* https://admarkt.marktplaats.nl/api/sellside
+
+With this the full URL for retrieving ad 1234 for the
+current customer becomes::
+
+    https://admarkt.marktplaats.nl/api/sellside/ad/1234
+
+.. _overview_media_types:
+
+Media Types
+-----------
+
+Each resource has a specific media type of the following form
+to support *content negotiation* and *versioning*::
+
+    application/sellside.{entity}-{version}+json;charset=UTF-8
+
+The ``version`` field is mandatory and currently has the value ``v1`` for all
+resources.
+
+The media type is used for the ``Content-Type`` and ``Accept`` headers.
+
+This allows us to change the structure of a response without breaking
+existing code since you have to request the new content type while
+the old version is still available for some time. For backwards compatible
+changes like adding a new field to an existing structure we will not
+change the version number.
+
+.. _overview_accept_headers:
+
+Content-Type and Accept Headers
+-------------------------------
+
+Every request must set the ``Accept`` header to::
+
+    <Expected Media Type>, application/json
+
+This permits the server to generate the response in the format the caller expects.
+``application/json`` is required to return the error response.
+
+Additionally, each ``POST`` and ``PUT`` request must also set the ``Content-Type``
+header to::
+
+    <Media Type of the body content>
+
+.. _overview_authentication:
+
+Authentication
+--------------
+
+Authentication is provided using *OAuth2* tokens and the so called
+`Authorization Code Grant <http://tools.ietf.org/html/rfc6749#section-4.1>`_
+which means that you need a client id and client secret to access the
+api with an access token that the API provides.
+
+It is not possible to use username and password to get an access token.
+
+To request a client id and secret please send an email
+to Admarkt-API@marktplaats.nl.
+
+The authorization and token endpoints are:
+
+* *Sandbox:* https://auth.demo.qa-mp.so/accounts/oauth/authorize
+* *Sandbox:* https://auth.demo.qa-mp.so/accounts/oauth/token
+
+* *Production:* https://auth.marktplaats.nl/accounts/oauth/authorize
+* *Production:* https://auth.marktplaats.nl/accounts/oauth/token
+
+Both access and refresh tokens have a limited lifetime which means
+that if you manage the accounts of other Admarkt customers then you
+need to ensure that you maintain valid refresh tokens for these
+customers in your database. Otherwise, the customers need to
+authenticate every time the token expires.
+
+See the :ref:`authentication` section for the full details and also
+the `OAuth 2.0 website <http://oauth.net/2/>`_.
+
+.. _overview_customize_response_body:
+
+Customize response body
+-----------------------
+
+Every call which returns a response body can have this customized using ``_include`` and ``_exclude`` parameters. These
+parameters define which fields to include in or exclude from the response body. When both ``_include`` and ``_exclude``
+have a value, the ``_exclude`` value will be ignored. By default, ``_include`` is set to all fields and ``_exclude`` is empty.
+
+Furthermore, some calls allow for a ``_body`` parameter, defining whether there should be any data in the response
+body at all. Default of ``_body`` is true (returning data). When ``_body`` is false, ``_include`` and ``_exclude`` will be ignored.
+
+.. _overview_dates_and_times:
+
+Dates and Times
+---------------
+
+All date/time values are specified in
+`ISO 8601 Combined date and time in UTC format <http://en.wikipedia.org/wiki/ISO_8601>`_.
+
+.. _overview_prices_and_currencies:
+
+Prices and Currencies
+---------------------
+
+All monetary amounts like prices and budgets are currently in Euros and stored as euro cents.
+Currencies are specified as three character `ISO 4217 <http://en.wikipedia.org/wiki/ISO_4217>`_ code.
+
+.. _overview_http_response_codes_and_error_handling:
+
+HTTP Response Codes and Error Handling
+--------------------------------------
+
+To retrieve, update and delete resources with the Sellside API you use the
+standard HTTP verbs ``GET``, ``PUT`` and ``DELETE``. If the resource exists
+and the request was successful the server responds with ``200 OK``. If the
+resource does not exist the server responds with ``404 Not Found``.
+
+To create a new resource you perform a ``POST`` request to which the server
+responds with ``201 Created`` and a ``Location`` header containing the URL of
+the new resource.
+
+All requests are validated before they are being executed by the server. If
+the validation fails the server responds with ``400 Bad Request`` and an error
+response which contains a list of the errors. More information can be found under
+:doc:`error-handling`.

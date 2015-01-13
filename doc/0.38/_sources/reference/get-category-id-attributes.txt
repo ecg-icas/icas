@@ -1,0 +1,69 @@
+.. index:: GET /category/{id}/attributes
+.. _get_category_id_attributes:
+
+GET /category/{id}/attributes
+=============================
+
+This URL returns the known :ref:`category_attributes` for the given category.
+
+Only categories which have ``canPlaceAds`` set to ``true`` have attributes.
+For all others an empty list will be returned.
+
+=======
+Example
+=======
+
+.. code-block:: javascript
+
+    GET /category/4/attributes
+    Accept: application/sellside.attribute.list-v1+json
+        
+    [
+        {
+            "key": "Delivery",
+            "label": "Levering",
+            "locale" : "nl",
+            "type" : "STRING",
+            "values" : ["Ophalen", "Verzenden", "Ophalen of Verzenden"]
+        },
+        {
+            "key": "Properties",
+            "label": "Eigenschappen",
+            "locale" : "nl",
+            "type" : "LIST",
+            "values" : ["Met bandje", "Met ketting", "Verguld"]
+        },
+        {
+            "key": "Motorinhoud",
+            "label": "Motorinhoud",
+            "locale" : "nl",
+            "type" : "NUMBER",
+            "minValue" : 1,
+            "maxValue" : 8500
+        },
+        ...
+    ]
+
+
+==========
+Parameters
+==========
+
+=============    ========    ============================================================================
+Name             Type        Description
+=============    ========    ============================================================================
+_include         string      Comma-separated-list of fields to include. Optional, default is all fields.
+_exclude         string      Comma-separated-list of fields to omit. Optional, default empty.
+=============    ========    ============================================================================
+
+======
+Errors
+======
+
+====================    ====    =======================     ==============================================================================
+Field                   Code    Error message               Description
+====================    ====    =======================     ==============================================================================
+id                      2001    invalid argument            not a valid number
+====================    ====    =======================     ==============================================================================
+
+

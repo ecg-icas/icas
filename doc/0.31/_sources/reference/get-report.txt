@@ -1,0 +1,53 @@
+.. index:: GET /report
+.. _get_report:
+
+GET /report
+===========
+
+This URL returns a performance report for a specific date.
+
+The report contains statistics for performance events like impressions, clicks, url clicks, emails
+for all ads which received at least one event that day.
+
+.. note::
+
+    It is currently not possible to include statistics for ads which did not receive events but
+    were active and had budget.
+
+.. include:: ../examples/report-example.rst
+
+Parameters
+----------
+
+=======================     ========================    ========    =============================================================
+Field                       Example                     Type        Info
+=======================     ========================    ========    =============================================================
+date                        "2014-01-30"                string      Report date.
+_include                    "id,date,title"             string      Comma-separated-list of fields to include. Optional, default is all fields.
+_exclude                    "id,date,title"             string      Comma-separated-list of fields to omit. Optional, default empty.
+=======================     ========================    ========    =============================================================
+
+Fields
+------
+
+=======================     ========================    ========    =============================================================
+Field                       Example                     Type        Info
+=======================     ========================    ========    =============================================================
+id                          42                          long        Id of the report row.
+date                        "2012-08-31T16:12:53Z"      date        Date of the report.
+adId                        12                          long        Id of the ad to which the report row belongs to.
+categoryId                  631                         int         Category id of the ad.
+title                       "Brother Fax voor 99,99"    string      Title of the ad.
+startDate                   "2012-08-31T16:12:53Z"      date        Creation date of the ad.
+endDate                     "2012-08-31T16:12:53Z"      date        Deletion date of the ad if the ad is deleted, null otherwise.
+totalBudget                 5000                        long        Total budget of the ad.
+dailyLimit                  2000                        long        Daily limit of the ad.
+totalSpent                  2000                        long        Total amount spent for this ad.
+cpc                         12                          int         Cpc of the ad.
+impressions                 40                          long        Number of impressions this ad received.
+clicks                      10                          long        Number of clicks this ad received.
+urlClicks                   3                           int         Number of url clicks this ad received.
+emails                      2                           int         Number of email requests this ad received.
+externalId                  "c3po-r2d2"                 string      External id of the ad.
+=======================     ========================    ========    =============================================================
+
