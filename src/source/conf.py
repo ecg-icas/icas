@@ -14,7 +14,6 @@
 import sys, os
 
 def setup(app):
-    app.add_javascript("custom.js")
     app.add_stylesheet("custom.css")
 
 
