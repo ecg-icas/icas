@@ -109,7 +109,7 @@ limit            int         Limits the number of records returned. Default **an
 offset           int         Skips the first N records.
 titleKeywords    string      Case-insensitive filter for a keyword in the title.
 status           string      Filters the result set by the ad status. Should be a comma separated list of [ACTIVE, PAUSED, DELETED, DELETED_BY_CS, SUSPENDED_BY_CS, BUDGET_REACHED, DAILY_BUDGET_REACHED]. Default value is ACTIVE.
-orderBy          string      Orders the result set by the given field. Should be one of [DATE_CREATED, DATE_CREATED, DATE_LAST_UPDATED, DATE_LAST_UPDATED]. Default value is DATE_CREATED.
+orderBy          string      Orders the result set by the given field. Should be one of [DATE_CREATED, DATE_LAST_UPDATED]. Default value is DATE_CREATED.
 direction        string      Determines the direction of the sort. Should be one of [ASCENDING, DESCENDING]. Default is ASCENDING.
 changedSince     date        Returns ads which have ``changedSince`` >= ``dateLastUpdated``.
 remainingBudget  string      Returns ads whose remaining budget is below a certain value (absolute number or a percentage).
