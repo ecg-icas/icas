@@ -19,7 +19,7 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  install    to make standalone HTML files and install them under webapp/doc"
+	@echo "  install    to make standalone HTML files and install them under $(realpath $(WEBAPPDIR))"
 	@echo "  html       to make standalone HTML files"
 	@echo "  dirhtml    to make HTML files named index.html in directories"
 	@echo "  singlehtml to make a single large HTML file"

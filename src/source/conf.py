@@ -23,7 +23,6 @@ def setup(app):
 #sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('./source/'))
 sys.path.append(os.path.abspath('_themes'))
-import sphinx_rtd_theme
 
 # -- General configuration -----------------------------------------------------
 
