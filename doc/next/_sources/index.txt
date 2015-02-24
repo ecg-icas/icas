@@ -38,6 +38,11 @@ History
 ..  role:: strike
 
 
+* v0.44 - 24 Feb 2015 - fs
+
+ * Pushed deadline for removal of :ref:`get_ad_v1` of :ref:`get_ad` from 1 Mar 2015 to 1 May 2015
+ * Pushed deadline for removal of :ref:`get_report_v1` of :ref:`get_report` from 1 Mar 2015 to 1 May 2015
+
 * v0.43 - 13 Jan 2015 - ak
 
  * Added :ref:`scopes` section and scopes to all resources

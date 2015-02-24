@@ -97,7 +97,7 @@ Version 1 of this URL returns returns a list of ads. To use it set the
 
 .. warning::
 
-    Version 1 is deprecated and will be removed on 1\ :sup:`st` March 2015.
+    Version 1 is deprecated and will be removed on 1\ :sup:`st` May 2015.
 
 Parameters
 ~~~~~~~~~~

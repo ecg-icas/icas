@@ -79,7 +79,7 @@ day.  To use it set the ``Accept`` header to
 
 .. warning::
 
-    Version 1 is deprecated and will be removed on 1\ :sup:`st` March 2015.
+    Version 1 is deprecated and will be removed on 1\ :sup:`st` May 2015.
 
 Parameters
 ~~~~~~~~~~
