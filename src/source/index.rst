@@ -37,7 +37,7 @@ History
 
 ..  role:: strike
 
-* v0.44 - 18 Feb 2015 - ak
+* v0.45 - 25 Feb 2015 - ak
 
  * Added performance predictions via :ref:`get_ad_id_funnel` and :ref:`get_category_id_funnel`
 
