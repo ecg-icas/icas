@@ -37,6 +37,10 @@ History
 
 ..  role:: strike
 
+* v0.46 - 04 Mar 2015 - fs
+
+ * Added :ref:`overview_image_downloads` with proxy ips, ``ETag`` and ``Last-Modified`` headers
+
 * v0.45 - 25 Feb 2015 - ak
 
  * Added performance predictions via :ref:`get_ad_id_funnel` and :ref:`get_category_id_funnel`

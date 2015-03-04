@@ -16,6 +16,24 @@ current customer becomes::
 
     https://admarkt.marktplaats.nl/api/sellside/ad/1234
 
+.. _overview_image_downloads:
+
+Image Downloads
+---------------
+
+Images are downloaded from the following ip addresses.
+Ensure that they can access all image URLs are accessible by
+these ip addresses and that there is no rate limit.
+
+ * 5.255.156.110
+ * 5.255.156.126
+
+To reduce the latency when updating an ad we suggest that
+the response contains either an ``ETag`` and/or ``Last-Modified``
+header which only changes when the image itself has changed.
+It should also be possible to check these headers using a ``HEAD``
+request.
+
 .. _overview_media_types:
 
 Media Types
