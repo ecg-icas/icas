@@ -32,7 +32,7 @@ The ad is not shown on the site and can be re-activated.
 DELETED
 """""""
 
-The ad has been deleted by the user and can not be re-activated.
+The ad has been deleted by the user and cannot be re-activated.
 
 Customer Service States
 -----------------------
@@ -43,7 +43,7 @@ Customer Service States
 DELETED_BY_CS
 """""""""""""
 
-The ad has been deleted by Customer Service and can not be re-activated by the user. The seller should have received an email with an explanation for this status change.
+The ad has been deleted by Customer Service and cannot be re-activated by the user. The seller should have received an email with an explanation for this status change.
 
 .. index:: pair: Ad Status; SUSPENDED_BY_CS
 .. _ad_status_suspended_by_cs:

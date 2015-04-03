@@ -38,6 +38,8 @@ Field                   Code    Error message                   Description
 id                      2001    invalid argument                not a valid number
 status                  2001    invalid argument                must be either *ACTIVE*, *PAUSED* or *DELETED*
 status                  2017    ad status change not allowed    changing the status of an ad is not allowed
+totalBudget             2019    insufficient budget             Budget for ad is insufficient
+dailyBudget             2020    insufficient daily budget       Daily budget for ad is insufficient
 ====================    ====    ============================    ==============================================================================
 
 Example

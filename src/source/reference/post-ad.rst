@@ -45,7 +45,7 @@ The category configuration which can be retrieved
 through the category URL contains the valid bounds for these fields once filled in.
 
 All prices are specified as numbers, i.e. a price of *10,50 EUR* must be
-specified as *1050*. This applies to **price**, **totalBudget** and
+specified as *1050*. This applies to **price**, **cpc**, **totalBudget** and
 **dailyBudget**.
 
 The **postCode** is optional. In case it is not specified, its value is set to

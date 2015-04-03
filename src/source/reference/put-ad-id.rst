@@ -22,9 +22,16 @@ All validation rules for creating an ad apply exactly the same.
 
 Additionally, the following rules apply:
 
-The :ref:`ad_totalBudget` can not be lower than the minimum budget as
-defined in the category and also not be lower than the current value of
-:ref:`ad_spentBudget`.
+The :ref:`ad_totalBudget` cannot be lower than the minimum budget as
+defined in the category and also cannot be lower than the sum of :ref:`ad_cpc` and
+the current value of :ref:`ad_spentBudget`. Similarly, the :ref:`ad_dailyBudget`
+cannot be lower than than the minimum daily budget as defined in the category and
+also cannot be lower than the sum of :ref:`ad_cpc` and the current value of
+**dailySpent**.
+
+.. note::
+
+    The value of **dailySpent** is not exposed via the API.
 
 If the :ref:`ad_images` attribute contains links to images that need to be refreshed
 then the ``refresh`` attribute has to be set to ``true``. This is only
@@ -76,6 +83,8 @@ status                  2001    invalid argument                must be either *
 totalBudget             2002    out of range                    totalBudget is not within max(category.minBudget, ad.spentBudget) and category.maxBudget
 categoryId              2012    category change not allowed     Changing the category of an ad is not allowed
 status                  2017    ad status change not allowed    Changing the status of an ad is not allowed
+totalBudget             2019    insufficient budget             Budget for ad is insufficient
+dailyBudget             2020    insufficient daily budget       Daily budget for ad is insufficient
 ====================    ====    ============================    ==========================================================================================
 
 Error codes for POST /ad.

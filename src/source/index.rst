@@ -37,6 +37,11 @@ History
 
 ..  role:: strike
 
+* v0.47 - 3 Apr 2015 - ak
+
+ * :ref:`post_ad` and :ref:`put_ad_id`: Removed deprecated :strike:`Buy It Now` error codes
+ * :ref:`post_ad` and :ref:`put_ad_id`: Added budget error codes
+
 * v0.46 - 04 Mar 2015 - fs
 
  * Added :ref:`overview_image_downloads` with proxy ips, ``ETag`` and ``Last-Modified`` headers
