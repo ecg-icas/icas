@@ -30,9 +30,9 @@ id                      1006    type mismatch               not an integer numbe
 id                      2001    invalid argument            *id* must be omitted or set to zero
 images.size             2002    out of range                too many image URLs
 images.url              2006    invalid url                 invalid image URL
-link.displayUrl         2005    value too long              max. length is 255 **TODO:VERIFY**
-link.url                2005    value too long              max. length is 2048
-link.url                2006    invalid url                 is not a valid url
+links.displayUrl        2005    value too long              max. length is 255
+links.url               2005    value too long              max. length is 2048
+links.url               2006    invalid url                 is not a valid url
 phoneNumber             2005    value too long              max. length is 32
 phoneNumber             2010    invalid phone number        not a valid phone number
 postcode                2005    value too long              max. length is 6
@@ -50,7 +50,4 @@ title                   2000    missing argument            mandatory field
 title                   2005    value too long              max. length is 60
 totalBudget             1006    type mismatch               not an integer number
 totalBudget             2002    out of range                value too low/high
-priceType               2014    incompatible price type     price type not compatible with Buy It Now
-price                   2015    price too low               price too low for Buy It Now
-paypalEmail             2016    invalid email               paypalEmail does not contain a valid email
 ====================    ====    =======================     ==============================================================================
