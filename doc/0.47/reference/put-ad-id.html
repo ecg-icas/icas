@@ -166,6 +166,10 @@ By default, this value is <tt class="docutils literal"><span class="pre">true</s
 does not belong to the user the server returns <strong>404 Not Found</strong>. If the
 <tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e. not a positive integer the server returns <strong>400 Bad
 Request</strong>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Updating deleted ads is not allowed and will result in a <strong>400 Bad Request</strong>.</p>
+</div>
 <p>All writeable fields listed in <a class="reference internal" href="../ads.html#ad-fields"><em>Fields</em></a> can be changed. Attempting to
 change a non-writeable field results in a <strong>400 Bad Request</strong></p>
 <p>All validation rules for creating an ad apply exactly the same.</p>
@@ -293,6 +297,10 @@ refreshed.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is _not_ allowed to edit deleted ads (<strong>DELETED</strong> or <strong>DELETED_BY_CS</strong> status).</p>
+</div>
 <p>Error codes for POST /ad.</p>
 <table border="1" class="docutils">
 <colgroup>
