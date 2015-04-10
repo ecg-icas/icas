@@ -1,4 +1,4 @@
-.. code-block :: javascript
+.. code-block:: javascript
 
     POST /image
     Accept: application/sellside.image.list-v1+json, application/json
