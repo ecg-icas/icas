@@ -15,6 +15,10 @@ does not belong to the user the server returns **404 Not Found**. If the
 ``id`` is invalid, i.e. not a positive integer the server returns **400 Bad
 Request**.
 
+.. note::
+
+    Updating deleted ads is not allowed and will result in a **400 Bad Request**.
+
 All writeable fields listed in :ref:`ad-fields` can be changed. Attempting to
 change a non-writeable field results in a **400 Bad Request**
 
@@ -86,6 +90,10 @@ status                  2017    ad status change not allowed    Changing the sta
 totalBudget             2019    insufficient budget             Budget for ad is insufficient
 dailyBudget             2020    insufficient daily budget       Daily budget for ad is insufficient
 ====================    ====    ============================    ==========================================================================================
+
+.. note::
+
+    It is _not_ allowed to edit deleted ads (**DELETED** or **DELETED_BY_CS** status).
 
 Error codes for POST /ad.
 
