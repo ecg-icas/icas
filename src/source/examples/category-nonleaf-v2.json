@@ -1,0 +1,19 @@
+{
+    "links": {
+        "self": "/api/sellside/category/856"
+    },
+    "id": 856,
+    "parentId": 0,
+    "level": 1,
+    "path": "856",
+    "label": {
+        "nl_NL": "Vakantie"
+    },
+    "breadcrumbs": {
+        "nl_NL": [
+            "Vakantie"
+        ]
+    },
+    "status": "ACTIVE",
+    "children": []
+}

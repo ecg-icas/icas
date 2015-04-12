@@ -1,0 +1,39 @@
+
+{
+    "links": {
+        "self": "/api/sellside/category/0"
+    },
+    "id": 0,
+    "parentId": -1,
+    "level": 0,
+    "path": "0",
+    "label": {
+        "nl_NL": ""
+    },
+    "breadcrumbs": {},
+    "status": "ACTIVE",
+    "children": [
+        {
+            "links": {
+                "self": "/api/sellside/category/1"
+            },
+            "id": 1,
+            "parentId": 0,
+            "level": 1,
+            "path": "1",
+            "label": {
+                "nl_NL": "Antiek en Kunst"
+            },
+            "breadcrumbs": {
+                "nl_NL": [
+                    "Antiek en Kunst"
+                ]
+            },
+            "status": "ACTIVE",
+            "children": [
+            	...
+            ]
+        },
+        ...
+    ]
+}
