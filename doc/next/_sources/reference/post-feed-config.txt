@@ -6,16 +6,15 @@ POST /feed/config
 
 :ref:`scopes` **console**
 
-The URL updates the feed configuration of the current user.
+This URL updates the feed configuration of the current user. The feed configuration object must contain a boolean
+field ``enabled``. Depending on its value the feed will be activated or disabled. If the
+feed is being activated, the field ``feedUrl`` is mandatory and should contain a valid URL to a feed XML document.
 
-Parameters
-~~~~~~~~~~
+.. note::
 
-===============  ========    ============================================================================
-Name             Type        Description
-===============  ========    ============================================================================
-_exclude         string      Comma-separated-list of fields to omit. Optional, default empty.
-===============  ========    ============================================================================
+    Access to the feed functionality may be granted per user by the Customer Service.
+    Unauthorized user requests to the this endpoint will result in **401 Unauthorized**
+    responses.
 
 Errors
 ~~~~~~
@@ -23,7 +22,8 @@ Errors
 ====================    ====    =======================     ==============================================================================
 Field                   Code    Error message               Description
 ====================    ====    =======================     ==============================================================================
-remainingBudget         2001    invalid argument            remaining budget is not an integer or an integer percentage (e.g. **10%**)
+--                      1008    access denied               The user is invalid
+feedUrl                 2006    invalid url                 The value of field 'feedUrl' is not a valid url
 ====================    ====    =======================     ==============================================================================
 
 Example

@@ -37,9 +37,9 @@ History
 
 ..  role:: strike
 
-* v0.48 - 10 Apr 2015 - ak
+* v0.48 - 13 Apr 2015 - ak
 
- * Added support for feed url configuration via :ref:`get_feed_config` and :ref:`post_feed_config`
+ * Added support for feed configuration via :ref:`get_feed_config` and :ref:`post_feed_config`
 
 * v0.47 - 3 Apr 2015 - ak
 
