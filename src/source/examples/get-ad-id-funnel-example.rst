@@ -1,4 +1,4 @@
-.. code-block :: javascript
+.. code-block:: javascript
 
     GET /ad/{id}/funnel?cpc=50
     Accept: application/sellside.funnel-v1+json, application/json
