@@ -37,6 +37,10 @@ History
 
 ..  role:: strike
 
+* v0.49 - 13 Apr 2015 - ak
+
+ * :ref:`ads`: Added information about deprecated :strike:`buyItNowEnabled` and :strike:`paypalEmail` ad fields
+
 * v0.48 - 13 Apr 2015 - ak
 
  * Added support for feed configuration via :ref:`get_feed_config` and :ref:`post_feed_config`

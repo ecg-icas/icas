@@ -53,8 +53,16 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_images`                    array      max. 8 items       no          yes
 :ref:`ad_attributes`                array      --                 no          yes
 :ref:`ad_shippingOptions`           array      see below          yes         yes
+:ref:`ad_buyItNowEnabled`           bool       see below          no          yes
 :ref:`ad_paypalEmail`               string     valid email        no          yes
 =================================   ========   ================   =========   ========
+
+.. warning::
+
+    The fields :ref:`ad_buyItNowEnabled` and :ref:`ad_paypalEmail` are deprecated and are
+    not returned with an ad. They will be completely removed on 1\ :sup:`st` July 2015.
+    Requests which try to modify these two fields after that date will start failing with
+    **400 Bad Request** responses.
 
 .. index:: id
 .. _ad_id:
@@ -449,6 +457,19 @@ pickupLocation      Mandatory when type is *PICKUP*. Pick up location of the ite
         {"type": "SHIP", "cost": 0, "time":"2d-5d"},
         {"type": "PICKUP", "pickupLocation":"1097DN"}
      ]
+
+.. index:: buyItNowEnabled
+.. _ad_buyItNowEnabled:
+
+buyItNowEnabled
+"""""""""""""""
+
+Enabling *Buy It Now* functionality allows advertiser to sell items directly via Marktplaats.
+In order to use 'Buy It Now' Sellside API users need to have the *Buy It Now* permission.
+
+When **buyItNowEnabled** field is set to true, :ref:`ad_paypalEmail` field must contain a valid email address,
+:ref:`ad_priceType` must be **FIXED_PRICE** and :ref:`ad_price` must be greater than 1. If **buyItNowEnabled** field
+is not set or set to false :ref:`ad_paypalEmail` is ignored.
 
 .. index:: paypalEmail
 .. _ad_paypalEmail:
