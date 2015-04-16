@@ -155,7 +155,7 @@ History
 * v0.27 - 11 mar 2014 - be
 
  * Added :strike:`buyItNowEnabled` to Ad
- * Added :ref:`ad_paypalEmail` to Ad
+ * Added :strike:`paypalEmail` to Ad
  * Added documentation for :strike:`Buy It Now`
 
 * v0.26 - 08 feb 2014 - fs
