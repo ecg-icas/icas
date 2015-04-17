@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /category/{id}/funnel &mdash; Admarkt Sellside API 0.50 documentation</title>
+  <title>GET /report/detail &mdash; Admarkt Sellside API 0.50 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="Admarkt Sellside API 0.50 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /feed/config" href="get-feed-config.html"/>
-        <link rel="prev" title="GET /category/{id}/attributes" href="get-category-id-attributes.html"/> 
+        <link rel="next" title="GET /report/detail/{id}" href="get-report-detail-id.html"/>
+        <link rel="prev" title="GET /report" href="get-report.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -110,13 +110,13 @@
 <li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
@@ -149,10 +149,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>GET /category/{id}/funnel</li>
+    <li>GET /report/detail</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-category-id-funnel.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-report-detail.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -160,95 +160,92 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-category-id-funnel">
-<span id="index-0"></span><span id="id1"></span><h1>GET /category/{id}/funnel<a class="headerlink" href="#get-category-id-funnel" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../authentication.html#scopes"><em>Scopes</em></a> <strong>read</strong></p>
-<p>This URL returns performance predictions such as number of impressions, clicks
-and url clicks for a given category and cpc value.</p>
-<p>The endpoint also returns information regarding the page on which a new ad
-will be displayed if placed in the given category and with the given cpc
-value. The response also contains a suggested cpc value to place an ad on page
-one in this category. If <tt class="docutils literal"><span class="pre">cpc</span></tt> is greater than <tt class="docutils literal"><span class="pre">maxCpc</span></tt> then the ads of
-this seller generally do not perform well enough to place new ads on the first
-page.</p>
-<p>If the expected performance of a category cannot be predicted yet, the server
-returns a <tt class="docutils literal"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></tt> response with empty body. This can happen when,
-for instance, the category contains no ads yet from which to derive a
-performance prediction.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="get-report-detail">
+<span id="index-0"></span><span id="id1"></span><h1>GET /report/detail<a class="headerlink" href="#get-report-detail" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../authentication.html#scopes"><em>Scopes</em></a> <strong>console</strong></p>
+<p>This URL returns the list of previously submittted reports for the current user. Maximum 3 reports
+are returned. To use it set the <tt class="docutils literal"><span class="pre">Accept</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.detail.report.list-v1+json</span></tt>.</p>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<p>There are no specific errors for this call.</p>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>Each report object in the returned list contains the following fields.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
-<col width="7%" />
-<col width="74%" />
+<col width="8%" />
+<col width="73%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
+<tr class="row-odd"><th class="head">Field</th>
 <th class="head">Type</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>cpc</td>
-<td>integer</td>
-<td>The cpc value in euro cents for which to make the prediction. Mandatory field.</td>
-</tr>
-<tr class="row-odd"><td>_include</td>
+<tr class="row-even"><td>id</td>
 <td>string</td>
-<td>Comma-separated-list of fields to include. Optional, default is all fields.</td>
+<td>Unique id of the report</td>
 </tr>
-<tr class="row-even"><td>_exclude</td>
-<td>string</td>
-<td>Comma-separated-list of fields to omit. Optional, default empty.</td>
+<tr class="row-odd"><td>dateCreated</td>
+<td>date</td>
+<td>Creation date of the report</td>
 </tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="errors">
-<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="3%" />
-<col width="18%" />
-<col width="62%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Code</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
+<tr class="row-even"><td>startDate</td>
+<td>date</td>
+<td>Start date of the report</td>
 </tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>cpc</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>the provided value is not a valid number</td>
+<tr class="row-odd"><td>endDate</td>
+<td>date</td>
+<td>End date of the report</td>
+</tr>
+<tr class="row-even"><td>includeDeleted</td>
+<td>bool</td>
+<td>Whether the deleted ads are included in report or not</td>
+</tr>
+<tr class="row-odd"><td>numberOfRows</td>
+<td>int</td>
+<td>Number of rows in the report</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">funnel</span><span class="o">?</span><span class="nx">cpc</span><span class="o">=</span><span class="mi">50</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">funnel</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">detail</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">funnel</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
 
-<span class="p">{</span>
-  <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
-  <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s2">&quot;averageClicks&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-  <span class="s2">&quot;averageCpc&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s2">&quot;averageImpressions&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
-  <span class="s2">&quot;averageUrlClicks&quot;</span><span class="o">:</span> <span class="mi">400</span><span class="p">,</span>
-  <span class="s2">&quot;ctr&quot;</span><span class="o">:</span> <span class="mf">3.5</span><span class="p">,</span>
-  <span class="s2">&quot;urlCtr&quot;</span><span class="o">:</span> <span class="mf">1.2</span><span class="p">,</span>
-  <span class="s2">&quot;maxCpc&quot;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span>
-<span class="p">}</span>
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;c4e91116-34f7-4bbe-959f-12b7a03157ed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-16T10:46:41Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;startDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-03T22:00:00Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-07T22:00:00Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;numberOfRows&quot;</span><span class="o">:</span> <span class="mi">123</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;d5d4a002-0a82-46f8-8246-9af425490c22&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-16T10:46:29Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;startDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-03T22:00:00Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-07T22:00:00Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;numberOfRows&quot;</span><span class="o">:</span> <span class="mi">16</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;32d031e8-fff4-44df-9f82-72b38618a9ca&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-09T12:44:47Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;startDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-02-28T23:00:00Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-03-07T23:00:00Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;numberOfRows&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -260,10 +257,10 @@ performance prediction.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-feed-config.html" class="btn btn-neutral float-right" title="GET /feed/config"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-report-detail-id.html" class="btn btn-neutral float-right" title="GET /report/detail/{id}"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="get-category-id-attributes.html" class="btn btn-neutral" title="GET /category/{id}/attributes"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="get-report.html" class="btn btn-neutral" title="GET /report"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

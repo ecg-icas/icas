@@ -37,6 +37,10 @@ History
 
 ..  role:: strike
 
+* v0.50 - 17 Apr 2015 - be
+
+ *  Added documentation for detail report. :ref:`get_report_detail`, :ref:`get_report_detail_id` and :ref:`post_report_detail`
+
 * v0.49 - 13 Apr 2015 - ak
 
  * :ref:`ads`: Added information about deprecated :strike:`buyItNowEnabled` and :strike:`paypalEmail` ad fields
