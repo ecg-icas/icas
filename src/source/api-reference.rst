@@ -19,6 +19,9 @@ API Reference
    reference/get-image
    reference/post-image
    reference/get-report
+   reference/get-report-detail
+   reference/get-report-detail-id
+   reference/post-report-detail
    reference/ad-status
    reference/price-types
    reference/error-codes
