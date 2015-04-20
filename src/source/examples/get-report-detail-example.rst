@@ -1,10 +1,10 @@
 .. code-block:: javascript
 
     GET /api/sellside/report/detail
-    Accept: application/sellside.detail.report.list-v1+json, application/json
+    Accept: application/sellside.report.detail.list-v1+json, application/json
 
     200 OK
-    Content-Type: application/sellside.detail.report.list-v1+json; charset=UTF-8
+    Content-Type: application/sellside.report.detail.list-v1+json; charset=UTF-8
 
     [
         {
@@ -13,7 +13,7 @@
             "startDate": "2015-04-03T22:00:00Z",
             "endDate": "2015-04-07T22:00:00Z",
             "includeDeleted": true,
-            "numberOfRows": 123
+            "count": 123
         },
         {
             "id": "d5d4a002-0a82-46f8-8246-9af425490c22",
@@ -21,7 +21,7 @@
             "startDate": "2015-04-03T22:00:00Z",
             "endDate": "2015-04-07T22:00:00Z",
             "includeDeleted": true,
-            "numberOfRows": 16
+            "count": 16
         },
         {
             "id": "32d031e8-fff4-44df-9f82-72b38618a9ca",
@@ -29,6 +29,6 @@
             "startDate": "2015-02-28T23:00:00Z",
             "endDate": "2015-03-07T23:00:00Z",
             "includeDeleted": false,
-            "numberOfRows": 0
+            "count": 0
         }
     ]

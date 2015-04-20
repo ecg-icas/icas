@@ -163,9 +163,10 @@
   <div class="section" id="get-report-detail-id">
 <span id="index-0"></span><span id="id1"></span><h1>GET /report/detail/{id}<a class="headerlink" href="#get-report-detail-id" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../authentication.html#scopes"><em>Scopes</em></a> <strong>console</strong></p>
-<p>This URL returns a previously submittted report either in <tt class="docutils literal"><span class="pre">excel</span></tt> or in <tt class="docutils literal"><span class="pre">csv</span></tt> format depending on the
-<tt class="docutils literal"><span class="pre">Accept</span></tt> header. If the <tt class="docutils literal"><span class="pre">Accept</span></tt> header is <tt class="docutils literal"><span class="pre">application/vnd.ms-excel</span></tt> an excel document is created.
-If the <tt class="docutils literal"><span class="pre">Accept</span></tt> header is <tt class="docutils literal"><span class="pre">text/csv</span></tt> a csv document is created.</p>
+<p>This URL returns a previously submittted report either in Excel or in CSV format depending on the
+<tt class="docutils literal"><span class="pre">Accept</span></tt> header. If the <tt class="docutils literal"><span class="pre">Accept</span></tt> header is <tt class="docutils literal"><span class="pre">application/vnd.ms-excel</span></tt> an Excel document is created.
+If the <tt class="docutils literal"><span class="pre">Accept</span></tt> header is <tt class="docutils literal"><span class="pre">text/csv</span></tt> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created.
+In CSV documents values are separated by comma and double quotation marks are used around all fields.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -183,7 +184,7 @@ If the <tt class="docutils literal"><span class="pre">Accept</span></tt> header 
 <tbody valign="top">
 <tr class="row-even"><td>fileName</td>
 <td>string</td>
-<td>File name of the downloaded report. Default is <strong>report.xls</strong> or <strong>report.csv</strong>.</td>
+<td>File name of the downloaded report. Default is <strong>report.xls</strong> or <strong>report.csv</strong></td>
 </tr>
 </tbody>
 </table>
@@ -191,26 +192,73 @@ If the <tt class="docutils literal"><span class="pre">Accept</span></tt> header 
 <div class="section" id="report-columns">
 <h2>Report Columns<a class="headerlink" href="#report-columns" title="Permalink to this headline">¶</a></h2>
 <p>Both excel and csv contain the following columns:</p>
-<ol class="arabic simple">
-<li><strong>Date:</strong> Date of the report row.</li>
-<li><strong>Ad id:</strong> Id of the ad.</li>
-<li><strong>L1 Category:</strong> Level 1 category name.</li>
-<li><strong>L2 Category:</strong> Level 2 category name.</li>
-<li><strong>L3 Category:</strong> Level 3 category name if it exists.</li>
-<li><strong>Title:</strong> Ad title</li>
-<li><strong>Start Date:</strong> The creation date of the ad.</li>
-<li><strong>End Date:</strong> If the ad is deleted, deletion date of the ad.</li>
-<li><strong>Total Budget:</strong> Total budget of the ad.</li>
-<li><strong>Daily Limit:</strong> Daily budget of the ad.</li>
-<li><strong>Total spent:</strong> Total amount spent for this ad.</li>
-<li><strong>Cpc:</strong> Cpc of the ad.</li>
-<li><strong>Impressions:</strong> Number of impressions that the ad received.</li>
-<li><strong>ctr:</strong> Click through rate.</li>
-<li><strong>Clicks:</strong> Number of clicks that the ad received.</li>
-<li><strong>URL Clicks:</strong> Number of URL clicks that the ad received.</li>
-<li><strong>Emails:</strong> Number of email events that the ad received.</li>
-<li><strong>External Id:</strong> External id of the ad.</li>
-</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Date</td>
+<td>Date of the report row</td>
+</tr>
+<tr class="row-odd"><td>Ad id</td>
+<td>Id of the ad</td>
+</tr>
+<tr class="row-even"><td>L1 Category</td>
+<td>Level 1 category name</td>
+</tr>
+<tr class="row-odd"><td>L2 Category</td>
+<td>Level 2 category name</td>
+</tr>
+<tr class="row-even"><td>L3 Category</td>
+<td>Level 3 category name if it exists</td>
+</tr>
+<tr class="row-odd"><td>Title</td>
+<td>Ad title</td>
+</tr>
+<tr class="row-even"><td>Start Date</td>
+<td>The creation date of the ad</td>
+</tr>
+<tr class="row-odd"><td>End Date</td>
+<td>If the ad is deleted, deletion date of the ad</td>
+</tr>
+<tr class="row-even"><td>Total Budget</td>
+<td>Total budget of the ad</td>
+</tr>
+<tr class="row-odd"><td>Daily Limit</td>
+<td>Daily budget of the ad</td>
+</tr>
+<tr class="row-even"><td>Total spent</td>
+<td>Total amount spent for this ad</td>
+</tr>
+<tr class="row-odd"><td>Cpc</td>
+<td>Cpc of the ad</td>
+</tr>
+<tr class="row-even"><td>Impressions</td>
+<td>Number of impressions that the ad received</td>
+</tr>
+<tr class="row-odd"><td>CTR</td>
+<td>Click through rate</td>
+</tr>
+<tr class="row-even"><td>Clicks</td>
+<td>Number of clicks that the ad received</td>
+</tr>
+<tr class="row-odd"><td>URL clicks</td>
+<td>Number of URL clicks that the ad received</td>
+</tr>
+<tr class="row-even"><td>Emails</td>
+<td>Number of email events that the ad received</td>
+</tr>
+<tr class="row-odd"><td>External id</td>
+<td>External id of the ad</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

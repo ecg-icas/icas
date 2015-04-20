@@ -1,8 +1,8 @@
 .. code-block:: javascript
 
     POST /api/sellside/report/detail
-    Accept: application/sellside.detail.report.response-v1+json, application/json
-    Content-Type: application/sellside.detail.report.request-v1+json
+    Accept: application/sellside.report.detail.response-v1+json, application/json
+    Content-Type: application/sellside.report.detail.request-v1+json
 
     {
         "startDate": "2015-04-04",
