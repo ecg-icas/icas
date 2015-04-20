@@ -18,7 +18,10 @@ Parameters
 ===============  ========    ================================================================================
 Name             Type        Description
 ===============  ========    ================================================================================
-fileName         string      File name of the downloaded report. Default is **report.xls** or **report.csv**
+filename         string      File name of the downloaded report.
+                             Default is **[tenantId]-report-[userId]-[date].[xls|csv]**
+                             where `tenantId` is the id of the host platform requesting the report,
+                             `userId` is the id of the logged in user and date is the current date in yyyyMMdd-HHmmss format
 ===============  ========    ================================================================================
 
 Report Columns

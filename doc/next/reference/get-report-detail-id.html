@@ -171,9 +171,9 @@ In CSV documents values are separated by comma and double quotation marks are us
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="15%" />
-<col width="8%" />
-<col width="78%" />
+<col width="13%" />
+<col width="7%" />
+<col width="81%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -182,9 +182,12 @@ In CSV documents values are separated by comma and double quotation marks are us
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>fileName</td>
+<tr class="row-even"><td>filename</td>
 <td>string</td>
-<td>File name of the downloaded report. Default is <strong>report.xls</strong> or <strong>report.csv</strong></td>
+<td>File name of the downloaded report.
+Default is <strong>[tenantId]-report-[userId]-[date].[xls|csv]</strong>
+where <cite>tenantId</cite> is the id of the host platform requesting the report,
+<cite>userId</cite> is the id of the logged in user and date is the current date in yyyyMMdd-HHmmss format</td>
 </tr>
 </tbody>
 </table>
