@@ -41,8 +41,8 @@
                 "status": "OK",
                 "dateLastUpdated": "2012-09-10T13:11:05Z",
                 "links": {
-                    "50x70": "http://i.marktplaats.nl/image23434_abc.jpg",
-                    "120x180": "http://i.marktplaats.nl/image23434_def.jpg",
+                    "50x70": "//i.marktplaats.nl/image23434_abc.jpg",
+                    "120x180": "//i.marktplaats.nl/image23434_def.jpg",
                 }
             },
             {
@@ -50,8 +50,8 @@
                 "status": "OK",
                 "dateLastUpdated": "2012-09-10T13:11:05Z",
                 "links": {
-                    "50x70": "http://i.marktplaats.nl/image397493_abc.jpg",
-                    "120x180": "http://i.marktplaats.nl/image397493_def.jpg",
+                    "50x70": "//i.marktplaats.nl/image397493_abc.jpg",
+                    "120x180": "//i.marktplaats.nl/image397493_def.jpg",
                 }
             }
        ],

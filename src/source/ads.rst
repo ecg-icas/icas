@@ -378,8 +378,8 @@ fields which describe the status of the download.
             "status": "OK",
             "dateLastUpdated": "2012-09-10T13:11:05Z",
             "links": {
-                "50x70": "http://i.marktplaats.nl/image23434_abc.jpg",
-                "120x180": "http://i.marktplaats.nl/image23434_def.jpg",
+                "50x70": "//i.marktplaats.nl/image23434_abc.jpg",
+                "120x180": "//i.marktplaats.nl/image23434_def.jpg",
             }
         }
         ...
@@ -390,9 +390,9 @@ status is either **OK** (image was successfully downloaded), **PENDING**
 (image is scheduled to be downloaded) or **FAILED** if the image was not found
 or invalid.
 
-If the ``status`` is **OK** then a **links** map is added which contains links
-to copies on the Admarkt servers of the uploaded image in various sizes.
-The dimensions are specified as *max width* x *max height*.
+If the ``status`` is **OK** then a **links** map is added which contains
+*protocol agnostic* links to copies on the Admarkt servers of the uploaded image
+in various sizes. The dimensions are specified as *max width* x *max height*.
 
 The server also adds the ``dateLastUpdated`` field which specifies the time
 the image was last updated.
@@ -410,8 +410,8 @@ the image was last updated.
             "status": "OK",
             "dateLastUpdated": "2012-09-10T13:11:05Z",
             "links": {
-                "50x70": "http://i.marktplaats.nl/image23434_abc.jpg",
-                "120x180": "http://i.marktplaats.nl/image23434_def.jpg",
+                "50x70": "//i.marktplaats.nl/image23434_abc.jpg",
+                "120x180": "//i.marktplaats.nl/image23434_def.jpg",
             }
         }
         ...

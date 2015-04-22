@@ -37,6 +37,10 @@ History
 
 ..  role:: strike
 
+* v0.51 - 22 Apr 2015 - be
+
+ *  Corrected the documentation about image links
+
 * v0.50 - 17 Apr 2015 - be
 
  *  Added documentation for detail report. :ref:`get_report_detail`, :ref:`get_report_detail_id` and :ref:`post_report_detail`
