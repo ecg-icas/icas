@@ -341,9 +341,8 @@ as a set of URLs. Admarkt will download the images and if they meet the
 requirements then they will be stored on Admarkt servers in several sizes
 so that they can then be used by the user.
 
-An image is valid if it is in JPG, PNG or BMP format and is smaller than 8MB
-in size. GIF images are not supported and images larger than 726x726 px are
-being scaled down.
+An image is valid if it is in JPG, PNG, GIF or BMP format and is smaller than 8MB
+in size. Images larger than 1024x1024 px are being scaled down.
 
 The images will be shown in the order they are provided. The first image is
 shown in search results and it is the main image on the item page on
