@@ -399,24 +399,8 @@ the image was last updated.
 
 .. note::
 
-    The caller can provide all the attributes added by the server since
+    The caller can provide all the fields added by the server since
     they will be ignored.
-
-.. code-block:: javascript
-
-    "images": [
-        {
-            "src": "http://www.ourshop.com/img/brother_fax_big.jpg",
-            "status": "OK",
-            "dateLastUpdated": "2012-09-10T13:11:05Z",
-            "links": {
-                "50x70": "//i.marktplaats.nl/image23434_abc.jpg",
-                "120x180": "//i.marktplaats.nl/image23434_def.jpg",
-            }
-        }
-        ...
-     ]
-
 
 .. index:: attributes
 .. _ad_attributes:
