@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Advertisements &mdash; Admarkt Sellside API 0.50 documentation</title>
+  <title>Advertisements &mdash; Admarkt Sellside API 0.51 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="Admarkt Sellside API 0.50 documentation" href="index.html"/>
+    <link rel="top" title="Admarkt Sellside API 0.51 documentation" href="index.html"/>
         <link rel="next" title="Categories" href="categories.html"/>
         <link rel="prev" title="Authentication" href="authentication.html"/> 
 
@@ -574,8 +574,8 @@ fields which describe the status of the download.</p>
         <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
         <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
         <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;http://i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;http://i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="p">...</span>
@@ -586,9 +586,9 @@ fields which describe the status of the download.</p>
 status is either <strong>OK</strong> (image was successfully downloaded), <strong>PENDING</strong>
 (image is scheduled to be downloaded) or <strong>FAILED</strong> if the image was not found
 or invalid.</p>
-<p>If the <tt class="docutils literal"><span class="pre">status</span></tt> is <strong>OK</strong> then a <strong>links</strong> map is added which contains links
-to copies on the Admarkt servers of the uploaded image in various sizes.
-The dimensions are specified as <em>max width</em> x <em>max height</em>.</p>
+<p>If the <tt class="docutils literal"><span class="pre">status</span></tt> is <strong>OK</strong> then a <strong>links</strong> map is added which contains
+<em>protocol agnostic</em> links to copies on the Admarkt servers of the uploaded image
+in various sizes. The dimensions are specified as <em>max width</em> x <em>max height</em>.</p>
 <p>The server also adds the <tt class="docutils literal"><span class="pre">dateLastUpdated</span></tt> field which specifies the time
 the image was last updated.</p>
 <div class="admonition note">
@@ -602,8 +602,8 @@ they will be ignored.</p>
         <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
         <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
         <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;http://i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;http://i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="p">...</span>
@@ -701,8 +701,8 @@ in the pickUpLocation field when sending a shipping option of type <em>PICKUP</e
              <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
              <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
              <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-                 <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;http://i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
-                 <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;http://i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="p">,</span>
              <span class="p">}</span>
          <span class="p">},</span>
          <span class="p">{</span>
@@ -710,8 +710,8 @@ in the pickUpLocation field when sending a shipping option of type <em>PICKUP</e
              <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
              <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
              <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-                 <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;http://i.marktplaats.nl/image397493_abc.jpg&quot;</span><span class="p">,</span>
-                 <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;http://i.marktplaats.nl/image397493_def.jpg&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image397493_abc.jpg&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image397493_def.jpg&quot;</span><span class="p">,</span>
              <span class="p">}</span>
          <span class="p">}</span>
     <span class="p">],</span>
@@ -797,7 +797,7 @@ in the pickUpLocation field when sending a shipping option of type <em>PICKUP</e
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.50',
+            VERSION:'0.51',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
