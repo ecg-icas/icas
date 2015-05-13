@@ -179,7 +179,7 @@ a *POST* request to the *token endpoint* with the following parameters:
 
     POST /accounts/oauth/token
     Host: auth.demo.qa-mp.so
-    Content-Type: application/www-form-urlencoded
+    Content-Type: application/x-www-form-urlencoded
 
     grant_type=code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
 
@@ -221,7 +221,7 @@ format if the token request at step 3 is valid.
 
     POST /accounts/oauth/token
     Host: auth.demo.qa-mp.so
-    Content-Type: application/www-form-urlencoded
+    Content-Type: application/x-www-form-urlencoded
 
     grant_type=code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
 
@@ -296,7 +296,7 @@ response is identical to the token response explained at step 4 of :ref:`obtaini
 
     POST /accounts/oauth/token
     Host: auth.demo.qa-mp.so
-    Content-Type: application/www-form-urlencoded
+    Content-Type: application/x-www-form-urlencoded
 
     grant_type=refresh_token&refresh_token=YOUR_CURRENT_REFRESH_TOKEN&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET
 

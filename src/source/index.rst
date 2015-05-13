@@ -37,6 +37,10 @@ History
 
 ..  role:: strike
 
+* v0.52 - 13 May 2015 - fs
+
+ *  Fixed the content type header for OAuth2 requests to `application/x-www-form-urlencoded`
+
 * v0.51 - 22 Apr 2015 - be
 
  *  Corrected the documentation about image links

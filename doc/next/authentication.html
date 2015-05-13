@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Authentication &mdash; Admarkt Sellside API 0.51 documentation</title>
+  <title>Authentication &mdash; Admarkt Sellside API 0.52 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="Admarkt Sellside API 0.51 documentation" href="index.html"/>
+    <link rel="top" title="Admarkt Sellside API 0.52 documentation" href="index.html"/>
         <link rel="next" title="Advertisements" href="ads.html"/>
         <link rel="prev" title="Overview" href="overview.html"/> 
 
@@ -334,7 +334,7 @@ a <em>POST</em> request to the <em>token endpoint</em> with the following parame
 </table>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
-Content-Type: application/www-form-urlencoded
+Content-Type: application/x-www-form-urlencoded
 
 grant_type=code&amp;code=AUTH_CODE&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_CLIENT_SECRET&amp;redirect_uri=https://yoursite.com/code
 </pre></div>
@@ -380,7 +380,7 @@ expired yet.</p>
 </div>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
-Content-Type: application/www-form-urlencoded
+Content-Type: application/x-www-form-urlencoded
 
 grant_type=code&amp;code=AUTH_CODE&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_CLIENT_SECRET&amp;redirect_uri=https://yoursite.com/code
 
@@ -454,7 +454,7 @@ expired yet.</p>
 </div>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
-Content-Type: application/www-form-urlencoded
+Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&amp;refresh_token=YOUR_CURRENT_REFRESH_TOKEN&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_CLIENT_SECRET
 
@@ -570,7 +570,7 @@ the scope assigned to the client making the request.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.51',
+            VERSION:'0.52',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
