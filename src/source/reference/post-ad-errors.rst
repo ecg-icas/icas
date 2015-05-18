@@ -22,7 +22,7 @@ currency                2001    invalid argument            not "EUR"
 dailyBudget             1006    type mismatch               not an integer number
 dailyBudget             2002    out of range                value lower than category.minDailyBudget or higher than totalBudget
 description             2000    missing argument            mandatory field
-description             2005    value too long              max. length is 1000
+description             2002    out of range                max. length is 20000
 externalId              2000    missing argument            mandatory field
 externalId              2004    value too short             value must not be empty
 externalId              2005    value too long              max. length is 64 characters
@@ -47,7 +47,7 @@ sellerName              2005    value too long              max. length is 60
 status                  2000    missing argument            mandatory field
 status                  2001    invalid argument            must be either *ACTIVE* or *PAUSED*
 title                   2000    missing argument            mandatory field
-title                   2005    value too long              max. length is 60
+title                   2002    out of range                max. length is 60
 totalBudget             1006    type mismatch               not an integer number
 totalBudget             2002    out of range                value too low/high
 ====================    ====    =======================     ==============================================================================
