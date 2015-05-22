@@ -171,7 +171,7 @@ totalBudget
 The total budget for the ad. The minimum and maximum values depend on the
 category. When an ad is updated this value cannot be lower than the
 :ref:`ad_spentBudget`.
-If the total budget is not returned with the ad, it means there is an unlimited total budget.
+If the total budget is not returned with the ad, it means there's an unlimited total budget.
 
 .. index:: dailyBudget
 .. _ad_dailyBudget:
