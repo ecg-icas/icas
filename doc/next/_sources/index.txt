@@ -25,6 +25,7 @@ Contents
    ads
    categories
    attributes
+   regions
    error-handling
    api-reference
 
