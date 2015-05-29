@@ -47,36 +47,89 @@ OAuth 2.0 Endpoints
 
 **Authorization Endpoint:** This is the endpoint on the authorization server
 where the resource owner logs in, and grants authorization to the client
-application. The authorization endpoint urls are as follows:
+application.
 
-* *Sandbox:* https://auth.demo.qa-mp.so/accounts/oauth/authorize
-* *Production:* https://auth.marktplaats.nl/accounts/oauth/authorize
+**Token Endpoint:**  This is the endpoint on the authorization server where
+the client application exchanges the authorization code, client ID and client
+secret, for an access token.
 
-**Token Endpoint:**  This is the endpoint on the authorization server
-where the client application exchanges the authorization code,
-client ID and client secret, for an access token.
-The token endpoint urls are as follows:
+The endpoint URLs per tenant and environment are as follows:
 
-* *Sandbox:* https://auth.demo.qa-mp.so/accounts/oauth/token
-* *Production:* https://auth.marktplaats.nl/accounts/oauth/token
+.. list-table::
+ :widths: 20 10 70
+ :header-rows: 1
+
+ * - Tenant
+   - Env
+   - Endpoint
+
+ * - Marktplaats
+   - Sandbox
+   - https://auth.demo.qa-mp.so/accounts/oauth/authorize
+
+ * -
+   -
+   - https://auth.demo.qa-mp.so/accounts/oauth/token
+
+ * -
+   - Production
+   - https://auth.marktplaats.nl/accounts/oauth/authorize
+
+ * -
+   -
+   - https://auth.marktplaats.nl/accounts/oauth/token
+
+ * - DBA
+   - Sandbox
+   - https://dba.lp.icas.ecg.so/accounts/oauth/authorize
+
+ * -
+   -
+   - https://dba.lp.icas.ecg.so/accounts/oauth/token
+
+ * -
+   - Production
+   - https://topannoncer.dbabusiness.dk/accounts/oauth/authorize
+
+ * -
+   -
+   - https://topannoncer.dbabusiness.dk/accounts/oauth/token
+
+ * - Kijiji Canada
+   - Sandbox
+   - https://cas.qa.kijiji.ca/accounts/oauth/authorize
+
+ * -
+   -
+   - https://cas.qa.kijiji.ca/accounts/oauth/token
+
+ * -
+   - Production
+   - https://cas.kijiji.ca/accounts/oauth/authorize
+
+ * -
+   -
+   - https://cas.kijiji.ca/accounts/oauth/token
+
 
 .. note::
 
-    The Sandbox environment uses a self-signed certificate for the
-    SSL encryption. You need to disable certificate verification in
-    your client library.
+    The Sandbox environments may use a self-signed certificate for the SSL
+    encryption. You need to disable certificate verification in your client
+    library.
 
 .. _obtaining_an_access_token:
 
-Obtaining an Access Token
--------------------------
+Getting an Access Token
+-----------------------
 
-The steps for obtaining an access token are as follows:
+The steps for getting an access token are as follows:
 
 Step 1: Redirect to the authorization url
 `````````````````````````````````````````
 
-Redirect the resource owner (user) to the authorization url with the following GET parameters
+Redirect the resource owner (user) to the authorization url with the following
+GET parameters
 
 .. list-table::
  :widths: 10 30 60
@@ -116,8 +169,8 @@ Redirect the resource owner (user) to the authorization url with the following G
 Step 2: Redirect to the redirect_uri
 ````````````````````````````````````
 
-After the resource owner logs in and confirms access request of the client
-the authorization server redirects the resource owner to the ``redirect_uri``
+After the resource owner logs in and confirms access request of the client the
+authorization server redirects the resource owner to the ``redirect_uri``
 specified in the request at step 1 with the following GET parameters
 
 .. list-table::
@@ -144,8 +197,8 @@ specified in the request at step 1 with the following GET parameters
 Step 3: POST to the token endpoint
 ``````````````````````````````````
 
-After obtaining the authorization code at step 2 the client needs to make
-a *POST* request to the *token endpoint* with the following parameters:
+After obtaining the authorization code at step 2 the client needs to make a
+*POST* request to the *token endpoint* with the following parameters:
 
 .. list-table::
  :widths: 10 30 60
@@ -213,9 +266,7 @@ format if the token request at step 3 is valid.
 
 .. note::
 
-    Every time you request a new access token you also receive a **new refresh token**.
-    This automatically invalidates the existing refresh token even if it has not
-    expired yet.
+    Check `Refresh Tokens and Token Expiration`_ on the behavior of the ``refresh_token`` field.
 
 .. code-block:: http
 
@@ -241,23 +292,24 @@ format if the token request at step 3 is valid.
 Using an Access Token
 ---------------------
 
-To use the access token for an actual API call you have to provide it in the ``Authorization``
-header as follows:
+To use the access token for an actual API call you have to provide it in the
+``Authorization`` header as follows:
 
 .. code-block:: http
 
     GET /api/sellside/ad
-    Host: mp.lp.icas.ecg.so
+    Host: auth.demo.qa-mp.so
     Authorization: Bearer 1dc19b97-fd12-4feb-8c9d-042b4ba80747
 
 .. _refreshing_an_access_token:
 
-Refreshing an Access Token
---------------------------
+Getting another Access Token
+----------------------------
 
-The refresh token is used to obtain a new access token once the access token is no longer valid.
-In order to obtain a new access token the following *POST* request to the *token endpoint*
-with the following parameters is necessary.
+Access tokens are short lived and expire quickly. The refresh token is used to
+obtain a new access token once the access token is no longer valid. In order
+to obtain a new access token the following *POST* request to the *token
+endpoint* with the following parameters is necessary.
 
 .. list-table::
  :widths: 20 30 60
@@ -283,14 +335,9 @@ with the following parameters is necessary.
    - Required
    - Your client secret
 
-If the refresh token request is valid the authorization server returns a new access token. The token
-response is identical to the token response explained at step 4 of :ref:`obtaining_an_access_token`.
-
-.. note::
-
-    Every time you request a new access token you also receive a **new refresh token**.
-    This automatically invalidates the existing refresh token even if it has not
-    expired yet.
+If the refresh token request is valid the authorization server returns a new
+access token. The token response is identical to the token response explained
+at step 4 of :ref:`obtaining_an_access_token`.
 
 .. code-block:: http
 
@@ -313,27 +360,25 @@ response is identical to the token response explained at step 4 of :ref:`obtaini
 
 .. _expiration_times:
 
-Expiration Times
-----------------
+Refresh Tokens and Token Expiration
+-----------------------------------
 
-Both access and refresh tokens expire after the time listed in the table below. After this period the token
-is no longer valid.
+Access tokens expire after **5 minutes** on all environments and for every
+tenant.
 
-.. list-table::
- :widths: 20  40 40
- :header-rows: 1
+The behavior of the refresh token depends on the tenant since iCAS can use the
+token service of the tenant if available.
 
- * - Environment
-   - Access Token
-   - Refresh Token
+For **Marktplaats** you will receive a new refresh token every time you get a
+new access token. The refresh token expires within **1 day** if not refreshed.
+You can have up to 25 refresh tokens for the same client_id, user, scope
+combination active at any given time.
 
- * - Sandbox
-   - 12 hours/43200 seconds
-   - 30 days/2592000 seconds
-
- * - Production
-   - 5 minutes/300 seconds
-   - 1 day/86400 seconds
+For **DBA** and **Kijiji Canada** you will receive only one refresh token for
+the same client_id, user, scope combination at any given time. If a refresh
+token exists for this combination and the user grants you access a second time
+you will receive the existing token. The token expires after not being used
+for **60 days**.
 
 .. _scopes:
 
@@ -341,7 +386,7 @@ Scopes
 ------
 
 Scopes determine whether you can access a certain resource. The actual scope
-depends on the requested scope as defined in `obtaining_an_access_token`_ and
+depends on the requested scope as defined in `Getting an Access Token`_ and
 the scope assigned to the client making the request.
 
 .. list-table::
