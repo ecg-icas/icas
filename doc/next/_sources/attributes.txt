@@ -88,12 +88,12 @@ The label can contain the same value as the key.
 Locale must contain a valid locale string (e.g. one of en, nl, fr, en_US, en_GB, da_dk, no_NO_NY)
 
 All of the user attributes will be stored with the ad. After placing an ad the
-Admarkt system will analyze the user-defined attributes for familiarities with respect to
+iCAS system will analyze the user-defined attributes for familiarities with respect to
 category attributes. If a user-defined attribute is recognized by
-Admarkt the **recognized** flag is set to **true**.
+iCAS the **recognized** flag is set to **true**.
 
 Currently, the user-defined attributes will only be stored. At a later stage
-the Admarkt system will automatically start indexing the user-defined
+the iCAS system will automatically start indexing the user-defined
 attributes and update the ads accordingly without user interaction.
 
 Example

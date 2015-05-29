@@ -95,7 +95,7 @@ The authorization and token endpoints are:
 * *Production:* https://auth.marktplaats.nl/accounts/oauth/token
 
 Both access and refresh tokens have a limited lifetime which means
-that if you manage the accounts of other Admarkt customers then you
+that if you manage the accounts of other iCAS customers then you
 need to ensure that you maintain valid refresh tokens for these
 customers in your database. Otherwise, the customers need to
 authenticate every time the token expires.

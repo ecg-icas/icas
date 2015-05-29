@@ -70,7 +70,7 @@ Field                               Type       Constraints        Mandatory   Wr
 id
 ""
 
-Unique reference to the Admarkt ad, needs to be omitted in a POST or PUT
+Unique reference to the iCAS ad, needs to be omitted in a POST or PUT
 action.
 
 .. index:: title
@@ -338,8 +338,8 @@ Images
 ------
 
 Each ad can contain up to eight (8) images which can be provided by the caller
-as a set of URLs. Admarkt will download the images and if they meet the
-requirements then they will be stored on Admarkt servers in several sizes
+as a set of URLs. iCAS will download the images and if they meet the
+requirements then they will be stored on iCAS servers in several sizes
 so that they can then be used by the user.
 
 An image is valid if it is in JPG, PNG, GIF or BMP format and is smaller than 8MB
@@ -367,7 +367,7 @@ image objects which contain only the source url.
         ...
      ]
 
-The images are then downloaded by Admarkt and the server adds additional
+The images are then downloaded by iCAS and the server adds additional
 fields which describe the status of the download.
 
 .. code-block:: javascript
@@ -391,7 +391,7 @@ status is either **OK** (image was successfully downloaded), **PENDING**
 or invalid.
 
 If the ``status`` is **OK** then a **links** map is added which contains
-*protocol agnostic* links to copies on the Admarkt servers of the uploaded image
+*protocol agnostic* links to copies on the iCAS servers of the uploaded image
 in various sizes. The dimensions are specified as *max width* x *max height*.
 
 The server also adds the ``dateLastUpdated`` field which specifies the time

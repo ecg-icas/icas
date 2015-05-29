@@ -5,7 +5,7 @@
 Introduction
 ============
 
-This document describes the iCAS Sellside API to place ads on Admarkt.
+This document describes the iCAS Sellside API to place ads on iCAS.
 
 The API is designed as a RESTful API supporting JSON as data formats.
 Authentication is provided va OAuth2 to allow simple integration with

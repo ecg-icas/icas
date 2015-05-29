@@ -41,7 +41,7 @@ required attributes and a set of optional attributes which are listed below:
  * - id
    - 42
    - int
-   - Reference to the Admarkt category
+   - Reference to the iCAS category
 
  * - parentId
    - 12

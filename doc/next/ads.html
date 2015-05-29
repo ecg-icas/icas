@@ -402,7 +402,7 @@ are not returned with an ad. They will be completely removed on 1<sup>st</sup> J
 </div>
 <div class="section" id="ad-id">
 <span id="index-1"></span><span id="id"></span><h3>id<a class="headerlink" href="#ad-id" title="Permalink to this headline">¶</a></h3>
-<p>Unique reference to the Admarkt ad, needs to be omitted in a POST or PUT
+<p>Unique reference to the iCAS ad, needs to be omitted in a POST or PUT
 action.</p>
 </div>
 <div class="section" id="title">
@@ -557,8 +557,8 @@ url.</p>
 <div class="section" id="images">
 <span id="ad-images"></span><span id="index-28"></span><h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
 <p>Each ad can contain up to eight (8) images which can be provided by the caller
-as a set of URLs. Admarkt will download the images and if they meet the
-requirements then they will be stored on Admarkt servers in several sizes
+as a set of URLs. iCAS will download the images and if they meet the
+requirements then they will be stored on iCAS servers in several sizes
 so that they can then be used by the user.</p>
 <p>An image is valid if it is in JPG, PNG, GIF or BMP format and is smaller than 8MB
 in size. Images larger than 1024x1024 px are being scaled down.</p>
@@ -577,7 +577,7 @@ image objects which contain only the source url.</p>
  <span class="p">]</span>
 </pre></div>
 </div>
-<p>The images are then downloaded by Admarkt and the server adds additional
+<p>The images are then downloaded by iCAS and the server adds additional
 fields which describe the status of the download.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -598,7 +598,7 @@ status is either <strong>OK</strong> (image was successfully downloaded), <stron
 (image is scheduled to be downloaded) or <strong>FAILED</strong> if the image was not found
 or invalid.</p>
 <p>If the <tt class="docutils literal"><span class="pre">status</span></tt> is <strong>OK</strong> then a <strong>links</strong> map is added which contains
-<em>protocol agnostic</em> links to copies on the Admarkt servers of the uploaded image
+<em>protocol agnostic</em> links to copies on the iCAS servers of the uploaded image
 in various sizes. The dimensions are specified as <em>max width</em> x <em>max height</em>.</p>
 <p>The server also adds the <tt class="docutils literal"><span class="pre">dateLastUpdated</span></tt> field which specifies the time
 the image was last updated.</p>

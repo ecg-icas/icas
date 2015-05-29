@@ -25,7 +25,7 @@ OAuth 2.0 defines the following roles of users and applications:
 
 * **Resource Owner:** This is the person or application that owns the data
   that is to be shared. In this context *resource owner*
-  is the Admarkt user.
+  is the iCAS user.
 
 * **Resource Server:** This is the server hosting the resource owned by the
   resource owner. In this context *resource server* is the server hosting
@@ -33,7 +33,7 @@ OAuth 2.0 defines the following roles of users and applications:
 
 * **Client:** This is the application requesting access to the resources stored
   on the resource server. In this context *client* is the application wanting
-  to use the Admarkt Sellside API.
+  to use the iCAS Sellside API.
 
 * **Authorization Server:** The authorization server is the server
   authorizing the client app to access the resources of the resource owner.

@@ -9,8 +9,8 @@ GET /feed/config
 This URL returns the feed configuration of the current user. To use it set the
 ``Accept`` header to ``application/sellside.feedconfig-v1+json``.
 
-An Admarkt user can update his or her ads by describing them in an XML document, called **feed**.
-The Admarkt platform reads all user feeds once per day and synchronizes ads in the system.
+An iCAS user can update his or her ads by describing them in an XML document, called **feed**.
+The iCAS platform reads all user feeds once per day and synchronizes ads in the system.
 
 The feed configuration object contains an ``enabled`` field. It is **true** when the current user
 has enabled feed publication and **false** otherwise. When feed publication is enabled, the
