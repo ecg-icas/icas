@@ -42,7 +42,12 @@
         "relatedPaths": [
             "856_892",
             "856_862"
-        ]
+        ],
+        "priceUnits": {
+            "64": {
+                "nl_NL": "per uur"
+            }
+        }
     },
     "attributeGroups": [
         {

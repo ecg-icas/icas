@@ -11,6 +11,7 @@
         "status": "ACTIVE",
         "currency": "EUR",
         "priceType": "FIXED_PRICE",
+        "priceUnit": "per_sqm",
         "price": 9999,
         "cpc": 10,
         "totalBudget": 5000,

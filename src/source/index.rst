@@ -45,6 +45,8 @@ History
  * Renamed Admarkt to iCAS
  * Replaced support email address with link to Google Plus Community
  * Added links for DBA and Kijiji Canada
+ * Added `priceUnit` to ad object
+ * Added `priceUnits` to category configuration
 
 * v0.53 - 18 May 2015 - ak
 
