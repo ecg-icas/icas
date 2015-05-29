@@ -3,12 +3,12 @@
 Overview
 ========
 
-The Admarkt Sellside API is a RESTful API to manage ads on
-Admarkt either for your own account or on behalf of other users.
+The iCAS Sellside API is a RESTful API to manage ads on
+iCAS either for your own account or on behalf of other users.
 
 The base URLs for the API are:
 
-* *Sandbox:* https://mp.lp.icas.ecg.so/api/sellside
+* *Sandbox:*  https://admarkt.demo.qa-mp.so/api/sellside
 * *Production:* https://admarkt.marktplaats.nl/api/sellside
 
 With this the full URL for retrieving ad 1234 for the

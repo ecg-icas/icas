@@ -7,7 +7,7 @@
 Regions
 =======
 
-The Admarkt Sellside API
+The iCAS Sellside API
 The Regions Configuration provides the regions tree the tenant wishes to use for ads placed on iCAS.
 
 The requirements for the regions tree are:

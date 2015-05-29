@@ -4,7 +4,7 @@
 Attributes
 ==========
 
-The Admarkt Sellside API supports attributes for both categories and
+The iCAS Sellside API supports attributes for both categories and
 advertisements to specify additional properties of a product like *size* and
 *color*.
 

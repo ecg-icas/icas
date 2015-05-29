@@ -5,14 +5,14 @@
 Introduction
 ============
 
-This document describes the Admarkt Sellside API to place ads on Admarkt.
+This document describes the iCAS Sellside API to place ads on Admarkt.
 
 The API is designed as a RESTful API supporting JSON as data formats.
 Authentication is provided va OAuth2 to allow simple integration with
 existing client libraries.
 
-If you have questions or would like to provide feedback you can send an
-email to Admarkt-API@marktplaats.nl.
+If you have questions or would like to provide feedback you can post a
+message on `eBay Classifieds iCAS Community <https://plus.google.com/communities/110150351420667771335>`_.
 
 Contents
 ========

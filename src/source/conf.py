@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Admarkt Sellside API documentation build configuration file, created by
+# iCAS Sellside API documentation build configuration file, created by
 # sphinx-quickstart on Thu Aug 16 15:47:28 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -47,8 +47,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Admarkt Sellside API'
-copyright = u'2013-2015 The Admarkt Team'
+project = u'iCAS Sellside API'
+copyright = u'2013-2015 The iCAS Team'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -172,7 +172,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'AdmarktSellsideAPIdoc'
+htmlhelp_basename = 'iCASSellsideAPIdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -191,8 +191,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'AdmarktSellsideAPI.tex', u'Admarkt Sellside API Documentation',
-   u'Admarkt Team', 'manual'),
+  ('index', 'iCASSellsideAPI.tex', u'iCAS Sellside API Documentation',
+   u'iCAS Team', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -221,8 +221,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'admarktsellsideapi', u'Admarkt Sellside API Documentation',
-     [u'Admarkt Team'], 1)
+    ('index', 'icassellsideapi', u'iCAS Sellside API Documentation',
+     [u'iCAS Team'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -235,8 +235,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'AdmarktSellsideAPI', u'Admarkt Sellside API Documentation',
-   u'Admarkt Team', 'AdmarktSellsideAPI', 'One line description of project.',
+  ('index', 'iCASSellsideAPI', u'iCAS Sellside API Documentation',
+   u'iCAS Team', 'iCASSellsideAPI', 'One line description of project.',
    'Miscellaneous'),
 ]
 

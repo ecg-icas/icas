@@ -31,6 +31,6 @@ SEE_DESCRIPTION     no                  Additional information is in the descrip
 SWAP                no                  Request an exchange of one item for another. **price** must be omitted.
 CREDIBLE_BID        no                  Request for any reasonable offer. **price** must be omitted.
 ON_DEMAND           no                  Price is communicated on request. **price** must be omitted.
-RESERVED                                Flag for transaction in progress. **We should expose this as flag in the ad.**
+RESERVED                                Flag for transaction in progress.
 ================    ================    ============================================================================================
 

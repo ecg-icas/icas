@@ -159,6 +159,11 @@ Leaf categories provide additional configuration which is provided in
    - Optional set of paths from related existing categories used for search strategies and/or
      fallback scenarios to expand the search parameters when too few results are returned.
 
+
+Note that `suggestedCpcForPageOne` field in :ref:`categories_v1` is not available anymore.
+In order to get a performance prediction :ref:`get_category_id_funnel` should be used.
+
+
 Intervals
 ---------
 
@@ -228,7 +233,7 @@ options the seller wants to offer. The valid list of price types is:
 
  * - RESERVED
    - no
-   - Flag for transaction in progress. **We should expose this as flag in the ad.**
+   - Flag for transaction in progress.
 
 Data Model
 ----------
@@ -547,7 +552,7 @@ The list of rendering hints still needs to be provided.
    - empty
    - string
    - text input
-   - Free text input field of ``maxLength`` characters
+   - Free text input field of ``length`` characters
 
  * - STRING
    - not empty
