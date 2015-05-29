@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /category/{id} &mdash; Admarkt Sellside API 0.53 documentation</title>
+  <title>GET /category/{id} &mdash; Admarkt Sellside API 0.54 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="Admarkt Sellside API 0.53 documentation" href="../index.html"/>
+    <link rel="top" title="Admarkt Sellside API 0.54 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /category/{id}/attributes" href="get-category-id-attributes.html"/>
         <link rel="prev" title="GET /category" href="get-category.html"/> 
@@ -91,7 +91,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../categories.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories-v1.html">Categories V1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories-v2.html">Categories V2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../attributes.html">Attributes</a><ul>
@@ -253,7 +254,7 @@ sufficiently large number, e.g. 9999.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/?</span><span class="nx">subCategoryLevels</span><span class="o">=</span><span class="mi">1</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -355,7 +356,7 @@ sufficiently large number, e.g. 9999.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.53',
+            VERSION:'0.54',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

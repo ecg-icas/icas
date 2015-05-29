@@ -42,4 +42,4 @@ subCategoryLevels       2002    out of range                negative number
 Example
 -------
 
-.. include:: ../examples/category-example.rst
+.. include:: ../examples/category-example-v1.rst

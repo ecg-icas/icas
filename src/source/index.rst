@@ -38,6 +38,10 @@ History
 
 ..  role:: strike
 
+* v0.54 - 29 May 2015 - be
+
+ * Added documentation for :ref:`categories_v2`
+
 * v0.53 - 18 May 2015 - ak
 
  * :ref:`post_ad` and :ref:`put_ad_id`: Error code for invalid ad title or description length is changed from "2005 Too long" to "2002 Out of range"
