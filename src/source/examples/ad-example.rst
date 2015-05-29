@@ -23,6 +23,7 @@
         "salutation": "COMPANY",
         "sellerName": "My Shop",
         "postcode": "1097DN",
+        "regionId": 1700195,
         "pageNumber": 27,
         "suggestedCpcForPageOne": 74,
         "phoneNumber": "0207894561",

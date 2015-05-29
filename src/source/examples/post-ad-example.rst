@@ -18,6 +18,7 @@
         "salutation": "COMPANY",
         "sellerName": "My Shop",
         "postcode": "1097DN",
+        "regionId": 1700195,
         "phoneNumber": "0207894561",
         "allowContactByEmail": true,
         "links": {

@@ -121,10 +121,11 @@ Leaf categories provide additional configuration which is provided in
    - ``(0,65535]``
    - Max length of the description for ads in this category.
 
- * - shippingEnabled
-   - bool
-   -
-   - If ``true``, shipping options are enabled for ads in this category.
+ * - shippingOption
+   - string
+   - not empty
+   - If ``DISABLED`` ads in this category cannot have shipping options, if ``OPTIONAL`` ads can
+     have shipping options and if ``MANDATORY`` ads must have shipping options.
 
  * - paypalEnabled
    - bool

@@ -40,6 +40,7 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_salutation`                string     enum               yes         yes
 :ref:`ad_sellerName`                string     max. 60 chars      yes         yes
 :ref:`ad_postcode`                  string     max. 6 chars       yes         yes
+:ref:`ad_regionId`                  long       positive           no          yes
 :ref:`ad_pageNumber`                int        --                 no          no
 :ref:`ad_suggestedCpcForPageOne`    long       --                 no          no
 :ref:`ad_phoneNumber`               string     max. 32 chars      no          yes
@@ -217,6 +218,23 @@ postcode
 """"""""
 
 Must be an non empty string.
+
+.. index:: regionId
+.. _ad_regionId:
+
+regionId
+""""""""""
+
+The region in which the ad is placed.
+A long value from the region tree. Must be the id of a leaf region.
+
+Each ad belongs to one and only one region and region of an ad cannot be updated.
+
+This field is mandatory if the `region` field of category configuration is ``MANDATORY``
+and optional if the `region` field is ``OPTIONAL``.
+This field must be omitted if the `region` field of category configuration is ``DISABLED``.
+
+Please refer to :ref:`categories_v2` and :ref:`regions`
 
 .. index:: pageNumber
 .. _ad_pageNumber:

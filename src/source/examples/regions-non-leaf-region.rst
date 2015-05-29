@@ -7,7 +7,6 @@
       "fr_CA": "Canada"
     },
     "children": [
-      region,
       ...
     ]
   }
