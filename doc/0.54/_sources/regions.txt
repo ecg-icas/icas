@@ -1,4 +1,3 @@
-.. _ECMAScript Language Specification: http://www.ecma-international.org/ecma-262/5.1/#sec-4.3.19
 .. _ISO 639: http://en.wikipedia.org/wiki/ISO_639
 .. _ISO 3166-1 alpha-2: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 .. _WGS84: http://en.wikipedia.org/wiki/World_Geodetic_System
@@ -7,13 +6,13 @@
 Regions
 =======
 
-The iCAS Sellside API
-The Regions Configuration provides the regions tree the tenant wishes to use for ads placed on iCAS.
+The region tree contains all the information about region definitions
+for placing ads on iCAS.
 
-The requirements for the regions tree are:
+The region tree has the following properties:
 
 * regions form a tree with a single root node
-* each region must have a unique id
+* each region has a unique id
 * each ad belongs to one and only one region
 * ads can only be placed in leaf regions
 * only leaf regions contain coordinates of the center point
@@ -22,33 +21,31 @@ Region Ids
 ----------
 
 Every region id must be a unique integer value within the range [1..2^53).
-Due to limitations in `ECMAScript Language Specification`_ values greater or
-equal to 2^53 cannot be represented correctly on all platforms.
 
 Region Levels
 -------------
 
-The number of sub levels is not limited. The root node should represent the whole country.
+The number of sub levels is not limited. The root node represents the whole country.
 Performing a search at the root node would result in a site-wide search across all regions.
 
 Region label
 ------------
 
-Each region should have label defined. The ``label`` parameter is of type ``map<locale,...>``.
+Each region has a label. The ``label`` parameter is of type ``map<locale,string>``.
 
 A locale is defined as ``language[_territory]``.
 The language is defined as a `ISO 639`_ language code and the territory is a
 `ISO 3166-1 alpha-2`_ country code. Some examples are:
 ``nl_NL``, ``nl_BE``, ``fr_BE``, ``en_US``, ``en_AU``
 
-This allows for region specific differences in labels.
+This allows localization of labels for different supported languages.
 
 Region center
 -------------
 
-Leaf regions require additional field for the center point.
+Leaf regions provides an additional field for the center point.
 This allows for radius searches and sorting on distance.
-Non-leaf regions must omit that field.
+Non-leaf regions *do not have* that field.
 
 The ``center`` is defined as `WGS84`_ latitude/longitude point.
 
@@ -65,7 +62,7 @@ The regions tree is provided as a JSON object which has the following structure:
 
 .. include:: examples/regions-tree-structure.rst
 
-Ads can only be placed in leaf regions and leaf objects must contain center point.
+Ads can only be placed in leaf regions and all leaf regions contain a center point.
 
 Non-Leaf Regions
 ----------------
@@ -105,7 +102,7 @@ Leaf Regions
 ------------
 
 Leaf regions are the regions where ads can be placed. They have by definition
-no children. Leaf regions should have coordinates of the center point.
+no children. Leaf regions have coordinates of the center point.
 
 .. list-table::
  :widths: 5 15 10 70

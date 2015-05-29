@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; iCAS Sellside API 0.54 documentation</title>
+  <title>Introduction &mdash; iCAS Sellside API 0.55 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.54 documentation" href="#"/>
+    <link rel="top" title="iCAS Sellside API 0.55 documentation" href="#"/>
         <link rel="next" title="Overview" href="overview.html"/> 
 
   
@@ -75,10 +75,10 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#obtaining-an-access-token">Obtaining an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-an-access-token">Getting an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
@@ -171,10 +171,10 @@
 <span id="index"></span><span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>This document describes the iCAS Sellside API to place ads on iCAS.</p>
 <p>The API is designed as a RESTful API supporting JSON as data formats.
-Authentication is provided va OAuth2 to allow simple integration with
-existing client libraries.</p>
-<p>If you have questions or would like to provide feedback you can post a
-message on <a class="reference external" href="https://plus.google.com/communities/110150351420667771335">eBay Classifieds iCAS Community</a>.</p>
+Authentication is provided va OAuth2 to allow simple integration with existing
+client libraries.</p>
+<p>If you have questions or would like to provide feedback you can post a message
+on <a class="reference external" href="https://plus.google.com/communities/110150351420667771335">eBay Classifieds iCAS Community</a>.</p>
 </div>
 <div class="section" id="contents">
 <h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
@@ -196,10 +196,10 @@ message on <a class="reference external" href="https://plus.google.com/communiti
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#obtaining-an-access-token">Obtaining an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-an-access-token">Getting an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
@@ -260,11 +260,16 @@ message on <a class="reference external" href="https://plus.google.com/communiti
 <div class="section" id="history">
 <span id="id2"></span><h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>v0.54 - 29 May 2015 - be</li>
+<li>v0.54 - 29 May 2015 - be,fs</li>
 </ul>
 <blockquote>
 <div><ul class="simple">
 <li>Added documentation for <a class="reference internal" href="categories-v2.html#categories-v2"><em>Categories V2</em></a></li>
+<li>Renamed Admarkt to iCAS</li>
+<li>Replaced support email address with link to Google Plus Community</li>
+<li>Added links for DBA and Kijiji Canada</li>
+<li>Added <cite>priceUnit</cite> to ad object</li>
+<li>Added <cite>priceUnits</cite> to category configuration</li>
 </ul>
 </div></blockquote>
 <ul class="simple">
@@ -356,7 +361,7 @@ message on <a class="reference external" href="https://plus.google.com/communiti
 <div><ul class="simple">
 <li>Added <a class="reference internal" href="authentication.html#scopes"><em>Scopes</em></a> section and scopes to all resources</li>
 <li><a class="reference internal" href="reference/get-ad.html#get-ad"><em>GET /ad</em></a> and <a class="reference internal" href="reference/get-report.html#get-report"><em>GET /report</em></a>: from <tt class="docutils literal"><span class="pre">Content-Type</span></tt> to <tt class="docutils literal"><span class="pre">Access</span></tt></li>
-<li><a class="reference internal" href="authentication.html#expiration-times"><em>Expiration Times</em></a>: removed duplicate paragraph</li>
+<li><a class="reference internal" href="authentication.html#expiration-times"><em>Refresh Tokens and Token Expiration</em></a>: removed duplicate paragraph</li>
 </ul>
 </div></blockquote>
 <ul class="simple">
@@ -613,7 +618,7 @@ message on <a class="reference external" href="https://plus.google.com/communiti
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="reference/post-ad.html#post-ad"><em>POST /ad</em></a>, <a class="reference internal" href="reference/put-ad-id.html#put-ad-id"><em>PUT /ad/{id}</em></a>: Return <em>1006 - Type mismatch</em> if the value for an integer field is a string or a float
-(<a class="reference internal" href="ads.html#ad-id"><em>id</em></a>, <a class="reference internal" href="ads.html#ad-categoryid"><em>categoryId</em></a>, <a class="reference internal" href="ads.html#ad-cpc"><em>cpc</em></a>, <a class="reference internal" href="ads.html#ad-dailybudget"><em>dailyBudget</em></a>, <a class="reference internal" href="ads.html#ad-totalbudget"><em>totalBudget</em></a>, <a class="reference internal" href="ads.html#ad-price"><em>price</em></a>)</li>
+(<a class="reference internal" href="ads.html#ad-id"><em>id</em></a>, <a class="reference internal" href="ads.html#ad-categoryid"><em>categoryId</em></a>, <a class="reference internal" href="ads.html#ad-cpc"><em>cpc</em></a>, <a class="reference internal" href="ads.html#ad-dailybudget"><em>dailyBudget</em></a>, <a class="reference internal" href="ads.html#ad-totalbudget"><em>totalBudget</em></a>, <a class="reference internal" href="ads.html#ad-price"><em>priceUnit</em></a>)</li>
 </ul>
 </div></blockquote>
 <ul class="simple">
@@ -832,7 +837,7 @@ error instead of a 406 NOT ACCEPTED.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.54',
+            VERSION:'0.55',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

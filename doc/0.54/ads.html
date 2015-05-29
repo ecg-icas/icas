@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Advertisements &mdash; iCAS Sellside API 0.54 documentation</title>
+  <title>Advertisements &mdash; iCAS Sellside API 0.55 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.54 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.55 documentation" href="index.html"/>
         <link rel="next" title="Categories" href="categories.html"/>
         <link rel="prev" title="Authentication" href="authentication.html"/> 
 
@@ -76,10 +76,10 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#obtaining-an-access-token">Obtaining an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-an-access-token">Getting an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
@@ -233,7 +233,7 @@ required and optional fields which are listed below:</p>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#ad-currency"><em>currency</em></a></td>
 <td>string</td>
-<td>&#8220;EUR&#8221;</td>
+<td>cat.Currency</td>
 <td>yes</td>
 <td>no</td>
 </tr>
@@ -243,7 +243,7 @@ required and optional fields which are listed below:</p>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-price"><em>price</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-price"><em>priceUnit</em></a></td>
 <td>long</td>
 <td>positive</td>
 <td>yes</td>
@@ -291,94 +291,106 @@ required and optional fields which are listed below:</p>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-pagenumber"><em>pageNumber</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-regionid"><em>regionId</em></a></td>
+<td>long</td>
+<td>positive</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-pagenumber"><em>pageNumber</em></a></td>
 <td>int</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a></td>
 <td>long</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-phonenumber"><em>phoneNumber</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-phonenumber"><em>phoneNumber</em></a></td>
 <td>string</td>
 <td>max. 32 chars</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-allowcontactbyemail"><em>allowContactByEmail</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-allowcontactbyemail"><em>allowContactByEmail</em></a></td>
 <td>bool</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-datecreated"><em>dateCreated</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-datecreated"><em>dateCreated</em></a></td>
 <td>date</td>
 <td>&#8211;</td>
 <td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-datelastupdated"><em>dateLastUpdated</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-datelastupdated"><em>dateLastUpdated</em></a></td>
 <td>date</td>
 <td>&#8211;</td>
 <td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-datedeleted"><em>dateDeleted</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-datedeleted"><em>dateDeleted</em></a></td>
 <td>date</td>
 <td>&#8211;</td>
 <td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-links"><em>links.self</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-links"><em>links.self</em></a></td>
 <td>object</td>
 <td>&#8211;</td>
 <td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-links-self"><em>links.self</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-links-self"><em>links.self</em></a></td>
 <td>string</td>
 <td>max. 2048 chars</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-links-category"><em>links.category</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-links-category"><em>links.category</em></a></td>
 <td>string</td>
 <td>max. 2048 chars</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-links-url"><em>links.url</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-links-url"><em>links.url</em></a></td>
 <td>string</td>
 <td>max. 2048 chars</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-links-displayurl"><em>links.displayUrl</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-links-displayurl"><em>links.displayUrl</em></a></td>
 <td>string</td>
 <td>max. 256 chars</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-images"><em>Images</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-images"><em>Images</em></a></td>
 <td>array</td>
 <td>max. 8 items</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-attributes"><em>attributes</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-attributes"><em>attributes</em></a></td>
 <td>array</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-shippingoptions"><em>shippingOptions</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-shippingoptions"><em>shippingOptions</em></a></td>
 <td>array</td>
 <td>see below</td>
 <td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#ad-priceunit"><em>price</em></a></td>
+<td>string</td>
+<td>see below</td>
+<td>no</td>
 <td>yes</td>
 </tr>
 <tr class="row-odd"><td><span class="strike">buyItNowEnabled</span></td>
@@ -446,49 +458,64 @@ amount values are stored in cents, i.e. EUR 10.50 are represented as 1050.</p>
 <span id="ad-pricetype"></span><span id="index-8"></span><h3>priceType<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
 <p>Must be a valid price type identifier from the list of <a class="reference internal" href="reference/price-types.html#price-types"><em>Price Types</em></a>.</p>
 </div>
+<div class="section" id="priceunit">
+<span id="ad-price"></span><span id="index-9"></span><h3>priceUnit<a class="headerlink" href="#priceunit" title="Permalink to this headline">¶</a></h3>
+<p>Must be a valid price unit identifier from the list of available price units
+of the category.</p>
+</div>
 <div class="section" id="price">
-<span id="ad-price"></span><span id="index-9"></span><h3>price<a class="headerlink" href="#price" title="Permalink to this headline">¶</a></h3>
+<span id="ad-priceunit"></span><span id="index-10"></span><h3>price<a class="headerlink" href="#price" title="Permalink to this headline">¶</a></h3>
 <p>The meaning of the value depends on <a class="reference internal" href="#ad-pricetype"><em>priceType</em></a>. If it is
 <cite>FIXED_PRICE</cite> or <cite>BIDDING_FROM</cite> then <strong>price</strong> has to be greater than 0.</p>
 </div>
 <div class="section" id="cpc">
-<span id="ad-cpc"></span><span id="index-10"></span><h3>cpc<a class="headerlink" href="#cpc" title="Permalink to this headline">¶</a></h3>
+<span id="ad-cpc"></span><span id="index-11"></span><h3>cpc<a class="headerlink" href="#cpc" title="Permalink to this headline">¶</a></h3>
 <p>The cost per click as defined by the seller. The minimum and maximum values
 depend on the category.</p>
 </div>
 <div class="section" id="totalbudget">
-<span id="ad-totalbudget"></span><span id="index-11"></span><h3>totalBudget<a class="headerlink" href="#totalbudget" title="Permalink to this headline">¶</a></h3>
+<span id="ad-totalbudget"></span><span id="index-12"></span><h3>totalBudget<a class="headerlink" href="#totalbudget" title="Permalink to this headline">¶</a></h3>
 <p>The total budget for the ad. The minimum and maximum values depend on the
 category. When an ad is updated this value cannot be lower than the
 <a class="reference internal" href="#ad-spentbudget"><em>spentBudget</em></a>.
 If the total budget is not returned with the ad, it means there is an unlimited total budget.</p>
 </div>
 <div class="section" id="dailybudget">
-<span id="ad-dailybudget"></span><span id="index-12"></span><h3>dailyBudget<a class="headerlink" href="#dailybudget" title="Permalink to this headline">¶</a></h3>
+<span id="ad-dailybudget"></span><span id="index-13"></span><h3>dailyBudget<a class="headerlink" href="#dailybudget" title="Permalink to this headline">¶</a></h3>
 <p>The daily budget for the ad. When this value is reached the ad will be paused
 for the rest of the day. The minimum value depends on the category. Maximum value
 cannot be higher than the <a class="reference internal" href="#ad-totalbudget"><em>totalBudget</em></a></p>
 <p>To disable the dailyBudget for an ad set it to <tt class="docutils literal"><span class="pre">null</span></tt>.</p>
 </div>
 <div class="section" id="spentbudget">
-<span id="ad-spentbudget"></span><span id="index-13"></span><h3>spentBudget<a class="headerlink" href="#spentbudget" title="Permalink to this headline">¶</a></h3>
+<span id="ad-spentbudget"></span><span id="index-14"></span><h3>spentBudget<a class="headerlink" href="#spentbudget" title="Permalink to this headline">¶</a></h3>
 <p>The total amount of the budget that has been used so far.</p>
 </div>
 <div class="section" id="salutation">
-<span id="ad-salutation"></span><span id="index-14"></span><h3>salutation<a class="headerlink" href="#salutation" title="Permalink to this headline">¶</a></h3>
+<span id="ad-salutation"></span><span id="index-15"></span><h3>salutation<a class="headerlink" href="#salutation" title="Permalink to this headline">¶</a></h3>
 <p>The salutation as used in emails. Must be a valid salutation identifier from
 <strong>MALE</strong>, <strong>FEMALE</strong>, <strong>COMPANY</strong> or <strong>FAMILY</strong></p>
 </div>
 <div class="section" id="sellername">
-<span id="ad-sellername"></span><span id="index-15"></span><h3>sellerName<a class="headerlink" href="#sellername" title="Permalink to this headline">¶</a></h3>
+<span id="ad-sellername"></span><span id="index-16"></span><h3>sellerName<a class="headerlink" href="#sellername" title="Permalink to this headline">¶</a></h3>
 <p>Display name of the seller (max. 60 characters).</p>
 </div>
 <div class="section" id="postcode">
-<span id="ad-postcode"></span><span id="index-16"></span><h3>postcode<a class="headerlink" href="#postcode" title="Permalink to this headline">¶</a></h3>
+<span id="ad-postcode"></span><span id="index-17"></span><h3>postcode<a class="headerlink" href="#postcode" title="Permalink to this headline">¶</a></h3>
 <p>Must be an non empty string.</p>
 </div>
+<div class="section" id="regionid">
+<span id="ad-regionid"></span><span id="index-18"></span><h3>regionId<a class="headerlink" href="#regionid" title="Permalink to this headline">¶</a></h3>
+<p>The region in which the ad is placed.
+A long value from the region tree. Must be the id of a leaf region.</p>
+<p>Each ad belongs to one and only one region and region of an ad cannot be updated.</p>
+<p>This field is mandatory if the <cite>region</cite> field of category configuration is <tt class="docutils literal"><span class="pre">MANDATORY</span></tt>
+and optional if the <cite>region</cite> field is <tt class="docutils literal"><span class="pre">OPTIONAL</span></tt>.
+This field must be omitted if the <cite>region</cite> field of category configuration is <tt class="docutils literal"><span class="pre">DISABLED</span></tt>.</p>
+<p>Please refer to <a class="reference internal" href="categories-v2.html#categories-v2"><em>Categories V2</em></a> and <a class="reference internal" href="regions.html#regions"><em>Regions</em></a></p>
+</div>
 <div class="section" id="pagenumber">
-<span id="ad-pagenumber"></span><span id="index-17"></span><h3>pageNumber<a class="headerlink" href="#pagenumber" title="Permalink to this headline">¶</a></h3>
+<span id="ad-pagenumber"></span><span id="index-19"></span><h3>pageNumber<a class="headerlink" href="#pagenumber" title="Permalink to this headline">¶</a></h3>
 <p>Page number on which this ad is shown. Page number is highly volatile and
 might change very quickly depending on the performance of the ad.</p>
 <p>The fields <a class="reference internal" href="#ad-pagenumber"><em>pageNumber</em></a> and <a class="reference internal" href="#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a> are
@@ -500,7 +527,7 @@ following parameter to the request URL.</p>
 </div>
 </div>
 <div class="section" id="suggestedcpcforpageone">
-<span id="ad-suggestedcpcforpageone"></span><span id="index-18"></span><h3>suggestedCpcForPageOne<a class="headerlink" href="#suggestedcpcforpageone" title="Permalink to this headline">¶</a></h3>
+<span id="ad-suggestedcpcforpageone"></span><span id="index-20"></span><h3>suggestedCpcForPageOne<a class="headerlink" href="#suggestedcpcforpageone" title="Permalink to this headline">¶</a></h3>
 <p>Suggested CPC value in euro cents for this ad to be shown on page one.
 This value is very volatile and might change very quickly depending on the
 performance of the ad.</p>
@@ -513,49 +540,49 @@ following parameter to the request URL.</p>
 </div>
 </div>
 <div class="section" id="phonenumber">
-<span id="ad-phonenumber"></span><span id="index-19"></span><h3>phoneNumber<a class="headerlink" href="#phonenumber" title="Permalink to this headline">¶</a></h3>
+<span id="ad-phonenumber"></span><span id="index-21"></span><h3>phoneNumber<a class="headerlink" href="#phonenumber" title="Permalink to this headline">¶</a></h3>
 <p>The phone number of the advertiser as international phone number format, e.g.
 +31207894561 or as a local phone number, e.g. 06789456612. 0900 and 0800
 numbers are not allowed.</p>
 </div>
 <div class="section" id="allowcontactbyemail">
-<span id="ad-allowcontactbyemail"></span><span id="index-20"></span><h3>allowContactByEmail<a class="headerlink" href="#allowcontactbyemail" title="Permalink to this headline">¶</a></h3>
+<span id="ad-allowcontactbyemail"></span><span id="index-22"></span><h3>allowContactByEmail<a class="headerlink" href="#allowcontactbyemail" title="Permalink to this headline">¶</a></h3>
 <p>Flag for allowing emails to be sent to the advertiser.</p>
 </div>
 <div class="section" id="datecreated">
-<span id="ad-datecreated"></span><span id="index-21"></span><h3>dateCreated<a class="headerlink" href="#datecreated" title="Permalink to this headline">¶</a></h3>
+<span id="ad-datecreated"></span><span id="index-23"></span><h3>dateCreated<a class="headerlink" href="#datecreated" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date and time the ad was created.</p>
 </div>
 <div class="section" id="datelastupdated">
-<span id="ad-datelastupdated"></span><span id="index-22"></span><h3>dateLastUpdated<a class="headerlink" href="#datelastupdated" title="Permalink to this headline">¶</a></h3>
+<span id="ad-datelastupdated"></span><span id="index-24"></span><h3>dateLastUpdated<a class="headerlink" href="#datelastupdated" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date and time the ad was last updated.</p>
 </div>
 <div class="section" id="datedeleted">
-<span id="ad-datedeleted"></span><span id="index-23"></span><h3>dateDeleted<a class="headerlink" href="#datedeleted" title="Permalink to this headline">¶</a></h3>
+<span id="ad-datedeleted"></span><span id="index-25"></span><h3>dateDeleted<a class="headerlink" href="#datedeleted" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date and time the ad was deleted. Omitted if the ad is
 still active or paused.</p>
 </div>
 <div class="section" id="links-self">
-<span id="ad-links-self"></span><span id="ad-links"></span><span id="index-24"></span><h3>links.self<a class="headerlink" href="#links-self" title="Permalink to this headline">¶</a></h3>
+<span id="ad-links-self"></span><span id="ad-links"></span><span id="index-26"></span><h3>links.self<a class="headerlink" href="#links-self" title="Permalink to this headline">¶</a></h3>
 <p>A link referencing the current ad. This will be provided by the Sellside API.</p>
 </div>
 <div class="section" id="links-category">
-<span id="ad-links-category"></span><span id="index-25"></span><h3>links.category<a class="headerlink" href="#links-category" title="Permalink to this headline">¶</a></h3>
+<span id="ad-links-category"></span><span id="index-27"></span><h3>links.category<a class="headerlink" href="#links-category" title="Permalink to this headline">¶</a></h3>
 <p>A link referencing the category the ad is placed in. This will be provided by
 the Sellside API.</p>
 </div>
 <div class="section" id="links-url">
-<span id="ad-links-url"></span><span id="index-26"></span><h3>links.url<a class="headerlink" href="#links-url" title="Permalink to this headline">¶</a></h3>
+<span id="ad-links-url"></span><span id="index-28"></span><h3>links.url<a class="headerlink" href="#links-url" title="Permalink to this headline">¶</a></h3>
 <p>An external URL that is shown on the ad page. This must be a valid http(s)
 url.</p>
 </div>
 <div class="section" id="links-displayurl">
-<span id="ad-links-displayurl"></span><span id="index-27"></span><h3>links.displayUrl<a class="headerlink" href="#links-displayurl" title="Permalink to this headline">¶</a></h3>
+<span id="ad-links-displayurl"></span><span id="index-29"></span><h3>links.displayUrl<a class="headerlink" href="#links-displayurl" title="Permalink to this headline">¶</a></h3>
 <p>The text/url that will be displayed instead of the url in <a class="reference internal" href="#ad-links-url"><em>links.url</em></a>.</p>
 </div>
 </div>
 <div class="section" id="images">
-<span id="ad-images"></span><span id="index-28"></span><h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
+<span id="ad-images"></span><span id="index-30"></span><h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
 <p>Each ad can contain up to eight (8) images which can be provided by the caller
 as a set of URLs. iCAS will download the images and if they meet the
 requirements then they will be stored on iCAS servers in several sizes
@@ -566,7 +593,7 @@ in size. Images larger than 1024x1024 px are being scaled down.</p>
 shown in search results and it is the main image on the item page on
 Marktplaats.</p>
 <div class="section" id="image-objects">
-<span id="ad-image-objects"></span><span id="index-29"></span><h3>Image Objects<a class="headerlink" href="#image-objects" title="Permalink to this headline">¶</a></h3>
+<span id="ad-image-objects"></span><span id="index-31"></span><h3>Image Objects<a class="headerlink" href="#image-objects" title="Permalink to this headline">¶</a></h3>
 <p>When an ad is created or updated the caller provides the images as a list of
 image objects which contain only the source url.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -609,11 +636,11 @@ they will be ignored.</p>
 </div>
 </div>
 <div class="section" id="attributes">
-<span id="ad-attributes"></span><span id="index-30"></span><h3>attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<span id="ad-attributes"></span><span id="index-32"></span><h3>attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
 <p>An optional list of <a class="reference internal" href="attributes.html#user-defined-attributes"><em>User-Defined Attributes</em></a>.</p>
 </div>
 <div class="section" id="shippingoptions">
-<span id="ad-shippingoptions"></span><span id="index-31"></span><h3>shippingOptions<a class="headerlink" href="#shippingoptions" title="Permalink to this headline">¶</a></h3>
+<span id="ad-shippingoptions"></span><span id="index-33"></span><h3>shippingOptions<a class="headerlink" href="#shippingoptions" title="Permalink to this headline">¶</a></h3>
 <p>A list of shipping options available for this ad. Each ad must contain at least one shipping option.
 Ads can contain maximum one shipping option per shipping option type.</p>
 <p>Shipping option has the following fields:</p>
@@ -672,6 +699,7 @@ in the pickUpLocation field when sending a shipping option of type <em>PICKUP</e
      <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
      <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
      <span class="s2">&quot;priceType&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;priceUnit&quot;</span><span class="o">:</span> <span class="s2">&quot;per_sqm&quot;</span><span class="p">,</span>
      <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
      <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
      <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
@@ -680,6 +708,7 @@ in the pickUpLocation field when sending a shipping option of type <em>PICKUP</e
      <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
      <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;My Shop&quot;</span><span class="p">,</span>
      <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;regionId&quot;</span><span class="o">:</span> <span class="mi">1700195</span><span class="p">,</span>
      <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">27</span><span class="p">,</span>
      <span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span> <span class="mi">74</span><span class="p">,</span>
      <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0207894561&quot;</span><span class="p">,</span>
@@ -794,7 +823,7 @@ in the pickUpLocation field when sending a shipping option of type <em>PICKUP</e
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.54',
+            VERSION:'0.55',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

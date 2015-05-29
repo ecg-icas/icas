@@ -160,9 +160,17 @@ Leaf categories provide additional configuration which is provided in
    - Optional set of paths from related existing categories used for search strategies and/or
      fallback scenarios to expand the search parameters when too few results are returned.
 
+ * - priceUnits
+   - map<string, map<locale, string>>
+   -
+   - Optional set of localized price units like ``per m²``, ``per hour``, etc. Maps an unique
+     key to a set localized values.
 
-Note that `suggestedCpcForPageOne` field in :ref:`categories_v1` is not available anymore.
-In order to get a performance prediction :ref:`get_category_id_funnel` should be used.
+.. note::
+
+   The field `suggestedCpcForPageOne` which is available in
+   :ref:`categories_v1` is not available anymore. To get a performance
+   prediction for new ads in this category use :ref:`get_category_id_funnel`.
 
 
 Intervals

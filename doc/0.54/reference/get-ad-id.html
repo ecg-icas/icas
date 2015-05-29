@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /ad/{id} &mdash; iCAS Sellside API 0.54 documentation</title>
+  <title>GET /ad/{id} &mdash; iCAS Sellside API 0.55 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.54 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.55 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /ad/{id}/funnel" href="get-ad-id-funnel.html"/>
         <link rel="prev" title="GET /ad" href="get-ad.html"/> 
@@ -77,10 +77,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../authentication.html#obtaining-an-access-token">Obtaining an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-an-access-token">Getting an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#using-an-access-token">Using an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
@@ -261,6 +261,7 @@ following parameter to the request URL.</p>
      <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
      <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
      <span class="s2">&quot;priceType&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;priceUnit&quot;</span><span class="o">:</span> <span class="s2">&quot;per_sqm&quot;</span><span class="p">,</span>
      <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
      <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
      <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
@@ -269,6 +270,7 @@ following parameter to the request URL.</p>
      <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
      <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;My Shop&quot;</span><span class="p">,</span>
      <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;regionId&quot;</span><span class="o">:</span> <span class="mi">1700195</span><span class="p">,</span>
      <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">27</span><span class="p">,</span>
      <span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span> <span class="mi">74</span><span class="p">,</span>
      <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0207894561&quot;</span><span class="p">,</span>
@@ -383,7 +385,7 @@ following parameter to the request URL.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.54',
+            VERSION:'0.55',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

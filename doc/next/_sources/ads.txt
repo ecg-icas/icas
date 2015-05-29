@@ -30,7 +30,7 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_categoryId`                int        positive           yes         no
 :ref:`ad_externalId`                string     max. 64 chars      yes         yes
 :ref:`ad_status`                    string     enum               yes         yes
-:ref:`ad_currency`                  string     "EUR"              yes         no
+:ref:`ad_currency`                  string     cat.Currency       yes         no
 :ref:`ad_priceType`                 string     enum               yes         yes
 :ref:`ad_price`                     long       positive           yes         yes
 :ref:`ad_cpc`                       long       positive           no          yes
@@ -56,6 +56,7 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_images`                    array      max. 8 items       no          yes
 :ref:`ad_attributes`                array      --                 no          yes
 :ref:`ad_shippingOptions`           array      see below          yes         yes
+:ref:`ad_priceUnit`                 string     see below          no          yes
 :strike:`buyItNowEnabled`           deprecated --                 --          --
 :strike:`paypalEmail`               deprecated --                 --          --
 =================================   ========== ================   =========   ========
@@ -147,6 +148,15 @@ Must be a valid price type identifier from the list of :ref:`price_types`.
 
 .. index:: price
 .. _ad_price:
+
+priceUnit
+"""""""""
+
+Must be a valid price unit identifier from the list of available price units
+of the category.
+
+.. index:: priceUnit
+.. _ad_priceUnit:
 
 price
 """""

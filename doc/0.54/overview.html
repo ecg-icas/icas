@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview &mdash; iCAS Sellside API 0.54 documentation</title>
+  <title>Overview &mdash; iCAS Sellside API 0.55 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.54 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.55 documentation" href="index.html"/>
         <link rel="next" title="Authentication" href="authentication.html"/>
         <link rel="prev" title="Introduction" href="index.html"/> 
 
@@ -76,10 +76,10 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#obtaining-an-access-token">Obtaining an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-an-access-token">Getting an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#refreshing-an-access-token">Refreshing an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
@@ -170,49 +170,80 @@
             
   <div class="section" id="overview">
 <span id="id1"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>The iCAS Sellside API is a RESTful API to manage ads on
-iCAS either for your own account or on behalf of other users.</p>
-<p>The base URLs for the API are:</p>
-<ul class="simple">
-<li><em>Sandbox:</em>  <a class="reference external" href="https://admarkt.demo.qa-mp.so/api/sellside">https://admarkt.demo.qa-mp.so/api/sellside</a></li>
-<li><em>Production:</em> <a class="reference external" href="https://admarkt.marktplaats.nl/api/sellside">https://admarkt.marktplaats.nl/api/sellside</a></li>
-</ul>
+<p>The iCAS Sellside API is a RESTful API to manage ads on iCAS either for your
+own account or on behalf of other users. The base URLs for the API are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tenant</th>
+<th class="head">Env</th>
+<th class="head">Endpoint</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Marktplaats</td>
+<td>Sandbox</td>
+<td><a class="reference external" href="https://admarkt.demo.qa-mp.so/api/sellside">https://admarkt.demo.qa-mp.so/api/sellside</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Production</td>
+<td><a class="reference external" href="https://admarkt.marktplaats.nl/api/sellside">https://admarkt.marktplaats.nl/api/sellside</a></td>
+</tr>
+<tr class="row-even"><td>DBA</td>
+<td>Sandbox</td>
+<td><a class="reference external" href="https://dba.lp.icas.ecg.so/api/sellside">https://dba.lp.icas.ecg.so/api/sellside</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Production</td>
+<td><a class="reference external" href="https://topannoncer.dbabusiness.dk/api/sellside">https://topannoncer.dbabusiness.dk/api/sellside</a></td>
+</tr>
+<tr class="row-even"><td>Kijiji Canada</td>
+<td>Sandbox</td>
+<td><a class="reference external" href="https://cas.qa.kijiji.ca/api/sellside">https://cas.qa.kijiji.ca/api/sellside</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Production</td>
+<td><a class="reference external" href="https://cas.kijiji.ca/api/sellside">https://cas.kijiji.ca/api/sellside</a></td>
+</tr>
+</tbody>
+</table>
 <p>With this the full URL for retrieving ad 1234 for the
-current customer becomes:</p>
+current customer on Marktplaats Production becomes:</p>
 <div class="highlight-python"><div class="highlight"><pre>https://admarkt.marktplaats.nl/api/sellside/ad/1234
 </pre></div>
 </div>
 <div class="section" id="image-downloads">
 <span id="overview-image-downloads"></span><h2>Image Downloads<a class="headerlink" href="#image-downloads" title="Permalink to this headline">¶</a></h2>
-<p>Images are downloaded from the following ip addresses.
-Ensure that all image URLs are accessible by these ip
-addresses and that there is no rate limit.</p>
+<p>Images are downloaded from the following ip addresses. Ensure that all image
+URLs are accessible by these ip addresses and that there is no rate limit.</p>
 <blockquote>
 <div><ul class="simple">
 <li>5.255.156.110</li>
 <li>5.255.156.126</li>
 </ul>
 </div></blockquote>
-<p>To reduce the latency when updating an ad we suggest that
-the response contains either an <tt class="docutils literal"><span class="pre">ETag</span></tt> and/or <tt class="docutils literal"><span class="pre">Last-Modified</span></tt>
-header which only changes when the image itself has changed.
-It should also be possible to check these headers using a <tt class="docutils literal"><span class="pre">HEAD</span></tt>
-request.</p>
+<p>To reduce the latency when updating an ad we suggest that the response
+contains either an <tt class="docutils literal"><span class="pre">ETag</span></tt> and/or <tt class="docutils literal"><span class="pre">Last-Modified</span></tt> header which only changes
+when the image itself has changed. It should also be possible to check these
+headers using a <tt class="docutils literal"><span class="pre">HEAD</span></tt> request.</p>
 </div>
 <div class="section" id="media-types">
 <span id="overview-media-types"></span><h2>Media Types<a class="headerlink" href="#media-types" title="Permalink to this headline">¶</a></h2>
-<p>Each resource has a specific media type of the following form
-to support <em>content negotiation</em> and <em>versioning</em>:</p>
+<p>Each resource has a specific media type of the following form to support
+<em>content negotiation</em> and <em>versioning</em>:</p>
 <div class="highlight-python"><div class="highlight"><pre>application/sellside.{entity}-{version}+json;charset=UTF-8
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">version</span></tt> field is mandatory.</p>
 <p>The media type is used for the <tt class="docutils literal"><span class="pre">Content-Type</span></tt> and <tt class="docutils literal"><span class="pre">Accept</span></tt> headers.</p>
-<p>This allows us to change the structure of a response without breaking
-existing code since you have to request the new content type while
-the old version is still available for some time. For backwards compatible
-changes like adding a new field to an existing structure we will not
-change the version number.</p>
+<p>This allows us to change the structure of a response without breaking existing
+code since you have to request the new content type while the old version is
+still available for some time. For backwards compatible changes like adding a
+new field to an existing structure we will not change the version number.</p>
 </div>
 <div class="section" id="content-type-and-accept-headers">
 <span id="overview-accept-headers"></span><h2>Content-Type and Accept Headers<a class="headerlink" href="#content-type-and-accept-headers" title="Permalink to this headline">¶</a></h2>
@@ -232,38 +263,30 @@ header to:</p>
 <span id="overview-authentication"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
 <p>Authentication is provided using <em>OAuth2</em> tokens and the so called
 <a class="reference external" href="http://tools.ietf.org/html/rfc6749#section-4.1">Authorization Code Grant</a>
-which means that you need a client id and client secret to access the
-api with an access token that the API provides.</p>
-<p>It is not possible to use username and password to get an access token.</p>
-<p>To request a client id and secret please send an email
-to <a class="reference external" href="mailto:Admarkt-API&#37;&#52;&#48;marktplaats&#46;nl">Admarkt-API<span>&#64;</span>marktplaats<span>&#46;</span>nl</a>.</p>
-<p>The authorization and token endpoints are:</p>
-<ul class="simple">
-<li><em>Sandbox:</em> <a class="reference external" href="https://auth.demo.qa-mp.so/accounts/oauth/authorize">https://auth.demo.qa-mp.so/accounts/oauth/authorize</a></li>
-<li><em>Sandbox:</em> <a class="reference external" href="https://auth.demo.qa-mp.so/accounts/oauth/token">https://auth.demo.qa-mp.so/accounts/oauth/token</a></li>
-<li><em>Production:</em> <a class="reference external" href="https://auth.marktplaats.nl/accounts/oauth/authorize">https://auth.marktplaats.nl/accounts/oauth/authorize</a></li>
-<li><em>Production:</em> <a class="reference external" href="https://auth.marktplaats.nl/accounts/oauth/token">https://auth.marktplaats.nl/accounts/oauth/token</a></li>
-</ul>
-<p>Both access and refresh tokens have a limited lifetime which means
-that if you manage the accounts of other iCAS customers then you
-need to ensure that you maintain valid refresh tokens for these
-customers in your database. Otherwise, the customers need to
-authenticate every time the token expires.</p>
+which means that you need a client id and client secret to access the api with
+an access token that the API provides. It is not possible to use username and
+password to get an access token.</p>
+<p>To request a client id and secret please send a request to the
+<a class="reference external" href="https://plus.google.com/communities/110150351420667771335">eBay Classifieds iCAS Community</a>.</p>
 <p>See the <a class="reference internal" href="authentication.html#authentication"><em>Authentication</em></a> section for the full details and also
 the <a class="reference external" href="http://oauth.net/2/">OAuth 2.0 website</a>.</p>
 </div>
 <div class="section" id="customize-response-body">
 <span id="overview-customize-response-body"></span><h2>Customize response body<a class="headerlink" href="#customize-response-body" title="Permalink to this headline">¶</a></h2>
-<p>Every call which returns a response body can have this customized using <tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt> parameters. These
-parameters define which fields to include in or exclude from the response body. When both <tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt>
-have a value, the <tt class="docutils literal"><span class="pre">_exclude</span></tt> value will be ignored. By default, <tt class="docutils literal"><span class="pre">_include</span></tt> is set to all fields and <tt class="docutils literal"><span class="pre">_exclude</span></tt> is empty.</p>
-<p>Furthermore, some calls allow for a <tt class="docutils literal"><span class="pre">_body</span></tt> parameter, defining whether there should be any data in the response
-body at all. Default of <tt class="docutils literal"><span class="pre">_body</span></tt> is true (returning data). When <tt class="docutils literal"><span class="pre">_body</span></tt> is false, <tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt> will be ignored.</p>
+<p>Every call which returns a response body can have this customized using
+<tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt> parameters. These parameters define which fields
+to include in or exclude from the response body. When both <tt class="docutils literal"><span class="pre">_include</span></tt> and
+<tt class="docutils literal"><span class="pre">_exclude</span></tt> have a value, the <tt class="docutils literal"><span class="pre">_exclude</span></tt> value will be ignored. By default,
+<tt class="docutils literal"><span class="pre">_include</span></tt> is set to all fields and <tt class="docutils literal"><span class="pre">_exclude</span></tt> is empty.</p>
+<p>Furthermore, some calls allow for a <tt class="docutils literal"><span class="pre">_body</span></tt> parameter, defining whether
+there should be any data in the response body at all. Default of <tt class="docutils literal"><span class="pre">_body</span></tt> is
+true (returning data). When <tt class="docutils literal"><span class="pre">_body</span></tt> is false, <tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt>
+will be ignored.</p>
 </div>
 <div class="section" id="dates-and-times">
 <span id="overview-dates-and-times"></span><h2>Dates and Times<a class="headerlink" href="#dates-and-times" title="Permalink to this headline">¶</a></h2>
-<p>All date/time values are specified in
-<a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 Combined date and time in UTC format</a>.</p>
+<p>All date/time values are specified in <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> Combined date and time in
+UTC format.</p>
 </div>
 <div class="section" id="prices-and-currencies">
 <span id="overview-prices-and-currencies"></span><h2>Prices and Currencies<a class="headerlink" href="#prices-and-currencies" title="Permalink to this headline">¶</a></h2>
@@ -286,11 +309,11 @@ response which contains a list of the errors. More information can be found unde
 </div>
 <div class="section" id="dry-run-request-validation">
 <span id="dryrun-validation"></span><h2>Dry-Run Request Validation<a class="headerlink" href="#dry-run-request-validation" title="Permalink to this headline">¶</a></h2>
-<p>The API supports dry-run validation of requests which modify resources.
-To validate a request without executing it add <tt class="docutils literal"><span class="pre">_validate=true</span></tt> to the
-request URL. If the validation succeeds the server returns <tt class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></tt>
-and an empty body. Otherwise, the server returns <tt class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></tt> with
-the list of errors. The following endpoints support dry-run validation:</p>
+<p>The API supports dry-run validation of requests which modify resources. To
+validate a request without executing it add <tt class="docutils literal"><span class="pre">_validate=true</span></tt> to the request
+URL. If the validation succeeds the server returns <tt class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></tt> and an empty
+body. Otherwise, the server returns <tt class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></tt> with the list of
+errors. The following endpoints support dry-run validation:</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="reference/post-ad.html#post-ad"><em>POST /ad</em></a></li>
@@ -339,7 +362,7 @@ the list of errors. The following endpoints support dry-run validation:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.54',
+            VERSION:'0.55',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

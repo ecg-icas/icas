@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Authentication &mdash; iCAS Sellside API 0.54 documentation</title>
+  <title>Authentication &mdash; iCAS Sellside API 0.55 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.54 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.55 documentation" href="index.html"/>
         <link rel="next" title="Advertisements" href="ads.html"/>
         <link rel="prev" title="Overview" href="overview.html"/> 
 
@@ -76,10 +76,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-is-oauth-2-0">What is OAuth 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#obtaining-an-access-token">Obtaining an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-an-access-token">Getting an Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-an-access-token">Using an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#refreshing-an-access-token">Refreshing an Access Token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#expiration-times">Expiration Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scopes">Scopes</a></li>
 </ul>
 </li>
@@ -203,32 +203,88 @@ and token endpoints.</li>
 <span id="oauth2-endpoints"></span><h2>OAuth 2.0 Endpoints<a class="headerlink" href="#oauth-2-0-endpoints" title="Permalink to this headline">¶</a></h2>
 <p><strong>Authorization Endpoint:</strong> This is the endpoint on the authorization server
 where the resource owner logs in, and grants authorization to the client
-application. The authorization endpoint urls are as follows:</p>
-<ul class="simple">
-<li><em>Sandbox:</em> <a class="reference external" href="https://auth.demo.qa-mp.so/accounts/oauth/authorize">https://auth.demo.qa-mp.so/accounts/oauth/authorize</a></li>
-<li><em>Production:</em> <a class="reference external" href="https://auth.marktplaats.nl/accounts/oauth/authorize">https://auth.marktplaats.nl/accounts/oauth/authorize</a></li>
-</ul>
-<p><strong>Token Endpoint:</strong>  This is the endpoint on the authorization server
-where the client application exchanges the authorization code,
-client ID and client secret, for an access token.
-The token endpoint urls are as follows:</p>
-<ul class="simple">
-<li><em>Sandbox:</em> <a class="reference external" href="https://auth.demo.qa-mp.so/accounts/oauth/token">https://auth.demo.qa-mp.so/accounts/oauth/token</a></li>
-<li><em>Production:</em> <a class="reference external" href="https://auth.marktplaats.nl/accounts/oauth/token">https://auth.marktplaats.nl/accounts/oauth/token</a></li>
-</ul>
+application.</p>
+<p><strong>Token Endpoint:</strong>  This is the endpoint on the authorization server where
+the client application exchanges the authorization code, client ID and client
+secret, for an access token.</p>
+<p>The endpoint URLs per tenant and environment are as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tenant</th>
+<th class="head">Env</th>
+<th class="head">Endpoint</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Marktplaats</td>
+<td>Sandbox</td>
+<td><a class="reference external" href="https://auth.demo.qa-mp.so/accounts/oauth/authorize">https://auth.demo.qa-mp.so/accounts/oauth/authorize</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="https://auth.demo.qa-mp.so/accounts/oauth/token">https://auth.demo.qa-mp.so/accounts/oauth/token</a></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Production</td>
+<td><a class="reference external" href="https://auth.marktplaats.nl/accounts/oauth/authorize">https://auth.marktplaats.nl/accounts/oauth/authorize</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="https://auth.marktplaats.nl/accounts/oauth/token">https://auth.marktplaats.nl/accounts/oauth/token</a></td>
+</tr>
+<tr class="row-even"><td>DBA</td>
+<td>Sandbox</td>
+<td><a class="reference external" href="https://dba.lp.icas.ecg.so/accounts/oauth/authorize">https://dba.lp.icas.ecg.so/accounts/oauth/authorize</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="https://dba.lp.icas.ecg.so/accounts/oauth/token">https://dba.lp.icas.ecg.so/accounts/oauth/token</a></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Production</td>
+<td><a class="reference external" href="https://topannoncer.dbabusiness.dk/accounts/oauth/authorize">https://topannoncer.dbabusiness.dk/accounts/oauth/authorize</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="https://topannoncer.dbabusiness.dk/accounts/oauth/token">https://topannoncer.dbabusiness.dk/accounts/oauth/token</a></td>
+</tr>
+<tr class="row-even"><td>Kijiji Canada</td>
+<td>Sandbox</td>
+<td><a class="reference external" href="https://cas.qa.kijiji.ca/accounts/oauth/authorize">https://cas.qa.kijiji.ca/accounts/oauth/authorize</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="https://cas.qa.kijiji.ca/accounts/oauth/token">https://cas.qa.kijiji.ca/accounts/oauth/token</a></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Production</td>
+<td><a class="reference external" href="https://cas.kijiji.ca/accounts/oauth/authorize">https://cas.kijiji.ca/accounts/oauth/authorize</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="https://cas.kijiji.ca/accounts/oauth/token">https://cas.kijiji.ca/accounts/oauth/token</a></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The Sandbox environment uses a self-signed certificate for the
-SSL encryption. You need to disable certificate verification in
-your client library.</p>
+<p class="last">The Sandbox environments may use a self-signed certificate for the SSL
+encryption. You need to disable certificate verification in your client
+library.</p>
 </div>
 </div>
-<div class="section" id="obtaining-an-access-token">
-<span id="id2"></span><h2>Obtaining an Access Token<a class="headerlink" href="#obtaining-an-access-token" title="Permalink to this headline">¶</a></h2>
-<p>The steps for obtaining an access token are as follows:</p>
+<div class="section" id="getting-an-access-token">
+<span id="obtaining-an-access-token"></span><h2>Getting an Access Token<a class="headerlink" href="#getting-an-access-token" title="Permalink to this headline">¶</a></h2>
+<p>The steps for getting an access token are as follows:</p>
 <div class="section" id="step-1-redirect-to-the-authorization-url">
 <h3>Step 1: Redirect to the authorization url<a class="headerlink" href="#step-1-redirect-to-the-authorization-url" title="Permalink to this headline">¶</a></h3>
-<p>Redirect the resource owner (user) to the authorization url with the following GET parameters</p>
+<p>Redirect the resource owner (user) to the authorization url with the following
+GET parameters</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -273,8 +329,8 @@ Host: auth.demo.qa-mp.so
 </div>
 <div class="section" id="step-2-redirect-to-the-redirect-uri">
 <h3>Step 2: Redirect to the redirect_uri<a class="headerlink" href="#step-2-redirect-to-the-redirect-uri" title="Permalink to this headline">¶</a></h3>
-<p>After the resource owner logs in and confirms access request of the client
-the authorization server redirects the resource owner to the <tt class="docutils literal"><span class="pre">redirect_uri</span></tt>
+<p>After the resource owner logs in and confirms access request of the client the
+authorization server redirects the resource owner to the <tt class="docutils literal"><span class="pre">redirect_uri</span></tt>
 specified in the request at step 1 with the following GET parameters</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -306,8 +362,8 @@ Host: yoursite.com
 </div>
 <div class="section" id="step-3-post-to-the-token-endpoint">
 <h3>Step 3: POST to the token endpoint<a class="headerlink" href="#step-3-post-to-the-token-endpoint" title="Permalink to this headline">¶</a></h3>
-<p>After obtaining the authorization code at step 2 the client needs to make
-a <em>POST</em> request to the <em>token endpoint</em> with the following parameters:</p>
+<p>After obtaining the authorization code at step 2 the client needs to make a
+<em>POST</em> request to the <em>token endpoint</em> with the following parameters:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -385,9 +441,7 @@ format if the token request at step 3 is valid.</p>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Every time you request a new access token you also receive a <strong>new refresh token</strong>.
-This automatically invalidates the existing refresh token even if it has not
-expired yet.</p>
+<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <tt class="docutils literal"><span class="pre">refresh_token</span></tt> field.</p>
 </div>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
@@ -410,20 +464,21 @@ Content-Type: application/json
 </div>
 </div>
 <div class="section" id="using-an-access-token">
-<span id="id3"></span><h2>Using an Access Token<a class="headerlink" href="#using-an-access-token" title="Permalink to this headline">¶</a></h2>
-<p>To use the access token for an actual API call you have to provide it in the <tt class="docutils literal"><span class="pre">Authorization</span></tt>
-header as follows:</p>
+<span id="id2"></span><h2>Using an Access Token<a class="headerlink" href="#using-an-access-token" title="Permalink to this headline">¶</a></h2>
+<p>To use the access token for an actual API call you have to provide it in the
+<tt class="docutils literal"><span class="pre">Authorization</span></tt> header as follows:</p>
 <div class="highlight-http"><div class="highlight"><pre>GET /api/sellside/ad
-Host: mp.lp.icas.ecg.so
+Host: auth.demo.qa-mp.so
 Authorization: Bearer 1dc19b97-fd12-4feb-8c9d-042b4ba80747
 </pre></div>
 </div>
 </div>
-<div class="section" id="refreshing-an-access-token">
-<span id="id4"></span><h2>Refreshing an Access Token<a class="headerlink" href="#refreshing-an-access-token" title="Permalink to this headline">¶</a></h2>
-<p>The refresh token is used to obtain a new access token once the access token is no longer valid.
-In order to obtain a new access token the following <em>POST</em> request to the <em>token endpoint</em>
-with the following parameters is necessary.</p>
+<div class="section" id="getting-another-access-token">
+<span id="refreshing-an-access-token"></span><h2>Getting another Access Token<a class="headerlink" href="#getting-another-access-token" title="Permalink to this headline">¶</a></h2>
+<p>Access tokens are short lived and expire quickly. The refresh token is used to
+obtain a new access token once the access token is no longer valid. In order
+to obtain a new access token the following <em>POST</em> request to the <em>token
+endpoint</em> with the following parameters is necessary.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -455,14 +510,9 @@ with the following parameters is necessary.</p>
 </tr>
 </tbody>
 </table>
-<p>If the refresh token request is valid the authorization server returns a new access token. The token
-response is identical to the token response explained at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><em>Obtaining an Access Token</em></a>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Every time you request a new access token you also receive a <strong>new refresh token</strong>.
-This automatically invalidates the existing refresh token even if it has not
-expired yet.</p>
-</div>
+<p>If the refresh token request is valid the authorization server returns a new
+access token. The token response is identical to the token response explained
+at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><em>Getting an Access Token</em></a>.</p>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
 Content-Type: application/x-www-form-urlencoded
@@ -482,38 +532,26 @@ Content-Type: application/json
 </pre></div>
 </div>
 </div>
-<div class="section" id="expiration-times">
-<span id="id5"></span><h2>Expiration Times<a class="headerlink" href="#expiration-times" title="Permalink to this headline">¶</a></h2>
-<p>Both access and refresh tokens expire after the time listed in the table below. After this period the token
-is no longer valid.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="40%" />
-<col width="40%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Environment</th>
-<th class="head">Access Token</th>
-<th class="head">Refresh Token</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Sandbox</td>
-<td>12 hours/43200 seconds</td>
-<td>30 days/2592000 seconds</td>
-</tr>
-<tr class="row-odd"><td>Production</td>
-<td>5 minutes/300 seconds</td>
-<td>1 day/86400 seconds</td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="refresh-tokens-and-token-expiration">
+<span id="expiration-times"></span><h2>Refresh Tokens and Token Expiration<a class="headerlink" href="#refresh-tokens-and-token-expiration" title="Permalink to this headline">¶</a></h2>
+<p>Access tokens expire after <strong>5 minutes</strong> on all environments and for every
+tenant.</p>
+<p>The behavior of the refresh token depends on the tenant since iCAS can use the
+token service of the tenant if available.</p>
+<p>For <strong>Marktplaats</strong> you will receive a new refresh token every time you get a
+new access token. The refresh token expires within <strong>1 day</strong> if not refreshed.
+You can have up to 25 refresh tokens for the same client_id, user, scope
+combination active at any given time.</p>
+<p>For <strong>DBA</strong> and <strong>Kijiji Canada</strong> you will receive only one refresh token for
+the same client_id, user, scope combination at any given time. If a refresh
+token exists for this combination and the user grants you access a second time
+you will receive the existing token. The token expires after not being used
+for <strong>60 days</strong>.</p>
 </div>
 <div class="section" id="scopes">
-<span id="id6"></span><h2>Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h2>
 <p>Scopes determine whether you can access a certain resource. The actual scope
-depends on the requested scope as defined in <a class="reference internal" href="#obtaining-an-access-token">obtaining_an_access_token</a> and
+depends on the requested scope as defined in <a class="reference internal" href="#getting-an-access-token">Getting an Access Token</a> and
 the scope assigned to the client making the request.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -581,7 +619,7 @@ the scope assigned to the client making the request.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.54',
+            VERSION:'0.55',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

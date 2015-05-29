@@ -1,18 +1,49 @@
+.. _Authorization Code Grant: http://tools.ietf.org/html/rfc6749#section-4.1
+.. _eBay Classifieds iCAS Community: https://plus.google.com/communities/110150351420667771335
+.. _ISO 4217: http://en.wikipedia.org/wiki/ISO_4217
+.. _ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
 .. _overview:
 
 Overview
 ========
 
-The iCAS Sellside API is a RESTful API to manage ads on
-iCAS either for your own account or on behalf of other users.
+The iCAS Sellside API is a RESTful API to manage ads on iCAS either for your
+own account or on behalf of other users. The base URLs for the API are:
 
-The base URLs for the API are:
+.. list-table::
+ :widths: 20 10 70
+ :header-rows: 1
 
-* *Sandbox:*  https://admarkt.demo.qa-mp.so/api/sellside
-* *Production:* https://admarkt.marktplaats.nl/api/sellside
+ * - Tenant
+   - Env
+   - Endpoint
+
+ * - Marktplaats
+   - Sandbox
+   - https://admarkt.demo.qa-mp.so/api/sellside
+
+ * -
+   - Production
+   - https://admarkt.marktplaats.nl/api/sellside
+
+ * - DBA
+   - Sandbox
+   - https://dba.lp.icas.ecg.so/api/sellside
+
+ * -
+   - Production
+   - https://topannoncer.dbabusiness.dk/api/sellside
+
+ * - Kijiji Canada
+   - Sandbox
+   - https://cas.qa.kijiji.ca/api/sellside
+
+ * -
+   - Production
+   - https://cas.kijiji.ca/api/sellside
 
 With this the full URL for retrieving ad 1234 for the
-current customer becomes::
+current customer on Marktplaats Production becomes::
 
     https://admarkt.marktplaats.nl/api/sellside/ad/1234
 
@@ -21,26 +52,24 @@ current customer becomes::
 Image Downloads
 ---------------
 
-Images are downloaded from the following ip addresses.
-Ensure that all image URLs are accessible by these ip
-addresses and that there is no rate limit.
+Images are downloaded from the following ip addresses. Ensure that all image
+URLs are accessible by these ip addresses and that there is no rate limit.
 
  * 5.255.156.110
  * 5.255.156.126
 
-To reduce the latency when updating an ad we suggest that
-the response contains either an ``ETag`` and/or ``Last-Modified``
-header which only changes when the image itself has changed.
-It should also be possible to check these headers using a ``HEAD``
-request.
+To reduce the latency when updating an ad we suggest that the response
+contains either an ``ETag`` and/or ``Last-Modified`` header which only changes
+when the image itself has changed. It should also be possible to check these
+headers using a ``HEAD`` request.
 
 .. _overview_media_types:
 
 Media Types
 -----------
 
-Each resource has a specific media type of the following form
-to support *content negotiation* and *versioning*::
+Each resource has a specific media type of the following form to support
+*content negotiation* and *versioning*::
 
     application/sellside.{entity}-{version}+json;charset=UTF-8
 
@@ -48,11 +77,10 @@ The ``version`` field is mandatory.
 
 The media type is used for the ``Content-Type`` and ``Accept`` headers.
 
-This allows us to change the structure of a response without breaking
-existing code since you have to request the new content type while
-the old version is still available for some time. For backwards compatible
-changes like adding a new field to an existing structure we will not
-change the version number.
+This allows us to change the structure of a response without breaking existing
+code since you have to request the new content type while the old version is
+still available for some time. For backwards compatible changes like adding a
+new field to an existing structure we will not change the version number.
 
 .. _overview_accept_headers:
 
@@ -77,28 +105,13 @@ Authentication
 --------------
 
 Authentication is provided using *OAuth2* tokens and the so called
-`Authorization Code Grant <http://tools.ietf.org/html/rfc6749#section-4.1>`_
-which means that you need a client id and client secret to access the
-api with an access token that the API provides.
+`Authorization Code Grant`_
+which means that you need a client id and client secret to access the api with
+an access token that the API provides. It is not possible to use username and
+password to get an access token.
 
-It is not possible to use username and password to get an access token.
-
-To request a client id and secret please send an email
-to Admarkt-API@marktplaats.nl.
-
-The authorization and token endpoints are:
-
-* *Sandbox:* https://auth.demo.qa-mp.so/accounts/oauth/authorize
-* *Sandbox:* https://auth.demo.qa-mp.so/accounts/oauth/token
-
-* *Production:* https://auth.marktplaats.nl/accounts/oauth/authorize
-* *Production:* https://auth.marktplaats.nl/accounts/oauth/token
-
-Both access and refresh tokens have a limited lifetime which means
-that if you manage the accounts of other iCAS customers then you
-need to ensure that you maintain valid refresh tokens for these
-customers in your database. Otherwise, the customers need to
-authenticate every time the token expires.
+To request a client id and secret please send a request to the
+`eBay Classifieds iCAS Community`_.
 
 See the :ref:`authentication` section for the full details and also
 the `OAuth 2.0 website <http://oauth.net/2/>`_.
@@ -108,20 +121,24 @@ the `OAuth 2.0 website <http://oauth.net/2/>`_.
 Customize response body
 -----------------------
 
-Every call which returns a response body can have this customized using ``_include`` and ``_exclude`` parameters. These
-parameters define which fields to include in or exclude from the response body. When both ``_include`` and ``_exclude``
-have a value, the ``_exclude`` value will be ignored. By default, ``_include`` is set to all fields and ``_exclude`` is empty.
+Every call which returns a response body can have this customized using
+``_include`` and ``_exclude`` parameters. These parameters define which fields
+to include in or exclude from the response body. When both ``_include`` and
+``_exclude`` have a value, the ``_exclude`` value will be ignored. By default,
+``_include`` is set to all fields and ``_exclude`` is empty.
 
-Furthermore, some calls allow for a ``_body`` parameter, defining whether there should be any data in the response
-body at all. Default of ``_body`` is true (returning data). When ``_body`` is false, ``_include`` and ``_exclude`` will be ignored.
+Furthermore, some calls allow for a ``_body`` parameter, defining whether
+there should be any data in the response body at all. Default of ``_body`` is
+true (returning data). When ``_body`` is false, ``_include`` and ``_exclude``
+will be ignored.
 
 .. _overview_dates_and_times:
 
 Dates and Times
 ---------------
 
-All date/time values are specified in
-`ISO 8601 Combined date and time in UTC format <http://en.wikipedia.org/wiki/ISO_8601>`_.
+All date/time values are specified in `ISO 8601`_ Combined date and time in
+UTC format.
 
 .. _overview_prices_and_currencies:
 
@@ -129,7 +146,7 @@ Prices and Currencies
 ---------------------
 
 All monetary amounts like prices and budgets are currently in Euros and stored as euro cents.
-Currencies are specified as three character `ISO 4217 <http://en.wikipedia.org/wiki/ISO_4217>`_ code.
+Currencies are specified as three character `ISO 4217`_ code.
 
 .. _overview_http_response_codes_and_error_handling:
 
@@ -155,11 +172,11 @@ response which contains a list of the errors. More information can be found unde
 Dry-Run Request Validation
 --------------------------
 
-The API supports dry-run validation of requests which modify resources.
-To validate a request without executing it add ``_validate=true`` to the
-request URL. If the validation succeeds the server returns ``200 OK``
-and an empty body. Otherwise, the server returns ``400 Bad Request`` with
-the list of errors. The following endpoints support dry-run validation:
+The API supports dry-run validation of requests which modify resources. To
+validate a request without executing it add ``_validate=true`` to the request
+URL. If the validation succeeds the server returns ``200 OK`` and an empty
+body. Otherwise, the server returns ``400 Bad Request`` with the list of
+errors. The following endpoints support dry-run validation:
 
  * :ref:`post_ad`
  * :ref:`put_ad_id`
