@@ -39,6 +39,11 @@ History
 
 ..  role:: strike
 
+* v0.56 - 5 Jun 2015 - tw
+
+  * added :ref:`get_report_summary`
+  * corrected accepted image types to be JPG, GIF, PNG, BMP
+
 * v0.55 - 1 Jun 2015 - be
 
  * Updated the documentation about regions
