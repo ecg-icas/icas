@@ -16,7 +16,7 @@ Parameters
 Name                    Type      Description
 ====================    ======    ============================================================================================
 startDate               String    Start date of the period for the report summary. Must be a valid date in format 'yyyy-MM-dd'
-endDate                 String    End date of the period for the report summary. Must be a valid date in format 'yyyy-mm-dd'
+endDate                 String    End date of the period for the report summary. Must be a valid date in format 'yyyy-MM-dd'
 ====================    ======    ============================================================================================
 
 
@@ -27,7 +27,7 @@ Errors
 Field                   Code    Error message               Description
 ====================    ====    =======================     ==============================================================================
 startDate               2001    invalid argument            must be a valid date in format 'yyyy-MM-dd'
-endDate                 2001    invalid argument            must be a valid date in format 'yyyy-mm-dd'
+endDate                 2001    invalid argument            must be a valid date in format 'yyyy-MM-dd'
 startDate/endDate       2002    out of range                endDate should be after startDate
 ====================    ====    =======================     ==============================================================================
 
