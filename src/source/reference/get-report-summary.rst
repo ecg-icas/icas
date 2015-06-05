@@ -44,7 +44,7 @@ spent           int     Spent amount for all ads in the period
 impressions     int     Number of impressions for all ads in the period
 clicks          int     Number of clicks for all ads in the period
 urlClicks       int     Number of urlClicks for all ads in the period
-averageCtr      double  Average ctr over all ads in the period
+averageCtr      double  Average ctr over all ads in the period, in percentages
 emails          int     Number of emails for all ads in the period
 ==============  ======  =====================================================
 

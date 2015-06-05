@@ -9,9 +9,9 @@
     {
       ads: 28496,
       spent: 640100,
-      impressions: 1625,
-      clicks: 12802,
+      impressions: 162533,
+      clicks: 12823,
       urlClicks: 701,
-      averageCtr: 7.8781538009643555,
+      averageCtr: 0.078894748,
       emails: 12
     }
