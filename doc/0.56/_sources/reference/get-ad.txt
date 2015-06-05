@@ -47,6 +47,13 @@ budget (:ref:`ad_totalBudget` - :ref:`ad_spentBudget`) is below a given threshol
 The ``remainingBudget`` value must be an absolute integer number (e.g. **123**) or a
 percentage (e.g. **10%**).
 
+The ``startDate`` and ``endDate`` parameters can be used to define a period. The
+values for both should be valid dates represented as 'yyyy-MM-dd', and the ``endDate``
+should represent a date equal or after the ``startDate``. The ads returned have had
+activity in this period. Note that ads which were live during this period but did
+not recieve a single click, impression or urlClick, and did not have any updates
+in this period, will be filtered out.
+
 .. note::
 
     The fields :ref:`ad_pageNumber` and :ref:`ad_suggestedCpcForPageOne` are
@@ -113,6 +120,8 @@ orderBy          string      Orders the result set by the given field. Should be
 direction        string      Determines the direction of the sort. Should be one of [ASCENDING, DESCENDING]. Default is ASCENDING.
 changedSince     date        Returns ads which have ``changedSince`` >= ``dateLastUpdated``.
 remainingBudget  string      Returns ads whose remaining budget is below a certain value (absolute number or a percentage).
+startDate        string      Determines the startDate of the period to select ads with activity for.
+endDate          string      Determines the endDate of the period to select ads with activity for.
 _include         string      Comma-separated-list of fields to include. Optional, default is all fields.
 _exclude         string      Comma-separated-list of fields to omit. Optional, default empty.
 ===============  ========    ============================================================================
@@ -136,6 +145,9 @@ direction               2013    invalid state               cannot be used in co
 changedSince            2001    invalid argument            not a valid date
 changedSince            2002    out of range                date is in the future
 remainingBudget         2001    invalid argument            remaining budget is not an integer or an integer percentage (e.g. **10%**)
+startDate               2001    invalid argument            startDate should be a valid date in form 'yyyy-MM-dd'
+endDate                 2001    invalid argument            endDate should be a valid date in form 'yyyy-MM-dd'
+startDate/endDate       2002    out of range                endDate should be equal or after startDate
 ====================    ====    =======================     ==============================================================================
 
 Example

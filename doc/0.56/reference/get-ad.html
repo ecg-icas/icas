@@ -202,6 +202,12 @@ pagination.</p>
 budget (<a class="reference internal" href="../ads.html#ad-totalbudget"><em>totalBudget</em></a> - <a class="reference internal" href="../ads.html#ad-spentbudget"><em>spentBudget</em></a>) is below a given threshold.
 The <tt class="docutils literal"><span class="pre">remainingBudget</span></tt> value must be an absolute integer number (e.g. <strong>123</strong>) or a
 percentage (e.g. <strong>10%</strong>).</p>
+<p>The <tt class="docutils literal"><span class="pre">startDate</span></tt> and <tt class="docutils literal"><span class="pre">endDate</span></tt> parameters can be used to define a period. The
+values for both should be valid dates represented as &#8216;yyyy-MM-dd&#8217;, and the <tt class="docutils literal"><span class="pre">endDate</span></tt>
+should represent a date equal or after the <tt class="docutils literal"><span class="pre">startDate</span></tt>. The ads returned have had
+activity in this period. Note that ads which were live during this period but did
+not recieve a single click, impression or urlClick, and did not have any updates
+in this period, will be filtered out.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><em>pageNumber</em></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a> are
@@ -234,7 +240,7 @@ load on the system.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="nx">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="nx">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">]</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="nx">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="nx">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">04</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">13</span><span class="p">]</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -308,6 +314,14 @@ load on the system.</p>
 <tr class="row-odd"><td>remainingBudget</td>
 <td>string</td>
 <td>Returns ads whose remaining budget is below a certain value (absolute number or a percentage).</td>
+</tr>
+<tr class="row-even"><td>startDate</td>
+<td>string</td>
+<td>Determines the startDate of the period to select ads with activity for.</td>
+</tr>
+<tr class="row-odd"><td>endDate</td>
+<td>string</td>
+<td>Determines the endDate of the period to select ads with activity for.</td>
 </tr>
 <tr class="row-even"><td>_include</td>
 <td>string</td>
@@ -401,6 +415,21 @@ load on the system.</p>
 <td>2001</td>
 <td>invalid argument</td>
 <td>remaining budget is not an integer or an integer percentage (e.g. <strong>10%</strong>)</td>
+</tr>
+<tr class="row-odd"><td>startDate</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>startDate should be a valid date in form &#8216;yyyy-MM-dd&#8217;</td>
+</tr>
+<tr class="row-even"><td>endDate</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>endDate should be a valid date in form &#8216;yyyy-MM-dd&#8217;</td>
+</tr>
+<tr class="row-odd"><td>startDate/endDate</td>
+<td>2002</td>
+<td>out of range</td>
+<td>endDate should be equal or after startDate</td>
 </tr>
 </tbody>
 </table>

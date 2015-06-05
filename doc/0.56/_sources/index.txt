@@ -43,6 +43,7 @@ History
 
   * added :ref:`get_report_summary`
   * corrected accepted image types to be JPG, GIF, PNG, BMP
+  * added startDate and endDate to /ad call
 
 * v0.55 - 1 Jun 2015 - be
 
