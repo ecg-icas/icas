@@ -12,9 +12,9 @@ An image upload request must be a multipart form-data request as specified in `R
 
 .. note::
 
-    The maximum image size is **8MB** and the supported image formats are: **PNG**, **GIF** and **JPG**.
+    The maximum image size is **8MB** and the supported image formats are: **PNG**, **GIF**, **BMP** and **JPG**.
 
-All images are converted to **JPG** with a maximum dimensions of **1024x1024** while the aspect ratio is maintained.
+All images are converted to **JPG** with maximum dimensions of **1024x1024** while the aspect ratio is maintained.
 
 On success the server returns map with the name and a unique identifier for that image. The name is taken from the
 ``name`` parameter of the ``Content-Disposition`` header.
