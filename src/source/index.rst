@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.57 - 10 Jun 2015 - fs
+
+  * fixed documentation for data type for ad id from ``int`` to ``long``
+
 * v0.56 - 5 Jun 2015 - tw
 
   * added :ref:`get_report_summary`

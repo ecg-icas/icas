@@ -24,7 +24,7 @@ required and optional fields which are listed below:
 =================================   ========== ================   =========   ========
 Field                               Type       Constraints        Mandatory   Writable
 =================================   ========== ================   =========   ========
-:ref:`ad_id`                        int        positive                       no
+:ref:`ad_id`                        long       positive                       no
 :ref:`ad_title`                     string     max. 60 chars      yes         yes
 :ref:`ad_description`               string     max. 20000 chars   yes         yes
 :ref:`ad_categoryId`                int        positive           yes         no
