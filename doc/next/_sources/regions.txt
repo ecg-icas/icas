@@ -79,10 +79,30 @@ Ads cannot be placed within them and therefore they have no center point.
    - Constraints
    - Info
 
+ * - links
+   - map<string,string>
+   - not empty
+   - A link to the current region and if level > 1 a link to the parent region.
+
  * - id
    - long
    - ``> 0``
    - Unique region id.
+
+ * - parentId
+   - long
+   - ``> 0``
+   - Parent id of the region.
+
+ * - level
+   - int
+   - ``> 0``
+   - Level at which the region is defined.
+
+ * - path
+   - string
+   - not empty
+   - Ids of all ancestors (except the root) and the current region separated by ``_``
 
  * - label
    - map<locale,string>
@@ -113,10 +133,30 @@ no children. Leaf regions have coordinates of the center point.
    - Constraints
    - Info
 
+ * - links
+   - map<string,string>
+   - not empty
+   - A link to the current region and if level > 1 a link to the parent region.
+
  * - id
    - long
    - ``> 0``
    - Unique region id.
+
+ * - parentId
+   - long
+   - ``> 0``
+   - Parent id of the region.
+
+ * - level
+   - int
+   - ``> 0``
+   - Level at which the region is defined.
+
+ * - path
+   - string
+   - not empty
+   - Ids of all ancestors (except the root) and the current region separated by ``_``
 
  * - label
    - map<locale,string>

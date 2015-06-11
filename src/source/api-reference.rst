@@ -18,6 +18,8 @@ API Reference
    reference/post-feed-config
    reference/get-image
    reference/post-image
+   reference/get-region
+   reference/get-region-id
    reference/get-report
    reference/get-report-detail
    reference/get-report-detail-id

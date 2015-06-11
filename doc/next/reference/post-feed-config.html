@@ -126,6 +126,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region.html">GET /region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -174,10 +176,10 @@
             
   <div class="section" id="post-feed-config">
 <span id="index-0"></span><span id="id1"></span><h1>POST /feed/config<a class="headerlink" href="#post-feed-config" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../authentication.html#scopes"><em>Scopes</em></a> <strong>console</strong></p>
+<p><a class="reference internal" href="../authentication.html#scopes"><span>Scopes</span></a> <strong>console</strong></p>
 <p>This URL updates the feed configuration of the current user. The feed configuration object must contain a boolean
-field <tt class="docutils literal"><span class="pre">enabled</span></tt>. Depending on its value the feed will be activated or disabled. If the
-feed is being activated, the field <tt class="docutils literal"><span class="pre">feedUrl</span></tt> is mandatory and should contain a valid URL to a feed XML document.</p>
+field <code class="docutils literal"><span class="pre">enabled</span></code>. Depending on its value the feed will be activated or disabled. If the
+feed is being activated, the field <code class="docutils literal"><span class="pre">feedUrl</span></code> is mandatory and should contain a valid URL to a feed XML document.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Access to the feed functionality may be granted per user by the Customer Service.

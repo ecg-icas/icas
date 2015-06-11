@@ -126,6 +126,8 @@
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region.html">GET /region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -174,40 +176,40 @@
             
   <div class="section" id="put-ad-id">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}<a class="headerlink" href="#put-ad-id" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../authentication.html#scopes"><em>Scopes</em></a> <strong>write</strong></p>
-<p>This URL updates the ad with the given <tt class="docutils literal"><span class="pre">id</span></tt>. If the ad was successfully
+<p><a class="reference internal" href="../authentication.html#scopes"><span>Scopes</span></a> <strong>write</strong></p>
+<p>This URL updates the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. If the ad was successfully
 updated then a <strong>200 OK</strong> is returned. The <strong>optional</strong> query parameter
-<tt class="docutils literal"><span class="pre">_body</span></tt> with value <tt class="docutils literal"><span class="pre">true</span></tt> or <tt class="docutils literal"><span class="pre">false</span></tt> can be used to influence
+<code class="docutils literal"><span class="pre">_body</span></code> with value <code class="docutils literal"><span class="pre">true</span></code> or <code class="docutils literal"><span class="pre">false</span></code> can be used to influence
 whether the response body contains the ad in the body (or not) in case of success.
-By default, this value is <tt class="docutils literal"><span class="pre">true</span></tt>.If the ad does not exist or
+By default, this value is <code class="docutils literal"><span class="pre">true</span></code>.If the ad does not exist or
 does not belong to the user the server returns <strong>404 Not Found</strong>. If the
-<tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e. not a positive integer the server returns <strong>400 Bad
+<code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400 Bad
 Request</strong>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Updating deleted ads is not allowed and will result in a <strong>400 Bad Request</strong>.</p>
 </div>
-<p>All writeable fields listed in <a class="reference internal" href="../ads.html#ad-fields"><em>Fields</em></a> can be changed. Attempting to
+<p>All writeable fields listed in <a class="reference internal" href="../ads.html#ad-fields"><span>Fields</span></a> can be changed. Attempting to
 change a non-writeable field results in a <strong>400 Bad Request</strong></p>
 <p>All validation rules for creating an ad apply exactly the same.</p>
 <p>Additionally, the following rules apply:</p>
-<p>The <a class="reference internal" href="../ads.html#ad-totalbudget"><em>totalBudget</em></a> cannot be lower than the minimum budget as
-defined in the category and also cannot be lower than the sum of <a class="reference internal" href="../ads.html#ad-cpc"><em>cpc</em></a> and
-the current value of <a class="reference internal" href="../ads.html#ad-spentbudget"><em>spentBudget</em></a>. Similarly, the <a class="reference internal" href="../ads.html#ad-dailybudget"><em>dailyBudget</em></a>
+<p>The <a class="reference internal" href="../ads.html#ad-totalbudget"><span>totalBudget</span></a> cannot be lower than the minimum budget as
+defined in the category and also cannot be lower than the sum of <a class="reference internal" href="../ads.html#ad-cpc"><span>cpc</span></a> and
+the current value of <a class="reference internal" href="../ads.html#ad-spentbudget"><span>spentBudget</span></a>. Similarly, the <a class="reference internal" href="../ads.html#ad-dailybudget"><span>dailyBudget</span></a>
 cannot be lower than than the minimum daily budget as defined in the category and
-also cannot be lower than the sum of <a class="reference internal" href="../ads.html#ad-cpc"><em>cpc</em></a> and the current value of
+also cannot be lower than the sum of <a class="reference internal" href="../ads.html#ad-cpc"><span>cpc</span></a> and the current value of
 <strong>dailySpent</strong>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The value of <strong>dailySpent</strong> is not exposed via the API.</p>
 </div>
-<p>If the <a class="reference internal" href="../ads.html#ad-images"><em>Images</em></a> attribute contains links to images that need to be refreshed
-then the <tt class="docutils literal"><span class="pre">refresh</span></tt> attribute has to be set to <tt class="docutils literal"><span class="pre">true</span></tt>. This is only
+<p>If the <a class="reference internal" href="../ads.html#ad-images"><span>Images</span></a> attribute contains links to images that need to be refreshed
+then the <code class="docutils literal"><span class="pre">refresh</span></code> attribute has to be set to <code class="docutils literal"><span class="pre">true</span></code>. This is only
 necessary if the image has changed but the URL has not. See
-<a class="reference internal" href="../ads.html#ad-image-objects"><em>Image Objects</em></a> for more details.</p>
+<a class="reference internal" href="../ads.html#ad-image-objects"><span>Image Objects</span></a> for more details.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><em>pageNumber</em></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a> are
+<p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><span>pageNumber</span></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><span>suggestedCpcForPageOne</span></a> are
 currently expensive to compute. If you do not need their values consider
 excluding them to speed up the response. To exclude the fields add the
 following parameter to the request URL.</p>
@@ -217,11 +219,11 @@ following parameter to the request URL.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You should not set <tt class="docutils literal"><span class="pre">refresh</span></tt> to <tt class="docutils literal"><span class="pre">true</span></tt> as a <em>good measure</em> to have the
+<p class="last">You should not set <code class="docutils literal"><span class="pre">refresh</span></code> to <code class="docutils literal"><span class="pre">true</span></code> as a <em>good measure</em> to have the
 images refreshed on every update since this will increase the time it
-takes before the changes become active. Only set <tt class="docutils literal"><span class="pre">refresh</span></tt> to <tt class="docutils literal"><span class="pre">true</span></tt>
-if the image has changed but the URL has not. Use the <tt class="docutils literal"><span class="pre">dateLastUpdated</span></tt>
-attribute and the <tt class="docutils literal"><span class="pre">STATUS</span></tt> to determine whether the image needs to be
+takes before the changes become active. Only set <code class="docutils literal"><span class="pre">refresh</span></code> to <code class="docutils literal"><span class="pre">true</span></code>
+if the image has changed but the URL has not. Use the <code class="docutils literal"><span class="pre">dateLastUpdated</span></code>
+attribute and the <code class="docutils literal"><span class="pre">STATUS</span></code> to determine whether the image needs to be
 refreshed.</p>
 </div>
 <div class="section" id="parameters">

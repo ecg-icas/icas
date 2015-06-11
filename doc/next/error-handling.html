@@ -125,6 +125,8 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region.html">GET /region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -176,10 +178,10 @@ machine-readable error message is returned. Since some calls may return more
 than one error for a given call, e.g. during the validation of a new ad, all
 error responses contain lists of errors with one or more structured error
 objects in them.</p>
-<p>Each error contains a <tt class="docutils literal"><span class="pre">code</span></tt> and <tt class="docutils literal"><span class="pre">text</span></tt> attributes providing a numeric
+<p>Each error contains a <code class="docutils literal"><span class="pre">code</span></code> and <code class="docutils literal"><span class="pre">text</span></code> attributes providing a numeric
 error code and a simple English error message. An error may contain a
-<tt class="docutils literal"><span class="pre">field</span></tt> attribute describing the field where the error occurred and an
-additonal <tt class="docutils literal"><span class="pre">arg</span></tt> attribute further specifying the error, i.e. the maximum
+<code class="docutils literal"><span class="pre">field</span></code> attribute describing the field where the error occurred and an
+additonal <code class="docutils literal"><span class="pre">arg</span></code> attribute further specifying the error, i.e. the maximum
 length of a field in case of a &#8220;string too long&#8221; error.</p>
 <p>The validation will first check if the input parameters are of the correct type,
 i.e. an integer should be an integer, not a string or a decimal value.

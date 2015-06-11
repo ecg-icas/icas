@@ -125,6 +125,8 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region.html">GET /region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -301,7 +303,7 @@ GET parameters</p>
 <tbody valign="top">
 <tr class="row-even"><td>response_type</td>
 <td>Required</td>
-<td>Must be set to <tt class="docutils literal"><span class="pre">code</span></tt></td>
+<td>Must be set to <code class="docutils literal"><span class="pre">code</span></code></td>
 </tr>
 <tr class="row-odd"><td>client_id</td>
 <td>Required</td>
@@ -309,7 +311,7 @@ GET parameters</p>
 </tr>
 <tr class="row-even"><td>scope</td>
 <td>Required</td>
-<td>The requested scope as in <a class="reference internal" href="#scopes"><em>Scopes</em></a></td>
+<td>The requested scope as in <a class="reference internal" href="#scopes"><span>Scopes</span></a></td>
 </tr>
 <tr class="row-odd"><td>redirect_uri</td>
 <td>Optional</td>
@@ -331,7 +333,7 @@ Host: auth.demo.qa-mp.so
 <div class="section" id="step-2-redirect-to-the-redirect-uri">
 <h3>Step 2: Redirect to the redirect_uri<a class="headerlink" href="#step-2-redirect-to-the-redirect-uri" title="Permalink to this headline">¶</a></h3>
 <p>After the resource owner logs in and confirms access request of the client the
-authorization server redirects the resource owner to the <tt class="docutils literal"><span class="pre">redirect_uri</span></tt>
+authorization server redirects the resource owner to the <code class="docutils literal"><span class="pre">redirect_uri</span></code>
 specified in the request at step 1 with the following GET parameters</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -380,7 +382,7 @@ Host: yoursite.com
 <tbody valign="top">
 <tr class="row-even"><td>grant_type</td>
 <td>Required</td>
-<td>Must be set to <tt class="docutils literal"><span class="pre">authorization_code</span></tt></td>
+<td>Must be set to <code class="docutils literal"><span class="pre">authorization_code</span></code></td>
 </tr>
 <tr class="row-odd"><td>code</td>
 <td>Required</td>
@@ -427,7 +429,7 @@ format if the token request at step 3 is valid.</p>
 <td>The access token as assigned by the authorization server</td>
 </tr>
 <tr class="row-odd"><td>token_type</td>
-<td>The token type assigned by the authorization server. In this context set to <tt class="docutils literal"><span class="pre">bearer</span></tt>.</td>
+<td>The token type assigned by the authorization server. In this context set to <code class="docutils literal"><span class="pre">bearer</span></code>.</td>
 </tr>
 <tr class="row-even"><td>expires_in</td>
 <td>Expiration time in seconds after which the access token becomes invalid</td>
@@ -436,13 +438,13 @@ format if the token request at step 3 is valid.</p>
 <td>The refresh token for obtaining a new access token</td>
 </tr>
 <tr class="row-even"><td>scope</td>
-<td>The scope of the access token as in <a class="reference internal" href="#scopes"><em>Scopes</em></a></td>
+<td>The scope of the access token as in <a class="reference internal" href="#scopes"><span>Scopes</span></a></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <tt class="docutils literal"><span class="pre">refresh_token</span></tt> field.</p>
+<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <code class="docutils literal"><span class="pre">refresh_token</span></code> field.</p>
 </div>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
@@ -467,7 +469,7 @@ Content-Type: application/json
 <div class="section" id="using-an-access-token">
 <span id="id2"></span><h2>Using an Access Token<a class="headerlink" href="#using-an-access-token" title="Permalink to this headline">¶</a></h2>
 <p>To use the access token for an actual API call you have to provide it in the
-<tt class="docutils literal"><span class="pre">Authorization</span></tt> header as follows:</p>
+<code class="docutils literal"><span class="pre">Authorization</span></code> header as follows:</p>
 <div class="highlight-http"><div class="highlight"><pre>GET /api/sellside/ad
 Host: auth.demo.qa-mp.so
 Authorization: Bearer 1dc19b97-fd12-4feb-8c9d-042b4ba80747
@@ -499,7 +501,7 @@ endpoint</em> with the following parameters is necessary.</p>
 </tr>
 <tr class="row-odd"><td>grant_type</td>
 <td>Required</td>
-<td>Must be set to <tt class="docutils literal"><span class="pre">refresh_token</span></tt></td>
+<td>Must be set to <code class="docutils literal"><span class="pre">refresh_token</span></code></td>
 </tr>
 <tr class="row-even"><td>client_id</td>
 <td>Required</td>
@@ -513,7 +515,7 @@ endpoint</em> with the following parameters is necessary.</p>
 </table>
 <p>If the refresh token request is valid the authorization server returns a new
 access token. The token response is identical to the token response explained
-at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><em>Getting an Access Token</em></a>.</p>
+at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><span>Getting an Access Token</span></a>.</p>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
 Content-Type: application/x-www-form-urlencoded
@@ -572,10 +574,10 @@ the scope assigned to the client making the request.</p>
 <td>Grants write access to most resources</td>
 </tr>
 <tr class="row-even"><td>image</td>
-<td>Grants access to <a class="reference internal" href="reference/get-image.html#get-image"><em>GET /image/{id}</em></a> and <a class="reference internal" href="reference/post-image.html#post-image"><em>POST /image</em></a></td>
+<td>Grants access to <a class="reference internal" href="reference/get-image.html#get-image"><span>GET /image/{id}</span></a> and <a class="reference internal" href="reference/post-image.html#post-image"><span>POST /image</span></a></td>
 </tr>
 <tr class="row-odd"><td>report</td>
-<td>Grants access to <a class="reference internal" href="reference/get-report.html#get-report"><em>GET /report</em></a> v2 only</td>
+<td>Grants access to <a class="reference internal" href="reference/get-report.html#get-report"><span>GET /report</span></a> v2 only</td>
 </tr>
 </tbody>
 </table>

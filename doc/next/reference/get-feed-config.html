@@ -126,6 +126,8 @@
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region.html">GET /region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -174,14 +176,14 @@
             
   <div class="section" id="get-feed-config">
 <span id="index-0"></span><span id="id1"></span><h1>GET /feed/config<a class="headerlink" href="#get-feed-config" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../authentication.html#scopes"><em>Scopes</em></a> <strong>console</strong></p>
+<p><a class="reference internal" href="../authentication.html#scopes"><span>Scopes</span></a> <strong>console</strong></p>
 <p>This URL returns the feed configuration of the current user. To use it set the
-<tt class="docutils literal"><span class="pre">Accept</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.feedconfig-v1+json</span></tt>.</p>
+<code class="docutils literal"><span class="pre">Accept</span></code> header to <code class="docutils literal"><span class="pre">application/sellside.feedconfig-v1+json</span></code>.</p>
 <p>An iCAS user can update his or her ads by describing them in an XML document, called <strong>feed</strong>.
 The iCAS platform reads all user feeds once per day and synchronizes ads in the system.</p>
-<p>The feed configuration object contains an <tt class="docutils literal"><span class="pre">enabled</span></tt> field. It is <strong>true</strong> when the current user
+<p>The feed configuration object contains an <code class="docutils literal"><span class="pre">enabled</span></code> field. It is <strong>true</strong> when the current user
 has enabled feed publication and <strong>false</strong> otherwise. When feed publication is enabled, the
-feed configuration object contains a field <tt class="docutils literal"><span class="pre">feedUrl</span></tt> which contains the configured
+feed configuration object contains a field <code class="docutils literal"><span class="pre">feedUrl</span></code> which contains the configured
 feed url for the current user.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

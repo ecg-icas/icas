@@ -1,33 +1,37 @@
 .. code-block:: javascript
 
   {
-    "id": 1,
+    "links": {
+        "parent": "/api/sellside/region/9009",
+        "self": "/api/sellside/region/1700194"
+    },
+    "id": 1700194,
+    "parentId": 9009,
+    "level": 2,
+    "path": "9009_1700194",
     "label": {
-      "en_CA": "Canada",
-      "fr_CA": "Canada"
+        "en_CA": "Regina Area",
+        "fr_CA": "Regina Area"
     },
     "children": [
-      {
-        "id": 10,
-        "label": {
-          "en_CA": "Quebec",
-          "fr_CA": "Québec"
-        },
-        "children": [
-          {
-            "id": 100,
-            "label": {
-              "en_CA": "Montreal West",
-              "fr_CA": "Montréal-Ouest"
+        {
+            "links": {
+                "parent": "/api/sellside/region/1700194",
+                "self": "/api/sellside/region/1700196"
             },
+            "id": 1700196,
+            "parentId": 1700194,
+            "level": 3,
+            "path": "9009_1700194_1700196",
             "center": {
-              "lat": 45.5088400,
-              "lon": -73.5878100
+                "latitude": 50.448009,
+                "longitude": -104.595177
+            },
+            "label": {
+                "en_CA": "Regina",
+                "fr_CA": "Regina"
             }
-          },
-          ...
-        ]
-      },
-      ...
+        },
+        ...
     ]
   }
