@@ -210,6 +210,13 @@ invalid, i.e. not a positive integer the server returns <strong>400 Bad Request<
 one you want to retrieve. The default is 0 which means that only the current
 level is being returned. To retrieve all sub levels specify a sufficiently
 large number, e.g. 9999.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is deprecated and will be removed after September 2015.  It is
+only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a> and must only be used with the
+other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><em>Category V1 Compatible Endpoints</em></a>. Otherwise, the attributes
+may not be recognized or editable.</p>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The parameter <tt class="docutils literal"><span class="pre">subCategoryLevels</span></tt> is an alias for <tt class="docutils literal"><span class="pre">levels</span></tt> and is

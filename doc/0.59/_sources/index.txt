@@ -49,6 +49,9 @@ History
  * Added :ref:`deprecation_plan`
  * Deprecated :ref:`get_ad_v2`
  * Deprecated :ref:`get_ad_id_v1`
+ * Deprecated :ref:`get_category`
+ * Deprecated :ref:`get_category_id_v1`
+ * Deprecated :ref:`get_category_id_attributes`
  * Deprecated :ref:`post_ad_v1`
  * Deprecated :ref:`put_ad_id_v1`
  * Moved all deprecations to after September 2015

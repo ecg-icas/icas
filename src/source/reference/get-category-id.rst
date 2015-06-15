@@ -51,6 +51,13 @@ one you want to retrieve. The default is 0 which means that only the current
 level is being returned. To retrieve all sub levels specify a sufficiently
 large number, e.g. 9999.
 
+.. warning::
+
+	This call is deprecated and will be removed after September 2015.  It is
+	only compatible with :ref:`categories_v1` and must only be used with the
+	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
+	may not be recognized or editable.
+
 .. note::
 
 	The parameter ``subCategoryLevels`` is an alias for ``levels`` and is

@@ -180,6 +180,13 @@
 <p>This URL returns the known <a class="reference internal" href="../attributes.html#category-attributes"><em>Category Attributes</em></a> for the given category.</p>
 <p>Only categories which have <tt class="docutils literal"><span class="pre">canPlaceAds</span></tt> set to <tt class="docutils literal"><span class="pre">true</span></tt> have attributes.
 For all others an empty list will be returned.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is deprecated and will be removed after September 2015.  It is
+only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a> and must only be used with the
+other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><em>Category V1 Compatible Endpoints</em></a>. Otherwise, the attributes
+may not be recognized or editable.</p>
+</div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
