@@ -25,7 +25,7 @@ each call, as the type checks are considered generic.
 .. code-block:: javascript
 
     400 Bad Request
-    Content-Type: application/sellside.error.list-v1+json;charset=UTF-8
+    Content-Type: application/sellside.error.list-v1+json; charset=utf-8
 
     [
         {

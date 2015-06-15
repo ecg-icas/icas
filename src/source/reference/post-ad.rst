@@ -4,9 +4,25 @@
 POST /ad
 ========
 
+:ref:`post_ad_v2` | :ref:`post_ad_v1`
+
+.. _post_ad_v2:
+
+POST /ad v2
+-----------
+
 **Required Scope:** ``api_rw`` or ``console_rw``
 
-This URL creates a new ad for the current user. If the ad was successfully
+This URL creates a new ad for the current user. To use it set the
+``Content-Type`` header to ``application/sellside.ad-v2+json; charset=utf-8``.
+
+.. warning::
+
+	This call is only compatible with :ref:`categories_v2` and must only
+	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
+	the attributes may not be recognized or editable.
+
+If the ad was successfully
 created then a **201 Created** is returned and the **Location** header
 contains the URL to the newly created ad. The **optional** query parameter
 **_body** with value **true** or **false** can be used to influence
@@ -82,4 +98,29 @@ Errors
 Example
 -------
 
-.. include:: ../examples/post-ad-example.rst
+.. include:: ../examples/post-ad-v2-example.rst
+
+
+.. _post_ad_v1:
+
+POST /ad v1
+-----------
+
+**Required Scope:** ``api_rw`` or ``console_rw``
+
+Version 2 works just like :ref:`post_ad_v2` except that it is compatible with
+:ref:`categories_v1`.  To use it set the ``Content-Type`` header to
+``application/sellside.ad-v1+json; charset=utf-8``.
+
+.. warning::
+
+	This call is deprecated and will be removed after September 2015.  It is
+	only compatible with :ref:`categories_v1` and must only be used with the
+	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
+	may not be recognized or editable.
+
+Example
+-------
+
+.. include:: ../examples/post-ad-v1-example.rst
+

@@ -1,15 +1,31 @@
 .. index:: GET /ad/{id}
+
 .. _get_ad_id:
 
 GET /ad/{id}
 ============
 
+:ref:`get_ad_id_v2` | :ref:`get_ad_id_v1`
+
+.. _get_ad_id_v2:
+
+GET /ad/{id} v2
+---------------
+
 **Required Scope:** ``api_ro`` or ``console_ro``
 
-This URL returns a single ad with the given ``id``. If the ad does not exist
-or does not belong to the user the server returns **404 Not Found**. If the
-``id`` is invalid, i.e. not a positive integer the server returns **400 Bad
-Request**.
+This URL returns a single ad with the given ``id``. To use it set the
+``Accept`` header to ``application/sellside.ad-v2+json``.
+
+If the ad does not exist or does not belong to the user the server returns
+**404 Not Found**. If the ``id`` is invalid, i.e. not a positive integer the
+server returns **400 Bad Request**.
+
+.. warning::
+
+	This call is only compatible with :ref:`categories_v2` and must only
+	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
+	the attributes may not be recognized or editable.
 
 .. note::
 
@@ -43,4 +59,28 @@ id                      1006    type mismatch               the provided value f
 Example
 -------
 
-.. include:: ../examples/ad-example.rst
+.. include:: ../examples/get-ad-id-v2-example.rst
+
+.. _get_ad_id_v1:
+
+GET /ad/{id} v1
+---------------
+
+**Required Scope:** ``api_ro`` or ``console_ro``
+
+Version 2 works just like :ref:`get_ad_id_v2` except that it is compatible
+with :ref:`categories_v1`. To use it set the ``Accept`` header to
+``application/sellside.ad-v1+json``.
+
+.. warning::
+
+	This call is deprecated and will be removed after September 2015.  It is
+	only compatible with :ref:`categories_v1` and must only be used with the
+	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
+	may not be recognized or editable.
+
+Example
+-------
+
+.. include:: ../examples/get-ad-id-v1-example.rst
+

@@ -4,7 +4,7 @@
     Accept: application/sellside.report.summary-v1+json, application/json
 
     200 OK
-    Content-Type: application/sellside.report.summary-v1+json; charset=UTF-8
+    Content-Type: application/sellside.report.summary-v1+json; charset=utf-8
 
     {
       ads: 28496,

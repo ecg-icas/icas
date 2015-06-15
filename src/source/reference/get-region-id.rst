@@ -41,4 +41,4 @@ levels                  2001    invalid argument            not a valid number
 Example
 -------
 
-.. include:: ../examples/region-example.rst
+.. include:: ../examples/get-region-id-example.rst

@@ -2,7 +2,7 @@
 
     POST /api/sellside/report/detail
     Accept: application/sellside.report.detail.response-v1+json, application/json
-    Content-Type: application/sellside.report.detail.request-v1+json
+    Content-Type: application/sellside.report.detail.request-v1+json; charset=utf-8
 
     {
         "startDate": "2015-04-04",

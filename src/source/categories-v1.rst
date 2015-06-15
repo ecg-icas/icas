@@ -21,7 +21,7 @@ depending on your use case. We advise you to get only the parts that you need
 at any given moment and not cache the information since it may be subject to
 change.
 
-.. include:: examples/category-example-v1.rst
+.. include:: examples/get-category-id-v1-example.rst
 
 Fields
 ------
@@ -110,3 +110,16 @@ required attributes and a set of optional attributes which are listed below:
    - Suggested cpc value in euro cents for new ads to be on the first page for
      this category. This value is only shown when **canPlaceAds** is true
 
+.. _categories_v1_compatible_endpoints:
+
+Category V1 Compatible Endpoints
+--------------------------------
+
+The following endpoints are compatible with attributes from :ref:`categories_v1`
+since they either provide or accept the correct attribute keys:
+
+ * :ref:`get_ad_v1`
+ * :ref:`get_ad_v2`
+ * :ref:`get_ad_id_v1`
+ * :ref:`post_ad_v1`
+ * :ref:`put_ad_id_v1`

@@ -29,6 +29,7 @@ Contents
    regions
    error-handling
    api-reference
+   deprecation
 
 
 .. _History:
@@ -39,20 +40,33 @@ History
 
 ..  role:: strike
 
+* v0.59 - 15 Jun 2015 - fs
+
+ * Added :ref:`get_ad_v3`
+ * Added :ref:`get_ad_id_v2`
+ * Added :ref:`post_ad_v2`
+ * Added :ref:`put_ad_id_v2`
+ * Added :ref:`deprecation_plan`
+ * Deprecated :ref:`get_ad_v2`
+ * Deprecated :ref:`get_ad_id_v1`
+ * Deprecated :ref:`post_ad_v1`
+ * Deprecated :ref:`put_ad_id_v1`
+ * Moved all deprecations to after September 2015
+
 * v0.58 - 15 Jun 2015 - fs
 
-  * Updated docs for :ref:`scopes`
-  * Moved all deprecation dates to 'after September 2015'
+ * Updated docs for :ref:`scopes`
+ * Moved all deprecation dates to 'after September 2015'
 
 * v0.57 - 10 Jun 2015 - fs
 
-  * fixed documentation for data type for ad id from ``int`` to ``long``
+ * fixed documentation for data type for ad id from ``int`` to ``long``
 
 * v0.56 - 5 Jun 2015 - tw
 
-  * added :ref:`get_report_summary`
-  * corrected accepted image types to be JPG, GIF, PNG, BMP
-  * added startDate and endDate to /ad call
+ * added :ref:`get_report_summary`
+ * corrected accepted image types to be JPG, GIF, PNG, BMP
+ * added startDate and endDate to /ad call
 
 * v0.55 - 1 Jun 2015 - be
 

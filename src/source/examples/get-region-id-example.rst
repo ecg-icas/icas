@@ -4,9 +4,7 @@
     Accept: application/sellside.region-v1+json, application/json
 
     200 OK HTTP/1.1
-    Content-Type: application/sellside.region-v1+json; charset=UTF-8
-    Oauth-Scope: read
-    Oauth-Scope-Required: read
+    Content-Type: application/sellside.region-v1+json; charset=utf-8
 
     {
         "links": {

@@ -449,19 +449,30 @@ Ads can contain maximum one shipping option per shipping option type.
 
 Shipping option has the following fields:
 
-==============      =========================================================================================================================================================
-field               description
-==============      =========================================================================================================================================================
-type                *SHIP* or *PICKUP*. *SHIP* means the item can be delivered to the buyer. *PICKUP* means the item can be picked up.
-cost                Optional. Cost of shipping. Only valid when type is *SHIP*. Must greater than or equal to 0.
-time                Optional. Time required for shipping. Only valid when type is *SHIP*. Must be one of ``2d-5d``, ``6d-10d`` or ``xd`` where x is a positive integer.
-pickupLocation      Mandatory when type is *PICKUP*. Pick up location of the item. Only valid when type is *PICKUP*.
-==============      =========================================================================================================================================================
+.. list-table::
+ :widths: 20 30 50
+ :header-rows: 1
 
-.. note::
+ * - Field
+   - Mandatory
+   - Description
 
-    Although it is not mandatory, it is highly advised that the caller provides a valid postcode
-    in the pickUpLocation field when sending a shipping option of type *PICKUP*.
+ * - `type`
+   - Mandatory
+   - *SHIP* or *PICKUP*. *SHIP* means the item can be delivered to the buyer. *PICKUP* means the item can be picked up.
+
+ * - `cost`
+   - Optional
+   - Cost of shipping. Only valid when type is *SHIP*. Must greater than or equal to 0.
+
+ * - `time`
+   - Optional
+   - Cost of shipping. Only valid when type is *SHIP*. Must greater than or equal to 0.
+
+ * - `pickupLocation`
+   - Mandatory when type is *PICKUP*
+   - Pick up location of the item.
+
 
 .. code-block:: javascript
 
@@ -475,4 +486,4 @@ pickupLocation      Mandatory when type is *PICKUP*. Pick up location of the ite
 Example
 -------
 
-.. include:: examples/ad-example.rst
+.. include:: examples/get-ad-id-v2-example.rst

@@ -4,7 +4,7 @@
     Accept: application/sellside.report-v2+json
 
     200 OK
-    Content-Type: application/sellside.report-v2+json
+    Content-Type: application/sellside.report-v2+json; charset=utf-8
 
     {
       "createDate":"2014-12-05T14:47:04Z",

@@ -4,16 +4,31 @@
 PUT /ad/{id}
 ============
 
+:ref:`put_ad_id_v2` | :ref:`put_ad_id_v1`
+
+.. _put_ad_id_v2:
+
+PUT /ad/{id} v2
+---------------
+
 **Required Scope:** ``api_rw`` or ``console_rw``
 
-This URL updates the ad with the given ``id``. If the ad was successfully
-updated then a **200 OK** is returned. The **optional** query parameter
-``_body`` with value ``true`` or ``false`` can be used to influence
-whether the response body contains the ad in the body (or not) in case of success.
-By default, this value is ``true``.If the ad does not exist or
-does not belong to the user the server returns **404 Not Found**. If the
-``id`` is invalid, i.e. not a positive integer the server returns **400 Bad
-Request**.
+This URL updates the ad with the given ``id``. To use it set the ``Content-
+Type`` header to ``application/sellside.ad-v2+json; charset=utf-8``.
+
+.. warning::
+
+    This call is only compatible with :ref:`categories_v2` and must only
+    be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
+    the attributes may not be recognized or editable.
+
+If the ad was successfully updated then a **200 OK** is returned. The
+**optional** query parameter ``_body`` with value ``true`` or ``false`` can be
+used to influence whether the response body contains the ad in the body (or
+not) in case of success. By default, this value is ``true``.If the ad does not
+exist or does not belong to the user the server returns **404 Not Found**. If
+the ``id`` is invalid, i.e. not a positive integer the server returns **400
+Bad Request**.
 
 .. note::
 
@@ -102,4 +117,28 @@ Error codes for POST /ad.
 Example
 -------
 
-.. include:: ../examples/put-ad-example.rst
+.. include:: ../examples/put-ad-v2-example.rst
+
+.. _put_ad_id_v1:
+
+PUT /ad/{id} v1
+---------------
+
+**Required Scope:** ``api_rw`` or ``console_rw``
+
+Version 2 works just like :ref:`put_ad_id_v2` except that it is compatible
+with :ref:`categories_v1`. To use it set the ``Content-Type`` header to
+``application/sellside.ad-v1+json; charset=utf-8``.
+
+.. warning::
+
+    This call is deprecated and will be removed after September 2015.  It is
+    only compatible with :ref:`categories_v1` and must only be used with the
+    other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
+    may not be recognized or editable.
+
+Example
+-------
+
+.. include:: ../examples/put-ad-v1-example.rst
+

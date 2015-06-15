@@ -62,7 +62,7 @@ externalId                  "c3po-r2d2"                 string      External id 
 Example
 -------
 
-.. include:: ../examples/report-example-v2.rst
+.. include:: ../examples/get-report-v2-example.rst
 
 .. _get_report_v1:
 
@@ -71,11 +71,10 @@ v1
 
 **Required Scope:** ``api_ro`` or ``console_ro``
 
-Version 1 of this URL returns a performance report for a specific date.
-The report contains statistics for performance events like impressions,
-clicks, url clicks, emails for all ads which received at least one event that
-day.  To use it set the ``Accept`` header to
-``application/sellside.report-v1+json``.
+Version 1 of this URL returns a performance report for a specific date. The
+report contains statistics for performance events like impressions, clicks,
+url clicks, emails for all ads which received at least one event that day.  To
+use it set the ``Accept`` header to ``application/sellside.report-v1+json``.
 
 .. warning::
 
@@ -119,4 +118,4 @@ externalId                  "c3po-r2d2"                 string      External id 
 Example
 ~~~~~~~
 
-.. include:: ../examples/report-example-v1.rst
+.. include:: ../examples/get-report-v1-example.rst

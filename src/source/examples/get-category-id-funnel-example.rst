@@ -4,7 +4,7 @@
     Accept: application/sellside.funnel-v1+json, application/json
 
     200 OK
-    Content-Type: application/sellside.funnel-v1+json
+    Content-Type: application/sellside.funnel-v1+json; charset=utf-8
 
     {
       "cpc": 50,

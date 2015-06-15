@@ -5,19 +5,25 @@
 GET /ad
 =======
 
-`v2`_ | `v1`_
+:ref:`get_ad_v3` | :ref:`get_ad_v2` | :ref:`get_ad_v1`
 
 
-.. _get_ad_v2:
+.. _get_ad_v3:
 
-v2
---
+GET /ad v3
+----------
 
 **Required Scope:** ``api_ro`` or ``console_ro``
 
-Version 2 of this URL returns a list of ads for the current user and the
-total size of the result set matching the filter criteria. To use it set the
-``Accept`` header to ``application/sellside.ad.list-v2+json``.
+This URL returns a list of ads for the current user and the total size of the
+result set matching the filter criteria. To use it set the ``Accept`` header
+to ``application/sellside.ad.list-v3+json``.
+
+.. warning::
+
+	This call is only compatible with :ref:`categories_v2` and must only
+	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
+	the attributes may not be recognized or editable.
 
 The number of ads returned can be limited with the ``limit`` parameter.
 The ``offset`` parameter allows to skip some ads and together with ``limit``
@@ -90,12 +96,35 @@ load on the system.
 Example
 -------
 
-.. include:: ../examples/get-ad-example-v2.rst
+.. include:: ../examples/get-ad-v3-example.rst
+
+.. _get_ad_v2:
+
+GET /ad v2
+----------
+
+**Required Scope:** ``api_ro`` or ``console_ro``
+
+Version 2 works just like :ref:`get_ad_v3` except that it is compatible with
+:ref:`categories_v1`. To use it set the ``Accept`` header to
+``application/sellside.ad.list-v2+json``.
+
+.. warning::
+
+	This call is deprecated and will be removed after September 2015.  It is
+	only compatible with :ref:`categories_v1` and must only be used with the
+	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
+	may not be recognized or editable.
+
+Example
+-------
+
+.. include:: ../examples/get-ad-v2-example.rst
 
 .. _get_ad_v1:
 
-v1
---
+GET /ad v1
+----------
 
 **Required Scope:** ``api_ro`` or ``console_ro``
 
@@ -104,7 +133,10 @@ Version 1 of this URL returns returns a list of ads. To use it set the
 
 .. warning::
 
-    Version 1 is deprecated and will be removed after September 2015.
+	This call is deprecated and will be removed after September 2015.  It is
+	only compatible with :ref:`categories_v1` and must only be used with the
+	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
+	may not be recognized or editable.
 
 Parameters
 ~~~~~~~~~~
@@ -153,4 +185,4 @@ startDate/endDate       2002    out of range                endDate should be eq
 Example
 ~~~~~~~
 
-.. include:: ../examples/get-ad-example-v1.rst
+.. include:: ../examples/get-ad-v1-example.rst

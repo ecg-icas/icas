@@ -596,3 +596,15 @@ Below is a complete example of a non-leaf category:
    :language: javascript
 
 
+.. _categories_v2_compatible_endpoints:
+
+Category V2 Compatible Endpoints
+--------------------------------
+
+The following endpoints are compatible with attributes from :ref:`categories_v2`
+since they either provide or accept the correct attribute keys:
+
+ * :ref:`get_ad_v3`
+ * :ref:`get_ad_id_v2`
+ * :ref:`post_ad_v2`
+ * :ref:`put_ad_id_v2`
