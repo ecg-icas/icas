@@ -4,7 +4,7 @@
 GET /report/summary
 ===================
 
-:ref:`scopes` **report**
+**Required Scope:** ``console_ro``
 
 This URL returns the summarized performance data for all ads (including deleted) from the user in the provided period.
 To use it set the ``Accept`` header to ``application/sellside.report.summary-v1+json``.

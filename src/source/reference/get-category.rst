@@ -4,7 +4,7 @@
 GET /category
 =============
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 This URL returns the category tree or parts of it starting from the **root
 node**. The **root node** is a category node in which you cannot place any
@@ -16,8 +16,9 @@ the root category is returned. To retrieve all sub levels specify a
 sufficiently large number, e.g. 9999.
 
 .. note::
+
 	The parameter ``subCategoryLevels`` is an alias for ``levels`` and is
-	deprecated. It will be removed after 1 Jul 2015.
+	deprecated. It will be removed after September 2015.
 
 
 

@@ -4,7 +4,7 @@
 GET /category/{id}/attributes
 =============================
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 This URL returns the known :ref:`category_attributes` for the given category.
 

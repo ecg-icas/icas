@@ -4,7 +4,7 @@
 GET /category/{id}
 ==================
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 This URL returns the category tree or parts of it starting from the node
 with the given category ``id``. If the category does not exist the server

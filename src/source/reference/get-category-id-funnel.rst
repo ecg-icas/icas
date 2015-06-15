@@ -4,7 +4,7 @@
 GET /category/{id}/funnel
 =========================
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 This URL returns performance predictions such as number of impressions, clicks
 and url clicks for a given category and cpc value.

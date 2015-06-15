@@ -13,7 +13,7 @@ GET /ad
 v2
 --
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 Version 2 of this URL returns a list of ads for the current user and the
 total size of the result set matching the filter criteria. To use it set the
@@ -97,14 +97,14 @@ Example
 v1
 --
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 Version 1 of this URL returns returns a list of ads. To use it set the
 ``Accept`` header to ``application/sellside.ad.list-v1+json``.
 
 .. warning::
 
-    Version 1 is deprecated and will be removed on 1\ :sup:`st` May 2015.
+    Version 1 is deprecated and will be removed after September 2015.
 
 Parameters
 ~~~~~~~~~~

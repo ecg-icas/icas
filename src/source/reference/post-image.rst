@@ -5,7 +5,7 @@
 POST /image
 ===========
 
-:ref:`scopes` **image**
+**Required Scope:** ``console_rw``
 
 This URL allows uploading of images.
 An image upload request must be a multipart form-data request as specified in `RFC 2388`_.

@@ -9,7 +9,7 @@ Categories V1
 
 .. warning::
 
-    Version 1 is deprecated and will be removed at a later point.
+    Version 1 is deprecated and will be removed after September 2015.
 
 The category tree contains all the categories available for placing ads. Each
 category has a unique id, a parent id, a label and a list of child categories.

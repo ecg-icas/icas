@@ -4,7 +4,7 @@
 PUT /ad/{id}/status
 ===================
 
-:ref:`scopes` **write**
+**Required Scope:** ``api_rw`` or ``console_rw``
 
 This URL updates the status of the ad with the given ``id``. If the ad does
 not exist or does not belong to the user the server returns **404 Not Found**.

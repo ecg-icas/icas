@@ -4,7 +4,7 @@
 GET /feed/config
 ================
 
-:ref:`scopes` **console**
+**Required Scope:** ``console_ro``
 
 This URL returns the feed configuration of the current user. To use it set the
 ``Accept`` header to ``application/sellside.feedconfig-v1+json``.

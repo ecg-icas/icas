@@ -4,7 +4,7 @@
 GET /region/{id}
 ==================
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 This URL returns the region tree or parts of it starting from the node
 with the given region ``id``. If the region does not exist the server

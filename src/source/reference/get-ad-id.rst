@@ -4,7 +4,7 @@
 GET /ad/{id}
 ============
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 This URL returns a single ad with the given ``id``. If the ad does not exist
 or does not belong to the user the server returns **404 Not Found**. If the

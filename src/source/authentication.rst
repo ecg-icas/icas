@@ -149,7 +149,7 @@ GET parameters
 
  * - scope
    - Required
-   - The requested scope as in :ref:`scopes`
+   - The scope requested by the client as in :ref:`scopes`
 
  * - redirect_uri
    - Optional
@@ -284,7 +284,7 @@ format if the token request at step 3 is valid.
         "token_type"    : "bearer",
         "expires_in"    : 300,
         "refresh_token" : "7432aa20-97d1-4426-bab7-dbeed8b5d997",
-        "scope"         : "read write"
+        "scope"         : "api_ro api_rw"
     }
 
 .. _using_an_access_token:
@@ -355,7 +355,7 @@ at step 4 of :ref:`obtaining_an_access_token`.
         "token_type"    : "bearer",
         "expires_in"    : 300,
         "refresh_token" : "fc668806-739d-4089-a9b0-f8ee10e53ded",
-        "scope"         : "read write"
+        "scope"         : "api_ro api_rw"
     }
 
 .. _expiration_times:
@@ -385,9 +385,24 @@ for **60 days**.
 Scopes
 ------
 
-Scopes determine whether you can access a certain resource. The actual scope
-depends on the requested scope as defined in `Getting an Access Token`_ and
-the scope assigned to the client making the request.
+Scopes determine whether you can access a certain resource.
+
+The scopes are modeled per user group and include access to resources for that
+user group. The list of resources that can be accessed with a scope can change
+over time but does not require the user to go through the grant flow again.
+
+The actual scope for a token is the intersection between the scope requested
+by the  client as described in `Getting an Access Token`_ and the scope
+granted by the user which is part of the user record.
+
+.. note::
+
+  During the transition to the new scope system API partners should request
+  scope ``read write api_ro api_rw``. This will work with the legacy and the
+  new scopes. All existing tokens and clients will be migrated to include the
+  new scopes.
+
+  The legacy scopes will be removed after September 2015.
 
 .. list-table::
  :widths: 20 80
@@ -396,15 +411,21 @@ the scope assigned to the client making the request.
  * - Scope
    - Description
 
+ * - api_ro
+   - Grants read access for API partners
+
+ * - api_rw
+   - Grants write access for API partners
+
+ * - console_ro
+   - Grants read access for console applications
+
+ * - console_rw
+   - Grants write access for console applications
+
  * - read
-   - Grants read access to most resources
+   - Legacy scope. Use ``api_ro`` instead
 
  * - write
-   - Grants write access to most resources
-
- * - image
-   - Grants access to :ref:`get_image` and :ref:`post_image`
-
- * - report
-   - Grants access to :ref:`get_report` v2 only
+   - Legacy scope. Use ``api_rw`` instead
 

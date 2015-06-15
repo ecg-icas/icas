@@ -11,7 +11,7 @@ GET /report
 v2
 --
 
-:ref:`scopes` **report**
+**Required Scope:** ``console_ro``
 
 Version 2 of this URL returns a performance report for a date period. The
 report contains statistics for performance events like impressions, clicks,
@@ -69,7 +69,7 @@ Example
 v1
 --
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 Version 1 of this URL returns a performance report for a specific date.
 The report contains statistics for performance events like impressions,
@@ -79,7 +79,7 @@ day.  To use it set the ``Accept`` header to
 
 .. warning::
 
-    Version 1 is deprecated and will be removed on 1\ :sup:`st` May 2015.
+    Version 1 is deprecated and will be removed after September 2015.
 
 Parameters
 ~~~~~~~~~~

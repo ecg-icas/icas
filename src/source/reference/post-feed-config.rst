@@ -4,7 +4,7 @@
 POST /feed/config
 =================
 
-:ref:`scopes` **console**
+**Required Scope:** ``console_rw``
 
 This URL updates the feed configuration of the current user. The feed configuration object must contain a boolean
 field ``enabled``. Depending on its value the feed will be activated or disabled. If the

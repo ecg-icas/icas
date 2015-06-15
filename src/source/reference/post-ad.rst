@@ -4,7 +4,7 @@
 POST /ad
 ========
 
-:ref:`scopes` **write**
+**Required Scope:** ``api_rw`` or ``console_rw``
 
 This URL creates a new ad for the current user. If the ad was successfully
 created then a **201 Created** is returned and the **Location** header

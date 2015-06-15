@@ -4,7 +4,7 @@
 GET /region
 =============
 
-:ref:`scopes` **read**
+**Required Scope:** ``api_ro`` or ``console_ro``
 
 This URL returns the region tree or parts of it starting from the **root
 node**. The **root node** is a region node in which you cannot place any

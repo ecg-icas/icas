@@ -4,7 +4,7 @@
 PUT /ad/{id}
 ============
 
-:ref:`scopes` **write**
+**Required Scope:** ``api_rw`` or ``console_rw``
 
 This URL updates the ad with the given ``id``. If the ad was successfully
 updated then a **200 OK** is returned. The **optional** query parameter

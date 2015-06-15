@@ -39,6 +39,11 @@ History
 
 ..  role:: strike
 
+* v0.58 - 15 Jun 2015 - fs
+
+  * Updated docs for :ref:`scopes`
+  * Moved all deprecation dates to 'after September 2015'
+
 * v0.57 - 10 Jun 2015 - fs
 
   * fixed documentation for data type for ad id from ``int`` to ``long``

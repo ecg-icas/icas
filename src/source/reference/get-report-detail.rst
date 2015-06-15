@@ -4,7 +4,7 @@
 GET /report/detail
 ==================
 
-:ref:`scopes` **console**
+**Required Scope:** ``console_ro``
 
 This URL returns the list of previously submittted reports for the current user. A maximum of 3 reports
 are returned. To use it set the ``Accept`` header to ``application/sellside.report.detail.list-v1+json``.

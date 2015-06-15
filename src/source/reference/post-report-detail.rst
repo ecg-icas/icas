@@ -4,7 +4,7 @@
 POST /report/detail
 ===================
 
-:ref:`scopes` **console**
+**Required Scope:** ``console_rw``
 
 This URL requests a new report for the current user.
 Creating the report may take a long time which depends on the number of ads and the requested date range. Therefore you
