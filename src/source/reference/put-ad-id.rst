@@ -126,7 +126,7 @@ PUT /ad/{id} v1
 
 **Required Scope:** ``api_rw`` or ``console_rw``
 
-Version 2 works just like :ref:`put_ad_id_v2` except that it is compatible
+Version 1 works just like :ref:`put_ad_id_v2` except that it is compatible
 with :ref:`categories_v1`. To use it set the ``Content-Type`` header to
 ``application/sellside.ad-v1+json; charset=utf-8``.
 

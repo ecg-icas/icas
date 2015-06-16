@@ -108,7 +108,7 @@ POST /ad v1
 
 **Required Scope:** ``api_rw`` or ``console_rw``
 
-Version 2 works just like :ref:`post_ad_v2` except that it is compatible with
+Version 1 works just like :ref:`post_ad_v2` except that it is only compatible with
 :ref:`categories_v1`.  To use it set the ``Content-Type`` header to
 ``application/sellside.ad-v1+json; charset=utf-8``.
 

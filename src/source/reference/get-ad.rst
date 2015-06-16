@@ -105,7 +105,7 @@ GET /ad v2
 
 **Required Scope:** ``api_ro`` or ``console_ro``
 
-Version 2 works just like :ref:`get_ad_v3` except that it is compatible with
+Version 2 works just like :ref:`get_ad_v3` except that it is only compatible with
 :ref:`categories_v1`. To use it set the ``Accept`` header to
 ``application/sellside.ad.list-v2+json``.
 
