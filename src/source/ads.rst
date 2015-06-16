@@ -463,11 +463,11 @@ Shipping option has the following fields:
 
  * - `cost`
    - Optional
-   - Cost of shipping. Only valid when type is *SHIP*. Must greater than or equal to 0.
+   - Cost of shipping. Only valid when type is *SHIP*. Must be greater than or equal to 0.
 
  * - `time`
    - Optional
-   - Cost of shipping. Only valid when type is *SHIP*. Must greater than or equal to 0.
+   - Cost of shipping. Only valid when type is *SHIP*. Must be greater than or equal to 0.
 
  * - `pickupLocation`
    - Mandatory when type is *PICKUP*
