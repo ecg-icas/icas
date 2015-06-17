@@ -14,7 +14,7 @@ integer the server returns **400 Bad Request**.
 The ``levels`` parameter specifies how many levels starting from
 the current one you want to retrieve. The default is 0 which means that only
 the current level is being returned. To retrieve all sub levels specify a
-negative number, e.g. -1.
+sufficiently large number, e.g. 9999.
 
 Parameters
 ----------
@@ -36,6 +36,7 @@ Field                   Code    Error message               Description
 id                      2001    invalid argument            not a valid number
 id                      2002    out of range                negative number
 levels                  2001    invalid argument            not a valid number
+levels                  2002    out of range                negative number
 ====================    ====    =======================     ==============================================================================
 
 Example

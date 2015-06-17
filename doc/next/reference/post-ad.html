@@ -176,16 +176,16 @@
             
   <div class="section" id="post-an-ad">
 <span id="post-ad"></span><span id="index-0"></span><h1>POST  /ad<a class="headerlink" href="#post-an-ad" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#post-ad-v2"><em>POST /ad v2</em></a> | <a class="reference internal" href="#post-ad-v1"><em>POST /ad v1</em></a></p>
+<p><a class="reference internal" href="#post-ad-v2"><span>POST /ad v2</span></a> | <a class="reference internal" href="#post-ad-v1"><span>POST /ad v1</span></a></p>
 <div class="section" id="post-ad-v2">
 <span id="id1"></span><h2>POST /ad v2<a class="headerlink" href="#post-ad-v2" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></p>
+<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></p>
 <p>This URL creates a new ad for the current user. To use it set the
-<tt class="docutils literal"><span class="pre">Content-Type</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.ad-v2+json;</span> <span class="pre">charset=utf-8</span></tt>.</p>
+<code class="docutils literal"><span class="pre">Content-Type</span></code> header to <code class="docutils literal"><span class="pre">application/sellside.ad-v2+json;</span> <span class="pre">charset=utf-8</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><em>Categories V2</em></a> and must only
-be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><em>Category V2 Compatible Endpoints</em></a>. Otherwise,
+<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span>Categories V2</span></a> and must only
+be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><span>Category V2 Compatible Endpoints</span></a>. Otherwise,
 the attributes may not be recognized or editable.</p>
 </div>
 <p>If the ad was successfully
@@ -225,10 +225,10 @@ specified as <em>1050</em>. This applies to <strong>price</strong>, <strong>cpc<
 <p>The <strong>postCode</strong> is optional. In case it is not specified, its value is set to
 <strong>Heel Nederland</strong>.</p>
 <p>The <strong>images</strong> field is optional and can contain a list of up to 8
-<a class="reference internal" href="../ads.html#ad-image-objects"><em>Image Objects</em></a> which contain either the URL of the image
-or a unique identifier provided by <a class="reference internal" href="post-image.html#post-image"><em>POST /image</em></a>.</p>
+<a class="reference internal" href="../ads.html#ad-image-objects"><span>Image Objects</span></a> which contain either the URL of the image
+or a unique identifier provided by <a class="reference internal" href="post-image.html#post-image"><span>POST /image</span></a>.</p>
 <p>The <strong>attributes</strong> field is optional and can contain a list of
-<a class="reference internal" href="../attributes.html#user-defined-attributes"><em>User-Defined Attributes</em></a>.</p>
+<a class="reference internal" href="../attributes.html#user-defined-attributes"><span>User-Defined Attributes</span></a>.</p>
 </div>
 <div class="section" id="parameters">
 <span id="post-ad-example"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -625,15 +625,15 @@ or a unique identifier provided by <a class="reference internal" href="post-imag
 </div>
 <div class="section" id="post-ad-v1">
 <span id="id2"></span><h2>POST /ad v1<a class="headerlink" href="#post-ad-v1" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></p>
-<p>Version 1 works just like <a class="reference internal" href="#post-ad-v2"><em>POST /ad v2</em></a> except that it is only compatible with
-<a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a>.  To use it set the <tt class="docutils literal"><span class="pre">Content-Type</span></tt> header to
-<tt class="docutils literal"><span class="pre">application/sellside.ad-v1+json;</span> <span class="pre">charset=utf-8</span></tt>.</p>
+<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></p>
+<p>Version 1 works just like <a class="reference internal" href="#post-ad-v2"><span>POST /ad v2</span></a> except that it is only compatible with
+<a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a>.  To use it set the <code class="docutils literal"><span class="pre">Content-Type</span></code> header to
+<code class="docutils literal"><span class="pre">application/sellside.ad-v1+json;</span> <span class="pre">charset=utf-8</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is deprecated and will be removed after September 2015.  It is
-only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a> and must only be used with the
-other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><em>Category V1 Compatible Endpoints</em></a>. Otherwise, the attributes
+only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a> and must only be used with the
+other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span>Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
 may not be recognized or editable.</p>
 </div>
 </div>

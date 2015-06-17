@@ -176,15 +176,15 @@
             
   <div class="section" id="get-region-id">
 <span id="index-0"></span><span id="id1"></span><h1>GET /region/{id}<a class="headerlink" href="#get-region-id" title="Permalink to this headline">¶</a></h1>
-<p><strong>Required Scope:</strong> <tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></p>
+<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></p>
 <p>This URL returns the region tree or parts of it starting from the node
-with the given region <tt class="docutils literal"><span class="pre">id</span></tt>. If the region does not exist the server
-returns <strong>404 Not Found</strong>. If the <tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e. not a positive
+with the given region <code class="docutils literal"><span class="pre">id</span></code>. If the region does not exist the server
+returns <strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive
 integer the server returns <strong>400 Bad Request</strong>.</p>
-<p>The <tt class="docutils literal"><span class="pre">levels</span></tt> parameter specifies how many levels starting from
+<p>The <code class="docutils literal"><span class="pre">levels</span></code> parameter specifies how many levels starting from
 the current one you want to retrieve. The default is 0 which means that only
 the current level is being returned. To retrieve all sub levels specify a
-negative number, e.g. -1.</p>
+sufficiently large number, e.g. 9999.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -246,6 +246,11 @@ negative number, e.g. -1.</p>
 <td>2001</td>
 <td>invalid argument</td>
 <td>not a valid number</td>
+</tr>
+<tr class="row-odd"><td>levels</td>
+<td>2002</td>
+<td>out of range</td>
+<td>negative number</td>
 </tr>
 </tbody>
 </table>
