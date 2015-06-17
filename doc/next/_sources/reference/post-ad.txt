@@ -1,8 +1,9 @@
 .. index:: POST /ad
 .. _post_ad:
 
-POST /ad
-========
+POST |an|/ad
+============
+.. |an| unicode:: 0x20 .. Workaround for ad blocker: apparently it blocks a section with id 'post-ad'
 
 :ref:`post_ad_v2` | :ref:`post_ad_v1`
 
