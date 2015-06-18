@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Error Handling &mdash; iCAS Sellside API 0.59 documentation</title>
+  <title>Error Handling &mdash; iCAS Sellside API 0.60 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.59 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.60 documentation" href="index.html"/>
         <link rel="next" title="API Reference" href="api-reference.html"/>
         <link rel="prev" title="Regions" href="regions.html"/> 
 
@@ -178,10 +178,10 @@ machine-readable error message is returned. Since some calls may return more
 than one error for a given call, e.g. during the validation of a new ad, all
 error responses contain lists of errors with one or more structured error
 objects in them.</p>
-<p>Each error contains a <code class="docutils literal"><span class="pre">code</span></code> and <code class="docutils literal"><span class="pre">text</span></code> attributes providing a numeric
+<p>Each error contains a <tt class="docutils literal"><span class="pre">code</span></tt> and <tt class="docutils literal"><span class="pre">text</span></tt> attributes providing a numeric
 error code and a simple English error message. An error may contain a
-<code class="docutils literal"><span class="pre">field</span></code> attribute describing the field where the error occurred and an
-additonal <code class="docutils literal"><span class="pre">arg</span></code> attribute further specifying the error, i.e. the maximum
+<tt class="docutils literal"><span class="pre">field</span></tt> attribute describing the field where the error occurred and an
+additonal <tt class="docutils literal"><span class="pre">arg</span></tt> attribute further specifying the error, i.e. the maximum
 length of a field in case of a &#8220;string too long&#8221; error.</p>
 <p>The validation will first check if the input parameters are of the correct type,
 i.e. an integer should be an integer, not a string or a decimal value.
@@ -243,7 +243,7 @@ each call, as the type checks are considered generic.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.59',
+            VERSION:'0.60',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

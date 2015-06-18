@@ -37,8 +37,12 @@ Contents
 History
 =======
 
-
 ..  role:: strike
+
+* v0.60 - 17 Jun 2015 - ak
+
+ * :ref:`get_region_id`: added error code "2002 Out of range"
+ * :ref:`post_ad`: fixed AdBlocker issue
 
 * v0.59 - 15 Jun 2015 - fs
 
@@ -63,13 +67,13 @@ History
 
 * v0.57 - 10 Jun 2015 - fs
 
- * fixed documentation for data type for ad id from ``int`` to ``long``
+ * Fixed documentation for data type for ad id from ``int`` to ``long``
 
 * v0.56 - 5 Jun 2015 - tw
 
- * added :ref:`get_report_summary`
- * corrected accepted image types to be JPG, GIF, PNG, BMP
- * added startDate and endDate to /ad call
+ * Added :ref:`get_report_summary`
+ * Corrected accepted image types to be JPG, GIF, PNG, BMP
+ * Added startDate and endDate to /ad call
 
 * v0.55 - 1 Jun 2015 - be
 

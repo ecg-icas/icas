@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    GET /category/?levels=1
+    GET /category/1?levels=1
     Accept: application/sellside.category-v1+json, application/json
 
     200 OK

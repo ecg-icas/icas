@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Categories V1 &mdash; iCAS Sellside API 0.59 documentation</title>
+  <title>Categories V1 &mdash; iCAS Sellside API 0.60 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.59 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.60 documentation" href="index.html"/>
         <link rel="up" title="Categories" href="categories.html"/>
         <link rel="next" title="Categories V2" href="categories-v2.html"/>
         <link rel="prev" title="Categories" href="categories.html"/> 
@@ -115,7 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad.html">GET /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/post-ad.html">POST /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id.html">PUT /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category.html">GET /category</a></li>
@@ -188,7 +188,7 @@ minimum and maximum total budgets are specified.</p>
 depending on your use case. We advise you to get only the parts that you need
 at any given moment and not cache the information since it may be subject to
 change.</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/</span><span class="mi">1</span><span class="o">?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -397,7 +397,7 @@ since they either provide or accept the correct attribute keys:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.59',
+            VERSION:'0.60',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /ad/{id}/funnel &mdash; iCAS Sellside API 0.59 documentation</title>
+  <title>GET /ad/{id}/funnel &mdash; iCAS Sellside API 0.60 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.59 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.60 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="POST /ad" href="post-ad.html"/>
         <link rel="prev" title="GET /ad/{id}" href="get-ad-id.html"/> 
@@ -176,15 +176,15 @@
             
   <div class="section" id="get-ad-id-funnel">
 <span id="index-0"></span><span id="id1"></span><h1>GET /ad/{id}/funnel<a class="headerlink" href="#get-ad-id-funnel" title="Permalink to this headline">¶</a></h1>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></p>
+<p><strong>Required Scope:</strong> <tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></p>
 <p>This URL returns performance predictions such as number of impressions, clicks
 and url clicks for a given ad and cpc value.</p>
 <p>The endpoint also returns information regarding the current page on which the
 ad is displayed and the required cpc value which would place the ad on page
-one. If <code class="docutils literal"><span class="pre">cpc</span></code> is greater than <code class="docutils literal"><span class="pre">maxCpc</span></code> then this ad does not perform well
+one. If <tt class="docutils literal"><span class="pre">cpc</span></tt> is greater than <tt class="docutils literal"><span class="pre">maxCpc</span></tt> then this ad does not perform well
 enough to be placed on page one.</p>
 <p>If the performance of an ad cannot be predicted yet, the server returns a
-<code class="docutils literal"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code> response with an empty body. This can happen when, for
+<tt class="docutils literal"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></tt> response with an empty body. This can happen when, for
 instance, the ad is the only one in a category and no reference ads exist yet
 from which to derive a performance prediction.</p>
 <div class="section" id="parameters">
@@ -304,7 +304,7 @@ from which to derive a performance prediction.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.59',
+            VERSION:'0.60',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.59 documentation</title>
+  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.60 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.59 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.60 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="PUT /ad/{id}/status" href="put-ad-id-status.html"/>
         <link rel="prev" title="POST /ad" href="post-ad.html"/> 
@@ -176,50 +176,50 @@
             
   <div class="section" id="put-ad-id">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}<a class="headerlink" href="#put-ad-id" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#put-ad-id-v2"><span>PUT /ad/{id} v2</span></a> | <a class="reference internal" href="#put-ad-id-v1"><span>PUT /ad/{id} v1</span></a></p>
+<p><a class="reference internal" href="#put-ad-id-v2"><em>PUT /ad/{id} v2</em></a> | <a class="reference internal" href="#put-ad-id-v1"><em>PUT /ad/{id} v1</em></a></p>
 <div class="section" id="put-ad-id-v2">
 <span id="id2"></span><h2>PUT /ad/{id} v2<a class="headerlink" href="#put-ad-id-v2" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></p>
-<p>This URL updates the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. To use it set the <code class="docutils literal"><span class="pre">Content-</span>
-<span class="pre">Type</span></code> header to <code class="docutils literal"><span class="pre">application/sellside.ad-v2+json;</span> <span class="pre">charset=utf-8</span></code>.</p>
+<p><strong>Required Scope:</strong> <tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></p>
+<p>This URL updates the ad with the given <tt class="docutils literal"><span class="pre">id</span></tt>. To use it set the <tt class="docutils literal"><span class="pre">Content-</span>
+<span class="pre">Type</span></tt> header to <tt class="docutils literal"><span class="pre">application/sellside.ad-v2+json;</span> <span class="pre">charset=utf-8</span></tt>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span>Categories V2</span></a> and must only
-be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><span>Category V2 Compatible Endpoints</span></a>. Otherwise,
+<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><em>Categories V2</em></a> and must only
+be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><em>Category V2 Compatible Endpoints</em></a>. Otherwise,
 the attributes may not be recognized or editable.</p>
 </div>
 <p>If the ad was successfully updated then a <strong>200 OK</strong> is returned. The
-<strong>optional</strong> query parameter <code class="docutils literal"><span class="pre">_body</span></code> with value <code class="docutils literal"><span class="pre">true</span></code> or <code class="docutils literal"><span class="pre">false</span></code> can be
+<strong>optional</strong> query parameter <tt class="docutils literal"><span class="pre">_body</span></tt> with value <tt class="docutils literal"><span class="pre">true</span></tt> or <tt class="docutils literal"><span class="pre">false</span></tt> can be
 used to influence whether the response body contains the ad in the body (or
-not) in case of success. By default, this value is <code class="docutils literal"><span class="pre">true</span></code>.If the ad does not
+not) in case of success. By default, this value is <tt class="docutils literal"><span class="pre">true</span></tt>.If the ad does not
 exist or does not belong to the user the server returns <strong>404 Not Found</strong>. If
-the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
+the <tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e. not a positive integer the server returns <strong>400
 Bad Request</strong>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Updating deleted ads is not allowed and will result in a <strong>400 Bad Request</strong>.</p>
 </div>
-<p>All writeable fields listed in <a class="reference internal" href="../ads.html#ad-fields"><span>Fields</span></a> can be changed. Attempting to
+<p>All writeable fields listed in <a class="reference internal" href="../ads.html#ad-fields"><em>Fields</em></a> can be changed. Attempting to
 change a non-writeable field results in a <strong>400 Bad Request</strong></p>
 <p>All validation rules for creating an ad apply exactly the same.</p>
 <p>Additionally, the following rules apply:</p>
-<p>The <a class="reference internal" href="../ads.html#ad-totalbudget"><span>totalBudget</span></a> cannot be lower than the minimum budget as
-defined in the category and also cannot be lower than the sum of <a class="reference internal" href="../ads.html#ad-cpc"><span>cpc</span></a> and
-the current value of <a class="reference internal" href="../ads.html#ad-spentbudget"><span>spentBudget</span></a>. Similarly, the <a class="reference internal" href="../ads.html#ad-dailybudget"><span>dailyBudget</span></a>
+<p>The <a class="reference internal" href="../ads.html#ad-totalbudget"><em>totalBudget</em></a> cannot be lower than the minimum budget as
+defined in the category and also cannot be lower than the sum of <a class="reference internal" href="../ads.html#ad-cpc"><em>cpc</em></a> and
+the current value of <a class="reference internal" href="../ads.html#ad-spentbudget"><em>spentBudget</em></a>. Similarly, the <a class="reference internal" href="../ads.html#ad-dailybudget"><em>dailyBudget</em></a>
 cannot be lower than than the minimum daily budget as defined in the category and
-also cannot be lower than the sum of <a class="reference internal" href="../ads.html#ad-cpc"><span>cpc</span></a> and the current value of
+also cannot be lower than the sum of <a class="reference internal" href="../ads.html#ad-cpc"><em>cpc</em></a> and the current value of
 <strong>dailySpent</strong>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The value of <strong>dailySpent</strong> is not exposed via the API.</p>
 </div>
-<p>If the <a class="reference internal" href="../ads.html#ad-images"><span>Images</span></a> attribute contains links to images that need to be refreshed
-then the <code class="docutils literal"><span class="pre">refresh</span></code> attribute has to be set to <code class="docutils literal"><span class="pre">true</span></code>. This is only
+<p>If the <a class="reference internal" href="../ads.html#ad-images"><em>Images</em></a> attribute contains links to images that need to be refreshed
+then the <tt class="docutils literal"><span class="pre">refresh</span></tt> attribute has to be set to <tt class="docutils literal"><span class="pre">true</span></tt>. This is only
 necessary if the image has changed but the URL has not. See
-<a class="reference internal" href="../ads.html#ad-image-objects"><span>Image Objects</span></a> for more details.</p>
+<a class="reference internal" href="../ads.html#ad-image-objects"><em>Image Objects</em></a> for more details.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><span>pageNumber</span></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><span>suggestedCpcForPageOne</span></a> are
+<p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><em>pageNumber</em></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a> are
 currently expensive to compute. If you do not need their values consider
 excluding them to speed up the response. To exclude the fields add the
 following parameter to the request URL.</p>
@@ -229,11 +229,11 @@ following parameter to the request URL.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You should not set <code class="docutils literal"><span class="pre">refresh</span></code> to <code class="docutils literal"><span class="pre">true</span></code> as a <em>good measure</em> to have the
+<p class="last">You should not set <tt class="docutils literal"><span class="pre">refresh</span></tt> to <tt class="docutils literal"><span class="pre">true</span></tt> as a <em>good measure</em> to have the
 images refreshed on every update since this will increase the time it
-takes before the changes become active. Only set <code class="docutils literal"><span class="pre">refresh</span></code> to <code class="docutils literal"><span class="pre">true</span></code>
-if the image has changed but the URL has not. Use the <code class="docutils literal"><span class="pre">dateLastUpdated</span></code>
-attribute and the <code class="docutils literal"><span class="pre">STATUS</span></code> to determine whether the image needs to be
+takes before the changes become active. Only set <tt class="docutils literal"><span class="pre">refresh</span></tt> to <tt class="docutils literal"><span class="pre">true</span></tt>
+if the image has changed but the URL has not. Use the <tt class="docutils literal"><span class="pre">dateLastUpdated</span></tt>
+attribute and the <tt class="docutils literal"><span class="pre">STATUS</span></tt> to determine whether the image needs to be
 refreshed.</p>
 </div>
 </div>
@@ -685,15 +685,15 @@ refreshed.</p>
 </div>
 <div class="section" id="put-ad-id-v1">
 <span id="id3"></span><h2>PUT /ad/{id} v1<a class="headerlink" href="#put-ad-id-v1" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></p>
-<p>Version 1 works just like <a class="reference internal" href="#put-ad-id-v2"><span>PUT /ad/{id} v2</span></a> except that it is compatible
-with <a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a>. To use it set the <code class="docutils literal"><span class="pre">Content-Type</span></code> header to
-<code class="docutils literal"><span class="pre">application/sellside.ad-v1+json;</span> <span class="pre">charset=utf-8</span></code>.</p>
+<p><strong>Required Scope:</strong> <tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></p>
+<p>Version 1 works just like <a class="reference internal" href="#put-ad-id-v2"><em>PUT /ad/{id} v2</em></a> except that it is compatible
+with <a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a>. To use it set the <tt class="docutils literal"><span class="pre">Content-Type</span></tt> header to
+<tt class="docutils literal"><span class="pre">application/sellside.ad-v1+json;</span> <span class="pre">charset=utf-8</span></tt>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is deprecated and will be removed after September 2015.  It is
-only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a> and must only be used with the
-other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span>Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
+only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a> and must only be used with the
+other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><em>Category V1 Compatible Endpoints</em></a>. Otherwise, the attributes
 may not be recognized or editable.</p>
 </div>
 </div>
@@ -825,7 +825,7 @@ may not be recognized or editable.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.59',
+            VERSION:'0.60',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

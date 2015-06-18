@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /region/{id} &mdash; iCAS Sellside API 0.59 documentation</title>
+  <title>GET /region/{id} &mdash; iCAS Sellside API 0.60 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.59 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.60 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /report" href="get-report.html"/>
         <link rel="prev" title="POST /image" href="post-image.html"/> 
@@ -115,7 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-ad.html">GET /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
@@ -184,7 +184,7 @@ integer the server returns <strong>400 Bad Request</strong>.</p>
 <p>The <tt class="docutils literal"><span class="pre">levels</span></tt> parameter specifies how many levels starting from
 the current one you want to retrieve. The default is 0 which means that only
 the current level is being returned. To retrieve all sub levels specify a
-negative number, e.g. -1.</p>
+sufficiently large number, e.g. 9999.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -246,6 +246,11 @@ negative number, e.g. -1.</p>
 <td>2001</td>
 <td>invalid argument</td>
 <td>not a valid number</td>
+</tr>
+<tr class="row-odd"><td>levels</td>
+<td>2002</td>
+<td>out of range</td>
+<td>negative number</td>
 </tr>
 </tbody>
 </table>
@@ -459,7 +464,7 @@ negative number, e.g. -1.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.59',
+            VERSION:'0.60',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Authentication &mdash; iCAS Sellside API 0.59 documentation</title>
+  <title>Authentication &mdash; iCAS Sellside API 0.60 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.59 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.60 documentation" href="index.html"/>
         <link rel="next" title="Advertisements" href="ads.html"/>
         <link rel="prev" title="Overview" href="overview.html"/> 
 
@@ -303,7 +303,7 @@ GET parameters</p>
 <tbody valign="top">
 <tr class="row-even"><td>response_type</td>
 <td>Required</td>
-<td>Must be set to <code class="docutils literal"><span class="pre">code</span></code></td>
+<td>Must be set to <tt class="docutils literal"><span class="pre">code</span></tt></td>
 </tr>
 <tr class="row-odd"><td>client_id</td>
 <td>Required</td>
@@ -311,7 +311,7 @@ GET parameters</p>
 </tr>
 <tr class="row-even"><td>scope</td>
 <td>Required</td>
-<td>The scope requested by the client as in <a class="reference internal" href="#scopes"><span>Scopes</span></a></td>
+<td>The scope requested by the client as in <a class="reference internal" href="#scopes"><em>Scopes</em></a></td>
 </tr>
 <tr class="row-odd"><td>redirect_uri</td>
 <td>Optional</td>
@@ -333,7 +333,7 @@ Host: auth.demo.qa-mp.so
 <div class="section" id="step-2-redirect-to-the-redirect-uri">
 <h3>Step 2: Redirect to the redirect_uri<a class="headerlink" href="#step-2-redirect-to-the-redirect-uri" title="Permalink to this headline">¶</a></h3>
 <p>After the resource owner logs in and confirms access request of the client the
-authorization server redirects the resource owner to the <code class="docutils literal"><span class="pre">redirect_uri</span></code>
+authorization server redirects the resource owner to the <tt class="docutils literal"><span class="pre">redirect_uri</span></tt>
 specified in the request at step 1 with the following GET parameters</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -382,7 +382,7 @@ Host: yoursite.com
 <tbody valign="top">
 <tr class="row-even"><td>grant_type</td>
 <td>Required</td>
-<td>Must be set to <code class="docutils literal"><span class="pre">authorization_code</span></code></td>
+<td>Must be set to <tt class="docutils literal"><span class="pre">authorization_code</span></tt></td>
 </tr>
 <tr class="row-odd"><td>code</td>
 <td>Required</td>
@@ -429,7 +429,7 @@ format if the token request at step 3 is valid.</p>
 <td>The access token as assigned by the authorization server</td>
 </tr>
 <tr class="row-odd"><td>token_type</td>
-<td>The token type assigned by the authorization server. In this context set to <code class="docutils literal"><span class="pre">bearer</span></code>.</td>
+<td>The token type assigned by the authorization server. In this context set to <tt class="docutils literal"><span class="pre">bearer</span></tt>.</td>
 </tr>
 <tr class="row-even"><td>expires_in</td>
 <td>Expiration time in seconds after which the access token becomes invalid</td>
@@ -438,13 +438,13 @@ format if the token request at step 3 is valid.</p>
 <td>The refresh token for obtaining a new access token</td>
 </tr>
 <tr class="row-even"><td>scope</td>
-<td>The scope of the access token as in <a class="reference internal" href="#scopes"><span>Scopes</span></a></td>
+<td>The scope of the access token as in <a class="reference internal" href="#scopes"><em>Scopes</em></a></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <code class="docutils literal"><span class="pre">refresh_token</span></code> field.</p>
+<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <tt class="docutils literal"><span class="pre">refresh_token</span></tt> field.</p>
 </div>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
@@ -469,7 +469,7 @@ Content-Type: application/json
 <div class="section" id="using-an-access-token">
 <span id="id2"></span><h2>Using an Access Token<a class="headerlink" href="#using-an-access-token" title="Permalink to this headline">¶</a></h2>
 <p>To use the access token for an actual API call you have to provide it in the
-<code class="docutils literal"><span class="pre">Authorization</span></code> header as follows:</p>
+<tt class="docutils literal"><span class="pre">Authorization</span></tt> header as follows:</p>
 <div class="highlight-http"><div class="highlight"><pre>GET /api/sellside/ad
 Host: auth.demo.qa-mp.so
 Authorization: Bearer 1dc19b97-fd12-4feb-8c9d-042b4ba80747
@@ -501,7 +501,7 @@ endpoint</em> with the following parameters is necessary.</p>
 </tr>
 <tr class="row-odd"><td>grant_type</td>
 <td>Required</td>
-<td>Must be set to <code class="docutils literal"><span class="pre">refresh_token</span></code></td>
+<td>Must be set to <tt class="docutils literal"><span class="pre">refresh_token</span></tt></td>
 </tr>
 <tr class="row-even"><td>client_id</td>
 <td>Required</td>
@@ -515,7 +515,7 @@ endpoint</em> with the following parameters is necessary.</p>
 </table>
 <p>If the refresh token request is valid the authorization server returns a new
 access token. The token response is identical to the token response explained
-at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><span>Getting an Access Token</span></a>.</p>
+at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><em>Getting an Access Token</em></a>.</p>
 <div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
 Content-Type: application/x-www-form-urlencoded
@@ -563,7 +563,7 @@ granted by the user which is part of the user record.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>During the transition to the new scope system API partners should request
-scope <code class="docutils literal"><span class="pre">read</span> <span class="pre">write</span> <span class="pre">api_ro</span> <span class="pre">api_rw</span></code>. This will work with the legacy and the
+scope <tt class="docutils literal"><span class="pre">read</span> <span class="pre">write</span> <span class="pre">api_ro</span> <span class="pre">api_rw</span></tt>. This will work with the legacy and the
 new scopes. All existing tokens and clients will be migrated to include the
 new scopes.</p>
 <p class="last">The legacy scopes will be removed after September 2015.</p>
@@ -592,10 +592,10 @@ new scopes.</p>
 <td>Grants write access for console applications</td>
 </tr>
 <tr class="row-even"><td>read</td>
-<td>Legacy scope. Use <code class="docutils literal"><span class="pre">api_ro</span></code> instead</td>
+<td>Legacy scope. Use <tt class="docutils literal"><span class="pre">api_ro</span></tt> instead</td>
 </tr>
 <tr class="row-odd"><td>write</td>
-<td>Legacy scope. Use <code class="docutils literal"><span class="pre">api_rw</span></code> instead</td>
+<td>Legacy scope. Use <tt class="docutils literal"><span class="pre">api_rw</span></tt> instead</td>
 </tr>
 </tbody>
 </table>
@@ -640,7 +640,7 @@ new scopes.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.59',
+            VERSION:'0.60',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

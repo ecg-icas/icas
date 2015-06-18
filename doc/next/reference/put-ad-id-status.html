@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id}/status &mdash; iCAS Sellside API 0.59 documentation</title>
+  <title>PUT /ad/{id}/status &mdash; iCAS Sellside API 0.60 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.59 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.60 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /category" href="get-category.html"/>
         <link rel="prev" title="PUT /ad/{id}" href="put-ad-id.html"/> 
@@ -176,16 +176,16 @@
             
   <div class="section" id="put-ad-id-status">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}/status<a class="headerlink" href="#put-ad-id-status" title="Permalink to this headline">¶</a></h1>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></p>
-<p>This URL updates the status of the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. If the ad does
+<p><strong>Required Scope:</strong> <tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></p>
+<p>This URL updates the status of the ad with the given <tt class="docutils literal"><span class="pre">id</span></tt>. If the ad does
 not exist or does not belong to the user the server returns <strong>404 Not Found</strong>.
-If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
+If the <tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e. not a positive integer the server returns <strong>400
 Bad Request</strong>.</p>
 <p>To set the new status append it to the base url. The status can be one of the
 user controlled status values as defined in <a class="reference internal" href="ad-status.html"><em>Ad Status</em></a>.</p>
 <p>Changing the status to <strong>ACTIVE</strong> also changes the number of active
 ads in this category for this user. If the current number of active ads
-for this user in this category exceeds <code class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></code> as defined
+for this user in this category exceeds <tt class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></tt> as defined
 in the category then an error is returned. Setting a different status
 than <strong>ACTIVE</strong> is always allowed.</p>
 <div class="section" id="parameters">
@@ -304,7 +304,7 @@ than <strong>ACTIVE</strong> is always allowed.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.59',
+            VERSION:'0.60',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
