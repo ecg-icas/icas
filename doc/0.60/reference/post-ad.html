@@ -209,8 +209,8 @@ Ads with <strong>status</strong> equals to <strong>PAUSED</strong> do not have t
 specified in euro cents.</p>
 <p>The <strong>priceType</strong> must be one of the valid types listed in <a class="reference internal" href="price-types.html"><em>Price Types</em></a>.
 If the <strong>priceType</strong> is either <strong>FIXED_PRICE</strong> or <strong>BIDDING_FROM</strong> then a
-<strong>price</strong> greater than zero must be specified. For all other price types
-<strong>price</strong> must be omitted.</p>
+<strong>price</strong> in the interval of <tt class="docutils literal"><span class="pre">(0,10000000000]</span></tt> must be specified. For all
+other price types <strong>price</strong> must be omitted.</p>
 <p>A new ad must have a <strong>status</strong> which can be either <em>ACTIVE</em> or <em>PAUSED</em>. An
 active ad is shown on the site whereas a paused ad is not. See
 <a class="reference internal" href="ad-status.html"><em>Ad Status</em></a> for the list of valid ad status values.</p>
@@ -274,10 +274,10 @@ or a unique identifier provided by <a class="reference internal" href="post-imag
 <span id="post-ad-errors"></span><h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="16%" />
+<col width="14%" />
 <col width="3%" />
-<col width="18%" />
-<col width="62%" />
+<col width="17%" />
+<col width="66%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
@@ -480,7 +480,7 @@ or a unique identifier provided by <a class="reference internal" href="post-imag
 <tr class="row-even"><td>price</td>
 <td>2002</td>
 <td>out of range</td>
-<td>price is zero while priceType requires a price greater than zero</td>
+<td>price is not in the interval of <tt class="docutils literal"><span class="pre">(0,10000000000]</span></tt> while priceType requires a valid price</td>
 </tr>
 <tr class="row-odd"><td>priceType</td>
 <td>2001</td>

@@ -334,10 +334,10 @@ refreshed.</p>
 <p>Error codes for POST /ad.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="16%" />
+<col width="14%" />
 <col width="3%" />
-<col width="18%" />
-<col width="62%" />
+<col width="17%" />
+<col width="66%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
@@ -540,7 +540,7 @@ refreshed.</p>
 <tr class="row-even"><td>price</td>
 <td>2002</td>
 <td>out of range</td>
-<td>price is zero while priceType requires a price greater than zero</td>
+<td>price is not in the interval of <tt class="docutils literal"><span class="pre">(0,10000000000]</span></tt> while priceType requires a valid price</td>
 </tr>
 <tr class="row-odd"><td>priceType</td>
 <td>2001</td>

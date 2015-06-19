@@ -43,6 +43,7 @@ History
 
  * :ref:`get_region_id`: added error code "2002 Out of range"
  * :ref:`post_ad`: fixed AdBlocker issue
+ * Added maximum allowed value for **price** (``10000000000`` Euro cents)
 
 * v0.59 - 15 Jun 2015 - fs
 

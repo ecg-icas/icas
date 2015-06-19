@@ -48,8 +48,8 @@ specified in euro cents.
 
 The **priceType** must be one of the valid types listed in :doc:`price-types`.
 If the **priceType** is either **FIXED_PRICE** or **BIDDING_FROM** then a
-**price** greater than zero must be specified. For all other price types
-**price** must be omitted.
+**price** in the interval of ``(0,10000000000]`` must be specified. For all
+other price types **price** must be omitted.
 
 A new ad must have a **status** which can be either *ACTIVE* or *PAUSED*. An
 active ad is shown on the site whereas a paused ad is not. See

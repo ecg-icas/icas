@@ -32,7 +32,8 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_status`                    string     enum               yes         yes
 :ref:`ad_currency`                  string     cat.Currency       yes         no
 :ref:`ad_priceType`                 string     enum               yes         yes
-:ref:`ad_price`                     long       positive           yes         yes
+:ref:`ad_priceUnit`                 string     see below          no          yes
+:ref:`ad_price`                     long       see below          see below   yes
 :ref:`ad_cpc`                       long       positive           no          yes
 :ref:`ad_totalBudget`               long       positive           no          yes
 :ref:`ad_dailyBudget`               long       positive           no          yes
@@ -56,7 +57,6 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_images`                    array      max. 8 items       no          yes
 :ref:`ad_attributes`                array      --                 no          yes
 :ref:`ad_shippingOptions`           array      see below          yes         yes
-:ref:`ad_priceUnit`                 string     see below          no          yes
 :strike:`buyItNowEnabled`           deprecated --                 --          --
 :strike:`paypalEmail`               deprecated --                 --          --
 =================================   ========== ================   =========   ========
@@ -146,8 +146,8 @@ priceType
 
 Must be a valid price type identifier from the list of :ref:`price_types`.
 
-.. index:: price
-.. _ad_price:
+.. index:: priceUnit
+.. _ad_priceUnit:
 
 priceUnit
 """""""""
@@ -155,14 +155,15 @@ priceUnit
 Must be a valid price unit identifier from the list of available price units
 of the category.
 
-.. index:: priceUnit
-.. _ad_priceUnit:
+.. index:: price
+.. _ad_price:
 
 price
 """""
 
 The meaning of the value depends on :ref:`ad_priceType`. If it is
 `FIXED_PRICE` or `BIDDING_FROM` then **price** has to be greater than 0.
+The maximum allowed **price** is ``10000000000`` Euro cents (100.000.000 Euros).
 
 .. index:: cpc
 .. _ad_cpc:

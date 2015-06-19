@@ -1,6 +1,6 @@
-====================    ====    =======================     ==============================================================================
+====================    ====    =======================     ===========================================================================================
 Field                   Code    Error message               Description
-====================    ====    =======================     ==============================================================================
+====================    ====    =======================     ===========================================================================================
 allowContactByEmail     2001    invalid argument            must be *true* or *false*
 attribute.name          2000    missing argument            one of the attributes is wrong: missing the field 'name'
 attribute.name          2004    value too short             one of the attributes is wrong: need at least 1 non-space character
@@ -39,7 +39,7 @@ postcode                2005    value too long              max. length is 6
 price                   1006    type mismatch               not an integer number
 price                   2000    missing argument            not specifying a price for a priceType which requires a price
 price                   2001    invalid argument            specifying a price for a priceType without a price
-price                   2002    out of range                price is zero while priceType requires a price greater than zero
+price                   2002    out of range                price is not in the interval of ``(0,10000000000]`` while priceType requires a valid price
 priceType               2001    invalid argument            not a valid price type
 salutation              2001    invalid argument            not a valid salutation
 sellerName              2000    missing argument            must not be empty
@@ -50,4 +50,4 @@ title                   2000    missing argument            mandatory field
 title                   2002    out of range                max. length is 60
 totalBudget             1006    type mismatch               not an integer number
 totalBudget             2002    out of range                value too low/high
-====================    ====    =======================     ==============================================================================
+====================    ====    =======================     ===========================================================================================
