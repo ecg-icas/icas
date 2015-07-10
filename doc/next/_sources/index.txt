@@ -41,7 +41,7 @@ History
 
 * v0.61 - 02 Jul 2015 - ak
 
- * :ref:`get_ad`: Added `STATUS` as a valid `orderBy` value and removed unused error code "2013 Invalid state"
+ * :ref:`get_ad`: Removed unused error code "2013 Invalid state"
 
 * v0.60 - 17 Jun 2015 - ak
 

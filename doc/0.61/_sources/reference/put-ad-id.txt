@@ -72,7 +72,7 @@ necessary if the image has changed but the URL has not. See
     images refreshed on every update since this will increase the time it
     takes before the changes become active. Only set ``refresh`` to ``true``
     if the image has changed but the URL has not. Use the ``dateLastUpdated``
-    attribute and the ``STATUS`` to determine whether the image needs to be
+    attribute and the ``status`` to determine whether the image needs to be
     refreshed.
 
 .. _put_ad_id_example:
