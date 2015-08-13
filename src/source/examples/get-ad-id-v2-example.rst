@@ -29,7 +29,7 @@
         "suggestedCpcForPageOne": 74,
         "phoneNumber": "0207894561",
         "allowContactByEmail": true,
-        "allowPayPal": true,
+        "allowPaypal": true,
         "dateCreated": "2012-08-31T16:12:53Z",
         "dateLastUpdated": "2012-09-05T04:03:42Z",
         "links": {

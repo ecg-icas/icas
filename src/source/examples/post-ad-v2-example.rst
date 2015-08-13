@@ -22,7 +22,7 @@
         "regionId": 1700195,
         "phoneNumber": "0207894561",
         "allowContactByEmail": true,
-        "allowPayPal": true,
+        "allowPaypal": true,
         "links": {
             "url": "http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3",
             "displayUrl": "www.ourshop.com/Faxes"

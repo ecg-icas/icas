@@ -2,7 +2,7 @@
 Field                   Code    Error message               Description
 ====================    ====    =======================     ===========================================================================================
 allowContactByEmail     2001    invalid argument            must be *true* or *false*
-allowPayPal             2001    invalid argument            must be *true* or *false*
+allowPaypal             2001    invalid argument            must be *true* or *false*
 attribute.name          2000    missing argument            one of the attributes is wrong: missing the field 'name'
 attribute.name          2004    value too short             one of the attributes is wrong: need at least 1 non-space character
 attribute.name          2005    value too long              one of the attributes is wrong: max. length is 32 characters

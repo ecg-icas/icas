@@ -28,7 +28,7 @@
           "sellerName": "Test schildersbedrijf",
           "phoneNumber": "0612345678",
           "allowContactByEmail": true,
-          "allowPayPal": false,
+          "allowPaypal": false,
           "status": "ACTIVE",
           "postcode": "1011DK",
           "pageNumber": 1,
