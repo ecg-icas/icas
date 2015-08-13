@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.62 documentation</title>
+  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.63 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.62 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.63 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="PUT /ad/{id}/status" href="put-ad-id-status.html"/>
         <link rel="prev" title="POST /ad" href="post-ad.html"/> 
@@ -213,10 +213,6 @@ also cannot be lower than the sum of <a class="reference internal" href="../ads.
 <p class="first admonition-title">Note</p>
 <p class="last">The value of <strong>dailySpent</strong> is not exposed via the API.</p>
 </div>
-<p>If the <a class="reference internal" href="../ads.html#ad-images"><em>Images</em></a> attribute contains links to images that need to be refreshed
-then the <tt class="docutils literal"><span class="pre">refresh</span></tt> attribute has to be set to <tt class="docutils literal"><span class="pre">true</span></tt>. This is only
-necessary if the image has changed but the URL has not. See
-<a class="reference internal" href="../ads.html#ad-image-objects"><em>Image Objects</em></a> for more details.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><em>pageNumber</em></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a> are
@@ -226,15 +222,6 @@ following parameter to the request URL.</p>
 <div class="last highlight-python"><div class="highlight"><pre>?_exclude=pageNumber,suggestedCpcForPageOne
 </pre></div>
 </div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You should not set <tt class="docutils literal"><span class="pre">refresh</span></tt> to <tt class="docutils literal"><span class="pre">true</span></tt> as a <em>good measure</em> to have the
-images refreshed on every update since this will increase the time it
-takes before the changes become active. Only set <tt class="docutils literal"><span class="pre">refresh</span></tt> to <tt class="docutils literal"><span class="pre">true</span></tt>
-if the image has changed but the URL has not. Use the <tt class="docutils literal"><span class="pre">dateLastUpdated</span></tt>
-attribute and the <tt class="docutils literal"><span class="pre">status</span></tt> to determine whether the image needs to be
-refreshed.</p>
 </div>
 </div>
 <div class="section" id="parameters">
@@ -831,7 +818,7 @@ may not be recognized or editable.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.62',
+            VERSION:'0.63',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

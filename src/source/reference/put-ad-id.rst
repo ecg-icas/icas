@@ -52,11 +52,6 @@ also cannot be lower than the sum of :ref:`ad_cpc` and the current value of
 
     The value of **dailySpent** is not exposed via the API.
 
-If the :ref:`ad_images` attribute contains links to images that need to be refreshed
-then the ``refresh`` attribute has to be set to ``true``. This is only
-necessary if the image has changed but the URL has not. See
-:ref:`ad_image_objects` for more details.
-
 .. note::
 
     The fields :ref:`ad_pageNumber` and :ref:`ad_suggestedCpcForPageOne` are
@@ -65,15 +60,6 @@ necessary if the image has changed but the URL has not. See
     following parameter to the request URL. ::
 
         ?_exclude=pageNumber,suggestedCpcForPageOne
-
-.. note::
-
-    You should not set ``refresh`` to ``true`` as a *good measure* to have the
-    images refreshed on every update since this will increase the time it
-    takes before the changes become active. Only set ``refresh`` to ``true``
-    if the image has changed but the URL has not. Use the ``dateLastUpdated``
-    attribute and the ``status`` to determine whether the image needs to be
-    refreshed.
 
 .. _put_ad_id_example:
 

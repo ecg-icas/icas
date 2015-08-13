@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.63 - 13 Aug 2015 - gg,tw
+ * :ref:`put_ad_id`: Removed erroneous section about 'refresh' attribute on images.
+ * :ref:`post_ad` Added 'allowPaypal' documentation.
+
 * v0.62 - 13 Aug 2015 - fs
 
  * :ref:`categories_v2`: Added missing ``defaults`` field to attributes.
