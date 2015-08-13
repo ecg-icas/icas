@@ -484,6 +484,11 @@ parameters allow to render the attribute in a certain way depending on the
      The length of the JSON representation of all values for one locale
      must not exceed 512 bytes.
 
+ * - defaults
+   - map<locale,string>
+   -
+   - Localized default value for required attributes.
+
  * - mandatory
    - bool
    -

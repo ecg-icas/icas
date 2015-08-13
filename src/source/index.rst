@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.62 - 13 Aug 2015 - fs
+
+ * :ref:`categories_v2`: Added missing ``defaults`` field to attributes.
+
 * v0.61 - 02 Jul 2015 - ak
 
  * :ref:`get_ad`: Removed unused error code "2013 Invalid state"
