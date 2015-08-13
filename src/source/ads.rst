@@ -46,6 +46,7 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_suggestedCpcForPageOne`    long       --                 no          no
 :ref:`ad_phoneNumber`               string     max. 32 chars      no          yes
 :ref:`ad_allowContactByEmail`       bool       --                 no          yes
+:ref:`ad_allowPayPal`               bool       --                 no          yes
 :ref:`ad_dateCreated`               date       --                             no
 :ref:`ad_dateLastUpdated`           date       --                             no
 :ref:`ad_dateDeleted`               date       --                             no
@@ -299,6 +300,14 @@ allowContactByEmail
 """""""""""""""""""
 
 Flag for allowing emails to be sent to the advertiser.
+
+.. index:: allowPayPal
+.. _ad_allowPayPal:
+
+allowPayPal
+"""""""""""
+
+Flag for allowing PayPal as a payment option.
 
 .. index:: dateCreated
 .. _ad_dateCreated:
