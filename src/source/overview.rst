@@ -55,8 +55,9 @@ Image Downloads
 Images are downloaded from the following ip addresses. Ensure that all image
 URLs are accessible by these ip addresses and that there is no rate limit.
 
- * 5.255.156.110
- * 5.255.156.126
+ * 5.255.156.110 (production)
+ * 5.255.156.126 (production)
+ * 91.211.74.6   (sandbox)
 
 To reduce the latency when updating an ad we suggest that the response
 contains either an ``ETag`` and/or ``Last-Modified`` header which only changes

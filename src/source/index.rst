@@ -39,7 +39,12 @@ History
 
 ..  role:: strike
 
+* v0.64 - 24 Aug 2015 - fs
+
+ * :ref:`overview_image_downloads`: Added sandbox external ip address.
+
 * v0.63 - 13 Aug 2015 - gg,tw
+
  * :ref:`put_ad_id`: Removed erroneous section about 'refresh' attribute on images.
  * :ref:`post_ad` Added 'allowPaypal' documentation.
 
