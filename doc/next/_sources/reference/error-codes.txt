@@ -27,4 +27,6 @@ Code    HTTP    Error message                   Description
 2012    400     category change not allowed     Changing the category of an ad is not allowed
 2017    400     ad status change not allowed    Changing the status of an ad is not allowed
 2018    400     image type not allowed          The uploaded image type is not allowed
+2022    400     category not active             The category is not active and will not allow creation of ads
+2023    400     category deleted                The category is deleted and will not allow creation/updating of ads
 ====    ====    ============================    ==================================================================================

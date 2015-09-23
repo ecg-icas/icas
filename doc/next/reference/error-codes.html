@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Error Codes &mdash; iCAS Sellside API 0.64 documentation</title>
+  <title>Error Codes &mdash; iCAS Sellside API 0.65 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.64 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.65 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="Deprecation Plan" href="../deprecation.html"/>
         <link rel="prev" title="Price Types" href="price-types.html"/> 
@@ -291,6 +291,16 @@
 <td>image type not allowed</td>
 <td>The uploaded image type is not allowed</td>
 </tr>
+<tr class="row-even"><td>2022</td>
+<td>400</td>
+<td>category not active</td>
+<td>The category is not active and will not allow creation of ads</td>
+</tr>
+<tr class="row-odd"><td>2023</td>
+<td>400</td>
+<td>category deleted</td>
+<td>The category is deleted and will not allow creation/updating of ads</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -333,7 +343,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.64',
+            VERSION:'0.65',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
