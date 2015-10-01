@@ -1,10 +1,10 @@
 .. code-block:: javascript
 
     GET /api/sellside/categories?categoryIds=863,431
-    Accept: application/sellside.category.list-v2+json; application/json
+    Accept: application/sellside.category.list-v1+json; application/json
 
     200 OK
-    Content-Type: application/sellside.category.list-v2+json; charset=UTF-8
+    Content-Type: application/sellside.category.list-v1+json; charset=UTF-8
 
     {
         "431": {

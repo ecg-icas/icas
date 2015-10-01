@@ -4,9 +4,7 @@
 GET /categories
 ==================
 
-.. _get_categories_v2:
-
-GET /categories v2
+GET /categories
 ---------------------
 
 **Required Scope:** ``api_ro`` or ``console_ro``
@@ -42,4 +40,4 @@ categoryIds             2004    too short                   The value needs to b
 Example
 -------
 
-.. include:: ../examples/get-categories-v2-example.rst
+.. include:: ../examples/get-categories-example.rst
