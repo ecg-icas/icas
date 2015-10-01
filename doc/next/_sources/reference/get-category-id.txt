@@ -32,6 +32,34 @@ sufficiently large number, e.g. 9999.
 	need to use :ref:`get_ad_id_v2` and :ref:`get_ad_v3` instead of the older
 	versions.
 
+Parameters
+----------
+
+====================    ========    ================================================================================
+Name                    Type        Description
+====================    ========    ================================================================================
+levels                  int         The number of sub category levels to return. Use 9999 for all. The default is 0.
+_include                string      Comma-separated-list of fields to include. Optional, default is all fields.
+_exclude                string      Comma-separated-list of fields to omit. Optional, default empty.
+====================    ========    ================================================================================
+
+Errors
+------
+
+====================    ====    =======================     ==============================================================================
+Field                   Code    Error message               Description
+====================    ====    =======================     ==============================================================================
+id                      2001    invalid argument            not a valid number
+id                      2002    out of range                negative number
+levels                  2001    invalid argument            not a valid number
+levels                  2002    out of range                negative number
+====================    ====    =======================     ==============================================================================
+
+Example
+-------
+
+.. include:: ../examples/get-category-id-v2-example.rst
+
 
 .. _get_category_id_v1:
 

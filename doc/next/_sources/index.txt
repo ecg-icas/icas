@@ -39,6 +39,17 @@ History
 
 ..  role:: strike
 
+* v0.66 - 01 Oct 2015 - tw
+
+ * :ref:`get_categories`: added GET /categories documentation
+ * :ref:`get_category_id`: added example to V2 call with content-type
+ * :ref:`post_ad`: added category closed and category deleted errors to possible errors
+ * :ref:`put_ad_id`: added category deleted error to possible errors
+
+* v0.65 - 24 Sep 2015 - tw
+
+ * :ref:`error_codes`: added 2 new error codes w.r.t. category status
+
 * v0.64 - 24 Aug 2015 - fs
 
  * :ref:`overview_image_downloads`: Added sandbox external ip address.

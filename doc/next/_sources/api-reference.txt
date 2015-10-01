@@ -10,6 +10,7 @@ API Reference
    reference/post-ad
    reference/put-ad-id
    reference/put-ad-id-status
+   reference/get-categories
    reference/get-category
    reference/get-category-id
    reference/get-category-id-attributes

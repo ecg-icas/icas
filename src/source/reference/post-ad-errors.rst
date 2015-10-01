@@ -15,6 +15,8 @@ attribute.value         2001    invalid argument            one of the attribute
 categoryId              1006    type mismatch               not an integer number
 categoryId              2000    missing argument            mandatory field
 categoryId              2001    invalid argument            not a valid category id
+categoryId              2022    category not active         category is not active and will not allow creation of ads
+categoryId              2023    category deleted            category is deleted and will not allow creation/updating of ads
 cpc                     1006    type mismatch               not an integer number
 cpc                     2000    missing argument            mandatory field
 cpc                     2002    out of range                value not between category.minCpc and category.maxCpc
