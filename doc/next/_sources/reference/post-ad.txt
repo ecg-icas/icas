@@ -12,10 +12,19 @@ POST |an|/ad
 POST /ad v2
 -----------
 
-**Required Scope:** ``api_rw`` or ``console_rw``
+.. list-table::
+ :widths: 20 80
 
-This URL creates a new ad for the current user. To use it set the
-``Content-Type`` header to ``application/sellside.ad-v2+json; charset=utf-8``.
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v2+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v2+json; charset=utf-8``
+
+This URL creates a new ad for the current user.
 
 .. warning::
 
@@ -107,11 +116,21 @@ Example
 POST /ad v1
 -----------
 
-**Required Scope:** ``api_rw`` or ``console_rw``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v1+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v1+json; charset=utf-8``
+
 
 Version 1 works just like :ref:`post_ad_v2` except that it is only compatible with
-:ref:`categories_v1`.  To use it set the ``Content-Type`` header to
-``application/sellside.ad-v1+json; charset=utf-8``.
+:ref:`categories_v1`.
 
 .. warning::
 

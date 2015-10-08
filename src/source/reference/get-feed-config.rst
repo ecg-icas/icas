@@ -4,10 +4,16 @@
 GET /feed/config
 ================
 
-**Required Scope:** ``console_ro``
+.. list-table::
+ :widths: 20 80
 
-This URL returns the feed configuration of the current user. To use it set the
-``Accept`` header to ``application/sellside.feedconfig-v1+json``.
+ * - Scope
+   - ``console_ro``
+
+ * - Accept
+   - ``application/sellside.feedconfig-v1+json, application/json``
+
+This URL returns the feed configuration of the current user.
 
 An iCAS user can update his or her ads by describing them in an XML document, called **feed**.
 The iCAS platform reads all user feeds once per day and synchronizes ads in the system.

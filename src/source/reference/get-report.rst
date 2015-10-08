@@ -11,12 +11,21 @@ GET /report
 v2
 --
 
-**Required Scope:** ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``console_ro``
+
+ * - Accept
+   - ``application/sellside.report-v2+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.report-v2+json``
 
 Version 2 of this URL returns a performance report for a date period. The
 report contains statistics for performance events like impressions, clicks,
-url clicks, emails for all ads which match the filter criteria. To use it set
-the ``Accept`` header to ``application/sellside.report-v2+json``.
+url clicks, emails for all ads which match the filter criteria.
 
 .. note::
 
@@ -69,12 +78,18 @@ Example
 v1
 --
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.report-v1+json, application/json``
 
 Version 1 of this URL returns a performance report for a specific date. The
 report contains statistics for performance events like impressions, clicks,
-url clicks, emails for all ads which received at least one event that day.  To
-use it set the ``Accept`` header to ``application/sellside.report-v1+json``.
+url clicks, emails for all ads which received at least one event that day.
 
 .. warning::
 

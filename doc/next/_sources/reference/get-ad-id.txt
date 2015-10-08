@@ -12,10 +12,16 @@ GET /ad/{id}
 GET /ad/{id} v2
 ---------------
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
 
-This URL returns a single ad with the given ``id``. To use it set the
-``Accept`` header to ``application/sellside.ad-v2+json``.
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad-v2+json, application/json``
+
+This URL returns a single ad with the given ``id``.
 
 If the ad does not exist or does not belong to the user the server returns
 **404 Not Found**. If the ``id`` is invalid, i.e. not a positive integer the
@@ -66,11 +72,17 @@ Example
 GET /ad/{id} v1
 ---------------
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad-v1+json, application/json``
 
 Version 2 works just like :ref:`get_ad_id_v2` except that it is compatible
-with :ref:`categories_v1`. To use it set the ``Accept`` header to
-``application/sellside.ad-v1+json``.
+with :ref:`categories_v1`.
 
 .. warning::
 

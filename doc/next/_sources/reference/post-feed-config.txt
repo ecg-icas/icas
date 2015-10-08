@@ -4,7 +4,17 @@
 POST /feed/config
 =================
 
-**Required Scope:** ``console_rw``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``console_rw``
+
+ * - Accept
+   - ``application/sellside.feedconfig-v1+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.feedconfig-v1+json; charset=utf-8``
 
 This URL updates the feed configuration of the current user. The feed configuration object must contain a boolean
 field ``enabled``. Depending on its value the feed will be activated or disabled. If the

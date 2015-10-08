@@ -4,10 +4,21 @@
 POST /report/detail
 ===================
 
-**Required Scope:** ``console_rw``
+.. list-table::
+ :widths: 20 80
 
-This URL requests a new report for the current user.
-Creating the report may take a long time which depends on the number of ads and the requested date range. Therefore you
+ * - Scope
+   - ``console_rw``
+
+ * - Accept
+   - ``application/sellside.report.detail.response-v1+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.report.detail.request-v1+json; charset=utf-8``
+
+This URL requests a new report for the current user. Creating the report may
+take a long time which depends on the number of ads and the requested date
+range. Therefore you
 
 1. Request a new report with `POST /report/detail` which returns a unique id
 2. Poll `GET /report/detail` until the id is in the result

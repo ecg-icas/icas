@@ -5,7 +5,17 @@
 POST /image
 ===========
 
-**Required Scope:** ``console_rw``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``console_rw``
+
+ * - Accept
+   - ``application/sellside.image.list-v1+json, application/json``
+
+ * - Content-Type
+   - see example
 
 This URL allows uploading of images.
 An image upload request must be a multipart form-data request as specified in `RFC 2388`_.

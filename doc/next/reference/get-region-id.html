@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /region/{id} &mdash; iCAS Sellside API 0.66 documentation</title>
+  <title>GET /region/{id} &mdash; iCAS Sellside API 0.67 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.66 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.67 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /report" href="get-report.html"/>
         <link rel="prev" title="POST /image" href="post-image.html"/> 
@@ -177,7 +177,20 @@
             
   <div class="section" id="get-region-id">
 <span id="index-0"></span><span id="id1"></span><h1>GET /region/{id}<a class="headerlink" href="#get-region-id" title="Permalink to this headline">¶</a></h1>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.region-v1+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>This URL returns the region tree or parts of it starting from the node
 with the given region <code class="docutils literal"><span class="pre">id</span></code>. If the region does not exist the server
 returns <strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive
@@ -258,10 +271,10 @@ sufficiently large number, e.g. 9999.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">region</span><span class="o">?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=&amp;</span><span class="nx">_exclude</span><span class="o">=</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">region</span><span class="o">?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=&amp;</span><span class="nx">_exclude</span><span class="o">=</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">region</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mi">200</span> <span class="nx">OK</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="mi">200</span> <span class="nx">OK</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">region</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">{</span>
@@ -465,7 +478,7 @@ sufficiently large number, e.g. 9999.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.66',
+            VERSION:'0.67',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

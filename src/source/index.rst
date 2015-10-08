@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.67 - 08 Oct 2015 - fs
+
+ * Update ``Accept`` and ``Content-Type`` header documentation for all API calls
+
 * v0.66 - 01 Oct 2015 - tw
 
  * :ref:`get_categories`: added GET /categories documentation

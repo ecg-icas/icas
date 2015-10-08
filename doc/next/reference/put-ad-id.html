@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.66 documentation</title>
+  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.67 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.66 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.67 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="PUT /ad/{id}/status" href="put-ad-id-status.html"/>
         <link rel="prev" title="POST /ad" href="post-ad.html"/> 
@@ -180,9 +180,24 @@
 <p><a class="reference internal" href="#put-ad-id-v2"><span>PUT /ad/{id} v2</span></a> | <a class="reference internal" href="#put-ad-id-v1"><span>PUT /ad/{id} v1</span></a></p>
 <div class="section" id="put-ad-id-v2">
 <span id="id2"></span><h2>PUT /ad/{id} v2<a class="headerlink" href="#put-ad-id-v2" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></p>
-<p>This URL updates the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. To use it set the <code class="docutils literal"><span class="pre">Content-</span>
-<span class="pre">Type</span></code> header to <code class="docutils literal"><span class="pre">application/sellside.ad-v2+json;</span> <span class="pre">charset=utf-8</span></code>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad-v2+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+<tr class="row-odd"><td>Content-Type</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad-v2+json;</span> <span class="pre">charset=utf-8</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>This URL updates the ad with the given <code class="docutils literal"><span class="pre">id</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span>Categories V2</span></a> and must only
@@ -192,7 +207,7 @@ the attributes may not be recognized or editable.</p>
 <p>If the ad was successfully updated then a <strong>200 OK</strong> is returned. The
 <strong>optional</strong> query parameter <code class="docutils literal"><span class="pre">_body</span></code> with value <code class="docutils literal"><span class="pre">true</span></code> or <code class="docutils literal"><span class="pre">false</span></code> can be
 used to influence whether the response body contains the ad in the body (or
-not) in case of success. By default, this value is <code class="docutils literal"><span class="pre">true</span></code>.If the ad does not
+not) in case of success. By default, this value is <code class="docutils literal"><span class="pre">true</span></code>. If the ad does not
 exist or does not belong to the user the server returns <strong>404 Not Found</strong>. If
 the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
 Bad Request</strong>.</p>
@@ -694,10 +709,25 @@ following parameter to the request URL.</p>
 </div>
 <div class="section" id="put-ad-id-v1">
 <span id="id3"></span><h2>PUT /ad/{id} v1<a class="headerlink" href="#put-ad-id-v1" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad-v1+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+<tr class="row-odd"><td>Content-Type</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad-v1+json;</span> <span class="pre">charset=utf-8</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>Version 1 works just like <a class="reference internal" href="#put-ad-id-v2"><span>PUT /ad/{id} v2</span></a> except that it is compatible
-with <a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a>. To use it set the <code class="docutils literal"><span class="pre">Content-Type</span></code> header to
-<code class="docutils literal"><span class="pre">application/sellside.ad-v1+json;</span> <span class="pre">charset=utf-8</span></code>.</p>
+with <a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is deprecated and will be removed after September 2015.  It is
@@ -834,7 +864,7 @@ may not be recognized or editable.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.66',
+            VERSION:'0.67',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

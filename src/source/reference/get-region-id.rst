@@ -4,7 +4,14 @@
 GET /region/{id}
 ==================
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.region-v1+json, application/json``
 
 This URL returns the region tree or parts of it starting from the node
 with the given region ``id``. If the region does not exist the server

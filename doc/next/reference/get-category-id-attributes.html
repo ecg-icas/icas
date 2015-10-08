@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /category/{id}/attributes &mdash; iCAS Sellside API 0.66 documentation</title>
+  <title>GET /category/{id}/attributes &mdash; iCAS Sellside API 0.67 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.66 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.67 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /category/{id}/funnel" href="get-category-id-funnel.html"/>
         <link rel="prev" title="GET /category/{id}" href="get-category-id.html"/> 
@@ -177,7 +177,20 @@
             
   <div class="section" id="get-category-id-attributes">
 <span id="index-0"></span><span id="id1"></span><h1>GET /category/{id}/attributes<a class="headerlink" href="#get-category-id-attributes" title="Permalink to this headline">¶</a></h1>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.attribute.list-v1+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>This URL returns the known <a class="reference internal" href="../attributes.html#category-attributes"><span>Category Attributes</span></a> for the given category.</p>
 <p>Only categories which have <code class="docutils literal"><span class="pre">canPlaceAds</span></code> set to <code class="docutils literal"><span class="pre">true</span></code> have attributes.
 For all others an empty list will be returned.</p>
@@ -243,6 +256,9 @@ may not be recognized or editable.</p>
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="nx">attributes</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
 
 <span class="p">[</span>
     <span class="p">{</span>
@@ -312,7 +328,7 @@ may not be recognized or editable.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.66',
+            VERSION:'0.67',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

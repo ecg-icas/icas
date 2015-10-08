@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /report/detail/{id} &mdash; iCAS Sellside API 0.66 documentation</title>
+  <title>GET /report/detail/{id} &mdash; iCAS Sellside API 0.67 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.66 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.67 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="POST /report/detail" href="post-report-detail.html"/>
         <link rel="prev" title="GET /report/detail" href="get-report-detail.html"/> 
@@ -177,7 +177,20 @@
             
   <div class="section" id="get-report-detail-id">
 <span id="index-0"></span><span id="id1"></span><h1>GET /report/detail/{id}<a class="headerlink" href="#get-report-detail-id" title="Permalink to this headline">¶</a></h1>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">console_ro</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal"><span class="pre">text/csv</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>This URL returns a previously submittted report either in Excel or in CSV format depending on the
 <code class="docutils literal"><span class="pre">Accept</span></code> header. If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created.
 If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created.
@@ -318,7 +331,7 @@ where <cite>tenantId</cite> is the id of the host platform requesting the report
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.66',
+            VERSION:'0.67',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

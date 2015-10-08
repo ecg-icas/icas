@@ -4,7 +4,14 @@
 GET /ad/{id}/funnel
 ===================
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.funnel-v1+json, application/json``
 
 This URL returns performance predictions such as number of impressions, clicks
 and url clicks for a given ad and cpc value.

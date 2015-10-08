@@ -4,7 +4,14 @@
 GET /category/{id}/attributes
 =============================
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.attribute.list-v1+json, application/json``
 
 This URL returns the known :ref:`category_attributes` for the given category.
 

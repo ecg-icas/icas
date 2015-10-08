@@ -7,7 +7,14 @@ GET /categories
 GET /categories
 ---------------------
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.category.list-v1+json, application/json``
 
 This URL returns the a map of id to categories in the format described in
 :ref:`categories_v2` for the id's requested in parameter ``categoryIds``.

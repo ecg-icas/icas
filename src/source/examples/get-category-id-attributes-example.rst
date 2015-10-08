@@ -3,6 +3,9 @@
     GET /category/4/attributes
     Accept: application/sellside.attribute.list-v1+json
 
+    200 OK
+    Content-Type: application/sellside.attribute.list-v1+json
+
     [
         {
             "key": "Delivery",

@@ -13,11 +13,17 @@ GET /ad
 GET /ad v3
 ----------
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad.list-v3+json, application/json``
 
 This URL returns a list of ads for the current user and the total size of the
-result set matching the filter criteria. To use it set the ``Accept`` header
-to ``application/sellside.ad.list-v3+json``.
+result set matching the filter criteria.
 
 .. warning::
 
@@ -103,11 +109,17 @@ Example
 GET /ad v2
 ----------
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad.list-v2+json, application/json``
 
 Version 2 works just like :ref:`get_ad_v3` except that it is only compatible with
-:ref:`categories_v1`. To use it set the ``Accept`` header to
-``application/sellside.ad.list-v2+json``.
+:ref:`categories_v1`.
 
 .. warning::
 
@@ -126,10 +138,16 @@ Example
 GET /ad v1
 ----------
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
 
-Version 1 of this URL returns returns a list of ads. To use it set the
-``Accept`` header to ``application/sellside.ad.list-v1+json``.
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad.list-v1+json, application/json``
+
+Version 1 of this URL returns returns a list of ads.
 
 .. warning::
 

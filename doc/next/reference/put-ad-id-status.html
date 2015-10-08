@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id}/status &mdash; iCAS Sellside API 0.66 documentation</title>
+  <title>PUT /ad/{id}/status &mdash; iCAS Sellside API 0.67 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.66 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.67 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /categories" href="get-categories.html"/>
         <link rel="prev" title="PUT /ad/{id}" href="put-ad-id.html"/> 
@@ -177,7 +177,20 @@
             
   <div class="section" id="put-ad-id-status">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}/status<a class="headerlink" href="#put-ad-id-status" title="Permalink to this headline">¶</a></h1>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>This URL updates the status of the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. If the ad does
 not exist or does not belong to the user the server returns <strong>404 Not Found</strong>.
 If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
@@ -305,7 +318,7 @@ than <strong>ACTIVE</strong> is always allowed.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.66',
+            VERSION:'0.67',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

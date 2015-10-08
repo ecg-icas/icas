@@ -4,7 +4,14 @@
 GET /image/{id}
 ===============
 
-**Required Scope:** ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``console_ro``
+
+ * - Accept
+   - ``image/*, application/json``
 
 This URL retrieves an image uploaded via :ref:`post_image` by the same user.
 The *id*  is the unique identifier provided by the :ref:`post_image` response.

@@ -4,7 +4,14 @@
 PUT /ad/{id}/status
 ===================
 
-**Required Scope:** ``api_rw`` or ``console_rw``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/json``
 
 This URL updates the status of the ad with the given ``id``. If the ad does
 not exist or does not belong to the user the server returns **404 Not Found**.

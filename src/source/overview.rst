@@ -72,7 +72,7 @@ Media Types
 Each resource has a specific media type of the following form to support
 *content negotiation* and *versioning*::
 
-    application/sellside.{entity}-{version}+json;charset=UTF-8
+    application/sellside.{entity}-{version}+json;charset=utf-8
 
 The ``version`` field is mandatory.
 

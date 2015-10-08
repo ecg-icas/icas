@@ -4,7 +4,14 @@
 GET /report/detail/{id}
 =======================
 
-**Required Scope:** ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``console_ro``
+
+ * - Accept
+   - ``application/vnd.ms-excel`` or ``text/csv``
 
 This URL returns a previously submittted report either in Excel or in CSV format depending on the
 ``Accept`` header. If the ``Accept`` header is ``application/vnd.ms-excel`` an Excel document is created.

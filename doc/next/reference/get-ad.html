@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /ad &mdash; iCAS Sellside API 0.66 documentation</title>
+  <title>GET /ad &mdash; iCAS Sellside API 0.67 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.66 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.67 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /ad/{id}" href="get-ad-id.html"/>
         <link rel="prev" title="API Reference" href="../api-reference.html"/> 
@@ -180,10 +180,22 @@
 <p><a class="reference internal" href="#get-ad-v3"><span>GET /ad v3</span></a> | <a class="reference internal" href="#get-ad-v2"><span>GET /ad v2</span></a> | <a class="reference internal" href="#get-ad-v1"><span>GET /ad v1</span></a></p>
 <div class="section" id="get-ad-v3">
 <span id="id2"></span><h2>GET /ad v3<a class="headerlink" href="#get-ad-v3" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad.list-v3+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>This URL returns a list of ads for the current user and the total size of the
-result set matching the filter criteria. To use it set the <code class="docutils literal"><span class="pre">Accept</span></code> header
-to <code class="docutils literal"><span class="pre">application/sellside.ad.list-v3+json</span></code>.</p>
+result set matching the filter criteria.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span>Categories V2</span></a> and must only
@@ -331,10 +343,22 @@ load on the system.</p>
 </div>
 <div class="section" id="get-ad-v2">
 <span id="id3"></span><h2>GET /ad v2<a class="headerlink" href="#get-ad-v2" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad.list-v2+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>Version 2 works just like <a class="reference internal" href="#get-ad-v3"><span>GET /ad v3</span></a> except that it is only compatible with
-<a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a>. To use it set the <code class="docutils literal"><span class="pre">Accept</span></code> header to
-<code class="docutils literal"><span class="pre">application/sellside.ad.list-v2+json</span></code>.</p>
+<a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is deprecated and will be removed after September 2015.  It is
@@ -426,9 +450,21 @@ may not be recognized or editable.</p>
 </div>
 <div class="section" id="get-ad-v1">
 <span id="id5"></span><h2>GET /ad v1<a class="headerlink" href="#get-ad-v1" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required Scope:</strong> <code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></p>
-<p>Version 1 of this URL returns returns a list of ads. To use it set the
-<code class="docutils literal"><span class="pre">Accept</span></code> header to <code class="docutils literal"><span class="pre">application/sellside.ad.list-v1+json</span></code>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad.list-v1+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Version 1 of this URL returns returns a list of ads.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is deprecated and will be removed after September 2015.  It is
@@ -711,7 +747,7 @@ may not be recognized or editable.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.66',
+            VERSION:'0.67',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

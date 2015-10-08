@@ -11,7 +11,14 @@ GET /category/{id}
 GET /category/{id} v2
 ---------------------
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.category-v2+json, application/json``
 
 This URL returns the category tree or parts of it in the format described in
 :ref:`categories_v2` starting from the category with the given category
@@ -66,7 +73,14 @@ Example
 GET /category/{id} v1
 ---------------------
 
-**Required Scope:** ``api_ro`` or ``console_ro``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.category-v1+json, application/json``
 
 This URL returns the category tree or parts of it in the format described in
 :ref:`categories_v1` starting from the node with the given category ``id``. To

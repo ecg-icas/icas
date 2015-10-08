@@ -1,9 +1,9 @@
 .. code-block:: javascript
 
-    GET /api/sellside/region?levels=1&_include=&_exclude= HTTP/1.1
+    GET /api/sellside/region?levels=1&_include=&_exclude=
     Accept: application/sellside.region-v1+json, application/json
 
-    200 OK HTTP/1.1
+    200 OK
     Content-Type: application/sellside.region-v1+json; charset=utf-8
 
     {

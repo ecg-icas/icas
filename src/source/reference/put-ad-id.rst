@@ -11,10 +11,19 @@ PUT /ad/{id}
 PUT /ad/{id} v2
 ---------------
 
-**Required Scope:** ``api_rw`` or ``console_rw``
+.. list-table::
+ :widths: 20 80
 
-This URL updates the ad with the given ``id``. To use it set the ``Content-
-Type`` header to ``application/sellside.ad-v2+json; charset=utf-8``.
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v2+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v2+json; charset=utf-8``
+
+This URL updates the ad with the given ``id``.
 
 .. warning::
 
@@ -25,7 +34,7 @@ Type`` header to ``application/sellside.ad-v2+json; charset=utf-8``.
 If the ad was successfully updated then a **200 OK** is returned. The
 **optional** query parameter ``_body`` with value ``true`` or ``false`` can be
 used to influence whether the response body contains the ad in the body (or
-not) in case of success. By default, this value is ``true``.If the ad does not
+not) in case of success. By default, this value is ``true``. If the ad does not
 exist or does not belong to the user the server returns **404 Not Found**. If
 the ``id`` is invalid, i.e. not a positive integer the server returns **400
 Bad Request**.
@@ -111,11 +120,20 @@ Example
 PUT /ad/{id} v1
 ---------------
 
-**Required Scope:** ``api_rw`` or ``console_rw``
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v1+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v1+json; charset=utf-8``
 
 Version 1 works just like :ref:`put_ad_id_v2` except that it is compatible
-with :ref:`categories_v1`. To use it set the ``Content-Type`` header to
-``application/sellside.ad-v1+json; charset=utf-8``.
+with :ref:`categories_v1`.
 
 .. warning::
 

@@ -4,8 +4,7 @@
     Accept: application/sellside.category-v2+json; application/json
 
     200 OK
-    Content-Length: 789
-    Content-Type: application/sellside.category-v2+json; charset=UTF-8
+    Content-Type: application/sellside.category-v2+json; charset=utf-8
 
     {
         "links": {
