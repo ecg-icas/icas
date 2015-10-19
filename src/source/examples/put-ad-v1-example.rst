@@ -1,6 +1,7 @@
 .. code-block:: javascript
 
     PUT /ad/42
+    Accept: application/sellside.ad-v1+json, application/json
     Content-Type: application/sellside.ad-v1+json; charset=utf-8
 
     {

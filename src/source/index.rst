@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.68 - 19 Oct 2015 - fs
+
+ * Add ``Accept`` header to :ref:`post_ad` and :ref:`put_ad_id` examples
+
 * v0.67 - 08 Oct 2015 - fs
 
  * Update ``Accept`` and ``Content-Type`` header documentation for all API calls

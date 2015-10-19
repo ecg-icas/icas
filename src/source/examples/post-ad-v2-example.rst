@@ -1,6 +1,7 @@
 .. code-block:: javascript
 
     POST /ad
+    Accept: application/sellside.ad-v2+json, application/json
     Content-Type: application/sellside.ad-v2+json; charset=utf-8
 
     {
