@@ -195,14 +195,16 @@
 and url clicks for a given category and cpc value.</p>
 <p>The endpoint also returns information regarding the page on which a new ad
 will be displayed if placed in the given category and with the given cpc
-value. The response also contains a suggested cpc value to place an ad on page
-one in this category. If <code class="docutils literal"><span class="pre">cpc</span></code> is greater than <code class="docutils literal"><span class="pre">maxCpc</span></code> then the ads of
+value (<code class="docutils literal"><span class="pre">pageNumber</span></code>). The response also contains a suggested cpc value to place an ad on page
+one in this category (<code class="docutils literal"><span class="pre">averageCpc</span></code>). If <code class="docutils literal"><span class="pre">cpc</span></code> is greater than <code class="docutils literal"><span class="pre">maxCpc</span></code> then the ads of
 this seller generally do not perform well enough to place new ads on the first
 page.</p>
 <p>If the expected performance of a category cannot be predicted yet, the server
 returns a <code class="docutils literal"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code> response with empty body. This can happen when,
 for instance, the category contains no ads yet from which to derive a
 performance prediction.</p>
+<p>The <code class="docutils literal"><span class="pre">averageCpc</span></code> field in the response marks the suggested cpc value to have place an ad on page one in this category.
+We will rename this field in a future version of the endpoint to make this clearer.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -271,7 +273,6 @@ performance prediction.</p>
   <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
   <span class="s2">&quot;averageClicks&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
   <span class="s2">&quot;averageCpc&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s2">&quot;averageImpressions&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
   <span class="s2">&quot;averageUrlClicks&quot;</span><span class="o">:</span> <span class="mi">400</span><span class="p">,</span>
   <span class="s2">&quot;ctr&quot;</span><span class="o">:</span> <span class="mf">3.5</span><span class="p">,</span>
@@ -279,10 +280,6 @@ performance prediction.</p>
   <span class="s2">&quot;maxCpc&quot;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The field <cite>averageCpc</cite> in the response is replaced by <cite>suggestedCpcForPageOne</cite> and will be removed in January 2016.</p>
 </div>
 </div>
 </div>

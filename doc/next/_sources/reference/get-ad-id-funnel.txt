@@ -17,14 +17,17 @@ This URL returns performance predictions such as number of impressions, clicks
 and url clicks for a given ad and cpc value.
 
 The endpoint also returns information regarding the current page on which the
-ad is displayed and the required cpc value which would place the ad on page
-one. If ``cpc`` is greater than ``maxCpc`` then this ad does not perform well
+ad is displayed (``pageNumber``) and the required cpc value which would place the ad on page
+one (``averageCpc``). If ``cpc`` is greater than ``maxCpc`` then this ad does not perform well
 enough to be placed on page one.
 
 If the performance of an ad cannot be predicted yet, the server returns a
 ``204 No Content`` response with an empty body. This can happen when, for
 instance, the ad is the only one in a category and no reference ads exist yet
 from which to derive a performance prediction.
+
+The ``averageCpc`` field in the response marks the required cpc value to place the ad on page one in its category.
+We will rename this field in a future version of the endpoint to make this clearer.
 
 Parameters
 ----------

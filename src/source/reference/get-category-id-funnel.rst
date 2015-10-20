@@ -18,8 +18,8 @@ and url clicks for a given category and cpc value.
 
 The endpoint also returns information regarding the page on which a new ad
 will be displayed if placed in the given category and with the given cpc
-value. The response also contains a suggested cpc value to place an ad on page
-one in this category. If ``cpc`` is greater than ``maxCpc`` then the ads of
+value (``pageNumber``). The response also contains a suggested cpc value to place an ad on page
+one in this category (``averageCpc``). If ``cpc`` is greater than ``maxCpc`` then the ads of
 this seller generally do not perform well enough to place new ads on the first
 page.
 
@@ -27,6 +27,9 @@ If the expected performance of a category cannot be predicted yet, the server
 returns a ``204 No Content`` response with empty body. This can happen when,
 for instance, the category contains no ads yet from which to derive a
 performance prediction.
+
+The ``averageCpc`` field in the response marks the suggested cpc value to have place an ad on page one in this category.
+We will rename this field in a future version of the endpoint to make this clearer.
 
 Parameters
 ----------
