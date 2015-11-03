@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.69 - 03 Nov 2015 - fs
+
+ * Add :ref:`get_user`
+
 * v0.68 - 19 Oct 2015 - fs
 
  * Add ``Accept`` header to :ref:`post_ad` and :ref:`put_ad_id` examples
