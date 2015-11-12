@@ -37,6 +37,7 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_cpc`                       long       positive           no          yes
 :ref:`ad_totalBudget`               long       positive           no          yes
 :ref:`ad_dailyBudget`               long       positive           no          yes
+:ref:`ad_dailySpent`                long       positive           no          no
 :ref:`ad_spentBudget`               long       positive                       no
 :ref:`ad_salutation`                string     enum               yes         yes
 :ref:`ad_sellerName`                string     max. 60 chars      yes         yes
@@ -197,6 +198,16 @@ for the rest of the day. The minimum value depends on the category. Maximum valu
 cannot be higher than the :ref:`ad_totalBudget`
 
 To disable the dailyBudget for an ad set it to ``null``.
+
+.. index:: dailySpent
+.. _ad_dailySpent:
+
+dailySpent
+""""""""""
+
+The budget spent for the ad since midnight.
+
+Only provided when the :ref:`ad_dailyBudget` is not ``null`` and ``> 0``.
 
 .. index:: spentBudget
 .. _ad_spentBudget:

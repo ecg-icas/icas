@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.70 - 12 Nov 2015 - fs
+
+ * Add :ref:`ad_dailySpent`
+
 * v0.69 - 03 Nov 2015 - fs
 
  * Add :ref:`get_user`
