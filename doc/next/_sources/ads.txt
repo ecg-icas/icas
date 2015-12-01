@@ -488,7 +488,7 @@ Shipping option has the following fields:
 
  * - `time`
    - Optional
-   - Cost of shipping. Only valid when type is *SHIP*. Must be greater than or equal to 0.
+   - Delivery time. Only valid when type is *SHIP*. Supported values are "2d-5d", "6d-10d"  and everything in the form "<number>d" where <number> is > 0.
 
  * - `pickupLocation`
    - Mandatory when type is *PICKUP*

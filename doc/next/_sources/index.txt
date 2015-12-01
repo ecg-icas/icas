@@ -38,6 +38,9 @@ History
 =======
 
 ..  role:: strike
+* v.0.71 - 1 Dec 2015 - tw
+
+  * fix docs for shippingOptions 
 
 * v0.70 - 12 Nov 2015 - fs
 
