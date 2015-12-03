@@ -35,6 +35,7 @@
           "suggestedCpcForPageOne": 5,
           "dateCreated": "2015-06-15T15:06:08Z",
           "dateLastUpdated": "2015-06-15T15:06:08Z",
+          "vendorId": "OURSHOP-1423453-34",
           "attributes": [
             {
               "key": "condition",

@@ -21,14 +21,14 @@ Fields
 Each ad has a unique identifier by which the ad can retrieved and a set of
 required and optional fields which are listed below:
 
-=================================   ========== ================   =========   ========
+=================================   ========== ================   =========   ========================
 Field                               Type       Constraints        Mandatory   Writable
-=================================   ========== ================   =========   ========
+=================================   ========== ================   =========   ========================
 :ref:`ad_id`                        long       positive                       no
 :ref:`ad_title`                     string     max. 60 chars      yes         yes
 :ref:`ad_description`               string     max. 20000 chars   yes         yes
 :ref:`ad_categoryId`                int        positive           yes         no
-:ref:`ad_externalId`                string     max. 64 chars      yes         yes
+:ref:`ad_externalId`                string     max. 64 chars      no          yes
 :ref:`ad_status`                    string     enum               yes         yes
 :ref:`ad_currency`                  string     cat.Currency       yes         no
 :ref:`ad_priceType`                 string     enum               yes         yes
@@ -61,7 +61,8 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_shippingOptions`           array      see below          yes         yes
 :strike:`buyItNowEnabled`           deprecated --                 --          --
 :strike:`paypalEmail`               deprecated --                 --          --
-=================================   ========== ================   =========   ========
+:ref:`ad_vendorId`                  string     max. 64 chars      no          yes (if not set already)
+=================================   ========== ================   =========   ========================
 
 .. warning::
 
@@ -115,11 +116,8 @@ non-zero parent id.
 externalId
 """"""""""
 
-Any non-empty string with a maximum length of 64 characters. Should be unique
-per customer. This field is mandatory when creating an ad through the Sellside
-API. However, it is not required when the ad is being created through one of
-the other flows. When fetching an existing ad which was not created through
-the Sellside API it is possible that the **externalId** field is empty or
+Any non-empty string with a maximum length of 64 characters. When fetching
+an existing ad which does not have an **externalId**, the field is empty or
 omitted.
 
 .. index:: status
@@ -379,6 +377,18 @@ links.displayUrl
 """"""""""""""""
 
 The text/url that will be displayed instead of the url in :ref:`ad_links_url`.
+
+.. index:: vendorId
+.. _ad_vendorId:
+
+vendorId
+""""""""
+
+Any non-empty string with a maximum length of 64 characters. Should be unique
+per customer. Can either be set when creating an ad or when updating an
+existing ad. However, once set, it can no longer be modified. When fetching an
+existing ad which does not have a **vendorId**, the field is omitted.
+
 
 .. index:: images
 .. _ad_images:

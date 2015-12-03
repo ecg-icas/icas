@@ -32,6 +32,7 @@
         "allowPaypal": true,
         "dateCreated": "2012-08-31T16:12:53Z",
         "dateLastUpdated": "2012-09-05T04:03:42Z",
+        "vendorId": "OURSHOP-1423453-34",
         "links": {
             "self": "/ad/42",
             "category": "/category/826",

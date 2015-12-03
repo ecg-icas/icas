@@ -1,3 +1,5 @@
+.. _api_reference:
+
 API Reference
 =============
 
@@ -6,6 +8,7 @@ API Reference
 
    reference/get-ad
    reference/get-ad-id
+   reference/get-ad-vendor-id
    reference/get-ad-id-funnel
    reference/post-ad
    reference/put-ad-id

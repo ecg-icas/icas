@@ -38,9 +38,14 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.72 - 3 Dec 2015 - ak
+
+ * added vendorId field to :ref:`ads` and :ref:`api_reference`
+
 * v.0.71 - 1 Dec 2015 - tw
 
-  * fix docs for shippingOptions 
+ * fix docs for shippingOptions
 
 * v0.70 - 12 Nov 2015 - fs
 
