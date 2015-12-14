@@ -57,5 +57,6 @@ Clicks           Number of clicks that the ad received
 URL clicks       Number of URL clicks that the ad received
 Emails           Number of email events that the ad received
 External id      External id of the ad
+Region           Region of the ad
 ============     ================================================
 

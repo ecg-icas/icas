@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v.0.73 - 14 Dec 2015 - tw
+
+  * added Region to the columns of the reports
+
 * v.0.72 - 3 Dec 2015 - ak
 
  * added vendorId field to :ref:`ads` and :ref:`api_reference`
