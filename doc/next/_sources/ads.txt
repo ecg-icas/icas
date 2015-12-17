@@ -491,7 +491,7 @@ Shipping option has the following fields:
 
  * - `type`
    - Mandatory
-   - *SHIP* or *PICKUP*. *SHIP* means the item can be delivered to the buyer. *PICKUP* means the item can be picked up.
+   - *SHIP* or *PICKUP*. *SHIP* means the item can be delivered to the buyer in the provided `time` and for the provided `cost`. *PICKUP* means the item can be picked up at the provided `location`.
 
  * - `cost`
    - Optional
