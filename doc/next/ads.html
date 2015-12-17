@@ -702,11 +702,11 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 </tr>
 <tr class="row-odd"><td><cite>cost</cite></td>
 <td>Optional</td>
-<td>Cost of shipping in cents. Only valid when type is <em>SHIP</em>. Must be greater than or equal to 0.</td>
+<td>Cost of shipping in cents. Only valid when type is <em>SHIP</em>. Must be greater than or equal to 0. Field can be omitted if costs are unknown.</td>
 </tr>
 <tr class="row-even"><td><cite>time</cite></td>
 <td>Optional</td>
-<td>Delivery time. Only valid when type is <em>SHIP</em>. Supported values are &#8220;2d-5d&#8221;, &#8220;6d-10d&#8221;  and everything in the form &#8220;&lt;number&gt;d&#8221; where &lt;number&gt; is &gt; 0.</td>
+<td>Time it takes to deliver the ad. Only valid when type is <em>SHIP</em>. Supported values are &#8220;2d-5d&#8221;, &#8220;6d-10d&#8221;  and everything in the form &#8220;&lt;number&gt;d&#8221; where &lt;number&gt; is &gt; 0. Field can be omitted if time is unknown.</td>
 </tr>
 <tr class="row-odd"><td><cite>pickupLocation</cite></td>
 <td>Mandatory when type is <em>PICKUP</em></td>

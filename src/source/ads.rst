@@ -495,11 +495,11 @@ Shipping option has the following fields:
 
  * - `cost`
    - Optional
-   - Cost of shipping in cents. Only valid when type is *SHIP*. Must be greater than or equal to 0.
+   - Cost of shipping in cents. Only valid when type is *SHIP*. Must be greater than or equal to 0. Field can be omitted if costs are unknown.
 
  * - `time`
    - Optional
-   - Delivery time. Only valid when type is *SHIP*. Supported values are "2d-5d", "6d-10d"  and everything in the form "<number>d" where <number> is > 0.
+   - Time it takes to deliver the ad. Only valid when type is *SHIP*. Supported values are "2d-5d", "6d-10d"  and everything in the form "<number>d" where <number> is > 0. Field can be omitted if time is unknown.
 
  * - `pickupLocation`
    - Mandatory when type is *PICKUP*
