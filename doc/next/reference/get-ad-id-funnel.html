@@ -186,24 +186,24 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.funnel-v1+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.funnel-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns performance predictions such as number of impressions, clicks
 and url clicks for a given ad and cpc value.</p>
 <p>The endpoint also returns information regarding the current page on which the
-ad is displayed (<tt class="docutils literal"><span class="pre">pageNumber</span></tt>) and the required cpc value which would place the ad on page
-one (<tt class="docutils literal"><span class="pre">averageCpc</span></tt>). If <tt class="docutils literal"><span class="pre">cpc</span></tt> is greater than <tt class="docutils literal"><span class="pre">maxCpc</span></tt> then this ad does not perform well
+ad is displayed (<code class="docutils literal"><span class="pre">pageNumber</span></code>) and the required cpc value which would place the ad on page
+one (<code class="docutils literal"><span class="pre">averageCpc</span></code>). If <code class="docutils literal"><span class="pre">cpc</span></code> is greater than <code class="docutils literal"><span class="pre">maxCpc</span></code> then this ad does not perform well
 enough to be placed on page one.</p>
 <p>If the performance of an ad cannot be predicted yet, the server returns a
-<tt class="docutils literal"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></tt> response with an empty body. This can happen when, for
+<code class="docutils literal"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code> response with an empty body. This can happen when, for
 instance, the ad is the only one in a category and no reference ads exist yet
 from which to derive a performance prediction.</p>
-<p>The <tt class="docutils literal"><span class="pre">averageCpc</span></tt> field in the response marks the required cpc value to place the ad on page one in its category.
+<p>The <code class="docutils literal"><span class="pre">averageCpc</span></code> field in the response marks the required cpc value to place the ad on page one in its category.
 We will rename this field in a future version of the endpoint to make this clearer.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>

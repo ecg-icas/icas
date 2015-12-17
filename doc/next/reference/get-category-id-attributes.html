@@ -186,21 +186,21 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.attribute.list-v1+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.attribute.list-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>This URL returns the known <a class="reference internal" href="../attributes.html#category-attributes"><em>Category Attributes</em></a> for the given category.</p>
-<p>Only categories which have <tt class="docutils literal"><span class="pre">canPlaceAds</span></tt> set to <tt class="docutils literal"><span class="pre">true</span></tt> have attributes.
+<p>This URL returns the known <a class="reference internal" href="../attributes.html#category-attributes"><span>Category Attributes</span></a> for the given category.</p>
+<p>Only categories which have <code class="docutils literal"><span class="pre">canPlaceAds</span></code> set to <code class="docutils literal"><span class="pre">true</span></code> have attributes.
 For all others an empty list will be returned.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is deprecated and will be removed after September 2015.  It is
-only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a> and must only be used with the
-other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><em>Category V1 Compatible Endpoints</em></a>. Otherwise, the attributes
+only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><span>Categories V1</span></a> and must only be used with the
+other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span>Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
 may not be recognized or editable.</p>
 </div>
 <div class="section" id="parameters">

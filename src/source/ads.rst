@@ -244,7 +244,7 @@ Must be an non empty string.
 .. _ad_regionId:
 
 regionId
-""""""""""
+""""""""
 
 The region in which the ad is placed.
 A long value from the region tree. Must be the id of a leaf region.
@@ -475,8 +475,9 @@ An optional list of :ref:`user_defined_attributes`.
 shippingOptions
 """""""""""""""
 
-A list of shipping options available for this ad. Each ad must contain at least one shipping option.
+A list of shipping options available for an ad.
 Ads can contain maximum one shipping option per shipping option type.
+Whether shipping options are disabled/optional/mandatory for an ad is configured per category, see :ref:`category_config_v2`.
 
 Shipping option has the following fields:
 
@@ -494,7 +495,7 @@ Shipping option has the following fields:
 
  * - `cost`
    - Optional
-   - Cost of shipping. Only valid when type is *SHIP*. Must be greater than or equal to 0.
+   - Cost of shipping in cents. Only valid when type is *SHIP*. Must be greater than or equal to 0.
 
  * - `time`
    - Optional

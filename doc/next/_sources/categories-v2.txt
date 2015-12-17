@@ -60,6 +60,9 @@ Each category has a status of one of the following values:
      still possible for ads to be in this category but they can no longer be
      found through a category search.
 
+.. index:: categoryConfigV2
+.. _category_config_v2:
+
 Category Configuration
 ----------------------
 
