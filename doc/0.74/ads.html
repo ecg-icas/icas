@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Advertisements &mdash; iCAS Sellside API 0.73 documentation</title>
+  <title>Advertisements &mdash; iCAS Sellside API 0.74 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-    <link rel="top" title="iCAS Sellside API 0.73 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.74 documentation" href="index.html"/>
         <link rel="next" title="Categories" href="categories.html"/>
         <link rel="prev" title="Authentication" href="authentication.html"/> 
 
@@ -702,11 +702,11 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 </tr>
 <tr class="row-odd"><td><cite>cost</cite></td>
 <td>Optional</td>
-<td>Cost of shipping in cents. Only valid when type is <em>SHIP</em>. Must be greater than or equal to 0.</td>
+<td>Cost of shipping in cents. Only valid when type is <em>SHIP</em>. Must be greater than or equal to 0. Field can be omitted if costs are unknown.</td>
 </tr>
 <tr class="row-even"><td><cite>time</cite></td>
 <td>Optional</td>
-<td>Delivery time. Only valid when type is <em>SHIP</em>. Supported values are &#8220;2d-5d&#8221;, &#8220;6d-10d&#8221;  and everything in the form &#8220;&lt;number&gt;d&#8221; where &lt;number&gt; is &gt; 0.</td>
+<td>Time it takes to deliver the ad. Only valid when type is <em>SHIP</em>. Supported values are &#8220;2d-5d&#8221;, &#8220;6d-10d&#8221;  and everything in the form &#8220;&lt;number&gt;d&#8221; where &lt;number&gt; is &gt; 0. Field can be omitted if time is unknown.</td>
 </tr>
 <tr class="row-odd"><td><cite>pickupLocation</cite></td>
 <td>Mandatory when type is <em>PICKUP</em></td>
@@ -867,7 +867,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.73',
+            VERSION:'0.74',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

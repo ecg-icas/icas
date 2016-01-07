@@ -39,15 +39,19 @@ History
 
 ..  role:: strike
 
-* v.0.73 - 14 Dec 2015 - tw
+* v0.74 - 17 Dec 2015 - gg
 
-  * added Region to the columns of the reports
+ * improve explanations for shipping options in :ref:`ads`
 
-* v.0.72 - 3 Dec 2015 - ak
+* v0.73 - 14 Dec 2015 - tw
+
+ * added Region to the columns of the reports
+
+* v0.72 - 3 Dec 2015 - ak
 
  * added vendorId field to :ref:`ads` and :ref:`api_reference`
 
-* v.0.71 - 1 Dec 2015 - tw
+* v0.71 - 1 Dec 2015 - tw
 
  * fix docs for shippingOptions
 
