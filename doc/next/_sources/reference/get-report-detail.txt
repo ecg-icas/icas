@@ -13,7 +13,7 @@ GET /report/detail
  * - Accept
    - ``application/sellside.report.detail.list-v1+json, application/json``
 
-This URL returns the list of previously submittted reports for the current
+This URL returns the list of previously submitted reports for the current
 user. A maximum of 3 reports are returned.
 
 

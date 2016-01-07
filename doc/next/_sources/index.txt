@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.75 - 7 Jan 2016 - ak
+
+ * added vendorId to :ref:`get_report` and :ref:`get_report_detail_id`
+
 * v0.74 - 17 Dec 2015 - gg
 
  * improve explanations for shipping options in :ref:`ads`

@@ -25,7 +25,8 @@
           "clicks":43,
           "urlClicks":73,
           "emails":0,
-          "externalId":"ad123ecec"
+          "externalId":"ad123ecec",
+          "vendorId":"vndr"
         }
       ]
     }

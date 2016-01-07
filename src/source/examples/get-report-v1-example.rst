@@ -23,7 +23,8 @@
     		"clicks":6,
     		"urlClicks":3,
     		"emails":1,
-    		"externalId":"f985f7eecc"
+    		"externalId":"f985f7eecc",
+    		"vendorId":"vndr"
     	},
     	{
     		"id":544028,
@@ -41,6 +42,7 @@
     		"clicks":2,
     		"urlClicks":0,
     		"emails":0,
-    		"externalId":"bffb7103d5"
+    		"externalId":"bffb7103d5",
+    		"vendorId":""
     	}
     ]

@@ -66,6 +66,7 @@ clicks                      10                          long        Number of cl
 urlClicks                   3                           int         Number of url clicks this ad received.
 emails                      2                           int         Number of email requests this ad received.
 externalId                  "c3po-r2d2"                 string      External id of the ad.
+vendorId                    "vndr"                      string      Vendor id of the ad.
 =======================     ========================    ========    =============================================================
 
 Example
@@ -128,6 +129,7 @@ clicks                      10                          long        Number of cl
 urlClicks                   3                           int         Number of url clicks this ad received.
 emails                      2                           int         Number of email requests this ad received.
 externalId                  "c3po-r2d2"                 string      External id of the ad.
+vendorId                    "vndr"                      string      Vendor id of the ad.
 =======================     ========================    ========    =============================================================
 
 Example
