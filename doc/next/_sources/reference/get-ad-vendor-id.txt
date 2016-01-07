@@ -57,5 +57,5 @@ vendorId                2005    value too long              max. length is 64 ch
 Example
 -------
 
-.. include:: ../examples/get-ad-id-v2-example.rst
+.. include:: ../examples/get-ad-id-v2-by-vendor.rst
 

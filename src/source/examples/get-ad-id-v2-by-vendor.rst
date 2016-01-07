@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    GET /ad/42
+    GET /ad/byVendor/OURSHOP-1423453-34
     Accept: application/sellside.ad-v2+json, application/json
 
     200 OK

@@ -1,7 +1,7 @@
 .. code-block:: javascript
 
     GET /ad[?limit=limit][&offset=offset][&titleKeywords=titleKeywords][&status=Status][&orderBy=orderBy][&changedSince=timestamp][&remainingBudget=number[%]][&_include=list,of,fields][&_exclude=list,of,fields][&startDate=2014-12-04][&endDate=2015-06-13]
-    Accept: application/sellside.ad.list-v2+json, application/json
+    Accept: application/sellside.ad.list-v3+json, application/json
 
     200 OK
     Content-Type: application/sellside.ad.list-v3+json; charset=utf-8
