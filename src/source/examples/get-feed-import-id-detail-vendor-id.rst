@@ -7,7 +7,7 @@
     Content-Type: application/sellside.feedimportdetail-v1+json; charset=UTF-8
 
     {
-      "vendorID":    "vndr",
+      "vendorId":    "vndr",
       "errors":      [
         "title \"\" too short, minimum is 1 characters"
       ],

@@ -197,23 +197,24 @@
 </tbody>
 </table>
 <p>This endpoint provides detailed import information for each ad during a successful feed import.
-The field <code class="docutils literal"><span class="pre">vendorID</span></code> identifies the ad in the XML feed and can be used in <a class="reference internal" href="get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><span>GET /feed/import/{id}/detail/{vendorId}</span></a>.
+The field <code class="docutils literal"><span class="pre">vendorId</span></code> identifies the ad in the XML feed and can be used in <a class="reference internal" href="get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><span>GET /feed/import/{id}/detail/{vendorId}</span></a>.
 The <code class="docutils literal"><span class="pre">dateCreated</span></code> shows the time when the ad was processed. The <code class="docutils literal"><span class="pre">warnings</span></code> field contains
 a list of descriptive messages when the ad was successfully imported but with warnings,
 e.g. the system has normalized the ad&#8217;s phone number because it is specified in an unsupported
 format. The <code class="docutils literal"><span class="pre">errors</span></code> field contains a list of messages to signify why an ad could not be imported.</p>
-<p>Since an XML field can contain an arbitrary number of ads, API clients need a way to retrieve
-status information for only a subset of all ads. This is achieved by using the <code class="docutils literal"><span class="pre">limit</span></code> and
-<code class="docutils literal"><span class="pre">offset</span></code> parameters.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
+<p class="last">The field <code class="docutils literal"><span class="pre">vendorId</span></code> maps to the XML field <code class="docutils literal"><span class="pre">externalId</span></code> and is stored for imported ads as <a class="reference internal" href="../ads.html#ad-vendorid"><span>vendorId</span></a>.</p>
+</div>
+<p>Since a feed XML file can contain an arbitrary number of ads, API clients need a way to retrieve
+status information for only a subset of all ads. This is achieved by using the <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">offset</span></code> parameters:
+<code class="docutils literal"><span class="pre">limit</span></code> controls the number of returned entities and <code class="docutils literal"><span class="pre">offset</span></code> allows for skipping entities.</p>
 <p>The endpoint returns <strong>404 Not Found</strong> when import details are requested for:</p>
-<ul class="last simple">
+<ul class="simple">
 <li>an unknown feed import</li>
 <li>a <strong>REJECTED</strong> feed import</li>
 <li>a successful feed import of an empty XML document (which contains no ads)</li>
 </ul>
-</div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -274,7 +275,7 @@ status information for only a subset of all ads. This is achieved by using the <
 
 <span class="p">[</span>
   <span class="p">{</span>
-    <span class="s2">&quot;vendorID&quot;</span><span class="o">:</span>    <span class="s2">&quot;testExternalId&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span>    <span class="s2">&quot;testExternalId&quot;</span><span class="p">,</span>
     <span class="s2">&quot;errors&quot;</span><span class="o">:</span><span class="p">[</span>
       <span class="s2">&quot;title \&quot;\&quot; too short, minimum is 1 characters&quot;</span>
     <span class="p">],</span>

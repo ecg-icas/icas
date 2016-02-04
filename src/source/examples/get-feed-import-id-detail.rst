@@ -8,7 +8,7 @@
 
     [
       {
-        "vendorID":    "testExternalId",
+        "vendorId":    "testExternalId",
         "errors":[
           "title \"\" too short, minimum is 1 characters"
         ],
