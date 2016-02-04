@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.76 - 3 Feb 2016 - ak
+
+ * added :ref:`get_feed_import`, :ref:`get_feed_import_id_detail` and :ref:`get_feed_import_id_detail_vendor_id`
+
 * v0.75 - 7 Jan 2016 - ak
 
  * added vendorId to :ref:`get_report` and :ref:`get_report_detail_id`

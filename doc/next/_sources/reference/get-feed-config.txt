@@ -8,7 +8,7 @@ GET /feed/config
  :widths: 20 80
 
  * - Scope
-   - ``console_ro``
+   - ``api_ro`` or ``console_ro``
 
  * - Accept
    - ``application/sellside.feedconfig-v1+json, application/json``
