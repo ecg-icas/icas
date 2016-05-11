@@ -51,7 +51,7 @@ The ad has been deleted by Customer Service and cannot be re-activated by the us
 SUSPENDED_BY_CS
 """""""""""""""
 
-The ad has been paused by Customer Service and can be re-activated by the user. The seller should have received an email with an explanation for this status change.
+The ad has been paused by Customer Service and can be re-activated by the user by updating the ad to comply to the terms and conditions. The seller should have received an email with an explanation for this status change.
 
 System States
 -------------
