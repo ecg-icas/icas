@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.79 - 12 May 2016 - tw
+
+  * Corrected the sandbox auth urls for DBA
+
 * v0.78 - 11 May 2016 - tw
 
  * Clarified SUSPENDED_BY_CS a little in :ref:`ad_status_overview`

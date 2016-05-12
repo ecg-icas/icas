@@ -81,11 +81,11 @@ The endpoint URLs per tenant and environment are as follows:
 
  * - DBA
    - Sandbox
-   - https://dba.lp.icas.ecg.so/accounts/oauth/authorize
+   - https://lp-topannoncer.dbabusiness.dk/accounts/oauth/authorize
 
  * -
    -
-   - https://dba.lp.icas.ecg.so/accounts/oauth/token
+   - https://lp-topannoncer.dbabusiness.dk/accounts/oauth/token
 
  * -
    - Production
