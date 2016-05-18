@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v.0.80 - 18 May 2016 - tw
+
+  * added :ref:`get_feed_xsd`
+
 * v0.79 - 12 May 2016 - tw
 
   * Corrected the sandbox auth urls for DBA
