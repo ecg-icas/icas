@@ -8,7 +8,7 @@ GET /report/detail/{id}
  :widths: 20 80
 
  * - Scope
-   - ``console_ro``
+   - ``console_ro`` or ``api_ro``
 
  * - Accept
    - ``application/vnd.ms-excel`` or ``text/csv``

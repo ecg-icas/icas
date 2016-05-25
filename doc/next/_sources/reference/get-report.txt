@@ -15,7 +15,7 @@ v2
  :widths: 20 80
 
  * - Scope
-   - ``console_ro``
+   - ``console_ro`` or ``api_ro``
 
  * - Accept
    - ``application/sellside.report-v2+json, application/json``

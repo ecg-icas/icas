@@ -39,7 +39,11 @@ History
 
 ..  role:: strike
 
-* v.0.80 - 18 May 2016 - tw
+* v0.81 - 25 May 2016 - tw
+
+  * `api_ro` / `api_rw` also allowed as scopes for report calls
+
+* v0.80 - 18 May 2016 - tw
 
   * added :ref:`get_feed_xsd`
 

@@ -8,7 +8,7 @@ POST /report/detail
  :widths: 20 80
 
  * - Scope
-   - ``console_rw``
+   - ``console_rw`` or ``api_rw``
 
  * - Accept
    - ``application/sellside.report.detail.response-v1+json, application/json``
