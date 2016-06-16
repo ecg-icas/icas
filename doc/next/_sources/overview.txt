@@ -28,7 +28,7 @@ own account or on behalf of other users. The base URLs for the API are:
 
  * - DBA
    - Sandbox
-   - https://dba.lp.icas.ecg.so/api/sellside
+   - https://lp-topannoncer.dbabusiness.dk/api/sellside
 
  * -
    - Production

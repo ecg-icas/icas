@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.82 - 16 Jun 2016 - tw
+
+  * dba.dk sandbox url for sellside api fixed
+
 * v0.81 - 25 May 2016 - tw
 
   * `api_ro` / `api_rw` also allowed as scopes for report calls
