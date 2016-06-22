@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Error Handling &mdash; iCAS Sellside API 0.83 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+    <link rel="top" title="iCAS Sellside API 0.83 documentation" href="index.html"/>
+        <link rel="next" title="API Reference" href="api-reference.html"/>
+        <link rel="prev" title="Regions" href="regions.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> iCAS Sellside API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#http-response-codes-and-error-handling">HTTP Response Codes and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-an-access-token">Getting an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-ids">Region Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-levels">Region Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-label">Region label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-center">Region center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad.html">GET /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id.html">GET /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-ad.html">POST  /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id.html">PUT /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category.html">GET /category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">iCAS Sellside API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Error Handling</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/error-handling.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="error-handling">
+<span id="index-0"></span><h1>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h1>
+<p>In the Sellside API all calls are validated and if an error occurs a detailed
+machine-readable error message is returned. Since some calls may return more
+than one error for a given call, e.g. during the validation of a new ad, all
+error responses contain lists of errors with one or more structured error
+objects in them.</p>
+<p>Each error contains a <code class="docutils literal"><span class="pre">code</span></code> and <code class="docutils literal"><span class="pre">text</span></code> attributes providing a numeric
+error code and a simple English error message. An error may contain a
+<code class="docutils literal"><span class="pre">field</span></code> attribute describing the field where the error occurred and an
+additonal <code class="docutils literal"><span class="pre">arg</span></code> attribute further specifying the error, i.e. the maximum
+length of a field in case of a &#8220;string too long&#8221; error.</p>
+<p>The validation will first check if the input parameters are of the correct type,
+i.e. an integer should be an integer, not a string or a decimal value.
+Secondly, the Sellside API will check if the provided input parameters are meaningful
+within the context of the call. E.g. a category ID should be a positive integer.
+Only the context specific checks are mentioned in the Errors section of the documentation page of
+each call, as the type checks are considered generic.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="mi">400</span> <span class="nx">Bad</span> <span class="nx">Request</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="mi">2005</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="s2">&quot;too long&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arg&quot;</span><span class="o">:</span><span class="mi">60</span><span class="p">,</span>
+        <span class="s2">&quot;msg&quot;</span><span class="o">:</span><span class="s2">&quot;The field &#39;name&#39; must not be longer than 60 characters.&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api-reference.html" class="btn btn-neutral float-right" title="API Reference"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="regions.html" class="btn btn-neutral" title="Regions"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015 The iCAS Team.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.83',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
