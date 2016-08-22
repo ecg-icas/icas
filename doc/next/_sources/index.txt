@@ -38,6 +38,13 @@ History
 =======
 
 ..  role:: strike
+* v0.84 - 22 Aug 2016 - tw
+
+  * currencies DKK and CAD also allowed
+
+* v0.83 - 22 Jun 2016 - sd
+
+  * set cpc to mandatory in ads
 
 * v0.82 - 16 Jun 2016 - tw
 

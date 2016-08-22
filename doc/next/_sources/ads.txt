@@ -34,7 +34,7 @@ Field                               Type       Constraints        Mandatory   Wr
 :ref:`ad_priceType`                 string     enum               yes         yes
 :ref:`ad_priceUnit`                 string     see below          no          yes
 :ref:`ad_price`                     long       see below          see below   yes
-:ref:`ad_cpc`                       long       positive           no          yes
+:ref:`ad_cpc`                       long       positive           yes	      yes
 :ref:`ad_totalBudget`               long       positive           no          yes
 :ref:`ad_dailyBudget`               long       positive           no          yes
 :ref:`ad_dailySpent`                long       positive           no          no
@@ -135,8 +135,9 @@ of the user controlled states *ACTIVE*, *PAUSED* or *DELETED*.
 currency
 """"""""
 
-The `ISO 4217`_ currency code. Currently only *EUR* is supported. All Euro
-amount values are stored in cents, i.e. EUR 10.50 are represented as 1050.
+The `ISO 4217`_ currency code. Currently only *EUR*, *DKK* and *CAD*  supported.
+All values are stored in cents (1/100 parts), i.e. EUR 10.50 are represented as 1050,
+DKK 12.34 should be represented as 1234.
 
 .. index:: priceType
 .. _ad_priceType:

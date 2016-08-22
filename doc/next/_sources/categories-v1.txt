@@ -56,8 +56,8 @@ required attributes and a set of optional attributes which are listed below:
  * - currency
    - "EUR"
    - string
-   - The `ISO 4217`_ currency code. Currently only *EUR* is supported.
-     All Euro amount values are stored in cents
+   - The `ISO 4217`_ currency code. Currently only *EUR*, *CAD* and *DKK* are supported.
+     All amount values are stored in cents
 
  * - minCpc
    - 10
