@@ -38,6 +38,11 @@ History
 =======
 
 ..  role:: strike
+
+* v0.85 - 2 Sep 2016 - tw
+
+  * add docs for /regions call, see :ref:`get_regions`
+
 * v0.84 - 22 Aug 2016 - tw
 
   * currencies DKK and CAD also allowed

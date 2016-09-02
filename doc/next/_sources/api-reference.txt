@@ -27,6 +27,7 @@ API Reference
    reference/get-image
    reference/post-image
    reference/get-region-id
+   reference/get-regions
    reference/get-report
    reference/get-report-detail
    reference/get-report-detail-id
