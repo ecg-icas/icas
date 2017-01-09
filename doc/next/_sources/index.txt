@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v0.86 - 9 Jan 2017 - tw
+
+  * add docs for GET /api/sellside/budget/seller
+
 * v0.85 - 2 Sep 2016 - tw
 
   * add docs for /regions call, see :ref:`get_regions`

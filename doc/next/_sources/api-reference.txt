@@ -13,6 +13,7 @@ API Reference
    reference/post-ad
    reference/put-ad-id
    reference/put-ad-id-status
+   reference/get-budget-seller
    reference/get-categories
    reference/get-category
    reference/get-category-id
