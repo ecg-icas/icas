@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.86 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /user" href="get-user.html"/>
@@ -139,7 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /report/summary</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
@@ -175,7 +178,7 @@
     <li>GET /report/summary</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-report-summary.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-report-summary.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -185,17 +188,17 @@
             
   <div class="section" id="get-report-summary">
 <span id="index-0"></span><span id="id1"></span><h1>GET /report/summary<a class="headerlink" href="#get-report-summary" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">console_ro</span></tt> or <tt class="docutils literal"><span class="pre">api_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.report.summary-v1+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.report.summary-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -310,7 +313,7 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">summary</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2015</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">12</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">summary</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2015</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">12</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>

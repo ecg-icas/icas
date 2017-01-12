@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.86 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /category" href="get-category.html"/>
@@ -120,7 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-budget-seller.html">GET /budget/seller</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /categories</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
@@ -175,7 +178,7 @@
     <li>GET /categories</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-categories.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-categories.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -187,24 +190,24 @@
 <span id="index-0"></span><span id="id1"></span><h1>GET /categories<a class="headerlink" href="#get-categories" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2>GET /categories<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.category.list-v1+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.category.list-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns the a map of id to categories in the format described in
-<a class="reference internal" href="../categories-v2.html#categories-v2"><em>Categories V2</em></a> for the id&#8217;s requested in parameter <tt class="docutils literal"><span class="pre">categoryIds</span></tt>.
+<a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> for the id&#8217;s requested in parameter <code class="docutils literal"><span class="pre">categoryIds</span></code>.
 This parameter is a comma separated list of integers.
-If the parameter <tt class="docutils literal"><span class="pre">categoryIds</span></tt> contains invalid data, i.e. not a positive
+If the parameter <code class="docutils literal"><span class="pre">categoryIds</span></code> contains invalid data, i.e. not a positive
 integer, the server returns <strong>400 Bad Request</strong>.</p>
 </div>
 <div class="section" id="parameters">
@@ -274,7 +277,7 @@ integer, the server returns <strong>400 Bad Request</strong>.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">categories</span><span class="o">?</span><span class="nx">categoryIds</span><span class="o">=</span><span class="mi">863</span><span class="p">,</span><span class="mi">431</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">categories</span><span class="o">?</span><span class="nx">categoryIds</span><span class="o">=</span><span class="mi">863</span><span class="p">,</span><span class="mi">431</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>

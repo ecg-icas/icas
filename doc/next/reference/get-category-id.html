@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.86 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /category/{id}/attributes" href="get-category-id-attributes.html"/>
@@ -122,7 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-budget-seller.html">GET /budget/seller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /category/{id}</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
@@ -175,7 +178,7 @@
     <li>GET /category/{id}</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-category-id.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-category-id.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -185,38 +188,38 @@
             
   <div class="section" id="get-category-id">
 <span id="index-0"></span><span id="id1"></span><h1>GET /category/{id}<a class="headerlink" href="#get-category-id" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#get-category-id-v2"><em>GET /category/{id} v2</em></a> | <a class="reference internal" href="#get-category-id-v1"><em>GET /category/{id} v1</em></a></p>
+<p><a class="reference internal" href="#get-category-id-v2"><span class="std std-ref">GET /category/{id} v2</span></a> | <a class="reference internal" href="#get-category-id-v1"><span class="std std-ref">GET /category/{id} v1</span></a></p>
 <div class="section" id="get-category-id-v2">
 <span id="id2"></span><h2>GET /category/{id} v2<a class="headerlink" href="#get-category-id-v2" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.category-v2+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.category-v2+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns the category tree or parts of it in the format described in
-<a class="reference internal" href="../categories-v2.html#categories-v2"><em>Categories V2</em></a> starting from the category with the given category
-<tt class="docutils literal"><span class="pre">id</span></tt>. To return the category tree starting from the root node use id <tt class="docutils literal"><span class="pre">0</span></tt>.
+<a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> starting from the category with the given category
+<code class="docutils literal"><span class="pre">id</span></code>. To return the category tree starting from the root node use id <code class="docutils literal"><span class="pre">0</span></code>.
 If the category does not exist the server returns <strong>404 Not Found</strong>. If the
-<tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e. not a positive integer the server returns <strong>400 Bad
+<code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400 Bad
 Request</strong>.</p>
-<p>The <tt class="docutils literal"><span class="pre">levels</span></tt> parameter specifies how many levels starting from
+<p>The <code class="docutils literal"><span class="pre">levels</span></code> parameter specifies how many levels starting from
 the current one you want to retrieve. The default is 0 which means that only
 the category itself is returned. To retrieve all sub levels specify a
 sufficiently large number, e.g. 9999.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The format is substantially different than the format used for
-<a class="reference internal" href="#get-category-id-v1"><em>GET /category/{id} v1</em></a>. Since the attribute keys have changed you also
-need to use <a class="reference internal" href="get-ad-id.html#get-ad-id-v2"><em>GET /ad/{id} v2</em></a> and <a class="reference internal" href="get-ad.html#get-ad-v3"><em>GET /ad v3</em></a> instead of the older
+<a class="reference internal" href="#get-category-id-v1"><span class="std std-ref">GET /category/{id} v1</span></a>. Since the attribute keys have changed you also
+need to use <a class="reference internal" href="get-ad-id.html#get-ad-id-v2"><span class="std std-ref">GET /ad/{id} v2</span></a> and <a class="reference internal" href="get-ad.html#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> instead of the older
 versions.</p>
 </div>
 </div>
@@ -292,7 +295,7 @@ versions.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">category</span><span class="o">/</span><span class="mi">2</span><span class="o">?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">category</span><span class="o">/</span><span class="mi">2</span><span class="o">?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -361,39 +364,39 @@ versions.</p>
 </div>
 <div class="section" id="get-category-id-v1">
 <span id="id3"></span><h2>GET /category/{id} v1<a class="headerlink" href="#get-category-id-v1" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.category-v1+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.category-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns the category tree or parts of it in the format described in
-<a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a> starting from the node with the given category <tt class="docutils literal"><span class="pre">id</span></tt>. To
-return the category tree starting from the root node use id <tt class="docutils literal"><span class="pre">0</span></tt>. If the
-category does not exist the server returns <strong>404 Not Found</strong>. If the <tt class="docutils literal"><span class="pre">id</span></tt> is
+<a class="reference internal" href="../categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a> starting from the node with the given category <code class="docutils literal"><span class="pre">id</span></code>. To
+return the category tree starting from the root node use id <code class="docutils literal"><span class="pre">0</span></code>. If the
+category does not exist the server returns <strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">id</span></code> is
 invalid, i.e. not a positive integer the server returns <strong>400 Bad Request</strong>.</p>
-<p>The <tt class="docutils literal"><span class="pre">levels</span></tt> parameter specifies how many levels starting from the current
+<p>The <code class="docutils literal"><span class="pre">levels</span></code> parameter specifies how many levels starting from the current
 one you want to retrieve. The default is 0 which means that only the current
 level is being returned. To retrieve all sub levels specify a sufficiently
 large number, e.g. 9999.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This call is deprecated and will be removed after September 2015.  It is
-only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><em>Categories V1</em></a> and must only be used with the
-other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><em>Category V1 Compatible Endpoints</em></a>. Otherwise, the attributes
+only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a> and must only be used with the
+other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span class="std std-ref">Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
 may not be recognized or editable.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The parameter <tt class="docutils literal"><span class="pre">subCategoryLevels</span></tt> is an alias for <tt class="docutils literal"><span class="pre">levels</span></tt> and is
+<p class="last">The parameter <code class="docutils literal"><span class="pre">subCategoryLevels</span></code> is an alias for <code class="docutils literal"><span class="pre">levels</span></code> and is
 deprecated. It will be removed after September 2015.</p>
 </div>
 </div>
@@ -469,7 +472,7 @@ deprecated. It will be removed after September 2015.</p>
 </div>
 <div class="section" id="id6">
 <h2>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/</span><span class="mi">1</span><span class="o">?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/</span><span class="mi">1</span><span class="o">?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>

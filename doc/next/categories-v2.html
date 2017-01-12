@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.86 documentation" href="index.html"/>
         <link rel="up" title="Categories" href="categories.html"/>
         <link rel="next" title="Attributes" href="attributes.html"/>
@@ -92,7 +95,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="categories.html">Categories</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Categories V2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Categories V2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
@@ -175,7 +178,7 @@
     <li>Categories V2</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/categories-v2.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/categories-v2.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -211,7 +214,7 @@ result in a site-wide search across all categories.</p>
 <div class="section" id="category-status">
 <h2>Category Status<a class="headerlink" href="#category-status" title="Permalink to this headline">¶</a></h2>
 <p>Each category has a status of one of the following values:</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="30%" />
 <col width="70%" />
@@ -228,7 +231,7 @@ result in a site-wide search across all categories.</p>
 <tr class="row-odd"><td>CLOSED</td>
 <td>The category is visible but no ads can be placed. This status should be
 used for leaf categories where no new ads are accepted and which are
-in transition to <tt class="docutils literal"><span class="pre">DELETED</span></tt>.</td>
+in transition to <code class="docutils literal"><span class="pre">DELETED</span></code>.</td>
 </tr>
 <tr class="row-even"><td>DELETED</td>
 <td>The category is no longer visible and no ads can be placed in it. It is
@@ -241,8 +244,8 @@ found through a category search.</td>
 <div class="section" id="category-configuration">
 <span id="category-config-v2"></span><span id="index-0"></span><h2>Category Configuration<a class="headerlink" href="#category-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Leaf categories provide additional configuration which is provided in
-<tt class="docutils literal"><span class="pre">config</span></tt> field of the category. Non-leaf categories do not provide that field.</p>
-<table border="1" class="docutils">
+<code class="docutils literal"><span class="pre">config</span></code> field of the category. Non-leaf categories do not provide that field.</p>
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="5%" />
 <col width="15%" />
@@ -269,55 +272,55 @@ found through a category search.</td>
 </tr>
 <tr class="row-even"><td>cpc</td>
 <td>interval</td>
-<td><tt class="docutils literal"><span class="pre">(0,+∞)</span></tt></td>
+<td><code class="docutils literal"><span class="pre">(0,+∞)</span></code></td>
 <td>CPC value for ads in this category.</td>
 </tr>
 <tr class="row-odd"><td>totalBudget</td>
 <td>interval</td>
-<td><tt class="docutils literal"><span class="pre">(0,+∞)</span></tt></td>
+<td><code class="docutils literal"><span class="pre">(0,+∞)</span></code></td>
 <td>Total budget for ads in this category.</td>
 </tr>
 <tr class="row-even"><td>minDailyBudget</td>
 <td>int</td>
-<td><tt class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
 <td>Min daily budget for ads in this category. Default is 0 == no daily budget.
-Max should be <tt class="docutils literal"><span class="pre">totalBudget</span></tt> of the ad.</td>
+Max should be <code class="docutils literal"><span class="pre">totalBudget</span></code> of the ad.</td>
 </tr>
 <tr class="row-odd"><td>activeAds</td>
 <td>interval</td>
-<td><tt class="docutils literal"><span class="pre">(0,+∞)</span></tt></td>
+<td><code class="docutils literal"><span class="pre">(0,+∞)</span></code></td>
 <td>Max active ads per seller in this category.</td>
 </tr>
 <tr class="row-even"><td>images</td>
 <td>interval</td>
-<td><tt class="docutils literal"><span class="pre">[0,32]</span></tt></td>
+<td><code class="docutils literal"><span class="pre">[0,32]</span></code></td>
 <td>Max number of images for ads in this category.</td>
 </tr>
 <tr class="row-odd"><td>titleLength</td>
 <td>interval</td>
-<td><tt class="docutils literal"><span class="pre">(0,120]</span></tt></td>
+<td><code class="docutils literal"><span class="pre">(0,120]</span></code></td>
 <td>Max length of the title for ads in this category.</td>
 </tr>
 <tr class="row-even"><td>descriptionLength</td>
 <td>interval</td>
-<td><tt class="docutils literal"><span class="pre">(0,65535]</span></tt></td>
+<td><code class="docutils literal"><span class="pre">(0,65535]</span></code></td>
 <td>Max length of the description for ads in this category.</td>
 </tr>
 <tr class="row-odd"><td>shippingOption</td>
 <td>string</td>
 <td>not empty</td>
-<td>If <tt class="docutils literal"><span class="pre">DISABLED</span></tt> ads in this category cannot have shipping options, if <tt class="docutils literal"><span class="pre">OPTIONAL</span></tt> ads can
-have shipping options and if <tt class="docutils literal"><span class="pre">MANDATORY</span></tt> ads must have shipping options.</td>
+<td>If <code class="docutils literal"><span class="pre">DISABLED</span></code> ads in this category cannot have shipping options, if <code class="docutils literal"><span class="pre">OPTIONAL</span></code> ads can
+have shipping options and if <code class="docutils literal"><span class="pre">MANDATORY</span></code> ads must have shipping options.</td>
 </tr>
 <tr class="row-even"><td>paypalEnabled</td>
 <td>bool</td>
 <td>&nbsp;</td>
-<td>If <tt class="docutils literal"><span class="pre">true</span></tt>, Paypal is a payment option for ads in this category.</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, Paypal is a payment option for ads in this category.</td>
 </tr>
 <tr class="row-odd"><td>paypalBpEnabled</td>
 <td>bool</td>
 <td>&nbsp;</td>
-<td>If <tt class="docutils literal"><span class="pre">true</span></tt>, Paypal Buyer Protection is enabled for ads in this category.</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, Paypal Buyer Protection is enabled for ads in this category.</td>
 </tr>
 <tr class="row-even"><td>tags</td>
 <td>map&lt;locale, set&lt;string&gt;&gt;</td>
@@ -328,13 +331,13 @@ have shipping options and if <tt class="docutils literal"><span class="pre">MAND
 <td>set&lt;string&gt;</td>
 <td>&nbsp;</td>
 <td>Optional set of verticals (groups) this category belongs to. The following verticals are
-allowed: <tt class="docutils literal"><span class="pre">CARS</span></tt>, <tt class="docutils literal"><span class="pre">CONTACTS</span></tt>, <tt class="docutils literal"><span class="pre">JOBS</span></tt>, <tt class="docutils literal"><span class="pre">HOUSES</span></tt>, <tt class="docutils literal"><span class="pre">SERVICES</span></tt>, <tt class="docutils literal"><span class="pre">VACATIONS</span></tt></td>
+allowed: <code class="docutils literal"><span class="pre">CARS</span></code>, <code class="docutils literal"><span class="pre">CONTACTS</span></code>, <code class="docutils literal"><span class="pre">JOBS</span></code>, <code class="docutils literal"><span class="pre">HOUSES</span></code>, <code class="docutils literal"><span class="pre">SERVICES</span></code>, <code class="docutils literal"><span class="pre">VACATIONS</span></code></td>
 </tr>
 <tr class="row-even"><td>region</td>
 <td>string</td>
 <td>not empty</td>
-<td>If <tt class="docutils literal"><span class="pre">DISABLED</span></tt> ads in this category cannot have regions, if <tt class="docutils literal"><span class="pre">OPTIONAL</span></tt> ads can
-have regions and if <tt class="docutils literal"><span class="pre">MANDATORY</span></tt> ads must have regions.</td>
+<td>If <code class="docutils literal"><span class="pre">DISABLED</span></code> ads in this category cannot have regions, if <code class="docutils literal"><span class="pre">OPTIONAL</span></code> ads can
+have regions and if <code class="docutils literal"><span class="pre">MANDATORY</span></code> ads must have regions.</td>
 </tr>
 <tr class="row-odd"><td>relatedPaths</td>
 <td>set&lt;string&gt;</td>
@@ -345,7 +348,7 @@ fallback scenarios to expand the search parameters when too few results are retu
 <tr class="row-even"><td>priceUnits</td>
 <td>map&lt;string, map&lt;locale, string&gt;&gt;</td>
 <td>&nbsp;</td>
-<td>Optional set of localized price units like <tt class="docutils literal"><span class="pre">per</span> <span class="pre">m²</span></tt>, <tt class="docutils literal"><span class="pre">per</span> <span class="pre">hour</span></tt>, etc. Maps an unique
+<td>Optional set of localized price units like <code class="docutils literal"><span class="pre">per</span> <span class="pre">m²</span></code>, <code class="docutils literal"><span class="pre">per</span> <span class="pre">hour</span></code>, etc. Maps an unique
 key to a set localized values.</td>
 </tr>
 </tbody>
@@ -353,32 +356,32 @@ key to a set localized values.</td>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The field <cite>suggestedCpcForPageOne</cite> which is available in
-<a class="reference internal" href="categories-v1.html#categories-v1"><em>Categories V1</em></a> is not available anymore. To get a performance
-prediction for new ads in this category use <a class="reference internal" href="reference/get-category-id-funnel.html#get-category-id-funnel"><em>GET /category/{id}/funnel</em></a>.</p>
+<a class="reference internal" href="categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a> is not available anymore. To get a performance
+prediction for new ads in this category use <a class="reference internal" href="reference/get-category-id-funnel.html#get-category-id-funnel"><span class="std std-ref">GET /category/{id}/funnel</span></a>.</p>
 </div>
 </div>
 <div class="section" id="intervals">
 <h2>Intervals<a class="headerlink" href="#intervals" title="Permalink to this headline">¶</a></h2>
-<p>Parameters which are defined as type <tt class="docutils literal"><span class="pre">interval</span></tt> use one of the <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_31-11#Sets">ISO 31-11</a> notations for
-describing intervals.  The supported notation is <tt class="docutils literal"><span class="pre">[a,b]</span></tt>, <tt class="docutils literal"><span class="pre">(a,b)</span></tt>, <tt class="docutils literal"><span class="pre">(a,b]</span></tt>
-and <tt class="docutils literal"><span class="pre">[a,b)</span></tt>. <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> must be valid numbers.</p>
+<p>Parameters which are defined as type <code class="docutils literal"><span class="pre">interval</span></code> use one of the <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_31-11#Sets">ISO 31-11</a> notations for
+describing intervals.  The supported notation is <code class="docutils literal"><span class="pre">[a,b]</span></code>, <code class="docutils literal"><span class="pre">(a,b)</span></code>, <code class="docutils literal"><span class="pre">(a,b]</span></code>
+and <code class="docutils literal"><span class="pre">[a,b)</span></code>. <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> must be valid numbers.</p>
 </div>
 <div class="section" id="locales">
 <h2>Locales<a class="headerlink" href="#locales" title="Permalink to this headline">¶</a></h2>
-<p>Categories have support for multiple locales. A locale is defined as <tt class="docutils literal"><span class="pre">language[_territory]</span></tt>.
+<p>Categories have support for multiple locales. A locale is defined as <code class="docutils literal"><span class="pre">language[_territory]</span></code>.
 The language is defined as a <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a> language code and the territory is a
 <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code. Some examples are:
-<tt class="docutils literal"><span class="pre">nl_NL</span></tt>, <tt class="docutils literal"><span class="pre">nl_BE</span></tt>, <tt class="docutils literal"><span class="pre">fr_BE</span></tt>, <tt class="docutils literal"><span class="pre">en_US</span></tt>, <tt class="docutils literal"><span class="pre">en_AU</span></tt></p>
-<p>The <tt class="docutils literal"><span class="pre">locales</span></tt> parameter defines for which locale a category is available.
+<code class="docutils literal"><span class="pre">nl_NL</span></code>, <code class="docutils literal"><span class="pre">nl_BE</span></code>, <code class="docutils literal"><span class="pre">fr_BE</span></code>, <code class="docutils literal"><span class="pre">en_US</span></code>, <code class="docutils literal"><span class="pre">en_AU</span></code></p>
+<p>The <code class="docutils literal"><span class="pre">locales</span></code> parameter defines for which locale a category is available.
 This allows for region specific differences within the same taxonomy tree.</p>
-<p>If the <tt class="docutils literal"><span class="pre">locales</span></tt> parameter contains multiple entries then all multi-lingual fields
-of type <tt class="docutils literal"><span class="pre">map&lt;locale,...&gt;</span></tt> have entries for all of these locales.</p>
+<p>If the <code class="docutils literal"><span class="pre">locales</span></code> parameter contains multiple entries then all multi-lingual fields
+of type <code class="docutils literal"><span class="pre">map&lt;locale,...&gt;</span></code> have entries for all of these locales.</p>
 </div>
 <div class="section" id="price-types">
 <h2>Price Types<a class="headerlink" href="#price-types" title="Permalink to this headline">¶</a></h2>
 <p>Each leaf category has one or more price types configured which define the payment
 options the seller wants to offer. The valid list of price types is:</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="10%" />
@@ -438,7 +441,7 @@ options the seller wants to offer. The valid list of price types is:</p>
 <li>validate an ad that is placed via the iCAS Sellside API</li>
 </ul>
 <p>The category tree is provided as a JSON object which has the following structure:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/0&quot;</span>
     <span class="p">},</span>
@@ -486,7 +489,7 @@ configuration for this category.</p>
 <p>Non-leaf categories only serve as parent nodes for lower level categories.
 Ads cannot be placed within them and therefore they have no configuration
 related to ad placement.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="5%" />
 <col width="15%" />
@@ -508,23 +511,23 @@ related to ad placement.</p>
 </tr>
 <tr class="row-odd"><td>id</td>
 <td>long</td>
-<td><tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
 <td>Unique category id.</td>
 </tr>
 <tr class="row-even"><td>parentId</td>
 <td>long</td>
-<td><tt class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
 <td>Id of the parent category.</td>
 </tr>
 <tr class="row-odd"><td>level</td>
 <td>int</td>
-<td><tt class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
 <td>Level at which the category is defined.</td>
 </tr>
 <tr class="row-even"><td>path</td>
 <td>string</td>
 <td>not empty</td>
-<td>Ids of all ancestors (except the root) and the current category separated by <tt class="docutils literal"><span class="pre">_</span></tt></td>
+<td>Ids of all ancestors (except the root) and the current category separated by <code class="docutils literal"><span class="pre">_</span></code></td>
 </tr>
 <tr class="row-odd"><td>locales</td>
 <td>list&lt;locale&gt;</td>
@@ -544,7 +547,7 @@ related to ad placement.</p>
 <tr class="row-even"><td>status</td>
 <td>string</td>
 <td>not empty</td>
-<td>One of <tt class="docutils literal"><span class="pre">ACTIVE</span></tt>, <tt class="docutils literal"><span class="pre">CLOSED</span></tt>, <tt class="docutils literal"><span class="pre">DELETED</span></tt></td>
+<td>One of <code class="docutils literal"><span class="pre">ACTIVE</span></code>, <code class="docutils literal"><span class="pre">CLOSED</span></code>, <code class="docutils literal"><span class="pre">DELETED</span></code></td>
 </tr>
 <tr class="row-odd"><td>children</td>
 <td>list&lt;category&gt;</td>
@@ -554,7 +557,7 @@ related to ad placement.</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/856&quot;</span>
     <span class="p">},</span>
@@ -583,7 +586,7 @@ related to ad placement.</p>
 <p>Leaf categories are the categories where ads can be placed. They have by definition
 no children. Leaf categories contain the full configuration for ads placed in this
 category.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="5%" />
 <col width="15%" />
@@ -605,23 +608,23 @@ category.</p>
 </tr>
 <tr class="row-odd"><td>id</td>
 <td>long</td>
-<td><tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
 <td>Unique category id.</td>
 </tr>
 <tr class="row-even"><td>parentId</td>
 <td>long</td>
-<td><tt class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
 <td>Id of the parent category.</td>
 </tr>
 <tr class="row-odd"><td>level</td>
 <td>int</td>
-<td><tt class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
 <td>Level at which the category is defined.</td>
 </tr>
 <tr class="row-even"><td>path</td>
 <td>string</td>
 <td>not empty</td>
-<td>Ids of all ancestors (except the root) and the current category separated by <tt class="docutils literal"><span class="pre">_</span></tt></td>
+<td>Ids of all ancestors (except the root) and the current category separated by <code class="docutils literal"><span class="pre">_</span></code></td>
 </tr>
 <tr class="row-odd"><td>locales</td>
 <td>list&lt;locale&gt;</td>
@@ -641,7 +644,7 @@ category.</p>
 <tr class="row-even"><td>status</td>
 <td>string</td>
 <td>not empty</td>
-<td>One of <tt class="docutils literal"><span class="pre">ACTIVE</span></tt>, <tt class="docutils literal"><span class="pre">CLOSED</span></tt>, <tt class="docutils literal"><span class="pre">DELETED</span></tt></td>
+<td>One of <code class="docutils literal"><span class="pre">ACTIVE</span></code>, <code class="docutils literal"><span class="pre">CLOSED</span></code>, <code class="docutils literal"><span class="pre">DELETED</span></code></td>
 </tr>
 <tr class="row-odd"><td>config</td>
 <td>config</td>
@@ -661,9 +664,9 @@ category.</p>
 <p>Attribute groups combine a list of attributes with a label and an optional tooltip.
 Multiple attribute groups allow the user interface to render multiple groups in
 separate blocks. Expect that attributes are rendered in the order given therefore
-the order in the <tt class="docutils literal"><span class="pre">attributes</span></tt> field matters. The same applies to the order of the
+the order in the <code class="docutils literal"><span class="pre">attributes</span></code> field matters. The same applies to the order of the
 attribute groups themselves.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="5%" />
 <col width="15%" />
@@ -700,8 +703,8 @@ attribute groups themselves.</p>
 <h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
 <p>Attributes define additional fields for ads in this category. The configuration
 parameters allow to render the attribute in a certain way depending on the
-<tt class="docutils literal"><span class="pre">type</span></tt> and the content of the <tt class="docutils literal"><span class="pre">values</span></tt> field. See <a class="reference internal" href="#attribute-rendering">Attribute Rendering</a> below.</p>
-<table border="1" class="docutils">
+<code class="docutils literal"><span class="pre">type</span></code> and the content of the <code class="docutils literal"><span class="pre">values</span></code> field. See <a class="reference internal" href="#attribute-rendering">Attribute Rendering</a> below.</p>
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="5%" />
 <col width="15%" />
@@ -734,7 +737,7 @@ parameters allow to render the attribute in a certain way depending on the
 <tr class="row-odd"><td>type</td>
 <td>string</td>
 <td>not empty</td>
-<td>One of <tt class="docutils literal"><span class="pre">STRING</span></tt>, <tt class="docutils literal"><span class="pre">NUMBER</span></tt>, <tt class="docutils literal"><span class="pre">LIST</span></tt> or <tt class="docutils literal"><span class="pre">BOOL</span></tt></td>
+<td>One of <code class="docutils literal"><span class="pre">STRING</span></code>, <code class="docutils literal"><span class="pre">NUMBER</span></code>, <code class="docutils literal"><span class="pre">LIST</span></code> or <code class="docutils literal"><span class="pre">BOOL</span></code></td>
 </tr>
 <tr class="row-even"><td>values</td>
 <td>map&lt;locale,list&lt;string&gt;&gt;</td>
@@ -751,47 +754,47 @@ must not exceed 512 bytes.</td>
 <tr class="row-even"><td>mandatory</td>
 <td>bool</td>
 <td>&nbsp;</td>
-<td>If <tt class="docutils literal"><span class="pre">true</span></tt>, this attribute is mandatory.</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute is mandatory.</td>
 </tr>
 <tr class="row-odd"><td>searchable</td>
 <td>bool</td>
 <td>&nbsp;</td>
-<td>If <tt class="docutils literal"><span class="pre">true</span></tt>, this attribute is indexed.</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute is indexed.</td>
 </tr>
 <tr class="row-even"><td>updatable</td>
 <td>bool</td>
 <td>&nbsp;</td>
-<td>If <tt class="docutils literal"><span class="pre">true</span></tt>, this attribute can be changed after creation.</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute can be changed after creation.</td>
 </tr>
 <tr class="row-odd"><td>writable</td>
 <td>bool</td>
 <td>&nbsp;</td>
-<td>If <tt class="docutils literal"><span class="pre">true</span></tt>, this attribute can be set during creation.</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute can be set during creation.</td>
 </tr>
 <tr class="row-even"><td>precision</td>
 <td>int</td>
-<td><tt class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></tt></td>
-<td>Precision for <tt class="docutils literal"><span class="pre">NUMBER</span></tt> fields. <tt class="docutils literal"><span class="pre">0</span></tt> means value is an <tt class="docutils literal"><span class="pre">int</span></tt>. Default is <tt class="docutils literal"><span class="pre">0</span></tt>.
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
+<td>Precision for <code class="docutils literal"><span class="pre">NUMBER</span></code> fields. <code class="docutils literal"><span class="pre">0</span></code> means value is an <code class="docutils literal"><span class="pre">int</span></code>. Default is <code class="docutils literal"><span class="pre">0</span></code>.
 Note that floats with large precision values are difficult to compare.</td>
 </tr>
 <tr class="row-odd"><td>range</td>
 <td>interval</td>
 <td>&nbsp;</td>
-<td>Range for <tt class="docutils literal"><span class="pre">NUMBER</span></tt> attributes.</td>
+<td>Range for <code class="docutils literal"><span class="pre">NUMBER</span></code> attributes.</td>
 </tr>
 <tr class="row-even"><td>length</td>
 <td>interval</td>
-<td><tt class="docutils literal"><span class="pre">[0,512]</span></tt></td>
-<td>Length range for <tt class="docutils literal"><span class="pre">STRING</span></tt> attributes without values.</td>
+<td><code class="docutils literal"><span class="pre">[0,512]</span></code></td>
+<td>Length range for <code class="docutils literal"><span class="pre">STRING</span></code> attributes without values.</td>
 </tr>
 <tr class="row-odd"><td>prefix</td>
 <td>map&lt;locale,string&gt;</td>
-<td><tt class="docutils literal"><span class="pre">[0,16]</span></tt></td>
+<td><code class="docutils literal"><span class="pre">[0,16]</span></code></td>
 <td>Optional localized prefix for rendering. Default is empty.</td>
 </tr>
 <tr class="row-even"><td>postfix</td>
 <td>map&lt;locale,string&gt;</td>
-<td><tt class="docutils literal"><span class="pre">[0,16]</span></tt></td>
+<td><code class="docutils literal"><span class="pre">[0,16]</span></code></td>
 <td>Optional localized postfix for rendering. Default is empty.</td>
 </tr>
 <tr class="row-odd"><td>hints</td>
@@ -805,12 +808,12 @@ Note that floats with large precision values are difficult to compare.</td>
 <div class="section" id="attribute-rendering">
 <h2>Attribute Rendering<a class="headerlink" href="#attribute-rendering" title="Permalink to this headline">¶</a></h2>
 <p>How the attribute is rendered and which result type the selected value has depends on
-the combination of the <tt class="docutils literal"><span class="pre">type</span></tt> and the <tt class="docutils literal"><span class="pre">values</span></tt> parameters. The following table lists
+the combination of the <code class="docutils literal"><span class="pre">type</span></code> and the <code class="docutils literal"><span class="pre">values</span></code> parameters. The following table lists
 the valid combinations.</p>
-<p>The <tt class="docutils literal"><span class="pre">hints</span></tt> field can provide additional information on how to render the field. For example,
+<p>The <code class="docutils literal"><span class="pre">hints</span></code> field can provide additional information on how to render the field. For example,
 a text input field should be rendered as a textarea field or rich text input field.</p>
 <p>The list of rendering hints still needs to be provided.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="5%" />
 <col width="5%" />
@@ -831,37 +834,37 @@ a text input field should be rendered as a textarea field or rich text input fie
 <td>empty</td>
 <td>string</td>
 <td>text input</td>
-<td>Free text input field of <tt class="docutils literal"><span class="pre">length</span></tt> characters</td>
+<td>Free text input field of <code class="docutils literal"><span class="pre">length</span></code> characters</td>
 </tr>
 <tr class="row-odd"><td>STRING</td>
 <td>not empty</td>
 <td>string</td>
 <td>drop-down</td>
-<td>Single select field. <tt class="docutils literal"><span class="pre">values</span></tt> contains the options.</td>
+<td>Single select field. <code class="docutils literal"><span class="pre">values</span></code> contains the options.</td>
 </tr>
 <tr class="row-even"><td>LIST</td>
 <td>not empty</td>
 <td>list&lt;string&gt;</td>
 <td>check boxes</td>
-<td>Multi select field. <tt class="docutils literal"><span class="pre">values</span></tt> contains the options.</td>
+<td>Multi select field. <code class="docutils literal"><span class="pre">values</span></code> contains the options.</td>
 </tr>
 <tr class="row-odd"><td>NUMBER</td>
 <td>empty</td>
 <td>int or float</td>
 <td>text input</td>
-<td>Numeric input field with a value defined by <tt class="docutils literal"><span class="pre">range</span></tt>.
-Result type is <tt class="docutils literal"><span class="pre">int</span></tt> if <tt class="docutils literal"><span class="pre">precision</span> <span class="pre">==</span> <span class="pre">0</span></tt>, otherwise <tt class="docutils literal"><span class="pre">float</span></tt></td>
+<td>Numeric input field with a value defined by <code class="docutils literal"><span class="pre">range</span></code>.
+Result type is <code class="docutils literal"><span class="pre">int</span></code> if <code class="docutils literal"><span class="pre">precision</span> <span class="pre">==</span> <span class="pre">0</span></code>, otherwise <code class="docutils literal"><span class="pre">float</span></code></td>
 </tr>
 <tr class="row-even"><td>BOOL</td>
 <td>not empty</td>
 <td>string</td>
 <td>radio buttons</td>
-<td>Boolean input field. <tt class="docutils literal"><span class="pre">values</span></tt> contains the options.</td>
+<td>Boolean input field. <code class="docutils literal"><span class="pre">values</span></code> contains the options.</td>
 </tr>
 </tbody>
 </table>
 <p>Below is a complete example of a non-leaf category:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;parent&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/856&quot;</span><span class="p">,</span>
         <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/863&quot;</span>
@@ -1158,14 +1161,14 @@ Result type is <tt class="docutils literal"><span class="pre">int</span></tt> if
 </div>
 <div class="section" id="category-v2-compatible-endpoints">
 <span id="categories-v2-compatible-endpoints"></span><h2>Category V2 Compatible Endpoints<a class="headerlink" href="#category-v2-compatible-endpoints" title="Permalink to this headline">¶</a></h2>
-<p>The following endpoints are compatible with attributes from <a class="reference internal" href="#categories-v2"><em>Categories V2</em></a>
+<p>The following endpoints are compatible with attributes from <a class="reference internal" href="#categories-v2"><span class="std std-ref">Categories V2</span></a>
 since they either provide or accept the correct attribute keys:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="reference/get-ad.html#get-ad-v3"><em>GET /ad v3</em></a></li>
-<li><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v2"><em>GET /ad/{id} v2</em></a></li>
-<li><a class="reference internal" href="reference/post-ad.html#post-ad-v2"><em>POST /ad v2</em></a></li>
-<li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v2"><em>PUT /ad/{id} v2</em></a></li>
+<li><a class="reference internal" href="reference/get-ad.html#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a></li>
+<li><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v2"><span class="std std-ref">GET /ad/{id} v2</span></a></li>
+<li><a class="reference internal" href="reference/post-ad.html#post-ad-v2"><span class="std std-ref">POST /ad v2</span></a></li>
+<li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v2"><span class="std std-ref">PUT /ad/{id} v2</span></a></li>
 </ul>
 </div></blockquote>
 </div>

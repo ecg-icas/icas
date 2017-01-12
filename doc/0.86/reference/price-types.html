@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.86 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="Error Codes" href="error-codes.html"/>
@@ -142,7 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Price Types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -175,7 +178,7 @@
     <li>Price Types</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/price-types.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/price-types.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -206,11 +209,11 @@ The following table lists the valid price types and their descriptions.</p>
 </tr>
 <tr class="row-odd"><td>BIDDING_FROM</td>
 <td>yes</td>
-<td>Request a bid with a starting price &gt; 0 EUR. <strong>price</strong> must contain a value in the interval of <tt class="docutils literal"><span class="pre">(0,10000000000]</span></tt>.</td>
+<td>Request a bid with a starting price &gt; 0 EUR. <strong>price</strong> must contain a value in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code>.</td>
 </tr>
 <tr class="row-even"><td>FIXED_PRICE</td>
 <td>yes</td>
-<td>Request a fixed price. <strong>price</strong> must contain a value in the interval of <tt class="docutils literal"><span class="pre">(0,10000000000]</span></tt>.</td>
+<td>Request a fixed price. <strong>price</strong> must contain a value in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code>.</td>
 </tr>
 <tr class="row-odd"><td>FREE</td>
 <td>no</td>

@@ -52,6 +52,6 @@ dailyBudget             2020    insufficient daily budget       Daily budget for
 Example
 -------
 
-.. code-block:: http
+.. code-block:: javascript
 
     PUT /ad/42/status/PAUSED

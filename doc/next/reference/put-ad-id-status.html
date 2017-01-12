@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.86 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /budget/seller" href="get-budget-seller.html"/>
@@ -118,7 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-budget-seller.html">GET /budget/seller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
@@ -175,7 +178,7 @@
     <li>PUT /ad/{id}/status</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/put-ad-id-status.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/put-ad-id-status.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -185,29 +188,29 @@
             
   <div class="section" id="put-ad-id-status">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}/status<a class="headerlink" href="#put-ad-id-status" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>This URL updates the status of the ad with the given <tt class="docutils literal"><span class="pre">id</span></tt>. If the ad does
+<p>This URL updates the status of the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. If the ad does
 not exist or does not belong to the user the server returns <strong>404 Not Found</strong>.
-If the <tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e. not a positive integer the server returns <strong>400
+If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
 Bad Request</strong>.</p>
 <p>To set the new status append it to the base url. The status can be one of the
-user controlled status values as defined in <a class="reference internal" href="ad-status.html"><em>Ad Status</em></a>.</p>
+user controlled status values as defined in <a class="reference internal" href="ad-status.html"><span class="doc">Ad Status</span></a>.</p>
 <p>Changing the status to <strong>ACTIVE</strong> also changes the number of active
 ads in this category for this user. If the current number of active ads
-for this user in this category exceeds <tt class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></tt> as defined
+for this user in this category exceeds <code class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></code> as defined
 in the category then an error is returned. Setting a different status
 than <strong>ACTIVE</strong> is always allowed.</p>
 <div class="section" id="parameters">
@@ -282,7 +285,7 @@ than <strong>ACTIVE</strong> is always allowed.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-http"><div class="highlight"><pre>PUT /ad/42/status/PAUSED
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span>
 </pre></div>
 </div>
 </div>

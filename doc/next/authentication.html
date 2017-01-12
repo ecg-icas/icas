@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.86 documentation" href="index.html"/>
         <link rel="next" title="Advertisements" href="ads.html"/>
         <link rel="prev" title="Overview" href="overview.html"/> 
@@ -72,7 +75,7 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Authentication</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-oauth-2-0">What is OAuth 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
@@ -172,7 +175,7 @@
     <li>Authentication</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/authentication.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/authentication.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -220,7 +223,7 @@ application.</p>
 the client application exchanges the authorization code, client ID and client
 secret, for an access token.</p>
 <p>The endpoint URLs per tenant and environment are as follows:</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="10%" />
@@ -297,7 +300,7 @@ library.</p>
 <h3>Step 1: Redirect to the authorization url<a class="headerlink" href="#step-1-redirect-to-the-authorization-url" title="Permalink to this headline">¶</a></h3>
 <p>Redirect the resource owner (user) to the authorization url with the following
 GET parameters</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="10%" />
 <col width="30%" />
@@ -312,7 +315,7 @@ GET parameters</p>
 <tbody valign="top">
 <tr class="row-even"><td>response_type</td>
 <td>Required</td>
-<td>Must be set to <tt class="docutils literal"><span class="pre">code</span></tt></td>
+<td>Must be set to <code class="docutils literal"><span class="pre">code</span></code></td>
 </tr>
 <tr class="row-odd"><td>client_id</td>
 <td>Required</td>
@@ -320,7 +323,7 @@ GET parameters</p>
 </tr>
 <tr class="row-even"><td>scope</td>
 <td>Required</td>
-<td>The scope requested by the client as in <a class="reference internal" href="#scopes"><em>Scopes</em></a></td>
+<td>The scope requested by the client as in <a class="reference internal" href="#scopes"><span class="std std-ref">Scopes</span></a></td>
 </tr>
 <tr class="row-odd"><td>redirect_uri</td>
 <td>Optional</td>
@@ -334,7 +337,7 @@ with the client registration is used.</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-http"><div class="highlight"><pre>GET /accounts/oauth/authorize?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;scope=read+write&amp;redirect_uri=https://yoursite.com/code&amp;state=YOUR_STATE
+<div class="highlight-http"><div class="highlight"><pre><span></span>GET /accounts/oauth/authorize?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;scope=read+write&amp;redirect_uri=https://yoursite.com/code&amp;state=YOUR_STATE
 Host: auth.demo.qa-mp.so
 </pre></div>
 </div>
@@ -342,9 +345,9 @@ Host: auth.demo.qa-mp.so
 <div class="section" id="step-2-redirect-to-the-redirect-uri">
 <h3>Step 2: Redirect to the redirect_uri<a class="headerlink" href="#step-2-redirect-to-the-redirect-uri" title="Permalink to this headline">¶</a></h3>
 <p>After the resource owner logs in and confirms access request of the client the
-authorization server redirects the resource owner to the <tt class="docutils literal"><span class="pre">redirect_uri</span></tt>
+authorization server redirects the resource owner to the <code class="docutils literal"><span class="pre">redirect_uri</span></code>
 specified in the request at step 1 with the following GET parameters</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="10%" />
 <col width="30%" />
@@ -367,7 +370,7 @@ specified in the request at step 1 with the following GET parameters</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-http"><div class="highlight"><pre>GET /code?code=AUTH_CODE&amp;state=YOUR_STATE
+<div class="highlight-http"><div class="highlight"><pre><span></span>GET /code?code=AUTH_CODE&amp;state=YOUR_STATE
 Host: yoursite.com
 </pre></div>
 </div>
@@ -376,7 +379,7 @@ Host: yoursite.com
 <h3>Step 3: POST to the token endpoint<a class="headerlink" href="#step-3-post-to-the-token-endpoint" title="Permalink to this headline">¶</a></h3>
 <p>After obtaining the authorization code at step 2 the client needs to make a
 <em>POST</em> request to the <em>token endpoint</em> with the following parameters:</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="10%" />
 <col width="30%" />
@@ -391,7 +394,7 @@ Host: yoursite.com
 <tbody valign="top">
 <tr class="row-even"><td>grant_type</td>
 <td>Required</td>
-<td>Must be set to <tt class="docutils literal"><span class="pre">authorization_code</span></tt></td>
+<td>Must be set to <code class="docutils literal"><span class="pre">authorization_code</span></code></td>
 </tr>
 <tr class="row-odd"><td>code</td>
 <td>Required</td>
@@ -411,7 +414,7 @@ Host: yoursite.com
 </tr>
 </tbody>
 </table>
-<div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
+<div class="highlight-http"><div class="highlight"><pre><span></span>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
 Content-Type: application/x-www-form-urlencoded
 
@@ -423,7 +426,7 @@ grant_type=code&amp;code=AUTH_CODE&amp;client_id=YOUR_CLIENT_ID&amp;client_secre
 <h3>Step 4: Receive token response<a class="headerlink" href="#step-4-receive-token-response" title="Permalink to this headline">¶</a></h3>
 <p>The authentication server returns the following token response in JSON
 format if the token request at step 3 is valid.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="14%" />
 <col width="86%" />
@@ -438,7 +441,7 @@ format if the token request at step 3 is valid.</p>
 <td>The access token as assigned by the authorization server</td>
 </tr>
 <tr class="row-odd"><td>token_type</td>
-<td>The token type assigned by the authorization server. In this context set to <tt class="docutils literal"><span class="pre">bearer</span></tt>.</td>
+<td>The token type assigned by the authorization server. In this context set to <code class="docutils literal"><span class="pre">bearer</span></code>.</td>
 </tr>
 <tr class="row-even"><td>expires_in</td>
 <td>Expiration time in seconds after which the access token becomes invalid</td>
@@ -447,15 +450,15 @@ format if the token request at step 3 is valid.</p>
 <td>The refresh token for obtaining a new access token</td>
 </tr>
 <tr class="row-even"><td>scope</td>
-<td>The scope of the access token as in <a class="reference internal" href="#scopes"><em>Scopes</em></a></td>
+<td>The scope of the access token as in <a class="reference internal" href="#scopes"><span class="std std-ref">Scopes</span></a></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <tt class="docutils literal"><span class="pre">refresh_token</span></tt> field.</p>
+<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <code class="docutils literal"><span class="pre">refresh_token</span></code> field.</p>
 </div>
-<div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
+<div class="highlight-http"><div class="highlight"><pre><span></span>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
 Content-Type: application/x-www-form-urlencoded
 
@@ -478,8 +481,8 @@ Content-Type: application/json
 <div class="section" id="using-an-access-token">
 <span id="id2"></span><h2>Using an Access Token<a class="headerlink" href="#using-an-access-token" title="Permalink to this headline">¶</a></h2>
 <p>To use the access token for an actual API call you have to provide it in the
-<tt class="docutils literal"><span class="pre">Authorization</span></tt> header as follows:</p>
-<div class="highlight-http"><div class="highlight"><pre>GET /api/sellside/ad
+<code class="docutils literal"><span class="pre">Authorization</span></code> header as follows:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span>GET /api/sellside/ad
 Host: auth.demo.qa-mp.so
 Authorization: Bearer 1dc19b97-fd12-4feb-8c9d-042b4ba80747
 </pre></div>
@@ -491,7 +494,7 @@ Authorization: Bearer 1dc19b97-fd12-4feb-8c9d-042b4ba80747
 obtain a new access token once the access token is no longer valid. In order
 to obtain a new access token the following <em>POST</em> request to the <em>token
 endpoint</em> with the following parameters is necessary.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="18%" />
 <col width="27%" />
@@ -510,7 +513,7 @@ endpoint</em> with the following parameters is necessary.</p>
 </tr>
 <tr class="row-odd"><td>grant_type</td>
 <td>Required</td>
-<td>Must be set to <tt class="docutils literal"><span class="pre">refresh_token</span></tt></td>
+<td>Must be set to <code class="docutils literal"><span class="pre">refresh_token</span></code></td>
 </tr>
 <tr class="row-even"><td>client_id</td>
 <td>Required</td>
@@ -524,8 +527,8 @@ endpoint</em> with the following parameters is necessary.</p>
 </table>
 <p>If the refresh token request is valid the authorization server returns a new
 access token. The token response is identical to the token response explained
-at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><em>Getting an Access Token</em></a>.</p>
-<div class="highlight-http"><div class="highlight"><pre>POST /accounts/oauth/token
+at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><span class="std std-ref">Getting an Access Token</span></a>.</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span>POST /accounts/oauth/token
 Host: auth.demo.qa-mp.so
 Content-Type: application/x-www-form-urlencoded
 
@@ -572,12 +575,12 @@ granted by the user which is part of the user record.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>During the transition to the new scope system API partners should request
-scope <tt class="docutils literal"><span class="pre">read</span> <span class="pre">write</span> <span class="pre">api_ro</span> <span class="pre">api_rw</span></tt>. This will work with the legacy and the
+scope <code class="docutils literal"><span class="pre">read</span> <span class="pre">write</span> <span class="pre">api_ro</span> <span class="pre">api_rw</span></code>. This will work with the legacy and the
 new scopes. All existing tokens and clients will be migrated to include the
 new scopes.</p>
 <p class="last">The legacy scopes will be removed after September 2015.</p>
 </div>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
@@ -601,10 +604,10 @@ new scopes.</p>
 <td>Grants write access for console applications</td>
 </tr>
 <tr class="row-even"><td>read</td>
-<td>Legacy scope. Use <tt class="docutils literal"><span class="pre">api_ro</span></tt> instead</td>
+<td>Legacy scope. Use <code class="docutils literal"><span class="pre">api_ro</span></code> instead</td>
 </tr>
 <tr class="row-odd"><td>write</td>
-<td>Legacy scope. Use <tt class="docutils literal"><span class="pre">api_rw</span></tt> instead</td>
+<td>Legacy scope. Use <code class="docutils literal"><span class="pre">api_rw</span></code> instead</td>
 </tr>
 </tbody>
 </table>

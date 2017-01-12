@@ -7,5 +7,6 @@
     Content-Type: application/sellside.amount-v1+json; charset=UTF-8
 
     {
-        "amount": 123
+        "amount": 123,
+        "adsPaused": false
     }
