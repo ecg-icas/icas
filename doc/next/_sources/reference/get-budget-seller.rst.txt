@@ -11,14 +11,16 @@ GET /budget/seller
    - ``api_ro`` or ``console_ro``
 
  * - Accept
-   - ``application/sellside.amount-v1+json, application/json``
+   - ``application/sellside.seller.budget-v1+json, application/json``
 
-This URL returns two values. The current value of the seller-level budget of the current
-user, and whether ads should be paused or not because of it. The ``amount`` field
-contains the value in cents. A ``null`` value for ``amount`` means there is no seller-level
-budget set for this seller. Please keep in mind that when the ``adsPaused`` value changes,
-it can take a little while before the respective ads are all set to the correct status due
+In case a seller has a seller-level budget set up, this URL returns a JSON struct with two values.
+The current (remaining) value of the seller-level budget of the current user is in the ``amount``
+field, and whether ads should be paused or not because of it is in the ``adsPaused`` value.
+The value of the (remaining) seller-level budget is in cents.
+Please keep in mind that when the ``adsPaused`` value changes,
+it can take a little while before the affected ads are all set to the correct status due
 to asynchronicity.
+If the user has no seller-level budget set up, an empty JSON struct will be returned.
 
 Example
 ~~~~~~~
