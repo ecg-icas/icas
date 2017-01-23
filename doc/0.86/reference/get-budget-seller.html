@@ -203,9 +203,9 @@
 </tbody>
 </table>
 <p>In case a seller has a seller-level budget set up, this URL returns a JSON struct with two values.
-The current (remaining) value of the seller-level budget of the current user is in the <code class="docutils literal"><span class="pre">amount</span></code>
+The current remaining value of the seller-level budget of the current user is in the <code class="docutils literal"><span class="pre">remainingBudget</span></code>
 field, and whether ads should be paused or not because of it is in the <code class="docutils literal"><span class="pre">adsSuspended</span></code> value.
-The value of the (remaining) seller-level budget is in cents.
+The value of the remaining seller-level budget is in cents.
 Please keep in mind that when the <code class="docutils literal"><span class="pre">adsSuspended</span></code> value changes,
 it can take a little while before the affected ads are all set to the correct status due
 to asynchronicity.
@@ -219,7 +219,7 @@ If the user has no seller-level budget set up, an empty JSON struct will be retu
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">seller</span><span class="p">.</span><span class="nx">budget</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">{</span>
-    <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s2">&quot;remainingBudget&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
     <span class="s2">&quot;adsSuspended&quot;</span><span class="o">:</span> <span class="kc">false</span>
 <span class="p">}</span>
 </pre></div>

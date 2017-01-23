@@ -7,7 +7,7 @@
     Content-Type: application/sellside.seller.budget-v1+json; charset=UTF-8
 
     {
-        "amount": 123,
+        "remainingBudget": 123,
         "adsSuspended": false
     }
 
