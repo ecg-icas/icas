@@ -8,7 +8,7 @@
 
     {
         "amount": 123,
-        "adsPaused": false
+        "adsSuspended": false
     }
 
 and in case there is no seller-level budget set up for the user:

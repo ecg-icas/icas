@@ -204,9 +204,9 @@
 </table>
 <p>In case a seller has a seller-level budget set up, this URL returns a JSON struct with two values.
 The current (remaining) value of the seller-level budget of the current user is in the <code class="docutils literal"><span class="pre">amount</span></code>
-field, and whether ads should be paused or not because of it is in the <code class="docutils literal"><span class="pre">adsPaused</span></code> value.
+field, and whether ads should be paused or not because of it is in the <code class="docutils literal"><span class="pre">adsSuspended</span></code> value.
 The value of the (remaining) seller-level budget is in cents.
-Please keep in mind that when the <code class="docutils literal"><span class="pre">adsPaused</span></code> value changes,
+Please keep in mind that when the <code class="docutils literal"><span class="pre">adsSuspended</span></code> value changes,
 it can take a little while before the affected ads are all set to the correct status due
 to asynchronicity.
 If the user has no seller-level budget set up, an empty JSON struct will be returned.</p>
@@ -220,7 +220,7 @@ If the user has no seller-level budget set up, an empty JSON struct will be retu
 
 <span class="p">{</span>
     <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
-    <span class="s2">&quot;adsPaused&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="s2">&quot;adsSuspended&quot;</span><span class="o">:</span> <span class="kc">false</span>
 <span class="p">}</span>
 </pre></div>
 </div>
