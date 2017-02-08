@@ -65,19 +65,19 @@ The endpoint URLs per tenant and environment are as follows:
 
  * - Marktplaats
    - Sandbox
-   - https://auth.demo.qa-mp.so/accounts/oauth/authorize
+   - https://admarkt.demo.qa-mp.so/accounts/oauth/authorize
 
  * -
    -
-   - https://auth.demo.qa-mp.so/accounts/oauth/token
+   - https://admarkt.demo.qa-mp.so/accounts/oauth/token
 
  * -
    - Production
-   - https://auth.marktplaats.nl/accounts/oauth/authorize
+   - https://admarkt.marktplaats.nl/accounts/oauth/authorize
 
  * -
    -
-   - https://auth.marktplaats.nl/accounts/oauth/token
+   - https://admarkt.marktplaats.nl/accounts/oauth/token
 
  * - DBA
    - Sandbox
@@ -366,19 +366,8 @@ Refresh Tokens and Token Expiration
 Access tokens expire after **5 minutes** on all environments and for every
 tenant.
 
-The behavior of the refresh token depends on the tenant since iCAS can use the
-token service of the tenant if available.
-
-For **Marktplaats** you will receive a new refresh token every time you get a
-new access token. The refresh token expires within **1 day** if not refreshed.
-You can have up to 25 refresh tokens for the same client_id, user, scope
-combination active at any given time.
-
-For **DBA** and **Kijiji Canada** you will receive only one refresh token for
-the same client_id, user, scope combination at any given time. If a refresh
-token exists for this combination and the user grants you access a second time
-you will receive the existing token. The token expires after not being used
-for **60 days**.
+Refresh tokens expire after not being used for **60 days** and remain unique
+per client_id, user and scope combination during the lifetime of the token.
 
 .. _scopes:
 
@@ -394,15 +383,6 @@ over time but does not require the user to go through the grant flow again.
 The actual scope for a token is the intersection between the scope requested
 by the  client as described in `Getting an Access Token`_ and the scope
 granted by the user which is part of the user record.
-
-.. note::
-
-  During the transition to the new scope system API partners should request
-  scope ``read write api_ro api_rw``. This will work with the legacy and the
-  new scopes. All existing tokens and clients will be migrated to include the
-  new scopes.
-
-  The legacy scopes will be removed after September 2015.
 
 .. list-table::
  :widths: 20 80
@@ -422,10 +402,4 @@ granted by the user which is part of the user record.
 
  * - console_rw
    - Grants write access for console applications
-
- * - read
-   - Legacy scope. Use ``api_ro`` instead
-
- * - write
-   - Legacy scope. Use ``api_rw`` instead
 
