@@ -163,7 +163,7 @@ GET parameters
 
 .. code-block:: http
 
-    GET /accounts/oauth/authorize?response_type=code&client_id=YOUR_CLIENT_ID&scope=read+write&redirect_uri=https://yoursite.com/code&state=YOUR_STATE
+    GET /accounts/oauth/authorize?response_type=code&client_id=YOUR_CLIENT_ID&scope=api_ro+api_rw&redirect_uri=https://yoursite.com/code&state=YOUR_STATE
     Host: auth.demo.qa-mp.so
 
 Step 2: Redirect to the redirect_uri
