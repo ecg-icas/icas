@@ -164,7 +164,7 @@ GET parameters
 .. code-block:: http
 
     GET /accounts/oauth/authorize?response_type=code&client_id=YOUR_CLIENT_ID&scope=api_ro+api_rw&redirect_uri=https://yoursite.com/code&state=YOUR_STATE
-    Host: auth.demo.qa-mp.so
+    Host: admarkt.demo.qa-mp.so
 
 Step 2: Redirect to the redirect_uri
 ````````````````````````````````````
@@ -231,7 +231,7 @@ After obtaining the authorization code at step 2 the client needs to make a
 .. code-block:: http
 
     POST /accounts/oauth/token
-    Host: auth.demo.qa-mp.so
+    Host: admarkt.demo.qa-mp.so
     Content-Type: application/x-www-form-urlencoded
 
     grant_type=code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
@@ -271,7 +271,7 @@ format if the token request at step 3 is valid.
 .. code-block:: http
 
     POST /accounts/oauth/token
-    Host: auth.demo.qa-mp.so
+    Host: admarkt.demo.qa-mp.so
     Content-Type: application/x-www-form-urlencoded
 
     grant_type=code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
@@ -298,7 +298,7 @@ To use the access token for an actual API call you have to provide it in the
 .. code-block:: http
 
     GET /api/sellside/ad
-    Host: auth.demo.qa-mp.so
+    Host: admarkt.demo.qa-mp.so
     Authorization: Bearer 1dc19b97-fd12-4feb-8c9d-042b4ba80747
 
 .. _refreshing_an_access_token:
@@ -342,7 +342,7 @@ at step 4 of :ref:`obtaining_an_access_token`.
 .. code-block:: http
 
     POST /accounts/oauth/token
-    Host: auth.demo.qa-mp.so
+    Host: admarkt.demo.qa-mp.so
     Content-Type: application/x-www-form-urlencoded
 
     grant_type=refresh_token&refresh_token=YOUR_CURRENT_REFRESH_TOKEN&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET
