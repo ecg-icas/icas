@@ -39,6 +39,14 @@ History
 
 ..  role:: strike
 
+* v.0.88 - 23 Mar 2017 - tw
+
+  * add some docs for missing error codes, see :ref:`error_codes`
+
+* v.0.87 - 10 Feb 2017 - fs
+
+  * update authentication urls, see :ref:`authentication`
+
 * v0.86 - 9 Jan 2017 - tw
 
   * add docs for GET /api/sellside/budget/seller
