@@ -447,7 +447,7 @@ fields which describe the status of the download.
 
 The server adds a ``status`` field indicating the status of the download. The
 status is either **OK** (image was successfully downloaded), **PENDING**
-(image is scheduled to be downloaded) or **FAILED** if the image was not found
+(image is scheduled to be downloaded) or **ERROR** if the image was not found
 or invalid.
 
 If the ``status`` is **OK** then a **links** map is added which contains
