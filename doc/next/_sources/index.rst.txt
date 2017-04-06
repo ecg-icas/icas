@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v.0.89 - 6 Apr 2017 - tw
+
+  * added :ref:`get_report_summary_v2`
+
 * v.0.88 - 23 Mar 2017 - tw
 
   * add some docs for missing error codes, see :ref:`error_codes`
