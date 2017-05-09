@@ -105,11 +105,11 @@ The endpoint URLs per tenant and environment are as follows:
 
  * -
    - Production
-   - https://admarkt.kijiji.ca/accounts/oauth/authorize
+   - https://cas.kijiji.ca/accounts/oauth/authorize
 
  * -
    -
-   - https://admarkt.kijiji.ca/accounts/oauth/token
+   - https://cas.kijiji.ca/accounts/oauth/token
 
 
 .. note::
@@ -161,7 +161,7 @@ GET parameters
    - Optional, but recommended
    - Any client state that needs to be passed on to the client request URI
 
-.. code-block:: javascript
+.. code-block:: http
 
     GET /accounts/oauth/authorize?response_type=code&client_id=YOUR_CLIENT_ID&scope=api_ro+api_rw&redirect_uri=https://yoursite.com/code&state=YOUR_STATE
     Host: admarkt.demo.qa-mp.so
@@ -189,7 +189,7 @@ specified in the request at step 1 with the following GET parameters
    - Required, if present in step 1
    - The same value as sent by the client in the state parameter at step 1, if any
 
-.. code-block:: javascript
+.. code-block:: http
 
     GET /code?code=AUTH_CODE&state=YOUR_STATE
     Host: yoursite.com
@@ -228,7 +228,7 @@ After obtaining the authorization code at step 2 the client needs to make a
    - Required, if present in step 1
    - If present, should be identical to the redirect_uri specified in step 1
 
-.. code-block:: javascript
+.. code-block:: http
 
     POST /accounts/oauth/token
     Host: admarkt.demo.qa-mp.so
@@ -268,7 +268,7 @@ format if the token request at step 3 is valid.
 
     Check `Refresh Tokens and Token Expiration`_ on the behavior of the ``refresh_token`` field.
 
-.. code-block:: javascript
+.. code-block:: http
 
     POST /accounts/oauth/token
     Host: admarkt.demo.qa-mp.so
@@ -295,7 +295,7 @@ Using an Access Token
 To use the access token for an actual API call you have to provide it in the
 ``Authorization`` header as follows:
 
-.. code-block:: javascript
+.. code-block:: http
 
     GET /api/sellside/ad
     Host: admarkt.demo.qa-mp.so
@@ -339,7 +339,7 @@ If the refresh token request is valid the authorization server returns a new
 access token. The token response is identical to the token response explained
 at step 4 of :ref:`obtaining_an_access_token`.
 
-.. code-block:: javascript
+.. code-block:: http
 
     POST /accounts/oauth/token
     Host: admarkt.demo.qa-mp.so
