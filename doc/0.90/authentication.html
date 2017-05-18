@@ -278,11 +278,11 @@ secret, for an access token.</p>
 </tr>
 <tr class="row-even"><td>&nbsp;</td>
 <td>Production</td>
-<td><a class="reference external" href="https://cas.kijiji.ca/accounts/oauth/authorize">https://cas.kijiji.ca/accounts/oauth/authorize</a></td>
+<td><a class="reference external" href="https://admarkt.kijiji.ca/accounts/oauth/authorize">https://admarkt.kijiji.ca/accounts/oauth/authorize</a></td>
 </tr>
 <tr class="row-odd"><td>&nbsp;</td>
 <td>&nbsp;</td>
-<td><a class="reference external" href="https://cas.kijiji.ca/accounts/oauth/token">https://cas.kijiji.ca/accounts/oauth/token</a></td>
+<td><a class="reference external" href="https://admarkt.kijiji.ca/accounts/oauth/token">https://admarkt.kijiji.ca/accounts/oauth/token</a></td>
 </tr>
 </tbody>
 </table>
@@ -337,8 +337,8 @@ with the client registration is used.</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-http"><div class="highlight"><pre><span></span>GET /accounts/oauth/authorize?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;scope=api_ro+api_rw&amp;redirect_uri=https://yoursite.com/code&amp;state=YOUR_STATE
-Host: admarkt.demo.qa-mp.so
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">authorize</span><span class="o">?</span><span class="nx">response_type</span><span class="o">=</span><span class="nx">code</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">scope</span><span class="o">=</span><span class="nx">api_ro</span><span class="o">+</span><span class="nx">api_rw</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code&amp;state=YOUR_STATE</span>
+<span class="nx">Host</span><span class="o">:</span> <span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
 </pre></div>
 </div>
 </div>
@@ -370,8 +370,8 @@ specified in the request at step 1 with the following GET parameters</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-http"><div class="highlight"><pre><span></span>GET /code?code=AUTH_CODE&amp;state=YOUR_STATE
-Host: yoursite.com
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">code</span><span class="o">?</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">state</span><span class="o">=</span><span class="nx">YOUR_STATE</span>
+<span class="nx">Host</span><span class="o">:</span> <span class="nx">yoursite</span><span class="p">.</span><span class="nx">com</span>
 </pre></div>
 </div>
 </div>
@@ -414,11 +414,11 @@ Host: yoursite.com
 </tr>
 </tbody>
 </table>
-<div class="highlight-http"><div class="highlight"><pre><span></span>POST /accounts/oauth/token
-Host: admarkt.demo.qa-mp.so
-Content-Type: application/x-www-form-urlencoded
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span>
+<span class="nx">Host</span><span class="o">:</span> <span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
 
-grant_type=code&amp;code=AUTH_CODE&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_CLIENT_SECRET&amp;redirect_uri=https://yoursite.com/code
+<span class="nx">grant_type</span><span class="o">=</span><span class="nx">code</span><span class="o">&amp;</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code</span>
 </pre></div>
 </div>
 </div>
@@ -458,22 +458,22 @@ format if the token request at step 3 is valid.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <code class="docutils literal"><span class="pre">refresh_token</span></code> field.</p>
 </div>
-<div class="highlight-http"><div class="highlight"><pre><span></span>POST /accounts/oauth/token
-Host: admarkt.demo.qa-mp.so
-Content-Type: application/x-www-form-urlencoded
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span>
+<span class="nx">Host</span><span class="o">:</span> <span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
 
-grant_type=code&amp;code=AUTH_CODE&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_CLIENT_SECRET&amp;redirect_uri=https://yoursite.com/code
+<span class="nx">grant_type</span><span class="o">=</span><span class="nx">code</span><span class="o">&amp;</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code</span>
 
-200 OK
-Content-Type: application/json
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-{
-    &quot;access_token&quot;  : &quot;1dc19b97-fd12-4feb-8c9d-042b4ba80747&quot;,
-    &quot;token_type&quot;    : &quot;bearer&quot;,
-    &quot;expires_in&quot;    : 300,
-    &quot;refresh_token&quot; : &quot;7432aa20-97d1-4426-bab7-dbeed8b5d997&quot;,
-    &quot;scope&quot;         : &quot;api_ro api_rw&quot;
-}
+<span class="p">{</span>
+    <span class="s2">&quot;access_token&quot;</span>  <span class="o">:</span> <span class="s2">&quot;1dc19b97-fd12-4feb-8c9d-042b4ba80747&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;token_type&quot;</span>    <span class="o">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;expires_in&quot;</span>    <span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="s2">&quot;refresh_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;7432aa20-97d1-4426-bab7-dbeed8b5d997&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scope&quot;</span>         <span class="o">:</span> <span class="s2">&quot;api_ro api_rw&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -482,9 +482,9 @@ Content-Type: application/json
 <span id="id2"></span><h2>Using an Access Token<a class="headerlink" href="#using-an-access-token" title="Permalink to this headline">¶</a></h2>
 <p>To use the access token for an actual API call you have to provide it in the
 <code class="docutils literal"><span class="pre">Authorization</span></code> header as follows:</p>
-<div class="highlight-http"><div class="highlight"><pre><span></span>GET /api/sellside/ad
-Host: admarkt.demo.qa-mp.so
-Authorization: Bearer 1dc19b97-fd12-4feb-8c9d-042b4ba80747
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">ad</span>
+<span class="nx">Host</span><span class="o">:</span> <span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
+<span class="nx">Authorization</span><span class="o">:</span> <span class="nx">Bearer</span> <span class="mi">1</span><span class="nx">dc19b97</span><span class="o">-</span><span class="nx">fd12</span><span class="o">-</span><span class="mi">4</span><span class="nx">feb</span><span class="o">-</span><span class="mi">8</span><span class="nx">c9d</span><span class="o">-</span><span class="mi">042</span><span class="nx">b4ba80747</span>
 </pre></div>
 </div>
 </div>
@@ -528,22 +528,22 @@ endpoint</em> with the following parameters is necessary.</p>
 <p>If the refresh token request is valid the authorization server returns a new
 access token. The token response is identical to the token response explained
 at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><span class="std std-ref">Getting an Access Token</span></a>.</p>
-<div class="highlight-http"><div class="highlight"><pre><span></span>POST /accounts/oauth/token
-Host: admarkt.demo.qa-mp.so
-Content-Type: application/x-www-form-urlencoded
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span>
+<span class="nx">Host</span><span class="o">:</span> <span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
 
-grant_type=refresh_token&amp;refresh_token=YOUR_CURRENT_REFRESH_TOKEN&amp;client_id=YOUR_CLIENT_ID&amp;client_secret=YOUR_CLIENT_SECRET
+<span class="nx">grant_type</span><span class="o">=</span><span class="nx">refresh_token</span><span class="o">&amp;</span><span class="nx">refresh_token</span><span class="o">=</span><span class="nx">YOUR_CURRENT_REFRESH_TOKEN</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span>
 
-200 OK
-Content-Type: application/json
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-{
-    &quot;access_token&quot;  : &quot;52f1492d-8ad7-4d4c-88aa-2c38da2d45a2&quot;,
-    &quot;token_type&quot;    : &quot;bearer&quot;,
-    &quot;expires_in&quot;    : 300,
-    &quot;refresh_token&quot; : &quot;fc668806-739d-4089-a9b0-f8ee10e53ded&quot;,
-    &quot;scope&quot;         : &quot;api_ro api_rw&quot;
-}
+<span class="p">{</span>
+    <span class="s2">&quot;access_token&quot;</span>  <span class="o">:</span> <span class="s2">&quot;52f1492d-8ad7-4d4c-88aa-2c38da2d45a2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;token_type&quot;</span>    <span class="o">:</span> <span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;expires_in&quot;</span>    <span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="s2">&quot;refresh_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;fc668806-739d-4089-a9b0-f8ee10e53ded&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scope&quot;</span>         <span class="o">:</span> <span class="s2">&quot;api_ro api_rw&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
