@@ -152,7 +152,7 @@ GET parameters
    - The scope requested by the client as in :ref:`scopes`
 
  * - redirect_uri
-   - Mandatory
+   - Required
    - The URL to which the authorization server redirects the user with an authorization
      code after successful authorization. This url can be matched against a list of
      expressions, in case the client is experiencing or generating abuse. This list
