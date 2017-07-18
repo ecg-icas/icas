@@ -39,6 +39,14 @@ History
 
 ..  role:: strike
 
+* v.0.91 - 18 Jul 2017 - tw
+
+  * make clear that for oauth the redirect_uri is mandatory
+
+* v.0.90 18 May 2017 - ay
+
+  * update kjca urls
+
 * v.0.89 - 6 Apr 2017 - tw
 
   * added :ref:`get_report_summary_v2`
