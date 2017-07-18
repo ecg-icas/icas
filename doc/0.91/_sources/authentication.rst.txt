@@ -226,8 +226,8 @@ After obtaining the authorization code at step 2 the client needs to make a
    - Your client secret
 
  * - redirect_uri
-   - Required, if present in step 1
-   - If present, should be identical to the redirect_uri specified in step 1
+   - Required
+   - Must be identical to the redirect_uri specified in step 1
 
 .. code-block:: javascript
 
