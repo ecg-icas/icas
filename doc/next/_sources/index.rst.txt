@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v.0.92 - 13 Sep 2017 - tw
+
+  * add validation for regionId not being modifiable, along with a new error code, see :ref:`error_codes`
+
 * v.0.91 - 18 Jul 2017 - tw
 
   * make clear that for oauth the redirect_uri is mandatory

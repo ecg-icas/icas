@@ -39,4 +39,5 @@ Code    HTTP    Error message                   Description
 2025    400     duplicate vendorId              The vendorId is already in use by another ad
 2026    400     too many active ads in cat      The user has reached the maximum number of active ads in the category, cannot activate ad.
 2027    400     cannot change seller budget     The provided amount cannot be added/subtracted from current seller level budget
+2028    400     regionId change not allowed     Changing the regionId of an ad is not allowed
 ====    ====    ============================    ==========================================================================================
