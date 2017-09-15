@@ -39,7 +39,7 @@ History
 
 ..  role:: strike
 
-* v.0.93 - 14 Sep 2017 - tw
+* v.0.93 - 15 Sep 2017 - ak
 
   * added `suggestedCpcForPageOne` to the root category of the response to `GET /category/{id}`
 
