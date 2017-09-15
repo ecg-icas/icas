@@ -17,6 +17,7 @@
         ]
     },
     "status": "ACTIVE",
+    "suggestedCpcForPageOne": 9,
     "config": {
         "cpc": "[1,250]",
         "totalBudget": "[5000,200000000]",

@@ -399,6 +399,11 @@ category.
    - not empty
    - One of ``ACTIVE``, ``CLOSED``, ``DELETED``
 
+ * - suggestedCpcForPageOne
+   - int
+   - only included for root of category tree
+   - Suggested CPC value in euro cents for this ad to be shown on page one.
+
  * - config
    - config
    - not empty
