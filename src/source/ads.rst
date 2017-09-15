@@ -284,7 +284,7 @@ following parameter to the request URL. ::
 suggestedCpcForPageOne
 """"""""""""""""""""""
 
-Suggested CPC value in euro cents for this ad to be shown on page one.
+Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one.
 This value is very volatile and might change very quickly depending on the
 performance of the ad.
 

@@ -169,13 +169,6 @@ Leaf categories provide additional configuration which is provided in
    - Optional set of localized price units like ``per m²``, ``per hour``, etc. Maps an unique
      key to a set localized values.
 
-.. note::
-
-   The field `suggestedCpcForPageOne` which is available in
-   :ref:`categories_v1` is not available anymore. To get a performance
-   prediction for new ads in this category use :ref:`get_category_id_funnel`.
-
-
 Intervals
 ---------
 
@@ -398,6 +391,11 @@ category.
    - string
    - not empty
    - One of ``ACTIVE``, ``CLOSED``, ``DELETED``
+
+ * - suggestedCpcForPageOne
+   - int
+   - only included for root of category tree
+   - Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one.
 
  * - config
    - config

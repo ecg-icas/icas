@@ -107,7 +107,7 @@ required attributes and a set of optional attributes which are listed below:
  * - suggestedCpcForPageOne
    - 152
    - long
-   - Suggested cpc value in euro cents for new ads to be on the first page for
+   - Suggested cpc value in (euro/dollar) cents for new ads to be on the first page for
      this category. This value is only shown when **canPlaceAds** is true
 
 .. _categories_v1_compatible_endpoints:
