@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Categories V1 &mdash; iCAS Sellside API 0.94 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iCAS Sellside API 0.94 documentation" href="index.html"/>
+        <link rel="up" title="Categories" href="categories.html"/>
+        <link rel="next" title="Categories V2" href="categories-v2.html"/>
+        <link rel="prev" title="Categories" href="categories.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> iCAS Sellside API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#http-response-codes-and-error-handling">HTTP Response Codes and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-an-access-token">Getting an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="categories.html">Categories</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Categories V1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-ids">Region Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-levels">Region Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-label">Region label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-center">Region center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad.html">GET /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id.html">GET /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-ad.html">POST  /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id.html">PUT /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-budget-seller.html">GET /budget/seller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category.html">GET /category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">iCAS Sellside API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="categories.html">Categories</a> &raquo;</li>
+      
+    <li>Categories V1</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/categories-v1.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="categories-v1">
+<span id="categories"></span><span id="index-0"></span><span id="id1"></span><h1>Categories V1<a class="headerlink" href="#categories-v1" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Version 1 is deprecated and will be removed after September 2015.</p>
+</div>
+<p>The category tree contains all the categories available for placing ads. Each
+category has a unique id, a parent id, a label and a list of child categories.
+Also, for each category the minimum and maximum cpc values as well as the
+minimum and maximum total budgets are specified.</p>
+<p>The API allows you to get the entire category tree or just parts of it
+depending on your use case. We advise you to get only the parts that you need
+at any given moment and not cache the information since it may be subject to
+change.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">category</span><span class="o">/</span><span class="mi">1</span><span class="o">?</span><span class="nx">levels</span><span class="o">=</span><span class="mi">1</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;children&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/1/attributes&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/1&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;maxCpc&quot;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span>
+            <span class="s2">&quot;maxTotalBudget&quot;</span><span class="o">:</span> <span class="mi">2000000</span><span class="p">,</span>
+            <span class="s2">&quot;minCpc&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;minTotalBudget&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
+            <span class="s2">&quot;minDailyBudget&quot;</span><span class="o">:</span> <span class="mi">2000</span><span class="p">,</span>
+            <span class="s2">&quot;canPlaceAds&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;maxNumberOfActiveAds&quot;</span><span class="o">:</span> <span class="mi">7000</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Antiek en Kunst&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;suggestedCpcForPageOne&quot;</span> <span class="o">:</span> <span class="mi">55</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">31</span><span class="p">,</span>
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/31/attributes&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/31&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;maxCpc&quot;</span><span class="o">:</span> <span class="mi">250</span><span class="p">,</span>
+            <span class="s2">&quot;maxTotalBudget&quot;</span><span class="o">:</span> <span class="mi">2000000</span><span class="p">,</span>
+            <span class="s2">&quot;minCpc&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;minTotalBudget&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
+            <span class="s2">&quot;minDailyBudget&quot;</span><span class="o">:</span> <span class="mi">2000</span><span class="p">,</span>
+            <span class="s2">&quot;canPlaceAds&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;maxNumberOfActiveAds&quot;</span><span class="o">:</span> <span class="mi">7000</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Audio, Tv en Foto&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;suggestedCpcForPageOne&quot;</span> <span class="o">:</span> <span class="mi">72</span>
+        <span class="p">},</span>
+        <span class="p">...</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/22/attributes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/22&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;maxCpc&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;maxTotalBudget&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;minCpc&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;minTotalBudget&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;minDailyBudget&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;canPlaceAds&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;maxNumberOfActiveAds&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;root&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>Each ad has a unique identifier by which the ad can retrieved and a set of
+required attributes and a set of optional attributes which are listed below:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="15%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>42</td>
+<td>int</td>
+<td>Reference to the iCAS category</td>
+</tr>
+<tr class="row-odd"><td>parentId</td>
+<td>12</td>
+<td>int</td>
+<td>Reference to the parent category</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>&#8220;Bank&#8221;</td>
+<td>string</td>
+<td>Display name of the category</td>
+</tr>
+<tr class="row-odd"><td>currency</td>
+<td>&#8220;EUR&#8221;</td>
+<td>string</td>
+<td>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> currency code. Currently only <em>EUR</em>, <em>CAD</em> and <em>DKK</em> are supported.
+All amount values are stored in cents</td>
+</tr>
+<tr class="row-even"><td>minCpc</td>
+<td>10</td>
+<td>long</td>
+<td>Minimum CPC value in euro cents for the category</td>
+</tr>
+<tr class="row-odd"><td>maxCpc</td>
+<td>250</td>
+<td>long</td>
+<td>Maximum CPC value in euro cents for the category</td>
+</tr>
+<tr class="row-even"><td>minTotalBudget</td>
+<td>5000</td>
+<td>long</td>
+<td>Minimum total budget in euro cents for the category</td>
+</tr>
+<tr class="row-odd"><td>maxTotalBudget</td>
+<td>200000</td>
+<td>long</td>
+<td>Maximum total budget in euro cents for the category</td>
+</tr>
+<tr class="row-even"><td>minDailyBudget</td>
+<td>2000</td>
+<td>long</td>
+<td>Minimum daily budget in euro cents for the category</td>
+</tr>
+<tr class="row-odd"><td>canPlaceAds</td>
+<td>true</td>
+<td>bool</td>
+<td>Flag to indicate whether it is possible to place an ad into this category</td>
+</tr>
+<tr class="row-even"><td>maxNumberOfActiveAds</td>
+<td>7000</td>
+<td>int</td>
+<td>Maximum number of concurrently active ads from the same seller in this category</td>
+</tr>
+<tr class="row-odd"><td>children</td>
+<td>&nbsp;</td>
+<td>list</td>
+<td>List of child categories</td>
+</tr>
+<tr class="row-even"><td>links</td>
+<td>&nbsp;</td>
+<td>object</td>
+<td>Link to the current category and other resources</td>
+</tr>
+<tr class="row-odd"><td>suggestedCpcForPageOne</td>
+<td>152</td>
+<td>long</td>
+<td>Suggested cpc value in (euro/dollar) cents for new ads to be on the first page for
+this category. This value is only shown when <strong>canPlaceAds</strong> is true</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="category-v1-compatible-endpoints">
+<span id="categories-v1-compatible-endpoints"></span><h2>Category V1 Compatible Endpoints<a class="headerlink" href="#category-v1-compatible-endpoints" title="Permalink to this headline">¶</a></h2>
+<p>The following endpoints are compatible with attributes from <a class="reference internal" href="#categories-v1"><span class="std std-ref">Categories V1</span></a>
+since they either provide or accept the correct attribute keys:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="reference/get-ad.html#get-ad-v1"><span class="std std-ref">GET /ad v1</span></a></li>
+<li><a class="reference internal" href="reference/get-ad.html#get-ad-v2"><span class="std std-ref">GET /ad v2</span></a></li>
+<li><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v1"><span class="std std-ref">GET /ad/{id} v1</span></a></li>
+<li><a class="reference internal" href="reference/post-ad.html#post-ad-v1"><span class="std std-ref">POST /ad v1</span></a></li>
+<li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v1"><span class="std std-ref">PUT /ad/{id} v1</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="categories-v2.html" class="btn btn-neutral float-right" title="Categories V2"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="categories.html" class="btn btn-neutral" title="Categories"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The iCAS Team.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.94',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
