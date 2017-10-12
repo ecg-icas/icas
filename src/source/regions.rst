@@ -8,7 +8,7 @@ Regions
 
 .. warning::
 
-   Regions are currently only appliccable to Kijiji Canada.
+   Regions are currently only applicable to Kijiji Canada.
 
 
 The region tree contains all the information about region definitions

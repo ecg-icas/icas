@@ -41,7 +41,7 @@ History
 
 * v.0.96 -12 Oct 2017 - tw
 
-  * update add TWH endpoints and add warning to region that it's only appliccable to Kijiji CA.
+  * update add TWH endpoints and add warning to region that it's only applicable to Kijiji CA.
 
 * v.0.95 - 5 Oct 2017 - tw
 
