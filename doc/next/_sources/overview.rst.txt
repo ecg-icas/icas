@@ -42,6 +42,14 @@ own account or on behalf of other users. The base URLs for the API are:
    - Production
    - https://admarkt.kijiji.ca/api/sellside
 
+ * - 2dehands Belgium
+   - Sandbox
+   - https://admarkt.xp.2dehands.com/api/sellside
+
+ * -
+   - Production
+   - https://admarkt.2dehands.be
+
 With this the full URL for retrieving ad 1234 for the
 current customer on Marktplaats Production becomes::
 

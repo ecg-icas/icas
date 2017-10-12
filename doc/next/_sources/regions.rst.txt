@@ -6,6 +6,11 @@
 Regions
 =======
 
+.. warning::
+
+   Regions are currently only appliccable to Kijiji Canada.
+
+
 The region tree contains all the information about region definitions
 for placing ads on iCAS.
 

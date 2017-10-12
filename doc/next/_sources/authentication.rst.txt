@@ -111,6 +111,22 @@ The endpoint URLs per tenant and environment are as follows:
    -
    - https://admarkt.kijiji.ca/accounts/oauth/token
 
+ * - 2dehands Belgium
+   - Sandbox
+   - https://admarkt.xp.2dehands.com/oauth/authorize
+
+ * -
+   -
+   - https://admarkt.xp.2dehands.com/oauth/token
+
+ * -
+   - Production
+   - https://admarkt.2dehands.be/oauth/authorize
+
+ * -
+   -
+   - https://admarkt.2dehands.be/oauth/token
+
 
 .. note::
 
