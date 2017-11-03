@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v.0.99 -3 Nov 2017 - tw
+
+  * add :ref:`get_ad_ids`
+
 * v.0.98 -25 Oct 2017 - tw
 
   * add :ref:`get_ad_mapping_externalids`
