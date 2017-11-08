@@ -169,6 +169,11 @@ Leaf categories provide additional configuration which is provided in
    - Optional set of localized price units like ``per m²``, ``per hour``, etc. Maps an unique
      key to a set localized values.
 
+ * - suggestedCpcForPageOne
+   - int
+   -
+   - The estimated CPC (in cents) the current user needs to set on a new ad in this category to be placed on page 1.
+
 Intervals
 ---------
 
