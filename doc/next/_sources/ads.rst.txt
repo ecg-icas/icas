@@ -25,8 +25,8 @@ required and optional fields which are listed below:
 Field                               Type       Constraints        Mandatory   Writable
 =================================   ========== ================   =========   ========================
 :ref:`ad_id`                        long       positive                       no
-:ref:`ad_title`                     string     max. 60 chars      yes         yes
-:ref:`ad_description`               string     max. 20000 chars   yes         yes
+:ref:`ad_title`                     string     see below          yes         yes
+:ref:`ad_description`               string     see below          yes         yes
 :ref:`ad_categoryId`                int        positive           yes         no
 :ref:`ad_externalId`                string     max. 64 chars      no          yes
 :ref:`ad_status`                    string     enum               yes         yes
@@ -84,7 +84,7 @@ action.
 title
 """""
 
-Any string up to 60 characters. URLs are not allowed as part of the title.
+Any string, with minimum and maximum length determined by the category. See :ref:`categories_v2`. URLs are not allowed as part of the title.
 
 .. index:: description
 .. _ad_description:
@@ -92,8 +92,9 @@ Any string up to 60 characters. URLs are not allowed as part of the title.
 description
 """""""""""
 
-The description field of the ad. All HTML elements except for the ones below
-will be removed:
+The description field of the ad.
+Any string, with minimum and maximum length determined by the category. See :ref:`categories_v2`. URLs are not allowed as part of the title.
+All HTML elements except for the ones below will be removed:
 
 .. code-block:: html
 

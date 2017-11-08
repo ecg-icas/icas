@@ -220,13 +220,13 @@ required and optional fields which are listed below:</p>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#ad-title"><span class="std std-ref">title</span></a></td>
 <td>string</td>
-<td>max. 60 chars</td>
+<td>see below</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#ad-description"><span class="std std-ref">description</span></a></td>
 <td>string</td>
-<td>max. 20000 chars</td>
+<td>see below</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
@@ -454,12 +454,13 @@ action.</p>
 </div>
 <div class="section" id="title">
 <span id="ad-title"></span><span id="index-2"></span><h3>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h3>
-<p>Any string up to 60 characters. URLs are not allowed as part of the title.</p>
+<p>Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a>. URLs are not allowed as part of the title.</p>
 </div>
 <div class="section" id="description">
 <span id="ad-description"></span><span id="index-3"></span><h3>description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
-<p>The description field of the ad. All HTML elements except for the ones below
-will be removed:</p>
+<p>The description field of the ad.
+Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a>. URLs are not allowed as part of the title.
+All HTML elements except for the ones below will be removed:</p>
 <div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
 </pre></div>
 </div>

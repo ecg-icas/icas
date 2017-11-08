@@ -25,8 +25,8 @@ currency                2001    invalid argument            not "EUR", "DKK" or 
 dailyBudget             1006    type mismatch               not an integer number
 dailyBudget             2002    out of range                value lower than category.minDailyBudget or higher than totalBudget
 description             2000    missing argument            mandatory field
-description             2002    out of range                max. length is 20000
-externalId              2005    value too long              max. length is 64 characters
+description             2002    out of range                too short or too long; see :ref:`categories_v2` about the constraints.
+externalId              2005    value too long              too short or too long; see :ref:`categories_v2` about the constraints.
 id                      1006    type mismatch               not an integer number
 id                      2001    invalid argument            *id* must be omitted or set to zero
 images.size             2002    out of range                too many image URLs
