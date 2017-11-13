@@ -39,6 +39,10 @@ History
 
 ..  role:: strike
 
+* v.0.100 -13 Nov 2017 - tw
+
+  * add :ref:`get_categories_statistics`
+
 * v.0.99 -3 Nov 2017 - tw
 
   * add :ref:`get_ad_ids`

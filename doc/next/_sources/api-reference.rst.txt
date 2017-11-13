@@ -17,6 +17,7 @@ API Reference
    reference/put-ad-id-status
    reference/get-budget-seller
    reference/get-categories
+   reference/get-categories-statistics
    reference/get-category
    reference/get-category-id
    reference/get-category-id-attributes
