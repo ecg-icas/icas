@@ -420,3 +420,6 @@ granted by the user which is part of the user record.
  * - console_rw
    - Grants write access for console applications
 
+ * - reporting
+   - Grants access to reporting endpoints only. Allows creation of detailed downloadable reports
+
