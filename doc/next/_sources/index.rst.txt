@@ -27,6 +27,7 @@ Contents
    categories
    attributes
    regions
+   feeds
    error-handling
    api-reference
    deprecation
@@ -38,6 +39,10 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.101 -27 Nov 2017 - tw
+
+  * add :ref:`feeds`
 
 * v.0.100 -13 Nov 2017 - tw
 

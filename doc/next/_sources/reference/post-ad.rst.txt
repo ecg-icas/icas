@@ -84,6 +84,9 @@ or a unique identifier provided by :ref:`post_image`.
 The **attributes** field is optional and can contain a list of
 :ref:`user_defined_attributes`.
 
+The **originalPrice** field is optional, and will only be usable by enabled sellers.
+If a seller is not enabled, but will use this field, an error will be thrown.
+
 .. _post_ad_example:
 
 Parameters
