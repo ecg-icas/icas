@@ -42,7 +42,7 @@ History
 
 * v.0.102 -29 Nov 2017 - tw
 
-  * add :ref:`get_report_v3`, v2 is now deprecated.
+  * add GET /report :ref:`get_report_v3`, v2 is now deprecated.
 
 * v.0.101 -27 Nov 2017 - tw
 
