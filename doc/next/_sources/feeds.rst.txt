@@ -10,19 +10,20 @@ at :ref:`get_feed_xsd`.
 
 Once a day we pull the XML file configured for all appliccable users.
 We treat the provided XML file as the desired list of ads the user wants to have live.
-Any ads not present (referred to by **externalId**) in the XML file will be paused during
+Any ads not present (referred to by **vendorId**) in the XML file will be paused during
 the import of this file.
 
-The (mandatory) **externalId** field in the XML file is there to let us know, for consecutive imports, which
-ads are the same. This results in allowing us to update an existing ad with the same **externalId** instead
-of creating a new ad. **externalId** is mandatory and, as specified in the XSD, unique for each ad in the
+The (mandatory) **vendorId** field in the XML file is there to let us know, for consecutive imports, which
+ads are the same. This results in allowing us to update an existing ad with the same **vendorId** instead
+of creating a new ad. **vendorId** is mandatory and, as specified in the XSD, unique for each ad in the
 XML file.
 
 .. warning::
-   The **externalId** field in feeds is the same field as **vendorId** in the sellside API
-   and is, as in sellside API, unique per seller per ad. Our apologies for the wrong naming,
-   we are aware this may cause confusion with using sellside API, where **externalId** has a
-   different usage pattern than **vendorId**.
+   There is still an **externalId** field in the XSD, this field is replaced by **vendorId**.
+   Please update your XML to reflect this change. This makes naming consistent between feeds and sellside API.
+   The **vendorId** field in the feeds has the same meaning and constraints as the **vendorId** field in the
+   sellside API.
+
 
 Errors
 ------
@@ -55,7 +56,7 @@ Example XML
     <?xml version="1.0" encoding="UTF-8"?>
     <admarkt:ads xmlns:admarkt="http://admarkt.marktplaats.nl/schemas/1.0">
         <admarkt:ad>
-            <admarkt:externalId>jh2fi82wqjckw</admarkt:externalId>
+            <admarkt:vendorId>jh2fi82wqjckw</admarkt:vendorId>
             <admarkt:title>New white leather sofa</admarkt:title>
             <admarkt:description>This leather sofa is very well suited to sell online. Has happened 12 times
             already, profit guaranteed! The charming white color and stylish design makes it irresistable
@@ -77,7 +78,7 @@ Example XML
             <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
         </admarkt:ad>
         <admarkt:ad>
-            <admarkt:externalId>bvl202kfm2-123</admarkt:externalId>
+            <admarkt:vendorId>bvl202kfm2-123</admarkt:vendorId>
             <admarkt:title>Nice bike</admarkt:title>
             <admarkt:description>Decent women's bike. A little old, but good enough. Has seen some mileage,
             been used regularly, but is well maintained. Last month had a large check-up where some key

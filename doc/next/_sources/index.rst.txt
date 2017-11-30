@@ -1,4 +1,3 @@
-.. _eBay Classifieds iCAS Community: https://plus.google.com/communities/110150351420667771335
 .. _index:
 
 .. _introduction:
@@ -12,8 +11,10 @@ The API is designed as a RESTful API supporting JSON as data formats.
 Authentication is provided va OAuth2 to allow simple integration with existing
 client libraries.
 
-If you have questions or would like to provide feedback you can post a message
-on `eBay Classifieds iCAS Community`_.
+If you have questions or would like to provide feedback, you can do so via our
+Discord channel. Please talk to your contact at the tenant to get access, this
+is an invite-only chat channel. This channel is highly interactive, and contains
+several iCAS developers as well.
 
 Contents
 ========
@@ -39,6 +40,10 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.103 -30 Nov 2017 - tw
+
+  * Change usage of **externalId** in :ref:`feeds` to **vendorId**, **externalId** will be replaced by **vendorId** in feeds to be more consistent with the sellside API.
 
 * v.0.102 -29 Nov 2017 - tw
 
