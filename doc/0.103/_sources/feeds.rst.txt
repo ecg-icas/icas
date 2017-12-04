@@ -148,3 +148,7 @@ working before you let iCAS fetch it using the following command:
 .. code-block:: bash
 
   xmllint --debug --noout --schema /path/to/admarkt1.0.xsd /path/to/yourfeed.xml
+
+For small chunks of XML you can use online validators as well, such as `<http://www.utilities-online.info/xsdvalidation/>`_ or `<https://www.freeformatter.com/xml-validator-xsd.html>`_. Note that these have a
+limit on the size of the XML you can check, but it should be more than enough to be able
+to test correctness of your structure.
