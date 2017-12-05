@@ -13,6 +13,7 @@ API Reference
    reference/get-ad-ids
    reference/get-ad-externalid-mapping
    reference/post-ad
+   reference/post-ad-prefill
    reference/put-ad-id
    reference/put-ad-id-status
    reference/get-budget-seller
