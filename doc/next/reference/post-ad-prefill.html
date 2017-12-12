@@ -217,22 +217,25 @@
 </tr>
 </tbody>
 </table>
-<p>This URL prefills ad template with title, category, description and attributes.</p>
-<p>If the category does not exist server returns <strong>404 Not Found</strong>.
-If the category doesn&#8217;t support prefill or if identifying attribute of prefillable
-category is missing, server returns <strong>400 Bad Request</strong>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This call is only compatible with categories which have enabled prefill feature.</p>
-</div>
+<p>This URL returns a template for an ad, to be used for prefilling.
+This template can contain suggestions for title, category, description and attributes.</p>
+<p>Retrieving prefill information is possible only for ads from categories that have
+defined identifying attributes. Identifying attributes are attributes that
+can uniquely identify advertised items. An example of identifying attribute is ISBN,
+which can be used to uniquely identify a specific version of a book.</p>
+<p>When requesting prefill information, clients must provide valid category ID and
+identifying attribute for that category. If identifying attribute is missing
+server will respond with <strong>400 Bad Request</strong>. Server will respond with the same
+status code if provided category doesn&#8217;t have any identifying attributes defined,
+if category doesn&#8217;t exist or the category id is missing or invalid.</p>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="15%" />
-<col width="3%" />
-<col width="23%" />
-<col width="59%" />
+<col width="20%" />
+<col width="4%" />
+<col width="30%" />
+<col width="47%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
