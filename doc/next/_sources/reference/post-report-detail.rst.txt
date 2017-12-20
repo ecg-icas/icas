@@ -29,13 +29,13 @@ Fields
 
 Field of the report request is as follows:
 
-==============  ======  ==================  =====================================================
+==============  ======  ==================  ========================================================
 Field           Type    Mandatory           Description
-==============  ======  ==================  =====================================================
+==============  ======  ==================  ========================================================
 startDate       string  yes                 Start date of the report in yyyy-MM-dd format
-endDate         string  yes                 End date of the report in yyyy-MM-dd format
+endDate         string  yes                 End date of the report in yyyy-MM-dd format (inclusive)
 includeDeleted  bool    no                  Deleted ads are included/excluded. Default `false`
-==============  ======  ==================  =====================================================
+==============  ======  ==================  ========================================================
 
 Errors
 ~~~~~~
