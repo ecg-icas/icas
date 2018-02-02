@@ -37,7 +37,7 @@ aggregate       string  no                  Granularity of the timeseries breakd
 startDate       string  yes                 Start date of the report in yyyy-MM-dd format
 endDate         string  yes                 End date of the report in yyyy-MM-dd format (inclusive)
 includeDeleted  bool    no                  Deleted ads are included/excluded. Default `false`
-query           string   no                 Search phrase to match the title on
+query           string   no                 Search phrase to filter on ad titles
 ==============  ======  ==================  ======================================================================================================================================================================================================================================================================================================
 
 Report Columns
@@ -48,7 +48,7 @@ Both excel and csv contain the following columns: (TBW)
 ===================      ==========================================================================
 Name                     Description
 ===================      ==========================================================================
-Date (Aggregated)        Date of the report row, grouped daily, weekly
+Date (Aggregated)        Date of the report row, grouped hourly, daily, weekly, monthly, or yearly
 Ad id                    Id of the ad
 L1 Category              Level 1 category name
 L2 Category              Level 2 category name
