@@ -365,19 +365,44 @@ Empty strings are not enclosed in quotes.</p>
 <span class="go">Accept: application/json</span>
 
 <span class="go">HTTP/1.1 415 Unsupported Media Type</span>
+<span class="go">[</span>
+<span class="go">    {</span>
+<span class="go">        &quot;code&quot;: 2007,</span>
+<span class="go">        &quot;text&quot;: &quot;unsupported format&quot;,</span>
+<span class="go">        &quot;msg&quot;: &quot;unsupported media type&quot;,</span>
+<span class="go">        &quot;field&quot;: &quot;&quot;,</span>
+<span class="go">        &quot;arg&quot;: &quot;&quot;</span>
+<span class="go">    }</span>
+<span class="go">]</span>
 </pre></div>
 </div>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01</span>
 <span class="go">Accept: application/vnd.ms-excel</span>
 
 <span class="go">HTTP/1.1 400 Bad Request</span>
-<span class="go">{&quot;status&quot;:400,&quot;message&quot;:&quot;missing argument &#39;endDate&#39; in request&quot;}</span>
+<span class="go">[</span>
+<span class="go">    {</span>
+<span class="go">        &quot;code&quot;: 2000,</span>
+<span class="go">        &quot;text&quot;: &quot;missing argument&quot;,</span>
+<span class="go">        &quot;msg&quot;: &quot;The field &#39;endDate&#39; was missing&quot;,</span>
+<span class="go">        &quot;field&quot;: &quot;endDate&quot;,</span>
+<span class="go">        &quot;arg&quot;: &quot;&quot;</span>
+<span class="go">    }</span>
+<span class="go">]</span>
 </pre></div>
 </div>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-07-01&amp;endDate=2018-05-01</span>
 
 <span class="go">HTTP/1.1 400 Bad Request</span>
-<span class="go">{&quot;status&quot;:400,&quot;message&quot;:&quot;startDate&gt;endDate in request&quot;}</span>
+<span class="go">[</span>
+<span class="go">    {</span>
+<span class="go">        &quot;code&quot;: 2002,</span>
+<span class="go">        &quot;text&quot;: &quot;out of range&quot;,</span>
+<span class="go">        &quot;msg&quot;: &quot;The value of the field &#39;endDate&#39; was out of range (&lt; startDate)&quot;,</span>
+<span class="go">        &quot;field&quot;: &quot;endDate&quot;,</span>
+<span class="go">        &quot;arg&quot;: &quot;&lt; startDate&quot;</span>
+<span class="go">    }</span>
+<span class="go">]</span>
 </pre></div>
 </div>
 </div>
