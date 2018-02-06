@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Price Types &mdash; iCAS Sellside API 0.103 documentation</title>
+  <title>GET /metrics/ads &mdash; iCAS Sellside API 0.103 documentation</title>
   
 
   
@@ -33,10 +33,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.103 documentation" href="../index.html"/>
-        <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="Error Codes" href="error-codes.html"/>
-        <link rel="prev" title="Ad Status" href="ad-status.html"/> 
+    <link rel="top" title="iCAS Sellside API 0.103 documentation" href="../index.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -63,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#media-types">Media Types</a></li>
@@ -122,7 +119,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../error-handling.html">Error Handling</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api-reference.html">API Reference</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api-reference.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="get-ad.html">GET /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
@@ -157,7 +154,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -185,12 +182,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
-      
-    <li>Price Types</li>
+    <li>GET /metrics/ads</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/price-types.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-metrics-ads.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -198,79 +193,199 @@
 </div>
           <div role="main">
             
-  <div class="section" id="price-types">
-<span id="index-0"></span><span id="id1"></span><h1>Price Types<a class="headerlink" href="#price-types" title="Permalink to this headline">¶</a></h1>
-<p>Each advertisement has a price type which determines the type of transaction the seller would like to perform.
-The following table lists the valid price types and their descriptions.</p>
+  <div class="section" id="get-metrics-ads">
+<span id="index-0"></span><span id="id1"></span><h1>GET /metrics/ads<a class="headerlink" href="#get-metrics-ads" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This is an <strong>experimental</strong> endpoint and not officially supported yet!</p>
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal"><span class="pre">text/csv</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>This URL returns an ads performance report either in Excel or in CSV format depending on the
+<code class="docutils literal"><span class="pre">Accept</span></code> header. The report represents a timeseries breakdown of the performance of each ad which
+has had performance-related activity in the requested period.</p>
+<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created.
+If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created.
+Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
+Empty strings are not enclosed in quotes.</p>
+<p>All dates and times are in the tenant timezone.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="78%" />
+<col width="4%" />
+<col width="2%" />
+<col width="5%" />
+<col width="89%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">PRICE_TYPE</th>
-<th class="head">Price required?</th>
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Mandatory</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>BIDDING</td>
+<tr class="row-even"><td>aggregate</td>
+<td>string</td>
 <td>no</td>
-<td>Request a bid on the ad starting from 0 EUR.</td>
+<td>Granularity of the timeseries breakdown. Possible values are: <cite>hourly</cite>, <cite>daily</cite>, <cite>weekly</cite>, <cite>monthly</cite>, and <cite>yearly</cite>. If not provided, aggregation granularity will be decided depending on the number of days in the requested interval. The larger the interval, the coarser the granularity of date.</td>
 </tr>
-<tr class="row-odd"><td>BIDDING_FROM</td>
+<tr class="row-odd"><td>startDate</td>
+<td>string</td>
 <td>yes</td>
-<td>Request a bid with a starting price &gt; 0 EUR. <strong>price</strong> must contain a value in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code>.</td>
+<td>Start date of the report in yyyy-MM-dd format</td>
 </tr>
-<tr class="row-even"><td>FIXED_PRICE</td>
+<tr class="row-even"><td>endDate</td>
+<td>string</td>
 <td>yes</td>
-<td>Request a fixed price. <strong>price</strong> must contain a value in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code>.</td>
+<td>End date of the report in yyyy-MM-dd format (inclusive)</td>
 </tr>
-<tr class="row-odd"><td>FREE</td>
+<tr class="row-odd"><td>includeDeleted</td>
+<td>bool</td>
 <td>no</td>
-<td>Request no price.</td>
+<td>Deleted ads are included/excluded. Default <cite>false</cite></td>
 </tr>
-<tr class="row-even"><td>NEGOTIABLE</td>
+<tr class="row-even"><td>query</td>
+<td>string</td>
 <td>no</td>
-<td>Request a negotiation between buyer and seller.</td>
-</tr>
-<tr class="row-odd"><td>SEE_DESCRIPTION</td>
-<td>no</td>
-<td>Additional information is in the description of the ad.</td>
-</tr>
-<tr class="row-even"><td>SWAP</td>
-<td>no</td>
-<td>Request an exchange of one item for another.</td>
-</tr>
-<tr class="row-odd"><td>CREDIBLE_BID</td>
-<td>no</td>
-<td>Request for any reasonable offer.</td>
-</tr>
-<tr class="row-even"><td>ON_DEMAND</td>
-<td>no</td>
-<td>Price is communicated on request.</td>
-</tr>
-<tr class="row-odd"><td>RESERVED</td>
-<td>&#160;</td>
-<td>Flag for transaction in progress.</td>
+<td>Search phrase to filter on ad titles</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="report-columns">
+<h2>Report Columns<a class="headerlink" href="#report-columns" title="Permalink to this headline">¶</a></h2>
+<p>Both excel and csv contain the following columns: (TBW)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Date (Aggregated)</td>
+<td>Date of the report row, grouped hourly, daily, weekly, monthly, or yearly</td>
+</tr>
+<tr class="row-odd"><td>Ad id</td>
+<td>Id of the ad</td>
+</tr>
+<tr class="row-even"><td>L1 Category</td>
+<td>Level 1 category name</td>
+</tr>
+<tr class="row-odd"><td>L2 Category</td>
+<td>Level 2 category name</td>
+</tr>
+<tr class="row-even"><td>L3 Category</td>
+<td>Level 3 category name if it exists</td>
+</tr>
+<tr class="row-odd"><td>Title</td>
+<td>Ad title</td>
+</tr>
+<tr class="row-even"><td>Start Date</td>
+<td>The creation date of the ad</td>
+</tr>
+<tr class="row-odd"><td>End Date</td>
+<td>If the ad is deleted, deletion date of the ad</td>
+</tr>
+<tr class="row-even"><td>Cpc</td>
+<td>Cpc of the ad for which performance metrics are calculated</td>
+</tr>
+<tr class="row-odd"><td>Total spent</td>
+<td>Total amount spent for this ad</td>
+</tr>
+<tr class="row-even"><td>Clicks</td>
+<td>Number of clicks that the ad received</td>
+</tr>
+<tr class="row-odd"><td>Impressions</td>
+<td>Number of impressions that the ad received</td>
+</tr>
+<tr class="row-even"><td>CTR</td>
+<td>Click through rate in %</td>
+</tr>
+<tr class="row-odd"><td>URL clicks</td>
+<td>Number of URL clicks that the ad received</td>
+</tr>
+<tr class="row-even"><td>Emails</td>
+<td>Number of email events that the ad received</td>
+</tr>
+<tr class="row-odd"><td>Engagement CTR</td>
+<td>Engagement conversion rate in %. Currently = (URL clicks + Emails)/Clicks</td>
+</tr>
+<tr class="row-even"><td>Region</td>
+<td>Region of the ad</td>
+</tr>
+<tr class="row-odd"><td>Vendor id</td>
+<td>Vendor id of the ad</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting</span>
+<span class="go">Accept: text/csv</span>
+
+<span class="go">HTTP/1.1 200 OK</span>
+<span class="go">Content-Type: text/csv</span>
+<span class="go">Content-Disposition: attachment; filename=mp-report-1-20180202-144310.csv</span>
+<span class="go">Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region</span>
+<span class="go">2018-02-02,7,Cd&#39;s en Dvd&#39;s,Cd&#39;s | Country en Western,,&quot;Interesting title, what about &quot;&quot;quotes&quot;&quot;&quot;,2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht</span>
+<span class="go">2018-02-03,8,Cd&#39;s en Dvd&#39;s,Cd&#39;s | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting&amp;aggregate=monthly</span>
+<span class="go">Accept: text/csv</span>
+
+<span class="go">HTTP/1.1 200 OK</span>
+<span class="go">Content-Type: text/csv</span>
+<span class="go">Content-Disposition: attachment; filename=mp-report-1-20180202-144310.csv</span>
+<span class="go">Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region</span>
+<span class="go">2018-02,7,Cd&#39;s en Dvd&#39;s,Cd&#39;s | Country en Western,,&quot;Interesting title, what about &quot;&quot;quotes&quot;&quot;&quot;,2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht</span>
+<span class="go">2018-02,8,Cd&#39;s en Dvd&#39;s,Cd&#39;s | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting</span>
+<span class="go">Accept: application/json</span>
+
+<span class="go">HTTP/1.1 415 Unsupported Media Type</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01</span>
+<span class="go">Accept: application/vnd.ms-excel</span>
+
+<span class="go">HTTP/1.1 400 Bad Request</span>
+<span class="go">{&quot;status&quot;:400,&quot;message&quot;:&quot;missing argument &#39;endDate&#39; in request&quot;}</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-07-01&amp;endDate=2018-05-01</span>
+
+<span class="go">HTTP/1.1 400 Bad Request</span>
+<span class="go">{&quot;status&quot;:400,&quot;message&quot;:&quot;startDate&gt;endDate in request&quot;}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="error-codes.html" class="btn btn-neutral float-right" title="Error Codes"/>Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="ad-status.html" class="btn btn-neutral" title="Ad Status"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
