@@ -1,3 +1,5 @@
+.. _Discord: https://discordapp.com
+
 .. _index:
 
 .. _introduction:
@@ -11,10 +13,14 @@ The API is designed as a RESTful API supporting JSON as data formats.
 Authentication is provided va OAuth2 to allow simple integration with existing
 client libraries.
 
+Help / Feedback
+===============
+
 If you have questions or would like to provide feedback, you can do so via our
-Discord channel. Please talk to your contact at the tenant to get access, this
-is an invite-only chat channel. This channel is highly interactive, and contains
-several iCAS developers as well.
+`Discord`_ channel. Please talk to your contact at the tenant to get access, this
+is an **invite-only** chat channel. This channel is highly interactive, and contains
+several iCAS developers as well so deeper technical support can also be found here.
+Notifications about maintenance will also go through this channel.
 
 Contents
 ========
@@ -40,6 +46,10 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.104 -21 Mar 2018 - tw
+
+  * remove reference to G+ community (deprecated) and explicit help section in landing page.
 
 * v.0.103 -30 Nov 2017 - tw
 
