@@ -1,0 +1,30 @@
+{
+  "timeRanges": [{
+    "period": "lastWeek"
+  }],
+  "aggregate": "daily",
+  "dimensions": ["date", "cas:adId"],
+  "metrics": ["cas:clicks", "cas:impressions", "cas:engagementCtr"],
+  "sorts":[{"field":"date","direction":"asc"}],
+  "filters": [{
+      "field": "cas:categoryId",
+      "operator": "=",
+      "value": 1235
+    },
+    {
+      "field": "cas:regionId",
+      "operator": "in",
+      "value": [1,2,3,4]
+    }
+  ],
+  "adFields": [
+    "title",
+    "catL1",
+    "startDate",
+    "endDate",
+    "vendorId",
+    "region"
+  ],
+  "limit": 5,
+  "offset": 2
+}

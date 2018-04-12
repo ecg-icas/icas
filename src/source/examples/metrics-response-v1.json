@@ -1,0 +1,80 @@
+{
+  "data": [{
+    "start": "2018-01-08",
+    "end": "2018-01-14",
+    "rows": [{
+      "dimensions": ["2018-01-08 00:00:00", "4444"],
+      "metrics": [11, 22, 0.634],
+      "adInfo": [
+        "Some title of ad #4444",
+        "Category L1 description",
+        "2016-02-10 10:15:15",
+        "",
+        "fsd23432",
+        "City of Toronto"
+      ]
+    },
+      {
+        "dimensions": ["2018-01-08 00:00:00", "5555"],
+        "metrics": [9, 20, 0.244],
+        "adInfo": [
+          "Some title of ad #5555",
+          "Category L1 description",
+          "2016-05-11 09:10:15",
+          "2016-07-11 06:10:10",
+          "123425d",
+          "Canada"
+        ]
+      },
+      {
+        "dimensions": ["2018-01-09 00:00:00", "4444"],
+        "metrics": [34, 67, 0.252],
+        "adInfo": [
+          "Some title of ad #4444",
+          "Category L1 description",
+          "2016-02-10 10:15:15",
+          "",
+          "fsd23432",
+          "City of Toronto"
+        ]
+      },
+      {
+        "dimensions": ["2018-01-09 00:00:00", "5555"],
+        "metrics": [55, 61, 0.312],
+        "adInfo": [
+          "Some title of ad #5555",
+          "Category L1 description",
+          "2016-05-11 09:10:15",
+          "2016-07-11 06:10:10",
+          "123425d",
+          "Canada"
+        ]
+      },
+      ...
+      {
+        "dimensions": ["2018-01-14 00:00:00", "4444"],
+        "metrics": [12, 90, 0.113],
+        "adInfo": [
+          "Some title of ad #4444",
+          "Category L1 description",
+          "2016-02-10 10:15:15",
+          "",
+          "fsd23432",
+          "City of Toronto"
+        ]
+      },
+      {
+        "dimensions": ["2018-01-14 00:00:00", "5555"],
+        "metrics": [43, 76, 0.543]
+      },
+      "adInfo": [
+      "Some title of ad #5555",
+      "Category L1 description",
+      "2016-05-11 09:10:15",
+      "2016-07-11 06:10:10",
+      "123425d",
+      "Canada"
+      ]
+    ]
+  }]
+}

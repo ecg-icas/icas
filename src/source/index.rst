@@ -35,6 +35,7 @@ Contents
    attributes
    regions
    feeds
+   reporting
    error-handling
    api-reference
    deprecation
