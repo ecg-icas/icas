@@ -1,0 +1,210 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Documentation of REST API",
+    "version": "1.0.0",
+    "title": "AMNext"
+  },
+  "externalDocs": {
+    "description":"Get Auth Bearer token",
+    "url":"https://www.api-test.dev/"
+  },
+  "servers": [
+    {"url":"http://localhost:10030/api/sellside"}
+  ],
+  "tags": [
+    {
+      "name": "Ads",
+      "externalDocs": {
+        "url": "https://ecgwiki.corp.ebay.com/display/ICAS/Ads"
+      }
+    },
+    {
+      "name": "Campaigns",
+      "externalDocs": {
+        "url": "https://ecgwiki.corp.ebay.com/display/ICAS/Campaigns"
+      }
+    },
+    {
+      "name": "Estimates",
+      "externalDocs": {
+        "url": "https://ecgwiki.corp.ebay.com/display/ICAS/Estimates"
+      }
+    }
+  ],
+  "paths": {
+    "/ad/{adID}": {
+      "get": {
+        "tags": [
+          "Ads"
+        ],
+        "summary": "Get Ad by ID",
+        "description": "Provide ad info",
+        "operationId": "adID",
+        "parameters": [
+          {
+            "name": "adID",
+            "in": "path",
+            "description": "ID of ad to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/sellside.ad-amnext-v1+json; charset=UTF-8": {
+                "schema": {
+                  "example":{
+
+                    "links": {
+                      "self": "/api/sellside/ad/1",
+                      "category": "/api/sellside/category/2768",
+                      "url": "https://www.kussenwereld.nl/kussenhoezen/vt-wonen/70x70/wit-met-stiksel?utm_source=marktplaats&utm_medium=referral"
+                    },
+                    "id": 1,
+                    "title": "Kussenhoes wit met stiksel 70 x 70 cm",
+                    "description": "Deze mooie kussenhoes is gemaakt van de beste kwaliteit stof en voorzien van een degelijke rits. De achterkant van de hoes is van een bijpassende effen kleur. Voorzie uw interieur goedkoop van een nieuwe look met deze mooie Kussenhoes bruin-goud  70 x 70 cm<BR><BR><EM><STRONG>Let op: kleuren op uw computer kunnen afwijken van de werkelijke kleur! Wilt u zekerheid? Bestel eerst <U>stalen</U>!</STRONG></EM><BR>Bij Kussenwereld kiest u uit meer dan 200 verschillende designs en afmetingen uw favoriete kussen! Van elk kussen ook losse kussenhoezen verkrijgbaar. Tevens kussenvulling en binnenkussens.<BR><BR>Veilig bestellen en betalen, snelle verzending!<BR><BR>Bekijk ook onze andere advertenties!<BR>Kussens etc: w w w . k u s s e n w e r e l d . n l<BR>Zitzakken etc: w w w . z i t z a k w e r el d . n l<BR>Bedrijven en groothandel: w w w . e u r o a s i a . n l",
+                    "categoryId": 2768,
+                    "priceType": "FIXED_PRICE",
+                    "price": 1722,
+                    "salutation": "COMPANY",
+                    "sellerName": "Test user 4",
+                    "phoneNumber": "0592407750",
+                    "allowContactByEmail": true,
+                    "status": "ACTIVE",
+                    "vendorId": "8228771",
+                    "dateCreated": "2018-07-26T14:56:51Z",
+                    "dateLastUpdated": "2018-07-26T14:56:51Z",
+                    "attributes": [
+                      {
+                        "key": "condition",
+                        "label": "Conditie",
+                        "locale": "nl_NL",
+                        "type": "STRING",
+                        "value": "Nieuw",
+                        "recognized": true
+                      }
+                    ],
+                    "images": [
+                      {
+                        "src": "https://www.kussenwereld.nl/files/9184/products/8228771/wit-met-stiksel.jpg",
+                        "status": "OK",
+                        "dateLastUpdated": "2018-07-26T14:56:51Z",
+                        "links": {
+                          "726x726": "//i.ebayimg.com/00/s/MTIwWDE2MA==/$T2eC16NHJG!E9nm3o)QWBQ1G0-O-ig~~60_85.JPG",
+                          "64x64": "//i.ebayimg.com/00/s/MTIwWDE2MA==/$T2eC16NHJG!E9nm3o)QWBQ1G0-O-ig~~60_14.JPG",
+                          "147x147": "//i.ebayimg.com/00/s/MTIwWDE2MA==/$T2eC16NHJG!E9nm3o)QWBQ1G0-O-ig~~60_82.JPG",
+                          "358x358": "//i.ebayimg.com/00/s/MTIwWDE2MA==/$T2eC16NHJG!E9nm3o)QWBQ1G0-O-ig~~60_83.JPG",
+                          "1024x1024": "//i.ebayimg.com/00/s/MTIwWDE2MA==/$T2eC16NHJG!E9nm3o)QWBQ1G0-O-ig~~60_86.JPG"
+                        }
+                      }
+                    ],
+                    "shippingOptions": []
+
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/sellside.error-v1+json; charset=UTF-8": {
+                "$ref": "#/components/schemas/AuthError"
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/sellside.error-v1+json; charset=UTF-8": {
+                "schema": {
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/sellside.error-v1+json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiResponseError": {
+        "type": "array",
+        "items": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "msg": {
+            "type": "string"
+          }
+        },
+        "example":[
+          {
+            "code": "1000",
+            "text":"internal error",
+            "msg": "The server encountered an error"
+          }
+        ]
+      },
+      "AuthError": {
+        "type": "array",
+        "items": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "msg": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          }
+        },
+        "example":[
+          {
+            "code": 1009,
+            "text": "missing token",
+            "msg": "Authorization header is missing or in the wrong format",
+            "field": "token"
+          }
+        ]
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description":"https://www.api-test.dev/"
+      }
+    }
+  }
+}
