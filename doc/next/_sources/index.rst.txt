@@ -47,6 +47,10 @@ History
 
 ..  role:: strike
 
+* v.0.105 -22 Aug 2018 - tw
+
+  * calling PUT /ad/{id}/status/ACTIVE now allowed when ad has no budget anymore.
+
 * v.0.104 -21 Mar 2018 - tw
 
   * remove reference to G+ community (deprecated) and explicit help section in landing page.
