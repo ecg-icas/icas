@@ -47,6 +47,10 @@ History
 
 ..  role:: strike
 
+* v.0.106 -23 Oct 2018 - tw
+
+  * added error documentation for 2035, attribute not writable
+
 * v.0.105 -22 Aug 2018 - tw
 
   * calling PUT /ad/{id}/status/ACTIVE now allowed when ad has no budget anymore.
