@@ -105,16 +105,70 @@ Name                                Type     `Scope`_    Description
 
 Scope
 ******************************************************
-A scope for a metric defines the level at which that metric is defined — hit, session, or user. For example, ``am:clicks`` and ``am:impressions`` are *hit* level metrics, since they occur in a hit, whereas ``am:sessionsWithClicks`` and ``am:sessionsWithImpressions`` are *session* level metrics since there is a single value for these per session. Conceptually, *user* is the highest level scope and *hit* is the lowest level scope. We plan to extend support for **user**-level scoped metrics if there is demand for it.
+A scope for a metric defines the level at which that metric is defined — hit, session, or user. For example, ``am:clicks`` and ``am:impressions`` are **hit** level metrics, since they occur in a hit, whereas ``am:sessionsWithClicks`` and ``am:sessionsWithImpressions`` are **session** level metrics since there is a single value for these per session. Conceptually, **user** is the highest level scope and **hit** is the lowest level scope. We plan to extend support for **user**-level scoped metrics if there is demand for it.
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-To request a subset of your data, use filters. For example, you can filter on particular category, or adId. Filters can currently be used on any of the supported dimensions.
+To request a subset of your data, use filters. For example, you can filter on particular category, region, or ad ID. Filters can currently be used on any of the supported dimensions (except for ``am:date``). In the request query, they should be provided as a list of filter clauses which filters out the requested data on particular field values. Each filter clause is of the following form:
+
+.. code:: javascript
+
+        {
+                "field":   string
+                "operator":  string
+                "value":  array of integers
+        }
+
+Each filter in the list adds more restriction on the result, i.e., there is implicit *AND* operation between them.
+The only valid ``operator`` at the moment is the set operator ``in``, and requires an array of values to be passed in the ``value`` field of the filter. For example:
+
+.. code:: javascript
+
+    "filters": [
+        {
+            "field":"am:adID",
+            "operator":"in",
+            "value": [1111,2222,3333]
+        },
+        {
+            "field":"am:regionID",
+            "operator":"in",
+            "value": [1234, 5678]
+        }
+    ]
+
+We plan to extend support for filters on metrics, as well as more comparison operators, if there is demand for it.
 
 Sorting
 ~~~~~~~
-Sort the result based on dimension or metrics values. For example, it is possible to sort in ascending direction on Region, followed by descending direction on Clicks, etc.
+To sort the resulting data, use the **sorts** top-level query field. Sorts is a list of sort clauses, each of the following form:
 
+.. code:: javascript
+
+    {
+        "field":        string
+        "direction":    string
+    }
+
+
+A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested obviously. There are two directions for sorting: asc (ascending) and desc (descending). 
+The following example sorts first on date in descending order, followed by the ad ID in ascending order.
+
+.. code:: javascript
+
+    {
+        "sorts": [
+            {
+                "field":"am:date",
+                "direction":"desc"
+     
+            },
+            {
+                "field":"am:adID",
+                "direction":"asc"
+            }
+        ]
+    }
 
 Query and Response
 ~~~~~~~~~~~~~~~~~~
@@ -123,7 +177,7 @@ Query
 ********************
 The metrics query should be provided as a JSON object which has these minimum requirements:
 
-* At least one valid entry in the timeRanges `Time Ranges`_ field.
+* At least one valid entry in the `Time Ranges`_ field.
 
 * At least one valid entry in the `Metrics`_ field.
 
@@ -139,7 +193,7 @@ Here is a sample request with all top-level query fields expanded:
 Response
 ********************
 
-The response body of the API request is an array of Data (TODO: object describe? with start/end/rows/dimensions/metrics/enrichment) objects. Here is a sample response for the sample request above.
+The response body of the API request is an array of Data (TODO: object describe? with start/end/rows/dimensions/metrics/enrichment) objects, one for each of the requested `Time Ranges`_. Here is a sample response for the sample request above.
 
 .. literalinclude:: examples/metrics-response-v1.json
 
@@ -159,19 +213,7 @@ Each time range clause is defined as follows:
         "to":		string
     }
 
-There are several *predefined* period types at your disposal:
-
- * ``today``
- * ``yesterday``
- * ``thisWeek``
- * ``lastWeek``
- * ``thisMonth``
- * ``lastMonth``
- * ``thisYear``
- * ``lastYear``
-
-with their obvious meanings.
-
+There are several *predefined* period types at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings.
 If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
 
 To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: `YYYY-MM-DD`.
@@ -204,12 +246,10 @@ Example with multiple time ranges (mixed custom and predefined)
     ]
 
 
-.. literalinclude:: examples/metrics-response-v1.json
 
 Time Aggregation
 ****************
-
-HERE BE DRAGONS
+The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and specifies the granularity/resolution of the dates according to which the metrics data will be grouped. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
 
 Examples
 ~~~~~~~~
