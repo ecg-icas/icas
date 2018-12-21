@@ -157,7 +157,7 @@ Example with multiple time ranges, mixed custom and predefined:
 
 Time Aggregation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and is mandatory in such case. It specifies the granularity/resolution of the dates according to which the metrics data will be grouped. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
+The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and is **mandatory** in such case. It specifies the granularity/resolution of the time according to which the metrics data will be grouped in buckets. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

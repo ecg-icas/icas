@@ -72,14 +72,14 @@
       {
         "dimensions": ["2018-01-14 00:00:00", "5555"],
         "metrics": [43, 76, 0.543]
-      "enrichment": [
-      "Some title of ad #5555",
-      "Category L1 description",
-      "2016-05-11 09:10:15",
-      "2016-07-11 06:10:10",
-      "123425d",
-      "Canada",
-      "https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG"
+          "enrichment": [
+          "Some title of ad #5555",
+          "Category L1 description",
+          "2016-05-11 09:10:15",
+          "2016-07-11 06:10:10",
+          "123425d",
+          "Canada",
+          "https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG"
       ]
     }
     ]
