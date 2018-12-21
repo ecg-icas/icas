@@ -4,7 +4,7 @@
 Reporting
 ===========
 
-The new Reporting API allows you to get statistics about the performance of your ads in a flexible way. It is inspired by
+The new Reporting API allows you to get statistics about the performance of your ads in a flexible ad-hoc way. It is inspired by
 APIs like `Google Analytics`_ and `Yandex Metrica`_ and borrows some terminology from them.
 It is possible to create a custom-tailored report structure using concepts like dimensions, metrics, filters, and sorting, in the API query.
 
@@ -90,22 +90,22 @@ Name                                Type     `Scope`_    Description
 ``am:emails``                      Integer    Hit        Number of emails
 ``am:engagements``                 Integer    Hit        Number of engagements (currently ``website clicks + emails``)
 ``am:viewCTR``                     Float     Hit        Click-through rate (``clicks/impressions``)
-``am:websiteCTR``                  Float     Hit        Website leads from clicks ``(website clicks / clicks)``
+``am:websiteCTR``                  Float     Hit        Website leads from clicks ``(websiteClicks / clicks)``
 ``am:spent``                       Integer    Hit        Amount spent (in Cents)
-``am:engagementCTR``               Float      Hit        Engagement click-through rate (``website clicks + emails \ clicks``)
-``am:avgCPC``                      Float     Hit        Average Cost Per Click (``total spent / clicks``)
+``am:engagementCTR``               Float      Hit        Engagement click-through rate (``websiteClicks + emails \ clicks``)
+``am:avgCPC``                      Float     Hit        Average Cost Per Click (``totalSpent / clicks``)
 ``am:sessionsWithClicks``          Integer    Session    Number of unique sessions with clicks
 ``am:sessionsWithImpressions``     Integer    Session    Number of unique sessions with impressions
 ``am:sessionsWithWebsiteClicks``   Integer    Session    Number of unique sessions with website clicks (leads)
 ``am:sessionsWithEmails``          Integer    Session    Number of unique sessions with emails
 ``am:sessionsWithEngagements``     Integer    Session    Number of unique sessions with engagements
-``am:sessionViewCTR``              Float      Session    Click-through rate in session scope (``sessions with clicks \ sessions with impressions``)
-``am:sessionEngagementCTR``        Float      Session    Website leads from leads, in session scope (``sessions with website clicks / sessions with clicks``)
+``am:sessionViewCTR``              Float      Session    Click-through rate in session scope (``sessionsWithlicks \ sessionWithImpressions``)
+``am:sessionEngagementCTR``        Float      Session    Website leads from leads, in session scope (``sessionsWithWebsiteClicks / sessionsWithClicks``)
 ================================  =========  =========  ============================================================
 
 Scope
 ******************************************************
-TBD
+A scope for a metric defines the level at which that metric is defined — hit, session, or user. For example, ``am:clicks`` and ``am:impressions`` are *hit* level metrics, since they occur in a hit, whereas ``am:sessionsWithClicks`` and ``am:sessionsWithImpressions`` are *session* level metrics since there is a single value for these per session. Conceptually, *user* is the highest level scope and *hit* is the lowest level scope. We plan to extend support for **user**-level scoped metrics if there is demand for it.
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~
