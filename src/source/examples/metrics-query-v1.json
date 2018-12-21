@@ -23,7 +23,8 @@
     "am:currentAdStartDate",
     "am:currentAdEndDate",
     "am:currentAdVendorID",
-    "am:currentAdRegion"
+    "am:currentAdRegion",
+    "am:currentAdImage"
   ],
   "limit": 5,
   "offset": 2

@@ -139,7 +139,7 @@ The end date cannot be before the start one. For example:
     ]
 
 
-Example with multiple time ranges (mixed custom and predefined):
+Example with multiple time ranges, mixed custom and predefined:
 
 .. code:: javascript
 
@@ -155,10 +155,9 @@ Example with multiple time ranges (mixed custom and predefined):
     ]
 
 
-
 Time Aggregation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and specifies the granularity/resolution of the dates according to which the metrics data will be grouped. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
+The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and is mandatory in such case. It specifies the granularity/resolution of the dates according to which the metrics data will be grouped. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,6 +225,27 @@ The following example sorts first on date in descending order, followed by the a
 Pagination with offset and limit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Depending on the amount and shape of the requested data, it is worthwhile to paginate the results, for efficiency. Use the top-level ``offset`` and ``limit`` fields of the request query, with their standard meanings.
+
+
+Enrichment
+~~~~~~~~~~~~~~~~~~~~~~~~~
+It is possible to enrich the reports with "handy" ad-related data for which only the present-moment values are available, such as the ad title, or category description. Requesting these fields makes sense **only** if ``am:adID`` is in the requested dimensions. The supported fields are listed below:
+
+===========================  ===========  =============================
+Name                           Type        Description
+===========================  ===========  =============================
+``am:currentAdTitle``         String       Current title of the ad
+``am:currentAdStartDate``     Timestamp    Current start date of the ad
+``am:currentAdEndDate``       Timestamp    Current end date of the ad, if applicable
+``am:currentAdCPC``           Integer      Currect CPC of the ad
+``am:currentAdCategoryL1``    String       Description of the current top-level category the ad
+``am:currentAdCategoryL2``    String       Description of the current second-level category the ad
+``am:currentAdCategoryL3``    String       Description of the current third-level category the ad, if applicable
+``am:currentAdImage``         String       Path to the current (first) image of the ad in the smallest resolution (64x64 pixels), if available
+``am:currentAdVendorID``      String       Current vendorID of the ad, if available
+``am:currentAdRegion``        String       Description of the current (lowest-level) region of the ad, if applicable
+``am:currentAdExternalID``    String       Description of the current externalID of the ad, if available
+===========================  ===========  =============================
 
 
 Query and Response
