@@ -3,27 +3,27 @@
     "period": "lastWeek"
   }],
   "aggregate": "daily",
-  "dimensions": ["date", "cas:adId"],
-  "metrics": ["cas:clicks", "cas:impressions", "cas:engagementCtr"],
+  "dimensions": ["am:date", "am:adID"],
+  "metrics": ["am:clicks", "am:impressions", "am:engagementCTR"],
   "sorts":[{"field":"date","direction":"asc"}],
   "filters": [{
-      "field": "cas:categoryId",
-      "operator": "=",
-      "value": 1235
+      "field": "am:categoryID",
+      "operator": "in",
+      "value": [1235]
     },
     {
-      "field": "cas:regionId",
+      "field": "am:regionID",
       "operator": "in",
       "value": [1,2,3,4]
     }
   ],
-  "adFields": [
-    "title",
-    "catL1",
-    "startDate",
-    "endDate",
-    "vendorId",
-    "region"
+  "enrichment": [
+    "am:currentAdTitle",
+    "am:currentAdCategoryL1",
+    "am:currentAdStartDate",
+    "am:currentAdEndDate",
+    "am:currentAdVendorID",
+    "am:currentAdRegion"
   ],
   "limit": 5,
   "offset": 2

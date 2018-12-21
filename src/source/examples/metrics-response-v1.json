@@ -5,7 +5,7 @@
     "rows": [{
       "dimensions": ["2018-01-08 00:00:00", "4444"],
       "metrics": [11, 22, 0.634],
-      "adInfo": [
+      "enrichment": [
         "Some title of ad #4444",
         "Category L1 description",
         "2016-02-10 10:15:15",
@@ -17,7 +17,7 @@
       {
         "dimensions": ["2018-01-08 00:00:00", "5555"],
         "metrics": [9, 20, 0.244],
-        "adInfo": [
+        "enrichment": [
           "Some title of ad #5555",
           "Category L1 description",
           "2016-05-11 09:10:15",
@@ -29,7 +29,7 @@
       {
         "dimensions": ["2018-01-09 00:00:00", "4444"],
         "metrics": [34, 67, 0.252],
-        "adInfo": [
+        "enrichment": [
           "Some title of ad #4444",
           "Category L1 description",
           "2016-02-10 10:15:15",
@@ -41,7 +41,7 @@
       {
         "dimensions": ["2018-01-09 00:00:00", "5555"],
         "metrics": [55, 61, 0.312],
-        "adInfo": [
+        "enrichment": [
           "Some title of ad #5555",
           "Category L1 description",
           "2016-05-11 09:10:15",
@@ -54,7 +54,7 @@
       {
         "dimensions": ["2018-01-14 00:00:00", "4444"],
         "metrics": [12, 90, 0.113],
-        "adInfo": [
+        "enrichment": [
           "Some title of ad #4444",
           "Category L1 description",
           "2016-02-10 10:15:15",
@@ -67,7 +67,7 @@
         "dimensions": ["2018-01-14 00:00:00", "5555"],
         "metrics": [43, 76, 0.543]
       },
-      "adInfo": [
+      "enrichment": [
       "Some title of ad #5555",
       "Category L1 description",
       "2016-05-11 09:10:15",

@@ -60,28 +60,31 @@ The dimensions supported by the reporting API have discrete values (like *Nether
 Currently Supported Dimensions
 ********************************************
 
- * ``date`` - the date when the events happened
- * ``cas:adId`` - id of the ad(s)
- * ``cas:cpc`` - cpc of the ad(s)
- * ``cas:categoryId`` - categoryId of the ad(s)
- * ``cas:regionId`` - regionId of the ad(s)
+ * ``am:date`` - the date when the events happened. This is a special dimension (see TODO: aggregate)
+ * ``am:adID`` - id of the ad(s)
+ * ``am:CPC`` - cpc of the ad(s)
+ * ``am:categoryID`` - categoryId of the ad(s)
+ * ``am:regionID`` - regionId of the ad(s)
 
 
 Currently Supported Metrics
 ********************************************
 
- * ``cas:clicks`` - number of clicks
- * ``cas:impressions`` - number of impressions
- * ``cas:website`` - number of website clicks
- * ``cas:emails`` - number of emails
- * ``cas:engagements`` - number of engagements (currently ``website clicks + emails``)
- * ``cas:ctr`` - click through rate (``clicks/impressions``)
- * ``cas:websiteCtr`` - website leads from clicks ``(website clicks / clicks)``
- * ``cas:spent`` - amount spent (in cents)
- * ``cas:engagementCtr`` - engagement click through rate ``(website clicks + emails) / clicks``
- * ``cas:avgCpc`` - average CPC ``(total spent / clicks)``
+TODO: hits vs sessions
 
-.. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data divided over units of time (such as days, weeks, months or years) when calculating metrics over it.
+ * ``am:clicks`` - number of clicks
+ * ``am:impressions`` - number of impressions
+ * ``am:websiteClicks`` - number of website clicks
+ * ``am:emails`` - number of emails
+ * ``am:engagements`` - number of engagements (currently ``website clicks + emails``)
+ * ``am:viewCTR`` - click through rate (``clicks/impressions``)
+ * ``am:websiteCTR`` - website leads from clicks ``(website clicks / clicks)``
+ * ``am:spent`` - amount spent (in cents)
+ * ``am:engagementCTR`` - engagement click through rate ``(website clicks + emails) / clicks``
+ * ``am:avgCPC`` - average CPC ``(total spent / clicks)``
+
+.. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data is aggregated over units of time (such as days, weeks, months or years) when calculating metrics over it.TODO: see aggregate
+
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,8 +101,8 @@ The metrics query is provided as a JSON object which has the following structure
 
 .. literalinclude:: examples/metrics-query-v1.json
 
-Time Ranges
-***********
+Time Ranges (mandatory)
+***********************
 
 This field is used to specify one ore more distinct time periods to fetch data for, across which all other query parameters will be the same.
 Supplying a single range is sufficient for most needs, but the flexibility is provided to ask for multiple at the same time.
@@ -133,7 +136,7 @@ The end date cannot be before the start one. For example:
 
 .. code:: javascript
 
-    "time_ranges": [
+    "timeRanges": [
         {
                 "period":   "custom",
                 "from":     "2017-01-01",
@@ -146,9 +149,9 @@ Example with multiple time ranges (mixed custom and predefined)
 
 .. code:: javascript
 
-    "time_ranges": [
+    "timeRanges": [
         {
-            "period":   "this_week"
+            "period":   "thisWeek"
         },
         {
             "period":   "custom"
