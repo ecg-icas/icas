@@ -170,6 +170,11 @@ The following example sorts first on date in descending order, followed by the a
         ]
     }
 
+Pagination with offset and limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Depending on the amount and shape of the requested data, it is worthwhile to paginate the results, for efficiency. Use the top-level ``offset`` and ``limit`` fields of the request query, with their standard meanings.
+
+
 Query and Response
 ~~~~~~~~~~~~~~~~~~
 
