@@ -18,12 +18,12 @@ Dimensions
 ****************************
 A **dimension** is an attribute of each performance event, and is used for grouping your data. For example, the dimension *Country* indicates
 where a click originated from. The *Date* dimension indicates the date when a particular ad was viewed or clicked.
-It is also possible to make a report without dimensions; in this case, the total result is calculated.
+It is also possible to make a report without dimensions; in this case, the total result is calculated. Check the list of currently `Supported Dimensions`_.
 
 Metrics
 ****************************
 **Metrics** are numeric values based on quantitative aggregations over dimensions' values; every query requires at least one metric field to be requested.
-The metric *Clicks* indicates the total number of clicks. For example, the metric *ViewCTR* indicates the click-through rate for ads.
+The metric *Clicks* indicates the total number of clicks. For example, the metric *ViewCTR* indicates the click-through rate for ads. Check the list of currently `Supported Metrics`_.
 
 .. note:: If you are familiar with SQL, you can think of dimensions as columns used for grouping, and metrics as the results returned by aggregate functions. The tables in most reports organize dimension values into rows, and metrics into columns.
 
@@ -31,7 +31,7 @@ To grasp the different views that a report can generate, below is an example of 
 
 
 ==============  ========  ==================
-DIMENSION       METRIC 1    METRIC 2
+DIMENSION       METRIC    METRIC
 --------------  --------  ------------------
 *Country*       *Clicks*   *ViewCTR*
 ==============  ========  ==================
@@ -43,7 +43,7 @@ France           64523      0.2643
 If we add a secondary dimension, for example *Category*, the resulting view could be:
 
 ==============  ==============  =========  ===========
-DIMENSION 1       DIMENSION 2    METRIC 1   METRIC 2
+  DIMENSION     DIMENSION        METRIC     METRIC
 --------------  --------------  ---------  -----------
 *Country*       *Category*      *Clicks*    *ViewCTR*
 ==============  ==============  =========  ===========
@@ -62,34 +62,50 @@ France          Bicycles         882        0.3575
 
 The dimensions supported by the reporting API have discrete values (like *Netherlands* or *Bicycles*), and the data is split by each such value, over which statistics (like *Clicks* or *Impressions*) are calculated.
 
-Currently Supported Dimensions
+Supported Dimensions
 ********************************************
 
- * ``am:date`` - the date when the events happened. This is a special dimension (see TODO: aggregate)
- * ``am:adID`` - id of the ad(s)
- * ``am:CPC`` - cpc of the ad(s)
- * ``am:categoryID`` - categoryId of the ad(s)
- * ``am:regionID`` - regionId of the ad(s)
-
-
-Currently Supported Metrics
-********************************************
-
-TODO: hits vs sessions
-
- * ``am:clicks`` - number of clicks
- * ``am:impressions`` - number of impressions
- * ``am:websiteClicks`` - number of website clicks
- * ``am:emails`` - number of emails
- * ``am:engagements`` - number of engagements (currently ``website clicks + emails``)
- * ``am:viewCTR`` - click through rate (``clicks/impressions``)
- * ``am:websiteCTR`` - website leads from clicks ``(website clicks / clicks)``
- * ``am:spent`` - amount spent (in cents)
- * ``am:engagementCTR`` - engagement click through rate ``(website clicks + emails) / clicks``
- * ``am:avgCPC`` - average CPC ``(total spent / clicks)``
+=================  =========  =============================
+Name                 Type      Description
+=================  =========  =============================
+``am:date``         String     The date when the events happened. See `Time Aggregation`_
+``am:adID``         Integer     ID of the ad(s)
+``am:CPC``          Integer     The Cost Per Click (in Cents) of the ad(s)
+``am:categoryID``   Integer    The category ID of the ad(s)
+``am:regionID``     Integer    The region ID of the ad(s)
+=================  =========  =============================
 
 .. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data is aggregated over units of time (such as days, weeks, months or years) when calculating metrics over it. See `Time Aggregation`_ for options on granularity.
 
+
+Supported Metrics
+********************************************
+
+================================  =========  =========  ============================================================
+Name                                Type     `Scope`_    Description
+================================  =========  =========  ============================================================
+``am:clicks``                      Integer    Hit        Number of clicks
+``am:impressions``                 Integer    Hit        Nnumber of impressions
+``am:websiteClicks``               Integer    Hit        Number of website clicks (leads)
+``am:emails``                      Integer    Hit        Number of emails
+``am:engagements``                 Integer    Hit        Number of engagements (currently ``website clicks + emails``)
+``am:viewCTR``                     Float     Hit        Click-through rate (``clicks/impressions``)
+``am:websiteCTR``                  Float     Hit        Website leads from clicks ``(website clicks / clicks)``
+``am:spent``                       Integer    Hit        Amount spent (in Cents)
+``am:engagementCTR``               Float      Hit        Engagement click-through rate (``website clicks + emails \ clicks``)
+``am:avgCPC``                      Float     Hit        Average Cost Per Click (``total spent / clicks``)
+``am:sessionsWithClicks``          Integer    Session    Number of unique sessions with clicks
+``am:sessionsWithImpressions``     Integer    Session    Number of unique sessions with impressions
+``am:sessionsWithWebsiteClicks``   Integer    Session    Number of unique sessions with website clicks (leads)
+``am:sessionsWithEmails``          Integer    Session    Number of unique sessions with emails
+``am:sessionsWithEngagements``     Integer    Session    Number of unique sessions with engagements
+``am:sessionViewCTR``              Float      Session    Click-through rate in session scope (``sessions with clicks \ sessions with impressions``)
+``am:sessionEngagementCTR``        Float      Session    Website leads from leads, in session scope (``sessions with website clicks / sessions with clicks``)
+================================  =========  =========  ============================================================
+
+Scope
+******************************************************
+TBD
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~
