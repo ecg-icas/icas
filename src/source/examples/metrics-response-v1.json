@@ -4,7 +4,7 @@
     "end": "2018-01-14",
     "rows": [
       {
-        "dimensions": ["2018-01-08 00:00:00", "4444"],
+        "dimensions": ["2018-01-10 00:00:00", "4444"],
         "metrics": [11, 22, 0.634],
         "enrichment": [
           "Some title of ad #4444",
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "dimensions": ["2018-01-08 00:00:00", "5555"],
+        "dimensions": ["2018-01-11 00:00:00", "5555"],
         "metrics": [9, 20, 0.244],
         "enrichment": [
           "Some title of ad #5555",
@@ -30,7 +30,7 @@
         ]
       },
       {
-        "dimensions": ["2018-01-09 00:00:00", "4444"],
+        "dimensions": ["2018-01-12 00:00:00", "4444"],
         "metrics": [34, 67, 0.252],
         "enrichment": [
           "Some title of ad #4444",
@@ -43,7 +43,7 @@
         ]
       },
       {
-        "dimensions": ["2018-01-09 00:00:00", "5555"],
+        "dimensions": ["2018-01-13 00:00:00", "5555"],
         "metrics": [55, 61, 0.312],
         "enrichment": [
           "Some title of ad #5555",
@@ -52,20 +52,6 @@
           "2016-07-11 06:10:10",
           "123425d",
           "Canada",
-          "https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG"
-        ]
-      },
-      ...
-      {
-        "dimensions": ["2018-01-14 00:00:00", "4444"],
-        "metrics": [12, 90, 0.113],
-        "enrichment": [
-          "Some title of ad #4444",
-          "Category L1 description",
-          "2016-02-10 10:15:15",
-          "",
-          "fsd23432",
-          "City of Toronto",
           "https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG"
         ]
       },
@@ -81,7 +67,8 @@
           "Canada",
           "https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG"
         ]
-    }
-    ]
+      }
+    ],
+    "count": 5
   }
 ]
