@@ -271,10 +271,41 @@ Here is a sample request with all top-level query fields expanded:
 Response
 ************************************
 
-The response body of the API request is an array of Data (TODO: object describe? with start/end/rows/dimensions/metrics/enrichment) objects, one for each of the requested `Time Ranges`_. Here is a sample response for the sample request above.
+The response body of the API request is a JSON object of `Metrics Response`_ type. Here is a sample response for the sample request above.
 
 .. literalinclude:: examples/metrics-response-v1.json
 
+Metrics Response
+######################################################
+
+The data model of the response has the following structure:
+
+.. code-block:: javascript
+
+
+    {
+        "data": [
+            {
+                "start": actual start date in string format
+                "end":   actual end date in string format
+                "rows": [
+                    {
+                        "dimensions": [ (1) ]
+                        "metrics": [ (2) ]
+                        "enrichment": [ (3) ]
+                    }
+                ],
+            "count": actual count of the returned data in integer form
+            }
+        ]
+    }
+
+(1) array of string representations of the values for each requested ``dimension`` field
+(2) array of integer/float values for each requested ``metric`` field
+(3) array of string representations of the values for each requested ``enrichment`` field
+
+
+The ``data`` field contains an array of objects, one for each of the requested `Time Ranges`_. It is **important to remember** that the order in which the ``metrics``, ``dimensions``, and ``enrichment`` fields are requested is the same order in which they are listed in the response. The order of the objects in the `rows` array is not guaranteed to be deterministic unless explicit `Sorting`_ is used.
 
 Examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
