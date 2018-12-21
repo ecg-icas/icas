@@ -78,8 +78,8 @@ Currently Supported Metrics
  * ``cas:ctr`` - click through rate (``clicks/impressions``)
  * ``cas:websiteCtr`` - website leads from clicks ``(website clicks / clicks)``
  * ``cas:spent`` - amount spent (in cents)
- * ``cas:engagementCtr`` - engagement click through rate ``(website clicks + emails)/ clicks``
- * ``cas:avgCpc`` - average CPC
+ * ``cas:engagementCtr`` - engagement click through rate ``(website clicks + emails) / clicks``
+ * ``cas:avgCpc`` - average CPC ``(total spent / clicks)``
 
 .. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data divided over units of time (such as days, weeks, months or years) when calculating metrics over it.
 
@@ -89,7 +89,7 @@ To request a subset of your data, use filters. For example, you can filter on pa
 
 Sorting
 ~~~~~~~
-Sort the result based on dimension or metrics values. For example, it is possible to sort in ascending direction on Country, followed by descending direction on Clicks, etc.
+Sort the result based on dimension or metrics values. For example, it is possible to sort in ascending direction on Region, followed by descending direction on Clicks, etc.
 
 
 Query and Response
@@ -101,7 +101,7 @@ The metrics query is provided as a JSON object which has the following structure
 Time Ranges
 ***********
 
-This field is used to specify one ore more distinct time periods to fetch data from, across which all other query parameters will be the same.
+This field is used to specify one ore more distinct time periods to fetch data for, across which all other query parameters will be the same.
 Supplying a single range is sufficient for most needs, but the flexibility is provided to ask for multiple at the same time.
 Each time range clause is defined as follows:
 
@@ -113,7 +113,19 @@ Each time range clause is defined as follows:
         "to":		string
     }
 
-There are several *predefined* period types at your disposal: *today*, *yesterday*, *thisWeek*, *lastWeek*, *thisMonth*, *lastMonth*, *thisYear*, *lastYear*, with their obvious meanings.
+There are several *predefined* period types at your disposal:
+
+ * ``today``
+ * ``yesterday``
+ * ``thisWeek``
+ * ``lastWeek``
+ * ``thisMonth``
+ * ``lastMonth``
+ * ``thisYear``
+ * ``lastYear``
+
+with their obvious meanings.
+
 If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
 
 To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: `YYYY-MM-DD`.
