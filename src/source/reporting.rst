@@ -10,18 +10,18 @@ It is possible to create a custom-tailored report structure using concepts like 
 
 
 Dimensions and Metrics
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Dimensions and metrics are used for making API requests.
 Every report response is made up of them.
 
 Dimensions
-****************************
+************************************
 A **dimension** is an attribute of each performance event, and is used for grouping your data. For example, the dimension *Country* indicates
 where a click originated from. The *Date* dimension indicates the date when a particular ad was viewed or clicked.
 It is also possible to make a report without dimensions; in this case, the total result is calculated. Check the list of currently `Supported Dimensions`_.
 
 Metrics
-****************************
+************************************
 **Metrics** are numeric values based on quantitative aggregations over dimensions' values; every query requires at least one metric field to be requested.
 The metric *Clicks* indicates the total number of clicks. For example, the metric *ViewCTR* indicates the click-through rate for ads. Check the list of currently `Supported Metrics`_.
 
@@ -104,11 +104,64 @@ Name                                Type     `Scope`_    Description
 ================================  =========  =========  ============================================================
 
 Scope
-******************************************************
+######################################################
 A scope for a metric defines the level at which that metric is defined — hit, session, or user. For example, ``am:clicks`` and ``am:impressions`` are **hit** level metrics, since they occur in a hit, whereas ``am:sessionsWithClicks`` and ``am:sessionsWithImpressions`` are **session** level metrics since there is a single value for these per session. Conceptually, **user** is the highest level scope and **hit** is the lowest level scope. We plan to extend support for **user**-level scoped metrics if there is demand for it.
 
-Filters
+Time Ranges
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This field is used to specify one ore more distinct time periods to fetch data for, across which all other query parameters will be the same.
+Supplying a single range is sufficient for most needs, but the flexibility is provided to ask for multiple at the same time.
+Each time range clause is defined as follows:
+
+.. code:: javascript
+
+    {
+        "period":   string
+        "from":     string
+        "to":       string
+    }
+
+There are several *predefined* period types at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings.
+If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
+
+To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: `YYYY-MM-DD`.
+The end date cannot be before the start one. For example:
+
+.. code:: javascript
+
+    "timeRanges": [
+        {
+                "period":   "custom",
+                "from":     "2017-01-01",
+                "to":       "2017-10-22"
+        }
+    ]
+
+
+Example with multiple time ranges (mixed custom and predefined):
+
+.. code:: javascript
+
+    "timeRanges": [
+        {
+            "period":   "thisWeek"
+        },
+        {
+            "period":   "custom"
+            "from":     "2017-01-08",
+            "to":       "2017-01-15"
+        }
+    ]
+
+
+
+Time Aggregation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and specifies the granularity/resolution of the dates according to which the metrics data will be grouped. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
+
+Filters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To request a subset of your data, use filters. For example, you can filter on particular category, region, or ad ID. Filters can currently be used on any of the supported dimensions (except for ``am:date``). In the request query, they should be provided as a list of filter clauses which filters out the requested data on particular field values. Each filter clause is of the following form:
 
 .. code:: javascript
@@ -140,7 +193,7 @@ The only valid ``operator`` at the moment is the set operator ``in``, and requir
 We plan to extend support for filters on metrics, as well as more comparison operators, if there is demand for it.
 
 Sorting
-~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To sort the resulting data, use the **sorts** top-level query field. Sorts is a list of sort clauses, each of the following form:
 
 .. code:: javascript
@@ -171,15 +224,15 @@ The following example sorts first on date in descending order, followed by the a
     }
 
 Pagination with offset and limit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Depending on the amount and shape of the requested data, it is worthwhile to paginate the results, for efficiency. Use the top-level ``offset`` and ``limit`` fields of the request query, with their standard meanings.
 
 
 Query and Response
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Query
-********************
+************************************
 The metrics query should be provided as a JSON object which has these minimum requirements:
 
 * At least one valid entry in the `Time Ranges`_ field.
@@ -196,67 +249,14 @@ Here is a sample request with all top-level query fields expanded:
 .. literalinclude:: examples/metrics-query-v1.json
 
 Response
-********************
+************************************
 
 The response body of the API request is an array of Data (TODO: object describe? with start/end/rows/dimensions/metrics/enrichment) objects, one for each of the requested `Time Ranges`_. Here is a sample response for the sample request above.
 
 .. literalinclude:: examples/metrics-response-v1.json
 
 
-Time Ranges
-***********
-
-This field is used to specify one ore more distinct time periods to fetch data for, across which all other query parameters will be the same.
-Supplying a single range is sufficient for most needs, but the flexibility is provided to ask for multiple at the same time.
-Each time range clause is defined as follows:
-
-.. code:: javascript
-
-    {
-        "period":	string
-        "from":		string
-        "to":		string
-    }
-
-There are several *predefined* period types at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings.
-If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
-
-To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: `YYYY-MM-DD`.
-The end date cannot be before the start one. For example:
-
-.. code:: javascript
-
-    "timeRanges": [
-        {
-                "period":   "custom",
-                "from":     "2017-01-01",
-                "to":       "2017-10-22"
-        }
-    ]
-
-
-Example with multiple time ranges (mixed custom and predefined)
-
-.. code:: javascript
-
-    "timeRanges": [
-        {
-            "period":   "thisWeek"
-        },
-        {
-            "period":   "custom"
-            "from":     "2017-01-08",
-            "to":       "2017-01-15"
-        }
-    ]
-
-
-
-Time Aggregation
-****************
-The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and specifies the granularity/resolution of the dates according to which the metrics data will be grouped. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
-
 Examples
-~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 HERE BE MORE DRAGONS
