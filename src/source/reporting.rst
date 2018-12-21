@@ -4,7 +4,7 @@
 Reporting
 ===========
 
-The new *Reporting API* allows you to get statistics about the performance of your ads in a flexible way. It is inspired by
+The new Reporting API allows you to get statistics about the performance of your ads in a flexible way. It is inspired by
 APIs like `Google Analytics`_ and `Yandex Metrica`_ and borrows some terminology from them.
 It is possible to create a custom-tailored report structure using concepts like dimensions, metrics, filters, and sorting, in the API query.
 
@@ -12,21 +12,26 @@ It is possible to create a custom-tailored report structure using concepts like 
 Dimensions and Metrics
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Dimensions and metrics are used for making API requests.
+Every report response is made up of them.
 
+Dimensions
+****************************
 A **dimension** is an attribute of each performance event, and is used for grouping your data. For example, the dimension *Country* indicates
 where a click originated from. The *Date* dimension indicates the date when a particular ad was viewed or clicked.
 It is also possible to make a report without dimensions; in this case, the total result is calculated.
 
-**Metrics** are numeric values based on quantitative aggregations over dimensions' values; every query requires at least one metric field.
+Metrics
+****************************
+**Metrics** are numeric values based on quantitative aggregations over dimensions' values; every query requires at least one metric field to be requested.
 The metric *Clicks* indicates the total number of clicks. For example, the metric *ViewCTR* indicates the click-through rate for ads.
 
-.. note:: If you are familiar with SQL, you can think of dimensions as columns used for grouping, and metrics as the results returned by aggregate functions.
+.. note:: If you are familiar with SQL, you can think of dimensions as columns used for grouping, and metrics as the results returned by aggregate functions. The tables in most reports organize dimension values into rows, and metrics into columns.
 
 To grasp the different views that a report can generate, below is an example of tabular representation typical for analytics reports:
 
 
 ==============  ========  ==================
-DIMENSION       METRIC    METRIC
+DIMENSION       METRIC 1    METRIC 2
 --------------  --------  ------------------
 *Country*       *Clicks*   *ViewCTR*
 ==============  ========  ==================
@@ -38,7 +43,7 @@ France           64523      0.2643
 If we add a secondary dimension, for example *Category*, the resulting view could be:
 
 ==============  ==============  =========  ===========
-DIMENSION        DIMENSION       METRIC     METRIC
+DIMENSION 1       DIMENSION 2    METRIC 1   METRIC 2
 --------------  --------------  ---------  -----------
 *Country*       *Category*      *Clicks*    *ViewCTR*
 ==============  ==============  =========  ===========
@@ -83,7 +88,7 @@ TODO: hits vs sessions
  * ``am:engagementCTR`` - engagement click through rate ``(website clicks + emails) / clicks``
  * ``am:avgCPC`` - average CPC ``(total spent / clicks)``
 
-.. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data is aggregated over units of time (such as days, weeks, months or years) when calculating metrics over it.TODO: see aggregate
+.. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data is aggregated over units of time (such as days, weeks, months or years) when calculating metrics over it. See `Time Aggregation`_ for options on granularity.
 
 
 Filters
@@ -97,12 +102,34 @@ Sort the result based on dimension or metrics values. For example, it is possibl
 
 Query and Response
 ~~~~~~~~~~~~~~~~~~
-The metrics query is provided as a JSON object which has the following structure:
 
+Query
+********************
+The metrics query should be provided as a JSON object which has these minimum requirements:
+
+* At least one valid entry in the timeRanges `Time Ranges`_ field.
+
+* At least one valid entry in the `Metrics`_ field.
+
+Here is a sample request with all top-level query fields expanded:
+
+.. code-block:: javascript
+
+    GET /api/sellside/metrics/data
+    Content-Type: application/sellside.metrics.data-v1+json
+    Accept: application/json
 .. literalinclude:: examples/metrics-query-v1.json
 
-Time Ranges (mandatory)
-***********************
+Response
+********************
+
+The response body of the API request is an array of Data (TODO: object describe? with start/end/rows/dimensions/metrics/enrichment) objects. Here is a sample response for the sample request above.
+
+.. literalinclude:: examples/metrics-response-v1.json
+
+
+Time Ranges
+***********
 
 This field is used to specify one ore more distinct time periods to fetch data for, across which all other query parameters will be the same.
 Supplying a single range is sufficient for most needs, but the flexibility is provided to ask for multiple at the same time.
@@ -163,6 +190,8 @@ Example with multiple time ranges (mixed custom and predefined)
 
 .. literalinclude:: examples/metrics-response-v1.json
 
+Time Aggregation
+****************
 
 HERE BE DRAGONS
 
