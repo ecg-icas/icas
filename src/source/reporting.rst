@@ -363,6 +363,10 @@ Get all clicks and impressions for category ``1234`` for the past week:
 
 .. code:: javascript
 
+
+    POST /api/sellside/metrics/data
+    Content-Type: application/sellside.metrics.data-v1+json
+    Accept: application/json
     {
         "timeRanges": [{
             "period": "lastWeek"
@@ -404,6 +408,10 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the past
 
 .. code:: javascript
 
+
+    POST /api/sellside/metrics/data
+    Content-Type: application/sellside.metrics.data-v1+json
+    Accept: application/json
     {
         "timeRanges": [{
             "period": "lastWeek"
@@ -450,6 +458,10 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the past
 
 .. code:: javascript
 
+
+    POST /api/sellside/metrics/data
+    Content-Type: application/sellside.metrics.data-v1+json
+    Accept: application/json
     {
         "timeRanges": [{
             "period": "lastWeek"
@@ -524,6 +536,9 @@ Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the pas
 
 .. code:: javascript
 
+    POST /api/sellside/metrics/data
+    Content-Type: application/sellside.metrics.data-v1+json
+    Accept: application/json
     {
         "timeRanges": [{
             "period": "lastWeek"
@@ -595,7 +610,7 @@ Each error contains a ``code`` and ``text`` attributes providing a numeric error
 =======================   ========   =============================   ======================================
  entire response object    1000        internal error                 Failed to execute query
  entire request object     1005        invalid json                   Could not parse request data
- `am:date`                 2000        missing argument               The field 'aggregate' was missing
- `am:metrics`              2000        missing argument               The field 'metrics' was missing
+ ``am:date``               2000        missing argument               The field 'aggregate' was missing
+ ``am:metrics``            2000        missing argument               The field 'metrics' was missing
  any non-allowed field     2001        invalid argument               The value of field 'dimensions:[am:wrongDimension]' was invalid
 =======================   ========   =============================   ======================================
