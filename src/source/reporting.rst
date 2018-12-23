@@ -325,27 +325,23 @@ The data model of the response has the following structure:
     {
         "data": [
             {
-                "start": <string>
-                "end":   <string>
                 "rows": [
                     {
                         "dimensions": [<string>, ... ],
                         "metrics": [ <number>, ...]
                         "enrichment": [<string>, ...]
                     }
-                ],
+                , ...],
             "count": <integer>
             }
         ]
     }
 
 
-
 ================  ======================================
 Parameter          Description
 ================  ======================================
-``start``          Actual start date of the requested time range, in ``YYYY-MM-DD`` format
-``end``            Actual end date of the requested time range, in ``YYYY-MM-DD`` format
+``rows``           Array of ``dimensions``, ``metrics`` and ``enrichment`` values. Each element is one row of a response
 ``dimensions``     Array of dimension values for this row, in string format
 ``metrics``        Array of metric values for this row, in number format
 ``enrichment``     Array of enrichment values for this row, in string format. Valid only if ``am:adID`` is in the requested dimensions
@@ -374,10 +370,9 @@ Get all clicks and impressions for category ``1234`` for the past week:
         "dimensions": [],
         "metrics": ["am:clicks", "am:impressions"],
         "filters": [{
-                "field": "am:categoryID",
-                "operator": "in",
-                "value": [1234]
-            }]
+            "field": "am:categoryID",
+            "operator": "in",
+            "value": [1234]
         }]
     }
 
@@ -386,12 +381,11 @@ Get all clicks and impressions for category ``1234`` for the past week:
 
     {
         "data": [{
-            "start": "2018-12-08",
-            "end": "2017-12-14",
             "rows": [{
                 "dimensions": [],
                 "metrics": [1483, 36623] // 1483 clicks, 36623 impressions
-            }]
+            }],
+        "count": 1
         }]
     }
 
@@ -417,10 +411,9 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the past
         "dimensions": ["am:categoryID"],
         "metrics": ["am:clicks", "am:impressions"],
         "filters": [{
-                "field": "am:categoryID",
-                "operator": "in",
-                "value": [1234, 5678]
-            }]
+            "field": "am:categoryID",
+            "operator": "in",
+            "value": [1234, 5678]
         }]
     }
 
@@ -429,8 +422,6 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the past
 
     {
         "data": [{
-            "start": "2018-12-08",
-            "end": "2017-12-14",
             "rows": [{
                 "dimensions": ["1234"],
                 "metrics": [200, 400] // 200 clicks, 400 impressions for category "1234"
@@ -438,7 +429,8 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the past
             {
                 "dimensions": ["5678"],
                 "metrics": [300, 400]
-            }]
+            }],
+        "count": 2            
         }]
     }
 
@@ -454,7 +446,7 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the past
 Example 3:
 ************************************************************************
 
-#4: Get all clicks and impressions for categories ``1234`` and ``5678`` for the past week, but split performance metrics per day and category. In addition, sort by date in ascending direction:
+Get all clicks and impressions for categories ``1234`` and ``5678`` for the past week, but split performance metrics per day and category. In addition, sort by date in ascending direction:
 
 .. code:: javascript
 
@@ -465,12 +457,15 @@ Example 3:
         "dimensions": ["am:date", "am:categoryID"],
         "metrics": ["am:clicks", "am:impressions"],
         "filters": [{
-                "field": "am:categoryID",
-                "operator": "in",
-                "value": [1234, 5678]
-            }],
-        "sorts":[{"field":"am:date","direction":"asc"}],
-        }]
+            "field": "am:categoryID",
+            "operator": "in",
+            "value": [1234, 5678]
+        }],
+        "sorts":[
+        {
+            "field":"am:date",
+            "direction":"asc"
+        }],
     }
 
 
@@ -478,10 +473,8 @@ Example 3:
 
     {
         "data": [{
-            "start": "2018-12-08",
-            "end": "2017-12-14",
             "rows": [{
-                "dimensions": ["2018-12-08 00:00:00", 1234"],
+                "dimensions": ["2018-12-08 00:00:00", "1234"],
                 "metrics": [11, 12]
             },
             {
@@ -489,7 +482,7 @@ Example 3:
                 "metrics": [9, 20]
             },
             {
-                "dimensions": ["2018-12-09 00:00:00", 1234"],
+                "dimensions": ["2018-12-09 00:00:00", "1234"],
                 "metrics": [34, 67]
             },
                         {
@@ -498,13 +491,14 @@ Example 3:
             },
             ...
             {
-                "dimensions": ["2018-12-14 00:00:00", 1234"],
+                "dimensions": ["2018-12-14 00:00:00", "1234"],
                 "metrics": [12, 90]
             },
             {
                 "dimensions": ["2018-12-14 00:00:00", "5678"],
                 "metrics": [43, 76]
-            }]
+            }],
+        "count": 54            
         }]
     }
 
@@ -520,6 +514,74 @@ Example 3:
  2018-12-14 00:00:00        1234           12           90
  2018-12-14 00:00:00        5678           43           76 
 =====================   ===============   ==========   ===================
+
+
+Example 4:
+************************************************************************
+
+Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the past week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:
+
+
+.. code:: javascript
+
+    {
+        "timeRanges": [{
+            "period": "lastWeek"
+        }],
+        "dimensions": ["am:adID"],
+        "metrics": ["am:clicks", "am:avgCPC"],
+        "filters": [{
+                "field": "am:categoryID",
+                "operator": "in",
+                "value": [1234, 5678]
+        }],
+        "enrichment":["am:currentAdTitle", "currentAdVendorID"]
+        "limit": 3
+    }
+
+
+
+.. code:: javascript
+
+    {
+        "data": [{
+            "rows": [{
+                "dimensions": ["11111"],
+                "metrics": [11, 4.5],
+                "enrichment": [
+                    "Ad title #11111",
+                    "vendor11111"
+                ]
+            },
+            {
+                "dimensions": ["33333"],
+                "metrics": [9, 3.0],
+                "enrichment": [
+                    "Ad title #33333",
+                    "vendor33333"
+                ]
+            },
+            {
+                "dimensions": ["22222"],
+                "metrics": [34,  2.3],
+                    "enrichment": [
+                    "Ad title #33333",
+                    "vendor33333"
+                ]
+            }],
+        "count": 3
+        }]
+    }
+
+
+
+=====================   ==============   ===================  ====================   =====================
+  am:adID                 am:clicks       am:avgCPC           am:currentAdTitle       am:currentAdVendorID      
+=====================   ==============   ===================  ====================   =====================
+11111                       11            4.5                  Ad title #11111         vendor11111
+33333                       9             3.0                  Ad title #33333         vendor33333
+22222                       34            2.3                  Ad title #22222         vendor22222
+=====================   ==============   ===================  ====================   =====================
 
 
 Errors
