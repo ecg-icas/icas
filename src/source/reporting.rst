@@ -115,7 +115,7 @@ Supplying a single range is sufficient for most needs, but the flexibility is pr
 
 .. _time-range:
 
-Each TimeRange clause is defined as follows:
+Each time range clause is defined as follows:
 
 .. code:: javascript
 
@@ -268,7 +268,7 @@ Here is a sample request with all top-level query fields expanded:
 
 .. code-block:: javascript
 
-    GET /api/sellside/metrics/data
+    POST /api/sellside/metrics/data
     Content-Type: application/sellside.metrics.data-v1+json
     Accept: application/json
 .. literalinclude:: examples/metrics-query-v1.json
@@ -357,4 +357,171 @@ The ``data`` field contains an array of objects, one for each of the requested `
 Examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-HERE BE MORE DRAGONS
+To understand the concept of dimensions and metrics, some examples of request and response are provided below, gradually increasing in complexity. In addition, a "tabular" view of the response is provided; in our experience it makes it easier to grasp these concepts.
+
+Example 1:
+************************************************************************
+
+Get all clicks and impressions for category ``1234`` for the past week:
+
+
+.. code:: javascript
+
+    {
+        "timeRanges": [{
+            "period": "lastWeek"
+        }],
+        "dimensions": [],
+        "metrics": ["am:clicks", "am:impressions"],
+        "filters": [{
+                "field": "am:categoryID",
+                "operator": "in",
+                "value": [1234]
+            }]
+        }]
+    }
+
+
+.. code:: javascript
+
+    {
+        "data": [{
+            "start": "2018-12-08",
+            "end": "2017-12-14",
+            "rows": [{
+                "dimensions": [],
+                "metrics": [1483, 36623] // 1483 clicks, 36623 impressions
+            }]
+        }]
+    }
+
+
+==========   ===================
+am:clicks     am:impressions
+==========   ===================
+1483          36623
+==========   ===================
+
+Example 2:
+************************************************************************
+
+Get all clicks and impressions for categories ``1234`` and ``5678`` for the past week, but split performance metrics per category:
+
+
+.. code:: javascript
+
+    {
+        "timeRanges": [{
+            "period": "lastWeek"
+        }],
+        "dimensions": ["am:categoryID"],
+        "metrics": ["am:clicks", "am:impressions"],
+        "filters": [{
+                "field": "am:categoryID",
+                "operator": "in",
+                "value": [1234, 5678]
+            }]
+        }]
+    }
+
+
+.. code:: javascript
+
+    {
+        "data": [{
+            "start": "2018-12-08",
+            "end": "2017-12-14",
+            "rows": [{
+                "dimensions": ["1234"],
+                "metrics": [200, 400] // 200 clicks, 400 impressions for category "1234"
+            },
+            {
+                "dimensions": ["5678"],
+                "metrics": [300, 400]
+            }]
+        }]
+    }
+
+
+===============   ==========   ===================
+ am:categoryID    am:clicks     am:impressions
+===============   ==========   ===================
+    1234           200          400
+    5678           300          400
+===============   ==========   ===================
+
+
+Example 3:
+************************************************************************
+
+#4: Get all clicks and impressions for categories ``1234`` and ``5678`` for the past week, but split performance metrics per day and category. In addition, sort by date in ascending direction:
+
+.. code:: javascript
+
+    {
+        "timeRanges": [{
+            "period": "lastWeek"
+        }],
+        "dimensions": ["am:date", "am:categoryID"],
+        "metrics": ["am:clicks", "am:impressions"],
+        "filters": [{
+                "field": "am:categoryID",
+                "operator": "in",
+                "value": [1234, 5678]
+            }],
+        "sorts":[{"field":"am:date","direction":"asc"}],
+        }]
+    }
+
+
+.. code:: javascript
+
+    {
+        "data": [{
+            "start": "2018-12-08",
+            "end": "2017-12-14",
+            "rows": [{
+                "dimensions": ["2018-12-08 00:00:00", 1234"],
+                "metrics": [11, 12]
+            },
+            {
+                "dimensions": ["2018-12-08 00:00:00", "5678"],
+                "metrics": [9, 20]
+            },
+            {
+                "dimensions": ["2018-12-09 00:00:00", 1234"],
+                "metrics": [34, 67]
+            },
+                        {
+                "dimensions": ["2018-12-09 00:00:00", "5678"],
+                "metrics": [19, 20]
+            },
+            ...
+            {
+                "dimensions": ["2018-12-14 00:00:00", 1234"],
+                "metrics": [12, 90]
+            },
+            {
+                "dimensions": ["2018-12-14 00:00:00", "5678"],
+                "metrics": [43, 76]
+            }]
+        }]
+    }
+
+
+=====================   ===============   ==========   ===================
+  am:date                 am:categoryID    am:clicks     am:impressions
+=====================   ===============   ==========   ===================
+ 2018-12-08 00:00:00        1234           11           12
+ 2018-12-08 00:00:00        5678           9            20
+ 2018-12-09 00:00:00        1234           34           67
+ 2018-12-09 00:00:00        5678           19           20
+ ...
+ 2018-12-14 00:00:00        1234           12           90
+ 2018-12-14 00:00:00        5678           43           76 
+=====================   ===============   ==========   ===================
+
+
+Errors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
