@@ -4,8 +4,6 @@
 POST /metrics/data
 =======================
 
-.. warning:: This is an **experimental** endpoint and not officially supported yet!
-
 .. list-table::
  :widths: 20 80
 
@@ -14,4 +12,22 @@ POST /metrics/data
 
  * - Accept
    - ``application/json``
+ * - Content-Type
+   - ``application/sellside.metrics.data-v1+json``
 
+Query and Response
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /reporting-query-and-response.rst
+
+
+Examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  include:: /reporting-examples.rst
+
+
+Errors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  include:: /reporting-errors.rst

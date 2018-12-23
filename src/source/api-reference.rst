@@ -38,6 +38,7 @@ API Reference
    reference/get-report-detail-id
    reference/post-report-detail
    reference/get-report-summary
+   reference/post-metrics-data
    reference/get-user
    reference/ad-status
    reference/price-types

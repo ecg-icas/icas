@@ -22,6 +22,8 @@ It is also possible to make a report without dimensions; in this case, the total
 
 Metrics
 ************************************
+.. _metrics:
+
 **Metrics** are numeric values based on quantitative aggregations over dimensions' values; every query requires at least one metric field to be requested.
 The metric *Clicks* indicates the total number of clicks. For example, the metric *ViewCTR* indicates the click-through rate for ads. Check the list of currently `Supported Metrics`_.
 
@@ -108,8 +110,11 @@ Scope
 ######################################################
 A scope for a metric defines the level at which that metric is defined — hit, session, or user. For example, ``am:clicks`` and ``am:impressions`` are **hit** level metrics, since they occur in a hit, whereas ``am:sessionsWithClicks`` and ``am:sessionsWithImpressions`` are **session** level metrics since there is a single value for these per session. Conceptually, **user** is the highest level scope and **hit** is the lowest level scope. We plan to extend support for **user**-level scoped metrics if there is demand for it.
 
+
 Time Ranges
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _time-ranges:
 
 This field is used to specify one ore more distinct time periods to fetch data for, across which all other query parameters will be the same.
 Supplying a single range is sufficient for most needs, but the flexibility is provided to ask for multiple at the same time.
@@ -161,10 +166,16 @@ Example with multiple time ranges, mixed custom and predefined:
 
 Time Aggregation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _time-aggregation:
+
 The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and is **mandatory** in such case. It specifies the granularity/resolution of the time according to which the metrics data will be grouped in buckets. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _filters:
+
 To request a subset of your data, use filters. For example, you can filter on particular category, region, or ad ID. Filters can currently be used on any of the supported dimensions (except for ``am:date``). In the request query, they should be provided as an array of filter clauses which filters out the requested data on particular field values. Each filter clause is of the following form:
 
 .. code:: javascript
@@ -257,362 +268,16 @@ Name                           Type        Description
 Query and Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Query
-************************************
-The metrics query should be provided as a JSON object of type `Metrics Request`_, which has these minimum requirements:
+.. include:: reporting-query-and-response.rst
 
-* At least one valid entry in the `Time Ranges`_ field.
-
-* At least one valid entry in the `Metrics`_ field.
-
-Here is a sample request with all top-level query fields expanded:
-
-.. code-block:: javascript
-
-    POST /api/sellside/metrics/data
-    Content-Type: application/sellside.metrics.data-v1+json
-    Accept: application/json
-.. literalinclude:: examples/metrics-query-v1.json
-
-Metrics Request
-######################################################
-
-The data model of the request has the following structure:
-
-.. code-block:: javascript
-
-    {
-        "timeRanges": [<timeRange>, ...],
-        "aggregate": <string>,
-        "dimensions": [<string>, ...],
-        "metrics": [<string>, ...],
-        "sorts": [<sort>, ...],
-        "filters": [<filter>, ...],
-        "enrichment": [<string>, ...],
-        "limit": <integer>,
-        "offset": <integer>,
-        "searchPhrase": <string>
-    }
-
-
-================  ======================================
-Parameter          Description
-================  ======================================
-``timeRanges``     Array of `Time Ranges`_ objects, separated by commas
-``aggregate``      One of `Time Aggregation`_ string values
-``dimensions``     Array of dimensions, separated by commas
-``metrics``        Array metrics, separated by commas. At least one element is mandatory
-``sorts``          Array :ref:`Sort <Sorts>`  objects, separated by commas
-``filters``        Array `Filters`_ objects, separated by commas
-``limit``          Number of elements in the response, per time range. By default there is no limit
-``offset``         Index of first row of the requested data (per time range), beginning with 0
-================  ======================================
-
-Response
-************************************
-
-The response body of the API request is a JSON object of `Metrics Response`_ type. Here is a sample response for the sample request above.
-
-.. literalinclude:: examples/metrics-response-v1.json
-
-Metrics Response
-######################################################
-
-The data model of the response has the following structure:
-
-.. code-block:: javascript
-
-
-    {
-        "data": [
-            {
-                "rows": [
-                    {
-                        "dimensions": [<string>, ... ],
-                        "metrics": [ <number>, ...]
-                        "enrichment": [<string>, ...]
-                    }
-                , ...],
-            "count": <integer>
-            }
-        ]
-    }
-
-
-================  ======================================
-Parameter          Description
-================  ======================================
-``rows``           Array of ``dimensions``, ``metrics`` and ``enrichment`` values. Each element is one row of a response
-``dimensions``     Array of dimension values for this row, in string format
-``metrics``        Array of metric values for this row, in number format
-``enrichment``     Array of enrichment values for this row, in string format. Valid only if ``am:adID`` is in the requested dimensions
-``count``          Actual number of rows returned
-================  ======================================
-
-The ``data`` field contains an array of objects, one for each of the requested `Time Ranges`_. It is **important to remember** that the order in which the ``metrics``, ``dimensions``, and ``enrichment`` fields are requested is the same order in which they are listed in the response. The order of the objects in the `rows` array is not guaranteed to be deterministic unless explicit `Sorting`_ is used.
 
 Examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To understand the concept of dimensions and metrics, some examples of request and response are provided below, gradually increasing in complexity. In addition, a "tabular" view of the response is provided; in our experience it makes it easier to grasp these concepts.
+..  include:: reporting-examples.rst
 
-Example 1:
-************************************************************************
-
-Get all clicks and impressions for category ``1234`` for the past week:
-
-
-.. code:: javascript
-
-
-    POST /api/sellside/metrics/data
-    Content-Type: application/sellside.metrics.data-v1+json
-    Accept: application/json
-    {
-        "timeRanges": [{
-            "period": "lastWeek"
-        }],
-        "dimensions": [],
-        "metrics": ["am:clicks", "am:impressions"],
-        "filters": [{
-            "field": "am:categoryID",
-            "operator": "in",
-            "value": [1234]
-        }]
-    }
-
-
-.. code:: javascript
-
-    {
-        "data": [{
-            "rows": [{
-                "dimensions": [],
-                "metrics": [1483, 36623] // 1483 clicks, 36623 impressions
-            }],
-        "count": 1
-        }]
-    }
-
-
-==========   ===================
-am:clicks     am:impressions
-==========   ===================
-1483          36623
-==========   ===================
-
-Example 2:
-************************************************************************
-
-Get all clicks and impressions for categories ``1234`` and ``5678`` for the past week, but split performance metrics per category:
-
-
-.. code:: javascript
-
-
-    POST /api/sellside/metrics/data
-    Content-Type: application/sellside.metrics.data-v1+json
-    Accept: application/json
-    {
-        "timeRanges": [{
-            "period": "lastWeek"
-        }],
-        "dimensions": ["am:categoryID"],
-        "metrics": ["am:clicks", "am:impressions"],
-        "filters": [{
-            "field": "am:categoryID",
-            "operator": "in",
-            "value": [1234, 5678]
-        }]
-    }
-
-
-.. code:: javascript
-
-    {
-        "data": [{
-            "rows": [{
-                "dimensions": ["1234"],
-                "metrics": [200, 400] // 200 clicks, 400 impressions for category "1234"
-            },
-            {
-                "dimensions": ["5678"],
-                "metrics": [300, 400]
-            }],
-        "count": 2            
-        }]
-    }
-
-
-===============   ==========   ===================
- am:categoryID    am:clicks     am:impressions
-===============   ==========   ===================
-    1234           200          400
-    5678           300          400
-===============   ==========   ===================
-
-
-Example 3:
-************************************************************************
-
-Get all clicks and impressions for categories ``1234`` and ``5678`` for the past week, but split performance metrics per day and category. In addition, sort by date in ascending direction:
-
-.. code:: javascript
-
-
-    POST /api/sellside/metrics/data
-    Content-Type: application/sellside.metrics.data-v1+json
-    Accept: application/json
-    {
-        "timeRanges": [{
-            "period": "lastWeek"
-        }],
-        "dimensions": ["am:date", "am:categoryID"],
-        "metrics": ["am:clicks", "am:impressions"],
-        "filters": [{
-            "field": "am:categoryID",
-            "operator": "in",
-            "value": [1234, 5678]
-        }],
-        "sorts":[
-        {
-            "field":"am:date",
-            "direction":"asc"
-        }],
-    }
-
-
-.. code:: javascript
-
-    {
-        "data": [{
-            "rows": [{
-                "dimensions": ["2018-12-08 00:00:00", "1234"],
-                "metrics": [11, 12]
-            },
-            {
-                "dimensions": ["2018-12-08 00:00:00", "5678"],
-                "metrics": [9, 20]
-            },
-            {
-                "dimensions": ["2018-12-09 00:00:00", "1234"],
-                "metrics": [34, 67]
-            },
-                        {
-                "dimensions": ["2018-12-09 00:00:00", "5678"],
-                "metrics": [19, 20]
-            },
-            ...
-            {
-                "dimensions": ["2018-12-14 00:00:00", "1234"],
-                "metrics": [12, 90]
-            },
-            {
-                "dimensions": ["2018-12-14 00:00:00", "5678"],
-                "metrics": [43, 76]
-            }],
-        "count": 54            
-        }]
-    }
-
-
-=====================   ===============   ==========   ===================
-  am:date                 am:categoryID    am:clicks     am:impressions
-=====================   ===============   ==========   ===================
- 2018-12-08 00:00:00        1234           11           12
- 2018-12-08 00:00:00        5678           9            20
- 2018-12-09 00:00:00        1234           34           67
- 2018-12-09 00:00:00        5678           19           20
- ...
- 2018-12-14 00:00:00        1234           12           90
- 2018-12-14 00:00:00        5678           43           76 
-=====================   ===============   ==========   ===================
-
-
-Example 4:
-************************************************************************
-
-Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the past week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:
-
-
-.. code:: javascript
-
-    POST /api/sellside/metrics/data
-    Content-Type: application/sellside.metrics.data-v1+json
-    Accept: application/json
-    {
-        "timeRanges": [{
-            "period": "lastWeek"
-        }],
-        "dimensions": ["am:adID"],
-        "metrics": ["am:clicks", "am:avgCPC"],
-        "filters": [{
-                "field": "am:categoryID",
-                "operator": "in",
-                "value": [1234, 5678]
-        }],
-        "enrichment":["am:currentAdTitle", "am:currentAdVendorID"]
-        "limit": 3
-    }
-
-
-
-.. code:: javascript
-
-    {
-        "data": [{
-            "rows": [{
-                "dimensions": ["11111"],
-                "metrics": [11, 4.5],
-                "enrichment": [
-                    "Ad title #11111",
-                    "vendor11111"
-                ]
-            },
-            {
-                "dimensions": ["33333"],
-                "metrics": [9, 3.0],
-                "enrichment": [
-                    "Ad title #33333",
-                    "vendor33333"
-                ]
-            },
-            {
-                "dimensions": ["22222"],
-                "metrics": [34,  2.3],
-                    "enrichment": [
-                    "Ad title #33333",
-                    "vendor33333"
-                ]
-            }],
-        "count": 3
-        }]
-    }
-
-
-
-=====================   ==============   ===================  ====================   =====================
-  am:adID                 am:clicks       am:avgCPC           am:currentAdTitle       am:currentAdVendorID      
-=====================   ==============   ===================  ====================   =====================
-11111                       11            4.5                  Ad title #11111         vendor11111
-33333                       9             3.0                  Ad title #33333         vendor33333
-22222                       34            2.3                  Ad title #22222         vendor22222
-=====================   ==============   ===================  ====================   =====================
-
-**Final remark**: in the `SQL-note`_, the enrichment fields can be seen as a left outer join operation.
 
 Errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each error contains a ``code`` and ``text`` attributes providing a numeric error code and a simple English error message. An error may contain a ``field`` attribute describing the field where the error occurred and an additonal ``arg`` attribute further specifying the error.
-
-
-=======================   ========   =============================   ======================================
-  Field                    Code             Message                    Description
-=======================   ========   =============================   ======================================
- entire response object    1000        internal error                 Failed to execute query
- entire request object     1005        invalid json                   Could not parse request data
- ``am:date``               2000        missing argument               The field 'aggregate' was missing
- ``am:metrics``            2000        missing argument               The field 'metrics' was missing
- any non-allowed field     2001        invalid argument               The value of field 'dimensions:[am:wrongDimension]' was invalid
-=======================   ========   =============================   ======================================
+..  include:: reporting-errors.rst
