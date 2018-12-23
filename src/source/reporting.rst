@@ -69,10 +69,10 @@ Supported Dimensions
 Name                 Type      Description
 =================  =========  =============================
 ``am:date``         String     The date when the events happened. See `Time Aggregation`_
-``am:adID``         Integer     ID of the ad(s)
-``am:CPC``          Integer     The Cost Per Click (in Cents) of the ad(s)
-``am:categoryID``   Integer    The category ID of the ad(s)
-``am:regionID``     Integer    The region ID of the ad(s)
+``am:adID``         Long       ID of the ad(s)
+``am:CPC``          Long       The Cost Per Click (in Cents) of the ad(s)
+``am:categoryID``   Long       The category ID of the ad(s)
+``am:regionID``     Long       The region ID of the ad(s)
 =================  =========  =============================
 
 .. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data is aggregated over units of time (such as days, weeks, months or years) when calculating metrics over it. See `Time Aggregation`_ for options on granularity.
@@ -84,23 +84,23 @@ Supported Metrics
 ================================  =========  =========  ============================================================
 Name                                Type     `Scope`_    Description
 ================================  =========  =========  ============================================================
-``am:clicks``                      Integer    Hit        Number of clicks
-``am:impressions``                 Integer    Hit        Nnumber of impressions
-``am:websiteClicks``               Integer    Hit        Number of website clicks (leads)
-``am:emails``                      Integer    Hit        Number of emails
-``am:engagements``                 Integer    Hit        Number of engagements (currently ``website clicks + emails``)
-``am:viewCTR``                     Float     Hit        Click-through rate (``clicks/impressions``)
-``am:websiteCTR``                  Float     Hit        Website leads from clicks ``(websiteClicks / clicks)``
-``am:spent``                       Integer    Hit        Amount spent (in Cents)
-``am:engagementCTR``               Float      Hit        Engagement click-through rate (``websiteClicks + emails \ clicks``)
-``am:avgCPC``                      Float     Hit        Average Cost Per Click (``totalSpent / clicks``)
-``am:sessionsWithClicks``          Integer    Session    Number of unique sessions with clicks
-``am:sessionsWithImpressions``     Integer    Session    Number of unique sessions with impressions
-``am:sessionsWithWebsiteClicks``   Integer    Session    Number of unique sessions with website clicks (leads)
-``am:sessionsWithEmails``          Integer    Session    Number of unique sessions with emails
-``am:sessionsWithEngagements``     Integer    Session    Number of unique sessions with engagements
-``am:sessionViewCTR``              Float      Session    Click-through rate in session scope (``sessionsWithlicks \ sessionWithImpressions``)
-``am:sessionEngagementCTR``        Float      Session    Website leads from leads, in session scope (``sessionsWithWebsiteClicks / sessionsWithClicks``)
+``am:clicks``                      Long       Hit        Number of clicks
+``am:impressions``                 Long       Hit        Nnumber of impressions
+``am:websiteClicks``               Long       Hit        Number of website clicks (leads)
+``am:emails``                      Long       Hit        Number of emails
+``am:engagements``                 Long       Hit        Number of engagements. Calculation: ``am:websiteClicks + am:emails``
+``am:viewCTR``                     Double     Hit        Click-through rate. Calculation: ``am:clicks / am:impressions``
+``am:websiteCTR``                  Double     Hit        Website leads from clicks. Calculation: ``am:websiteClicks / am:clicks``
+``am:spent``                       Long       Hit        Amount spent (in Cents)
+``am:engagementCTR``               Double     Hit        Engagement click-through rate. Calculation: ``(am:websiteClicks + am:emails) / am:clicks``
+``am:avgCPC``                      Double     Hit        Average Cost Per Click. Calculation: ``am:spent / am:clicks``
+``am:sessionsWithClicks``          Long       Session    Number of unique sessions with clicks
+``am:sessionsWithImpressions``     Long       Session    Number of unique sessions with impressions
+``am:sessionsWithWebsiteClicks``   Long       Session    Number of unique sessions with website clicks (leads)
+``am:sessionsWithEmails``          Long       Session    Number of unique sessions with emails
+``am:sessionsWithEngagements``     Long       Session    Number of unique sessions with engagements
+``am:sessionViewCTR``              Double     Session    Click-through rate in session scope. Calculation: ``am:sessionsWithlicks / am:sessionWithImpressions``
+``am:sessionEngagementCTR``        Double     Session    Website leads from leads, in session scope. Calculation: ``am:sessionsWithWebsiteClicks / am:sessionsWithClicks``
 ================================  =========  =========  ============================================================
 
 Scope
@@ -112,20 +112,23 @@ Time Ranges
 
 This field is used to specify one ore more distinct time periods to fetch data for, across which all other query parameters will be the same.
 Supplying a single range is sufficient for most needs, but the flexibility is provided to ask for multiple at the same time.
-Each time range clause is defined as follows:
+
+.. _time-range:
+
+Each TimeRange clause is defined as follows:
 
 .. code:: javascript
 
     {
-        "period":   string
-        "from":     string
-        "to":       string
+        "period":   <enum>
+        "from":     <string>
+        "to":       <string>
     }
 
-There are several *predefined* period types at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings.
+There are several *predefined* period enumeration values at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings.
 If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
 
-To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: `YYYY-MM-DD`.
+To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: ``YYYY-MM-DD``.
 The end date cannot be before the start one. For example:
 
 .. code:: javascript
@@ -148,7 +151,7 @@ Example with multiple time ranges, mixed custom and predefined:
             "period":   "thisWeek"
         },
         {
-            "period":   "custom"
+            "period":   "custom",
             "from":     "2017-01-08",
             "to":       "2017-01-15"
         }
@@ -161,14 +164,14 @@ The ``aggregate`` parameter is used in combination with the ``am:date`` dimensio
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To request a subset of your data, use filters. For example, you can filter on particular category, region, or ad ID. Filters can currently be used on any of the supported dimensions (except for ``am:date``). In the request query, they should be provided as a list of filter clauses which filters out the requested data on particular field values. Each filter clause is of the following form:
+To request a subset of your data, use filters. For example, you can filter on particular category, region, or ad ID. Filters can currently be used on any of the supported dimensions (except for ``am:date``). In the request query, they should be provided as an array of filter clauses which filters out the requested data on particular field values. Each filter clause is of the following form:
 
 .. code:: javascript
 
         {
-                "field":   string
-                "operator":  string
-                "value":  array of integers
+                "field":   <string>
+                "operator":  <string>
+                "value":  [<long>, ...]
         }
 
 Each filter in the list adds more restriction on the result, i.e., there is implicit *AND* operation between them.
@@ -191,19 +194,21 @@ The only valid ``operator`` at the moment is the set operator ``in``, and requir
 
 We plan to extend support for filters on metrics, as well as more comparison operators, if there is demand for it.
 
+.. _Sorts:
+
 Sorting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To sort the resulting data, use the **sorts** top-level query field. Sorts is a list of sort clauses, each of the following form:
+To sort the resulting data, use the **sorts** top-level query field. Sorts is an array of sort clauses, each of the following form:
 
 .. code:: javascript
 
     {
-        "field":        string
-        "direction":    string
+        "field":        <string>
+        "direction":    <enum>
     }
 
 
-A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested obviously. There are two directions for sorting: asc (ascending) and desc (descending). 
+A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested obviously. There are two directions for sorting: ``asc`` (ascending) and ``desc`` (descending). 
 The following example sorts first on date in descending order, followed by the ad ID in ascending order.
 
 .. code:: javascript
@@ -253,7 +258,7 @@ Query and Response
 
 Query
 ************************************
-The metrics query should be provided as a JSON object which has these minimum requirements:
+The metrics query should be provided as a JSON object of type `Metrics Request`_, which has these minimum requirements:
 
 * At least one valid entry in the `Time Ranges`_ field.
 
@@ -267,6 +272,40 @@ Here is a sample request with all top-level query fields expanded:
     Content-Type: application/sellside.metrics.data-v1+json
     Accept: application/json
 .. literalinclude:: examples/metrics-query-v1.json
+
+Metrics Request
+######################################################
+
+The data model of the request has the following structure:
+
+.. code-block:: javascript
+
+    {
+        "timeRanges": [<timeRange>, ...],
+        "aggregate": <string>,
+        "dimensions": [<string>, ...],
+        "metrics": [<string>, ...],
+        "sorts": [<sort>, ...],
+        "filters": [<filter>, ...],
+        "enrichment": [<string>, ...],
+        "limit": <integer>,
+        "offset": <integer>,
+        "searchPhrase": <string>
+    }
+
+
+================  ======================================
+Parameter          Description
+================  ======================================
+``timeRanges``     List of `Time Ranges`_ objects, separated by commas
+``aggregate``      One of `Time Aggregation`_ string values
+``dimensions``     List of dimensions, separated by commas
+``metrics``        List of metrics, separated by commas. At least one element is mandatory
+``sorts``          List of :ref:`Sort <Sorts>`  objects, separated by commas
+``filters``        List of `Filters`_ objects, separated by commas
+``limit``          Number of elements in the response, per time range. By default there is no limit
+``offset``         Index of first row of the requested data (per time range), beginning with 0
+================  ======================================
 
 Response
 ************************************
@@ -286,24 +325,32 @@ The data model of the response has the following structure:
     {
         "data": [
             {
-                "start": actual start date in string format
-                "end":   actual end date in string format
+                "start": <string>
+                "end":   <string>
                 "rows": [
                     {
-                        "dimensions": [ (1) ]
-                        "metrics": [ (2) ]
-                        "enrichment": [ (3) ]
+                        "dimensions": [<string>, ... ],
+                        "metrics": [ <number>, ...]
+                        "enrichment": [<string>, ...]
                     }
                 ],
-            "count": actual count of the returned data in integer form
+            "count": <integer>
             }
         ]
     }
 
-(1) array of string representations of the values for each requested ``dimension`` field
-(2) array of integer/float values for each requested ``metric`` field
-(3) array of string representations of the values for each requested ``enrichment`` field
 
+
+================  ======================================
+Parameter          Description
+================  ======================================
+``start``          Actual start date of the requested time range, in ``YYYY-MM-DD`` format
+``end``            Actual end date of the requested time range, in ``YYYY-MM-DD`` format
+``dimensions``     Array of dimension values for this row, in string format
+``metrics``        Array of metric values for this row, in number format
+``enrichment``     Array of enrichment values for this row, in string format. Valid only if ``am:adID`` is in the requested dimensions
+``count``          Actual number of rows returned
+================  ======================================
 
 The ``data`` field contains an array of objects, one for each of the requested `Time Ranges`_. It is **important to remember** that the order in which the ``metrics``, ``dimensions``, and ``enrichment`` fields are requested is the same order in which they are listed in the response. The order of the objects in the `rows` array is not guaranteed to be deterministic unless explicit `Sorting`_ is used.
 
