@@ -104,7 +104,8 @@ Name                                Type     `Scope`_    Description
 ``am:sessionsWithEmails``          Long       Session    Number of unique sessions with emails
 ``am:sessionsWithEngagements``     Long       Session    Number of unique sessions with engagements
 ``am:sessionViewCTR``              Double     Session    Click-through rate in session scope. Calculation: ``am:sessionsWithlicks / am:sessionWithImpressions``
-``am:sessionEngagementCTR``        Double     Session    Website leads from leads, in session scope. Calculation: ``am:sessionsWithWebsiteClicks / am:sessionsWithClicks``
+``am:sessionWebsiteCTR``           Double     Session    Website leads from leads, in session scope. Calculation: ``am:sessionsWithWebsiteClicks / am:sessionsWithClicks``
+``am:sessionEngagementCTR``        Double     Session    Engagement click-through rate, in session scope. Calculation: ``(am:sessionsWithWebsiteClicks + am:emails) / am:sessionsWithClicks``
 ================================  =========  =========  ============================================================
 
 Scope
