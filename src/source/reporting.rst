@@ -25,6 +25,7 @@ Metrics
 **Metrics** are numeric values based on quantitative aggregations over dimensions' values; every query requires at least one metric field to be requested.
 The metric *Clicks* indicates the total number of clicks. For example, the metric *ViewCTR* indicates the click-through rate for ads. Check the list of currently `Supported Metrics`_.
 
+.. _SQL-note:
 .. note:: If you are familiar with SQL, you can think of dimensions as columns used for grouping, and metrics as the results returned by aggregate functions. The tables in most reports organize dimension values into rows, and metrics into columns.
 
 To grasp the different views that a report can generate, below is an example of tabular representation typical for analytics reports:
@@ -598,6 +599,7 @@ Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the pas
 22222                       34            2.3                  Ad title #22222         vendor22222
 =====================   ==============   ===================  ====================   =====================
 
+**Final remark**: in the `SQL-note`_, the enrichment fields can be seen as a left outer join operation.
 
 Errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
