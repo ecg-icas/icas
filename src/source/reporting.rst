@@ -121,12 +121,12 @@ Each time range clause is defined as follows:
 .. code:: javascript
 
     {
-        "period":   <enum>
+        "period":   <string>
         "from":     <string>
         "to":       <string>
     }
 
-There are several *predefined* period enumeration values at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings.
+There are several *predefined* period values at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings.
 If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
 
 To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: ``YYYY-MM-DD``.
