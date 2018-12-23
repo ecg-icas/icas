@@ -297,12 +297,12 @@ The data model of the request has the following structure:
 ================  ======================================
 Parameter          Description
 ================  ======================================
-``timeRanges``     List of `Time Ranges`_ objects, separated by commas
+``timeRanges``     Array of `Time Ranges`_ objects, separated by commas
 ``aggregate``      One of `Time Aggregation`_ string values
-``dimensions``     List of dimensions, separated by commas
-``metrics``        List of metrics, separated by commas. At least one element is mandatory
-``sorts``          List of :ref:`Sort <Sorts>`  objects, separated by commas
-``filters``        List of `Filters`_ objects, separated by commas
+``dimensions``     Array of dimensions, separated by commas
+``metrics``        Array metrics, separated by commas. At least one element is mandatory
+``sorts``          Array :ref:`Sort <Sorts>`  objects, separated by commas
+``filters``        Array `Filters`_ objects, separated by commas
 ``limit``          Number of elements in the response, per time range. By default there is no limit
 ``offset``         Index of first row of the requested data (per time range), beginning with 0
 ================  ======================================
