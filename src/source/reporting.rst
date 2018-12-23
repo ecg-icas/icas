@@ -205,7 +205,7 @@ To sort the resulting data, use the **sorts** top-level query field. Sorts is an
 
     {
         "field":        <string>
-        "direction":    <enum>
+        "direction":    <string>
     }
 
 
