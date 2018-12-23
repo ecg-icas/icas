@@ -15,6 +15,8 @@ POST /metrics/data
  * - Content-Type
    - ``application/sellside.metrics.data-v1+json``
 
+This URL returns the requested reporting metrics in a format described in the new :ref:`metrics_reporting` API.
+
 Query and Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

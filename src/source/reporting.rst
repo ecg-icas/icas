@@ -1,5 +1,6 @@
 .. _Google Analytics: https://developers.google.com/analytics/devguides/reporting/core
 .. _Yandex Metrica: https://tech.yandex.com/metrika/
+.. _metrics_reporting:
 
 Reporting
 ===========
