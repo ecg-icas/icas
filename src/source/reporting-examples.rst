@@ -242,4 +242,7 @@ Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the pas
 22222                       34            2.3                  Ad title #22222         vendor22222
 =====================   ==============   ===================  ====================   =====================
 
-**Final remark**: in the :ref:`SQL note <SQL-note>`, the enrichment fields can be seen as a left outer join operation.
+Final remarks:
+************************************************************************
+ * In the :ref:`SQL note <SQL-note>`, the enrichment fields can be seen as a left outer join operation.
+ * The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data. 
