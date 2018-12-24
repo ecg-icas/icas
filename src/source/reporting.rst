@@ -5,15 +5,14 @@
 Reporting
 ===========
 
-The new Reporting API allows you to get statistics about the performance of your ads in a flexible ad-hoc way. It is inspired by
+The Reporting API allows you to get statistics about the performance of your ads in a flexible ad-hoc way. It is inspired by
 APIs like `Google Analytics`_ and `Yandex Metrica`_ and borrows some terminology from them.
 It is possible to create a custom-tailored report structure using concepts like dimensions, metrics, filters, and sorting, in the API query.
 
 
 Dimensions and Metrics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Dimensions and metrics are used for making API requests.
-Every report response is made up of them.
+Dimensions and metrics are the main concepts used for making requests.
 
 Dimensions
 ************************************
@@ -26,7 +25,7 @@ Metrics
 .. _metrics:
 
 **Metrics** are numeric values based on quantitative aggregations over dimensions' values; every query requires at least one metric field to be requested.
-The metric *Clicks* indicates the total number of clicks. For example, the metric *ViewCTR* indicates the click-through rate for ads. Check the list of currently `Supported Metrics`_.
+For example, the metric *Clicks* indicates the total number of clicks, while *ViewCTR* indicates the click-through rate for ads. Check the list of currently `Supported Metrics`_.
 
 .. _SQL-note:
 .. note:: If you are familiar with SQL, you can think of dimensions as columns used for grouping, and metrics as the results returned by aggregate functions. The tables in most reports organize dimension values into rows, and metrics into columns.
@@ -90,22 +89,22 @@ Name                                Type     `Scope`_    Description
 ================================  =========  =========  ============================================================
 ``am:clicks``                      Long       Hit        Number of clicks
 ``am:impressions``                 Long       Hit        Nnumber of impressions
-``am:websiteClicks``               Long       Hit        Number of website clicks (leads)
+``am:websiteClicks``               Long       Hit        Number of website clicks
 ``am:emails``                      Long       Hit        Number of emails
-``am:engagements``                 Long       Hit        Number of engagements. Calculation: ``am:websiteClicks + am:emails``
-``am:viewCTR``                     Double     Hit        Click-through rate. Calculation: ``am:clicks / am:impressions``
-``am:websiteCTR``                  Double     Hit        Website leads from clicks. Calculation: ``am:websiteClicks / am:clicks``
+``am:engagements``                 Long       Hit        Number of engagements from clicks
+``am:viewCTR``                     Double     Hit        Number of clicks leads from impressions, also known as Click-through rate
+``am:websiteCTR``                  Double     Hit        Number of website leads from clicks
 ``am:spent``                       Long       Hit        Amount spent (in Cents)
-``am:engagementCTR``               Double     Hit        Engagement click-through rate. Calculation: ``(am:websiteClicks + am:emails) / am:clicks``
-``am:avgCPC``                      Double     Hit        Average Cost Per Click. Calculation: ``am:spent / am:clicks``
+``am:engagementCTR``               Double     Hit        Number of engagements leads from clicks
+``am:avgCPC``                      Double     Hit        Average Cost Per Click. Calculation
 ``am:sessionsWithClicks``          Long       Session    Number of unique sessions with clicks
 ``am:sessionsWithImpressions``     Long       Session    Number of unique sessions with impressions
-``am:sessionsWithWebsiteClicks``   Long       Session    Number of unique sessions with website clicks (leads)
-``am:sessionsWithEmails``          Long       Session    Number of unique sessions with emails
+``am:sessionsWithWebsiteClicks``   Long       Session    Number of unique sessions with website clicks
+``am:sessionsWithEmails``          Long       Session    Number of unique sessions sending emails
 ``am:sessionsWithEngagements``     Long       Session    Number of unique sessions with engagements
-``am:sessionViewCTR``              Double     Session    Click-through rate in session scope. Calculation: ``am:sessionsWithlicks / am:sessionWithImpressions``
-``am:sessionWebsiteCTR``           Double     Session    Website leads from leads, in session scope. Calculation: ``am:sessionsWithWebsiteClicks / am:sessionsWithClicks``
-``am:sessionEngagementCTR``        Double     Session    Engagement click-through rate, in session scope. Calculation: ``(am:sessionsWithWebsiteClicks + am:emails) / am:sessionsWithClicks``
+``am:sessionViewCTR``              Double     Session    Number of unique sessions with clicks leads from unique sessions with impressions
+``am:sessionWebsiteCTR``           Double     Session    Number of unique sessions with website leads from unique sessions with clicks
+``am:sessionEngagementCTR``        Double     Session    Number of unique sessions with engagements leads from unique sessions with clicks
 ================================  =========  =========  ============================================================
 
 Scope
@@ -133,7 +132,7 @@ Each time range clause is defined as follows:
         "to":       <string>
     }
 
-There are several *predefined* period values at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings.
+There are several *predefined* period values at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings. A week runs from Monday to Sunday.
 If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
 
 To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: ``YYYY-MM-DD``.
@@ -171,7 +170,7 @@ Time Aggregation
 
 .. _time-aggregation:
 
-The ``aggregate`` parameter is used in combination with the ``am:date`` dimension, and is **mandatory** in such case. It specifies the granularity/resolution of the time according to which the metrics data will be grouped in buckets. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
+The ``aggregate`` parameter is used in combination with the ``am:date`` dimension; ``aggregate`` is in fact **mandatory** when ``am:date`` is used. It specifies the granularity/resolution of the time according to which the metrics data will be grouped in buckets. Possible values are: ``daily``, ``weekly``, ``quarterly``, ``montly``, ``yearly``.
 
 Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -206,7 +205,6 @@ The only valid ``operator`` at the moment is the set operator ``in``, and requir
         }
     ]
 
-We plan to extend support for filters on metrics, as well as more comparison operators, if there is demand for it.
 
 .. _Sorts:
 
@@ -222,7 +220,7 @@ To sort the resulting data, use the **sorts** top-level query field. Sorts is an
     }
 
 
-A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested obviously. There are two directions for sorting: ``asc`` (ascending) and ``desc`` (descending). 
+A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested. There are two directions for sorting: ``asc`` (ascending) and ``desc`` (descending). 
 The following example sorts first on date in descending order, followed by the ad ID in ascending order.
 
 .. code:: javascript
@@ -263,7 +261,7 @@ Name                           Type        Description
 ``am:currentAdImage``         String       Path to the current (first) image of the ad in the smallest resolution (64x64 pixels), if available
 ``am:currentAdVendorID``      String       Current vendorID of the ad, if available
 ``am:currentAdRegion``        String       Description of the current (lowest-level) region of the ad, if applicable
-``am:currentAdExternalID``    String       Description of the current externalID of the ad, if available
+``am:currentAdExternalID``    String       Current externalID of the ad, if available
 ===========================  ===========  =============================
 
 

@@ -3,7 +3,7 @@ To understand the concept of dimensions and metrics, some examples of request an
 Example 1:
 ************************************************************************
 
-Get all clicks and impressions for category ``1234`` for the past week:
+Get all clicks and impressions for category ``1234`` for the previous week:
 
 
 .. code:: javascript
@@ -48,7 +48,7 @@ am:clicks     am:impressions
 Example 2:
 ************************************************************************
 
-Get all clicks and impressions for categories ``1234`` and ``5678`` for the past week, but split performance metrics per category:
+Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week, but split performance metrics per category:
 
 
 .. code:: javascript
@@ -99,7 +99,7 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the past
 Example 3:
 ************************************************************************
 
-Get all clicks and impressions for categories ``1234`` and ``5678`` for the past week, but split performance metrics per day and category. In addition, sort by date in ascending direction:
+Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:
 
 .. code:: javascript
 
@@ -176,7 +176,7 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the past
 Example 4:
 ************************************************************************
 
-Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the past week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:
+Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:
 
 
 .. code:: javascript
