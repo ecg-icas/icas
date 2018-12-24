@@ -17,10 +17,11 @@ This URL returns an ads performance report either in Excel or in CSV format depe
 ``Accept`` header. The report represents a timeseries breakdown of the performance of each ad which
 has had performance-related activity in the requested period.
 
-If the ``Accept`` header is ``application/vnd.ms-excel`` an Excel document is created.
-If the ``Accept`` header is ``text/csv`` a `CSV <http://en.wikipedia.org/wiki/Comma-separated_values>`_ document is created.
-Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
-Empty strings are not enclosed in quotes.
+If the ``Accept`` header is ``application/vnd.ms-excel`` an Excel document is created, in ``.xlsx`` format.
+
+If the ``Accept`` header is ``text/csv`` a `CSV <http://en.wikipedia.org/wiki/Comma-separated_values>`_ document is created, in the standard `RFC-4180 <https://tools.ietf.org/html/rfc4180>`_ format.
+**Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
+Empty strings are not enclosed in quotes.**
 
 All dates and times are in the tenant timezone.
 
@@ -48,7 +49,7 @@ Both the excel and the csv formats contain the following columns by default:
 ===================   =================   ===============================================================
 Name                   Field               Description
 ===================   =================   ===============================================================
-Date (Aggregated)     ``date``             Date of the report row, grouped daily, weekly, monthly, or yearly
+Date (Aggregated)     ``date``             Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is ``YYYY-MM-DD``, for monthly aggregation - ``YYYY-MM``, and for yearly - ``YYYY``. All dates are in tenant timezone.
 Ad ID                 ``adID``             ID of the ad
 L1 Category           ``L1Category``       Level 1 category name
 L2 Category           ``L2Category``       Level 2 category name
