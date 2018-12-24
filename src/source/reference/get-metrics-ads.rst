@@ -36,7 +36,7 @@ startDate       string               yes                Start date of the report
 endDate         string               yes                End date of the report in ``YYYY-MM-DD`` (inclusive)
 includeDeleted  bool                 no                 Deleted ads are included/excluded. Default ``false``
 query           string               no                 Search phrase to filter on ad titles
-fields          list of strings      no                 Column fields to include in the report. Possible values are listed in the ``Field`` column in the table below. By default all fields are included, and this may **affect the speed of data generation**.
+fields          list of strings      no                 Comma-separated list of column fields to include in the report. Possible values are listed in the ``Field`` column in the table below. By default all fields are included, and this may **affect the speed of data generation**.
 ==============  ================  ==================  ======================================================================================================================================================================================================================================================================================================
 
 
