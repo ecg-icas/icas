@@ -5,13 +5,16 @@ GET /metrics/ads
 =======================
 
 .. list-table::
- :widths: 20 80
+ :widths: 30 70
 
  * - Scope
    - ``console_ro`` or ``api_ro``
 
  * - Accept
    - ``application/vnd.ms-excel`` or ``text/csv``
+
+ * - Accept-Language
+   - preferred locale (e.g., ``nl-NL``, ``fr-BE``, ``en-CA``)
 
 This URL returns an ads performance report either in Excel or in CSV format depending on the
 ``Accept`` header. The report represents a timeseries breakdown of the performance of each ad which
@@ -25,6 +28,7 @@ Empty strings are not enclosed in quotes.**
 
 All dates and times are in the tenant timezone.
 
+The ``Accept-Language`` header advertises the preferred client locales (language and region) for the report column names. Both ``language_REGION`` and ``language-REGION`` are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used.
 
 Parameters
 ~~~~~~~~~~
