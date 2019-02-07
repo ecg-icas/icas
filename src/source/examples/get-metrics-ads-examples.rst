@@ -20,6 +20,7 @@
 
     HTTP/1.1 200 OK
     Content-Type: text/csv
+    Content-Language: nl-NL
     Content-Disposition: attachment; filename=mp-report-1-20180202-144330.csv
     Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region
     2018-02,7,Cd's en Dvd's,Cd's | Country en Western,,"Interesting title, what about ""quotes""",2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht
@@ -33,6 +34,7 @@
 
     HTTP/1.1 200 OK
     Content-Type: text/csv
+    Content-Language: nl-NL
     Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv
     Datum (geaggregeerde),Advertentie nummer,Totaal besteed (EUR),Clicks
     2018,7,0.3000000000,20
