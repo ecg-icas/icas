@@ -79,22 +79,6 @@ The endpoint URLs per tenant and environment are as follows:
    -
    - https://admarkt.marktplaats.nl/accounts/oauth/token
 
- * - DBA
-   - Sandbox
-   - https://lp-topannoncer.dbabusiness.dk/accounts/oauth/authorize
-
- * -
-   -
-   - https://lp-topannoncer.dbabusiness.dk/accounts/oauth/token
-
- * -
-   - Production
-   - https://topannoncer.dbabusiness.dk/accounts/oauth/authorize
-
- * -
-   -
-   - https://topannoncer.dbabusiness.dk/accounts/oauth/token
-
  * - Kijiji Canada
    - Sandbox
    - https://admarkt.qa10.kjdev.ca/accounts/oauth/authorize
@@ -251,7 +235,7 @@ After obtaining the authorization code at step 2 the client needs to make a
     Host: admarkt.demo.qa-mp.so
     Content-Type: application/x-www-form-urlencoded
 
-    grant_type=code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
+    grant_type=authorization_code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
 
 Step 4: Receive token response
 ``````````````````````````````
@@ -291,7 +275,7 @@ format if the token request at step 3 is valid.
     Host: admarkt.demo.qa-mp.so
     Content-Type: application/x-www-form-urlencoded
 
-    grant_type=code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
+    grant_type=authorization_code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
 
     200 OK
     Content-Type: application/json

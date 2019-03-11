@@ -47,6 +47,10 @@ History
 
 ..  role:: strike
 
+* v.0.107 -11 Mar 2019 - tw
+
+  * made examples in oauth docs consistent w.r.t. grant_type
+
 * v.0.106 -23 Oct 2018 - tw
 
   * added error documentation for 2035, attribute not writable
