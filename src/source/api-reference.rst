@@ -16,7 +16,6 @@ API Reference
    reference/post-ad-prefill
    reference/put-ad-id
    reference/put-ad-id-status
-   reference/get-budget-seller
    reference/get-categories
    reference/get-categories-statistics
    reference/get-category

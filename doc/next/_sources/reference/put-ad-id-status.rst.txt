@@ -27,6 +27,13 @@ for this user in this category exceeds ``maxNumberOfActiveAds`` as defined
 in the category then an error is returned. Setting a different status
 than **ACTIVE** is always allowed.
 
+If an ad has is in status **PAUSED** and also has no daily budget or total budget
+remaining, this call will succeed. The resulting status of the ad will be either
+:ref:`ad_status_budget_reached` or :ref:`ad_status_daily_budget_reached`,
+depending on which budget has run out. In this case the ad will go live as soon
+as budget is added.
+
+
 Parameters
 ----------
 
@@ -45,8 +52,6 @@ Field                   Code    Error message                   Description
 id                      2001    invalid argument                not a valid number
 status                  2001    invalid argument                must be either *ACTIVE*, *PAUSED* or *DELETED*
 status                  2017    ad status change not allowed    changing the status of an ad is not allowed
-totalBudget             2019    insufficient budget             Budget for ad is insufficient
-dailyBudget             2020    insufficient daily budget       Daily budget for ad is insufficient
 ====================    ====    ============================    ==============================================================================
 
 Example

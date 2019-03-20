@@ -48,6 +48,22 @@ History
 
 ..  role:: strike
 
+* v.0.108 -19 Mar 2019 - tw
+
+  * removed references to seller budget
+
+* v.0.107 -11 Mar 2019 - tw
+
+  * made examples in oauth docs consistent w.r.t. grant_type
+
+* v.0.106 -23 Oct 2018 - tw
+
+  * added error documentation for 2035, attribute not writable
+
+* v.0.105 -22 Aug 2018 - tw
+
+  * calling PUT /ad/{id}/status/ACTIVE now allowed when ad has no budget anymore.
+
 * v.0.104 -21 Mar 2018 - tw
 
   * remove reference to G+ community (deprecated) and explicit help section in landing page.
