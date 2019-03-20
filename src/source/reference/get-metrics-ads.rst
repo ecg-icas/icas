@@ -61,8 +61,8 @@ L3 Category           ``L3Category``       Level 3 category name, if applicable
 Title                 ``title``            Title of the ad
 Start Date            ``startDate``        Creation date of the ad
 End Date              ``endDate``          If the ad is deleted, deletion date of the ad
-CPC                   ``CPC``              CPC of the ad for which performance metrics are calculated, in Euros
-Total spent           ``spent``            Total amount spent for this ad, in Euros
+CPC                   ``CPC``              CPC of the ad for which performance metrics are calculated, in Local Currency
+Total spent           ``spent``            Total amount spent for this ad, in Local Currency
 Clicks                ``clicks``           Number of clicks that the ad received
 Impressions           ``impressions``      Number of impressions that the ad received
 CTR                   ``viewCTR``          Click-through rate in %
