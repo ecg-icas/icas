@@ -47,6 +47,10 @@ History
 
 ..  role:: strike
 
+* v.0.108 -19 Mar 2019 - tw
+
+  * removed references to seller budget
+
 * v.0.107 -11 Mar 2019 - tw
 
   * made examples in oauth docs consistent w.r.t. grant_type
