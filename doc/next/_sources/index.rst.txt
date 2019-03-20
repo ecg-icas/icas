@@ -35,6 +35,7 @@ Contents
    attributes
    regions
    feeds
+   reporting
    error-handling
    api-reference
    deprecation
@@ -46,6 +47,10 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.109 -20 Mar 2019 - dr
+
+  * new reporting API
 
 * v.0.108 -19 Mar 2019 - tw
 
