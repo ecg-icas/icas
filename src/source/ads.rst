@@ -401,9 +401,8 @@ existing ad which does not have a **vendorId**, the field is omitted.
 
 Images
 ------
-
-Each ad can contain up to eight (8) images which can be provided by the caller
-as a set of URLs. iCAS will download the images and if they meet the
+Each ad can contain up to X images (range is defined per category in the taxonomy)
+which can be provided by the caller as a set of URLs. iCAS will download the images and if they meet the
 requirements then they will be stored on iCAS servers in several sizes
 so that they can then be used by the user.
 
@@ -411,8 +410,7 @@ An image is valid if it is in JPG, PNG, GIF or BMP format and is smaller than 8M
 in size. Images larger than 1024x1024 px are being scaled down.
 
 The images will be shown in the order they are provided. The first image is
-shown in search results and it is the main image on the item page on
-Marktplaats.
+shown in search results and it is the main image on the item page.
 
 .. index:: image objects
 .. _ad_image_objects:
