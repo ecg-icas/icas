@@ -80,3 +80,8 @@ Examples
 .. include:: ../examples/get-metrics-ads-examples.rst
 
 
+Errors
+~~~~~~~~
+
+.. include:: ../examples/get-metrics-ads-examples-errors.rst
+
