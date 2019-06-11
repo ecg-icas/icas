@@ -38,6 +38,7 @@ Parameters
 Name                    Type        Description
 ====================    ========    ================================================================================
 cpc                     integer     The cpc value in euro cents for which to make the prediction. Mandatory field.
+regionId                integer     The region ID for which to make the prediction. MP & TWH users should omit this field.
 _include                string      Comma-separated-list of fields to include. Optional, default is all fields.
 _exclude                string      Comma-separated-list of fields to omit. Optional, default empty.
 ====================    ========    ================================================================================

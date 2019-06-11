@@ -48,6 +48,11 @@ History
 
 ..  role:: strike
 
+* v.0.110 -5 Jun 2019 - tw
+
+  * update TWH sandbox URLs
+  * add regionId as parameter to GET /category/{id}/funnel
+
 * v.0.109 -20 Mar 2019 - dr
 
   * new reporting API
