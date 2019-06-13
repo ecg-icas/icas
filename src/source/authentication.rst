@@ -97,11 +97,11 @@ The endpoint URLs per tenant and environment are as follows:
 
  * - 2dehands Belgium
    - Sandbox
-   - https://admarkt.xp.2dehands.com/accounts/oauth/authorize
+   - https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/authorize
 
  * -
    -
-   - https://admarkt.xp.2dehands.com/accounts/oauth/token
+   - https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/token
 
  * -
    - Production
