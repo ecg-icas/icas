@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Advertisements &mdash; iCAS Sellside API 0.110 documentation</title>
+  <title>Advertisements &mdash; iCAS Sellside API 0.111 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.110 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.111 documentation" href="index.html"/>
         <link rel="next" title="Categories" href="categories.html"/>
         <link rel="prev" title="Authentication" href="authentication.html"/> 
 
@@ -112,6 +112,10 @@
 <li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="campaigns.html#components">Components</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
@@ -166,12 +170,13 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/campaign-budgets.html">Campaign Budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -506,7 +511,7 @@ omitted.</p>
 </div>
 <div class="section" id="status">
 <span id="ad-status"></span><span id="index-6"></span><h3>status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h3>
-<p>Is a valid value from the list of <a class="reference internal" href="#ad-status"><span class="std std-ref">status</span></a>. The user can set only one
+<p>Is a valid value from the list of <a class="reference internal" href="reference/ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>. The user can set only one
 of the user controlled states <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em>.</p>
 </div>
 <div class="section" id="currency">
@@ -907,7 +912,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.110',
+            VERSION:'0.111',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

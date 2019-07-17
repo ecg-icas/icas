@@ -34,6 +34,7 @@ Contents
    categories
    attributes
    regions
+   campaigns
    feeds
    reporting
    error-handling
@@ -47,6 +48,10 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.111 -17 Jul 2019 - tw/dr
+
+  * add :ref:`campaigns` endpoints and information
 
 * v.0.110 -5 Jun 2019 - tw
 

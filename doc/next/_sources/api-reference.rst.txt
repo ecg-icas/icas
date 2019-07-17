@@ -42,4 +42,6 @@ API Reference
    reference/get-user
    reference/ad-status
    reference/price-types
+   reference/campaign-status
+   reference/campaign-budgets
    reference/error-codes

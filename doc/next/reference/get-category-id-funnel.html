@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /category/{id}/funnel &mdash; iCAS Sellside API 0.110 documentation</title>
+  <title>GET /category/{id}/funnel &mdash; iCAS Sellside API 0.111 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.110 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.111 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /feed/config" href="get-feed-config.html"/>
         <link rel="prev" title="GET /category/{id}/attributes" href="get-category-id-attributes.html"/> 
@@ -113,6 +113,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../regions.html#leaf-regions">Leaf Regions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#components">Components</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../feeds.html">XML Feeds</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
@@ -167,12 +171,13 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -364,7 +369,7 @@ We will rename this field in a future version of the endpoint to make this clear
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.110',
+            VERSION:'0.111',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
