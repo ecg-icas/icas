@@ -22,16 +22,17 @@ API Reference
    reference/get-category-id
    reference/get-category-id-attributes
    reference/get-category-id-funnel
+   reference/get-region-id
+   reference/get-regions
+   reference/get-image
+   reference/post-image
+   reference/get-campaigns
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import
    reference/get-feed-import-id-detail
    reference/get-feed-import-id-detail-vendor-id
    reference/get-feed-xsd
-   reference/get-image
-   reference/post-image
-   reference/get-region-id
-   reference/get-regions
    reference/get-report
    reference/get-report-detail
    reference/get-report-detail-id

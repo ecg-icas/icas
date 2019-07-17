@@ -3,11 +3,7 @@
 Campaign Budgets
 ================
 
-<<<<<<< HEAD
 Budgets are used to limit spending for a campaign. Having no budgets means having **no** limits on the spending of a campaign.
-=======
-Budgets are used to limit spending for a campaign.
->>>>>>> wip
 When ads in this campaign receive clicks, all budgets of this campaign will be checked for remaining balance. In case balance
 runs out on one or more budgets, all ads in this campaign will be taken offline until the balance is reset or
 budgets are increased. The campaign will then be in status *BUDGET_REACHED*.
