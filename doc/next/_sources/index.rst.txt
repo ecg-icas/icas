@@ -49,7 +49,7 @@ History
 
 ..  role:: strike
 
-* v.0.111 -17 Jul 2019 - tw/dr
+* v.0.200 -17 Jul 2019 - tw/dr
 
   * add :ref:`campaigns` endpoints and information
 
