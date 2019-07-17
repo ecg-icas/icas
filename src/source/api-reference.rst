@@ -33,6 +33,10 @@ API Reference
    reference/post-campaign-budgets
    reference/get-campaign-targeting
    reference/post-campaign-targeting
+   reference/get-campaign-listings
+   reference/put-campaign-listings
+   reference/delete-campaign-listings
+   reference/get-campaign-funnel
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import
