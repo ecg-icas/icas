@@ -27,6 +27,7 @@ API Reference
    reference/get-image
    reference/post-image
    reference/get-campaigns
+   reference/post-campaign
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import

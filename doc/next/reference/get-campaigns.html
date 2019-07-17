@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /feed/config" href="get-feed-config.html"/>
+        <link rel="next" title="POST /campaign" href="post-campaign.html"/>
         <link rel="prev" title="POST /image" href="post-image.html"/> 
 
   
@@ -172,6 +172,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
@@ -265,10 +266,19 @@
 <td>string</td>
 <td>Coma-separated list of statuses to filter on. Valid campaign statuses can be found in <span class="xref std std-ref">_campaign_status_overview</span></td>
 </tr>
+<tr class="row-odd"><td>offset</td>
+<td>integer</td>
+<td>Skips the first N campaigns. Default is 0</td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>integer</td>
+<td>The number of campaigns to return. Default is 100.</td>
+</tr>
 </tbody>
 </table>
+<p>TODO: sort on status? sort on anything else? (like dateCreated?)</p>
 <p>The format of the response is as below:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaigns</span><span class="o">?</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaigns</span><span class="o">?</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="mi">2</span><span class="o">&amp;</span><span class="nx">limit</span><span class="o">=</span><span class="mi">10</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -325,7 +335,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-feed-config.html" class="btn btn-neutral float-right" title="GET /feed/config"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="post-campaign.html" class="btn btn-neutral float-right" title="POST /campaign"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="post-image.html" class="btn btn-neutral" title="POST /image"><span class="fa fa-arrow-circle-left"></span> Previous</a>
