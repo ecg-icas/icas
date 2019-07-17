@@ -2,3 +2,6 @@
 
 Campaign Listings
 =================
+
+A Listing is defined as `an Ad in a Campaign`. It essentially links an ad to a campaign, allowing for certain overrides.
+An ad needs to be added to a campaign to become visible on the site.

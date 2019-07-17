@@ -49,10 +49,11 @@ which campaign is which.
 
 Campaign vendor ID
 """"""""""""""""""
-A per-seller unique string to identify the campaign. This is provided by the seller.
+A per-seller unique identifier to identify the campaign. This is provided by the seller.
 Can either be set when creating a campaign or when updating an
 existing campaign. However, once set, it can no longer be modified. When fetching an
 existing campaign which does not have a **vendorId**, the field is omitted.
+Creating a second campaign with an already used vendor ID
 
 .. _campaign_status:
 
