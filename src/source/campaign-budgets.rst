@@ -1,11 +1,10 @@
-.. index:: single: Campaign Budgets
 .. _campaign_budgets_overview:
 
 Campaign Budgets
 ================
 
-Each campaign can have 0 or more budgets. Without budgets, the ads in the campaign will not be shown.
-When ads in this campaign receive clicks, all budgets will be checked for remaining balance. In case balance
+Budgets are used to limit spending for a campaign.
+When ads in this campaign receive clicks, all budgets of this campaign will be checked for remaining balance. In case balance
 runs out on one or more budgets, all ads in this campaign will be taken offline until the balance is reset or
 budgets are increased. The campaign will then be in status *BUDGET_REACHED*.
 

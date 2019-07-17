@@ -1,4 +1,3 @@
-.. index:: single: Campaign Status
 .. _campaign_status_overview:
 
 Campaign Status

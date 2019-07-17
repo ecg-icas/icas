@@ -1,4 +1,3 @@
-.. index:: single: Campaign Budgets
 .. _campaign_budgets_overview:
 
 Campaign Budgets

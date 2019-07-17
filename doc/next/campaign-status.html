@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/> 
+    <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
+        <link rel="up" title="Campaigns" href="campaigns.html"/>
+        <link rel="next" title="Campaign Budgets" href="campaign-budgets.html"/>
+        <link rel="prev" title="Overview" href="campaign-overview.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -60,7 +63,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
@@ -117,8 +120,10 @@
 <li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#components">Components</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="campaigns.html">Campaigns</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
@@ -205,6 +210,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
+          <li><a href="campaigns.html">Campaigns</a> &raquo;</li>
+      
     <li>Campaign Status</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -217,28 +224,28 @@
           <div role="main">
             
   <div class="section" id="campaign-status">
-<span id="campaign-status-overview"></span><span id="index-0"></span><h1>Campaign Status<a class="headerlink" href="#campaign-status" title="Permalink to this headline">¶</a></h1>
+<span id="campaign-status-overview"></span><h1>Campaign Status<a class="headerlink" href="#campaign-status" title="Permalink to this headline">¶</a></h1>
 <p>Each campaign can be in one of the following states. Some of the states can be set by the user, others
 are set by the system or by customer service.</p>
 <div class="section" id="user-controlled-states">
 <h2>User Controlled States<a class="headerlink" href="#user-controlled-states" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="active">
-<span id="campaign-status-active"></span><span id="index-1"></span><h3>ACTIVE<a class="headerlink" href="#active" title="Permalink to this headline">¶</a></h3>
+<span id="campaign-status-active"></span><span id="index-0"></span><h3>ACTIVE<a class="headerlink" href="#active" title="Permalink to this headline">¶</a></h3>
 <p>The campaign is active and its ads are shown on the site.</p>
 </div>
 <div class="section" id="paused">
-<span id="campaign-status-paused"></span><span id="index-2"></span><h3>PAUSED<a class="headerlink" href="#paused" title="Permalink to this headline">¶</a></h3>
+<span id="campaign-status-paused"></span><span id="index-1"></span><h3>PAUSED<a class="headerlink" href="#paused" title="Permalink to this headline">¶</a></h3>
 <p>The campaign is not active and its ads are not shown on the site. The campaign can be re-activated.</p>
 </div>
 <div class="section" id="deleted">
-<span id="campaign-status-deleted"></span><span id="index-3"></span><h3>DELETED<a class="headerlink" href="#deleted" title="Permalink to this headline">¶</a></h3>
+<span id="campaign-status-deleted"></span><span id="index-2"></span><h3>DELETED<a class="headerlink" href="#deleted" title="Permalink to this headline">¶</a></h3>
 <p>The campaign has been deleted by the user and cannot be re-activated. Its ads are also not shown on site.</p>
 </div>
 </div>
 <div class="section" id="system-states">
 <h2>System States<a class="headerlink" href="#system-states" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="budget-reached">
-<span id="campaign-status-budget-reached"></span><span id="index-4"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this headline">¶</a></h3>
+<span id="campaign-status-budget-reached"></span><span id="index-3"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this headline">¶</a></h3>
 <p>One or more of the campaign&#8217;s budgets have been reached. In case of recurring budgets, like Daily or Monthly budgets,
 the budgets will be periodically reset and the campaign will become active again.</p>
 </div>
@@ -248,6 +255,15 @@ the budgets will be periodically reset and the campaign will become active again
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="campaign-budgets.html" class="btn btn-neutral float-right" title="Campaign Budgets"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="campaign-overview.html" class="btn btn-neutral" title="Overview"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
