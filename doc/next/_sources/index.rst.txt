@@ -53,6 +53,10 @@ History
 
   * add :ref:`campaigns` endpoints and information
 
+* v.0.111 -17 Jul 2019 - tw
+
+  * added :ref:`get_ad_mapping_externalids` V2 and marked V1 as deprecated
+
 * v.0.110 -5 Jun 2019 - tw
 
   * update TWH sandbox URLs
