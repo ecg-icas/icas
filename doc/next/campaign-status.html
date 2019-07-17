@@ -124,6 +124,8 @@
 <li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-listings.html">Campaign Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
@@ -247,7 +249,8 @@ are set by the system or by customer service.</p>
 <div class="section" id="budget-reached">
 <span id="campaign-status-budget-reached"></span><span id="index-3"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this headline">¶</a></h3>
 <p>One or more of the campaign&#8217;s budgets have been reached. In case of recurring budgets, like Daily or Monthly budgets,
-the budgets will be periodically reset and the campaign will become active again.</p>
+the budgets will be periodically reset and the campaign will become active again.
+If a campaign is both <code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code> and <code class="docutils literal"><span class="pre">PAUSED</span></code>, it will be shown as <code class="docutils literal"><span class="pre">PAUSED</span></code>.</p>
 </div>
 </div>
 </div>

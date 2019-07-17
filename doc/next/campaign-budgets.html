@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="up" title="Campaigns" href="campaigns.html"/>
-        <link rel="next" title="XML Feeds" href="feeds.html"/>
+        <link rel="next" title="Campaign Listings" href="campaign-listings.html"/>
         <link rel="prev" title="Campaign Status" href="campaign-status.html"/> 
 
   
@@ -124,6 +124,8 @@
 <li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-listings.html">Campaign Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
@@ -225,10 +227,11 @@
             
   <div class="section" id="campaign-budgets">
 <span id="campaign-budgets-overview"></span><h1>Campaign Budgets<a class="headerlink" href="#campaign-budgets" title="Permalink to this headline">¶</a></h1>
-<p>Each campaign can have 0 or more budgets. Without budgets, the ads in the campaign will not be shown.
-When ads in this campaign receive clicks, all budgets will be checked for remaining balance. In case balance
+<p>Budgets are used to limit spending for a campaign. Having no budgets means having <strong>no</strong> limits on the spending of a campaign.
+When ads in this campaign receive clicks, all budgets of this campaign will be checked for remaining balance. In case balance
 runs out on one or more budgets, all ads in this campaign will be taken offline until the balance is reset or
 budgets are increased. The campaign will then be in status <em>BUDGET_REACHED</em>.</p>
+<p><strong>TODO: what are sane default values for budgets?</strong></p>
 <div class="section" id="budget-types">
 <h2>Budget types<a class="headerlink" href="#budget-types" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="daily">
@@ -241,6 +244,11 @@ If no daily budget is set, and a user _adds_ a daily budget, spent for this day 
 <p>This is the maximum the campaign can spend per month. Resets every month, close to midnight of the 1st of the month.
 If no monthly budget is set, and a user _adds_ a monthly budget, spent for this month will already be taken into account.</p>
 </div>
+<div class="section" id="total">
+<h3>TOTAL<a class="headerlink" href="#total" title="Permalink to this headline">¶</a></h3>
+<p>This is the total the campaign can spend and will <strong>not</strong> be reset periodically. The seller will explicitly need to change
+this limit to get the ads of this campaign back online if this limit has been reached.</p>
+</div>
 </div>
 </div>
 
@@ -250,7 +258,7 @@ If no monthly budget is set, and a user _adds_ a monthly budget, spent for this 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="feeds.html" class="btn btn-neutral float-right" title="XML Feeds"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="campaign-listings.html" class="btn btn-neutral float-right" title="Campaign Listings"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="campaign-status.html" class="btn btn-neutral" title="Campaign Status"><span class="fa fa-arrow-circle-left"></span> Previous</a>

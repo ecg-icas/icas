@@ -45,3 +45,4 @@ BUDGET_REACHED
 
 One or more of the campaign's budgets have been reached. In case of recurring budgets, like Daily or Monthly budgets,
 the budgets will be periodically reset and the campaign will become active again.
+If a campaign is both ``BUDGET_REACHED`` and ``PAUSED``, it will be shown as ``PAUSED``.

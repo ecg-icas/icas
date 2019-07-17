@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Price Types &mdash; iCAS Sellside API 0.200 documentation</title>
+  <title>Campaign Listings &mdash; iCAS Sellside API 0.200 documentation</title>
   
 
   
@@ -34,8 +34,9 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
-        <link rel="next" title="Attributes" href="attributes.html"/>
-        <link rel="prev" title="Categories V2" href="categories-v2.html"/> 
+        <link rel="up" title="Campaigns" href="campaigns.html"/>
+        <link rel="next" title="Campaign Targeting" href="campaign-targeting.html"/>
+        <link rel="prev" title="Campaign Budgets" href="campaign-budgets.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -103,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Price Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
@@ -119,11 +120,11 @@
 <li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="campaigns.html">Campaigns</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-listings.html">Campaign Listings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Listings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
@@ -211,10 +212,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Price Types</li>
+          <li><a href="campaigns.html">Campaigns</a> &raquo;</li>
+      
+    <li>Campaign Listings</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/price-types.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/campaign-listings.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -222,65 +225,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="price-types">
-<span id="price-types-overview"></span><span id="id1"></span><h1>Price Types<a class="headerlink" href="#price-types" title="Permalink to this headline">¶</a></h1>
-<p>Each advertisement has a price type which determines the type of transaction the seller would like to perform.
-The following table lists the valid price types and their descriptions.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="78%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">PRICE_TYPE</th>
-<th class="head">Price required?</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>BIDDING</td>
-<td>no</td>
-<td>Request a bid on the ad starting from 0 EUR.</td>
-</tr>
-<tr class="row-odd"><td>BIDDING_FROM</td>
-<td>yes</td>
-<td>Request a bid with a starting price &gt; 0 EUR. <strong>price</strong> must contain a value in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code>.</td>
-</tr>
-<tr class="row-even"><td>FIXED_PRICE</td>
-<td>yes</td>
-<td>Request a fixed price. <strong>price</strong> must contain a value in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code>.</td>
-</tr>
-<tr class="row-odd"><td>FREE</td>
-<td>no</td>
-<td>Request no price.</td>
-</tr>
-<tr class="row-even"><td>NEGOTIABLE</td>
-<td>no</td>
-<td>Request a negotiation between buyer and seller.</td>
-</tr>
-<tr class="row-odd"><td>SEE_DESCRIPTION</td>
-<td>no</td>
-<td>Additional information is in the description of the ad.</td>
-</tr>
-<tr class="row-even"><td>SWAP</td>
-<td>no</td>
-<td>Request an exchange of one item for another.</td>
-</tr>
-<tr class="row-odd"><td>CREDIBLE_BID</td>
-<td>no</td>
-<td>Request for any reasonable offer.</td>
-</tr>
-<tr class="row-even"><td>ON_DEMAND</td>
-<td>no</td>
-<td>Price is communicated on request.</td>
-</tr>
-<tr class="row-odd"><td>RESERVED</td>
-<td>&nbsp;</td>
-<td>Flag for transaction in progress.</td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="campaign-listings">
+<span id="campaign-listings-overview"></span><h1>Campaign Listings<a class="headerlink" href="#campaign-listings" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -289,10 +235,10 @@ The following table lists the valid price types and their descriptions.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="attributes.html" class="btn btn-neutral float-right" title="Attributes"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="campaign-targeting.html" class="btn btn-neutral float-right" title="Campaign Targeting"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="categories-v2.html" class="btn btn-neutral" title="Categories V2"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="campaign-budgets.html" class="btn btn-neutral" title="Campaign Budgets"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
