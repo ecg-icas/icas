@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    GET /api/sellside/campaigns?status=ACTIVE,PAUSED
+    GET /api/sellside/campaigns?status=ACTIVE,PAUSED&offset=2&limit=10
     Accept: application/sellside.campaign.list-v2+json
 
     200 OK
