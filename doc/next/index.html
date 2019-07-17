@@ -91,11 +91,18 @@
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ad-status.html">Ad Status</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#user-controlled-states">User Controlled States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#customer-service-states">Customer Service States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#system-states">System States</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
@@ -172,10 +179,6 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/campaign-budgets.html">Campaign Budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -262,11 +265,18 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ad-status.html">Ad Status</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#user-controlled-states">User Controlled States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#customer-service-states">Customer Service States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#system-states">System States</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
@@ -343,10 +353,6 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/campaign-budgets.html">Campaign Budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -496,7 +502,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.78 - 11 May 2016 - tw<ul>
-<li>Clarified SUSPENDED_BY_CS a little in <a class="reference internal" href="reference/ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a></li>
+<li>Clarified SUSPENDED_BY_CS a little in <a class="reference internal" href="ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a></li>
 </ul>
 </li>
 <li>v0.77 - 4 Feb 2016 - ak<ul>
@@ -729,7 +735,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.29 - 15 apr 2014 - tw<ul>
-<li>Deprecated <span class="strike">DELETE /ad/{id}</span>. Set status to <a class="reference internal" href="reference/ad-status.html#ad-status-deleted"><span class="std std-ref">DELETED</span></a> with <a class="reference internal" href="reference/put-ad-id-status.html#put-ad-id-status"><span class="std std-ref">PUT /ad/{id}/status</span></a> before <strong>1 Sep 2014</strong></li>
+<li>Deprecated <span class="strike">DELETE /ad/{id}</span>. Set status to <a class="reference internal" href="ad-status.html#ad-status-deleted"><span class="std std-ref">DELETED</span></a> with <a class="reference internal" href="reference/put-ad-id-status.html#put-ad-id-status"><span class="std std-ref">PUT /ad/{id}/status</span></a> before <strong>1 Sep 2014</strong></li>
 <li>Added section <a class="reference internal" href="overview.html#overview-customize-response-body"><span class="std std-ref">Customize response body</span></a> to <a class="reference internal" href="overview.html#overview"><span class="std std-ref">Overview</span></a></li>
 <li>Added support for <cite>_body</cite> to</li>
 <li><a class="reference internal" href="reference/post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a></li>
@@ -895,7 +901,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.3 - 11 Sep 2012 - fs<ul>
-<li>Added description for <a class="reference internal" href="reference/price-types.html#price-types"><span class="std std-ref">Price Types</span></a></li>
+<li>Added description for <a class="reference internal" href="price-types.html#price-types"><span class="std std-ref">Price Types</span></a></li>
 <li>Removed /pricetype links</li>
 </ul>
 </li>
@@ -904,8 +910,8 @@ Notifications about maintenance will also go through this channel.</p>
 <li>Added <a class="reference internal" href="ads.html#ad-datelastupdated"><span class="std std-ref">dateLastUpdated</span></a></li>
 <li>Added <a class="reference internal" href="ads.html#ad-datedeleted"><span class="std std-ref">dateDeleted</span></a></li>
 <li>Added <a class="reference internal" href="ads.html#ad-spentbudget"><span class="std std-ref">spentBudget</span></a></li>
-<li>Added <a class="reference internal" href="reference/price-types.html#price-types"><span class="std std-ref">Price Types</span></a></li>
-<li>Added <a class="reference internal" href="reference/ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a></li>
+<li>Added <a class="reference internal" href="price-types.html#price-types"><span class="std std-ref">Price Types</span></a></li>
+<li>Added <a class="reference internal" href="ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a></li>
 <li>Updated <a class="reference internal" href="reference/error-codes.html#error-codes"><span class="std std-ref">Error Codes</span></a></li>
 <li>Updated <a class="reference internal" href="ads.html#ads"><span class="std std-ref">Advertisements</span></a></li>
 <li>Updated <a class="reference internal" href="categories-v1.html#categories"><span class="std std-ref">Categories V1</span></a></li>

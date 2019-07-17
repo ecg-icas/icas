@@ -92,11 +92,18 @@
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ad-status.html">Ad Status</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#user-controlled-states">User Controlled States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#customer-service-states">Customer Service States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#system-states">System States</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
@@ -173,10 +180,6 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/campaign-budgets.html">Campaign Budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -227,8 +230,8 @@ online again.</p>
 <p>A campaign consists of several components:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="33%" />
-<col width="67%" />
+<col width="34%" />
+<col width="66%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Component</th>
@@ -254,6 +257,12 @@ online again.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#campaign-budgets"><span class="std std-ref">Campaign budgets</span></a></td>
 <td>Budgets of this campaign</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#campaign-targeting"><span class="std std-ref">Campaign Targeting</span></a></td>
+<td>Targeting options of this campaign</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#campaign-cpc"><span class="std std-ref">Campaign CPC</span></a></td>
+<td>CPC for all ads in this campaign</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="campaign-id">
@@ -275,19 +284,29 @@ existing campaign which does not have a <strong>vendorId</strong>, the field is 
 </div>
 <div class="section" id="campaign-status">
 <span id="id6"></span><h3>Campaign status<a class="headerlink" href="#campaign-status" title="Permalink to this headline">¶</a></h3>
-<p>The status the campaign currently has. Is from the list of <a class="reference internal" href="reference/campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>. The user can set only one
+<p>The status the campaign currently has. Is from the list of <a class="reference internal" href="campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>. The user can set only one
 of the user controlled states <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em>. <em>DELETED</em> is a final state.</p>
 </div>
 <div class="section" id="campaign-links">
 <span id="id7"></span><h3>Campaign links<a class="headerlink" href="#campaign-links" title="Permalink to this headline">¶</a></h3>
 <p>A &#8216;Link&#8217; defines which ad is in which campaign, and with which possible overrides for certain campaign properties(budgets, cpc, ...)
 This construction makes ads into mere data containers, and can allow for an ad to be part of multiple campaigns (future plans).
-A campaign without links is an empty campaign, which is a valid scenario.</p>
+A campaign without links is an empty campaign, which is a valid scenario. See <span class="xref std std-ref">campaign_links_overview</span> for more info.</p>
 </div>
 <div class="section" id="campaign-budgets">
 <span id="id8"></span><h3>Campaign budgets<a class="headerlink" href="#campaign-budgets" title="Permalink to this headline">¶</a></h3>
-<p>Campaigns can have multiple types of budgets, see <a class="reference internal" href="reference/campaign-budgets.html#campaign-budgets-overview"><span class="std std-ref">Campaign Budgets</span></a>. Budgets are seen as limiting factors, meaning as soon
+<p>Campaigns can have multiple types of budgets, see <a class="reference internal" href="campaign-budgets.html#campaign-budgets-overview"><span class="std std-ref">Campaign Budgets</span></a>. Budgets are seen as limiting factors, meaning as soon
 as one runs out, all ads of this campaign will be taken offline until more budget becomes available.</p>
+</div>
+<div class="section" id="campaign-targeting">
+<span id="id9"></span><h3>Campaign Targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this headline">¶</a></h3>
+<p>Campaigns can have targeting criteria, allowing the seller some flexibility as to which target group of sellers ads should be shown.
+See <span class="xref std std-ref">campaign_targeting_overview</span> for more info.</p>
+</div>
+<div class="section" id="campaign-cpc">
+<span id="id10"></span><h3>Campaign CPC<a class="headerlink" href="#campaign-cpc" title="Permalink to this headline">¶</a></h3>
+<p>The seller can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad will be shown (higher or lower in resultset, etc).
+This CPC will be charged for every click on ads in this campaign. Can still be overridden for individual ads in the campaign using <a class="reference internal" href="#campaign-links"><span class="std std-ref">Campaign links</span></a>.</p>
 </div>
 </div>
 </div>

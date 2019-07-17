@@ -55,14 +55,14 @@ Ads with **status** equals to **PAUSED** do not have this restriction.
 The **currency** must be set to **EUR** and all price amounts must be
 specified in euro cents.
 
-The **priceType** must be one of the valid types listed in :doc:`price-types`.
+The **priceType** must be one of the valid types listed in :ref:`price_types_overview`.
 If the **priceType** is either **FIXED_PRICE** or **BIDDING_FROM** then a
 **price** in the interval of ``(0,10000000000]`` must be specified. For all
 other price types **price** must be omitted.
 
 A new ad must have a **status** which can be either *ACTIVE* or *PAUSED*. An
 active ad is shown on the site whereas a paused ad is not. See
-:doc:`ad-status` for the list of valid ad status values.
+:ref:`ad_status_overview` for the list of valid ad status values.
 
 The **cpc** is a mandatory field whose value depends on
 the category. The **totalbudget** and **dailyBudget** are optional fields whose value

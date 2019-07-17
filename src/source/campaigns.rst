@@ -17,16 +17,18 @@ Components
 
 A campaign consists of several components:
 
-======================== ================================================
-Component                Short description
-======================== ================================================
-:ref:`campaign_id`       The unique reference to the Campaign
-:ref:`campaign_title`    User-provided title
-:ref:`campaign_vendorid` Unique reference for the seller to the campaign
-:ref:`campaign_status`   Status of the campaign
-:ref:`campaign_links`    Ads in this campaign
-:ref:`campaign_budgets`  Budgets of this campaign
-======================== ================================================
+========================= ================================================
+Component                 Short description
+========================= ================================================
+:ref:`campaign_id`        The unique reference to the Campaign
+:ref:`campaign_title`     User-provided title
+:ref:`campaign_vendorid`  Unique reference for the seller to the campaign
+:ref:`campaign_status`    Status of the campaign
+:ref:`campaign_links`     Ads in this campaign
+:ref:`campaign_budgets`   Budgets of this campaign
+:ref:`campaign_targeting` Targeting options of this campaign
+:ref:`campaign_cpc`       CPC for all ads in this campaign
+========================= ================================================
 
 
 .. _campaign_id:
@@ -53,7 +55,6 @@ Can either be set when creating a campaign or when updating an
 existing campaign. However, once set, it can no longer be modified. When fetching an
 existing campaign which does not have a **vendorId**, the field is omitted.
 
-
 .. _campaign_status:
 
 Campaign status
@@ -69,7 +70,7 @@ Campaign links
 
 A 'Link' defines which ad is in which campaign, and with which possible overrides for certain campaign properties(budgets, cpc, ...)
 This construction makes ads into mere data containers, and can allow for an ad to be part of multiple campaigns (future plans).
-A campaign without links is an empty campaign, which is a valid scenario.
+A campaign without links is an empty campaign, which is a valid scenario. See :ref:`campaign_links_overview` for more info.
 
 .. _campaign_budgets:
 
@@ -78,3 +79,19 @@ Campaign budgets
 
 Campaigns can have multiple types of budgets, see :ref:`campaign_budgets_overview`. Budgets are seen as limiting factors, meaning as soon
 as one runs out, all ads of this campaign will be taken offline until more budget becomes available.
+
+.. _campaign_targeting:
+
+Campaign Targeting
+""""""""""""""""""
+
+Campaigns can have targeting criteria, allowing the seller some flexibility as to which target group of sellers ads should be shown.
+See :ref:`campaign_targeting_overview` for more info.
+
+.. _campaign_cpc:
+
+Campaign CPC
+""""""""""""
+
+The seller can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad will be shown (higher or lower in resultset, etc).
+This CPC will be charged for every click on ads in this campaign. Can still be overridden for individual ads in the campaign using :ref:`campaign_links`.

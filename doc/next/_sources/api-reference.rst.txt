@@ -40,8 +40,4 @@ API Reference
    reference/get-report-summary
    reference/post-metrics-data
    reference/get-user
-   reference/ad-status
-   reference/price-types
-   reference/campaign-status
-   reference/campaign-budgets
    reference/error-codes

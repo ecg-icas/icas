@@ -31,7 +31,9 @@ Contents
    overview
    authentication
    ads
+   ad-status
    categories
+   price-types
    attributes
    regions
    campaigns
