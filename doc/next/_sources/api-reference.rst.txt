@@ -28,6 +28,11 @@ API Reference
    reference/post-image
    reference/get-campaigns
    reference/post-campaign
+   reference/get-campaign-id
+   reference/get-campaign-budgets
+   reference/post-campaign-budgets
+   reference/get-campaign-targeting
+   reference/post-campaign-targeting
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import

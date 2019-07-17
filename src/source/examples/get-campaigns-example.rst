@@ -41,6 +41,9 @@
                             }],
                         "regionIds": [9007, 9008]
                     }
+                    "links": {
+                        "adIds": "api/sellside/campaign/1234/adIds"
+                    }
                 }
             ]
         },

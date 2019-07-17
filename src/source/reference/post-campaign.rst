@@ -1,11 +1,7 @@
 .. index:: POST /campaign
-.. _get_campaigns:
 
 POST /campaign
 ==================
-
-POST /campaign
----------------------
 
 .. list-table::
  :widths: 20 80

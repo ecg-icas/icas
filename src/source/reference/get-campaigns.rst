@@ -4,9 +4,6 @@
 GET /campaigns
 ==================
 
-GET /campaigns
----------------------
-
 .. list-table::
  :widths: 20 80
 

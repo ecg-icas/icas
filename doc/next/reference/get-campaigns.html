@@ -173,6 +173,11 @@
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign-targeting.html">POST /campaign/{id}/targeting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
@@ -229,8 +234,6 @@
             
   <div class="section" id="get-campaigns">
 <span id="index-0"></span><span id="id1"></span><h1>GET /campaigns<a class="headerlink" href="#get-campaigns" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>GET /campaigns<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -246,7 +249,6 @@
 </tbody>
 </table>
 <p>Returns a list of campaigns which belong to the user.</p>
-</div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -318,6 +320,9 @@
                         <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="s2">&quot;Amsterdam&quot;</span>
                         <span class="p">}],</span>
                     <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">9007</span><span class="p">,</span> <span class="mi">9008</span><span class="p">]</span>
+                <span class="p">}</span>
+                <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;adIds&quot;</span><span class="o">:</span> <span class="s2">&quot;api/sellside/campaign/1234/adIds&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">]</span>
