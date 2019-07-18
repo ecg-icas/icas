@@ -51,9 +51,13 @@ History
 
 ..  role:: strike
 
-* v.0.200 -17 Jul 2019 - tw/dr
+* v.0.200 -18 Jul 2019 - tw/dr
 
   * add :ref:`campaigns` endpoints and information
+
+* v.0.112 - 18 Jul 2019 - tw
+
+  * removed `SUSPENDED_BY_SELLERBUDGET` status as this functionality has been removed. We aim to introduce similar functionality at a later stage.
 
 * v.0.111 -17 Jul 2019 - tw
 
