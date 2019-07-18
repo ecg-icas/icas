@@ -48,6 +48,10 @@ History
 
 ..  role:: strike
 
+* v.0.112 - 18 Jul 2019 - tw
+
+  * removed `SUSPENDED_BY_SELLERBUDGET` status as this functionality has been removed. We aim to introduce similar functionality at a later stage.
+
 * v.0.111 -17 Jul 2019 - tw
 
   * added :ref:`get_ad_mapping_externalids` V2 and marked V1 as deprecated

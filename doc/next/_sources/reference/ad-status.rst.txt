@@ -71,11 +71,3 @@ DAILY_BUDGET_REACHED
 """"""""""""""""""""
 
 The daily budget of the ad has been reached. For the rest of the day the ad will not be shown on the site.
-
-SUSPENDED_BY_SELLERBUDGET
-"""""""""""""""""""""""""
-
-The ad has become suspended because the user has run out of budget on the seller level. Ads cannot be activated until this budget gets replenished or removed.
-
-.. index:: pair: Ad Status; SUSPENDED_BY_SELLERBUDGET
-.. _ad_status_suspended_by_sellerbudget:
