@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Campaign Listings &mdash; iCAS Sellside API 0.200 documentation</title>
+  <title>Campaign Linked Ads &mdash; iCAS Sellside API 0.200 documentation</title>
   
 
   
@@ -124,7 +124,7 @@
 <li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Listings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Linked Ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
@@ -178,9 +178,9 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign-targeting.html">POST /campaign/{id}/targeting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-listings.html">GET /campaign/{id}/listings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-listings.html">PUT /campaign/{id}/listings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/delete-campaign-listings.html">DELETE /campaign/{id}/listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-linkedads.html">GET /campaign/{id}/linkedAds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-linkedads.html">PUT /campaign/{id}/linkedAds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
@@ -225,10 +225,10 @@
       
           <li><a href="campaigns.html">Campaigns</a> &raquo;</li>
       
-    <li>Campaign Listings</li>
+    <li>Campaign Linked Ads</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/campaign-listings.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/campaign-linkedads.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -236,27 +236,27 @@
 </div>
           <div role="main">
             
-  <div class="section" id="campaign-listings">
-<span id="campaign-listings-overview"></span><h1>Campaign Listings<a class="headerlink" href="#campaign-listings" title="Permalink to this headline">¶</a></h1>
-<p>Campaign Listings define which ads are part of the campaign. It is possible to add / remove ads from a campaign using
-<span class="xref std std-ref">put_campaign_listings</span> / <span class="xref std std-ref">delete_campaign_listings</span>.
-Listings are stored as part of the campaign, and have a reference to the Ad ID. A listing consists two parts:
+  <div class="section" id="campaign-linked-ads">
+<span id="campaign-linkedads-overview"></span><h1>Campaign Linked Ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this headline">¶</a></h1>
+<p>Campaign&#8217;s linkedAds define which ads are part of the campaign. It is possible to add / remove (link / unlink) ads from a campaign using
+<a class="reference internal" href="reference/put-campaign-linkedads.html#put-campaign-linkedads"><span class="std std-ref">PUT /campaign/{id}/linkedAds</span></a> / <a class="reference internal" href="reference/delete-campaign-linkedads.html#delete-campaign-linkedads"><span class="std std-ref">DELETE /campaign/{id}/linkedads</span></a>.
+LinkedAds are stored as part of the campaign, and have a reference to an Ad using its ID. A linkedAd consists two parts:
 the Ad ID and optional overrides.
-Using Listings, it is possible to add a single ad to multiple campaigns (which may have different budgets and targeting criteria).
+Using linkedAds, it is possible to add a single ad to multiple campaigns (which may have different budgets and targeting criteria).
 It is, however, not possible to add a single ad multiple times to the same campaign.</p>
-<p>Ads that are not referred to by any listing in any active campaign will <strong>not</strong> be shown on site.</p>
+<p>Ads that are not referred to by any linkedAd in any active campaign will <strong>not</strong> be shown on site.</p>
 <div class="section" id="ad-id">
 <h2>Ad ID<a class="headerlink" href="#ad-id" title="Permalink to this headline">¶</a></h2>
-<p>The ID of the ad that this listing refers to. This is the unique identifier of the ad, described in <a class="reference internal" href="ads.html#ad-id"><span class="std std-ref">id</span></a>.</p>
+<p>The ID of the ad that this linkedAd refers to. This is the unique identifier of the ad itself, described in <a class="reference internal" href="ads.html#ad-id"><span class="std std-ref">id</span></a>.</p>
 </div>
 <div class="section" id="overrides">
 <h2>Overrides<a class="headerlink" href="#overrides" title="Permalink to this headline">¶</a></h2>
-<p>A Listing can have certain overrides as well; for instance, a campaign can have a CPC defined of 5 cents, but
-one ad is allowed to spend more (6 cents) - this is defined on the listing.
+<p>A linkedAd can have certain overrides as well; for instance, a campaign can have a CPC defined of 5 cents, but
+one ad is allowed to spend more (6 cents) - this is defined on the linkedAd.
 Another option is to set a specific budget for an ad in a campaign; if the campaign has a daily budget of 20 euros,
 it is possible to limit the spent of a single ad in that campaign to 10 euros, making sure that the budget of the campaign
 is at least spread out over multiple ads (in case the seller has one very high performing ad in the campaign).
-See <span class="xref std std-ref">put_campaign_listings</span> for more details.</p>
+See <a class="reference internal" href="reference/put-campaign-linkedads.html#put-campaign-linkedads"><span class="std std-ref">PUT /campaign/{id}/linkedAds</span></a> for more details.</p>
 </div>
 </div>
 

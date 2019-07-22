@@ -23,7 +23,7 @@ Component                 Short description
 :ref:`campaign_title`     User-provided title
 :ref:`campaign_vendorid`  Unique reference for the seller to the campaign
 :ref:`campaign_status`    Status of the campaign
-:ref:`campaign_listings`  Ads in this campaign
+:ref:`campaign_linkedads`  Ads in this campaign
 :ref:`campaign_budgets`   Budgets of this campaign
 :ref:`campaign_targeting` Targeting options of this campaign
 :ref:`campaign_cpc`       CPC for all ads in this campaign
@@ -63,14 +63,14 @@ Campaign status
 The status the campaign currently has. Is from the list of :ref:`campaign_status_overview`. The user can set only one
 of the user controlled states *ACTIVE*, *PAUSED* or *DELETED*. *DELETED* is a final state.
 
-.. _campaign_listings:
+.. _campaign_linkedads:
 
-Campaign listings
-"""""""""""""""""
+Campaign linked ads
+"""""""""""""""""""
 
-A 'listing' defines an ad in a campaign, and with which possible overrides for certain campaign properties(budgets, cpc, ...).
-This construction makes ads into mere data containers, and can allow for an ad to be part of multiple campaigns (future plans).
-A campaign without listings is an empty campaign, which is a valid scenario. See :ref:`campaign_listings_overview` for more info.
+A 'linkedAd' defines an ad in a campaign, with possible overrides for certain campaign properties(budgets, cpc, ...).
+This construction makes ads into mere data containers, and can allow for an ad to be linked to multiple campaigns (future plans).
+A campaign without linkedAds is an empty campaign, which is a valid scenario. See :ref:`campaign_linkedads_overview` for more info.
 
 .. _campaign_budgets:
 
@@ -94,4 +94,4 @@ Campaign CPC
 """"""""""""
 
 The seller can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad will be shown (higher or lower in resultset, etc).
-This CPC will be charged for every click on ads in this campaign. Can still be overridden for individual ads in the campaign using :ref:`campaign_listings_overview`.
+This CPC will be charged for every click on ads in this campaign. Can still be overridden for individual ads in the campaign using :ref:`campaign_linkedads_overview`.

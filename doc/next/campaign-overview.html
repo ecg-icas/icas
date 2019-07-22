@@ -124,7 +124,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-listings.html">Campaign Listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-linkedads.html">Campaign Linked Ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
@@ -178,9 +178,9 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign-targeting.html">POST /campaign/{id}/targeting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-listings.html">GET /campaign/{id}/listings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-listings.html">PUT /campaign/{id}/listings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/delete-campaign-listings.html">DELETE /campaign/{id}/listings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-linkedads.html">GET /campaign/{id}/linkedAds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-linkedads.html">PUT /campaign/{id}/linkedAds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
@@ -269,7 +269,7 @@ online again.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#campaign-status"><span class="std std-ref">Campaign status</span></a></td>
 <td>Status of the campaign</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#campaign-listings"><span class="std std-ref">Campaign listings</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#campaign-linkedads"><span class="std std-ref">Campaign linked ads</span></a></td>
 <td>Ads in this campaign</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#campaign-budgets"><span class="std std-ref">Campaign budgets</span></a></td>
@@ -306,26 +306,26 @@ Creating a second campaign with an already used vendor ID</p>
 <p>The status the campaign currently has. Is from the list of <a class="reference internal" href="campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>. The user can set only one
 of the user controlled states <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em>. <em>DELETED</em> is a final state.</p>
 </div>
-<div class="section" id="campaign-listings">
-<span id="id5"></span><h3>Campaign listings<a class="headerlink" href="#campaign-listings" title="Permalink to this headline">¶</a></h3>
-<p>A &#8216;listing&#8217; defines an ad in a campaign, and with which possible overrides for certain campaign properties(budgets, cpc, ...).
-This construction makes ads into mere data containers, and can allow for an ad to be part of multiple campaigns (future plans).
-A campaign without listings is an empty campaign, which is a valid scenario. See <a class="reference internal" href="campaign-listings.html#campaign-listings-overview"><span class="std std-ref">Campaign Listings</span></a> for more info.</p>
+<div class="section" id="campaign-linked-ads">
+<span id="campaign-linkedads"></span><h3>Campaign linked ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this headline">¶</a></h3>
+<p>A &#8216;linkedAd&#8217; defines an ad in a campaign, with possible overrides for certain campaign properties(budgets, cpc, ...).
+This construction makes ads into mere data containers, and can allow for an ad to be linked to multiple campaigns (future plans).
+A campaign without linkedAds is an empty campaign, which is a valid scenario. See <a class="reference internal" href="campaign-linkedads.html#campaign-linkedads-overview"><span class="std std-ref">Campaign Linked Ads</span></a> for more info.</p>
 </div>
 <div class="section" id="campaign-budgets">
-<span id="id6"></span><h3>Campaign budgets<a class="headerlink" href="#campaign-budgets" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>Campaign budgets<a class="headerlink" href="#campaign-budgets" title="Permalink to this headline">¶</a></h3>
 <p>Campaigns can have multiple types of budgets, see <a class="reference internal" href="campaign-budgets.html#campaign-budgets-overview"><span class="std std-ref">Campaign Budgets</span></a>. Budgets are seen as limiting factors, meaning as soon
 as one runs out, all ads of this campaign will be taken offline until more budget becomes available.</p>
 </div>
 <div class="section" id="campaign-targeting">
-<span id="id7"></span><h3>Campaign Targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>Campaign Targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this headline">¶</a></h3>
 <p>Campaigns can have targeting criteria, allowing the seller some flexibility as to which target group of sellers ads should be shown.
 See <a class="reference internal" href="campaign-targeting.html#campaign-targeting-overview"><span class="std std-ref">Campaign Targeting</span></a> for more info.</p>
 </div>
 <div class="section" id="campaign-cpc">
-<span id="id8"></span><h3>Campaign CPC<a class="headerlink" href="#campaign-cpc" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>Campaign CPC<a class="headerlink" href="#campaign-cpc" title="Permalink to this headline">¶</a></h3>
 <p>The seller can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad will be shown (higher or lower in resultset, etc).
-This CPC will be charged for every click on ads in this campaign. Can still be overridden for individual ads in the campaign using <a class="reference internal" href="campaign-listings.html#campaign-listings-overview"><span class="std std-ref">Campaign Listings</span></a>.</p>
+This CPC will be charged for every click on ads in this campaign. Can still be overridden for individual ads in the campaign using <a class="reference internal" href="campaign-linkedads.html#campaign-linkedads-overview"><span class="std std-ref">Campaign Linked Ads</span></a>.</p>
 </div>
 </div>
 </div>
