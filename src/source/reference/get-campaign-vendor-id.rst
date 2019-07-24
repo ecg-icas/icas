@@ -29,4 +29,4 @@ TODO: table with fields
 Example
 -------
 
-.. include:: ../examples/get-campaign-by-vendorid-v1-example.rst
+.. include:: ../examples/get-campaign-by-vendorid-v2-example.rst
