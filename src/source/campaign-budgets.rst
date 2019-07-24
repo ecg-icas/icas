@@ -19,7 +19,7 @@ DAILY
 """""
 
 This is the maximum the campaign can spend per day. Resets every day, close to midnight.
-If no daily budget is set, and a user **adds** a daily budget after the campaign has already been active, spent for this day will already be taken into account.
+If no daily budget is set, and you **add** a daily budget after the campaign has already been active, spent for this day will already be taken into account.
 
 .. index:: pair: Campaign Budget; Monthly
 .. _campaign_budget_monthly:
@@ -28,7 +28,7 @@ MONTHLY
 """""""
 
 This is the maximum the campaign can spend per calendar month. Resets every month, close to midnight on the 1st of the month.
-If no monthly budget is set, and a user **adds** a monthly budget after the campaign has already been active, spent for this month will already be taken into account.
+If no monthly budget is set, and you **add** a monthly budget after the campaign has already been active, spent for this month will already be taken into account.
 
 TOTAL
 """""

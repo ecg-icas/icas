@@ -239,10 +239,10 @@
             
   <div class="section" id="campaign-linked-ads">
 <span id="campaign-linkedads-overview"></span><h1>Campaign Linked Ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this headline">¶</a></h1>
-<p>Campaign&#8217;s linkedAds define which ads are part of the campaign. It is possible to add / remove (link / unlink) ads from a campaign using
+<p>Campaign&#8217;s linkedAds component defines which ads are part of the campaign. It is possible to add / remove (link / unlink) ads from a campaign using
 <a class="reference internal" href="reference/put-campaign-linkedads.html#put-campaign-linkedads"><span class="std std-ref">PUT /campaign/{id}/linkedAds</span></a> / <a class="reference internal" href="reference/delete-campaign-linkedads.html#delete-campaign-linkedads"><span class="std std-ref">DELETE /campaign/{id}/linkedads</span></a>.
-LinkedAds are stored as part of the campaign, and have a reference to an Ad using its ID. A linkedAd consists two parts:
-the Ad ID and optional overrides.
+LinkedAds are stored as part of the campaign, and have a reference to an Ad using its ID. A linkedAd consists of two parts:
+the Ad ID and optional overrides from the campaign defaults.
 Using linkedAds, it is possible to add a single ad to multiple campaigns (which may have different budgets and targeting criteria).
 It is, however, not possible to add a single ad multiple times to the same campaign.</p>
 <p>Ads that are not referred to by any linkedAd in any active campaign will <strong>not</strong> be shown on site.</p>
@@ -252,11 +252,11 @@ It is, however, not possible to add a single ad multiple times to the same campa
 </div>
 <div class="section" id="overrides">
 <h2>Overrides<a class="headerlink" href="#overrides" title="Permalink to this headline">¶</a></h2>
-<p>A linkedAd can have certain overrides as well; for instance, a campaign can have a CPC defined of 5 cents, but
-one ad is allowed to spend more (6 cents) - this is defined on the linkedAd.
+<p>A linkedAd can have certain overrides as well; for instance, a campaign-level CPC can be set 5 cents, but
+one ad is allowed to spend more (6 cents) - this should be defined on the linkedAd, as an override.
 Another option is to set a specific budget for an ad in a campaign; if the campaign has a daily budget of 20 euros,
 it is possible to limit the spent of a single ad in that campaign to 10 euros, making sure that the budget of the campaign
-is at least spread out over multiple ads (in case the seller has one very high performing ad in the campaign).
+is more fairly spread out over the remaining campaign ads (in case you have a very high performing ad in the campaign, for example).
 See <a class="reference internal" href="reference/put-campaign-linkedads.html#put-campaign-linkedads"><span class="std std-ref">PUT /campaign/{id}/linkedAds</span></a> for more details.</p>
 </div>
 </div>
