@@ -174,6 +174,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaigns.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorID}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
@@ -299,7 +300,9 @@ which campaign is which.</p>
 Can either be set when creating a campaign or when updating an
 existing campaign. However, once set, it can no longer be modified. When fetching an
 existing campaign which does not have a <strong>vendorId</strong>, the field is omitted.
-Creating a second campaign with an already used vendor ID</p>
+Creating a second campaign with a vendor ID already used by the seller is not allowed.
+Since this also functions as a unique identifier (for the seller) it is possible to fetch the
+campaign by vendor ID using <a class="reference internal" href="reference/get-campaign-vendor-id.html#get-campaign-vendorid"><span class="std std-ref">GET /campaign/byVendor/{vendorID}</span></a>.</p>
 </div>
 <div class="section" id="campaign-status">
 <span id="id4"></span><h3>Campaign status<a class="headerlink" href="#campaign-status" title="Permalink to this headline">¶</a></h3>

@@ -53,7 +53,9 @@ A per-seller unique identifier to identify the campaign. This is provided by the
 Can either be set when creating a campaign or when updating an
 existing campaign. However, once set, it can no longer be modified. When fetching an
 existing campaign which does not have a **vendorId**, the field is omitted.
-Creating a second campaign with an already used vendor ID
+Creating a second campaign with a vendor ID already used by the seller is not allowed.
+Since this also functions as a unique identifier (for the seller) it is possible to fetch the
+campaign by vendor ID using :ref:`get_campaign_vendorid`.
 
 .. _campaign_status:
 

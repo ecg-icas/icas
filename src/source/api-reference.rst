@@ -29,6 +29,7 @@ API Reference
    reference/get-campaigns
    reference/post-campaign
    reference/get-campaign-id
+   reference/get-campaign-vendor-id
    reference/get-campaign-budgets
    reference/post-campaign-budgets
    reference/get-campaign-targeting
