@@ -239,10 +239,8 @@
             
   <div class="section" id="overview">
 <span id="campaign-overview"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>Campaigns allow the seller to group ads together, having shared budgets, same targeting rules, etc.
-Reporting can also be done on campaigns, instead of individual ads, as well as status management: It is possible to
-pause a campaign, resulting in all ads in the campaign to be taken offline. When a campaign reaches one of its budgets,
-all ads in that campaign will be taken offline. When budget becomes available again, all ads in the campaign will come
+<p>Campaigns allow sellers to group their ads together, having shared budgets, same targeting rules, and other components. You can create separate campaigns to run ads in different locations or using different budgets.</p>
+<p>Reporting, as well as status management, can also be done on the level of campaigns, instead of individual ads. It is possible to pause a campaign, resulting in all ads in the campaign to be taken offline. When a campaign reaches one of its <a class="reference internal" href="#campaign-budgets"><span class="std std-ref">Campaign budgets</span></a>, all ads in that campaign will be taken offline. When budget becomes available again, all ads in the campaign will come
 online again.</p>
 <div class="section" id="components">
 <span id="id1"></span><h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
@@ -276,7 +274,7 @@ online again.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#campaign-budgets"><span class="std std-ref">Campaign budgets</span></a></td>
 <td>Budgets of this campaign</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#campaign-targeting"><span class="std std-ref">Campaign Targeting</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#campaign-targeting"><span class="std std-ref">Campaign targeting</span></a></td>
 <td>Targeting options of this campaign</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#campaign-cpc"><span class="std std-ref">Campaign CPC</span></a></td>
@@ -291,12 +289,11 @@ and needed for certain GET/PUT actions to modify the campaign and its properties
 </div>
 <div class="section" id="campaign-title">
 <span id="id3"></span><h3>Campaign title<a class="headerlink" href="#campaign-title" title="Permalink to this headline">¶</a></h3>
-<p>The title of the campaign, provided by the user. This makes it easier for people to know
-which campaign is which.</p>
+<p>The title of the campaign, provided by you. This makes it easier for you to distingish between your campaigns. Your campaign titles are not visible to your ad viewers.</p>
 </div>
 <div class="section" id="campaign-vendor-id">
 <span id="campaign-vendorid"></span><h3>Campaign vendor ID<a class="headerlink" href="#campaign-vendor-id" title="Permalink to this headline">¶</a></h3>
-<p>A per-seller unique identifier to identify the campaign. This is provided by the seller.
+<p>A per-seller unique identifier to identify the campaign. This is provided by you.
 Can either be set when creating a campaign or when updating an
 existing campaign. However, once set, it can no longer be modified. When fetching an
 existing campaign which does not have a <strong>vendorId</strong>, the field is omitted.
@@ -306,29 +303,28 @@ campaign by vendor ID using <a class="reference internal" href="reference/get-ca
 </div>
 <div class="section" id="campaign-status">
 <span id="id4"></span><h3>Campaign status<a class="headerlink" href="#campaign-status" title="Permalink to this headline">¶</a></h3>
-<p>The status the campaign currently has. Is from the list of <a class="reference internal" href="campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>. The user can set only one
-of the user controlled states <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em>. <em>DELETED</em> is a final state.</p>
+<p>The status the campaign currently has. It can be any value from the list in <a class="reference internal" href="campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>. You can set only one
+of the user-controlled states <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em>. <em>DELETED</em> is a final state.</p>
 </div>
 <div class="section" id="campaign-linked-ads">
 <span id="campaign-linkedads"></span><h3>Campaign linked ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this headline">¶</a></h3>
-<p>A &#8216;linkedAd&#8217; defines an ad in a campaign, with possible overrides for certain campaign properties(budgets, cpc, ...).
+<p>A <em>linkedAd</em> defines an ad in the context of a particular campaign, with possible overrides for certain campaign-level properties (budgets, cpc, ...).
 This construction makes ads into mere data containers, and can allow for an ad to be linked to multiple campaigns (future plans).
 A campaign without linkedAds is an empty campaign, which is a valid scenario. See <a class="reference internal" href="campaign-linkedads.html#campaign-linkedads-overview"><span class="std std-ref">Campaign Linked Ads</span></a> for more info.</p>
 </div>
 <div class="section" id="campaign-budgets">
 <span id="id5"></span><h3>Campaign budgets<a class="headerlink" href="#campaign-budgets" title="Permalink to this headline">¶</a></h3>
-<p>Campaigns can have multiple types of budgets, see <a class="reference internal" href="campaign-budgets.html#campaign-budgets-overview"><span class="std std-ref">Campaign Budgets</span></a>. Budgets are seen as limiting factors, meaning as soon
-as one runs out, all ads of this campaign will be taken offline until more budget becomes available.</p>
+<p>Campaigns can have multiple types of budgets, see <a class="reference internal" href="campaign-budgets.html#campaign-budgets-overview"><span class="std std-ref">Campaign Budgets</span></a>. Budgets are seen as limiting factors, meaning that, as soon
+as one runs out, all ads of this campaign will be taken offline until budget(s) becomes available.</p>
 </div>
 <div class="section" id="campaign-targeting">
-<span id="id6"></span><h3>Campaign Targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this headline">¶</a></h3>
-<p>Campaigns can have targeting criteria, allowing the seller some flexibility as to which target group of sellers ads should be shown.
-See <a class="reference internal" href="campaign-targeting.html#campaign-targeting-overview"><span class="std std-ref">Campaign Targeting</span></a> for more info.</p>
+<span id="id6"></span><h3>Campaign targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this headline">¶</a></h3>
+<p>Campaigns can have targeting criteria, allowing you some customization on the target group of customers that your ads will be shown to. See <a class="reference internal" href="campaign-targeting.html#campaign-targeting-overview"><span class="std std-ref">Campaign Targeting</span></a> for more info.</p>
 </div>
 <div class="section" id="campaign-cpc">
 <span id="id7"></span><h3>Campaign CPC<a class="headerlink" href="#campaign-cpc" title="Permalink to this headline">¶</a></h3>
-<p>The seller can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad will be shown (higher or lower in resultset, etc).
-This CPC will be charged for every click on ads in this campaign. Can still be overridden for individual ads in the campaign using <a class="reference internal" href="campaign-linkedads.html#campaign-linkedads-overview"><span class="std std-ref">Campaign Linked Ads</span></a>.</p>
+<p>You can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad will be shown (higher or lower in the results page, etc).
+This CPC will be charged for every click on ads in this campaign. The campaign CPC can be overridden for individual ads in the campaign using <a class="reference internal" href="campaign-linkedads.html#campaign-linkedads-overview"><span class="std std-ref">Campaign Linked Ads</span></a>.</p>
 </div>
 </div>
 </div>
