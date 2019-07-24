@@ -239,27 +239,25 @@
             
   <div class="section" id="campaign-budgets">
 <span id="campaign-budgets-overview"></span><h1>Campaign Budgets<a class="headerlink" href="#campaign-budgets" title="Permalink to this headline">¶</a></h1>
-<p>Budgets are used to limit spending for a campaign. Having no budgets means having <strong>no</strong> limits on the spending of a campaign.
+<p>Budgets are used to limit the spending for an individual campaign. Your actual spent for a campaign may be lower than the limits you set, depending on a lot of factors; it can never be higher. Having no budgets means having <strong>no</strong> limits on the spending of a campaign.
 When ads in this campaign receive clicks, all budgets of this campaign will be checked for remaining balance. In case balance
-runs out on one or more budgets, all ads in this campaign will be taken offline until the balance is reset or
-budgets are increased. The campaign will then be in status <em>BUDGET_REACHED</em>.</p>
-<p><strong>TODO: what are sane default values for budgets?</strong></p>
+runs out on any one of the configured budgets, all ads in this campaign will be taken offline until the budget(s) balance is reset or budgets are increased. The campaign will then be in status <em>BUDGET_REACHED</em>.</p>
+<p><strong>TODO: what are sane default values for budgets? Google gives some tips: start small if you&#8217;re beginner</strong></p>
 <div class="section" id="budget-types">
 <h2>Budget types<a class="headerlink" href="#budget-types" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="daily">
 <span id="campaign-budget-daily"></span><span id="index-0"></span><h3>DAILY<a class="headerlink" href="#daily" title="Permalink to this headline">¶</a></h3>
 <p>This is the maximum the campaign can spend per day. Resets every day, close to midnight.
-If no daily budget is set, and a user _adds_ a daily budget, spent for this day will already be taken into account.</p>
+If no daily budget is set, and a user <strong>adds</strong> a daily budget after the campaign has already been active, spent for this day will already be taken into account.</p>
 </div>
 <div class="section" id="monthly">
 <span id="campaign-budget-monthly"></span><span id="index-1"></span><h3>MONTHLY<a class="headerlink" href="#monthly" title="Permalink to this headline">¶</a></h3>
-<p>This is the maximum the campaign can spend per month. Resets every month, close to midnight of the 1st of the month.
-If no monthly budget is set, and a user _adds_ a monthly budget, spent for this month will already be taken into account.</p>
+<p>This is the maximum the campaign can spend per calendar month. Resets every month, close to midnight on the 1st of the month.
+If no monthly budget is set, and a user <strong>adds</strong> a monthly budget after the campaign has already been active, spent for this month will already be taken into account.</p>
 </div>
 <div class="section" id="total">
 <h3>TOTAL<a class="headerlink" href="#total" title="Permalink to this headline">¶</a></h3>
-<p>This is the total the campaign can spend and will <strong>not</strong> be reset periodically. The seller will explicitly need to change
-this limit to get the ads of this campaign back online if this limit has been reached.</p>
+<p>This is the total the campaign can spend and will <strong>not</strong> be reset periodically. You will explicitly need to change this limit to get the ads of this campaign back online if this limit has been reached.</p>
 </div>
 </div>
 </div>
