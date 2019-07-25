@@ -1,7 +1,7 @@
 .. index:: GET /campaign/{id}
 
 GET /campaign/{id}
-===================
+==================
 
 .. list-table::
  :widths: 20 80
@@ -21,7 +21,7 @@ server returns **400 Bad Request**.
 
 TODO: table with fields
 
-Example
--------
+Example:
+--------
 
 .. include:: ../examples/get-campaign-id-v2-example.rst

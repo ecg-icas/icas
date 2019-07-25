@@ -15,7 +15,7 @@ User Controlled States
 ACTIVE
 """"""
 
-The campaign is active and its ads are shown on the site.
+The campaign is active and its linked ads are shown on the site.
 
 .. index:: pair: Campaign Status; PAUSED
 .. _campaign_status_paused:
@@ -23,7 +23,7 @@ The campaign is active and its ads are shown on the site.
 PAUSED
 """"""
 
-The campaign is not active and its ads are not shown on the site. The campaign can be re-activated.
+The campaign is not active and its linked ads are not shown on the site. The campaign can be re-activated.
 
 .. index:: pair: Campaign Status; DELETED
 .. _campaign_status_deleted:
@@ -31,7 +31,7 @@ The campaign is not active and its ads are not shown on the site. The campaign c
 DELETED
 """""""
 
-The campaign has been deleted by the user and cannot be re-activated. Its ads are also not shown on site.
+The campaign has been deleted by the user and cannot be re-activated. Its linked ads are also not shown on site.
 
 
 System States
@@ -43,6 +43,7 @@ System States
 BUDGET_REACHED
 """"""""""""""
 
-One or more of the campaign's budgets have been reached. In case of recurring budgets, like Daily or Monthly budgets,
-the budgets will be periodically reset and the campaign will become active again.
-If a campaign is both ``BUDGET_REACHED`` and ``PAUSED``, it will be shown as ``PAUSED``.
+One or more of the campaign's budgets have been reached and its linked ads are not shown on site.
+In case of recurring budgets, like Daily or Monthly budgets, the budgets will be periodically reset
+and the campaign will become active again. If a campaign is both ``BUDGET_REACHED`` and ``PAUSED``,
+it will be shown as ``PAUSED``.
