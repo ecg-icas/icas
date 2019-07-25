@@ -19,9 +19,11 @@ If the campaign does not exist or does not belong to the user the server returns
 **404 Not Found**. If the ``id`` is invalid, i.e. not a positive integer the
 server returns **400 Bad Request**.
 
-TODO: table with fields
-
 Example:
 --------
 
 .. include:: ../examples/get-campaign-id-v2-example.rst
+
+The full campaign payload model that you get as a response, has the following structure:
+
+.. include:: ../examples/campaign-response.rst

@@ -275,10 +275,11 @@ are mandatory.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The full campaign payload data model that you can provide, has the following structure:</p>
+<p>The full campaign request payload model that you can provide, has the following structure:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
             <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -297,8 +298,6 @@ are mandatory.</p>
                             <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
                             <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
                             <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
                             <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
                     <span class="p">},</span> <span class="p">...</span>
             <span class="p">],</span>
@@ -309,8 +308,8 @@ are mandatory.</p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="7%" />
-<col width="93%" />
+<col width="6%" />
+<col width="94%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -324,25 +323,72 @@ are mandatory.</p>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">status</span></code></td>
 <td>The desired state of the campaign. Can be one of the user-controlled status values described in <a class="reference internal" href="../campaign-status.html#id1"><span class="std std-ref">User Controlled States</span></a>. Default value is <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">CPC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">vendorId</span></code></td>
+<td>Seller-provided unique reference the campaign. Once set, it cannot be modified.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CPC</span></code></td>
 <td>Fixed CPC (in cents) that applies for all linked ads in this campaign.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
 <td>An object containing the budget limits for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The limits unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
-<td>An object of type Campaign Targeting, containing the targeting settings for this campaign. See <a class="reference internal" href="../campaign-targeting.html#id1"><span class="std std-ref">Campaign Targeting</span></a> for more. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">links</span></code></td>
-<td>An object containing RESTful links to other related resources</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
+<td>A <a class="reference internal" href="#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. See <a class="reference internal" href="../campaign-targeting.html#id1"><span class="std std-ref">Campaign Targeting</span></a> for more. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
 </tr>
 </tbody>
 </table>
-<p>The full campaign payload data model that you get as a response, has the following structure:</p>
+<div class="section" id="campaign-targeting-object">
+<span id="id2"></span><h2>Campaign Targeting Object<a class="headerlink" href="#campaign-targeting-object" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span>    <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                            <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                            <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                            <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                            <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
+                    <span class="p">},</span> <span class="p">...</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">geos</span></code></td>
+<td>A list of circular areas for geo-targeting. Default is empty, which implies nationwide targeting (no targeting restrictions).</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">lat</span></code></td>
+<td>Latitude of the center-point of the circular area for geo-targeting</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">lon</span></code></td>
+<td>Longitude of the center-point of the circular area for geo-targeting</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">radius</span></code></td>
+<td>Radius (in km) of the circular area for geo-targeting</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">diplayValue</span></code></td>
+<td>Description of the circular area for geo-targeting. Only visible on your dashboard, it will never be shown to buyers.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">regionIds</span></code></td>
+<td>A list of valid regionIds from the Regions taxonomy. Default is <code class="docutils literal"><span class="pre">[0]</span></code>, which implies nationwide targeting (no targeting restrictions).</td>
+</tr>
+</tbody>
+</table>
+<p>The full campaign payload model that you get as a response, has the following structure:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
             <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -364,8 +410,6 @@ are mandatory.</p>
                             <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
                             <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
                             <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
                             <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
                     <span class="p">},</span> <span class="p">...</span>
             <span class="p">],</span>
@@ -377,11 +421,10 @@ are mandatory.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The additional (read-only) fields in the response are described below:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
-<col width="82%" />
+<col width="6%" />
+<col width="94%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -389,17 +432,36 @@ are mandatory.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">dateCreated</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">title</span></code></td>
+<td>A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dateCreated</span></code></td>
 <td>The ISO 8601 UTC date and time the campaign was created.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dateLastUpdated</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dateLastUpdated</span></code></td>
 <td>The ISO 8601 UTC date and time the campaign was last updated</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">status</span></code></td>
+<td>The desired state of the campaign. Can be one of the user-controlled status values described in <a class="reference internal" href="../campaign-status.html#id1"><span class="std std-ref">User Controlled States</span></a>. Default value is <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">vendorId</span></code></td>
+<td>Seller-provided unique reference the campaign. Once set, it cannot be modified.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CPC</span></code></td>
+<td>Fixed CPC (in cents) that applies for all linked ads in this campaign.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
+<td>An object containing the budget limits for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The limits unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
+<td>A <a class="reference internal" href="#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. See <a class="reference internal" href="../campaign-targeting.html#id1"><span class="std std-ref">Campaign Targeting</span></a> for more. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">links</span></code></td>
 <td>An object containing RESTful links to other related resources</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 
 

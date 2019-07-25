@@ -35,8 +35,6 @@
                             "lat": 1.234,
                             "lon": 5.678,
                             "radius": 10,
-                            "type": "zip",
-                            "value": "1000AB",
                             "displayValue": "Amsterdam"
                             }],
                         "regionIds": [9007, 9008]

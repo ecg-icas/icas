@@ -20,103 +20,16 @@ Creates a new campaign for the user. If successful, it returns an object represe
 default values on certain fields, if not provided. A minimum payload is an empty JSON, as none of the fields
 are mandatory.
 
-
 .. include:: ../examples/post-campaign-example.rst
 
 The full campaign request payload model that you can provide, has the following structure:
 
-.. code-block:: javascript
-
-    {
-    	"title": <string>,
-    	"status": <string>,
-    	"cpc": <number>,
-    	"budgets": {
-    		"daily": {
-    			"limit": <number>
-    		},
-    		"monthly": {
-    			"limit": <number>
-    		},
-    		"total": {
-    			"limit": <number>
-    		}
-    	},
-    	"targeting": {
-    		"geos": [
-    			{
-    				"lat": <number>,
-    				"lon": <number>,
-    				"radius": <number>,
-    				"type": <string>,
-    				"value": <string>,
-    				"displayValue": <string>
-    			}, ...
-    		],
-    		"regionIds": [<number>,...]
-    	}
-    }
+.. include:: ../examples/campaign-request.rst
 
 
-===================  =========================================================================================
-Parameter             Description
-===================  =========================================================================================
-``title``             A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.
-``status``            The desired state of the campaign. Can be one of the user-controlled status values described in :ref:`User Controlled States <user-controlled-states>`. Default value is ``PAUSED``.
-``CPC``               Fixed CPC (in cents) that applies for all linked ads in this campaign.
-``budgets``           An object containing the budget limits for this campaign. See :ref:`Budget types <campaign-budget-types>` for more. The limits unit is cents. The default values are set to **-1 (Unlimited)**.
-``targeting``         An object of type Campaign Targeting, containing the targeting settings for this campaign. See :ref:`Campaign Targeting <campaign-targeting>` for more. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).
-``links``             An object containing RESTful links to other related resources
-===================  =========================================================================================
+.. include:: ../examples/campaign-targeting.rst
 
-The full campaign response payload model that you get as a response, has the following structure:
 
-.. code-block:: javascript
+The full campaign payload model that you get as a response, has the following structure:
 
-    {
-    	"title": <string>,
-    	"dateCreated": <string>,
-    	"status": <string>,
-    	"cpc": <number>,
-    	"budgets": {
-    		"daily": {
-    			"limit": <number>,
-    			"spent": <number>
-    		},
-    		"monthly": {
-    			"limit": <number>,
-    			"spent": <number>
-    		},
-    		"total": {
-    			"limit": <number>,
-    			"spent": <number>
-    		}
-    	},
-    	"targeting": {
-    		"geos": [
-    			{
-    				"lat": <number>,
-    				"lon": <number>,
-    				"radius": <number>,
-    				"type": <string>,
-    				"value": <string>,
-    				"displayValue": <string>
-    			}, ...
-    		],
-    		"regionIds": [<number>,...]
-    	},
-    	"links": {
-    		"linkedAds": <string>
-    	}
-    }
-
-The additional (read-only) fields in the response are described below:
-
-===================  =========================================================================================
-Parameter             Description
-===================  =========================================================================================
-``dateCreated``       The ISO 8601 UTC date and time the campaign was created.
-``dateLastUpdated``   The ISO 8601 UTC date and time the campaign was last updated
-``links``             An object containing RESTful links to other related resources
-===================  =========================================================================================
-
+.. include:: ../examples/campaign-response.rst
