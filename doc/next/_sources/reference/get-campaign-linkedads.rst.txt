@@ -19,7 +19,8 @@ budgets   []budget Limit this listing's spent by these budgets too. Does not voi
 The status of the linkedAd cannot be set by the user; it is always ACTIVE.
 
 
-The format of the response is as below:
+Example:
+--------
 
 .. include:: ../examples/get-campaign-linkedads-example.rst
 
