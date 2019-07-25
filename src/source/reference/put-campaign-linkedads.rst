@@ -4,7 +4,7 @@
 PUT /campaign/{id}/linkedAds
 ============================
 
-It is possible to add/overwrite a single_linkedad_ linkedAd or a list_linkedad_ of linkedAds in one go.
+It is possible to add/overwrite a :ref:`single <single_linkedad>` linkedAd or :ref:`multiple <list_linkedad>` linkedAds in one go.
 If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overwritten with
 the provided one.
 It is not possible to have multiple linkedAds in one campaign with the same adId.

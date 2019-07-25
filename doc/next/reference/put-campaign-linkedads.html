@@ -239,7 +239,7 @@
             
   <div class="section" id="put-campaign-id-linkedads">
 <span id="put-campaign-linkedads"></span><span id="index-0"></span><h1>PUT /campaign/{id}/linkedAds<a class="headerlink" href="#put-campaign-id-linkedads" title="Permalink to this headline">¶</a></h1>
-<p>It is possible to add/overwrite a <a class="reference internal" href="#single-linkedad">single_linkedad</a> linkedAd or a <a class="reference internal" href="#list-linkedad">list_linkedad</a> of linkedAds in one go.
+<p>It is possible to add/overwrite a <a class="reference internal" href="#single-linkedad"><span class="std std-ref">single</span></a> linkedAd or <a class="reference internal" href="#list-linkedad"><span class="std std-ref">multiple</span></a> linkedAds in one go.
 If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overwritten with
 the provided one.
 It is not possible to have multiple linkedAds in one campaign with the same adId.</p>
@@ -261,11 +261,21 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 </table>
 <p>Adds a linkedAd to the campaign or overwrites ones with same adIds. If successful, the server responds with <cite>HTTP 200</cite>.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">linkedAds</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">{</span>
+   <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
+   <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+
+<span class="nx">HTTP</span> <span class="mi">200</span> <span class="nx">OK</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">{</span>
    <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span>
+   <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -288,21 +298,44 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 </table>
 <p>Adds multiple linkedAds to the campaign. Overwrites existing linkedAds with same adIds. If successful, the server responds with <cite>HTTP 200</cite>.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">linkedAds</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">[</span>
+    <span class="p">{</span>
+       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541252</span><span class="p">,</span>
+       <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541252</span><span class="p">,</span>
+       <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+       <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
+           <span class="p">{</span>
+               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+           <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+
+<span class="nx">HTTP</span> <span class="mi">200</span> <span class="nx">OK</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">[</span>
     <span class="p">{</span>
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
-       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span>
+       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="nx">ACTIVE</span>
     <span class="p">},</span>
     <span class="p">{</span>
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541252</span><span class="p">,</span>
-       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="nx">ACTIVE</span><span class="p">,</span>
        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span>
     <span class="p">},</span>
     <span class="p">{</span>
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541252</span><span class="p">,</span>
-       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;BUDGET_REACHED&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="nx">ACTIVE</span><span class="p">,</span>
        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
            <span class="p">{</span>
