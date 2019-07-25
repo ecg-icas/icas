@@ -181,7 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign-targeting.html">POST /campaign/{id}/targeting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-linkedads.html">GET /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-linkedads.html">PUT /campaign/{id}/linkedAds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
@@ -243,7 +243,7 @@
 are set by the system or by customer service.</p>
 <div class="section" id="user-controlled-states">
 <h2>User Controlled States<a class="headerlink" href="#user-controlled-states" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="colwidths-given docutils" id="id1">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
@@ -259,6 +259,9 @@ are set by the system or by customer service.</p>
 </tr>
 <tr class="row-odd"><td><strong>PAUSED</strong></td>
 <td>The campaign is not active and its linked ads are not shown on the site. The campaign can be re-activated, if there is sufficient budget. By default (unless explicitely set) the status of a newly-created campaign is <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
+</tr>
+<tr class="row-even"><td><strong>DELETED</strong></td>
+<td>The campaign has been deleted by the user and cannot be re-activated. Its linked ads are also not shown on site.</td>
 </tr>
 </tbody>
 </table>

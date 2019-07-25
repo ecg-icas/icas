@@ -42,7 +42,7 @@
                         "regionIds": [9007, 9008]
                     }
                     "links": {
-                        "listings": "api/sellside/campaign/1234/listings"
+                        "listings": "api/sellside/campaign/1234/linkedAds"
                     }
                 }
             ]

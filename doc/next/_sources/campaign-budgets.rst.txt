@@ -12,6 +12,9 @@ runs out on any one of the configured budgets, all ads in this campaign will be 
 Budget types
 ------------
 
+.. _campaign-budget-types:
+
+
 .. index:: pair: Campaign Budget; Daily
 .. _campaign_budget_daily:
 
