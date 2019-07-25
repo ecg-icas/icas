@@ -3,7 +3,7 @@
 Campaign Budgets
 ================
 
-Budgets are used to limit the spending for an individual campaign. Your actual spent for a campaign may be lower than the limits you set, depending on a lot of factors; it can never be higher. Having no budgets means having **no** limits on the spending of a campaign.
+Budgets are used to limit the spending for an individual campaign. Your actual spent for a campaign may be lower than the limits you set, depending on a lot of factors; however, it can never be higher. Having no budgets means having **no limits on the spending** of a campaign.
 When ads in this campaign receive clicks, all budgets of this campaign will be checked for remaining balance. In case balance
 runs out on any one of the configured budgets, all ads in this campaign will be taken offline until the budget(s) balance is reset or budgets are increased. The campaign will then be in status *BUDGET_REACHED*.
 
@@ -33,4 +33,5 @@ If no monthly budget is set, and you **add** a monthly budget after the campaign
 TOTAL
 """""
 
-This is the total the campaign can spend and will **not** be reset periodically. You will explicitly need to change this limit to get the ads of this campaign back online if this limit has been reached.
+This is the total the campaign can spend and will **not** be reset periodically. You will explicitly need to change this limit to get the ads of this campaign back online if this limit has been reached. The total spent of the campaign so far will already be taken into account.
+

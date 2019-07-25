@@ -4,7 +4,8 @@ Campaign Linked Ads
 ===================
 
 Campaign's linkedAds component defines which ads are part of the campaign. It is possible to add / remove (link / unlink) ads from a campaign using
-:ref:`put_campaign_linkedads` / :ref:`delete_campaign_linkedads`.
+:ref:`put_campaign_linkedads` / :ref:`delete_campaign_linkedads`. Deleting an ad from a campaign does not remove the ad from your inventory, it merely takes it offline in the context of the particular campaign.
+
 LinkedAds are stored as part of the campaign, and have a reference to an Ad using its ID. A linkedAd consists of two parts:
 the Ad ID and optional overrides from the campaign defaults.
 Using linkedAds, it is possible to add a single ad to multiple campaigns (which may have different budgets and targeting criteria).
@@ -19,7 +20,7 @@ The ID of the ad that this linkedAd refers to. This is the unique identifier of 
 
 Overrides
 """""""""
-A linkedAd can have certain overrides as well; for instance, a campaign-level CPC can be set 5 cents, but
+A linkedAd can have certain overrides as well; for instance, a campaign-level CPC can be set to 5 cents, but
 one ad is allowed to spend more (6 cents) - this should be defined on the linkedAd, as an override.
 Another option is to set a specific budget for an ad in a campaign; if the campaign has a daily budget of 20 euros,
 it is possible to limit the spent of a single ad in that campaign to 10 euros, making sure that the budget of the campaign

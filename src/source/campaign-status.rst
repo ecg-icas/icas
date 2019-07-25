@@ -9,40 +9,37 @@ are set by the system or by customer service.
 User Controlled States
 ----------------------
 
-.. index:: pair: Campaign Status; ACTIVE
-.. _campaign_status_active:
+.. list-table::
+ :widths: 20 80
+ :header-rows: 1
 
-ACTIVE
-""""""
+ * - Status
+   - Description
 
-The campaign is active and its ads are shown on the site.
+ * - **ACTIVE**
+   - The campaign is active and its ads are shown on the site.
 
-.. index:: pair: Campaign Status; PAUSED
-.. _campaign_status_paused:
+ * - **PAUSED**
+   - The campaign is not active and its ads are not shown on the site. The campaign can be re-activated, if there is sufficient budget. By default (unless explicitely set) the status of a newly-created campaign is ``PAUSED``.
 
-PAUSED
-""""""
-
-The campaign is not active and its ads are not shown on the site. The campaign can be re-activated.
-
-.. index:: pair: Campaign Status; DELETED
-.. _campaign_status_deleted:
-
-DELETED
-"""""""
-
-The campaign has been deleted by the user and cannot be re-activated. Its ads are also not shown on site.
+ * - **DELETED**
+   - The campaign has been deleted by the user and cannot be re-activated. Its ads are also not shown on site.
 
 
 System States
 -------------
 
-.. index:: pair: Campaign Status; BUDGET_REACHED
-.. _campaign_status_budget_reached:
+.. list-table::
+ :widths: 20 80
+ :header-rows: 1
 
-BUDGET_REACHED
-""""""""""""""
+ * - Status
+   - Description
 
-One or more of the campaign's budgets have been reached. In case of recurring budgets, like Daily or Monthly budgets,
-the budgets will be periodically reset and the campaign will become active again.
-If a campaign is both ``BUDGET_REACHED`` and ``PAUSED``, it will be shown as ``PAUSED``.
+ * - **BUDGET_REACHED**
+   - One or more of the campaign's budgets have been reached. In case of recurring budgets, like Daily or Monthly budgets, the budgets will be periodically automatically reset and the campaign will become active again. This status has a precedence only over the user-controlled status ``ACTIVE``; in other words, if the campaign is ``PAUSED`` (or ``DELETED``), while a campaign budget is reached (``BUDGET_REACHED``), the campaign will be shown as ``PAUSED`` (or ``DELETED``).
+
+
+.. image:: _static/CampaignStates.png
+  :align: center
+  :alt: Campaign states

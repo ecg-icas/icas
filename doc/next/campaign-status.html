@@ -243,27 +243,48 @@
 are set by the system or by customer service.</p>
 <div class="section" id="user-controlled-states">
 <h2>User Controlled States<a class="headerlink" href="#user-controlled-states" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="active">
-<span id="campaign-status-active"></span><span id="index-0"></span><h3>ACTIVE<a class="headerlink" href="#active" title="Permalink to this headline">¶</a></h3>
-<p>The campaign is active and its ads are shown on the site.</p>
-</div>
-<div class="section" id="paused">
-<span id="campaign-status-paused"></span><span id="index-1"></span><h3>PAUSED<a class="headerlink" href="#paused" title="Permalink to this headline">¶</a></h3>
-<p>The campaign is not active and its ads are not shown on the site. The campaign can be re-activated.</p>
-</div>
-<div class="section" id="deleted">
-<span id="campaign-status-deleted"></span><span id="index-2"></span><h3>DELETED<a class="headerlink" href="#deleted" title="Permalink to this headline">¶</a></h3>
-<p>The campaign has been deleted by the user and cannot be re-activated. Its ads are also not shown on site.</p>
-</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>ACTIVE</strong></td>
+<td>The campaign is active and its ads are shown on the site.</td>
+</tr>
+<tr class="row-odd"><td><strong>PAUSED</strong></td>
+<td>The campaign is not active and its ads are not shown on the site. The campaign can be re-activated, if there is sufficient budget. By default (unless explicitely set) the status of a newly-created campaign is <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
+</tr>
+<tr class="row-even"><td><strong>DELETED</strong></td>
+<td>The campaign has been deleted by the user and cannot be re-activated. Its ads are also not shown on site.</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="system-states">
 <h2>System States<a class="headerlink" href="#system-states" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="budget-reached">
-<span id="campaign-status-budget-reached"></span><span id="index-3"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this headline">¶</a></h3>
-<p>One or more of the campaign&#8217;s budgets have been reached. In case of recurring budgets, like Daily or Monthly budgets,
-the budgets will be periodically reset and the campaign will become active again.
-If a campaign is both <code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code> and <code class="docutils literal"><span class="pre">PAUSED</span></code>, it will be shown as <code class="docutils literal"><span class="pre">PAUSED</span></code>.</p>
-</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>BUDGET_REACHED</strong></td>
+<td>One or more of the campaign&#8217;s budgets have been reached. In case of recurring budgets, like Daily or Monthly budgets, the budgets will be periodically automatically reset and the campaign will become active again. This status has a precedence only over the user-controlled status <code class="docutils literal"><span class="pre">ACTIVE</span></code>; in other words, if the campaign is <code class="docutils literal"><span class="pre">PAUSED</span></code> (or <code class="docutils literal"><span class="pre">DELETED</span></code>), while a campaign budget is reached (<code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code>), the campaign will be shown as <code class="docutils literal"><span class="pre">PAUSED</span></code> (or <code class="docutils literal"><span class="pre">DELETED</span></code>).</td>
+</tr>
+</tbody>
+</table>
+<img alt="Campaign states" class="align-center" src="_images/CampaignStates.png" />
 </div>
 </div>
 

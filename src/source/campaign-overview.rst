@@ -3,7 +3,7 @@
 Overview
 ========
 
-Campaigns allow sellers to group their ads together, having shared budgets, same targeting rules, and other components. You can create separate campaigns to run ads in different locations or using different budgets.
+Campaigns allow you, the seller, to group your ads together, having shared budgets, same targeting rules, and other components. You can create separate campaigns to run ads in different locations or using different budgets.
 
 Reporting, as well as status management, can also be done on the level of campaigns, instead of individual ads. It is possible to pause a campaign, resulting in all ads in the campaign to be taken offline. When a campaign reaches one of its :ref:`campaign_budgets`, all ads in that campaign will be taken offline. When budget becomes available again, all ads in the campaign will come
 online again.
@@ -18,11 +18,11 @@ A campaign consists of several components:
 ========================= ================================================
 Component                 Short description
 ========================= ================================================
-:ref:`campaign_id`        The unique reference to the Campaign
+:ref:`campaign_id`        The unique reference to the campaign
 :ref:`campaign_title`     User-provided title
 :ref:`campaign_vendorid`  Unique reference for the seller to the campaign
 :ref:`campaign_status`    Status of the campaign
-:ref:`campaign_linkedads`  Ads in this campaign
+:ref:`campaign_linkedads` Ads in this campaign
 :ref:`campaign_budgets`   Budgets of this campaign
 :ref:`campaign_targeting` Targeting options of this campaign
 :ref:`campaign_cpc`       CPC for all ads in this campaign
@@ -92,5 +92,5 @@ Campaigns can have targeting criteria, allowing you some customization on the ta
 Campaign CPC
 """"""""""""
 
-You can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad will be shown (higher or lower in the results page, etc).
+You can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad(s) will be shown (higher or lower in the results page, etc).
 This CPC will be charged for every click on ads in this campaign. The campaign CPC can be overridden for individual ads in the campaign using :ref:`campaign_linkedads_overview`.
