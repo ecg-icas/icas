@@ -314,8 +314,15 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
            <span class="p">{</span>
-               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
-               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
+                <span class="p">},</span>
+               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="p">}</span>
            <span class="p">}</span>
     <span class="p">},</span>
 <span class="p">]</span>
@@ -339,8 +346,15 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
            <span class="p">{</span>
-               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
-               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
+                <span class="p">},</span>
+               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="p">}</span>
            <span class="p">}</span>
     <span class="p">},</span>
 <span class="p">]</span>

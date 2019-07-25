@@ -17,8 +17,15 @@
            "cpc": 25,
            "budgets":
                {
-                   "daily": 1000,
-                   "monthly": 12300
+                   "daily": {
+                        "limit": 1000
+                    },
+                   "monthly": {
+                        "limit": 12300
+                    },
+                    "total": {
+                        "limit": -1
+                    }
                }
         },
     ]
@@ -42,8 +49,15 @@
            "cpc": 25,
            "budgets":
                {
-                   "daily": 1000,
-                   "monthly": 12300
+                   "daily": {
+                        "limit": 1000
+                    },
+                   "monthly": {
+                        "limit": 12300
+                    },
+                    "total": {
+                        "limit": -1
+                    }
                }
         },
     ]

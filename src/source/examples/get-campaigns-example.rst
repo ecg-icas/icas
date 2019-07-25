@@ -4,7 +4,7 @@
     Accept: application/sellside.campaign.list-v2+json
 
     200 OK
-    Content-Type: application/sellside.campaign.list-v2+json; charset=utf-8
+    Content-Type: application/sellside.campaign.list-v2+json
 
     {
         "campaigns": {

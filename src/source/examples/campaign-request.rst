@@ -31,7 +31,7 @@
 
 
 ===================  =========================================================================================
-Parameter             Description
+Field                 Description
 ===================  =========================================================================================
 ``title``             A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.
 ``status``            The desired state of the campaign. Can be one of the user-controlled status values described in :ref:`User Controlled States <user-controlled-states>`. Default value is ``PAUSED``.

@@ -239,36 +239,63 @@
             
   <div class="section" id="get-campaign-id-linkedads">
 <span id="get-campaign-linkedads"></span><span id="index-0"></span><h1>GET /campaign/{id}/linkedAds<a class="headerlink" href="#get-campaign-id-linkedads" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign-linkedads-list-v1+json</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>This endpoint will return the linkedAds of the specified campaign. A linkedAd is the reference of an ad in a campaign, with possible overrides.
-A single linkedAd has the following fields:</p>
+A single linkedAd has the following model structure:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+           <span class="p">},</span>
+           <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="9%" />
-<col width="8%" />
-<col width="83%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
-<th class="head">Type</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>AdID</td>
-<td>int</td>
-<td>the ID of the Ad this linkedAd refers to</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">adId</span></code></td>
+<td>A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.</td>
 </tr>
-<tr class="row-odd"><td>status</td>
-<td>string</td>
-<td>the current status of this linkedAd. One of <cite>ACTIVE</cite> or <cite>BUDGET_REACHED</cite></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">status</span></code></td>
+<td>The current status of this linkedAd. One of <code class="docutils literal"><span class="pre">ACTIVE</span></code> or <code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code></td>
 </tr>
-<tr class="row-even"><td>cpc</td>
-<td>int</td>
-<td>instead of using the campaign&#8217;s cpc, use this cpc</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
+<td>Instead of using the campaign&#8217;s CPC, use this override (cents)</td>
 </tr>
-<tr class="row-odd"><td>budgets</td>
-<td>[]budget</td>
-<td>Limit this listing&#8217;s spent by these budgets too. Does not void campaign budgets.</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
+<td>An object containing the budget limits for the linkedAd. Does not void campaign budgets. The limits unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
 </tr>
 </tbody>
 </table>
@@ -297,9 +324,16 @@ A single linkedAd has the following fields:</p>
        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
            <span class="p">{</span>
-               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
-               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="mi">12300</span>
-           <span class="p">}</span>
+               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
+               <span class="p">},</span>
+               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
     <span class="p">},</span>
 <span class="p">]</span>
 </pre></div>

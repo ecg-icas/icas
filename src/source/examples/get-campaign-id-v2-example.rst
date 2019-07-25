@@ -1,13 +1,13 @@
 .. code-block:: javascript
 
     GET /api/sellside/campaign/124512
-    Accept: application/sellside.campaign-v2+json, application/json
+    Accept: application/sellside.campaign-v2+json
 
-    200 OK HTTP/1.1
-    Content-Type: application/sellside.campaign-v2+json; charset=utf-8
+    200 OK
+    Content-Type: application/sellside.campaign-v2+json
 
     {
-        "id": 1234,
+        "id": 124512,
         "title": "2017 garden furniture high segment",
         "dateCreated": "2016-02-03T15:35:33Z",
         "dateLastUpdated": "2016-02-03T15:35:33Z",

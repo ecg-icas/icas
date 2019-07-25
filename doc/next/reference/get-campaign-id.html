@@ -238,7 +238,7 @@
           <div role="main">
             
   <div class="section" id="get-campaign-id">
-<span id="index-0"></span><h1>GET /campaign/{id}<a class="headerlink" href="#get-campaign-id" title="Permalink to this headline">¶</a></h1>
+<span id="index-0"></span><span id="id1"></span><h1>GET /campaign/{id}<a class="headerlink" href="#get-campaign-id" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -260,13 +260,13 @@ server returns <strong>400 Bad Request</strong>.</p>
 <div class="section" id="example">
 <h2>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span>GET /api/sellside/campaign/124512
-Accept: application/sellside.campaign-v2+json, application/json
+Accept: application/sellside.campaign-v2+json
 
-200 OK HTTP/1.1
-Content-Type: application/sellside.campaign-v2+json; charset=utf-8
+200 OK
+Content-Type: application/sellside.campaign-v2+json
 
 {
-    &quot;id&quot;: 1234,
+    &quot;id&quot;: 124512,
     &quot;title&quot;: &quot;2017 garden furniture high segment&quot;,
     &quot;dateCreated&quot;: &quot;2016-02-03T15:35:33Z&quot;,
     &quot;dateLastUpdated&quot;: &quot;2016-02-03T15:35:33Z&quot;,
@@ -319,7 +319,7 @@ Content-Type: application/sellside.campaign-v2+json; charset=utf-8
 <col width="94%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
+<tr class="row-odd"><th class="head">Field</th>
 <th class="head">Description</th>
 </tr>
 </thead>

@@ -1,7 +1,8 @@
 .. index:: GET /campaign/{id}
+.. _get_campaign_id:
 
 GET /campaign/{id}
-==================
+====================
 
 .. list-table::
  :widths: 20 80
@@ -23,6 +24,7 @@ Example:
 --------
 
 .. include:: ../examples/get-campaign-id-v2-example.rst
+
 
 The full campaign payload model that you get as a response, has the following structure:
 

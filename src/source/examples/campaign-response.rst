@@ -38,7 +38,7 @@
 
 
 ===================  =========================================================================================
-Parameter             Description
+Field                 Description
 ===================  =========================================================================================
 ``title``             A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.
 ``dateCreated``       The ISO 8601 UTC date and time the campaign was created.

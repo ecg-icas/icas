@@ -2,7 +2,7 @@
 .. _get_campaign_vendorid:
 
 GET /campaign/byVendor/{vendorID}
-=================================
+===================================
 
 .. list-table::
  :widths: 20 80
@@ -11,7 +11,7 @@ GET /campaign/byVendor/{vendorID}
    - ``api_ro`` or ``console_ro``
 
  * - Accept
-   - ``application/sellside.campaign-v1+json, application/json``
+   - ``application/sellside.campaign-v2+json, application/json``
 
 
 This URL returns a single campaign with the given ``vendorID``.
@@ -23,10 +23,12 @@ server returns **400 Bad Request**.
 The vendorID is unique for a user; It is not possible for a single user to create
 multiple campaigns with the same vendorID (even if other campaigns are in status ``DELETED``).
 
-
-TODO: table with fields
-
 Example
 -------
 
 .. include:: ../examples/get-campaign-by-vendorid-v2-example.rst
+
+
+The full campaign payload model that you get as a response, has the following structure:
+
+.. include:: ../examples/campaign-response.rst

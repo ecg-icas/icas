@@ -28,7 +28,19 @@ limit                   integer     The number of campaigns to return. Default i
 
 TODO: sort on status? sort on anything else? (like dateCreated?)
 
-The format of the response is as below:
+Example:
+~~~~~~~~~
 
 .. include:: ../examples/get-campaigns-example.rst
+
+===================  =========================================================================================
+Field                 Description
+===================  =========================================================================================
+``campaigns``         A list of campaign objects that match the request parameters filtering
+``total``             The total number of campaigns that match the request parameters filtering 
+===================  =========================================================================================
+
+The full campaign object model has the following structure:
+
+.. include:: ../examples/campaign-response.rst
 
