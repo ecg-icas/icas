@@ -254,7 +254,7 @@
 </tbody>
 </table>
 <p>This endpoint will return the linkedAds of the specified campaign. A linkedAd is the reference of an ad in a campaign, with possible overrides.
-A single linkedAd has the following model structure:</p>
+A single linkedAd has the following response model structure:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
@@ -262,13 +262,16 @@ A single linkedAd has the following model structure:</p>
    <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
        <span class="p">{</span>
            <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
            <span class="p">},</span>
            <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
             <span class="p">},</span>
             <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
             <span class="p">}</span>
         <span class="p">}</span>
 <span class="p">}</span>
@@ -325,13 +328,16 @@ A single linkedAd has the following model structure:</p>
        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
            <span class="p">{</span>
                <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
                <span class="p">},</span>
                <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">234</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">1346</span>
                 <span class="p">}</span>
             <span class="p">}</span>
     <span class="p">},</span>

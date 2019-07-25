@@ -7,13 +7,16 @@
        "budgets":
            {
                "daily": {
-                    "limit": <number>
+                    "limit": <number>,
+                    "spent": <number>
                },
                "monthly": {
-                    "limit": <number>
+                    "limit": <number>,
+                    "spent": <number>
                 },
                 "total": {
-                    "limit": <number>
+                    "limit": <number>,
+                    "spent": <number>
                 }
             }
     }

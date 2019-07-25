@@ -15,7 +15,7 @@ GET /campaign/{id}/linkedAds
 
 
 This endpoint will return the linkedAds of the specified campaign. A linkedAd is the reference of an ad in a campaign, with possible overrides.
-A single linkedAd has the following model structure:
+A single linkedAd has the following response model structure:
 
 .. include:: ../examples/campaign-ad-response.rst
 

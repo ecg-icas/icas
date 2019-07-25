@@ -9,6 +9,10 @@ If the campaign already has a linkedAd with the same adId, the existing linkedAd
 the provided one.
 It is not possible to have multiple linkedAds in one campaign with the same adId.
 
+A single linkedAd has the following request model structure:
+
+.. include:: ../examples/campaign-ad-request.rst
+
 .. _single_linkedad:
 
 Adding/overwriting a single linkedAd:

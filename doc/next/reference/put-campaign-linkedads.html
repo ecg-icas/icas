@@ -243,6 +243,47 @@
 If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overwritten with
 the provided one.
 It is not possible to have multiple linkedAds in one campaign with the same adId.</p>
+<p>A single linkedAd has the following request model structure:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+           <span class="p">},</span>
+           <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">adId</span></code></td>
+<td>A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
+<td>Instead of using the campaign&#8217;s CPC, use this override (cents)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
+<td>An object containing the budget limits for the linkedAd. Does not void campaign budgets. The limits unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="adding-overwriting-a-single-linkedad">
 <span id="single-linkedad"></span><h2>Adding/overwriting a single linkedAd:<a class="headerlink" href="#adding-overwriting-a-single-linkedad" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
@@ -347,13 +388,16 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
            <span class="p">{</span>
                <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">10</span>
                 <span class="p">},</span>
                <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">100</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">123</span>
                 <span class="p">}</span>
            <span class="p">}</span>
     <span class="p">},</span>
