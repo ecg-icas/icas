@@ -303,17 +303,14 @@ are mandatory.</p>
                     <span class="p">},</span> <span class="p">...</span>
             <span class="p">],</span>
             <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;linkedAds&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="92%" />
+<col width="7%" />
+<col width="93%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -332,6 +329,74 @@ are mandatory.</p>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
 <td>An object containing the budget limits for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The limits unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
+<td>An object of type Campaign Targeting, containing the targeting settings for this campaign. See <a class="reference internal" href="../campaign-targeting.html#id1"><span class="std std-ref">Campaign Targeting</span></a> for more. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">links</span></code></td>
+<td>An object containing RESTful links to other related resources</td>
+</tr>
+</tbody>
+</table>
+<p>The full campaign payload data model that you get as a response, has the following structure:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+            <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                            <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                            <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                            <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+                            <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
+                    <span class="p">},</span> <span class="p">...</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;linkedAds&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The additional (read-only) fields in the response are described below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dateCreated</span></code></td>
+<td>The ISO 8601 UTC date and time the campaign was created.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dateLastUpdated</span></code></td>
+<td>The ISO 8601 UTC date and time the campaign was last updated</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">links</span></code></td>
+<td>An object containing RESTful links to other related resources</td>
 </tr>
 </tbody>
 </table>

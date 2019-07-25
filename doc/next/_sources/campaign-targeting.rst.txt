@@ -3,6 +3,8 @@
 Campaign Targeting
 ==================
 
+.. _campaign-targeting:
+
 Campaigns allow you to target specific groups of buyers. Buyers not in these target groups will typically not
 see any ads from this campaign (some exceptions apply). Currently, only geographic targeting is supported but we
 are looking to add other forms of targeting. See :ref:`post_campaign` for more details.
