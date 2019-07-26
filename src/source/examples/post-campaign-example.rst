@@ -9,7 +9,6 @@
     Content-Type: application/sellside.campaign-v2+json
      {
         "id": 1234,
-        "title": "Default",
         "dateCreated": "2016-02-03T15:35:33Z",
         "dateLastUpdated": "2016-02-03T15:35:33Z",
         "status": "PAUSED",

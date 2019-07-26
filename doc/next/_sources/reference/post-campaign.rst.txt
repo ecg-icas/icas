@@ -22,7 +22,7 @@ are mandatory.
 
 .. include:: ../examples/post-campaign-example.rst
 
-The full campaign request payload model that you can provide, has the following structure:
+The full campaign request payload model that can be provided, has the following structure:
 
 .. include:: ../examples/campaign-request.rst
 

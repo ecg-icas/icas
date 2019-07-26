@@ -3,6 +3,9 @@
 Campaign Linked Ads
 ===================
 
+.. _campaign-linked-ads:
+
+
 Campaign's linkedAds component defines which ads are part of the campaign. It is possible to add / remove (link / unlink) ads from a campaign using
 :ref:`put_campaign_linkedads` / :ref:`delete_campaign_linkedads`. Deleting an ad from a campaign does not remove the ad from your inventory, it merely takes it offline in the context of the particular campaign.
 
