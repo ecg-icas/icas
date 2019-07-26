@@ -16,7 +16,7 @@ POST /campaign/{id}/budgets
    - ``application/sellside.campaign-budgets-v2+json, application/json``
 
 Updates the budgets limits for the specified campaign (see :ref:`Campaign Budgets Object <campaign-budgets-object>` for more). If the ``id`` is invalid, i.e., not a positive integer, the server returns *400 Bad Request.*
-Any previous budgets limits on the specified campaign will be overwritten.
+Any previous budgets limits on the specified campaign will be overwritten. Any budget type which is not included in the payload, will be set to **-1 (Unlimited**).
 
 Examples:
 ---------
