@@ -310,8 +310,8 @@ are mandatory.</p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="6%" />
-<col width="94%" />
+<col width="8%" />
+<col width="92%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
@@ -335,53 +335,7 @@ are mandatory.</p>
 <td>An object containing the budget limits for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The limits unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
-<td>A <a class="reference internal" href="#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. See <a class="reference internal" href="../campaign-targeting.html#id1"><span class="std std-ref">Campaign Targeting</span></a> for more. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
-</tr>
-</tbody>
-</table>
-<div class="section" id="campaign-targeting-object">
-<span id="id2"></span><h2>Campaign Targeting Object<a class="headerlink" href="#campaign-targeting-object" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>    <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                            <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
-                    <span class="p">},</span> <span class="p">...</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="11%" />
-<col width="89%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">geos</span></code></td>
-<td>A list of circular areas for geo-targeting. Default is empty, which implies nationwide targeting (no targeting restrictions).</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">lat</span></code></td>
-<td>Latitude of the center-point of the circular area for geo-targeting</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lon</span></code></td>
-<td>Longitude of the center-point of the circular area for geo-targeting</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">radius</span></code></td>
-<td>Radius (in km) of the circular area for geo-targeting</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">diplayValue</span></code></td>
-<td>Description of the circular area for geo-targeting. Only visible on your dashboard, it will never be shown to buyers.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">regionIds</span></code></td>
-<td>A list of valid regionIds from the <a class="reference internal" href="../regions.html#regions"><span class="std std-ref">Regions</span></a> taxonomy. Default is <code class="docutils literal"><span class="pre">[0]</span></code>, which implies nationwide targeting (no targeting restrictions).</td>
+<td>A <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
 </tr>
 </tbody>
 </table>
@@ -426,8 +380,8 @@ are mandatory.</p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="6%" />
-<col width="94%" />
+<col width="8%" />
+<col width="92%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
@@ -460,14 +414,13 @@ are mandatory.</p>
 <td>An object containing the budget limits for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The limits unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
-<td>A <a class="reference internal" href="#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. See <a class="reference internal" href="../campaign-targeting.html#id1"><span class="std std-ref">Campaign Targeting</span></a> for more. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
+<td>A <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">links</span></code></td>
 <td>An object containing RESTful links to other related resources.</td>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 
 

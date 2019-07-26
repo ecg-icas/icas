@@ -20,3 +20,35 @@ Region Targeting
 
 For tenants that use regions (currently KJCA), you can specify one or more regions in the targeting criteria of a campaign
 to have the ads of that campaign only be shown to buyers located in that region.
+
+
+.. _campaign-targeting-object:
+
+Campaign Targeting Object
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: javascript
+
+	"targeting": {
+    		"geos": [
+    			{
+    				"lat": <number>,
+    				"lon": <number>,
+    				"radius": <number>,
+    				"displayValue": <string>
+    			}, ...
+    		],
+    		"regionIds": [<number>,...]
+    }
+
+
+===================  =========================================================================================
+Parameter             Description
+===================  =========================================================================================
+``geos``              A list of circular areas for geo-targeting. Default is empty, which implies nationwide targeting (no targeting restrictions).
+``lat``               Latitude of the center-point of the circular area for geo-targeting
+``lon``               Longitude of the center-point of the circular area for geo-targeting
+``radius``            Radius (in km) of the circular area for geo-targeting
+``diplayValue``       Description of the circular area for geo-targeting. Only visible on your dashboard, it will never be shown to buyers.
+``regionIds``         A list of valid regionIds from the :ref:`Regions <regions>` taxonomy. Default is ``[0]``, which implies nationwide targeting (no targeting restrictions).
+===================  =========================================================================================

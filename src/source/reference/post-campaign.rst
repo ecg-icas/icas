@@ -27,9 +27,6 @@ The full campaign request payload model that can be provided, has the following 
 .. include:: ../examples/campaign-request.rst
 
 
-.. include:: ../examples/campaign-targeting.rst
-
-
 The full campaign payload model that you get as a response, has the following structure:
 
 .. include:: ../examples/campaign-response.rst
