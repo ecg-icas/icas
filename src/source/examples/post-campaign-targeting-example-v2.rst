@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    POST /api/sellside/campaign/124512
+    POST /api/sellside/campaign/124512/targeting
     Accept: application/sellside.campaign-targeting-v2+json
     "targeting": {
         "geos": [{
@@ -29,7 +29,7 @@ Setting the geo-targeting to nationwide:
 
 .. code-block:: javascript
 
-    POST /api/sellside/campaign/124512
+    POST /api/sellside/campaign/124512/targeting
     Accept: application/sellside.campaign-targeting-v2+json
     "targeting": {
         "geos": []
@@ -48,7 +48,7 @@ Using regions targeting:
 
 .. code-block:: javascript
 
-    POST /api/sellside/campaign/124512
+    POST /api/sellside/campaign/124512/targeting
     Accept: application/sellside.campaign-targeting-v2+json
     "targeting": {
         "regions": [2345,5674]

@@ -8,32 +8,31 @@
 
     [
         {
-           "adId": 12315452,
-           "status": "ACTIVE"
+            "adId": 12315452,
+            "status": "ACTIVE"
         },
         {
-           "adId": 23541252,
-           "status": "ACTIVE",
-           "cpc": 3
+            "adId": 23541252,
+            "status": "ACTIVE",
+            "cpc": 3
         },
         {
-           "adId": 23541252,
-           "status": "BUDGET_REACHED",
-           "cpc": 25,
-           "budgets":
-               {
-                   "daily": {
-                        "limit": 1000,
-                        "spent": 23,
-                   },
-                   "monthly": {
-                        "limit": 12300,
-                        "spent": 234
-                    },
-                    "total": {
-                        "limit": -1,
-                        "spent": 1346
-                    }
+            "adId": 23541252,
+            "status": "BUDGET_REACHED",
+            "cpc": 25,
+            "budgets": {
+                "daily": {
+                    "limit": 1000,
+                    "spent": 23,
+                },
+                "monthly": {
+                    "limit": 12300,
+                    "spent": 234
+                },
+                "total": {
+                    "limit": -1,
+                    "spent": 1346
                 }
+            }
         },
     ]

@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    GET /api/sellside/campaign/124512
+    GET /api/sellside/campaign/124512/targeting
     Accept: application/sellside.campaign-targeting-v2+json
 
     200 OK

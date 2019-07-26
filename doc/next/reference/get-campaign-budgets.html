@@ -239,7 +239,46 @@
             
   <div class="section" id="get-campaign-id-budgets">
 <span id="index-0"></span><h1>GET /campaign/{id}/budgets<a class="headerlink" href="#get-campaign-id-budgets" title="Permalink to this headline">¶</a></h1>
-<p>TODO</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign-budgets-v2+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Returns a <a class="reference internal" href="../campaign-budgets.html#campaign-budgets-object"><span class="std std-ref">Campaign Budgets Object</span></a> for the specified campaign. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em></p>
+<div class="section" id="example">
+<h2>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">budgets</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+
+<span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">234</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">1346</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 

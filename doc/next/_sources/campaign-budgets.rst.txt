@@ -38,3 +38,35 @@ TOTAL
 
 This is the total the campaign can spend and will **not** be reset periodically. You will explicitly need to change this limit to get the ads of this campaign back online if this limit has been reached. The total spent of the campaign so far will already be taken into account.
 
+
+.. _campaign-budgets-object:
+
+Campaign Budgets Object
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: javascript
+
+   "budgets": {
+        "daily": {
+            "limit": <number>,
+            "spent": <number>
+            },
+        "monthly": {
+            "limit": <number>,
+            "spent": <number>
+        },
+        "total": {
+            "limit": <number>,
+            "spent": <number>
+        }
+    }
+
+
+===================  ============================================================================================================================================================================================================================================================================
+Parameter             Description
+===================  ============================================================================================================================================================================================================================================================================
+``daily``              The maximum amount (in cents) that a campaign can spend per day (``limit``), and the current-day ``spent``. The ``spent`` amount value will be reset at midnight every day. If not set, the ``limit`` will be shown as **-1 (Unlimited)**.
+``monthly``            The maximum amount (in cents) that a campaign can spend per calendar month (``limit``), and the current-month ``spent``. The ``spent`` value will be reset at the beginning of the month. If not set, the ``limit`` will be shown as **-1 (Unlimited)**.
+``total``            The maximum amount (in cents) that a campaign can spend in its lifetime, and the current total ``spent``. The ``spent`` value will never be reset. If not set, the ``limit`` will be shown as **-1 (Unlimited)**.
+===================  ============================================================================================================================================================================================================================================================================
+

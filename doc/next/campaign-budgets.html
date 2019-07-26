@@ -258,6 +258,47 @@ If no monthly budget is set, and you <strong>add</strong> a monthly budget after
 <div class="section" id="total">
 <h3>TOTAL<a class="headerlink" href="#total" title="Permalink to this headline">¶</a></h3>
 <p>This is the total the campaign can spend and will <strong>not</strong> be reset periodically. You will explicitly need to change this limit to get the ads of this campaign back online if this limit has been reached. The total spent of the campaign so far will already be taken into account.</p>
+<div class="section" id="campaign-budgets-object">
+<span id="id1"></span><h4>Campaign Budgets Object<a class="headerlink" href="#campaign-budgets-object" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
+     <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+         <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+         <span class="p">},</span>
+     <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+         <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+     <span class="p">},</span>
+     <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+         <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">daily</span></code></td>
+<td>The maximum amount (in cents) that a campaign can spend per day (<code class="docutils literal"><span class="pre">limit</span></code>), and the current-day <code class="docutils literal"><span class="pre">spent</span></code>. The <code class="docutils literal"><span class="pre">spent</span></code> amount value will be reset at midnight every day. If not set, the <code class="docutils literal"><span class="pre">limit</span></code> will be shown as <strong>-1 (Unlimited)</strong>.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">monthly</span></code></td>
+<td>The maximum amount (in cents) that a campaign can spend per calendar month (<code class="docutils literal"><span class="pre">limit</span></code>), and the current-month <code class="docutils literal"><span class="pre">spent</span></code>. The <code class="docutils literal"><span class="pre">spent</span></code> value will be reset at the beginning of the month. If not set, the <code class="docutils literal"><span class="pre">limit</span></code> will be shown as <strong>-1 (Unlimited)</strong>.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">total</span></code></td>
+<td>The maximum amount (in cents) that a campaign can spend in its lifetime, and the current total <code class="docutils literal"><span class="pre">spent</span></code>. The <code class="docutils literal"><span class="pre">spent</span></code> value will never be reset. If not set, the <code class="docutils literal"><span class="pre">limit</span></code> will be shown as <strong>-1 (Unlimited)</strong>.</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>

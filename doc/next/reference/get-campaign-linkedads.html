@@ -259,21 +259,20 @@ A single linkedAd has the following response model structure:</p>
    <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
    <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-   <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
-       <span class="p">{</span>
-           <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-           <span class="p">},</span>
-           <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
                 <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
             <span class="p">},</span>
-            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">}</span>
+        <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
         <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -313,33 +312,32 @@ A single linkedAd has the following response model structure:</p>
 
 <span class="p">[</span>
     <span class="p">{</span>
-       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
-       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span>
+        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
-       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541252</span><span class="p">,</span>
-       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
-       <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span>
+        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541252</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span>
     <span class="p">},</span>
     <span class="p">{</span>
-       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541252</span><span class="p">,</span>
-       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;BUDGET_REACHED&quot;</span><span class="p">,</span>
-       <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
-       <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
-           <span class="p">{</span>
-               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
-               <span class="p">},</span>
-               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">234</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">1346</span>
-                <span class="p">}</span>
+        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541252</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;BUDGET_REACHED&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">234</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">1346</span>
             <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">},</span>
 <span class="p">]</span>
 </pre></div>
