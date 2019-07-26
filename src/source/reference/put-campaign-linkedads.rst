@@ -4,8 +4,8 @@
 PUT /campaign/{id}/linkedAds
 ============================
 
-It is possible to add/overwrite a :ref:`single <single_linkedad>` linkedAd or :ref:`multiple <list_linkedad>` linkedAds in one go.
-If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overwritten with
+It is possible to add/override a :ref:`single <single_linkedad>` linkedAd or :ref:`multiple <list_linkedad>` linkedAds in one go.
+If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overriden with
 the provided one.
 It is not possible to have multiple linkedAds in one campaign with the same adId.
 
@@ -15,7 +15,7 @@ A single linkedAd has the following request model structure:
 
 .. _single_linkedad:
 
-Adding/overwriting a single linkedAd:
+Adding/overriding a single linkedAd:
 -------------------------------------
 
 .. list-table::
@@ -27,13 +27,13 @@ Adding/overwriting a single linkedAd:
  * - Content-Type
    - ``application/sellside.campaign-linkedads-v1+json; charset=utf-8``
 
-Adds a linkedAd to the campaign or overwrites ones with same adIds. If successful, the server responds with `HTTP 200`.
+Adds a linkedAd to the campaign or overrides ones with same adIds. If successful, the server responds with `HTTP 200`.
 
 .. include:: ../examples/put-campaign-linkedads-v1-example.rst
 
 .. _list_linkedad:
 
-Adding/overwriting multiple linkedAds:
+Adding/overriding multiple linkedAds:
 --------------------------------------
 
 .. list-table::
@@ -45,6 +45,9 @@ Adding/overwriting multiple linkedAds:
  * - Content-Type
    - ``application/sellside.campaign-linkedads-list-v1+json; charset=utf-8``
 
-Adds multiple linkedAds to the campaign. Overwrites existing linkedAds with same adIds. If successful, the server responds with `HTTP 200`.
+Adds multiple linkedAds to the campaign. Overrides existing linkedAds with same adIds. If successful, the server responds with `HTTP 200`.
 
 .. include:: ../examples/put-campaign-linkedads-list-v1-example.rst
+
+
+In the example above, the first linkedAd has no overrides, it merely links the ad to the campaign; the second linkedAd overrides the cpc value that the campaign may have as a setting; the third linkedAd overrides any campaign budgets with ones specific for that ad.

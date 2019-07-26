@@ -11,10 +11,10 @@ GET /campaign/{id}/linkedAds
    - ``api_ro`` or ``console_ro``
 
  * - Accept
-   - ``application/sellside.campaign-linkedads-list-v1+json``
+   - ``application/sellside.campaign-linkedad-list-v1+json``
 
 
-This endpoint will return the linkedAds of the specified campaign. A linkedAd is the reference of an ad in a campaign, with possible overrides.
+This endpoint will return the linkedAds of the specified campaign. A linkedAd (:ref:`Campaign Linked Ads <campaign-linked-ads>`) is the reference of an ad in a campaign, with possible overrides.
 A single linkedAd has the following response model structure:
 
 .. include:: ../examples/campaign-ad-response.rst

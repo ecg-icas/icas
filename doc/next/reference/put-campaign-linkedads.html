@@ -174,7 +174,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-campaigns.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorID}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
@@ -239,26 +239,25 @@
             
   <div class="section" id="put-campaign-id-linkedads">
 <span id="put-campaign-linkedads"></span><span id="index-0"></span><h1>PUT /campaign/{id}/linkedAds<a class="headerlink" href="#put-campaign-id-linkedads" title="Permalink to this headline">¶</a></h1>
-<p>It is possible to add/overwrite a <a class="reference internal" href="#single-linkedad"><span class="std std-ref">single</span></a> linkedAd or <a class="reference internal" href="#list-linkedad"><span class="std std-ref">multiple</span></a> linkedAds in one go.
-If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overwritten with
+<p>It is possible to add/override a <a class="reference internal" href="#single-linkedad"><span class="std std-ref">single</span></a> linkedAd or <a class="reference internal" href="#list-linkedad"><span class="std std-ref">multiple</span></a> linkedAds in one go.
+If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overriden with
 the provided one.
 It is not possible to have multiple linkedAds in one campaign with the same adId.</p>
 <p>A single linkedAd has the following request model structure:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-   <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-   <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
-       <span class="p">{</span>
-           <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-           <span class="p">},</span>
-           <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">}</span>
+    <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
         <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -274,18 +273,18 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">adId</span></code></td>
-<td>A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.</td>
+<td>The ID of the ad that this linkedAd refers to.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
 <td>Instead of using the campaign&#8217;s CPC, use this override (cents)</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
-<td>An object containing the budget limits for the linkedAd. Does not void campaign budgets. The limits unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
+<td>An object containing the budget limits for the linkedAd. Does not void campaign budgets. The <code class="docutils literal"><span class="pre">limits</span></code> unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="adding-overwriting-a-single-linkedad">
-<span id="single-linkedad"></span><h2>Adding/overwriting a single linkedAd:<a class="headerlink" href="#adding-overwriting-a-single-linkedad" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-overriding-a-single-linkedad">
+<span id="single-linkedad"></span><h2>Adding/overriding a single linkedAd:<a class="headerlink" href="#adding-overriding-a-single-linkedad" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -300,10 +299,10 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 </tr>
 </tbody>
 </table>
-<p>Adds a linkedAd to the campaign or overwrites ones with same adIds. If successful, the server responds with <cite>HTTP 200</cite>.</p>
+<p>Adds a linkedAd to the campaign or overrides ones with same adIds. If successful, the server responds with <cite>HTTP 200</cite>.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">linkedAds</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">{</span>
    <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
@@ -311,7 +310,7 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 <span class="p">}</span>
 
 <span class="nx">HTTP</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">{</span>
    <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
@@ -321,8 +320,8 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 </pre></div>
 </div>
 </div>
-<div class="section" id="adding-overwriting-multiple-linkedads">
-<span id="list-linkedad"></span><h2>Adding/overwriting multiple linkedAds:<a class="headerlink" href="#adding-overwriting-multiple-linkedads" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-overriding-multiple-linkedads">
+<span id="list-linkedad"></span><h2>Adding/overriding multiple linkedAds:<a class="headerlink" href="#adding-overriding-multiple-linkedads" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -337,10 +336,10 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 </tr>
 </tbody>
 </table>
-<p>Adds multiple linkedAds to the campaign. Overwrites existing linkedAds with same adIds. If successful, the server responds with <cite>HTTP 200</cite>.</p>
+<p>Adds multiple linkedAds to the campaign. Overrides existing linkedAds with same adIds. If successful, the server responds with <cite>HTTP 200</cite>.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">linkedAds</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">[</span>
     <span class="p">{</span>
@@ -369,7 +368,7 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 <span class="p">]</span>
 
 <span class="nx">HTTP</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">[</span>
     <span class="p">{</span>
@@ -404,6 +403,7 @@ It is not possible to have multiple linkedAds in one campaign with the same adId
 <span class="p">]</span>
 </pre></div>
 </div>
+<p>In the example above, the first linkedAd has no overrides, it merely links the ad to the campaign; the second linkedAd overrides the <code class="docutils literal"><span class="pre">cpc</span></code> value that the campaign may have as a setting; the third linkedAd overrides any campaign budgets with ones specific for that ad.</p>
 </div>
 </div>
 
