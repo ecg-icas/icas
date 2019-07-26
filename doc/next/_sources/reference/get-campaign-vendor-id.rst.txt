@@ -14,7 +14,7 @@ GET /campaign/byVendor/{vendorId}
    - ``application/sellside.campaign-v2+json, application/json``
 
 
-This URL returns a single campaign with the given ``vendorId``.
+Returns a single campaign with the given ``vendorId``.
 
 If the campaign does not exist or does not belong to the user the server returns
 **404 Not Found**. If the ``vendorId`` is bigger than 64 characters the

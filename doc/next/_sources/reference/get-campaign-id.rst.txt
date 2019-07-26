@@ -14,7 +14,7 @@ GET /campaign/{id}
    - ``application/sellside.campaign-v2+json, application/json``
 
 
-This URL returns a single campaign with the given ``id``.
+Returns a single campaign with the given ``id``.
 
 If the campaign does not exist or does not belong to the user the server returns
 **404 Not Found**. If the ``id`` is invalid, i.e. not a positive integer the

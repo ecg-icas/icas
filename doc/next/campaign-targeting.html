@@ -251,6 +251,8 @@ to have the ads of that campaign only be shown to buyers located in that geograp
 <h2>Region Targeting<a class="headerlink" href="#region-targeting" title="Permalink to this headline">¶</a></h2>
 <p>For tenants that use regions (currently KJCA), you can specify one or more regions in the targeting criteria of a campaign
 to have the ads of that campaign only be shown to buyers located in that region.</p>
+<p>TODO: how will regions and geos interplay? Should we allow only using one at a time in a campaign? (and then targeting area is a union of all geos OR all regions)
+If we allow both to be used, then we might need to change the defaults (right now default is nationwide which means they would need to adjust either both or none)</p>
 <div class="section" id="campaign-targeting-object">
 <span id="id2"></span><h3>Campaign Targeting Object<a class="headerlink" href="#campaign-targeting-object" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span>    <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
