@@ -239,7 +239,75 @@
             
   <div class="section" id="get-campaign-id-funnel">
 <span id="index-0"></span><h1>GET /campaign/{id}/funnel<a class="headerlink" href="#get-campaign-id-funnel" title="Permalink to this headline">¶</a></h1>
-<p>TODO (right now path is /estimate/campaign/{id}/performance which is ultra-ugly)</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign-targeting-v2+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Returns a <a class="reference internal" href="#campaign-funnel-object"><span class="std std-ref">Campaign Funnel Object</span></a> for the specified campaign. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
+The funnel estimates the daily performance of the specified campaign, based on the the budgets, targeting settings and the currently-active ads in the campaign.</p>
+<div class="section" id="campaign-funnel-object">
+<span id="id1"></span><h2>Campaign Funnel Object<a class="headerlink" href="#campaign-funnel-object" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;buyerRanges&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;potential&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;min&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;visitorRanges&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;clicks&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;min&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;URLClicks&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;min&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;buyerRanges&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;potential&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;min&quot;</span><span class="o">:</span><span class="mi">3500</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span><span class="mi">4500</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span><span class="mi">15000</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;visitorRanges&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;clicks&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;min&quot;</span><span class="o">:</span><span class="mi">550</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span><span class="mi">700</span>
+        <span class="p">},</span>
+    <span class="s2">&quot;URLClicks&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;min&quot;</span><span class="o">:</span><span class="mi">220</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="o">:</span><span class="mi">430</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>TODO: figure out if we want to keep the current API and expose it as it is. We should maybe wait until CDATA...</p>
+</div>
+</div>
 </div>
 
 

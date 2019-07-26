@@ -257,7 +257,7 @@
 </tbody>
 </table>
 <p>Updates the budgets limits for the specified campaign (see <a class="reference internal" href="../campaign-budgets.html#campaign-budgets-object"><span class="std std-ref">Campaign Budgets Object</span></a> for more). If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
-Any previous budgets limits on the specified campaign will be overwritten.</p>
+Any previous budgets limits on the specified campaign will be overwritten. Any budget type which is not included in the payload, will be set to <strong>-1 (Unlimited</strong>).</p>
 <div class="section" id="examples">
 <h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">budgets</span>
