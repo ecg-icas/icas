@@ -4,7 +4,7 @@
 PUT /campaign/{id}/linkedAds
 ============================
 
-It is possible to add/override a :ref:`single <single_linkedad>` linkedAd or :ref:`multiple <list_linkedad>` linkedAds in one go.
+It is possible to add/override a :ref:`single <single_linkedad>` linkedAd or :ref:`multiple <list_linkedad>` linkedAds to a campaign in one go.
 If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overriden with
 the provided one.
 It is not possible to have multiple linkedAds in one campaign with the same adId.
@@ -25,7 +25,7 @@ Adding/overriding a single linkedAd:
    - ``api_rw`` or ``console_rw``
 
  * - Content-Type
-   - ``application/sellside.campaign-linkedads-v1+json; charset=utf-8``
+   - ``application/sellside.campaign-linkedad-v1+json; charset=utf-8``
 
 Adds a linkedAd to the campaign or overrides ones with same adIds. If successful, the server responds with `HTTP 200`.
 
@@ -43,7 +43,7 @@ Adding/overriding multiple linkedAds:
    - ``api_rw`` or ``console_rw``
 
  * - Content-Type
-   - ``application/sellside.campaign-linkedads-list-v1+json; charset=utf-8``
+   - ``application/sellside.campaign-linkedad-list-v1+json; charset=utf-8``
 
 Adds multiple linkedAds to the campaign. Overrides existing linkedAds with same adIds. If successful, the server responds with `HTTP 200`.
 

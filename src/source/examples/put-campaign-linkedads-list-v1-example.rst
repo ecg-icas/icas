@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    PUT /api/sellside/campaign/{id}/linkedAds
+    PUT /api/sellside/campaign/123/linkedAds
     Accept: application/sellside.campaign-linkedad-list-v1+json; charset=utf-8
     Content-Type: application/sellside.campaign-linkedad-list-v1+json; charset=utf-8
 
@@ -9,11 +9,11 @@
            "adId": 12315452
         },
         {
-           "adId": 23541252,
+           "adId": 23541253,
            "cpc": 3
         },
         {
-           "adId": 23541252,
+           "adId": 23541254,
            "cpc": 25,
            "budgets":
                {
@@ -39,12 +39,12 @@
            "status": ACTIVE
         },
         {
-           "adId": 23541252,
+           "adId": 23541253,
            "status": ACTIVE,
            "cpc": 3
         },
         {
-           "adId": 23541252,
+           "adId": 23541254,
            "status": ACTIVE,
            "cpc": 25,
            "budgets":
