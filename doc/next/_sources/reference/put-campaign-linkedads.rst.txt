@@ -24,6 +24,9 @@ Adding/overriding a single linkedAd:
  * - Scope
    - ``api_rw`` or ``console_rw``
 
+ * - Accept
+   - ``application/sellside.campaign-linkedad-v1+json; charset=utf-8``
+
  * - Content-Type
    - ``application/sellside.campaign-linkedad-v1+json; charset=utf-8``
 
@@ -41,6 +44,9 @@ Adding/overriding multiple linkedAds:
 
  * - Scope
    - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.campaign-linkedad-list-v1+json; charset=utf-8``
 
  * - Content-Type
    - ``application/sellside.campaign-linkedad-list-v1+json; charset=utf-8``

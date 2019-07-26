@@ -251,6 +251,9 @@
 <tr class="row-even"><td>Accept</td>
 <td><code class="docutils literal"><span class="pre">application/sellside.campaign-targeting-v2+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
+<tr class="row-odd"><td>Content-Type</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign-targeting-v2+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
 </tbody>
 </table>
 <p>Updates the targeting for the specified campaign (see <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a> for more). If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
@@ -258,6 +261,7 @@ Any previous targeting setting on the specified campaign will be overwritten.</p
 <div class="section" id="examples">
 <h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">targeting</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[{</span>
@@ -282,6 +286,7 @@ Any previous targeting setting on the specified campaign will be overwritten.</p
 </div>
 <p>Setting the geo-targeting to nationwide:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">targeting</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[]</span>
@@ -296,6 +301,7 @@ Any previous targeting setting on the specified campaign will be overwritten.</p
 </div>
 <p>Using regions targeting:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">targeting</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;regions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">2345</span><span class="p">,</span><span class="mi">5674</span><span class="p">]</span>
