@@ -40,7 +40,11 @@ System States
    - Description
 
  * - **BUDGET_REACHED**
-   - One or more of the campaign's budgets have been reached and its linked ads are not shown on site. In case of recurring budgets, like Daily or Monthly budgets, the budgets will be periodically automatically reset and the campaign will become active again. This status has a precedence only over the user-controlled status ``ACTIVE``; in other words, if the campaign is ``PAUSED`` (or ``DELETED``), while a campaign budget is reached (``BUDGET_REACHED``), the campaign will be shown as ``PAUSED`` (or ``DELETED``).
+   - One or more of the campaign's budgets have been reached and its linked ads are not shown on site. In case of
+     recurring budgets, like Daily or Monthly budgets, the budgets will be periodically reset and the campaign will
+     automatically become active again. This status has a precedence only over the user-controlled status ``ACTIVE``;
+     in other words, if the campaign is ``PAUSED`` (or ``DELETED``), while a campaign budget is reached
+     (``BUDGET_REACHED``), the campaign will be shown as ``PAUSED`` (or ``DELETED``).
 
 
 .. image:: _static/CampaignStates.png
