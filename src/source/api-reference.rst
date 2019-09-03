@@ -38,6 +38,7 @@ API Reference
    reference/put-campaign-linkedads
    reference/delete-campaign-linkedads
    reference/get-campaign-funnel
+   reference/put-campaign-status
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import

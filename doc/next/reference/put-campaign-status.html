@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /campaign/byVendor/{vendorId} &mdash; iCAS Sellside API 0.200 documentation</title>
+  <title>PUT /campaign/{id}/status/{status} &mdash; iCAS Sellside API 0.200 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /campaign/{id}/budgets" href="get-campaign-budgets.html"/>
-        <link rel="prev" title="GET /campaign/{id}" href="get-campaign-id.html"/> 
+        <link rel="next" title="GET /feed/config" href="get-feed-config.html"/>
+        <link rel="prev" title="GET /campaign/{id}/funnel" href="get-campaign-funnel.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -174,7 +174,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-campaigns.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /campaign/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
@@ -183,7 +183,7 @@
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-linkedads.html">PUT /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
@@ -227,10 +227,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>GET /campaign/byVendor/{vendorId}</li>
+    <li>PUT /campaign/{id}/status/{status}</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-campaign-vendor-id.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/put-campaign-status.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -238,8 +238,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-campaign-byvendor-vendorid">
-<span id="get-campaign-vendorid"></span><span id="index-0"></span><h1>GET /campaign/byVendor/{vendorId}<a class="headerlink" href="#get-campaign-byvendor-vendorid" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="put-campaign-id-status-status">
+<span id="put-campaign-status"></span><span id="index-0"></span><h1>PUT /campaign/{id}/status/{status}<a class="headerlink" href="#put-campaign-id-status-status" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -247,122 +247,20 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.campaign-v2+json,</span> <span class="pre">application/json</span></code></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign-status-v2+json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>Returns a single campaign with the given <code class="docutils literal"><span class="pre">vendorId</span></code>.</p>
-<p>If the campaign does not exist or does not belong to the user the server returns
-<strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">vendorId</span></code> is bigger than 64 characters the
-server returns <strong>400 Bad Request</strong>.</p>
-<p>The vendorId is unique for a user; It is not possible for a single user to create
-multiple campaigns with the same vendorId (even if other campaigns are in status <code class="docutils literal"><span class="pre">DELETED</span></code>).</p>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>GET /api/sellside/campaign/byVendor/my-christmas-campaign-3A
-Accept: application/sellside.campaign-v2+json
+<p>Updates the status for the specified campaign. Can be one of the user-controlled status values described in <a class="reference internal" href="../campaign-status.html#id1"><span class="std std-ref">User Controlled States</span></a>. If successful, the server responds with <cite>HTTP 200</cite>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">status</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
-200 OK
-Content-Type: application/sellside.campaign-v2+json
-
-{
-    &quot;id&quot;: 1234,
-    &quot;title&quot;: &quot;My christmas campaign&quot;,
-    &quot;dateCreated&quot;: &quot;2016-02-03T15:35:33Z&quot;,
-    &quot;dateLastUpdated&quot;: &quot;2016-02-03T15:35:33Z&quot;,
-    &quot;status&quot;: &quot;ACTIVE&quot;,
-    &quot;vendorId: &quot;my-christmas-campaign-3A&quot;,
-    &quot;links&quot;: {
-        &quot;linkedAds&quot;: &quot;api/sellside/campaign/1234/linkedAds&quot;
-    }
-}
+<span class="nx">HTTP</span> <span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">status</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 </pre></div>
-</div>
-<p>The full campaign payload model that you get as a response, has the following structure:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                            <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
-                    <span class="p">},</span> <span class="p">...</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;linkedAds&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="7%" />
-<col width="93%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">id</span></code></td>
-<td>Unique reference to the campaign. Generated by us, and needed for certain actions, to modify the campaign and its properties.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">title</span></code></td>
-<td>A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">dateCreated</span></code></td>
-<td>The ISO 8601 UTC date and time the campaign was created.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dateLastUpdated</span></code></td>
-<td>The ISO 8601 UTC date and time the campaign was last updated.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">status</span></code></td>
-<td>The desired state of the campaign. Can be one of the user-controlled status values described in <a class="reference internal" href="../campaign-status.html#id1"><span class="std std-ref">User Controlled States</span></a>. Default value is <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">vendorId</span></code></td>
-<td>Seller-provided unique reference the campaign. Once set, it cannot be modified.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
-<td>Fixed CPC (in cents) that applies for all <a class="reference internal" href="../campaign-linkedads.html#id1"><span class="std std-ref">Campaign Linked Ads</span></a> in this campaign.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
-<td>An object containing the budget current limits and spent for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The unit for <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">spent</span></code> is cents. The default <code class="docutils literal"><span class="pre">limit</span></code> values are set to <strong>-1 (Unlimited)</strong>.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
-<td>A <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">links</span></code></td>
-<td>An object containing RESTful links to other related resources.</td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 
@@ -372,10 +270,10 @@ Content-Type: application/sellside.campaign-v2+json
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-campaign-budgets.html" class="btn btn-neutral float-right" title="GET /campaign/{id}/budgets"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-feed-config.html" class="btn btn-neutral float-right" title="GET /feed/config"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="get-campaign-id.html" class="btn btn-neutral" title="GET /campaign/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="get-campaign-funnel.html" class="btn btn-neutral" title="GET /campaign/{id}/funnel"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
