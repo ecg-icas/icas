@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Authentication &mdash; iCAS Sellside API 0.112 documentation</title>
+  <title>Authentication &mdash; iCAS Sellside API 0.200 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.112 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="next" title="Advertisements" href="ads.html"/>
         <link rel="prev" title="Overview" href="overview.html"/> 
 
@@ -92,11 +92,18 @@
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ad-status.html">Ad Status</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#user-controlled-states">User Controlled States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#customer-service-states">Customer Service States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html#system-states">System States</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
@@ -110,6 +117,14 @@
 <li class="toctree-l2"><a class="reference internal" href="regions.html#data-model">Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-linkedads.html">Campaign Linked Ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
@@ -151,16 +166,29 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaigns.html">GET /campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign-targeting.html">POST /campaign/{id}/targeting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-linkedads.html">GET /campaign/{id}/linkedAds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-linkedads.html">PUT /campaign/{id}/linkedAds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -169,8 +197,6 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -266,48 +292,48 @@ secret, for an access token.</p>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.demo.qa-mp.so/accounts/oauth/authorize">https://admarkt.demo.qa-mp.so/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
 <td><a class="reference external" href="https://admarkt.demo.qa-mp.so/accounts/oauth/token">https://admarkt.demo.qa-mp.so/accounts/oauth/token</a></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.marktplaats.nl/accounts/oauth/authorize">https://admarkt.marktplaats.nl/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
 <td><a class="reference external" href="https://admarkt.marktplaats.nl/accounts/oauth/token">https://admarkt.marktplaats.nl/accounts/oauth/token</a></td>
 </tr>
 <tr class="row-even"><td>Kijiji Canada</td>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.qa10.kjdev.ca/accounts/oauth/authorize">https://admarkt.qa10.kjdev.ca/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
 <td><a class="reference external" href="https://admarkt.qa10.kjdev.ca/accounts/oauth/token">https://admarkt.qa10.kjdev.ca/accounts/oauth/token</a></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.kijiji.ca/accounts/oauth/authorize">https://admarkt.kijiji.ca/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
 <td><a class="reference external" href="https://admarkt.kijiji.ca/accounts/oauth/token">https://admarkt.kijiji.ca/accounts/oauth/token</a></td>
 </tr>
 <tr class="row-even"><td>2dehands Belgium</td>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/authorize">https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
 <td><a class="reference external" href="https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/token">https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/token</a></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.2dehands.be/accounts/oauth/authorize">https://admarkt.2dehands.be/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
 <td><a class="reference external" href="https://admarkt.2dehands.be/accounts/oauth/token">https://admarkt.2dehands.be/accounts/oauth/token</a></td>
 </tr>
 </tbody>
@@ -639,7 +665,7 @@ granted by the user which is part of the user record.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017 The iCAS Team.
+        &copy; Copyright 2019 The iCAS Team.
     </p>
   </div>
 
@@ -659,7 +685,7 @@ granted by the user which is part of the user record.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.112',
+            VERSION:'0.200',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

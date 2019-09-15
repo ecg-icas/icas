@@ -19,7 +19,7 @@ If the ``id`` is invalid, i.e. not a positive integer the server returns **400
 Bad Request**.
 
 To set the new status append it to the base url. The status can be one of the
-user controlled status values as defined in :doc:`ad-status`.
+user controlled status values as defined in :ref:`ad_status_overview`.
 
 Changing the status to **ACTIVE** also changes the number of active
 ads in this category for this user. If the current number of active ads

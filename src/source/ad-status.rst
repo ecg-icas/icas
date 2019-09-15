@@ -1,4 +1,3 @@
-.. index:: single: Ad Status
 .. _ad_status_overview:
 
 Ad Status

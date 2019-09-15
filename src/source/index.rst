@@ -31,9 +31,12 @@ Contents
    overview
    authentication
    ads
+   ad-status
    categories
+   price-types
    attributes
    regions
+   campaigns
    feeds
    reporting
    error-handling
@@ -47,6 +50,10 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.200 -18 Jul 2019 - tw/dr
+
+  * add :ref:`campaigns` endpoints and information
 
 * v.0.112 - 18 Jul 2019 - tw
 

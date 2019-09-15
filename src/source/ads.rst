@@ -130,7 +130,7 @@ omitted.
 status
 """"""
 
-Is a valid value from the list of :ref:`ad_status`. The user can set only one
+Is a valid value from the list of :ref:`ad_status_overview`. The user can set only one
 of the user controlled states *ACTIVE*, *PAUSED* or *DELETED*.
 
 .. index:: currency

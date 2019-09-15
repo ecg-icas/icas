@@ -22,16 +22,29 @@ API Reference
    reference/get-category-id
    reference/get-category-id-attributes
    reference/get-category-id-funnel
+   reference/get-region-id
+   reference/get-regions
+   reference/get-image
+   reference/post-image
+   reference/get-campaigns
+   reference/post-campaign
+   reference/get-campaign-id
+   reference/get-campaign-vendor-id
+   reference/get-campaign-budgets
+   reference/post-campaign-budgets
+   reference/get-campaign-targeting
+   reference/post-campaign-targeting
+   reference/get-campaign-linkedads
+   reference/put-campaign-linkedads
+   reference/delete-campaign-linkedads
+   reference/get-campaign-funnel
+   reference/put-campaign-status
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import
    reference/get-feed-import-id-detail
    reference/get-feed-import-id-detail-vendor-id
    reference/get-feed-xsd
-   reference/get-image
-   reference/post-image
-   reference/get-region-id
-   reference/get-regions
    reference/get-report
    reference/get-report-detail
    reference/get-report-detail-id
@@ -40,6 +53,4 @@ API Reference
    reference/get-report-summary
    reference/post-metrics-data
    reference/get-user
-   reference/ad-status
-   reference/price-types
    reference/error-codes

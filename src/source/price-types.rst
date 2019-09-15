@@ -1,15 +1,4 @@
-.. index::
-    single: Price Types
-    pair: Price Types; BIDDING
-    pair: Price Types; BIDDING_FROM
-    pair: Price Types; FIXED_PRICE
-    pair: Price Types; FREE
-    pair: Price Types; NEGOTIABLE
-    pair: Price Types; SEE_DESCRIPTION
-    pair: Price Types; SWAP
-    pair: Price Types; CREDIBLE_BID
-    pair: Price Types; ON_DEMAND
-    pair: Price Types; RESERVED
+.. _price_types_overview:
 
 .. _price_types:
 
