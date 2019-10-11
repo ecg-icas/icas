@@ -14,6 +14,8 @@ GET /campaign/{id}/budgets
 
 Returns a :ref:`Campaign Budgets Object <campaign-budgets-object>` for the specified campaign. If the ``id`` is invalid, i.e., not a positive integer, the server returns *400 Bad Request.*
 
+If the campaign is in DELETED status, `404 Not Found` is returned.
+
 Example:
 --------
 
