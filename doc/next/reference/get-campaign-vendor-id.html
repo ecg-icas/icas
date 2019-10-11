@@ -277,6 +277,20 @@ Content-Type: application/sellside.campaign-v2+json
     &quot;vendorId: &quot;my-christmas-campaign-3A&quot;,
     &quot;links&quot;: {
         &quot;linkedAds&quot;: &quot;api/sellside/campaign/1234/linkedAds&quot;
+    },
+    &quot;budgets&quot;: {
+        &quot;daily&quot;: {
+            &quot;limit&quot;: -1,
+            &quot;spent&quot;: 10
+        },
+        &quot;monthly&quot;: {
+            &quot;limit&quot;: -1,
+            &quot;spent&quot;: 100
+        },
+        &quot;total&quot;: {
+            &quot;limit&quot;: 2000,
+            &quot;spent&quot;: 1000
+        }
     }
 }
 </pre></div>
@@ -286,6 +300,7 @@ Content-Type: application/sellside.campaign-v2+json
     <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
@@ -322,8 +337,8 @@ Content-Type: application/sellside.campaign-v2+json
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="7%" />
-<col width="93%" />
+<col width="6%" />
+<col width="94%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
@@ -353,7 +368,7 @@ Content-Type: application/sellside.campaign-v2+json
 <td>Fixed CPC (in cents) that applies for all <a class="reference internal" href="../campaign-linkedads.html#id1"><span class="std std-ref">Campaign Linked Ads</span></a> in this campaign.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
-<td>An object containing the budget current limits and spent for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The unit for <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">spent</span></code> is cents. The default <code class="docutils literal"><span class="pre">limit</span></code> values are set to <strong>-1 (Unlimited)</strong>.</td>
+<td>An object containing the budget current limits and spent for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The unit for <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">spent</span></code> is cents. The default <code class="docutils literal"><span class="pre">limit</span></code> values are set to <strong>-1 (Unlimited)</strong>. If the campaign is <code class="docutils literal"><span class="pre">DELETED</span></code>, no budgets are shown.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
 <td>A <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>

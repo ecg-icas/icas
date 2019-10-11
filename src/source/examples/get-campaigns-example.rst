@@ -47,3 +47,37 @@
         },
     "total": 30
     }
+
+    GET /api/sellside/campaigns?status=DELETED&offset=2&limit=10
+    Accept: application/sellside.campaign.list-v2+json
+
+    200 OK
+    Content-Type: application/sellside.campaign.list-v2+json
+
+    {
+        "campaigns": {
+            [
+                {
+                    "id": 1234,
+                    "title": "Test campaign",
+                    "dateCreated": "2016-02-03T15:35:33Z",
+                    "dateLastUpdated": "2018-02-03T15:35:33Z",
+                    "status": "DELETED",
+                    "cpc": 10,
+                    "targeting": {
+                        "geos": [{
+                            "lat": 1.234,
+                            "lon": 5.678,
+                            "radius": 10,
+                            "displayValue": "Amsterdam"
+                            }],
+                        "regionIds": [9007, 9008]
+                    }
+                    "links": {
+                        "linkedAds": "api/sellside/campaign/1234/linkedAds"
+                    }
+                }
+            ]
+        },
+    "total": 2
+    }

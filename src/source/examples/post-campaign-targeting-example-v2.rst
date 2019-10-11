@@ -3,7 +3,7 @@
     POST /api/sellside/campaign/124512/targeting
     Content-Type: application/sellside.campaign-targeting-v2+json
     Accept: application/sellside.campaign-targeting-v2+json
-    "targeting": {
+    {
         "geos": [{
             "lat": 41.234,
             "lon": 54.678,
@@ -14,7 +14,7 @@
 
     200 OK
     Content-Type: application/sellside.campaign-targeting-v2+json
-    "targeting": {
+    {
         "geos": [{
             "lat": 41.234,
             "lon": 54.678,
@@ -33,13 +33,13 @@ Setting the geo-targeting to nationwide:
     POST /api/sellside/campaign/124512/targeting
     Content-Type: application/sellside.campaign-targeting-v2+json
     Accept: application/sellside.campaign-targeting-v2+json
-    "targeting": {
+    {
         "geos": []
     }
 
     200 OK
     Content-Type: application/sellside.campaign-targeting-v2+json
-    "targeting": {
+    {
         "geos": []
     }
 
@@ -53,13 +53,13 @@ Using regions targeting:
     POST /api/sellside/campaign/124512/targeting
     Content-Type: application/sellside.campaign-targeting-v2+json
     Accept: application/sellside.campaign-targeting-v2+json
-    "targeting": {
+    {
         "regions": [2345,5674]
     }
 
     200 OK
     Content-Type: application/sellside.campaign-targeting-v2+json
-    "targeting": {
+    {
         "regions": [2345,5674]
     }
 

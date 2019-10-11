@@ -15,5 +15,19 @@
         "vendorId: "my-christmas-campaign-3A",
         "links": {
             "linkedAds": "api/sellside/campaign/1234/linkedAds"
+        },
+        "budgets": {
+            "daily": {
+                "limit": -1,
+                "spent": 10
+            },
+            "monthly": {
+                "limit": -1,
+                "spent": 100
+            },
+            "total": {
+                "limit": 2000,
+                "spent": 1000
+            }
         }
     }

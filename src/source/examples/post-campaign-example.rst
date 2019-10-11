@@ -14,5 +14,19 @@
         "status": "PAUSED",
         "links": {
             "linkedAds": "api/sellside/campaign/1234/linkedAds"
+        },
+        "budgets": {
+            "daily": {
+                "limit": -1,
+                "spent": 0
+            },
+            "monthly": {
+                "limit": -1,
+                "spent": 0
+            },
+            "total": {
+                "limit": -1,
+                "spent": 0
+            }
         }
     }

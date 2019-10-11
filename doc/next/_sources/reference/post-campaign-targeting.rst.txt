@@ -19,6 +19,8 @@ POST /campaign/{id}/targeting
 Updates the targeting for the specified campaign (see :ref:`Campaign Targeting Object <campaign-targeting-object>` for more). If the ``id`` is invalid, i.e., not a positive integer, the server returns *400 Bad Request.*
 Any previous targeting setting on the specified campaign will be overwritten.
 
+Setting targeting on a campaign in a ``DELETED`` state is not allowed.
+
 Examples:
 ---------
 

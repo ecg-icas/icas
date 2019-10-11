@@ -15,5 +15,27 @@
         "vendorId: "201907-garden-furniture-II"
         "links": {
             "linkedAds": "api/sellside/campaign/124512/linkedAds"
+        },
+        "budgets": {
+            "daily": {
+                "limit": -1,
+                "spent": 10
+            },
+            "monthly": {
+                "limit": -1,
+                "spent": 100
+            },
+            "total": {
+                "limit": 2000,
+                "spent": 1000
+            }
+        },
+        "targeting": {
+            "geos": [{
+                "lat": 41.234,
+                "lon": 54.678,
+                "radius": 40,
+                "displayValue": "Amsterdam"
+            }]
         }
     }

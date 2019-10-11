@@ -18,7 +18,7 @@
     "budgets": {
         "daily": {
             "limit": 1000,
-            "spent": 23,
+            "spent": 23
         },
         "monthly": {
             "limit": 12300,

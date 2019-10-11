@@ -6,7 +6,7 @@
     200 OK
     Content-Type: application/sellside.campaign-targeting-v2+json
 
-    "targeting": {
+    {
         "geos": [{
             "lat": 41.234,
             "lon": 54.678,

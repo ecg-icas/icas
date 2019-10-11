@@ -32,16 +32,16 @@ Campaign Targeting Object
 
 .. code-block:: javascript
 
-	"targeting": {
-    		"geos": [
-    			{
-    				"lat": <number>,
-    				"lon": <number>,
-    				"radius": <number>,
-    				"displayValue": <string>
-    			}, ...
-    		],
-    		"regionIds": [<number>,...]
+	{
+		"geos": [
+			{
+				"lat": <number>,
+				"lon": <number>,
+				"radius": <number>,
+				"displayValue": <string>
+			}, ...
+		],
+		"regionIds": [<number>,...]
     }
 
 
