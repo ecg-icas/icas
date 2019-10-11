@@ -22,6 +22,7 @@ A single linkedAd has the following response model structure:
 
 The status of the linkedAd cannot be set by the user; it is always ACTIVE.
 
+If the campaign is in DELETED status, `404 Not Found` is returned.
 
 Example:
 --------
