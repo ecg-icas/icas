@@ -239,7 +239,29 @@ has had performance-related activity in the requested period.</p>
 <strong>Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
 Empty strings are not enclosed in quotes.</strong></p>
 <p>All dates and times are in the tenant timezone.</p>
-<p>The <code class="docutils literal"><span class="pre">Accept-Language</span></code> header advertises the preferred client locales (language and region) for the report column names. Both <code class="docutils literal"><span class="pre">language_REGION</span></code> and <code class="docutils literal"><span class="pre">language-REGION</span></code> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used.</p>
+<p>The <code class="docutils literal"><span class="pre">Accept-Language</span></code> header advertises the preferred client locales (language and region) for the report column names. Both <code class="docutils literal"><span class="pre">language_REGION</span></code> and <code class="docutils literal"><span class="pre">language-REGION</span></code> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tenant</th>
+<th class="head">Locales</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Marktplaats</td>
+<td><code class="docutils literal"><span class="pre">nl_NL</span></code></td>
+</tr>
+<tr class="row-odd"><td>2dehands</td>
+<td><code class="docutils literal"><span class="pre">nl_BE</span></code>, <code class="docutils literal"><span class="pre">fr_BE</span></code></td>
+</tr>
+<tr class="row-even"><td>Kijiji</td>
+<td><code class="docutils literal"><span class="pre">en_CA</span></code>, <code class="docutils literal"><span class="pre">fr_CA</span></code></td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
