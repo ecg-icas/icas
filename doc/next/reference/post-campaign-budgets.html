@@ -258,7 +258,7 @@
 </tbody>
 </table>
 <p>Updates the budgets limits for the specified campaign (see <a class="reference internal" href="../campaign-budgets.html#campaign-budgets-object"><span class="std std-ref">Campaign Budgets Object</span></a> for more). If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
-Any previous budgets limits on the specified campaign will be overwritten. Any budget type which is not included in the payload, will be set to <strong>-1 (Unlimited</strong>).</p>
+Any previous budgets limits on the specified campaign will be overwritten. Any budget type which is not included in the payload, will be set to <strong>-1 (Unlimited</strong>). All types of budgets (<code class="docutils literal"><span class="pre">Daily</span></code>, <code class="docutils literal"><span class="pre">Monthly</span></code>, <code class="docutils literal"><span class="pre">Total</span></code>) should be sent while updating or empty object, in which case will be created <strong>-1 (Unlimited</strong>). Partial update are not allowed.</p>
 <p>Setting a budget on a campaign in a <code class="docutils literal"><span class="pre">DELETED</span></code> state is not allowed.</p>
 <div class="section" id="examples">
 <h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
