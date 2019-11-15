@@ -24,6 +24,18 @@ The status of the linkedAd cannot be set by the user; it is always ACTIVE.
 
 If the campaign is in DELETED status, `404 Not Found` is returned.
 
+Parameters
+~~~~~~~~~~
+
+===============  ============     ============================================================================
+Name             Type             Description
+===============  ============     ============================================================================
+limit            int              Limits the number of records returned. Default **and** maximum is 100.
+offset           int              Skips the first N records.
+adIds            string           List of ad id's to filter by
+===============  ============     ============================================================================
+
+
 Example:
 --------
 

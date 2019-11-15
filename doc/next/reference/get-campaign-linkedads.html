@@ -304,9 +304,38 @@ A single linkedAd has the following response model structure:</p>
 </table>
 <p>The status of the linkedAd cannot be set by the user; it is always ACTIVE.</p>
 <p>If the campaign is in DELETED status, <cite>404 Not Found</cite> is returned.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="12%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>limit</td>
+<td>int</td>
+<td>Limits the number of records returned. Default <strong>and</strong> maximum is 100.</td>
+</tr>
+<tr class="row-odd"><td>offset</td>
+<td>int</td>
+<td>Skips the first N records.</td>
+</tr>
+<tr class="row-even"><td>adIds</td>
+<td>string</td>
+<td>List of ad id&#8217;s to filter by</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="example">
-<h2>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">linkedAds</span><span class="o">?</span><span class="nx">offset</span><span class="o">=</span><span class="mi">2</span><span class="o">&amp;</span><span class="nx">limit</span><span class="o">=</span><span class="mi">10</span>
+<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">linkedAds</span><span class="o">?</span><span class="nx">offset</span><span class="o">=</span><span class="mi">2</span><span class="o">&amp;</span><span class="nx">limit</span><span class="o">=</span><span class="mi">10</span><span class="o">&amp;</span><span class="nx">adIds</span><span class="o">=</span><span class="mi">12315452</span><span class="p">,</span><span class="mi">23541252</span><span class="p">,</span><span class="mi">23541252</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedads</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -343,6 +372,7 @@ A single linkedAd has the following response model structure:</p>
     <span class="p">},</span>
 <span class="p">]</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
