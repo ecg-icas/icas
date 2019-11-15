@@ -464,6 +464,12 @@ required and optional fields which are listed below:</p>
 <td>no</td>
 <td>yes (if not set already)</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#ad-microtip"><span class="std std-ref">microTip</span></a></td>
+<td>string</td>
+<td>max. 18 chars</td>
+<td>no</td>
+<td>yes (only during update)</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition warning">
@@ -658,9 +664,18 @@ per customer. Can either be set when creating an ad or when updating an
 existing ad. However, once set, it can no longer be modified. When fetching an
 existing ad which does not have a <strong>vendorId</strong>, the field is omitted.</p>
 </div>
+<div class="section" id="microtip">
+<span id="ad-microtip"></span><span id="index-33"></span><h3>microTip<a class="headerlink" href="#microtip" title="Permalink to this headline">¶</a></h3>
+<p>A short freeform text with a maximum length of 18 characters, excluding any characters in <code class="docutils literal"><span class="pre">.,/&#64;#&lt;&gt;</span></code>.
+It is a feature used in the context of SMB bundles (currently only by Marktplaats tenant),
+and will only be usable by enabled sellers.
+It will be shown as a &#8220;sticker&#8221; (giving extra attention) on the ad in the search results.
+At the time of writing, this will only have an effect on ads created via the Console.
+However, it can be adjusted through the API.</p>
+</div>
 </div>
 <div class="section" id="images">
-<span id="ad-images"></span><span id="index-33"></span><h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
+<span id="ad-images"></span><span id="index-34"></span><h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
 <p>Each ad can contain up to X images (range is defined per category in the taxonomy)
 which can be provided by the caller as a set of URLs. iCAS will download the images and if they meet the
 requirements then they will be stored on iCAS servers in several sizes
@@ -670,7 +685,7 @@ in size. Images larger than 1024x1024 px are being scaled down.</p>
 <p>The images will be shown in the order they are provided. The first image is
 shown in search results and it is the main image on the item page.</p>
 <div class="section" id="image-objects">
-<span id="ad-image-objects"></span><span id="index-34"></span><h3>Image Objects<a class="headerlink" href="#image-objects" title="Permalink to this headline">¶</a></h3>
+<span id="ad-image-objects"></span><span id="index-35"></span><h3>Image Objects<a class="headerlink" href="#image-objects" title="Permalink to this headline">¶</a></h3>
 <p>When an ad is created or updated the caller provides the images as a list of
 image objects which contain only the source url.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -713,11 +728,11 @@ they will be ignored.</p>
 </div>
 </div>
 <div class="section" id="attributes">
-<span id="ad-attributes"></span><span id="index-35"></span><h3>attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<span id="ad-attributes"></span><span id="index-36"></span><h3>attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
 <p>An optional list of <a class="reference internal" href="attributes.html#user-defined-attributes"><span class="std std-ref">User-Defined Attributes</span></a>.</p>
 </div>
 <div class="section" id="shippingoptions">
-<span id="ad-shippingoptions"></span><span id="index-36"></span><h3>shippingOptions<a class="headerlink" href="#shippingoptions" title="Permalink to this headline">¶</a></h3>
+<span id="ad-shippingoptions"></span><span id="index-37"></span><h3>shippingOptions<a class="headerlink" href="#shippingoptions" title="Permalink to this headline">¶</a></h3>
 <p>A list of shipping options available for an ad.
 Ads can contain maximum one shipping option per shipping option type.
 Whether shipping options are disabled/optional/mandatory for an ad is configured per category, see <a class="reference internal" href="categories-v2.html#category-config-v2"><span class="std std-ref">Category Configuration</span></a>.</p>
@@ -796,6 +811,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
     <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-08-31T16:12:53Z&quot;</span><span class="p">,</span>
     <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-05T04:03:42Z&quot;</span><span class="p">,</span>
     <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;microTip&quot;</span><span class="o">:</span> <span class="s2">&quot;high quality&quot;</span><span class="p">,</span>
     <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/ad/42&quot;</span><span class="p">,</span>
         <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/826&quot;</span><span class="p">,</span>
