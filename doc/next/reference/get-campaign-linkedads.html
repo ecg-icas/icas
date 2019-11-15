@@ -289,16 +289,16 @@ A single linkedAd has the following response model structure:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">adId</span></code></td>
-<td>A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.</td>
+<td>The ID of the ad that this linkedAd refers to</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">status</span></code></td>
-<td>The current status of this linkedAd. One of <code class="docutils literal"><span class="pre">ACTIVE</span></code> or <code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code></td>
+<td>The current status of this linkedAd. One of <code class="docutils literal"><span class="pre">ACTIVE</span></code> or <code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code>. This is read-only field</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
 <td>Instead of using the campaign&#8217;s CPC, use this override (cents)</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
-<td>An object containing the budget current limits and spent for the linkedAd. Does not void campaign budgets. The unit for <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">spent</span></code> is cents. The default <code class="docutils literal"><span class="pre">limit</span></code> values are set to <strong>-1 (Unlimited)</strong>.</td>
+<td>An object containing the budget current limits and spent for the linkedAd. Does not void campaign budgets. The unit for <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">spent</span></code> is cents. The default <code class="docutils literal"><span class="pre">limit</span></code> values are set to <strong>-1 (Unlimited)</strong></td>
 </tr>
 </tbody>
 </table>
