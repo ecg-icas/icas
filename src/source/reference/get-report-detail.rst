@@ -13,6 +13,13 @@ GET /report/detail
  * - Accept
    - ``application/sellside.report.detail.list-v1+json, application/json``
 
+
+.. warning::
+
+	This call is scheduled to be deprecated. Please
+	use the faster and synchronous replacement endpoint :ref:`get_metrics_ads` instead.
+
+
 This URL returns the list of previously submitted reports for the current
 user. A maximum of 3 reports are returned.
 

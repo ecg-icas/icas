@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.112 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="POST /metrics/data" href="post-metrics-data.html"/>
-        <link rel="prev" title="GET /metrics/ads" href="get-metrics-ads.html"/> 
+        <link rel="next" title="GET /metrics/ads" href="get-metrics-ads.html"/>
+        <link rel="prev" title="POST /report/detail" href="post-report-detail.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -166,8 +166,9 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
@@ -231,6 +232,11 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is scheduled to be deprecated. Please
+use the faster and more flexible replacement generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead. Check the first example in the <a class="reference internal" href="post-metrics-data.html#examples-post-metrics-data"><span class="std std-ref">Examples</span></a> section.</p>
+</div>
 <p>This URL returns the summarized performance data for all ads (including deleted) from the user in the provided period.</p>
 <div class="section" id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
@@ -506,10 +512,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="post-metrics-data.html" class="btn btn-neutral float-right" title="POST /metrics/data"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-metrics-ads.html" class="btn btn-neutral float-right" title="GET /metrics/ads"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="get-metrics-ads.html" class="btn btn-neutral" title="GET /metrics/ads"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="post-report-detail.html" class="btn btn-neutral" title="POST /report/detail"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

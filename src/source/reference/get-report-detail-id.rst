@@ -13,6 +13,12 @@ GET /report/detail/{id}
  * - Accept
    - ``application/vnd.ms-excel`` or ``text/csv``
 
+
+.. warning::
+
+	This call is scheduled to be deprecated. Please
+	use the faster and synchronous replacement endpoint :ref:`get_metrics_ads` instead.
+
 This URL returns a previously submittted report either in Excel or in CSV format depending on the
 ``Accept`` header. If the ``Accept`` header is ``application/vnd.ms-excel`` an Excel document is created.
 If the ``Accept`` header is ``text/csv`` a `CSV <http://en.wikipedia.org/wiki/Comma-separated_values>`_ document is created.

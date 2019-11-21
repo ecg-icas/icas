@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.112 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /report/summary" href="get-report-summary.html"/>
-        <link rel="prev" title="POST /report/detail" href="post-report-detail.html"/> 
+        <link rel="next" title="GET /metrics/report" href="get-metrics-report.html"/>
+        <link rel="prev" title="GET /report/summary" href="get-report-summary.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -166,8 +166,9 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
@@ -233,7 +234,7 @@
 </table>
 <p>This URL returns an ads performance report either in Excel or in CSV format depending on the
 <code class="docutils literal"><span class="pre">Accept</span></code> header. The report represents a timeseries breakdown of the performance of each ad which
-has had performance-related activity in the requested period.</p>
+<strong>has had performance-related activity</strong> in the requested period.</p>
 <p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created, in <code class="docutils literal"><span class="pre">.xlsx</span></code> format.</p>
 <p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
 <strong>Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
@@ -498,10 +499,10 @@ Empty strings are not enclosed in quotes.</strong></p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-report-summary.html" class="btn btn-neutral float-right" title="GET /report/summary"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-metrics-report.html" class="btn btn-neutral float-right" title="GET /metrics/report"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="post-report-detail.html" class="btn btn-neutral" title="POST /report/detail"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="get-report-summary.html" class="btn btn-neutral" title="GET /report/summary"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
