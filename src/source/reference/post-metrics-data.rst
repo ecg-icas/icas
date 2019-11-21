@@ -22,6 +22,7 @@ Query and Response
 
 .. include:: /reporting-query-and-response.rst
 
+.. _examples_post_metrics_data:
 
 Examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

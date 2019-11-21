@@ -21,6 +21,13 @@ GET /report/summary V2
  * - Accept
    - ``application/sellside.report.summary-v2+json, application/json``
 
+
+.. warning::
+
+	This call is scheduled to be deprecated. Please
+	use the faster and more flexible replacement endpoint :ref:`post_metrics_data` instead. Check the first example in the :ref:`examples_post_metrics_data` section.
+
+
 This URL returns the summarized performance data for all ads (including deleted) from the user in the provided period.
 
 Parameters

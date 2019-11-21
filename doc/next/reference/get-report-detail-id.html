@@ -228,6 +228,11 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is scheduled to be deprecated. Please
+use the faster and synchronous replacement endpoint <a class="reference internal" href="get-metrics-ads.html#get-metrics-ads"><span class="std std-ref">GET /metrics/ads</span></a> instead.</p>
+</div>
 <p>This URL returns a previously submittted report either in Excel or in CSV format depending on the
 <code class="docutils literal"><span class="pre">Accept</span></code> header. If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created.
 If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created.

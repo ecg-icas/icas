@@ -18,7 +18,7 @@ GET /metrics/ads
 
 This URL returns an ads performance report either in Excel or in CSV format depending on the
 ``Accept`` header. The report represents a timeseries breakdown of the performance of each ad which
-has had performance-related activity in the requested period.
+**has had performance-related activity** in the requested period.
 
 If the ``Accept`` header is ``application/vnd.ms-excel`` an Excel document is created, in ``.xlsx`` format.
 
