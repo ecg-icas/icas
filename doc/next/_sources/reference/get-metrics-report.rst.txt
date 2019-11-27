@@ -78,9 +78,3 @@ Example
 
 .. include:: ../examples/get-metrics-report-example.rst
 
-
-.. _get_report_v2:
-
-
-
-
