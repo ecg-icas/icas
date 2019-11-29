@@ -7,6 +7,6 @@
         "adId": 12315452
     }
 
-    HTTP 204 OK
+    HTTP 204 No Content
 
 

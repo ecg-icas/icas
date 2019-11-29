@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /category &mdash; iCAS Sellside API 0.200 documentation</title>
+  <title>DELETE /campaign/{id} &mdash; iCAS Sellside API 0.200 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /category/{id}" href="get-category-id.html"/>
-        <link rel="prev" title="GET /categories/statistics" href="get-categories-statistics.html"/> 
+        <link rel="next" title="GET /campaign/{id}" href="get-campaign-id.html"/>
+        <link rel="prev" title="POST /campaign" href="post-campaign.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -163,7 +163,7 @@
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
@@ -173,7 +173,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaigns.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="delete-campaign.html">DELETE /campaign/{id}</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DELETE /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
@@ -228,10 +228,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>GET /category</li>
+    <li>DELETE /campaign/{id}</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-category.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/delete-campaign.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,15 +239,30 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-category">
-<span id="index-0"></span><span id="id1"></span><h1>GET /category<a class="headerlink" href="#get-category" title="Permalink to this headline">¶</a></h1>
-<p>This is an alias for <a class="reference internal" href="get-category-id.html#get-category-id-v1"><span class="std std-ref">GET /category/{id} v1</span></a> with id <code class="docutils literal"><span class="pre">0</span></code>.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is deprecated and will be removed after September 2015.  It is
-only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a> and must only be used with the
-other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span class="std std-ref">Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
-may not be recognized or editable.</p>
+  <div class="section" id="delete-campaign-id">
+<span id="delete-campaign"></span><span id="index-0"></span><h1>DELETE /campaign/{id}<a class="headerlink" href="#delete-campaign-id" title="Permalink to this headline">¶</a></h1>
+<p>It is possible to remove a campaign in one go. This does not remove the ads from your inventory; it only takes them offline for that particular campaign.</p>
+<table border="1" class="colwidths-given docutils" id="id1">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
+</tr>
+<tr class="row-even"><td>Content-Type</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign-v2+json;</span> <span class="pre">charset=utf-8</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Removes a campaign comepletely. If successful, the server responds with <cite>HTTP 204</cite>.
+If the campaign does not exist or does not belong to the user the server returns <strong>404 Not Found</strong>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">DELETE</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">123</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="nx">HTTP</span> <span class="mi">204</span> <span class="nx">No</span> <span class="nx">Content</span>
+</pre></div>
 </div>
 </div>
 
@@ -257,10 +272,10 @@ may not be recognized or editable.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-category-id.html" class="btn btn-neutral float-right" title="GET /category/{id}"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-campaign-id.html" class="btn btn-neutral float-right" title="GET /campaign/{id}"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="get-categories-statistics.html" class="btn btn-neutral" title="GET /categories/statistics"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="post-campaign.html" class="btn btn-neutral" title="POST /campaign"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -15,4 +15,4 @@
         }
     ]
     
-    HTTP 204 OK
+    HTTP 204 No Content

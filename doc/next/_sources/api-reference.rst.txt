@@ -28,6 +28,7 @@ API Reference
    reference/post-image
    reference/get-campaigns
    reference/post-campaign
+   reference/delete-campaign
    reference/get-campaign-id
    reference/get-campaign-vendor-id
    reference/get-campaign-budgets
