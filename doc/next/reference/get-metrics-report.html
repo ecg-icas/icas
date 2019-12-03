@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Error Codes &mdash; iCAS Sellside API 0.112 documentation</title>
+  <title>GET /metrics/report &mdash; iCAS Sellside API 0.112 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.112 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="Deprecation Plan" href="../deprecation.html"/>
-        <link rel="prev" title="Price Types" href="price-types.html"/> 
+        <link rel="next" title="POST /metrics/data" href="post-metrics-data.html"/>
+        <link rel="prev" title="GET /metrics/ads" href="get-metrics-ads.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -168,12 +168,12 @@
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Error Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
@@ -202,10 +202,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>Error Codes</li>
+    <li>GET /metrics/report</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/error-codes.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-metrics-report.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -213,195 +213,262 @@
 </div>
           <div role="main">
             
-  <div class="section" id="error-codes">
-<span id="index-0"></span><span id="id1"></span><h1>Error Codes<a class="headerlink" href="#error-codes" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+  <div class="section" id="get-metrics-report">
+<span id="index-0"></span><span id="id1"></span><h1>GET /metrics/report<a class="headerlink" href="#get-metrics-report" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col width="3%" />
-<col width="3%" />
-<col width="22%" />
-<col width="71%" />
+<col width="30%" />
+<col width="70%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Code</th>
-<th class="head">HTTP</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
-</tr>
-</thead>
 <tbody valign="top">
-<tr class="row-even"><td>1000</td>
-<td>500</td>
-<td>internal error</td>
-<td>An internal error occurred</td>
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
 </tr>
-<tr class="row-odd"><td>1001</td>
-<td>500</td>
-<td>not implemented</td>
-<td>This call has not been implemented</td>
-</tr>
-<tr class="row-even"><td>1003</td>
-<td>403</td>
-<td>access denied</td>
-<td>Authorization failed</td>
-</tr>
-<tr class="row-odd"><td>1004</td>
-<td>404</td>
-<td>not found</td>
-<td>The resource was not found or does not belong to the authenticated user</td>
-</tr>
-<tr class="row-even"><td>1005</td>
-<td>400</td>
-<td>invalid json</td>
-<td>The input is not valid JSON</td>
-</tr>
-<tr class="row-odd"><td>1006</td>
-<td>400</td>
-<td>type mismatch</td>
-<td>A value of a field was provided as wrong type</td>
-</tr>
-<tr class="row-even"><td>1007</td>
-<td>401</td>
-<td>access denied</td>
-<td>The access token is invalid</td>
-</tr>
-<tr class="row-odd"><td>1008</td>
-<td>401</td>
-<td>access denied</td>
-<td>The user connected to this access token is invalid</td>
-</tr>
-<tr class="row-even"><td>1009</td>
-<td>401</td>
-<td>missing token</td>
-<td>The Authorization header is missing or in the wrong format</td>
-</tr>
-<tr class="row-odd"><td>2000</td>
-<td>400</td>
-<td>missing argument</td>
-<td>A mandatory argument was not provided</td>
-</tr>
-<tr class="row-even"><td>2001</td>
-<td>400</td>
-<td>invalid argument</td>
-<td>A provided value was invalid</td>
-</tr>
-<tr class="row-odd"><td>2002</td>
-<td>400</td>
-<td>out of range</td>
-<td>A provided numeric value was out of range</td>
-</tr>
-<tr class="row-even"><td>2003</td>
-<td>400</td>
-<td>not equal</td>
-<td>A provided value was not equal to a required value</td>
-</tr>
-<tr class="row-odd"><td>2004</td>
-<td>400</td>
-<td>value too short</td>
-<td>A provided string value was too short</td>
-</tr>
-<tr class="row-even"><td>2005</td>
-<td>400</td>
-<td>value too long</td>
-<td>A provided string value was too long</td>
-</tr>
-<tr class="row-odd"><td>2006</td>
-<td>400</td>
-<td>invalid url</td>
-<td>A provided string value does not represent a valid URL</td>
-</tr>
-<tr class="row-even"><td>2007</td>
-<td>400</td>
-<td>unsupported format</td>
-<td>A link to an file is in an unsupported format</td>
-</tr>
-<tr class="row-odd"><td>2008</td>
-<td>400</td>
-<td>file too large</td>
-<td>A link to a file points to a file that is too large</td>
-</tr>
-<tr class="row-even"><td>2010</td>
-<td>400</td>
-<td>invalid phone number</td>
-<td>A provided string value does not represent a valid phone number</td>
-</tr>
-<tr class="row-odd"><td>2011</td>
-<td>400</td>
-<td>too many active ads</td>
-<td>The maximum number of active ads per seller in this category has been reached</td>
-</tr>
-<tr class="row-even"><td>2012</td>
-<td>400</td>
-<td>category change not allowed</td>
-<td>Changing the category of an ad is not allowed</td>
-</tr>
-<tr class="row-odd"><td>2017</td>
-<td>400</td>
-<td>ad status change not allowed</td>
-<td>Changing the status of an ad is not allowed</td>
-</tr>
-<tr class="row-even"><td>2018</td>
-<td>400</td>
-<td>image type not allowed</td>
-<td>The uploaded image type is not allowed</td>
-</tr>
-<tr class="row-odd"><td>2019</td>
-<td>400</td>
-<td>insufficient budget</td>
-<td>The budget for provided ad is insufficient</td>
-</tr>
-<tr class="row-even"><td>2020</td>
-<td>400</td>
-<td>insufficient daily budget</td>
-<td>The daily budget for provided ad is insufficient</td>
-</tr>
-<tr class="row-odd"><td>2021</td>
-<td>400</td>
-<td>duplicate feed url</td>
-<td>The feed URL is already in use</td>
-</tr>
-<tr class="row-even"><td>2022</td>
-<td>400</td>
-<td>category not active</td>
-<td>The category is not active and will not allow creation of ads</td>
-</tr>
-<tr class="row-odd"><td>2023</td>
-<td>400</td>
-<td>category deleted</td>
-<td>The category is deleted and will not allow creation/updating of ads</td>
-</tr>
-<tr class="row-even"><td>2024</td>
-<td>400</td>
-<td>vendorId change not allowed</td>
-<td>The vendorId of an ad can only be set once</td>
-</tr>
-<tr class="row-odd"><td>2025</td>
-<td>400</td>
-<td>duplicate vendorId</td>
-<td>The vendorId is already in use by another ad</td>
-</tr>
-<tr class="row-even"><td>2026</td>
-<td>400</td>
-<td>too many active ads in cat</td>
-<td>The user has reached the maximum number of active ads in the category, cannot activate ad.</td>
-</tr>
-<tr class="row-odd"><td>2027</td>
-<td>400</td>
-<td>cannot change seller budget</td>
-<td>The provided amount cannot be added/subtracted from current seller level budget</td>
-</tr>
-<tr class="row-even"><td>2028</td>
-<td>400</td>
-<td>regionId change not allowed</td>
-<td>Changing the regionId of an ad is not allowed</td>
-</tr>
-<tr class="row-odd"><td>2035</td>
-<td>400</td>
-<td>Attribute is not writable</td>
-<td>The attribute cannot be set by the user</td>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.metrics.ad-hit-v1+json</span></code> or <code class="docutils literal"><span class="pre">application/sellside.metrics.ad-session-v1+json</span></code></td>
 </tr>
 </tbody>
 </table>
+<p>Returns a performance report for a selected date period, per ad.
+The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads <strong>which have had performance-related activity</strong>.</p>
+<p>The <code class="docutils literal"><span class="pre">Accept</span></code> header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
+Conceptually, user is the highest level scope and hit is the lowest level scope. For example, <code class="docutils literal"><span class="pre">clicks</span></code> counts the number of clicks that ad received when the scope is <cite>hit</cite>,
+whereas it counts the number of sessions with clicks when the scope is <cite>session</cite>.</p>
+<p>We plan to extend support for user-level scoped metrics if there is demand for it.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>startDate</td>
+<td>&#8220;2014-11-24&#8221;</td>
+<td>string</td>
+<td>Report start date</td>
+</tr>
+<tr class="row-odd"><td>endDate</td>
+<td>&#8220;2014-11-24&#8221;</td>
+<td>string</td>
+<td>Report end date (inclusive)</td>
+</tr>
+<tr class="row-even"><td>adIds</td>
+<td>&#8220;1,2,3&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of ad id&#8217;s which to filter the result set on. Optional, default empty to include data for all ads.</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>&#8220;ACTIVE,DELETED&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of ad statuses which to filter the result set on. Optional, default is ACTIVE.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="19%" />
+<col width="6%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>createDate</td>
+<td>&#8220;2014-12-05T16:12:53Z&#8221;</td>
+<td>dateTime</td>
+<td>The date/time this report call got requested.</td>
+</tr>
+<tr class="row-odd"><td>startDate</td>
+<td>&#8220;2014-11-23&#8221;</td>
+<td>string</td>
+<td>The start of the period this report covers.</td>
+</tr>
+<tr class="row-even"><td>endDate</td>
+<td>&#8220;2014-11-24&#8221;</td>
+<td>string</td>
+<td>The end of the period this report covers.</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>see below</td>
+<td>array</td>
+<td>The report data; each element in this array represents the data for an ad.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="data-contents">
+<h2>Data contents<a class="headerlink" href="#data-contents" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="3%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>adId</td>
+<td>1</td>
+<td>long</td>
+<td>Id of the ad to which the report row belongs to.</td>
+</tr>
+<tr class="row-odd"><td>cpc</td>
+<td>5</td>
+<td>int</td>
+<td>CPC of the ad (in cents).</td>
+</tr>
+<tr class="row-even"><td>impressions</td>
+<td>40</td>
+<td>long</td>
+<td>Number of impressions this ad received.</td>
+</tr>
+<tr class="row-odd"><td>clicks</td>
+<td>10</td>
+<td>long</td>
+<td>Number of clicks this ad received.</td>
+</tr>
+<tr class="row-even"><td>urlClicks</td>
+<td>3</td>
+<td>int</td>
+<td>Number of url clicks this ad received.</td>
+</tr>
+<tr class="row-odd"><td>emails</td>
+<td>2</td>
+<td>int</td>
+<td>Number of email requests this ad received.</td>
+</tr>
+<tr class="row-even"><td>engagement</td>
+<td>5</td>
+<td>int</td>
+<td>Number of engagements this ad received. Depending on the tenant, this could be the same as urlClicks, or a summation of several metrics.</td>
+</tr>
+<tr class="row-odd"><td>totalSpent</td>
+<td>2000</td>
+<td>long</td>
+<td>Total amount spent for this ad (in cents).</td>
+</tr>
+<tr class="row-even"><td>ctr</td>
+<td>0.75</td>
+<td>float</td>
+<td>Click-through rate of the ad.</td>
+</tr>
+<tr class="row-odd"><td>engagementCTR</td>
+<td>0.7</td>
+<td>float</td>
+<td>Number of engagements leads from clicks this ad received.</td>
+</tr>
+<tr class="row-even"><td>websiteCTR</td>
+<td>0.7</td>
+<td>float</td>
+<td>Number of website leads from clicks this ad received.</td>
+</tr>
+<tr class="row-odd"><td>startDate</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Creation date of the ad.</td>
+</tr>
+<tr class="row-even"><td>endDate</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Deletion date of the ad if the ad is deleted, null otherwise.</td>
+</tr>
+<tr class="row-odd"><td>title</td>
+<td>&#8220;Brother Fax voor 99,99&#8221;</td>
+<td>string</td>
+<td>Title of the ad.</td>
+</tr>
+<tr class="row-even"><td>categoryId</td>
+<td>631</td>
+<td>int</td>
+<td>Category id of the ad.</td>
+</tr>
+<tr class="row-odd"><td>vendorId</td>
+<td>&#8220;vndr&#8221;</td>
+<td>string</td>
+<td>Vendor id of the ad.</td>
+</tr>
+<tr class="row-even"><td>dailyLimit</td>
+<td>2000</td>
+<td>long</td>
+<td>Daily limit of the ad (in cents).</td>
+</tr>
+<tr class="row-odd"><td>totalBudget</td>
+<td>5000</td>
+<td>long</td>
+<td>Total budget of the ad (in cents).</td>
+</tr>
+<tr class="row-even"><td>relativePerformance</td>
+<td>75</td>
+<td>int</td>
+<td>Returns the relative performance of the ad (on a scale of [1-100]) compared to competition within the ad&#8217;s category. Higher score means better performance. A score of 0 could indicate there is not enough data to infer the value at the moment.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metricsreport</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span>
+
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-25&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mi">1262</span><span class="p">,</span>
+      <span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mi">73</span><span class="p">,</span>
+      <span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mi">43</span><span class="p">,</span>
+      <span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span>
+      <span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;engagement&quot;</span><span class="o">:</span> <span class="mi">22</span><span class="p">,</span>
+      <span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mi">43</span><span class="p">,</span>
+      <span class="s2">&quot;ctr&quot;</span><span class="o">:</span> <span class="mf">0.589</span><span class="p">,</span>
+      <span class="s2">&quot;engagementCTR&quot;</span><span class="o">:</span> <span class="mf">0.511</span><span class="p">,</span>
+      <span class="s2">&quot;websiteCTR&quot;</span><span class="o">:</span> <span class="mf">0.43</span><span class="p">,</span>
+      <span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mi">573</span><span class="p">,</span>
+      <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mi">999</span><span class="p">,</span>
+      <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mi">4900</span><span class="p">,</span>
+      <span class="s2">&quot;relativePerformance&quot;</span><span class="o">:</span> <span class="mi">65</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -410,10 +477,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../deprecation.html" class="btn btn-neutral float-right" title="Deprecation Plan"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="post-metrics-data.html" class="btn btn-neutral float-right" title="POST /metrics/data"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="price-types.html" class="btn btn-neutral" title="Price Types"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="get-metrics-ads.html" class="btn btn-neutral" title="GET /metrics/ads"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
