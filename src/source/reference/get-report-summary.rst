@@ -5,6 +5,13 @@
 GET /report/summary
 ===================
 
+.. warning::
+
+	This call is scheduled to be deprecated. Please
+	use the faster and more flexible replacement generic endpoint :ref:`post_metrics_data` instead. Check the first example in the :ref:`examples_post_metrics_data` section.
+	Keep in mind that the new endpoint only returns data for **ads which have had performance-related activity in the requested period**.
+
+
 :ref:`get_report_summary_v2` | :ref:`get_report_summary_v1`
 
 .. _get_report_summary_v2:
@@ -20,6 +27,8 @@ GET /report/summary V2
 
  * - Accept
    - ``application/sellside.report.summary-v2+json, application/json``
+
+
 
 This URL returns the summarized performance data for all ads (including deleted) from the user in the provided period.
 

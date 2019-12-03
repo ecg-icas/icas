@@ -36,8 +36,9 @@ API Reference
    reference/get-report-detail
    reference/get-report-detail-id
    reference/post-report-detail
-   reference/get-metrics-ads
    reference/get-report-summary
+   reference/get-metrics-ads
+   reference/get-metrics-report
    reference/post-metrics-data
    reference/get-user
    reference/ad-status

@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.112 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /metrics/ads" href="get-metrics-ads.html"/>
+        <link rel="next" title="GET /report/summary" href="get-report-summary.html"/>
         <link rel="prev" title="GET /report/detail/{id}" href="get-report-detail-id.html"/> 
 
   
@@ -166,8 +166,9 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">POST /report/detail</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
@@ -231,6 +232,12 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is scheduled to be deprecated. Please
+use the faster and synchronous replacement endpoint <a class="reference internal" href="get-metrics-ads.html#get-metrics-ads"><span class="std std-ref">GET /metrics/ads</span></a> instead.
+Keep in mind that the new endpoint only returns data for <strong>ads which have had performance-related activity in the requested period</strong>.</p>
+</div>
 <p>This URL requests a new report for the current user. Creating the report may
 take a long time which depends on the number of ads and the requested date
 range. Therefore you</p>
@@ -369,7 +376,7 @@ range. Therefore you</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-metrics-ads.html" class="btn btn-neutral float-right" title="GET /metrics/ads"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-report-summary.html" class="btn btn-neutral float-right" title="GET /report/summary"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="get-report-detail-id.html" class="btn btn-neutral" title="GET /report/detail/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
