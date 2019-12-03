@@ -215,6 +215,12 @@
             
   <div class="section" id="get-report-summary">
 <span id="index-0"></span><span id="id1"></span><h1>GET /report/summary<a class="headerlink" href="#get-report-summary" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is scheduled to be deprecated. Please
+use the faster and more flexible replacement generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead. Check the first example in the <a class="reference internal" href="post-metrics-data.html#examples-post-metrics-data"><span class="std std-ref">Examples</span></a> section.
+Keep in mind that the new endpoint only returns data for <strong>ads which have had performance-related activity in the requested period</strong>.</p>
+</div>
 <p><a class="reference internal" href="#get-report-summary-v2"><span class="std std-ref">GET /report/summary V2</span></a> | <a class="reference internal" href="#get-report-summary-v1"><span class="std std-ref">GET /report/summary V1</span></a></p>
 <div class="section" id="get-report-summary-v2">
 <span id="id2"></span><h2>GET /report/summary V2<a class="headerlink" href="#get-report-summary-v2" title="Permalink to this headline">¶</a></h2>
@@ -232,11 +238,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is scheduled to be deprecated. Please
-use the faster and more flexible replacement generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead. Check the first example in the <a class="reference internal" href="post-metrics-data.html#examples-post-metrics-data"><span class="std std-ref">Examples</span></a> section.</p>
-</div>
 <p>This URL returns the summarized performance data for all ads (including deleted) from the user in the provided period.</p>
 <div class="section" id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>

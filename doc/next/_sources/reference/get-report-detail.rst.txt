@@ -18,6 +18,7 @@ GET /report/detail
 
 	This call is scheduled to be deprecated. Please
 	use the faster and synchronous replacement endpoint :ref:`get_metrics_ads` instead.
+	Keep in mind that the new endpoint only returns data for **ads which have had performance-related activity in the requested period**.
 
 
 This URL returns the list of previously submitted reports for the current

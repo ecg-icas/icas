@@ -4,6 +4,14 @@
 GET /report
 ===========
 
+
+.. warning::
+
+	This call is scheduled to be deprecated. Please
+	use the faster replacement :ref:`get_metrics_report` or the more flexible generic endpoint :ref:`post_metrics_data` instead.
+	Keep in mind that the new endpoint only returns data for **ads which have had performance-related activity in the requested period**.
+
+
 `v3`_ | `v2`_ | `v1`_
 
 .. _get_report_v3:
@@ -23,11 +31,6 @@ v3
  * - Content-Type
    - ``application/sellside.report-v3+json``
 
-
-.. warning::
-
-	This call is scheduled to be deprecated. Please
-	use the faster replacement :ref:`get_metrics_report` or the more flexible generic endpoint :ref:`post_metrics_data` instead.
 
 Version 3 of this URL returns a performance report for a date period. The
 report contains statistics for performance events like impressions, clicks,

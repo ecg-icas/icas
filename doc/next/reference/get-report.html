@@ -215,6 +215,12 @@
             
   <div class="section" id="get-report">
 <span id="index-0"></span><span id="id1"></span><h1>GET /report<a class="headerlink" href="#get-report" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is scheduled to be deprecated. Please
+use the faster replacement <a class="reference internal" href="get-metrics-report.html#get-metrics-report"><span class="std std-ref">GET /metrics/report</span></a> or the more flexible generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead.
+Keep in mind that the new endpoint only returns data for <strong>ads which have had performance-related activity in the requested period</strong>.</p>
+</div>
 <p><a class="reference internal" href="#v3">v3</a> | <a class="reference internal" href="#v2">v2</a> | <a class="reference internal" href="#v1">v1</a></p>
 <div class="section" id="v3">
 <span id="get-report-v3"></span><h2>v3<a class="headerlink" href="#v3" title="Permalink to this headline">¶</a></h2>
@@ -235,11 +241,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is scheduled to be deprecated. Please
-use the faster replacement <a class="reference internal" href="get-metrics-report.html#get-metrics-report"><span class="std std-ref">GET /metrics/report</span></a> or the more flexible generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead.</p>
-</div>
 <p>Version 3 of this URL returns a performance report for a date period. The
 report contains statistics for performance events like impressions, clicks,
 url clicks, emails for all ads which match the filter criteria.</p>

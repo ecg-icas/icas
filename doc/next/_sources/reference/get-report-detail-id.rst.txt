@@ -18,6 +18,8 @@ GET /report/detail/{id}
 
 	This call is scheduled to be deprecated. Please
 	use the faster and synchronous replacement endpoint :ref:`get_metrics_ads` instead.
+	Keep in mind that the new endpoint only returns data for **ads which have had performance-related activity in the requested period**.
+
 
 This URL returns a previously submittted report either in Excel or in CSV format depending on the
 ``Accept`` header. If the ``Accept`` header is ``application/vnd.ms-excel`` an Excel document is created.
