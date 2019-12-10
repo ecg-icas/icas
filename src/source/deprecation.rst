@@ -3,7 +3,7 @@
 Deprecation Plan
 ================
 
-The following calls are deprecated and scheduled to be removed after 01/03/2020:
+The following calls are deprecated and scheduled to be removed after 1st of March 2020:
 
  * :ref:`get_report`
  * :ref:`get_report_detail`

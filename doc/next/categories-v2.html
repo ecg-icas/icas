@@ -341,22 +341,22 @@ have shipping options and if <code class="docutils literal"><span class="pre">MA
 </tr>
 <tr class="row-even"><td>paypalEnabled</td>
 <td>bool</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>If <code class="docutils literal"><span class="pre">true</span></code>, Paypal is a payment option for ads in this category.</td>
 </tr>
 <tr class="row-odd"><td>paypalBpEnabled</td>
 <td>bool</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>If <code class="docutils literal"><span class="pre">true</span></code>, Paypal Buyer Protection is enabled for ads in this category.</td>
 </tr>
 <tr class="row-even"><td>tags</td>
 <td>map&lt;locale, set&lt;string&gt;&gt;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Optional localized set of additional keywords that are indexed with ads in this category.</td>
 </tr>
 <tr class="row-odd"><td>verticals</td>
 <td>set&lt;string&gt;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Optional set of verticals (groups) this category belongs to. The following verticals are
 allowed: <code class="docutils literal"><span class="pre">CARS</span></code>, <code class="docutils literal"><span class="pre">CONTACTS</span></code>, <code class="docutils literal"><span class="pre">JOBS</span></code>, <code class="docutils literal"><span class="pre">HOUSES</span></code>, <code class="docutils literal"><span class="pre">SERVICES</span></code>, <code class="docutils literal"><span class="pre">VACATIONS</span></code></td>
 </tr>
@@ -368,19 +368,19 @@ have regions and if <code class="docutils literal"><span class="pre">MANDATORY</
 </tr>
 <tr class="row-odd"><td>relatedPaths</td>
 <td>set&lt;string&gt;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Optional set of paths from related existing categories used for search strategies and/or
 fallback scenarios to expand the search parameters when too few results are returned.</td>
 </tr>
 <tr class="row-even"><td>priceUnits</td>
 <td>map&lt;string, map&lt;locale, string&gt;&gt;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Optional set of localized price units like <code class="docutils literal"><span class="pre">per</span> <span class="pre">m²</span></code>, <code class="docutils literal"><span class="pre">per</span> <span class="pre">hour</span></code>, etc. Maps an unique
 key to a set localized values.</td>
 </tr>
 <tr class="row-odd"><td>suggestedCpcForPageOne</td>
 <td>int</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>The estimated CPC (in cents) the current user needs to set on a new ad in this category to be placed on page 1.</td>
 </tr>
 </tbody>
@@ -684,7 +684,7 @@ category.</p>
 </tr>
 <tr class="row-odd"><td>attributeGroups</td>
 <td>list&lt;attributeGroup&gt;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Ordered list of attribute groups.</td>
 </tr>
 </tbody>
@@ -772,34 +772,34 @@ parameters allow to render the attribute in a certain way depending on the
 </tr>
 <tr class="row-even"><td>values</td>
 <td>map&lt;locale,list&lt;string&gt;&gt;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Localized values for the attribute.
 The length of the JSON representation of all values for one locale
 must not exceed 512 bytes.</td>
 </tr>
 <tr class="row-odd"><td>defaults</td>
 <td>map&lt;locale,string&gt;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Localized default value for required attributes.</td>
 </tr>
 <tr class="row-even"><td>mandatory</td>
 <td>bool</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute is mandatory.</td>
 </tr>
 <tr class="row-odd"><td>searchable</td>
 <td>bool</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute is indexed.</td>
 </tr>
 <tr class="row-even"><td>updatable</td>
 <td>bool</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute can be changed after creation.</td>
 </tr>
 <tr class="row-odd"><td>writable</td>
 <td>bool</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute can be set during creation.</td>
 </tr>
 <tr class="row-even"><td>precision</td>
@@ -810,7 +810,7 @@ Note that floats with large precision values are difficult to compare.</td>
 </tr>
 <tr class="row-odd"><td>range</td>
 <td>interval</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Range for <code class="docutils literal"><span class="pre">NUMBER</span></code> attributes.</td>
 </tr>
 <tr class="row-even"><td>length</td>
@@ -830,7 +830,7 @@ Note that floats with large precision values are difficult to compare.</td>
 </tr>
 <tr class="row-odd"><td>hints</td>
 <td>list&lt;string&gt;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>Optional list of rendering hints.</td>
 </tr>
 </tbody>
