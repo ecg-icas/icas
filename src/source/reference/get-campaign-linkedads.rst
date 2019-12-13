@@ -11,7 +11,7 @@ GET /campaign/{id}/linkedAds
    - ``api_ro`` or ``console_ro``
 
  * - Accept
-   - ``application/sellside.campaign-linkedad-list-v1+json``
+   - ``application/sellside.campaign.linkedad-list-v1+json``
 
 
 Returns the linkedAds of the specified campaign. A linkedAd (:ref:`Campaign Linked Ads <campaign-linked-ads>`) is the reference of an ad in a campaign, with possible overrides.

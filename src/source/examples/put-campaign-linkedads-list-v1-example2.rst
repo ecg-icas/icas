@@ -1,8 +1,8 @@
 .. code-block:: javascript
 
     PUT /api/sellside/campaign/123/linkedAds
-    Accept: application/sellside.campaign-linkedad-list-v1+json; charset=utf-8
-    Content-Type: application/sellside.campaign-linkedad-list-v1+json; charset=utf-8
+    Accept: application/sellside.campaign.linkedad-list-v1+json; charset=utf-8
+    Content-Type: application/sellside.campaign.linkedad-list-v1+json; charset=utf-8
 
     [
         {

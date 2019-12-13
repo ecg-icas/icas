@@ -1,10 +1,10 @@
 .. code-block:: javascript
 
     GET /api/sellside/campaign/124512/targeting
-    Accept: application/sellside.campaign-targeting-v2+json
+    Accept: application/sellside.campaign.targeting-v2+json
 
     200 OK
-    Content-Type: application/sellside.campaign-targeting-v2+json
+    Content-Type: application/sellside.campaign.targeting-v2+json
 
     {
         "geos": [{

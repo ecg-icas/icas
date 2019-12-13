@@ -1,8 +1,8 @@
 .. code-block:: javascript
 
     POST /api/sellside/campaign/124512/budgets
-    Accept: application/sellside.campaign-budgets-v2+json
-    Content-Type: application/sellside.campaign-budgets-v2+json
+    Accept: application/sellside.campaign.budgets-v2+json
+    Content-Type: application/sellside.campaign.budgets-v2+json
     "budgets": {
         "daily": {
             "limit": 1000
