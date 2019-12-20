@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>POST /feed/config &mdash; iCAS Sellside API 0.200 documentation</title>
+  <title>PUT /campaign/{id}/cpc/{cpc} &mdash; iCAS Sellside API 0.200 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /feed/import" href="get-feed-import.html"/>
-        <link rel="prev" title="GET /feed/config" href="get-feed-config.html"/> 
+        <link rel="next" title="GET /feed/config" href="get-feed-config.html"/>
+        <link rel="prev" title="PUT /campaign/{id}/status/{status}" href="put-campaign-status.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -185,9 +185,9 @@
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-campaign-cpc.html">PUT /campaign/{id}/cpc/{cpc}</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /campaign/{id}/cpc/{cpc}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">POST /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
@@ -229,10 +229,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>POST /feed/config</li>
+    <li>PUT /campaign/{id}/cpc/{cpc}</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/post-feed-config.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/put-campaign-cpc.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -240,8 +240,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="post-feed-config">
-<span id="index-0"></span><span id="id1"></span><h1>POST /feed/config<a class="headerlink" href="#post-feed-config" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="put-campaign-id-cpc-cpc">
+<span id="put-campaign-cpc"></span><span id="index-0"></span><h1>PUT /campaign/{id}/cpc/{cpc}<a class="headerlink" href="#put-campaign-id-cpc-cpc" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -249,67 +249,19 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">console_rw</span></code></td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.feedconfig-v1+json,</span> <span class="pre">application/json</span></code></td>
-</tr>
-<tr class="row-odd"><td>Content-Type</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.feedconfig-v1+json;</span> <span class="pre">charset=utf-8</span></code></td>
+<tr class="row-even"><td>Content-Type</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign.cpc-v1+json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>This URL updates the feed configuration of the current user. The feed configuration object must contain a boolean
-field <code class="docutils literal"><span class="pre">enabled</span></code>. Depending on its value the feed will be activated or disabled. If the
-feed is being activated, the field <code class="docutils literal"><span class="pre">feedUrl</span></code> is mandatory and should contain a valid URL to a feed XML document.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Access to the feed functionality may be granted per user by the Customer Service.
-Unauthorized user requests to the this endpoint will result in <strong>401 Unauthorized</strong>
-responses.</p>
-</div>
-<div class="section" id="errors">
-<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="3%" />
-<col width="18%" />
-<col width="62%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Code</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>&#8211;</td>
-<td>1008</td>
-<td>access denied</td>
-<td>The user is invalid</td>
-</tr>
-<tr class="row-odd"><td>feedUrl</td>
-<td>2006</td>
-<td>invalid url</td>
-<td>The value of field &#8216;feedUrl&#8217; is not a valid url</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="nx">config</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedconfig</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedconfig</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<p>Updates the cpc (in cents) for the specified campaign.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">cpc</span><span class="o">/</span><span class="mi">10</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">cpc</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
 
-<span class="p">{</span>
-    <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;feedUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/feed.xml&quot;</span>
-<span class="p">}</span>
+<span class="nx">HTTP</span> <span class="mi">200</span> <span class="nx">OK</span>
 </pre></div>
-</div>
 </div>
 </div>
 
@@ -319,10 +271,10 @@ responses.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-feed-import.html" class="btn btn-neutral float-right" title="GET /feed/import"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-feed-config.html" class="btn btn-neutral float-right" title="GET /feed/config"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="get-feed-config.html" class="btn btn-neutral" title="GET /feed/config"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="put-campaign-status.html" class="btn btn-neutral" title="PUT /campaign/{id}/status/{status}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -26,10 +26,10 @@ Adding/overriding a single linkedAd:
    - ``api_rw`` or ``console_rw``
 
  * - Accept
-   - ``application/sellside.campaign-linkedad-v1+json; charset=utf-8``
+   - ``application/sellside.campaign.linkedad-v1+json; charset=utf-8``
 
  * - Content-Type
-   - ``application/sellside.campaign-linkedad-v1+json; charset=utf-8``
+   - ``application/sellside.campaign.linkedad-v1+json; charset=utf-8``
 
 Adds a linkedAd to the campaign or overrides ones with same adIds. If successful, the server responds with `HTTP 200`.
 
@@ -49,10 +49,10 @@ Adding/overriding multiple linkedAds:
    - ``api_rw`` or ``console_rw``
 
  * - Accept
-   - ``application/sellside.campaign-linkedad-list-v1+json; charset=utf-8``
+   - ``application/sellside.campaign.linkedad-list-v1+json; charset=utf-8``
 
  * - Content-Type
-   - ``application/sellside.campaign-linkedad-list-v1+json; charset=utf-8``
+   - ``application/sellside.campaign.linkedad-list-v1+json; charset=utf-8``
 
 Adds multiple linkedAds to the campaign. Overrides existing linkedAds with same adIds. If successful, the server responds with `HTTP 200`.
 

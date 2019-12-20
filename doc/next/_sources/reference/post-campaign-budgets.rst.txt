@@ -10,10 +10,10 @@ POST /campaign/{id}/budgets
    - ``api_rw`` or ``console_rw``
 
  * - Accept
-   - ``application/sellside.campaign-budgets-v2+json, application/json``
+   - ``application/sellside.campaign.budgets-v2+json, application/json``
 
  * - Content-Type
-   - ``application/sellside.campaign-budgets-v2+json, application/json``
+   - ``application/sellside.campaign.budgets-v2+json, application/json``
 
 Updates the budgets limits for the specified campaign (see :ref:`Campaign Budgets Object <campaign-budgets-object>` for more). If the ``id`` is invalid, i.e., not a positive integer, the server returns *400 Bad Request.*
 Any previous budgets limits on the specified campaign will be overwritten. Any budget type which is not included in the payload, will be set to **-1 (Unlimited**). All types of budgets (``Daily``, ``Monthly``, ``Total``) should be sent while updating or empty object, in which case will be created **-1 (Unlimited**). Partial update are not allowed.

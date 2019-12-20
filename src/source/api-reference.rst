@@ -40,6 +40,7 @@ API Reference
    reference/delete-campaign-linkedads
    reference/get-campaign-funnel
    reference/put-campaign-status
+   reference/put-campaign-cpc
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import

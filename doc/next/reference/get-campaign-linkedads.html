@@ -185,6 +185,7 @@
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-cpc.html">PUT /campaign/{id}/cpc/{cpc}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
@@ -251,7 +252,7 @@
 <td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.campaign-linkedad-list-v1+json</span></code></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign.linkedad-list-v1+json</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -337,10 +338,10 @@ A single linkedAd has the following response model structure:</p>
 <div class="section" id="example">
 <h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">linkedAds</span><span class="o">?</span><span class="nx">offset</span><span class="o">=</span><span class="mi">2</span><span class="o">&amp;</span><span class="nx">limit</span><span class="o">=</span><span class="mi">10</span><span class="o">&amp;</span><span class="nx">adIds</span><span class="o">=</span><span class="mi">12315452</span><span class="p">,</span><span class="mi">23541252</span><span class="p">,</span><span class="mi">23541252</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">linkedad</span><span class="o">-</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">[</span>
     <span class="p">{</span>
