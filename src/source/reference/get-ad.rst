@@ -5,7 +5,34 @@
 GET /ad
 =======
 
-:ref:`get_ad_v3` | :ref:`get_ad_v2` | :ref:`get_ad_v1`
+:ref:`get_ad_v4` | :ref:`get_ad_v3` | :ref:`get_ad_v2` | :ref:`get_ad_v1`
+
+.. _get_ad_v4:
+
+GET /ad v4
+----------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad.list-v4+json, application/json``
+
+
+.. note::
+
+    The only backwards-incompatible change from :ref:`get_ad_v3` is with respect to the usage of ``startDate`` and ``endDate`` parameters.
+    Namely, ads which were live during this selected period but did not recieve a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
+    **This does not include ads which received sellside updates anymore.**
+
+
+Example
+-------
+
+.. include:: ../examples/get-ad-v4-example.rst
 
 
 .. _get_ad_v3:
