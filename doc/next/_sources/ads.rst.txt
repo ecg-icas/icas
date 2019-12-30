@@ -402,9 +402,8 @@ existing ad which does not have a **vendorId**, the field is omitted.
 microTip
 """"""""
 A short freeform text with a maximum length of 18 characters, excluding any characters in ``.,/@#<>``.
-It is a feature used in the context of SMB bundles (currently only by Marktplaats tenant),
-and will only be usable by enabled sellers.
-It will be shown as a "sticker" (giving extra attention) on the ad in the search results.
+It is a feature as part of a package that sellers can purchase (currently available only for Marktplaats tenant).
+It provides extra attention on the ad in the search results.
 At the time of writing, this will only have an effect on ads created via the Console.
 However, it can be adjusted through the API.
 

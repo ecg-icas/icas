@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Deprecation Plan &mdash; iCAS Sellside API 0.112 documentation</title>
+  <title>Deprecation Plan &mdash; iCAS Sellside API 0.113 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.112 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.113 documentation" href="index.html"/>
         <link rel="prev" title="Error Codes" href="reference/error-codes.html"/> 
 
   
@@ -164,8 +164,9 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
@@ -210,6 +211,19 @@
             
   <div class="section" id="deprecation-plan">
 <span id="id1"></span><h1>Deprecation Plan<a class="headerlink" href="#deprecation-plan" title="Permalink to this headline">¶</a></h1>
+<p>The following calls are deprecated and scheduled to be removed after 1st of March 2020:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="reference/get-report.html#get-report"><span class="std std-ref">GET /report</span></a></li>
+<li><a class="reference internal" href="reference/get-report-detail.html#get-report-detail"><span class="std std-ref">GET /report/detail</span></a></li>
+<li><a class="reference internal" href="reference/get-report-detail-id.html#get-report-detail-id"><span class="std std-ref">GET /report/detail/{id}</span></a></li>
+<li><a class="reference internal" href="reference/get-report-summary.html#get-report-summary-v2"><span class="std std-ref">GET /report/summary V2</span></a></li>
+<li><a class="reference internal" href="reference/get-report-summary.html#get-report-summary-v1"><span class="std std-ref">GET /report/summary V1</span></a></li>
+<li><a class="reference internal" href="reference/post-report-detail.html#post-report-detail"><span class="std std-ref">POST /report/detail</span></a></li>
+<li><a class="reference internal" href="reference/get-user.html#get-user-v1"><span class="std std-ref">GET /user v1</span></a></li>
+<li><a class="reference internal" href="reference/get-categories-statistics.html#get-categories-statistics"><span class="std std-ref">GET /categories/statistics</span></a></li>
+</ul>
+</div></blockquote>
 <p>The following calls are deprecated and scheduled to be removed after September 2015:</p>
 <blockquote>
 <div><ul class="simple">
@@ -261,7 +275,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.112',
+            VERSION:'0.113',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -4,6 +4,16 @@
 GET /categories/statistics
 ==========================
 
+
+.. warning::
+
+	This call is scheduled to be deprecated. Please
+	use the faster and more flexible generic endpoint :ref:`post_metrics_data` instead, with the following payload to get the equivalent data:
+    .. include:: ../examples/get-categories-statistics-replacement.rst
+
+    As you can see, the date range in this call is not limited to a single date parameter.
+
+
 GET /categories/statistics
 --------------------------
 

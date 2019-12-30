@@ -48,6 +48,10 @@ History
 
 ..  role:: strike
 
+* v.0.113 - 3 Dec 2019 - tw
+
+  * updated :ref:`deprecation_plan` stating /report/* endpoints are deprecated and will be removed by March 1st 2020. These will be replaced by /metrics/* endpoints.
+
 * v.0.112 - 18 Jul 2019 - tw
 
   * removed `SUSPENDED_BY_SELLERBUDGET` status as this functionality has been removed. We aim to introduce similar functionality at a later stage.

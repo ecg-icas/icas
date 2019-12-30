@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /categories/statistics &mdash; iCAS Sellside API 0.112 documentation</title>
+  <title>GET /categories/statistics &mdash; iCAS Sellside API 0.113 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.112 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.113 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /category" href="get-category.html"/>
         <link rel="prev" title="GET /categories" href="get-categories.html"/> 
@@ -166,8 +166,9 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
@@ -214,6 +215,33 @@
             
   <div class="section" id="get-categories-statistics">
 <span id="index-0"></span><span id="id1"></span><h1>GET /categories/statistics<a class="headerlink" href="#get-categories-statistics" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<blockquote>
+<div>This call is scheduled to be deprecated. Please
+use the faster and more flexible generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead, with the following payload to get the equivalent data:</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;period&quot;</span><span class="o">:</span> <span class="s2">&quot;custom&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-01-01&quot;</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:countDistinctAdID&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">,</span> <span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:websiteClicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:emails&quot;</span><span class="p">,</span> <span class="s2">&quot;am:spent&quot;</span><span class="p">]</span>
+    <span class="s2">&quot;filters&quot;</span><span class="o">:</span> <span class="p">[{</span> <span class="c1">// optional, default is all categories</span>
+        <span class="s2">&quot;field&quot;</span><span class="o">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;operator&quot;</span><span class="o">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="last">As you can see, the date range in this call is not limited to a single date parameter.</p>
+</div>
 <div class="section" id="id2">
 <h2>GET /categories/statistics<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
@@ -387,7 +415,7 @@ are still manageable in both time and amount of data to process internally.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.112',
+            VERSION:'0.113',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

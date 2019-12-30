@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Advertisements &mdash; iCAS Sellside API 0.112 documentation</title>
+  <title>Advertisements &mdash; iCAS Sellside API 0.113 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.112 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.113 documentation" href="index.html"/>
         <link rel="next" title="Categories" href="categories.html"/>
         <link rel="prev" title="Authentication" href="authentication.html"/> 
 
@@ -165,8 +165,9 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
@@ -667,9 +668,8 @@ existing ad which does not have a <strong>vendorId</strong>, the field is omitte
 <div class="section" id="microtip">
 <span id="ad-microtip"></span><span id="index-33"></span><h3>microTip<a class="headerlink" href="#microtip" title="Permalink to this headline">¶</a></h3>
 <p>A short freeform text with a maximum length of 18 characters, excluding any characters in <code class="docutils literal"><span class="pre">.,/&#64;#&lt;&gt;</span></code>.
-It is a feature used in the context of SMB bundles (currently only by Marktplaats tenant),
-and will only be usable by enabled sellers.
-It will be shown as a &#8220;sticker&#8221; (giving extra attention) on the ad in the search results.
+It is a feature as part of a package that sellers can purchase (currently available only for Marktplaats tenant).
+It provides extra attention on the ad in the search results.
 At the time of writing, this will only have an effect on ads created via the Console.
 However, it can be adjusted through the API.</p>
 </div>
@@ -922,7 +922,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.112',
+            VERSION:'0.113',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
