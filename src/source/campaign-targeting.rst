@@ -13,7 +13,7 @@ Geo Targeting
 """""""""""""
 
 Geo targeting allows you to specify one or more (circular) areas in the targeting criteria of a campaign
-to have the ads of that campaign only be shown to buyers located in that geographical area.
+to have the ads of that campaign only be shown to buyers located in any of the geographical areas specified.
 
 Region Targeting
 """"""""""""""""
@@ -21,9 +21,7 @@ Region Targeting
 For tenants that use regions (currently KJCA), you can specify one or more regions in the targeting criteria of a campaign
 to have the ads of that campaign only be shown to buyers located in that region.
 
-TODO: how will regions and geos interplay? Should we allow only using one at a time in a campaign? (and then targeting area is a union of all geos OR all regions)
-If we allow both to be used, then we might need to change the defaults (right now default is nationwide which means they would need to adjust either both or none)
-
+Geo-circles and regions **cannot and should not** be used in combination on the same campaign. This is currently not supported.
 
 .. _campaign-targeting-object:
 
@@ -48,10 +46,10 @@ Campaign Targeting Object
 ===================  =========================================================================================
 Parameter             Description
 ===================  =========================================================================================
-``geos``              A list of circular areas for geo-targeting. Default is empty, which implies nationwide targeting (no targeting restrictions).
+``geos``              A list of circular areas for geo-targeting. Default is empty array, which implies nationwide targeting (no targeting restrictions).
 ``lat``               Latitude of the center-point of the circular area for geo-targeting
 ``lon``               Longitude of the center-point of the circular area for geo-targeting
 ``radius``            Radius (in km) of the circular area for geo-targeting
 ``diplayValue``       Description of the circular area for geo-targeting. Only visible on your dashboard, it will never be shown to buyers.
-``regionIds``         A list of valid regionIds from the :ref:`Regions <regions>` taxonomy. Default is ``[0]``, which implies nationwide targeting (no targeting restrictions).
+``regionIds``         A list of valid regionIds from the :ref:`Regions <regions>` taxonomy. Default is empty array or ``[0]``, either of which implies nationwide targeting (no targeting restrictions).
 ===================  =========================================================================================

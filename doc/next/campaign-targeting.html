@@ -248,14 +248,13 @@ are looking to add other forms of targeting. See <a class="reference internal" h
 <div class="section" id="geo-targeting">
 <h2>Geo Targeting<a class="headerlink" href="#geo-targeting" title="Permalink to this headline">¶</a></h2>
 <p>Geo targeting allows you to specify one or more (circular) areas in the targeting criteria of a campaign
-to have the ads of that campaign only be shown to buyers located in that geographical area.</p>
+to have the ads of that campaign only be shown to buyers located in any of the geographical areas specified.</p>
 </div>
 <div class="section" id="region-targeting">
 <h2>Region Targeting<a class="headerlink" href="#region-targeting" title="Permalink to this headline">¶</a></h2>
 <p>For tenants that use regions (currently KJCA), you can specify one or more regions in the targeting criteria of a campaign
 to have the ads of that campaign only be shown to buyers located in that region.</p>
-<p>TODO: how will regions and geos interplay? Should we allow only using one at a time in a campaign? (and then targeting area is a union of all geos OR all regions)
-If we allow both to be used, then we might need to change the defaults (right now default is nationwide which means they would need to adjust either both or none)</p>
+<p>Geo-circles and regions <strong>cannot and should not</strong> be used in combination on the same campaign. This is currently not supported.</p>
 <div class="section" id="campaign-targeting-object">
 <span id="id2"></span><h3>Campaign Targeting Object<a class="headerlink" href="#campaign-targeting-object" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span>    <span class="p">{</span>
@@ -273,8 +272,8 @@ If we allow both to be used, then we might need to change the defaults (right no
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="89%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameter</th>
@@ -283,7 +282,7 @@ If we allow both to be used, then we might need to change the defaults (right no
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">geos</span></code></td>
-<td>A list of circular areas for geo-targeting. Default is empty, which implies nationwide targeting (no targeting restrictions).</td>
+<td>A list of circular areas for geo-targeting. Default is empty array, which implies nationwide targeting (no targeting restrictions).</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">lat</span></code></td>
 <td>Latitude of the center-point of the circular area for geo-targeting</td>
@@ -298,7 +297,7 @@ If we allow both to be used, then we might need to change the defaults (right no
 <td>Description of the circular area for geo-targeting. Only visible on your dashboard, it will never be shown to buyers.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">regionIds</span></code></td>
-<td>A list of valid regionIds from the <a class="reference internal" href="regions.html#regions"><span class="std std-ref">Regions</span></a> taxonomy. Default is <code class="docutils literal"><span class="pre">[0]</span></code>, which implies nationwide targeting (no targeting restrictions).</td>
+<td>A list of valid regionIds from the <a class="reference internal" href="regions.html#regions"><span class="std std-ref">Regions</span></a> taxonomy. Default is empty array or <code class="docutils literal"><span class="pre">[0]</span></code>, either of which implies nationwide targeting (no targeting restrictions).</td>
 </tr>
 </tbody>
 </table>
