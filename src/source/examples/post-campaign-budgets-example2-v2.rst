@@ -3,7 +3,7 @@
     POST /api/sellside/campaign/124512/budgets
     Accept: application/sellside.campaign.budgets-v2+json
     Content-Type: application/sellside.campaign.budgets-v2+json
-    "budgets": {
+    {
         "daily": {
             "limit": 1000
         },
@@ -18,9 +18,14 @@
         {
             "code": 2040,
             "text": "campaign deleted",
-            "msg": "The campaign is DELETED, setting budgets not allowed",
+            "msg": "The campaign is DELETED, setting budgets not allowed"
         }
     ]
+
+
+
+
+
 
 
 

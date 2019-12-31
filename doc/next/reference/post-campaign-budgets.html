@@ -260,14 +260,16 @@
 </tbody>
 </table>
 <p>Updates the budgets limits for the specified campaign (see <a class="reference internal" href="../campaign-budgets.html#campaign-budgets-object"><span class="std std-ref">Campaign Budgets Object</span></a> for more). If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
-Any previous budgets limits on the specified campaign will be overwritten. Any budget type which is not included in the payload, will be set to <strong>-1 (Unlimited</strong>). All types of budgets (<code class="docutils literal"><span class="pre">Daily</span></code>, <code class="docutils literal"><span class="pre">Monthly</span></code>, <code class="docutils literal"><span class="pre">Total</span></code>) should be sent while updating or empty object, in which case will be created <strong>-1 (Unlimited</strong>). Partial update are not allowed.</p>
+Any previous budgets limits on the specified campaign will be overwritten.
+All types of budgets (<code class="docutils literal"><span class="pre">Daily</span></code>, <code class="docutils literal"><span class="pre">Monthly</span></code>, <code class="docutils literal"><span class="pre">Total</span></code>) should be sent while updating,
+or an empty object, in which case all types of budgets will be created <strong>-1 (Unlimited</strong>). Partial update are not allowed.</p>
 <p>Setting a budget on a campaign in a <code class="docutils literal"><span class="pre">DELETED</span></code> state is not allowed.</p>
 <div class="section" id="examples">
 <h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">budgets</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="p">{</span>
     <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
     <span class="p">},</span>
@@ -276,29 +278,21 @@ Any previous budgets limits on the specified campaign will be overwritten. Any b
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-
-<span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
-        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">23</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
-        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">234</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">1346</span>
+<span class="mi">400</span> <span class="nx">Bad</span> <span class="nx">Request</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="mi">2001</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;invalid argument&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;The value of field &#39;budgets&#39; was invalid&quot;</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">budgets</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="p">{</span>
     <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
     <span class="p">},</span>
@@ -313,9 +307,32 @@ Any previous budgets limits on the specified campaign will be overwritten. Any b
     <span class="p">{</span>
         <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="mi">2040</span><span class="p">,</span>
         <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;campaign deleted&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;The campaign is DELETED, setting budgets not allowed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;The campaign is DELETED, setting budgets not allowed&quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">budgets</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="p">{}</span>
+
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">23</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">234</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">1346</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">spent</span></code> values in each budget type are <strong>read-only</strong>.</p>
