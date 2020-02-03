@@ -47,6 +47,13 @@ History
 =======
 
 ..  role:: strike
+* v.0.115 - 3 Feb 2020 - dr
+
+  * remove "includeDeleted" parameter documentation from :ref:`post_metrics_data`, clarify on filtering for ad statuses
+
+* v.0.114 - 6 Jan 2020 - tw
+
+  * added "includeDeleted" parameter documentation in :ref:`post_metrics_data`
 
 * v.0.113 - 3 Dec 2019 - tw
 
