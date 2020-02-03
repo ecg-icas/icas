@@ -48,10 +48,6 @@ History
 
 ..  role:: strike
 
-* v.0.114 - 6 Jan 2020 - tw
-
-  * added "includeDeleted" parameter documentation in :ref:`post_metrics_data`
-
 * v.0.113 - 3 Dec 2019 - tw
 
   * updated :ref:`deprecation_plan` stating /report/* endpoints are deprecated and will be removed by March 1st 2020. These will be replaced by /metrics/* endpoints.

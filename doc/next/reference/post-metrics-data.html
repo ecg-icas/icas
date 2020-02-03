@@ -294,8 +294,7 @@
     <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...],</span>
     <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;offset&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;searchPhrase&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span>
+    <span class="s2">&quot;searchPhrase&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -339,9 +338,6 @@
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">searchPhrase</span></code></td>
 <td>String to match against an ad title</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">includeDeleted</span></code></td>
-<td>Include data of currently deleted ads in the report. Default <cite>false</cite></td>
 </tr>
 </tbody>
 </table>
@@ -792,6 +788,7 @@
 <div><ul class="simple">
 <li>In the <a class="reference internal" href="../reporting.html#sql-note"><span class="std std-ref">SQL note</span></a>, the enrichment fields can be seen as a left outer join operation.</li>
 <li>The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data.</li>
+<li>Currently the API does not allow to filter on the current status of ads, which means the reporting numbers apply for <strong>all</strong> ads, including those that have been deleted in the meantime. Depending on API clients feedback, we might extend support for such filtering in the future.</li>
 </ul>
 </div></blockquote>
 </div>
