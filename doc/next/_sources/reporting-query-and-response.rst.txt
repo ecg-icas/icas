@@ -33,8 +33,7 @@ The data model of the request has the following structure:
         "enrichment": [<string>, ...],
         "limit": <integer>,
         "offset": <integer>,
-        "searchPhrase": <string>,
-        "includeDeleted": <boolean>
+        "searchPhrase": <string>
     }
 
 
@@ -51,7 +50,6 @@ Parameter            Description
 ``limit``           Number of elements in the response, per time range. By default there is no limit
 ``offset``          Index of first row of the requested data (per time range), beginning with 0
 ``searchPhrase``    String to match against an ad title
-``includeDeleted``  Include data of currently deleted ads in the report. Default `false`
 ==================  ======================================
 
 Response

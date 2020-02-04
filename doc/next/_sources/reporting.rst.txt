@@ -206,6 +206,8 @@ The only valid ``operator`` at the moment is the set operator ``in``, and requir
     ]
 
 
+.. note:: The API **does not allow to filter on the current status of ads**, which means the reporting numbers apply for **all** ads, including those that have been deleted in the meantime. Depending on API clients feedback, we might revisit the API and add support for such filtering in the future.
+
 .. _Sorts:
 
 Sorting

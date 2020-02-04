@@ -245,4 +245,5 @@ Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the pre
 Final remarks:
 ************************************************************************
  * In the :ref:`SQL note <SQL-note>`, the enrichment fields can be seen as a left outer join operation.
- * The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data. 
+ * The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data.
+ * The API **does not allow to filter on the current status of ads**, which means the reporting numbers apply for **all** ads, including those that have been deleted in the meantime. Depending on API clients feedback, we might revisit the API and add support for such filtering in the future.
