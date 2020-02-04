@@ -19,26 +19,45 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  install    to make standalone HTML files and install them under $(realpath $(WEBAPPDIR))"
-	@echo "  html       to make standalone HTML files"
-	@echo "  dirhtml    to make HTML files named index.html in directories"
-	@echo "  singlehtml to make a single large HTML file"
-	@echo "  pickle     to make pickle files"
-	@echo "  json       to make JSON files"
-	@echo "  htmlhelp   to make HTML files and a HTML help project"
-	@echo "  qthelp     to make HTML files and a qthelp project"
-	@echo "  devhelp    to make HTML files and a Devhelp project"
-	@echo "  epub       to make an epub"
-	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
-	@echo "  latexpdf   to make LaTeX files and run them through pdflatex"
-	@echo "  text       to make text files"
-	@echo "  man        to make manual pages"
-	@echo "  texinfo    to make Texinfo files"
-	@echo "  info       to make Texinfo files and run them through makeinfo"
-	@echo "  gettext    to make PO message catalogs"
-	@echo "  changes    to make an overview of all changed/added/deprecated items"
-	@echo "  linkcheck  to check all external links for integrity"
-	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+	@echo "  install       to make standalone HTML files and install them under $(realpath $(WEBAPPDIR))"
+	@echo "  html          to make standalone HTML files"
+	@echo "  dirhtml       to make HTML files named index.html in directories"
+	@echo "  singlehtml    to make a single large HTML file"
+	@echo "  pickle        to make pickle files"
+	@echo "  json          to make JSON files"
+	@echo "  htmlhelp      to make HTML files and a HTML help project"
+	@echo "  qthelp        to make HTML files and a qthelp project"
+	@echo "  devhelp       to make HTML files and a Devhelp project"
+	@echo "  epub          to make an epub"
+	@echo "  latex         to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
+	@echo "  latexpdf      to make LaTeX files and run them through pdflatex"
+	@echo "  text          to make text files"
+	@echo "  man           to make manual pages"
+	@echo "  texinfo       to make Texinfo files"
+	@echo "  info          to make Texinfo files and run them through makeinfo"
+	@echo "  gettext       to make PO message catalogs"
+	@echo "  changes       to make an overview of all changed/added/deprecated items"
+	@echo "  linkcheck     to check all external links for integrity"
+	@echo "  doctest       to run all doctests embedded in the documentation (if enabled)"
+	@echo "  version v=xxx to bump the version of the API release"
+
+version: check-version
+	@echo "Will bump version to $(v)"
+	mkdir -p ../doc/$(v)
+	cp -r $(WEBAPPDIR)/ ../doc/$(v)/
+	rm ../doc/prod
+	ln -s $(v) ../doc/prod
+	rm ../doc/sandbox
+	ln -s $(v) ../doc/prod
+	@echo
+	@echo "Versioning finished. New version is $(v)"
+
+check-version:
+	if test "$(v)" = "" ; then \
+		echo "parameter v not set"; \
+	    exit 1; \
+	fi
+
 
 clean:
 	-rm -rf $(BUILDDIR)/*
