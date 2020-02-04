@@ -48,7 +48,7 @@ version: check-version
 	rm ../doc/prod
 	ln -s $(v) ../doc/prod
 	rm ../doc/sandbox
-	ln -s $(v) ../doc/prod
+	ln -s $(v) ../doc/sandbox
 	@echo
 	@echo "Versioning finished. New version is $(v)"
 
