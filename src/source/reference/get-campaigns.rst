@@ -22,8 +22,8 @@ Parameters
 Name                    Type        Description
 ====================    ========    =================================================================================================================================================
 status                  string      Coma-separated list of statuses to filter on. Valid campaign statuses are `ACTIVE` and `PAUSED`. By default no status filter is applied.
-offset                  integer     Skips the first N campaigns. Default is 0
-limit                   integer     The number of campaigns to return. Default is 100.
+offset                  integer     Skips the first N campaigns. Default is 0.
+limit                   integer     Indicates the number of campaigns to return. Default is 100. Valid values are positive numbers (>0).
 ====================    ========    =================================================================================================================================================
 
 TODO: sort on status? sort on anything else? (like dateCreated?)
