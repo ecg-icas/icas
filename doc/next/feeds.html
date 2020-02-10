@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="next" title="Reporting" href="reporting.html"/>
         <link rel="prev" title="Campaign Targeting" href="campaign-targeting.html"/> 
@@ -127,7 +124,7 @@
 <li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">XML Feeds</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">XML Feeds</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#whitelisting">Whitelisting</a></li>
@@ -229,7 +226,7 @@
     <li>XML Feeds</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/feeds.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/feeds.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -241,9 +238,9 @@
 <span id="feeds"></span><h1>XML Feeds<a class="headerlink" href="#xml-feeds" title="Permalink to this headline">¶</a></h1>
 <p>XML feeds are the way for users to handle repetitive asynchronous bulk uploading of ads.
 When a user is eligible for feed usage the user can configure an HTTP(s) URL through
-<a class="reference internal" href="reference/post-feed-config.html#post-feed-config"><span class="std std-ref">POST /feed/config</span></a> or the frontend to make iCAS, once a day, attempt to download an
+<a class="reference internal" href="reference/post-feed-config.html#post-feed-config"><em>POST /feed/config</em></a> or the frontend to make iCAS, once a day, attempt to download an
 XML file. The contents of this XML file need to adhere to the XSD available for sellers
-at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a>.</p>
+at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><em>GET /feed/xsd</em></a>.</p>
 <p>Once a day we pull the XML file configured for all appliccable users.
 We treat the provided XML file as the desired list of ads the user wants to have live.
 Any ads not present (referred to by <strong>vendorId</strong>) in the XML file will be paused during
@@ -261,10 +258,10 @@ sellside API.</p>
 </div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a> shows the overview of imported feeds of the user, and
-<a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail</span></a> can be a good source of information on possible errors
+<p><a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><em>GET /feed/import</em></a> shows the overview of imported feeds of the user, and
+<a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><em>GET /feed/import/{id}/detail</em></a> can be a good source of information on possible errors
 or warnings on ads, such as missing mandatory attributes or too low CPC etc. If your XML
-does not pass the XSD at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> this is where you will see why.
+does not pass the XSD at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><em>GET /feed/xsd</em></a> this is where you will see why.
 After the XSD validates, it will handle the ads inside it separately, and a failure on one ad
 will then not impact other ads.</p>
 </div>
@@ -275,7 +272,7 @@ Feed files with a BOM marker and/or different line terminators (e.g. CRLF on Win
 </div>
 <div class="section" id="whitelisting">
 <h2>Whitelisting<a class="headerlink" href="#whitelisting" title="Permalink to this headline">¶</a></h2>
-<p>As mentioned in <a class="reference internal" href="overview.html#overview-image-downloads"><span class="std std-ref">Image Downloads</span></a> our outgoing IPs for downloading images (also the ones
+<p>As mentioned in <a class="reference internal" href="overview.html#overview-image-downloads"><em>Image Downloads</em></a> our outgoing IPs for downloading images (also the ones
 defined in the feed) should be whitelisted. We also download the XML file itself using these IPs.</p>
 </div>
 <div class="section" id="example-xml">
@@ -369,7 +366,7 @@ to your ads. Existing ads will remain unchanged and no new ads will be created.<
 </ul>
 <p>Next to various online capabilities where you can provide both your XML and XSD files,
 a way to check quickly and locally is to use a tool called xmllint. With this tool
-you can use our XSD downloaded from <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> to test whether your feed is
+you can use our XSD downloaded from <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><em>GET /feed/xsd</em></a> to test whether your feed is
 working before you let iCAS fetch it using the following command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>xmllint --debug --noout --schema /path/to/admarkt1.0.xsd /path/to/yourfeed.xml
 </pre></div>

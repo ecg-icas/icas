@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="up" title="Categories" href="categories.html"/>
         <link rel="next" title="Categories V2" href="categories-v2.html"/>
@@ -100,7 +97,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="categories.html">Categories</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Categories V1</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Categories V1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
 </ul>
 </li>
@@ -232,7 +229,7 @@
     <li>Categories V1</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/categories-v1.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/categories-v1.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -319,7 +316,7 @@ change.</p>
 <h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
 <p>Each ad has a unique identifier by which the ad can retrieved and a set of
 required attributes and a set of optional attributes which are listed below:</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="5%" />
 <col width="15%" />
@@ -391,12 +388,12 @@ All amount values are stored in cents</td>
 <td>Maximum number of concurrently active ads from the same seller in this category</td>
 </tr>
 <tr class="row-odd"><td>children</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>list</td>
 <td>List of child categories</td>
 </tr>
 <tr class="row-even"><td>links</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>object</td>
 <td>Link to the current category and other resources</td>
 </tr>
@@ -411,15 +408,15 @@ this category. This value is only shown when <strong>canPlaceAds</strong> is tru
 </div>
 <div class="section" id="category-v1-compatible-endpoints">
 <span id="categories-v1-compatible-endpoints"></span><h2>Category V1 Compatible Endpoints<a class="headerlink" href="#category-v1-compatible-endpoints" title="Permalink to this headline">¶</a></h2>
-<p>The following endpoints are compatible with attributes from <a class="reference internal" href="#categories-v1"><span class="std std-ref">Categories V1</span></a>
+<p>The following endpoints are compatible with attributes from <a class="reference internal" href="#categories-v1"><em>Categories V1</em></a>
 since they either provide or accept the correct attribute keys:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="reference/get-ad.html#get-ad-v1"><span class="std std-ref">GET /ad v1</span></a></li>
-<li><a class="reference internal" href="reference/get-ad.html#get-ad-v2"><span class="std std-ref">GET /ad v2</span></a></li>
-<li><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v1"><span class="std std-ref">GET /ad/{id} v1</span></a></li>
-<li><a class="reference internal" href="reference/post-ad.html#post-ad-v1"><span class="std std-ref">POST /ad v1</span></a></li>
-<li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v1"><span class="std std-ref">PUT /ad/{id} v1</span></a></li>
+<li><a class="reference internal" href="reference/get-ad.html#get-ad-v1"><em>GET /ad v1</em></a></li>
+<li><a class="reference internal" href="reference/get-ad.html#get-ad-v2"><em>GET /ad v2</em></a></li>
+<li><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v1"><em>GET /ad/{id} v1</em></a></li>
+<li><a class="reference internal" href="reference/post-ad.html#post-ad-v1"><em>POST /ad v1</em></a></li>
+<li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v1"><em>PUT /ad/{id} v1</em></a></li>
 </ul>
 </div></blockquote>
 </div>

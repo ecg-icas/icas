@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="next" title="Advertisements" href="ads.html"/>
         <link rel="prev" title="Overview" href="overview.html"/> 
@@ -75,7 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-oauth-2-0">What is OAuth 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
@@ -229,7 +226,7 @@
     <li>Authentication</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/authentication.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/authentication.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -277,7 +274,7 @@ application.</p>
 the client application exchanges the authorization code, client ID and client
 secret, for an access token.</p>
 <p>The endpoint URLs per tenant and environment are as follows:</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
 <col width="10%" />
@@ -294,48 +291,48 @@ secret, for an access token.</p>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.demo.qa-mp.so/accounts/oauth/authorize">https://admarkt.demo.qa-mp.so/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><a class="reference external" href="https://admarkt.demo.qa-mp.so/accounts/oauth/token">https://admarkt.demo.qa-mp.so/accounts/oauth/token</a></td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.marktplaats.nl/accounts/oauth/authorize">https://admarkt.marktplaats.nl/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><a class="reference external" href="https://admarkt.marktplaats.nl/accounts/oauth/token">https://admarkt.marktplaats.nl/accounts/oauth/token</a></td>
 </tr>
 <tr class="row-even"><td>Kijiji Canada</td>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.qa10.kjdev.ca/accounts/oauth/authorize">https://admarkt.qa10.kjdev.ca/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><a class="reference external" href="https://admarkt.qa10.kjdev.ca/accounts/oauth/token">https://admarkt.qa10.kjdev.ca/accounts/oauth/token</a></td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.kijiji.ca/accounts/oauth/authorize">https://admarkt.kijiji.ca/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><a class="reference external" href="https://admarkt.kijiji.ca/accounts/oauth/token">https://admarkt.kijiji.ca/accounts/oauth/token</a></td>
 </tr>
 <tr class="row-even"><td>2dehands Belgium</td>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/authorize">https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><a class="reference external" href="https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/token">https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/token</a></td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.2dehands.be/accounts/oauth/authorize">https://admarkt.2dehands.be/accounts/oauth/authorize</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><a class="reference external" href="https://admarkt.2dehands.be/accounts/oauth/token">https://admarkt.2dehands.be/accounts/oauth/token</a></td>
 </tr>
 </tbody>
@@ -354,7 +351,7 @@ library.</p>
 <h3>Step 1: Redirect to the authorization url<a class="headerlink" href="#step-1-redirect-to-the-authorization-url" title="Permalink to this headline">¶</a></h3>
 <p>Redirect the resource owner (user) to the authorization url with the following
 GET parameters</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
 <col width="30%" />
@@ -369,7 +366,7 @@ GET parameters</p>
 <tbody valign="top">
 <tr class="row-even"><td>response_type</td>
 <td>Required</td>
-<td>Must be set to <code class="docutils literal"><span class="pre">code</span></code></td>
+<td>Must be set to <tt class="docutils literal"><span class="pre">code</span></tt></td>
 </tr>
 <tr class="row-odd"><td>client_id</td>
 <td>Required</td>
@@ -377,7 +374,7 @@ GET parameters</p>
 </tr>
 <tr class="row-even"><td>scope</td>
 <td>Required</td>
-<td>The scope requested by the client as in <a class="reference internal" href="#scopes"><span class="std std-ref">Scopes</span></a></td>
+<td>The scope requested by the client as in <a class="reference internal" href="#scopes"><em>Scopes</em></a></td>
 </tr>
 <tr class="row-odd"><td>redirect_uri</td>
 <td>Required</td>
@@ -400,9 +397,9 @@ should then be discussed with your contact point.</td>
 <div class="section" id="step-2-redirect-to-the-redirect-uri">
 <h3>Step 2: Redirect to the redirect_uri<a class="headerlink" href="#step-2-redirect-to-the-redirect-uri" title="Permalink to this headline">¶</a></h3>
 <p>After the resource owner logs in and confirms access request of the client the
-authorization server redirects the resource owner to the <code class="docutils literal"><span class="pre">redirect_uri</span></code>
+authorization server redirects the resource owner to the <tt class="docutils literal"><span class="pre">redirect_uri</span></tt>
 specified in the request at step 1 with the following GET parameters</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
 <col width="30%" />
@@ -434,7 +431,7 @@ specified in the request at step 1 with the following GET parameters</p>
 <h3>Step 3: POST to the token endpoint<a class="headerlink" href="#step-3-post-to-the-token-endpoint" title="Permalink to this headline">¶</a></h3>
 <p>After obtaining the authorization code at step 2 the client needs to make a
 <em>POST</em> request to the <em>token endpoint</em> with the following parameters:</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
 <col width="30%" />
@@ -449,7 +446,7 @@ specified in the request at step 1 with the following GET parameters</p>
 <tbody valign="top">
 <tr class="row-even"><td>grant_type</td>
 <td>Required</td>
-<td>Must be set to <code class="docutils literal"><span class="pre">authorization_code</span></code></td>
+<td>Must be set to <tt class="docutils literal"><span class="pre">authorization_code</span></tt></td>
 </tr>
 <tr class="row-odd"><td>code</td>
 <td>Required</td>
@@ -481,7 +478,7 @@ specified in the request at step 1 with the following GET parameters</p>
 <h3>Step 4: Receive token response<a class="headerlink" href="#step-4-receive-token-response" title="Permalink to this headline">¶</a></h3>
 <p>The authentication server returns the following token response in JSON
 format if the token request at step 3 is valid.</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
 <col width="86%" />
@@ -496,7 +493,7 @@ format if the token request at step 3 is valid.</p>
 <td>The access token as assigned by the authorization server</td>
 </tr>
 <tr class="row-odd"><td>token_type</td>
-<td>The token type assigned by the authorization server. In this context set to <code class="docutils literal"><span class="pre">bearer</span></code>.</td>
+<td>The token type assigned by the authorization server. In this context set to <tt class="docutils literal"><span class="pre">bearer</span></tt>.</td>
 </tr>
 <tr class="row-even"><td>expires_in</td>
 <td>Expiration time in seconds after which the access token becomes invalid</td>
@@ -505,13 +502,13 @@ format if the token request at step 3 is valid.</p>
 <td>The refresh token for obtaining a new access token</td>
 </tr>
 <tr class="row-even"><td>scope</td>
-<td>The scope of the access token as in <a class="reference internal" href="#scopes"><span class="std std-ref">Scopes</span></a></td>
+<td>The scope of the access token as in <a class="reference internal" href="#scopes"><em>Scopes</em></a></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <code class="docutils literal"><span class="pre">refresh_token</span></code> field.</p>
+<p class="last">Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <tt class="docutils literal"><span class="pre">refresh_token</span></tt> field.</p>
 </div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span>
 <span class="nx">Host</span><span class="o">:</span> <span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
@@ -536,7 +533,7 @@ format if the token request at step 3 is valid.</p>
 <div class="section" id="using-an-access-token">
 <span id="id2"></span><h2>Using an Access Token<a class="headerlink" href="#using-an-access-token" title="Permalink to this headline">¶</a></h2>
 <p>To use the access token for an actual API call you have to provide it in the
-<code class="docutils literal"><span class="pre">Authorization</span></code> header as follows:</p>
+<tt class="docutils literal"><span class="pre">Authorization</span></tt> header as follows:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">ad</span>
 <span class="nx">Host</span><span class="o">:</span> <span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
 <span class="nx">Authorization</span><span class="o">:</span> <span class="nx">Bearer</span> <span class="mi">1</span><span class="nx">dc19b97</span><span class="o">-</span><span class="nx">fd12</span><span class="o">-</span><span class="mi">4</span><span class="nx">feb</span><span class="o">-</span><span class="mi">8</span><span class="nx">c9d</span><span class="o">-</span><span class="mi">042</span><span class="nx">b4ba80747</span>
@@ -549,7 +546,7 @@ format if the token request at step 3 is valid.</p>
 obtain a new access token once the access token is no longer valid. In order
 to obtain a new access token the following <em>POST</em> request to the <em>token
 endpoint</em> with the following parameters is necessary.</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
 <col width="27%" />
@@ -568,7 +565,7 @@ endpoint</em> with the following parameters is necessary.</p>
 </tr>
 <tr class="row-odd"><td>grant_type</td>
 <td>Required</td>
-<td>Must be set to <code class="docutils literal"><span class="pre">refresh_token</span></code></td>
+<td>Must be set to <tt class="docutils literal"><span class="pre">refresh_token</span></tt></td>
 </tr>
 <tr class="row-even"><td>client_id</td>
 <td>Required</td>
@@ -582,7 +579,7 @@ endpoint</em> with the following parameters is necessary.</p>
 </table>
 <p>If the refresh token request is valid the authorization server returns a new
 access token. The token response is identical to the token response explained
-at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><span class="std std-ref">Getting an Access Token</span></a>.</p>
+at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><em>Getting an Access Token</em></a>.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span>
 <span class="nx">Host</span><span class="o">:</span> <span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
@@ -618,7 +615,7 @@ over time but does not require the user to go through the grant flow again.</p>
 <p>The actual scope for a token is the intersection between the scope requested
 by the  client as described in <a class="reference internal" href="#getting-an-access-token">Getting an Access Token</a> and the scope
 granted by the user which is part of the user record.</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />

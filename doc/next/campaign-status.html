@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="up" title="Campaigns" href="campaigns.html"/>
         <link rel="next" title="Campaign Budgets" href="campaign-budgets.html"/>
@@ -122,7 +119,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="campaigns.html">Campaigns</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Status</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-linkedads.html">Campaign Linked Ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
@@ -232,7 +229,7 @@
     <li>Campaign Status</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/campaign-status.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/campaign-status.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -246,7 +243,7 @@
 are set by the system or by customer service.</p>
 <div class="section" id="user-controlled-states">
 <h2>User Controlled States<a class="headerlink" href="#user-controlled-states" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils" id="id1">
+<table border="1" class="docutils" id="id1">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
@@ -261,7 +258,7 @@ are set by the system or by customer service.</p>
 <td>The campaign is active and its linked ads are shown on the site.</td>
 </tr>
 <tr class="row-odd"><td><strong>PAUSED</strong></td>
-<td>The campaign is not active and its linked ads are not shown on the site. The campaign can be re-activated, if there is sufficient budget. By default (unless explicitely set) the status of a newly-created campaign is <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
+<td>The campaign is not active and its linked ads are not shown on the site. The campaign can be re-activated, if there is sufficient budget. By default (unless explicitely set) the status of a newly-created campaign is <tt class="docutils literal"><span class="pre">PAUSED</span></tt>.</td>
 </tr>
 <tr class="row-even"><td><strong>DELETED</strong></td>
 <td>The campaign has been deleted by the user and cannot be re-activated. Its linked ads are also not shown on site.</td>
@@ -271,7 +268,7 @@ are set by the system or by customer service.</p>
 </div>
 <div class="section" id="system-states">
 <h2>System States<a class="headerlink" href="#system-states" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
@@ -285,9 +282,9 @@ are set by the system or by customer service.</p>
 <tr class="row-even"><td><strong>BUDGET_REACHED</strong></td>
 <td>One or more of the campaign&#8217;s budgets have been reached and its linked ads are not shown on site. In case of
 recurring budgets, like Daily or Monthly budgets, the budgets will be periodically reset and the campaign will
-automatically become active again. This status has a precedence only over the user-controlled status <code class="docutils literal"><span class="pre">ACTIVE</span></code>;
-in other words, if the campaign is <code class="docutils literal"><span class="pre">PAUSED</span></code> (or <code class="docutils literal"><span class="pre">DELETED</span></code>), while a campaign budget is reached
-(<code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code>), the campaign will be shown as <code class="docutils literal"><span class="pre">PAUSED</span></code> (or <code class="docutils literal"><span class="pre">DELETED</span></code>).</td>
+automatically become active again. This status has a precedence only over the user-controlled status <tt class="docutils literal"><span class="pre">ACTIVE</span></tt>;
+in other words, if the campaign is <tt class="docutils literal"><span class="pre">PAUSED</span></tt> (or <tt class="docutils literal"><span class="pre">DELETED</span></tt>), while a campaign budget is reached
+(<tt class="docutils literal"><span class="pre">BUDGET_REACHED</span></tt>), the campaign will be shown as <tt class="docutils literal"><span class="pre">PAUSED</span></tt> (or <tt class="docutils literal"><span class="pre">DELETED</span></tt>).</td>
 </tr>
 </tbody>
 </table>

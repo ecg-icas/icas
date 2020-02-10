@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="PUT /campaign/{id}/status/{status}" href="put-campaign-status.html"/>
@@ -183,7 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-linkedads.html">GET /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-linkedads.html">PUT /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /campaign/{id}/funnel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">GET /campaign/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-cpc.html">PUT /campaign/{id}/cpc/{cpc}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
@@ -232,7 +229,7 @@
     <li>GET /campaign/{id}/funnel</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-campaign-funnel.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-campaign-funnel.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -242,21 +239,21 @@
             
   <div class="section" id="get-campaign-id-funnel">
 <span id="index-0"></span><h1>GET /campaign/{id}/funnel<a class="headerlink" href="#get-campaign-id-funnel" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.campaign-targeting-v2+json,</span> <span class="pre">application/json</span></code></td>
+<td><tt class="docutils literal"><span class="pre">application/sellside.campaign-targeting-v2+json,</span> <span class="pre">application/json</span></tt></td>
 </tr>
 </tbody>
 </table>
-<p>Returns a <a class="reference internal" href="#campaign-funnel-object"><span class="std std-ref">Campaign Funnel Object</span></a> for the specified campaign. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
+<p>Returns a <a class="reference internal" href="#campaign-funnel-object"><em>Campaign Funnel Object</em></a> for the specified campaign. If the <tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
 The funnel estimates the daily performance of the specified campaign, based on the the budgets, targeting settings and the currently-active ads in the campaign.</p>
 <div class="section" id="campaign-funnel-object">
 <span id="id1"></span><h2>Campaign Funnel Object<a class="headerlink" href="#campaign-funnel-object" title="Permalink to this headline">¶</a></h2>

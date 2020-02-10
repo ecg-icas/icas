@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /user" href="get-user.html"/>
@@ -198,7 +195,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">POST /metrics/data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
@@ -232,7 +229,7 @@
     <li>POST /metrics/data</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/post-metrics-data.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/post-metrics-data.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -242,32 +239,32 @@
             
   <div class="section" id="post-metrics-data">
 <span id="index-0"></span><span id="id1"></span><h1>POST /metrics/data<a class="headerlink" href="#post-metrics-data" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
+<td><tt class="docutils literal"><span class="pre">console_ro</span></tt> or <tt class="docutils literal"><span class="pre">api_ro</span></tt></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/json</span></code></td>
+<td><tt class="docutils literal"><span class="pre">application/json</span></tt></td>
 </tr>
 <tr class="row-odd"><td>Content-Type</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.metrics.data-v1+json</span></code></td>
+<td><tt class="docutils literal"><span class="pre">application/sellside.metrics.data-v1+json</span></tt></td>
 </tr>
 </tbody>
 </table>
-<p>This URL returns the requested reporting metrics in a format described in the new <a class="reference internal" href="../reporting.html#metrics-reporting"><span class="std std-ref">Reporting</span></a> API.</p>
+<p>This URL returns the requested reporting metrics in a format described in the new <a class="reference internal" href="../reporting.html#metrics-reporting"><em>Reporting</em></a> API.</p>
 <div class="section" id="query-and-response">
 <h2>Query and Response<a class="headerlink" href="#query-and-response" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="query">
 <h3>Query<a class="headerlink" href="#query" title="Permalink to this headline">¶</a></h3>
 <p>The metrics query should be provided as a JSON object of type <a class="reference internal" href="#metrics-request">Metrics Request</a>, which has these minimum requirements:</p>
 <ul class="simple">
-<li>At least one valid entry in the  <a class="reference internal" href="../reporting.html#id2"><span class="std std-ref">Time Ranges</span></a> field.</li>
-<li>At least one valid entry in the <a class="reference internal" href="../reporting.html#id1"><span class="std std-ref">Metrics</span></a> field.</li>
+<li>At least one valid entry in the  <a class="reference internal" href="../reporting.html#id2"><em>Time Ranges</em></a> field.</li>
+<li>At least one valid entry in the <a class="reference internal" href="../reporting.html#id1"><em>Metrics</em></a> field.</li>
 </ul>
 <p>Here is a sample request with all top-level query fields expanded:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
@@ -275,7 +272,7 @@
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
     <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
   <span class="p">}],</span>
@@ -336,34 +333,34 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">timeRanges</span></code></td>
-<td>Array of <a class="reference internal" href="../reporting.html#id2"><span class="std std-ref">Time Ranges</span></a> objects, separated by commas</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">timeRanges</span></tt></td>
+<td>Array of <a class="reference internal" href="../reporting.html#id2"><em>Time Ranges</em></a> objects, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">aggregate</span></code></td>
-<td>One of <a class="reference internal" href="../reporting.html#id3"><span class="std std-ref">Time Aggregation</span></a> string values</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">aggregate</span></tt></td>
+<td>One of <a class="reference internal" href="../reporting.html#id3"><em>Time Aggregation</em></a> string values</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">dimensions</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">dimensions</span></tt></td>
 <td>Array of dimensions, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">metrics</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">metrics</span></tt></td>
 <td>Array of metrics, separated by commas. At least one element is mandatory</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">sorts</span></code></td>
-<td>Array of <a class="reference internal" href="../reporting.html#sorts"><span class="std std-ref">Sort</span></a>  objects, separated by commas</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sorts</span></tt></td>
+<td>Array of <a class="reference internal" href="../reporting.html#sorts"><em>Sort</em></a>  objects, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">filters</span></code></td>
-<td>Array of <a class="reference internal" href="../reporting.html#id4"><span class="std std-ref">Filters</span></a> objects, separated by commas</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">filters</span></tt></td>
+<td>Array of <a class="reference internal" href="../reporting.html#id4"><em>Filters</em></a> objects, separated by commas</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">enrichment</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">enrichment</span></tt></td>
 <td>Array of ad enrichment fields, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">limit</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">limit</span></tt></td>
 <td>Number of elements in the response, per time range. By default there is no limit</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">offset</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">offset</span></tt></td>
 <td>Index of first row of the requested data (per time range), beginning with 0</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">searchPhrase</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">searchPhrase</span></tt></td>
 <td>String to match against an ad title</td>
 </tr>
 </tbody>
@@ -373,78 +370,78 @@
 <div class="section" id="response">
 <h3>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h3>
 <p>The response body of the API request is a JSON object of <a class="reference internal" href="#metrics-response">Metrics Response</a> type. Here is a sample response for the sample request above.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
-    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-10 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;4444&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mf">0.634</span><span class="p">],</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #4444&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-02-10 10:15:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;fsd23432&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;City of Toronto&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-11 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.244</span><span class="p">],</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Canada&quot;</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-12 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;4444&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mf">0.252</span><span class="p">],</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #4444&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-02-10 10:15:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;fsd23432&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;City of Toronto&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-13 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mf">0.312</span><span class="p">],</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mf">0.543</span><span class="p">]</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">5</span>
-  <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>{
+  &quot;data&quot;: [{
+    &quot;rows&quot;: [
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-10 00:00:00&quot;, &quot;4444&quot;],
+        &quot;metrics&quot;: [11, 22, 0.634],
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #4444&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-02-10 10:15:15&quot;,
+          &quot;&quot;,
+          &quot;fsd23432&quot;,
+          &quot;City of Toronto&quot;,
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      },
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-11 00:00:00&quot;, &quot;5555&quot;],
+        &quot;metrics&quot;: [9, 20, 0.244],
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #5555&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-05-11 09:10:15&quot;,
+          &quot;2016-07-11 06:10:10&quot;,
+          &quot;123425d&quot;,
+          &quot;Canada&quot;
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      },
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-12 00:00:00&quot;, &quot;4444&quot;],
+        &quot;metrics&quot;: [34, 67, 0.252],
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #4444&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-02-10 10:15:15&quot;,
+          &quot;&quot;,
+          &quot;fsd23432&quot;,
+          &quot;City of Toronto&quot;,
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      },
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-13 00:00:00&quot;, &quot;5555&quot;],
+        &quot;metrics&quot;: [55, 61, 0.312],
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #5555&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-05-11 09:10:15&quot;,
+          &quot;2016-07-11 06:10:10&quot;,
+          &quot;123425d&quot;,
+          &quot;Canada&quot;,
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      },
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-14 00:00:00&quot;, &quot;5555&quot;],
+        &quot;metrics&quot;: [43, 76, 0.543]
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #5555&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-05-11 09:10:15&quot;,
+          &quot;2016-07-11 06:10:10&quot;,
+          &quot;123425d&quot;,
+          &quot;Canada&quot;,
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      }
+    ],
+    &quot;count&quot;: 5
+  }
+]
 </pre></div>
 </div>
 <div class="section" id="metrics-response">
@@ -477,24 +474,24 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">rows</span></code></td>
-<td>Array of <code class="docutils literal"><span class="pre">dimensions</span></code>, <code class="docutils literal"><span class="pre">metrics</span></code> and <code class="docutils literal"><span class="pre">enrichment</span></code> values. Each element is one row of a response</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">rows</span></tt></td>
+<td>Array of <tt class="docutils literal"><span class="pre">dimensions</span></tt>, <tt class="docutils literal"><span class="pre">metrics</span></tt> and <tt class="docutils literal"><span class="pre">enrichment</span></tt> values. Each element is one row of a response</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dimensions</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">dimensions</span></tt></td>
 <td>Array of dimension values for this row, in string format</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">metrics</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">metrics</span></tt></td>
 <td>Array of metric values for this row, in number format</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">enrichment</span></code></td>
-<td>Array of enrichment values for this row, in string format. Valid only if <code class="docutils literal"><span class="pre">am:adID</span></code> is in the requested dimensions</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">enrichment</span></tt></td>
+<td>Array of enrichment values for this row, in string format. Valid only if <tt class="docutils literal"><span class="pre">am:adID</span></tt> is in the requested dimensions</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">count</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">count</span></tt></td>
 <td>Actual number of rows returned</td>
 </tr>
 </tbody>
 </table>
-<p>The <code class="docutils literal"><span class="pre">data</span></code> field contains an array of objects, one for each of the requested <a class="reference internal" href="../reporting.html#id2"><span class="std std-ref">Time Ranges</span></a>. It is <strong>important to remember</strong> that the order in which the <code class="docutils literal"><span class="pre">metrics</span></code>, <code class="docutils literal"><span class="pre">dimensions</span></code>, and <code class="docutils literal"><span class="pre">enrichment</span></code> fields are requested is the same order in which they are listed in the response. The order of the objects in the <cite>rows</cite> array is not guaranteed to be deterministic unless explicit <cite>Sorting &lt;Sorts&gt;</cite> is used.</p>
+<p>The <tt class="docutils literal"><span class="pre">data</span></tt> field contains an array of objects, one for each of the requested <a class="reference internal" href="../reporting.html#id2"><em>Time Ranges</em></a>. It is <strong>important to remember</strong> that the order in which the <tt class="docutils literal"><span class="pre">metrics</span></tt>, <tt class="docutils literal"><span class="pre">dimensions</span></tt>, and <tt class="docutils literal"><span class="pre">enrichment</span></tt> fields are requested is the same order in which they are listed in the response. The order of the objects in the <cite>rows</cite> array is not guaranteed to be deterministic unless explicit <cite>Sorting &lt;Sorts&gt;</cite> is used.</p>
 </div>
 </div>
 </div>
@@ -503,33 +500,33 @@
 <p>To understand the concept of dimensions and metrics, some examples of request and response are provided below, gradually increasing in complexity. In addition, a &#8220;tabular&#8221; view of the response is provided; in our experience it makes it easier to grasp these concepts.</p>
 <div class="section" id="example-1">
 <h3>Example 1:<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
-<p>Get all clicks and impressions for category <code class="docutils literal"><span class="pre">1234</span></code> for the previous week:</p>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
-<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">]</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<p>Get all clicks and impressions for category <tt class="docutils literal"><span class="pre">1234</span></tt> for the previous week:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
+Content-Type: application/sellside.metrics.data-v1+json
+Accept: application/json
+{
+    &quot;timeRanges&quot;: [{
+        &quot;period&quot;: &quot;lastWeek&quot;
+    }],
+    &quot;dimensions&quot;: [],
+    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
+    &quot;filters&quot;: [{
+        &quot;field&quot;: &quot;am:categoryID&quot;,
+        &quot;operator&quot;: &quot;in&quot;,
+        &quot;value&quot;: [1234]
+    }]
+}
 </pre></div>
 </div>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1483</span><span class="p">,</span> <span class="mi">36623</span><span class="p">]</span> <span class="o">//</span> <span class="mi">1483</span> <span class="n">clicks</span><span class="p">,</span> <span class="mi">36623</span> <span class="n">impressions</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
+    &quot;data&quot;: [{
+        &quot;rows&quot;: [{
+            &quot;dimensions&quot;: [],
+            &quot;metrics&quot;: [1483, 36623] // 1483 clicks, 36623 impressions
+        }],
+    &quot;count&quot;: 1
+    }]
+}
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -551,37 +548,37 @@
 </div>
 <div class="section" id="example-2">
 <h3>Example 2:<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
-<p>Get all clicks and impressions for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per category:</p>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
-<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<p>Get all clicks and impressions for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per category:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
+Content-Type: application/sellside.metrics.data-v1+json
+Accept: application/json
+{
+    &quot;timeRanges&quot;: [{
+        &quot;period&quot;: &quot;lastWeek&quot;
+    }],
+    &quot;dimensions&quot;: [&quot;am:categoryID&quot;],
+    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
+    &quot;filters&quot;: [{
+        &quot;field&quot;: &quot;am:categoryID&quot;,
+        &quot;operator&quot;: &quot;in&quot;,
+        &quot;value&quot;: [1234, 5678]
+    }]
+}
 </pre></div>
 </div>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span> <span class="o">//</span> <span class="mi">200</span> <span class="n">clicks</span><span class="p">,</span> <span class="mi">400</span> <span class="n">impressions</span> <span class="k">for</span> <span class="n">category</span> <span class="s2">&quot;1234&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">2</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
+    &quot;data&quot;: [{
+        &quot;rows&quot;: [{
+            &quot;dimensions&quot;: [&quot;1234&quot;],
+            &quot;metrics&quot;: [200, 400] // 200 clicks, 400 impressions for category &quot;1234&quot;
+        },
+        {
+            &quot;dimensions&quot;: [&quot;5678&quot;],
+            &quot;metrics&quot;: [300, 400]
+        }],
+    &quot;count&quot;: 2
+    }]
+}
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -610,59 +607,59 @@
 </div>
 <div class="section" id="example-3">
 <h3>Example 3:<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
-<p>Get all clicks and impressions for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
-<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;sorts&quot;</span><span class="p">:[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;direction&quot;</span><span class="p">:</span><span class="s2">&quot;asc&quot;</span>
-    <span class="p">}],</span>
-<span class="p">}</span>
+<p>Get all clicks and impressions for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
+Content-Type: application/sellside.metrics.data-v1+json
+Accept: application/json
+{
+    &quot;timeRanges&quot;: [{
+        &quot;period&quot;: &quot;lastWeek&quot;
+    }],
+    &quot;dimensions&quot;: [&quot;am:date&quot;, &quot;am:categoryID&quot;],
+    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
+    &quot;filters&quot;: [{
+        &quot;field&quot;: &quot;am:categoryID&quot;,
+        &quot;operator&quot;: &quot;in&quot;,
+        &quot;value&quot;: [1234, 5678]
+    }],
+    &quot;sorts&quot;:[
+    {
+        &quot;field&quot;:&quot;am:date&quot;,
+        &quot;direction&quot;:&quot;asc&quot;
+    }],
+}
 </pre></div>
 </div>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">67</span><span class="p">]</span>
-        <span class="p">},</span>
-                    <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="o">...</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">76</span><span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">54</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
+    &quot;data&quot;: [{
+        &quot;rows&quot;: [{
+            &quot;dimensions&quot;: [&quot;2018-12-08 00:00:00&quot;, &quot;1234&quot;],
+            &quot;metrics&quot;: [11, 12]
+        },
+        {
+            &quot;dimensions&quot;: [&quot;2018-12-08 00:00:00&quot;, &quot;5678&quot;],
+            &quot;metrics&quot;: [9, 20]
+        },
+        {
+            &quot;dimensions&quot;: [&quot;2018-12-09 00:00:00&quot;, &quot;1234&quot;],
+            &quot;metrics&quot;: [34, 67]
+        },
+                    {
+            &quot;dimensions&quot;: [&quot;2018-12-09 00:00:00&quot;, &quot;5678&quot;],
+            &quot;metrics&quot;: [19, 20]
+        },
+        ...
+        {
+            &quot;dimensions&quot;: [&quot;2018-12-14 00:00:00&quot;, &quot;1234&quot;],
+            &quot;metrics&quot;: [12, 90]
+        },
+        {
+            &quot;dimensions&quot;: [&quot;2018-12-14 00:00:00&quot;, &quot;5678&quot;],
+            &quot;metrics&quot;: [43, 76]
+        }],
+    &quot;count&quot;: 54
+    }]
+}
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -701,9 +698,9 @@
 <td>20</td>
 </tr>
 <tr class="row-even"><td>...</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>2018-12-14 00:00:00</td>
 <td>1234</td>
@@ -720,27 +717,27 @@
 </div>
 <div class="section" id="example-4">
 <h3>Example 4:<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
-<p>Get all clicks, and average CPC for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
-<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgCPC&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;enrichment&quot;</span><span class="p">:[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span> <span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
-    <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">3</span>
-<span class="p">}</span>
+<p>Get all clicks, and average CPC for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
+Content-Type: application/sellside.metrics.data-v1+json
+Accept: application/json
+{
+    &quot;timeRanges&quot;: [{
+        &quot;period&quot;: &quot;lastWeek&quot;
+    }],
+    &quot;dimensions&quot;: [&quot;am:adID&quot;],
+    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:avgCPC&quot;],
+    &quot;filters&quot;: [{
+            &quot;field&quot;: &quot;am:categoryID&quot;,
+            &quot;operator&quot;: &quot;in&quot;,
+            &quot;value&quot;: [1234, 5678]
+    }],
+    &quot;enrichment&quot;:[&quot;am:currentAdTitle&quot;, &quot;am:currentAdVendorID&quot;]
+    &quot;limit&quot;: 3
+}
 </pre></div>
 </div>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
         <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
@@ -813,7 +810,7 @@
 <h3>Final remarks:<a class="headerlink" href="#final-remarks" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li>In the <a class="reference internal" href="../reporting.html#sql-note"><span class="std std-ref">SQL note</span></a>, the enrichment fields can be seen as a left outer join operation.</li>
+<li>In the <a class="reference internal" href="../reporting.html#sql-note"><em>SQL note</em></a>, the enrichment fields can be seen as a left outer join operation.</li>
 <li>The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data.</li>
 </ul>
 </div></blockquote>
@@ -821,7 +818,7 @@
 </div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<p>Each error contains a <code class="docutils literal"><span class="pre">code</span></code> and <code class="docutils literal"><span class="pre">text</span></code> attributes providing a numeric error code and a simple English error message. An error may contain a <code class="docutils literal"><span class="pre">field</span></code> attribute describing the field where the error occurred and an additonal <code class="docutils literal"><span class="pre">arg</span></code> attribute further specifying the error.</p>
+<p>Each error contains a <tt class="docutils literal"><span class="pre">code</span></tt> and <tt class="docutils literal"><span class="pre">text</span></tt> attributes providing a numeric error code and a simple English error message. An error may contain a <tt class="docutils literal"><span class="pre">field</span></tt> attribute describing the field where the error occurred and an additonal <tt class="docutils literal"><span class="pre">arg</span></tt> attribute further specifying the error.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -847,12 +844,12 @@
 <td>invalid json</td>
 <td>Could not parse request data</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:date</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:date</span></tt></td>
 <td>2000</td>
 <td>missing argument</td>
 <td>The field &#8216;aggregate&#8217; was missing</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:metrics</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:metrics</span></tt></td>
 <td>2000</td>
 <td>missing argument</td>
 <td>The field &#8216;metrics&#8217; was missing</td>

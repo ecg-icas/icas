@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/> 
 
   
@@ -227,7 +224,7 @@
     <li>Query</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/reporting-query-and-response.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/reporting-query-and-response.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,8 +236,8 @@
 <h1>Query<a class="headerlink" href="#query" title="Permalink to this headline">¶</a></h1>
 <p>The metrics query should be provided as a JSON object of type <a class="reference internal" href="#metrics-request">Metrics Request</a>, which has these minimum requirements:</p>
 <ul class="simple">
-<li>At least one valid entry in the  <a class="reference internal" href="reporting.html#id2"><span class="std std-ref">Time Ranges</span></a> field.</li>
-<li>At least one valid entry in the <a class="reference internal" href="reporting.html#id1"><span class="std std-ref">Metrics</span></a> field.</li>
+<li>At least one valid entry in the  <a class="reference internal" href="reporting.html#id2"><em>Time Ranges</em></a> field.</li>
+<li>At least one valid entry in the <a class="reference internal" href="reporting.html#id1"><em>Metrics</em></a> field.</li>
 </ul>
 <p>Here is a sample request with all top-level query fields expanded:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
@@ -248,7 +245,7 @@
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
     <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
   <span class="p">}],</span>
@@ -309,34 +306,34 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">timeRanges</span></code></td>
-<td>Array of <a class="reference internal" href="reporting.html#id2"><span class="std std-ref">Time Ranges</span></a> objects, separated by commas</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">timeRanges</span></tt></td>
+<td>Array of <a class="reference internal" href="reporting.html#id2"><em>Time Ranges</em></a> objects, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">aggregate</span></code></td>
-<td>One of <a class="reference internal" href="reporting.html#id3"><span class="std std-ref">Time Aggregation</span></a> string values</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">aggregate</span></tt></td>
+<td>One of <a class="reference internal" href="reporting.html#id3"><em>Time Aggregation</em></a> string values</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">dimensions</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">dimensions</span></tt></td>
 <td>Array of dimensions, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">metrics</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">metrics</span></tt></td>
 <td>Array of metrics, separated by commas. At least one element is mandatory</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">sorts</span></code></td>
-<td>Array of <a class="reference internal" href="reporting.html#sorts"><span class="std std-ref">Sort</span></a>  objects, separated by commas</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sorts</span></tt></td>
+<td>Array of <a class="reference internal" href="reporting.html#sorts"><em>Sort</em></a>  objects, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">filters</span></code></td>
-<td>Array of <a class="reference internal" href="reporting.html#id4"><span class="std std-ref">Filters</span></a> objects, separated by commas</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">filters</span></tt></td>
+<td>Array of <a class="reference internal" href="reporting.html#id4"><em>Filters</em></a> objects, separated by commas</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">enrichment</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">enrichment</span></tt></td>
 <td>Array of ad enrichment fields, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">limit</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">limit</span></tt></td>
 <td>Number of elements in the response, per time range. By default there is no limit</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">offset</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">offset</span></tt></td>
 <td>Index of first row of the requested data (per time range), beginning with 0</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">searchPhrase</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">searchPhrase</span></tt></td>
 <td>String to match against an ad title</td>
 </tr>
 </tbody>
@@ -346,78 +343,78 @@
 <div class="section" id="response">
 <h1>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h1>
 <p>The response body of the API request is a JSON object of <a class="reference internal" href="#metrics-response">Metrics Response</a> type. Here is a sample response for the sample request above.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
-    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-10 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;4444&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mf">0.634</span><span class="p">],</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #4444&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-02-10 10:15:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;fsd23432&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;City of Toronto&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-11 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.244</span><span class="p">],</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Canada&quot;</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-12 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;4444&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mf">0.252</span><span class="p">],</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #4444&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-02-10 10:15:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;fsd23432&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;City of Toronto&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-13 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mf">0.312</span><span class="p">],</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mf">0.543</span><span class="p">]</span>
-        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">5</span>
-  <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>{
+  &quot;data&quot;: [{
+    &quot;rows&quot;: [
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-10 00:00:00&quot;, &quot;4444&quot;],
+        &quot;metrics&quot;: [11, 22, 0.634],
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #4444&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-02-10 10:15:15&quot;,
+          &quot;&quot;,
+          &quot;fsd23432&quot;,
+          &quot;City of Toronto&quot;,
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      },
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-11 00:00:00&quot;, &quot;5555&quot;],
+        &quot;metrics&quot;: [9, 20, 0.244],
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #5555&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-05-11 09:10:15&quot;,
+          &quot;2016-07-11 06:10:10&quot;,
+          &quot;123425d&quot;,
+          &quot;Canada&quot;
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      },
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-12 00:00:00&quot;, &quot;4444&quot;],
+        &quot;metrics&quot;: [34, 67, 0.252],
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #4444&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-02-10 10:15:15&quot;,
+          &quot;&quot;,
+          &quot;fsd23432&quot;,
+          &quot;City of Toronto&quot;,
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      },
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-13 00:00:00&quot;, &quot;5555&quot;],
+        &quot;metrics&quot;: [55, 61, 0.312],
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #5555&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-05-11 09:10:15&quot;,
+          &quot;2016-07-11 06:10:10&quot;,
+          &quot;123425d&quot;,
+          &quot;Canada&quot;,
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      },
+      {
+        &quot;dimensions&quot;: [&quot;2018-01-14 00:00:00&quot;, &quot;5555&quot;],
+        &quot;metrics&quot;: [43, 76, 0.543]
+        &quot;enrichment&quot;: [
+          &quot;Some title of ad #5555&quot;,
+          &quot;Category L1 description&quot;,
+          &quot;2016-05-11 09:10:15&quot;,
+          &quot;2016-07-11 06:10:10&quot;,
+          &quot;123425d&quot;,
+          &quot;Canada&quot;,
+          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
+        ]
+      }
+    ],
+    &quot;count&quot;: 5
+  }
+]
 </pre></div>
 </div>
 <div class="section" id="metrics-response">
@@ -450,24 +447,24 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">rows</span></code></td>
-<td>Array of <code class="docutils literal"><span class="pre">dimensions</span></code>, <code class="docutils literal"><span class="pre">metrics</span></code> and <code class="docutils literal"><span class="pre">enrichment</span></code> values. Each element is one row of a response</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">rows</span></tt></td>
+<td>Array of <tt class="docutils literal"><span class="pre">dimensions</span></tt>, <tt class="docutils literal"><span class="pre">metrics</span></tt> and <tt class="docutils literal"><span class="pre">enrichment</span></tt> values. Each element is one row of a response</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dimensions</span></code></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">dimensions</span></tt></td>
 <td>Array of dimension values for this row, in string format</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">metrics</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">metrics</span></tt></td>
 <td>Array of metric values for this row, in number format</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">enrichment</span></code></td>
-<td>Array of enrichment values for this row, in string format. Valid only if <code class="docutils literal"><span class="pre">am:adID</span></code> is in the requested dimensions</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">enrichment</span></tt></td>
+<td>Array of enrichment values for this row, in string format. Valid only if <tt class="docutils literal"><span class="pre">am:adID</span></tt> is in the requested dimensions</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">count</span></code></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">count</span></tt></td>
 <td>Actual number of rows returned</td>
 </tr>
 </tbody>
 </table>
-<p>The <code class="docutils literal"><span class="pre">data</span></code> field contains an array of objects, one for each of the requested <a class="reference internal" href="reporting.html#id2"><span class="std std-ref">Time Ranges</span></a>. It is <strong>important to remember</strong> that the order in which the <code class="docutils literal"><span class="pre">metrics</span></code>, <code class="docutils literal"><span class="pre">dimensions</span></code>, and <code class="docutils literal"><span class="pre">enrichment</span></code> fields are requested is the same order in which they are listed in the response. The order of the objects in the <cite>rows</cite> array is not guaranteed to be deterministic unless explicit <cite>Sorting &lt;Sorts&gt;</cite> is used.</p>
+<p>The <tt class="docutils literal"><span class="pre">data</span></tt> field contains an array of objects, one for each of the requested <a class="reference internal" href="reporting.html#id2"><em>Time Ranges</em></a>. It is <strong>important to remember</strong> that the order in which the <tt class="docutils literal"><span class="pre">metrics</span></tt>, <tt class="docutils literal"><span class="pre">dimensions</span></tt>, and <tt class="docutils literal"><span class="pre">enrichment</span></tt> fields are requested is the same order in which they are listed in the response. The order of the objects in the <cite>rows</cite> array is not guaranteed to be deterministic unless explicit <cite>Sorting &lt;Sorts&gt;</cite> is used.</p>
 </div>
 </div>
 

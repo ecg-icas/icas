@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /campaign/{id}" href="get-campaign-id.html"/>
@@ -173,7 +170,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaigns.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">DELETE /campaign/{id}</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">DELETE /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
@@ -232,7 +229,7 @@
     <li>DELETE /campaign/{id}</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/delete-campaign.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/delete-campaign.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -243,17 +240,17 @@
   <div class="section" id="delete-campaign-id">
 <span id="delete-campaign"></span><span id="index-0"></span><h1>DELETE /campaign/{id}<a class="headerlink" href="#delete-campaign-id" title="Permalink to this headline">¶</a></h1>
 <p>It is possible to remove a campaign in one go. This does not remove the ads from your inventory; it only takes them offline for that particular campaign.</p>
-<table border="1" class="colwidths-given docutils" id="id1">
+<table border="1" class="docutils" id="id1">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
+<td><tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></td>
 </tr>
 <tr class="row-even"><td>Content-Type</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.campaign-v2+json;</span> <span class="pre">charset=utf-8</span></code></td>
+<td><tt class="docutils literal"><span class="pre">application/sellside.campaign-v2+json;</span> <span class="pre">charset=utf-8</span></tt></td>
 </tr>
 </tbody>
 </table>

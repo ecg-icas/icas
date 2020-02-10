@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="next" title="Ad Status" href="ad-status.html"/>
         <link rel="prev" title="Authentication" href="authentication.html"/> 
@@ -86,7 +83,7 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Advertisements</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#images">Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
@@ -229,7 +226,7 @@
     <li>Advertisements</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/ads.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/ads.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -264,211 +261,211 @@ required and optional fields which are listed below:</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="#ad-id"><span class="std std-ref">id</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-id"><em>id</em></a></td>
 <td>long</td>
 <td>positive</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-title"><span class="std std-ref">title</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-title"><em>title</em></a></td>
 <td>string</td>
 <td>see below</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-description"><span class="std std-ref">description</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-description"><em>description</em></a></td>
 <td>string</td>
 <td>see below</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-categoryid"><span class="std std-ref">categoryId</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-categoryid"><em>categoryId</em></a></td>
 <td>int</td>
 <td>positive</td>
 <td>yes</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-externalid"><span class="std std-ref">externalId</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-externalid"><em>externalId</em></a></td>
 <td>string</td>
 <td>max. 64 chars</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-status"><span class="std std-ref">status</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-status"><em>status</em></a></td>
 <td>string</td>
 <td>enum</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-currency"><span class="std std-ref">currency</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-currency"><em>currency</em></a></td>
 <td>string</td>
 <td>cat.Currency</td>
 <td>yes</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-pricetype"><span class="std std-ref">priceType</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-pricetype"><em>priceType</em></a></td>
 <td>string</td>
 <td>enum</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-priceunit"><span class="std std-ref">priceUnit</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-priceunit"><em>priceUnit</em></a></td>
 <td>string</td>
 <td>see below</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-price"><span class="std std-ref">price</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-price"><em>price</em></a></td>
 <td>long</td>
 <td>see below</td>
 <td>see below</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-cpc"><span class="std std-ref">cpc</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-cpc"><em>cpc</em></a></td>
 <td>long</td>
 <td>positive</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-totalbudget"><span class="std std-ref">totalBudget</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-totalbudget"><em>totalBudget</em></a></td>
 <td>long</td>
 <td>positive</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-dailybudget"><span class="std std-ref">dailyBudget</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-dailybudget"><em>dailyBudget</em></a></td>
 <td>long</td>
 <td>positive</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-dailyspent"><span class="std std-ref">dailySpent</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-dailyspent"><em>dailySpent</em></a></td>
 <td>long</td>
 <td>positive</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-spentbudget"><span class="std std-ref">spentBudget</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-spentbudget"><em>spentBudget</em></a></td>
 <td>long</td>
 <td>positive</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-salutation"><span class="std std-ref">salutation</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-salutation"><em>salutation</em></a></td>
 <td>string</td>
 <td>enum</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-sellername"><span class="std std-ref">sellerName</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-sellername"><em>sellerName</em></a></td>
 <td>string</td>
 <td>max. 60 chars</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-postcode"><span class="std std-ref">postcode</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-postcode"><em>postcode</em></a></td>
 <td>string</td>
 <td>max. 6 chars</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-regionid"><span class="std std-ref">regionId</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-regionid"><em>regionId</em></a></td>
 <td>long</td>
 <td>positive</td>
 <td>no</td>
 <td>yes (only during create)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-pagenumber"><span class="std std-ref">pageNumber</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-pagenumber"><em>pageNumber</em></a></td>
 <td>int</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-suggestedcpcforpageone"><span class="std std-ref">suggestedCpcForPageOne</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a></td>
 <td>long</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-phonenumber"><span class="std std-ref">phoneNumber</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-phonenumber"><em>phoneNumber</em></a></td>
 <td>string</td>
 <td>max. 32 chars</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-allowcontactbyemail"><span class="std std-ref">allowContactByEmail</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-allowcontactbyemail"><em>allowContactByEmail</em></a></td>
 <td>bool</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-allowpaypal"><span class="std std-ref">allowPaypal</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-allowpaypal"><em>allowPaypal</em></a></td>
 <td>bool</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-datecreated"><span class="std std-ref">dateCreated</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-datecreated"><em>dateCreated</em></a></td>
 <td>date</td>
 <td>&#8211;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-datelastupdated"><span class="std std-ref">dateLastUpdated</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-datelastupdated"><em>dateLastUpdated</em></a></td>
 <td>date</td>
 <td>&#8211;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-datedeleted"><span class="std std-ref">dateDeleted</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-datedeleted"><em>dateDeleted</em></a></td>
 <td>date</td>
 <td>&#8211;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-links"><span class="std std-ref">links.self</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-links"><em>links.self</em></a></td>
 <td>object</td>
 <td>&#8211;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-links-self"><span class="std std-ref">links.self</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-links-self"><em>links.self</em></a></td>
 <td>string</td>
 <td>max. 2048 chars</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-links-category"><span class="std std-ref">links.category</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-links-category"><em>links.category</em></a></td>
 <td>string</td>
 <td>max. 2048 chars</td>
 <td>no</td>
 <td>no</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-links-url"><span class="std std-ref">links.url</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-links-url"><em>links.url</em></a></td>
 <td>string</td>
 <td>max. 2048 chars</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-links-displayurl"><span class="std std-ref">links.displayUrl</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-links-displayurl"><em>links.displayUrl</em></a></td>
 <td>string</td>
 <td>max. 256 chars</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-images"><span class="std std-ref">Images</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-images"><em>Images</em></a></td>
 <td>array</td>
 <td>max. 8 items</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-attributes"><span class="std std-ref">attributes</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-attributes"><em>attributes</em></a></td>
 <td>array</td>
 <td>&#8211;</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#ad-shippingoptions"><span class="std std-ref">shippingOptions</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#ad-shippingoptions"><em>shippingOptions</em></a></td>
 <td>array</td>
 <td>see below</td>
 <td>yes</td>
@@ -486,7 +483,7 @@ required and optional fields which are listed below:</p>
 <td>&#8211;</td>
 <td>&#8211;</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#ad-vendorid"><span class="std std-ref">vendorId</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#ad-vendorid"><em>vendorId</em></a></td>
 <td>string</td>
 <td>max. 64 chars</td>
 <td>no</td>
@@ -506,12 +503,12 @@ action.</p>
 </div>
 <div class="section" id="title">
 <span id="ad-title"></span><span id="index-2"></span><h3>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h3>
-<p>Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a>. URLs are not allowed as part of the title.</p>
+<p>Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories-v2.html#categories-v2"><em>Categories V2</em></a>. URLs are not allowed as part of the title.</p>
 </div>
 <div class="section" id="description">
 <span id="ad-description"></span><span id="index-3"></span><h3>description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
 <p>The description field of the ad.
-Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a>. URLs are not allowed as part of the title.
+Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories-v2.html#categories-v2"><em>Categories V2</em></a>. URLs are not allowed as part of the title.
 All HTML elements except for the ones below will be removed:</p>
 <div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
 </pre></div>
@@ -533,7 +530,7 @@ omitted.</p>
 </div>
 <div class="section" id="status">
 <span id="ad-status"></span><span id="index-6"></span><h3>status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h3>
-<p>Is a valid value from the list of <a class="reference internal" href="ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>. The user can set only one
+<p>Is a valid value from the list of <a class="reference internal" href="ad-status.html#ad-status-overview"><em>Ad Status</em></a>. The user can set only one
 of the user controlled states <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em>.</p>
 </div>
 <div class="section" id="currency">
@@ -544,7 +541,7 @@ DKK 12.34 should be represented as 1234.</p>
 </div>
 <div class="section" id="pricetype">
 <span id="ad-pricetype"></span><span id="index-8"></span><h3>priceType<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
-<p>Must be a valid price type identifier from the list of <a class="reference internal" href="price-types.html#price-types"><span class="std std-ref">Price Types</span></a>.</p>
+<p>Must be a valid price type identifier from the list of <a class="reference internal" href="price-types.html#price-types"><em>Price Types</em></a>.</p>
 </div>
 <div class="section" id="priceunit">
 <span id="ad-priceunit"></span><span id="index-9"></span><h3>priceUnit<a class="headerlink" href="#priceunit" title="Permalink to this headline">¶</a></h3>
@@ -553,9 +550,9 @@ of the category.</p>
 </div>
 <div class="section" id="price">
 <span id="ad-price"></span><span id="index-10"></span><h3>price<a class="headerlink" href="#price" title="Permalink to this headline">¶</a></h3>
-<p>The meaning of the value depends on <a class="reference internal" href="#ad-pricetype"><span class="std std-ref">priceType</span></a>. If it is
+<p>The meaning of the value depends on <a class="reference internal" href="#ad-pricetype"><em>priceType</em></a>. If it is
 <cite>FIXED_PRICE</cite> or <cite>BIDDING_FROM</cite> then <strong>price</strong> has to be greater than 0.
-The maximum allowed <strong>price</strong> is <code class="docutils literal"><span class="pre">10000000000</span></code> Euro cents (100.000.000 Euros).</p>
+The maximum allowed <strong>price</strong> is <tt class="docutils literal"><span class="pre">10000000000</span></tt> Euro cents (100.000.000 Euros).</p>
 </div>
 <div class="section" id="cpc">
 <span id="ad-cpc"></span><span id="index-11"></span><h3>cpc<a class="headerlink" href="#cpc" title="Permalink to this headline">¶</a></h3>
@@ -566,20 +563,20 @@ depend on the category.</p>
 <span id="ad-totalbudget"></span><span id="index-12"></span><h3>totalBudget<a class="headerlink" href="#totalbudget" title="Permalink to this headline">¶</a></h3>
 <p>The total budget for the ad. The minimum and maximum values depend on the
 category. When an ad is updated this value cannot be lower than the
-<a class="reference internal" href="#ad-spentbudget"><span class="std std-ref">spentBudget</span></a>.
+<a class="reference internal" href="#ad-spentbudget"><em>spentBudget</em></a>.
 If the total budget is not returned with the ad, it means there is an unlimited total budget.</p>
 </div>
 <div class="section" id="dailybudget">
 <span id="ad-dailybudget"></span><span id="index-13"></span><h3>dailyBudget<a class="headerlink" href="#dailybudget" title="Permalink to this headline">¶</a></h3>
 <p>The daily budget for the ad. When this value is reached the ad will be paused
 for the rest of the day. The minimum value depends on the category. Maximum value
-cannot be higher than the <a class="reference internal" href="#ad-totalbudget"><span class="std std-ref">totalBudget</span></a></p>
-<p>To disable the dailyBudget for an ad set it to <code class="docutils literal"><span class="pre">null</span></code>.</p>
+cannot be higher than the <a class="reference internal" href="#ad-totalbudget"><em>totalBudget</em></a></p>
+<p>To disable the dailyBudget for an ad set it to <tt class="docutils literal"><span class="pre">null</span></tt>.</p>
 </div>
 <div class="section" id="dailyspent">
 <span id="ad-dailyspent"></span><span id="index-14"></span><h3>dailySpent<a class="headerlink" href="#dailyspent" title="Permalink to this headline">¶</a></h3>
 <p>The budget spent for the ad since midnight.</p>
-<p>Only provided when the <a class="reference internal" href="#ad-dailybudget"><span class="std std-ref">dailyBudget</span></a> is not <code class="docutils literal"><span class="pre">null</span></code> and <code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
+<p>Only provided when the <a class="reference internal" href="#ad-dailybudget"><em>dailyBudget</em></a> is not <tt class="docutils literal"><span class="pre">null</span></tt> and <tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt>.</p>
 </div>
 <div class="section" id="spentbudget">
 <span id="ad-spentbudget"></span><span id="index-15"></span><h3>spentBudget<a class="headerlink" href="#spentbudget" title="Permalink to this headline">¶</a></h3>
@@ -604,20 +601,20 @@ cannot be higher than the <a class="reference internal" href="#ad-totalbudget"><
 A long value from the region tree. Must be the id of a leaf region.</p>
 <p>Each ad belongs to one and only one region and region of an ad cannot be updated.
 This field can only set once during creation of an ad.</p>
-<p>This field is mandatory if the <cite>region</cite> field of category configuration is <code class="docutils literal"><span class="pre">MANDATORY</span></code>
-and optional if the <cite>region</cite> field is <code class="docutils literal"><span class="pre">OPTIONAL</span></code>.
-This field must be omitted if the <cite>region</cite> field of category configuration is <code class="docutils literal"><span class="pre">DISABLED</span></code>.</p>
-<p>Please refer to <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and <a class="reference internal" href="regions.html#regions"><span class="std std-ref">Regions</span></a></p>
+<p>This field is mandatory if the <cite>region</cite> field of category configuration is <tt class="docutils literal"><span class="pre">MANDATORY</span></tt>
+and optional if the <cite>region</cite> field is <tt class="docutils literal"><span class="pre">OPTIONAL</span></tt>.
+This field must be omitted if the <cite>region</cite> field of category configuration is <tt class="docutils literal"><span class="pre">DISABLED</span></tt>.</p>
+<p>Please refer to <a class="reference internal" href="categories-v2.html#categories-v2"><em>Categories V2</em></a> and <a class="reference internal" href="regions.html#regions"><em>Regions</em></a></p>
 </div>
 <div class="section" id="pagenumber">
 <span id="ad-pagenumber"></span><span id="index-20"></span><h3>pageNumber<a class="headerlink" href="#pagenumber" title="Permalink to this headline">¶</a></h3>
 <p>Page number on which this ad is shown. Page number is highly volatile and
 might change very quickly depending on the performance of the ad.</p>
-<p>The fields <a class="reference internal" href="#ad-pagenumber"><span class="std std-ref">pageNumber</span></a> and <a class="reference internal" href="#ad-suggestedcpcforpageone"><span class="std std-ref">suggestedCpcForPageOne</span></a> are
+<p>The fields <a class="reference internal" href="#ad-pagenumber"><em>pageNumber</em></a> and <a class="reference internal" href="#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a> are
 currently expensive to compute. If you do not need their values consider
 excluding them to speed up the response. To exclude the fields add the
 following parameter to the request URL.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>?_exclude=pageNumber,suggestedCpcForPageOne
+<div class="highlight-python"><div class="highlight"><pre><span></span>?_exclude=pageNumber,suggestedCpcForPageOne
 </pre></div>
 </div>
 </div>
@@ -626,11 +623,11 @@ following parameter to the request URL.</p>
 <p>Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one.
 This value is very volatile and might change very quickly depending on the
 performance of the ad.</p>
-<p>The fields <a class="reference internal" href="#ad-pagenumber"><span class="std std-ref">pageNumber</span></a> and <a class="reference internal" href="#ad-suggestedcpcforpageone"><span class="std std-ref">suggestedCpcForPageOne</span></a> are
+<p>The fields <a class="reference internal" href="#ad-pagenumber"><em>pageNumber</em></a> and <a class="reference internal" href="#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a> are
 currently expensive to compute. If you do not need their values consider
 excluding them to speed up the response. To exclude the fields add the
 following parameter to the request URL.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>?_exclude=pageNumber,suggestedCpcForPageOne
+<div class="highlight-python"><div class="highlight"><pre><span></span>?_exclude=pageNumber,suggestedCpcForPageOne
 </pre></div>
 </div>
 </div>
@@ -677,7 +674,7 @@ url.</p>
 </div>
 <div class="section" id="links-displayurl">
 <span id="ad-links-displayurl"></span><span id="index-31"></span><h3>links.displayUrl<a class="headerlink" href="#links-displayurl" title="Permalink to this headline">¶</a></h3>
-<p>The text/url that will be displayed instead of the url in <a class="reference internal" href="#ad-links-url"><span class="std std-ref">links.url</span></a>.</p>
+<p>The text/url that will be displayed instead of the url in <a class="reference internal" href="#ad-links-url"><em>links.url</em></a>.</p>
 </div>
 <div class="section" id="vendorid">
 <span id="ad-vendorid"></span><span id="index-32"></span><h3>vendorId<a class="headerlink" href="#vendorid" title="Permalink to this headline">¶</a></h3>
@@ -725,14 +722,14 @@ fields which describe the status of the download.</p>
  <span class="p">]</span>
 </pre></div>
 </div>
-<p>The server adds a <code class="docutils literal"><span class="pre">status</span></code> field indicating the status of the download. The
+<p>The server adds a <tt class="docutils literal"><span class="pre">status</span></tt> field indicating the status of the download. The
 status is either <strong>OK</strong> (image was successfully downloaded), <strong>PENDING</strong>
 (image is scheduled to be downloaded) or <strong>ERROR</strong> if the image was not found
 or invalid.</p>
-<p>If the <code class="docutils literal"><span class="pre">status</span></code> is <strong>OK</strong> then a <strong>links</strong> map is added which contains
+<p>If the <tt class="docutils literal"><span class="pre">status</span></tt> is <strong>OK</strong> then a <strong>links</strong> map is added which contains
 <em>protocol agnostic</em> links to copies on the iCAS servers of the uploaded image
 in various sizes. The dimensions are specified as <em>max width</em> x <em>max height</em>.</p>
-<p>The server also adds the <code class="docutils literal"><span class="pre">dateLastUpdated</span></code> field which specifies the time
+<p>The server also adds the <tt class="docutils literal"><span class="pre">dateLastUpdated</span></tt> field which specifies the time
 the image was last updated.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -742,15 +739,15 @@ they will be ignored.</p>
 </div>
 <div class="section" id="attributes">
 <span id="ad-attributes"></span><span id="index-35"></span><h3>attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
-<p>An optional list of <a class="reference internal" href="attributes.html#user-defined-attributes"><span class="std std-ref">User-Defined Attributes</span></a>.</p>
+<p>An optional list of <a class="reference internal" href="attributes.html#user-defined-attributes"><em>User-Defined Attributes</em></a>.</p>
 </div>
 <div class="section" id="shippingoptions">
 <span id="ad-shippingoptions"></span><span id="index-36"></span><h3>shippingOptions<a class="headerlink" href="#shippingoptions" title="Permalink to this headline">¶</a></h3>
 <p>A list of shipping options available for an ad.
 Ads can contain maximum one shipping option per shipping option type.
-Whether shipping options are disabled/optional/mandatory for an ad is configured per category, see <a class="reference internal" href="categories-v2.html#category-config-v2"><span class="std std-ref">Category Configuration</span></a>.</p>
+Whether shipping options are disabled/optional/mandatory for an ad is configured per category, see <a class="reference internal" href="categories-v2.html#category-config-v2"><em>Category Configuration</em></a>.</p>
 <p>Shipping option has the following fields:</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
 <col width="30%" />

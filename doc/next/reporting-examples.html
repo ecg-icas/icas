@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/> 
 
   
@@ -227,7 +224,7 @@
     <li>Example 1:</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/reporting-examples.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/reporting-examples.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -238,33 +235,33 @@
   <p>To understand the concept of dimensions and metrics, some examples of request and response are provided below, gradually increasing in complexity. In addition, a &#8220;tabular&#8221; view of the response is provided; in our experience it makes it easier to grasp these concepts.</p>
 <div class="section" id="example-1">
 <h1>Example 1:<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h1>
-<p>Get all clicks and impressions for category <code class="docutils literal"><span class="pre">1234</span></code> for the previous week:</p>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
-<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">]</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<p>Get all clicks and impressions for category <tt class="docutils literal"><span class="pre">1234</span></tt> for the previous week:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
+Content-Type: application/sellside.metrics.data-v1+json
+Accept: application/json
+{
+    &quot;timeRanges&quot;: [{
+        &quot;period&quot;: &quot;lastWeek&quot;
+    }],
+    &quot;dimensions&quot;: [],
+    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
+    &quot;filters&quot;: [{
+        &quot;field&quot;: &quot;am:categoryID&quot;,
+        &quot;operator&quot;: &quot;in&quot;,
+        &quot;value&quot;: [1234]
+    }]
+}
 </pre></div>
 </div>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1483</span><span class="p">,</span> <span class="mi">36623</span><span class="p">]</span> <span class="o">//</span> <span class="mi">1483</span> <span class="n">clicks</span><span class="p">,</span> <span class="mi">36623</span> <span class="n">impressions</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
+    &quot;data&quot;: [{
+        &quot;rows&quot;: [{
+            &quot;dimensions&quot;: [],
+            &quot;metrics&quot;: [1483, 36623] // 1483 clicks, 36623 impressions
+        }],
+    &quot;count&quot;: 1
+    }]
+}
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -286,37 +283,37 @@
 </div>
 <div class="section" id="example-2">
 <h1>Example 2:<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h1>
-<p>Get all clicks and impressions for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per category:</p>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
-<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<p>Get all clicks and impressions for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per category:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
+Content-Type: application/sellside.metrics.data-v1+json
+Accept: application/json
+{
+    &quot;timeRanges&quot;: [{
+        &quot;period&quot;: &quot;lastWeek&quot;
+    }],
+    &quot;dimensions&quot;: [&quot;am:categoryID&quot;],
+    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
+    &quot;filters&quot;: [{
+        &quot;field&quot;: &quot;am:categoryID&quot;,
+        &quot;operator&quot;: &quot;in&quot;,
+        &quot;value&quot;: [1234, 5678]
+    }]
+}
 </pre></div>
 </div>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span> <span class="o">//</span> <span class="mi">200</span> <span class="n">clicks</span><span class="p">,</span> <span class="mi">400</span> <span class="n">impressions</span> <span class="k">for</span> <span class="n">category</span> <span class="s2">&quot;1234&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">2</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
+    &quot;data&quot;: [{
+        &quot;rows&quot;: [{
+            &quot;dimensions&quot;: [&quot;1234&quot;],
+            &quot;metrics&quot;: [200, 400] // 200 clicks, 400 impressions for category &quot;1234&quot;
+        },
+        {
+            &quot;dimensions&quot;: [&quot;5678&quot;],
+            &quot;metrics&quot;: [300, 400]
+        }],
+    &quot;count&quot;: 2
+    }]
+}
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -345,59 +342,59 @@
 </div>
 <div class="section" id="example-3">
 <h1>Example 3:<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h1>
-<p>Get all clicks and impressions for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
-<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;sorts&quot;</span><span class="p">:[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;direction&quot;</span><span class="p">:</span><span class="s2">&quot;asc&quot;</span>
-    <span class="p">}],</span>
-<span class="p">}</span>
+<p>Get all clicks and impressions for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
+Content-Type: application/sellside.metrics.data-v1+json
+Accept: application/json
+{
+    &quot;timeRanges&quot;: [{
+        &quot;period&quot;: &quot;lastWeek&quot;
+    }],
+    &quot;dimensions&quot;: [&quot;am:date&quot;, &quot;am:categoryID&quot;],
+    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
+    &quot;filters&quot;: [{
+        &quot;field&quot;: &quot;am:categoryID&quot;,
+        &quot;operator&quot;: &quot;in&quot;,
+        &quot;value&quot;: [1234, 5678]
+    }],
+    &quot;sorts&quot;:[
+    {
+        &quot;field&quot;:&quot;am:date&quot;,
+        &quot;direction&quot;:&quot;asc&quot;
+    }],
+}
 </pre></div>
 </div>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">67</span><span class="p">]</span>
-        <span class="p">},</span>
-                    <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="o">...</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">76</span><span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">54</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
+    &quot;data&quot;: [{
+        &quot;rows&quot;: [{
+            &quot;dimensions&quot;: [&quot;2018-12-08 00:00:00&quot;, &quot;1234&quot;],
+            &quot;metrics&quot;: [11, 12]
+        },
+        {
+            &quot;dimensions&quot;: [&quot;2018-12-08 00:00:00&quot;, &quot;5678&quot;],
+            &quot;metrics&quot;: [9, 20]
+        },
+        {
+            &quot;dimensions&quot;: [&quot;2018-12-09 00:00:00&quot;, &quot;1234&quot;],
+            &quot;metrics&quot;: [34, 67]
+        },
+                    {
+            &quot;dimensions&quot;: [&quot;2018-12-09 00:00:00&quot;, &quot;5678&quot;],
+            &quot;metrics&quot;: [19, 20]
+        },
+        ...
+        {
+            &quot;dimensions&quot;: [&quot;2018-12-14 00:00:00&quot;, &quot;1234&quot;],
+            &quot;metrics&quot;: [12, 90]
+        },
+        {
+            &quot;dimensions&quot;: [&quot;2018-12-14 00:00:00&quot;, &quot;5678&quot;],
+            &quot;metrics&quot;: [43, 76]
+        }],
+    &quot;count&quot;: 54
+    }]
+}
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -436,9 +433,9 @@
 <td>20</td>
 </tr>
 <tr class="row-even"><td>...</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>2018-12-14 00:00:00</td>
 <td>1234</td>
@@ -455,27 +452,27 @@
 </div>
 <div class="section" id="example-4">
 <h1>Example 4:<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h1>
-<p>Get all clicks, and average CPC for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
-<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgCPC&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;enrichment&quot;</span><span class="p">:[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span> <span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
-    <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">3</span>
-<span class="p">}</span>
+<p>Get all clicks, and average CPC for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
+Content-Type: application/sellside.metrics.data-v1+json
+Accept: application/json
+{
+    &quot;timeRanges&quot;: [{
+        &quot;period&quot;: &quot;lastWeek&quot;
+    }],
+    &quot;dimensions&quot;: [&quot;am:adID&quot;],
+    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:avgCPC&quot;],
+    &quot;filters&quot;: [{
+            &quot;field&quot;: &quot;am:categoryID&quot;,
+            &quot;operator&quot;: &quot;in&quot;,
+            &quot;value&quot;: [1234, 5678]
+    }],
+    &quot;enrichment&quot;:[&quot;am:currentAdTitle&quot;, &quot;am:currentAdVendorID&quot;]
+    &quot;limit&quot;: 3
+}
 </pre></div>
 </div>
-<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
         <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
@@ -548,7 +545,7 @@
 <h1>Final remarks:<a class="headerlink" href="#final-remarks" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
-<li>In the <a class="reference internal" href="reporting.html#sql-note"><span class="std std-ref">SQL note</span></a>, the enrichment fields can be seen as a left outer join operation.</li>
+<li>In the <a class="reference internal" href="reporting.html#sql-note"><em>SQL note</em></a>, the enrichment fields can be seen as a left outer join operation.</li>
 <li>The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data.</li>
 </ul>
 </div></blockquote>

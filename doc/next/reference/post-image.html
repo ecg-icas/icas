@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /campaigns" href="get-campaigns.html"/>
@@ -170,7 +167,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">POST /image</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaigns.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign.html">DELETE /campaign/{id}</a></li>
@@ -232,7 +229,7 @@
     <li>POST /image</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/post-image.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/post-image.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -242,17 +239,17 @@
             
   <div class="section" id="post-image">
 <span id="id1"></span><h1>POST /image<a class="headerlink" href="#post-image" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">console_rw</span></code></td>
+<td><tt class="docutils literal"><span class="pre">console_rw</span></tt></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.image.list-v1+json,</span> <span class="pre">application/json</span></code></td>
+<td><tt class="docutils literal"><span class="pre">application/sellside.image.list-v1+json,</span> <span class="pre">application/json</span></tt></td>
 </tr>
 <tr class="row-odd"><td>Content-Type</td>
 <td>see example</td>
@@ -267,9 +264,9 @@ An image upload request must be a multipart form-data request as specified in <a
 </div>
 <p>All images are converted to <strong>JPG</strong> with maximum dimensions of <strong>1024x1024</strong> while the aspect ratio is maintained.</p>
 <p>On success the server returns map with the name and a unique identifier for that image. The name is taken from the
-<code class="docutils literal"><span class="pre">name</span></code> parameter of the <code class="docutils literal"><span class="pre">Content-Disposition</span></code> header.</p>
-<p>The unique identifier is then used to either fetch the image via <a class="reference internal" href="get-image.html#get-image"><span class="std std-ref">GET /image/{id}</span></a> or save it with a <a class="reference internal" href="post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a> or
-a <a class="reference internal" href="put-ad-id.html#put-ad-id"><span class="std std-ref">PUT /ad/{id}</span></a> request.</p>
+<tt class="docutils literal"><span class="pre">name</span></tt> parameter of the <tt class="docutils literal"><span class="pre">Content-Disposition</span></tt> header.</p>
+<p>The unique identifier is then used to either fetch the image via <a class="reference internal" href="get-image.html#get-image"><em>GET /image/{id}</em></a> or save it with a <a class="reference internal" href="post-ad.html#post-ad"><em>POST  /ad</em></a> or
+a <a class="reference internal" href="put-ad-id.html#put-ad-id"><em>PUT /ad/{id}</em></a> request.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Images which are not saved are removed after <strong>30 minutes</strong>.</p>

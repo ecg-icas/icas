@@ -30,9 +30,6 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="next" title="Authentication" href="authentication.html"/>
         <link rel="prev" title="Introduction" href="index.html"/> 
@@ -63,7 +60,7 @@
         
         
             <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
@@ -229,7 +226,7 @@
     <li>Overview</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/overview.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -241,7 +238,7 @@
 <span id="id1"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
 <p>The iCAS Sellside API is a RESTful API to manage ads on iCAS either for your
 own account or on behalf of other users. The base URLs for the API are:</p>
-<table border="1" class="colwidths-given docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
 <col width="10%" />
@@ -258,7 +255,7 @@ own account or on behalf of other users. The base URLs for the API are:</p>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.demo.qa-mp.so/api/sellside">https://admarkt.demo.qa-mp.so/api/sellside</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.marktplaats.nl/api/sellside">https://admarkt.marktplaats.nl/api/sellside</a></td>
 </tr>
@@ -266,7 +263,7 @@ own account or on behalf of other users. The base URLs for the API are:</p>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.qa10.kjdev.ca/api/sellside">https://admarkt.qa10.kjdev.ca/api/sellside</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.kijiji.ca/api/sellside">https://admarkt.kijiji.ca/api/sellside</a></td>
 </tr>
@@ -274,7 +271,7 @@ own account or on behalf of other users. The base URLs for the API are:</p>
 <td>Sandbox</td>
 <td><a class="reference external" href="https://admarkt.demo-2dehands.qa-mp.so/api/sellside">https://admarkt.demo-2dehands.qa-mp.so/api/sellside</a></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
 <td>Production</td>
 <td><a class="reference external" href="https://admarkt.2dehands.be/api/sellside">https://admarkt.2dehands.be/api/sellside</a></td>
 </tr>
@@ -282,7 +279,7 @@ own account or on behalf of other users. The base URLs for the API are:</p>
 </table>
 <p>With this the full URL for retrieving ad 1234 for the
 current customer on Marktplaats Production becomes:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">admarkt</span><span class="o">.</span><span class="n">marktplaats</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">ad</span><span class="o">/</span><span class="mi">1234</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>https://admarkt.marktplaats.nl/api/sellside/ad/1234
 </pre></div>
 </div>
 <div class="section" id="image-downloads">
@@ -297,19 +294,19 @@ URLs are accessible by these ip addresses and that there is no rate limit.</p>
 </ul>
 </div></blockquote>
 <p>To reduce the latency when updating an ad we suggest that the response
-contains either an <code class="docutils literal"><span class="pre">ETag</span></code> and/or <code class="docutils literal"><span class="pre">Last-Modified</span></code> header which only changes
+contains either an <tt class="docutils literal"><span class="pre">ETag</span></tt> and/or <tt class="docutils literal"><span class="pre">Last-Modified</span></tt> header which only changes
 when the image itself has changed. It should also be possible to check these
-headers using a <code class="docutils literal"><span class="pre">HEAD</span></code> request.</p>
+headers using a <tt class="docutils literal"><span class="pre">HEAD</span></tt> request.</p>
 </div>
 <div class="section" id="media-types">
 <span id="overview-media-types"></span><h2>Media Types<a class="headerlink" href="#media-types" title="Permalink to this headline">¶</a></h2>
 <p>Each resource has a specific media type of the following form to support
 <em>content negotiation</em> and <em>versioning</em>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="p">{</span><span class="n">entity</span><span class="p">}</span><span class="o">-</span><span class="p">{</span><span class="n">version</span><span class="p">}</span><span class="o">+</span><span class="n">json</span><span class="p">;</span><span class="n">charset</span><span class="o">=</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>application/sellside.{entity}-{version}+json;charset=utf-8
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">version</span></code> field is mandatory.</p>
-<p>The media type is used for the <code class="docutils literal"><span class="pre">Content-Type</span></code> and <code class="docutils literal"><span class="pre">Accept</span></code> headers.</p>
+<p>The <tt class="docutils literal"><span class="pre">version</span></tt> field is mandatory.</p>
+<p>The media type is used for the <tt class="docutils literal"><span class="pre">Content-Type</span></tt> and <tt class="docutils literal"><span class="pre">Accept</span></tt> headers.</p>
 <p>This allows us to change the structure of a response without breaking existing
 code since you have to request the new content type while the old version is
 still available for some time. For backwards compatible changes like adding a
@@ -317,15 +314,15 @@ new field to an existing structure we will not change the version number.</p>
 </div>
 <div class="section" id="content-type-and-accept-headers">
 <span id="overview-accept-headers"></span><h2>Content-Type and Accept Headers<a class="headerlink" href="#content-type-and-accept-headers" title="Permalink to this headline">¶</a></h2>
-<p>Every request must set the <code class="docutils literal"><span class="pre">Accept</span></code> header to:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Expected</span> <span class="n">Media</span> <span class="n">Type</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<p>Every request must set the <tt class="docutils literal"><span class="pre">Accept</span></tt> header to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;Expected Media Type&gt;, application/json
 </pre></div>
 </div>
 <p>This permits the server to generate the response in the format the caller expects.
-<code class="docutils literal"><span class="pre">application/json</span></code> is required to return the error response.</p>
-<p>Additionally, each <code class="docutils literal"><span class="pre">POST</span></code> and <code class="docutils literal"><span class="pre">PUT</span></code> request must also set the <code class="docutils literal"><span class="pre">Content-Type</span></code>
+<tt class="docutils literal"><span class="pre">application/json</span></tt> is required to return the error response.</p>
+<p>Additionally, each <tt class="docutils literal"><span class="pre">POST</span></tt> and <tt class="docutils literal"><span class="pre">PUT</span></tt> request must also set the <tt class="docutils literal"><span class="pre">Content-Type</span></tt>
 header to:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Media</span> <span class="n">Type</span> <span class="n">of</span> <span class="n">the</span> <span class="n">body</span> <span class="n">content</span><span class="o">&gt;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;Media Type of the body content&gt;
 </pre></div>
 </div>
 </div>
@@ -340,19 +337,19 @@ password to get an access token.</p>
 (marktplaats, kijiji.ca, tweedehands). Your contact can also send you an invite
 for our <a class="reference external" href="http://https://discordapp.com">Discord</a> channel, where you can go for maintenance notifications and
 support.</p>
-<p>See the <a class="reference internal" href="authentication.html#authentication"><span class="std std-ref">Authentication</span></a> section for the full details and also
+<p>See the <a class="reference internal" href="authentication.html#authentication"><em>Authentication</em></a> section for the full details and also
 the <a class="reference external" href="http://oauth.net/2/">OAuth 2.0 website</a>.</p>
 </div>
 <div class="section" id="customize-response-body">
 <span id="overview-customize-response-body"></span><h2>Customize response body<a class="headerlink" href="#customize-response-body" title="Permalink to this headline">¶</a></h2>
 <p>Every call which returns a response body can have this customized using
-<code class="docutils literal"><span class="pre">_include</span></code> and <code class="docutils literal"><span class="pre">_exclude</span></code> parameters. These parameters define which fields
-to include in or exclude from the response body. When both <code class="docutils literal"><span class="pre">_include</span></code> and
-<code class="docutils literal"><span class="pre">_exclude</span></code> have a value, the <code class="docutils literal"><span class="pre">_exclude</span></code> value will be ignored. By default,
-<code class="docutils literal"><span class="pre">_include</span></code> is set to all fields and <code class="docutils literal"><span class="pre">_exclude</span></code> is empty.</p>
-<p>Furthermore, some calls allow for a <code class="docutils literal"><span class="pre">_body</span></code> parameter, defining whether
-there should be any data in the response body at all. Default of <code class="docutils literal"><span class="pre">_body</span></code> is
-true (returning data). When <code class="docutils literal"><span class="pre">_body</span></code> is false, <code class="docutils literal"><span class="pre">_include</span></code> and <code class="docutils literal"><span class="pre">_exclude</span></code>
+<tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt> parameters. These parameters define which fields
+to include in or exclude from the response body. When both <tt class="docutils literal"><span class="pre">_include</span></tt> and
+<tt class="docutils literal"><span class="pre">_exclude</span></tt> have a value, the <tt class="docutils literal"><span class="pre">_exclude</span></tt> value will be ignored. By default,
+<tt class="docutils literal"><span class="pre">_include</span></tt> is set to all fields and <tt class="docutils literal"><span class="pre">_exclude</span></tt> is empty.</p>
+<p>Furthermore, some calls allow for a <tt class="docutils literal"><span class="pre">_body</span></tt> parameter, defining whether
+there should be any data in the response body at all. Default of <tt class="docutils literal"><span class="pre">_body</span></tt> is
+true (returning data). When <tt class="docutils literal"><span class="pre">_body</span></tt> is false, <tt class="docutils literal"><span class="pre">_include</span></tt> and <tt class="docutils literal"><span class="pre">_exclude</span></tt>
 will be ignored.</p>
 </div>
 <div class="section" id="dates-and-times">
@@ -368,29 +365,29 @@ Currencies are specified as three character <a class="reference external" href="
 <div class="section" id="http-response-codes-and-error-handling">
 <span id="overview-http-response-codes-and-error-handling"></span><h2>HTTP Response Codes and Error Handling<a class="headerlink" href="#http-response-codes-and-error-handling" title="Permalink to this headline">¶</a></h2>
 <p>To retrieve, update and delete resources with the Sellside API you use the
-standard HTTP verbs <code class="docutils literal"><span class="pre">GET</span></code>, <code class="docutils literal"><span class="pre">PUT</span></code> and <code class="docutils literal"><span class="pre">DELETE</span></code>. If the resource exists
-and the request was successful the server responds with <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code>. If the
-resource does not exist the server responds with <code class="docutils literal"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code>.</p>
-<p>To create a new resource you perform a <code class="docutils literal"><span class="pre">POST</span></code> request to which the server
-responds with <code class="docutils literal"><span class="pre">201</span> <span class="pre">Created</span></code> and a <code class="docutils literal"><span class="pre">Location</span></code> header containing the URL of
+standard HTTP verbs <tt class="docutils literal"><span class="pre">GET</span></tt>, <tt class="docutils literal"><span class="pre">PUT</span></tt> and <tt class="docutils literal"><span class="pre">DELETE</span></tt>. If the resource exists
+and the request was successful the server responds with <tt class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></tt>. If the
+resource does not exist the server responds with <tt class="docutils literal"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></tt>.</p>
+<p>To create a new resource you perform a <tt class="docutils literal"><span class="pre">POST</span></tt> request to which the server
+responds with <tt class="docutils literal"><span class="pre">201</span> <span class="pre">Created</span></tt> and a <tt class="docutils literal"><span class="pre">Location</span></tt> header containing the URL of
 the new resource.</p>
 <p>All requests are validated before they are being executed by the server. If
-the validation fails the server responds with <code class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> and an error
+the validation fails the server responds with <tt class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></tt> and an error
 response which contains a list of the errors. More information can be found under
-<a class="reference internal" href="error-handling.html"><span class="doc">Error Handling</span></a>.</p>
+<a class="reference internal" href="error-handling.html"><em>Error Handling</em></a>.</p>
 </div>
 <div class="section" id="dry-run-request-validation">
 <span id="dryrun-validation"></span><h2>Dry-Run Request Validation<a class="headerlink" href="#dry-run-request-validation" title="Permalink to this headline">¶</a></h2>
 <p>The API supports dry-run validation of requests which modify resources. To
-validate a request without executing it add <code class="docutils literal"><span class="pre">_validate=true</span></code> to the request
-URL. If the validation succeeds the server returns <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code> and an empty
-body. Otherwise, the server returns <code class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> with the list of
+validate a request without executing it add <tt class="docutils literal"><span class="pre">_validate=true</span></tt> to the request
+URL. If the validation succeeds the server returns <tt class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></tt> and an empty
+body. Otherwise, the server returns <tt class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></tt> with the list of
 errors. The following endpoints support dry-run validation:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="reference/post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a></li>
-<li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id"><span class="std std-ref">PUT /ad/{id}</span></a></li>
-<li><a class="reference internal" href="reference/put-ad-id-status.html#put-ad-id-status"><span class="std std-ref">PUT /ad/{id}/status</span></a></li>
+<li><a class="reference internal" href="reference/post-ad.html#post-ad"><em>POST  /ad</em></a></li>
+<li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id"><em>PUT /ad/{id}</em></a></li>
+<li><a class="reference internal" href="reference/put-ad-id-status.html#put-ad-id-status"><em>PUT /ad/{id}/status</em></a></li>
 </ul>
 </div></blockquote>
 </div>
