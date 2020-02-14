@@ -36,6 +36,11 @@ Example
 GET /user v1
 ------------
 
+.. warning::
+
+	This call is scheduled to be deprecated. Please use :ref:`get_user_v3` instead.
+
+
 .. list-table::
  :widths: 20 80
 
