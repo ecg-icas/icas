@@ -16,9 +16,9 @@ GET /metrics/report
 Returns a performance report for a selected date period, per ad.
 The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads **which have had performance-related activity**.
 
-The ``Accept`` header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
-Conceptually, user is the highest level scope and hit is the lowest level scope. For example, ``clicks`` counts the number of clicks that ad received when the scope is `hit`,
-whereas it counts the number of sessions with clicks when the scope is `session`.
+The ``Accept`` header depends on the choice of the scope for the metrics. A scope for a metric defines the aggregation level at which that metric is defined — hit, session, or user.
+Conceptually, user is the highest level scope and hit is the lowest level scope. For example, ``clicks`` counts the number of unique clicks that ad received when the scope is `hit`,
+whereas it counts the number of unique sessions with clicks when the scope is `session`. If you are migrating away from our deprecated reporting endpoints, and want to keep the numbers in the same units, then you should use the `hit` level.
 
 We plan to extend support for user-level scoped metrics if there is demand for it.
 
