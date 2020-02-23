@@ -12,6 +12,12 @@ WEBAPPDIR     = ../doc/next
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
+
+# needed for versioning, assumes a versioning line in conf.py like this:
+# release = '0.115'
+v=$(shell grep 'release =' ./source/conf.py | sed 's/[^=]*=//' | sed -e 's|[\# "'\'']||g')
+
+
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
@@ -42,7 +48,7 @@ help:
 	@echo "  version v=xxx to bump the version of the API release"
 
 version: check-version
-	@echo "Will bump version to $(v)"
+	@echo "Will set version to $(v)"
 	mkdir -p ../doc/$(v)
 	cp -r $(WEBAPPDIR)/ ../doc/$(v)/
 	rm ../doc/prod
@@ -54,7 +60,10 @@ version: check-version
 
 check-version:
     ifndef v
-    $(error versioning parameter v is not set)
+    $(error release versioning parameter v is not set)
+    endif
+    ifeq ($(v),)
+    $(error release versioning parameter not set in conf.py)
     endif
 
 
