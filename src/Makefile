@@ -45,7 +45,7 @@ help:
 	@echo "  changes       to make an overview of all changed/added/deprecated items"
 	@echo "  linkcheck     to check all external links for integrity"
 	@echo "  doctest       to run all doctests embedded in the documentation (if enabled)"
-	@echo "  version v=xxx to bump the version of the API release"
+	@echo "  version       to set the version of the API release to the one in conf.py"
 
 version: check-version
 	@echo "Will set version to $(v)"
