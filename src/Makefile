@@ -53,10 +53,9 @@ version: check-version
 	@echo "Versioning finished. New version is $(v)"
 
 check-version:
-	if test "$(v)" = "" ; then \
-		echo "parameter v not set"; \
-	    exit 1; \
-	fi
+    ifndef v
+    $(error versioning parameter v is not set)
+    endif
 
 
 clean:
