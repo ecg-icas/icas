@@ -15,7 +15,7 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) sou
 
 # needed for versioning, assumes a versioning line in conf.py like this:
 # release = '0.115'
-v=$(shell grep 'release =' ./source/conf.py | sed 's/[^=]*=//' | sed -e 's|[\# "'\'']||g')
+v=$(shell grep 'release =' ./source/conf.py | sed 's/[^=]*=//' | sed -e 's/[\# "'\'']//g')
 
 
 # the i18n builder cannot share the environment and doctrees with the others
