@@ -12,6 +12,12 @@ WEBAPPDIR     = ../doc/next
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
+
+# needed for versioning, assumes a versioning line in conf.py like this:
+# release = '0.115'
+v=$(shell grep 'release =' ./source/conf.py | sed 's/[^=]*=//' | sed -e 's/[\# "'\'']//g')
+
+
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
@@ -19,26 +25,47 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  install    to make standalone HTML files and install them under $(realpath $(WEBAPPDIR))"
-	@echo "  html       to make standalone HTML files"
-	@echo "  dirhtml    to make HTML files named index.html in directories"
-	@echo "  singlehtml to make a single large HTML file"
-	@echo "  pickle     to make pickle files"
-	@echo "  json       to make JSON files"
-	@echo "  htmlhelp   to make HTML files and a HTML help project"
-	@echo "  qthelp     to make HTML files and a qthelp project"
-	@echo "  devhelp    to make HTML files and a Devhelp project"
-	@echo "  epub       to make an epub"
-	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
-	@echo "  latexpdf   to make LaTeX files and run them through pdflatex"
-	@echo "  text       to make text files"
-	@echo "  man        to make manual pages"
-	@echo "  texinfo    to make Texinfo files"
-	@echo "  info       to make Texinfo files and run them through makeinfo"
-	@echo "  gettext    to make PO message catalogs"
-	@echo "  changes    to make an overview of all changed/added/deprecated items"
-	@echo "  linkcheck  to check all external links for integrity"
-	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+	@echo "  install       to make standalone HTML files and install them under $(realpath $(WEBAPPDIR))"
+	@echo "  html          to make standalone HTML files"
+	@echo "  dirhtml       to make HTML files named index.html in directories"
+	@echo "  singlehtml    to make a single large HTML file"
+	@echo "  pickle        to make pickle files"
+	@echo "  json          to make JSON files"
+	@echo "  htmlhelp      to make HTML files and a HTML help project"
+	@echo "  qthelp        to make HTML files and a qthelp project"
+	@echo "  devhelp       to make HTML files and a Devhelp project"
+	@echo "  epub          to make an epub"
+	@echo "  latex         to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
+	@echo "  latexpdf      to make LaTeX files and run them through pdflatex"
+	@echo "  text          to make text files"
+	@echo "  man           to make manual pages"
+	@echo "  texinfo       to make Texinfo files"
+	@echo "  info          to make Texinfo files and run them through makeinfo"
+	@echo "  gettext       to make PO message catalogs"
+	@echo "  changes       to make an overview of all changed/added/deprecated items"
+	@echo "  linkcheck     to check all external links for integrity"
+	@echo "  doctest       to run all doctests embedded in the documentation (if enabled)"
+	@echo "  version       to set the version of the API release to the one in conf.py"
+
+version: check-version
+	@echo "Will set version to $(v)"
+	mkdir -p ../doc/$(v)
+	cp -r $(WEBAPPDIR)/ ../doc/$(v)/
+	rm ../doc/prod
+	ln -s $(v) ../doc/prod
+	rm ../doc/sandbox
+	ln -s $(v) ../doc/sandbox
+	@echo
+	@echo "Versioning finished. New version is $(v)"
+
+check-version:
+    ifndef v
+    $(error release versioning parameter v is not set)
+    endif
+    ifeq ($(v),)
+    $(error release versioning parameter not set in conf.py)
+    endif
+
 
 clean:
 	-rm -rf $(BUILDDIR)/*
