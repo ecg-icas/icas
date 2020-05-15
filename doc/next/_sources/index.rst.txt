@@ -47,6 +47,11 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.116 - 15 May 2020 - dr
+
+  * add "statusReason" to ad endpoints
+
 * v.0.115 - 3 Feb 2020 - dr
 
   * remove "includeDeleted" parameter documentation from :ref:`post_metrics_data`, clarify on filtering for ad statuses
