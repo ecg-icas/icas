@@ -5,7 +5,34 @@ POST |an|/ad
 ============
 .. |an| unicode:: 0x20 .. Workaround for ad blocker: apparently it blocks a section with id 'post-ad'
 
-:ref:`post_ad_v2` | :ref:`post_ad_v1`
+:ref: `post_ad_v4` | :ref:`post_ad_v3` | :ref:`post_ad_v2` | :ref:`post_ad_v1`
+
+.. _post_ad_v4:
+
+POST /ad v4
+-----------
+
+.. _post_ad_v3:
+
+POST /ad v3
+-----------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v3+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v3+json; charset=utf-8``
+
+
+Version 3 works just like :ref:`post_ad_v2`, except the response body may contain an additional field **statusReasons**.
+This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
 
 .. _post_ad_v2:
 
