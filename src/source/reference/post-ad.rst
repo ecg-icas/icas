@@ -5,13 +5,7 @@ POST |an|/ad
 ============
 .. |an| unicode:: 0x20 .. Workaround for ad blocker: apparently it blocks a section with id 'post-ad'
 
-:ref: `post_ad_v4` | :ref:`post_ad_v3` | :ref:`post_ad_v2` | :ref:`post_ad_v1`
-
-.. _post_ad_v4:
-
-POST /ad v4
------------
-
+:ref:`post_ad_v3` | :ref:`post_ad_v2` | :ref:`post_ad_v1`
 
 .. _post_ad_v3:
 
