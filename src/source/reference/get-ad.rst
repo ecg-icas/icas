@@ -28,7 +28,7 @@ GET /ad v4
     Namely, ads which were live during this selected period but did not recieve a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
     **This does not include ads which received sellside updates anymore.**
 
-    In addition, the response may contain an additional field **statusReasons** for certain ads. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+    In addition, the response contains a field **statusReasons**. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
     This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
 
 

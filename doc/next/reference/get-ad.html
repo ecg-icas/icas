@@ -237,7 +237,7 @@
 <p>The only backwards-incompatible change from <a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> is with respect to the usage of <code class="docutils literal"><span class="pre">startDate</span></code> and <code class="docutils literal"><span class="pre">endDate</span></code> parameters.
 Namely, ads which were live during this selected period but did not recieve a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
 <strong>This does not include ads which received sellside updates anymore.</strong></p>
-<p class="last">In addition, the response may contain an additional field <strong>statusReasons</strong> for certain ads. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+<p class="last">In addition, the response contains a field <strong>statusReasons</strong>. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
 This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.</p>
 </div>
 </div>
