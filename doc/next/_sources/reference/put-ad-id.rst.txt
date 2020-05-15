@@ -4,7 +4,35 @@
 PUT /ad/{id}
 ============
 
-:ref:`put_ad_id_v2` | :ref:`put_ad_id_v1`
+:ref:`put_ad_id_v3` | :ref:`put_ad_id_v2` | :ref:`put_ad_id_v1`
+
+.. _put_ad_id_v3:
+
+PUT /ad/{id} v3
+---------------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v3+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v3+json; charset=utf-8``
+
+
+Version 3 works just like :ref:`put_ad_v2`, except the response body may contain an additional field **statusReasons**.
+This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
+
+Example
+-------
+
+.. include:: ../examples/put-ad-v3-example.rst
+
 
 .. _put_ad_id_v2:
 

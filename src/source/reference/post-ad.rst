@@ -34,6 +34,13 @@ Version 3 works just like :ref:`post_ad_v2`, except the response body may contai
 This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
 This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
 
+
+Example
+-------
+
+.. include:: ../examples/post-ad-v3-example.rst
+
+
 .. _post_ad_v2:
 
 POST /ad v2
