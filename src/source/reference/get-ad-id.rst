@@ -5,8 +5,7 @@
 GET /ad/{id}
 ============
 
-:ref: `get_ad_id_v3` | :ref:`get_ad_id_v2` | :ref:`get_ad_id_v1`
-
+:ref:`get_ad_id_v3` | :ref:`get_ad_id_v2` | :ref:`get_ad_id_v1`
 
 .. _get_ad_id_v3:
 
