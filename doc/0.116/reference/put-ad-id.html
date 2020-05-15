@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.115 documentation</title>
+  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.116 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.115 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.116 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="PUT /ad/{id}/status" href="put-ad-id-status.html"/>
         <link rel="prev" title="POST /ad/prefill" href="post-ad-prefill.html"/> 
@@ -235,7 +235,7 @@
 </tr>
 </tbody>
 </table>
-<p>Version 3 works just like <a class="reference internal" href="#put-ad-id-v2"><span class="std std-ref">PUT /ad/{id} v2</span></a>, except the response body may contain an additional field <strong>statusReasons</strong>.
+<p>Version 3 works just like <a class="reference internal" href="#put-ad-id-v2"><span class="std std-ref">PUT /ad/{id} v2</span></a>, except the response body contains an additional field <strong>statusReasons</strong>.
 This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
 This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.</p>
 </div>
@@ -1100,7 +1100,7 @@ may not be recognized or editable.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.115',
+            VERSION:'0.116',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
