@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="next" title="Campaigns" href="campaigns.html"/>
         <link rel="prev" title="Attributes" href="attributes.html"/> 
@@ -106,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Regions</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Regions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#region-ids">Region Ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#region-levels">Region Levels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#region-label">Region label</a></li>
@@ -226,7 +229,7 @@
     <li>Regions</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/regions.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/regions.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -261,11 +264,11 @@ Performing a search at the root node would result in a site-wide search across a
 </div>
 <div class="section" id="region-label">
 <h2>Region label<a class="headerlink" href="#region-label" title="Permalink to this headline">¶</a></h2>
-<p>Each region has a label. The <tt class="docutils literal"><span class="pre">label</span></tt> parameter is of type <tt class="docutils literal"><span class="pre">map&lt;locale,string&gt;</span></tt>.</p>
-<p>A locale is defined as <tt class="docutils literal"><span class="pre">language[_territory]</span></tt>.
+<p>Each region has a label. The <code class="docutils literal"><span class="pre">label</span></code> parameter is of type <code class="docutils literal"><span class="pre">map&lt;locale,string&gt;</span></code>.</p>
+<p>A locale is defined as <code class="docutils literal"><span class="pre">language[_territory]</span></code>.
 The language is defined as a <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a> language code and the territory is a
 <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code. Some examples are:
-<tt class="docutils literal"><span class="pre">nl_NL</span></tt>, <tt class="docutils literal"><span class="pre">nl_BE</span></tt>, <tt class="docutils literal"><span class="pre">fr_BE</span></tt>, <tt class="docutils literal"><span class="pre">en_US</span></tt>, <tt class="docutils literal"><span class="pre">en_AU</span></tt></p>
+<code class="docutils literal"><span class="pre">nl_NL</span></code>, <code class="docutils literal"><span class="pre">nl_BE</span></code>, <code class="docutils literal"><span class="pre">fr_BE</span></code>, <code class="docutils literal"><span class="pre">en_US</span></code>, <code class="docutils literal"><span class="pre">en_AU</span></code></p>
 <p>This allows localization of labels for different supported languages.</p>
 </div>
 <div class="section" id="region-center">
@@ -273,7 +276,7 @@ The language is defined as a <a class="reference external" href="http://en.wikip
 <p>Leaf regions provides an additional field for the center point.
 This allows for radius searches and sorting on distance.
 Non-leaf regions <em>do not have</em> that field.</p>
-<p>The <tt class="docutils literal"><span class="pre">center</span></tt> is defined as <a class="reference external" href="http://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</a> latitude/longitude point.</p>
+<p>The <code class="docutils literal"><span class="pre">center</span></code> is defined as <a class="reference external" href="http://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</a> latitude/longitude point.</p>
 </div>
 <div class="section" id="data-model">
 <h2>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
@@ -327,7 +330,7 @@ Non-leaf regions <em>do not have</em> that field.</p>
 <h2>Non-Leaf Regions<a class="headerlink" href="#non-leaf-regions" title="Permalink to this headline">¶</a></h2>
 <p>Non-leaf regions serve as parent nodes for lower level regions.
 Ads cannot be placed within them and therefore they have no center point.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="5%" />
 <col width="15%" />
@@ -349,23 +352,23 @@ Ads cannot be placed within them and therefore they have no center point.</p>
 </tr>
 <tr class="row-odd"><td>id</td>
 <td>long</td>
-<td><tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
 <td>Unique region id.</td>
 </tr>
 <tr class="row-even"><td>parentId</td>
 <td>long</td>
-<td><tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
 <td>Parent id of the region.</td>
 </tr>
 <tr class="row-odd"><td>level</td>
 <td>int</td>
-<td><tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
 <td>Level at which the region is defined.</td>
 </tr>
 <tr class="row-even"><td>path</td>
 <td>string</td>
 <td>not empty</td>
-<td>Ids of all ancestors (except the root) and the current region separated by <tt class="docutils literal"><span class="pre">_</span></tt></td>
+<td>Ids of all ancestors (except the root) and the current region separated by <code class="docutils literal"><span class="pre">_</span></code></td>
 </tr>
 <tr class="row-odd"><td>label</td>
 <td>map&lt;locale,string&gt;</td>
@@ -404,7 +407,7 @@ Ads cannot be placed within them and therefore they have no center point.</p>
 <h2>Leaf Regions<a class="headerlink" href="#leaf-regions" title="Permalink to this headline">¶</a></h2>
 <p>Leaf regions are the regions where ads can be placed. They have by definition
 no children. Leaf regions have coordinates of the center point.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="5%" />
 <col width="15%" />
@@ -426,23 +429,23 @@ no children. Leaf regions have coordinates of the center point.</p>
 </tr>
 <tr class="row-odd"><td>id</td>
 <td>long</td>
-<td><tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
 <td>Unique region id.</td>
 </tr>
 <tr class="row-even"><td>parentId</td>
 <td>long</td>
-<td><tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
 <td>Parent id of the region.</td>
 </tr>
 <tr class="row-odd"><td>level</td>
 <td>int</td>
-<td><tt class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
 <td>Level at which the region is defined.</td>
 </tr>
 <tr class="row-even"><td>path</td>
 <td>string</td>
 <td>not empty</td>
-<td>Ids of all ancestors (except the root) and the current region separated by <tt class="docutils literal"><span class="pre">_</span></tt></td>
+<td>Ids of all ancestors (except the root) and the current region separated by <code class="docutils literal"><span class="pre">_</span></code></td>
 </tr>
 <tr class="row-odd"><td>label</td>
 <td>map&lt;locale,string&gt;</td>

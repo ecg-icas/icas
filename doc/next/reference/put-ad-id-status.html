@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /categories" href="get-categories.html"/>
@@ -157,7 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
@@ -229,7 +232,7 @@
     <li>PUT /ad/{id}/status</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/put-ad-id-status.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/put-ad-id-status.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,34 +242,34 @@
             
   <div class="section" id="put-ad-id-status">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}/status<a class="headerlink" href="#put-ad-id-status" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>This URL updates the status of the ad with the given <tt class="docutils literal"><span class="pre">id</span></tt>. If the ad does
+<p>This URL updates the status of the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. If the ad does
 not exist or does not belong to the user the server returns <strong>404 Not Found</strong>.
-If the <tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e. not a positive integer the server returns <strong>400
+If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
 Bad Request</strong>.</p>
 <p>To set the new status append it to the base url. The status can be one of the
-user controlled status values as defined in <a class="reference internal" href="../ad-status.html#ad-status-overview"><em>Ad Status</em></a>.</p>
+user controlled status values as defined in <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>.</p>
 <p>Changing the status to <strong>ACTIVE</strong> also changes the number of active
 ads in this category for this user. If the current number of active ads
-for this user in this category exceeds <tt class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></tt> as defined
+for this user in this category exceeds <code class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></code> as defined
 in the category then an error is returned. Setting a different status
 than <strong>ACTIVE</strong> is always allowed.</p>
 <p>If an ad has is in status <strong>PAUSED</strong> and also has no daily budget or total budget
 remaining, this call will succeed. The resulting status of the ad will be either
-<a class="reference internal" href="../ad-status.html#ad-status-budget-reached"><em>BUDGET_REACHED</em></a> or <a class="reference internal" href="../ad-status.html#ad-status-daily-budget-reached"><em>DAILY_BUDGET_REACHED</em></a>,
+<a class="reference internal" href="../ad-status.html#ad-status-budget-reached"><span class="std std-ref">BUDGET_REACHED</span></a> or <a class="reference internal" href="../ad-status.html#ad-status-daily-budget-reached"><span class="std std-ref">DAILY_BUDGET_REACHED</span></a>,
 depending on which budget has run out. In this case the ad will go live as soon
 as budget is added.</p>
 <div class="section" id="parameters">

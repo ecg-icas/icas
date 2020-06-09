@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /report/summary" href="get-report-summary.html"/>
@@ -193,7 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /metrics/ads</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
@@ -229,7 +232,7 @@
     <li>GET /metrics/ads</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-metrics-ads.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-metrics-ads.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,32 +242,32 @@
             
   <div class="section" id="get-metrics-ads">
 <span id="index-0"></span><span id="id1"></span><h1>GET /metrics/ads<a class="headerlink" href="#get-metrics-ads" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="30%" />
 <col width="70%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">console_ro</span></tt> or <tt class="docutils literal"><span class="pre">api_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/vnd.ms-excel</span></tt> or <tt class="docutils literal"><span class="pre">text/csv</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal"><span class="pre">text/csv</span></code></td>
 </tr>
 <tr class="row-odd"><td>Accept-Language</td>
-<td>preferred locale (e.g., <tt class="docutils literal"><span class="pre">nl-NL</span></tt>, <tt class="docutils literal"><span class="pre">fr-BE</span></tt>, <tt class="docutils literal"><span class="pre">en-CA</span></tt>)</td>
+<td>preferred locale (e.g., <code class="docutils literal"><span class="pre">nl-NL</span></code>, <code class="docutils literal"><span class="pre">fr-BE</span></code>, <code class="docutils literal"><span class="pre">en-CA</span></code>)</td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns an ads performance report either in Excel or in CSV format depending on the
-<tt class="docutils literal"><span class="pre">Accept</span></tt> header. The report represents a timeseries breakdown of the performance of each ad which
+<code class="docutils literal"><span class="pre">Accept</span></code> header. The report represents a timeseries breakdown of the performance of each ad which
 has had performance-related activity in the requested period.</p>
-<p>If the <tt class="docutils literal"><span class="pre">Accept</span></tt> header is <tt class="docutils literal"><span class="pre">application/vnd.ms-excel</span></tt> an Excel document is created, in <tt class="docutils literal"><span class="pre">.xlsx</span></tt> format.</p>
-<p>If the <tt class="docutils literal"><span class="pre">Accept</span></tt> header is <tt class="docutils literal"><span class="pre">text/csv</span></tt> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
+<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created, in <code class="docutils literal"><span class="pre">.xlsx</span></code> format.</p>
+<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
 <strong>Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
 Empty strings are not enclosed in quotes.</strong></p>
 <p>All dates and times are in the tenant timezone.</p>
-<p>The <tt class="docutils literal"><span class="pre">Accept-Language</span></tt> header advertises the preferred client locales (language and region) for the report column names. Both <tt class="docutils literal"><span class="pre">language_REGION</span></tt> and <tt class="docutils literal"><span class="pre">language-REGION</span></tt> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used.</p>
+<p>The <code class="docutils literal"><span class="pre">Accept-Language</span></code> header advertises the preferred client locales (language and region) for the report column names. Both <code class="docutils literal"><span class="pre">language_REGION</span></code> and <code class="docutils literal"><span class="pre">language-REGION</span></code> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -285,22 +288,22 @@ Empty strings are not enclosed in quotes.</strong></p>
 <tr class="row-even"><td>aggregate</td>
 <td>string</td>
 <td>no</td>
-<td>Granularity of the timeseries breakdown. Possible values are: <tt class="docutils literal"><span class="pre">daily</span></tt>, <tt class="docutils literal"><span class="pre">weekly</span></tt>, <tt class="docutils literal"><span class="pre">monthly</span></tt>, and <tt class="docutils literal"><span class="pre">yearly</span></tt>. Default is <tt class="docutils literal"><span class="pre">daily</span></tt>.</td>
+<td>Granularity of the timeseries breakdown. Possible values are: <code class="docutils literal"><span class="pre">daily</span></code>, <code class="docutils literal"><span class="pre">weekly</span></code>, <code class="docutils literal"><span class="pre">monthly</span></code>, and <code class="docutils literal"><span class="pre">yearly</span></code>. Default is <code class="docutils literal"><span class="pre">daily</span></code>.</td>
 </tr>
 <tr class="row-odd"><td>startDate</td>
 <td>string</td>
 <td>yes</td>
-<td>Start date of the report in <tt class="docutils literal"><span class="pre">YYYY-MM-DD</span></tt> format (inclusive)</td>
+<td>Start date of the report in <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> format (inclusive)</td>
 </tr>
 <tr class="row-even"><td>endDate</td>
 <td>string</td>
 <td>yes</td>
-<td>End date of the report in <tt class="docutils literal"><span class="pre">YYYY-MM-DD</span></tt> (inclusive)</td>
+<td>End date of the report in <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> (inclusive)</td>
 </tr>
 <tr class="row-odd"><td>includeDeleted</td>
 <td>bool</td>
 <td>no</td>
-<td>Deleted ads are included/excluded. Default is <tt class="docutils literal"><span class="pre">false</span></tt></td>
+<td>Deleted ads are included/excluded. Default is <code class="docutils literal"><span class="pre">false</span></code></td>
 </tr>
 <tr class="row-even"><td>query</td>
 <td>string</td>
@@ -310,7 +313,7 @@ Empty strings are not enclosed in quotes.</strong></p>
 <tr class="row-odd"><td>fields</td>
 <td>list of strings</td>
 <td>no</td>
-<td>Comma-separated list of column fields to include in the report. Possible values are listed in the <tt class="docutils literal"><span class="pre">Field</span></tt> column in the table below. By default all fields are included, and this may <strong>affect the speed of data generation</strong>.</td>
+<td>Comma-separated list of column fields to include in the report. Possible values are listed in the <code class="docutils literal"><span class="pre">Field</span></code> column in the table below. By default all fields are included, and this may <strong>affect the speed of data generation</strong>.</td>
 </tr>
 </tbody>
 </table>
@@ -332,75 +335,75 @@ Empty strings are not enclosed in quotes.</strong></p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Date (Aggregated)</td>
-<td><tt class="docutils literal"><span class="pre">date</span></tt></td>
-<td>Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is <tt class="docutils literal"><span class="pre">YYYY-MM-DD</span></tt>, for monthly aggregation - <tt class="docutils literal"><span class="pre">YYYY-MM</span></tt>, and for yearly - <tt class="docutils literal"><span class="pre">YYYY</span></tt>. All dates are in tenant timezone.</td>
+<td><code class="docutils literal"><span class="pre">date</span></code></td>
+<td>Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>, for monthly aggregation - <code class="docutils literal"><span class="pre">YYYY-MM</span></code>, and for yearly - <code class="docutils literal"><span class="pre">YYYY</span></code>. All dates are in tenant timezone.</td>
 </tr>
 <tr class="row-odd"><td>Ad ID</td>
-<td><tt class="docutils literal"><span class="pre">adID</span></tt></td>
+<td><code class="docutils literal"><span class="pre">adID</span></code></td>
 <td>ID of the ad</td>
 </tr>
 <tr class="row-even"><td>L1 Category</td>
-<td><tt class="docutils literal"><span class="pre">L1Category</span></tt></td>
+<td><code class="docutils literal"><span class="pre">L1Category</span></code></td>
 <td>Level 1 category name</td>
 </tr>
 <tr class="row-odd"><td>L2 Category</td>
-<td><tt class="docutils literal"><span class="pre">L2Category</span></tt></td>
+<td><code class="docutils literal"><span class="pre">L2Category</span></code></td>
 <td>Level 2 category name</td>
 </tr>
 <tr class="row-even"><td>L3 Category</td>
-<td><tt class="docutils literal"><span class="pre">L3Category</span></tt></td>
+<td><code class="docutils literal"><span class="pre">L3Category</span></code></td>
 <td>Level 3 category name, if applicable</td>
 </tr>
 <tr class="row-odd"><td>Title</td>
-<td><tt class="docutils literal"><span class="pre">title</span></tt></td>
+<td><code class="docutils literal"><span class="pre">title</span></code></td>
 <td>Title of the ad</td>
 </tr>
 <tr class="row-even"><td>Start Date</td>
-<td><tt class="docutils literal"><span class="pre">startDate</span></tt></td>
+<td><code class="docutils literal"><span class="pre">startDate</span></code></td>
 <td>Creation date of the ad</td>
 </tr>
 <tr class="row-odd"><td>End Date</td>
-<td><tt class="docutils literal"><span class="pre">endDate</span></tt></td>
+<td><code class="docutils literal"><span class="pre">endDate</span></code></td>
 <td>If the ad is deleted, deletion date of the ad</td>
 </tr>
 <tr class="row-even"><td>CPC</td>
-<td><tt class="docutils literal"><span class="pre">CPC</span></tt></td>
+<td><code class="docutils literal"><span class="pre">CPC</span></code></td>
 <td>CPC of the ad for which performance metrics are calculated, in Local Currency</td>
 </tr>
 <tr class="row-odd"><td>Total spent</td>
-<td><tt class="docutils literal"><span class="pre">spent</span></tt></td>
+<td><code class="docutils literal"><span class="pre">spent</span></code></td>
 <td>Total amount spent for this ad, in Local Currency</td>
 </tr>
 <tr class="row-even"><td>Clicks</td>
-<td><tt class="docutils literal"><span class="pre">clicks</span></tt></td>
+<td><code class="docutils literal"><span class="pre">clicks</span></code></td>
 <td>Number of clicks that the ad received</td>
 </tr>
 <tr class="row-odd"><td>Impressions</td>
-<td><tt class="docutils literal"><span class="pre">impressions</span></tt></td>
+<td><code class="docutils literal"><span class="pre">impressions</span></code></td>
 <td>Number of impressions that the ad received</td>
 </tr>
 <tr class="row-even"><td>CTR</td>
-<td><tt class="docutils literal"><span class="pre">viewCTR</span></tt></td>
+<td><code class="docutils literal"><span class="pre">viewCTR</span></code></td>
 <td>Click-through rate in %</td>
 </tr>
 <tr class="row-odd"><td>URL clicks</td>
-<td><tt class="docutils literal"><span class="pre">websiteClicks</span></tt></td>
+<td><code class="docutils literal"><span class="pre">websiteClicks</span></code></td>
 <td>Number of URL clicks that the ad received</td>
 </tr>
 <tr class="row-even"><td>Emails</td>
-<td><tt class="docutils literal"><span class="pre">emails</span></tt></td>
+<td><code class="docutils literal"><span class="pre">emails</span></code></td>
 <td>Number of email events that the ad received</td>
 </tr>
 <tr class="row-odd"><td>Engagement CTR</td>
-<td><tt class="docutils literal"><span class="pre">engagementCTR</span></tt></td>
-<td>Engagement conversion rate in %. Calculation: <tt class="docutils literal"><span class="pre">(URL</span> <span class="pre">clicks</span> <span class="pre">+</span> <span class="pre">Emails)</span> <span class="pre">/</span> <span class="pre">Clicks</span></tt></td>
+<td><code class="docutils literal"><span class="pre">engagementCTR</span></code></td>
+<td>Engagement conversion rate in %. Calculation: <code class="docutils literal"><span class="pre">(URL</span> <span class="pre">clicks</span> <span class="pre">+</span> <span class="pre">Emails)</span> <span class="pre">/</span> <span class="pre">Clicks</span></code></td>
 </tr>
 <tr class="row-even"><td>Region</td>
-<td><tt class="docutils literal"><span class="pre">region</span></tt></td>
+<td><code class="docutils literal"><span class="pre">region</span></code></td>
 <td>Region name, of the ad</td>
 </tr>
 <tr class="row-odd"><td>Vendor ID</td>
-<td><tt class="docutils literal"><span class="pre">vendorID</span></tt></td>
+<td><code class="docutils literal"><span class="pre">vendorID</span></code></td>
 <td>Vendor ID of the ad</td>
 </tr>
 </tbody>

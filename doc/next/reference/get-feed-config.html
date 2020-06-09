@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="POST /feed/config" href="post-feed-config.html"/>
@@ -183,7 +186,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-cpc.html">PUT /campaign/{id}/cpc/{cpc}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /feed/config</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
@@ -229,7 +232,7 @@
     <li>GET /feed/config</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-feed-config.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-feed-config.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,26 +242,26 @@
             
   <div class="section" id="get-feed-config">
 <span id="index-0"></span><span id="id1"></span><h1>GET /feed/config<a class="headerlink" href="#get-feed-config" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.feedconfig-v1+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.feedconfig-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns the feed configuration of the current user.</p>
 <p>An iCAS user can update his or her ads by describing them in an XML document, called <strong>feed</strong>.
 The iCAS platform reads all user feeds once per day and synchronizes ads in the system.</p>
-<p>The feed configuration object contains an <tt class="docutils literal"><span class="pre">enabled</span></tt> field. It is <strong>true</strong> when the current user
+<p>The feed configuration object contains an <code class="docutils literal"><span class="pre">enabled</span></code> field. It is <strong>true</strong> when the current user
 has enabled feed publication and <strong>false</strong> otherwise. When feed publication is enabled, the
-feed configuration object contains a field <tt class="docutils literal"><span class="pre">feedUrl</span></tt> which contains the configured
+feed configuration object contains a field <code class="docutils literal"><span class="pre">feedUrl</span></code> which contains the configured
 feed url for the current user.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /feed/import/{id}/detail/{vendorId}" href="get-feed-import-id-detail-vendor-id.html"/>
@@ -186,7 +189,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /feed/import/{id}/detail</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
@@ -229,7 +232,7 @@
     <li>GET /feed/import/{id}/detail</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-feed-import-id-detail.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-feed-import-id-detail.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,33 +242,33 @@
             
   <div class="section" id="get-feed-import-id-detail">
 <span id="index-0"></span><span id="id1"></span><h1>GET /feed/import/{id}/detail<a class="headerlink" href="#get-feed-import-id-detail" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.feedimportdetail.list-v1+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.feedimportdetail.list-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>This endpoint provides detailed import information for each ad during a successful feed import.
-The field <tt class="docutils literal"><span class="pre">vendorId</span></tt> identifies the ad in the XML feed and can be used in <a class="reference internal" href="get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><em>GET /feed/import/{id}/detail/{vendorId}</em></a>.
-The <tt class="docutils literal"><span class="pre">dateCreated</span></tt> shows the time when the ad was processed. The <tt class="docutils literal"><span class="pre">warnings</span></tt> field contains
+The field <code class="docutils literal"><span class="pre">vendorId</span></code> identifies the ad in the XML feed and can be used in <a class="reference internal" href="get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><span class="std std-ref">GET /feed/import/{id}/detail/{vendorId}</span></a>.
+The <code class="docutils literal"><span class="pre">dateCreated</span></code> shows the time when the ad was processed. The <code class="docutils literal"><span class="pre">warnings</span></code> field contains
 a list of descriptive messages when the ad was successfully imported but with warnings,
 e.g. the system has normalized the ad&#8217;s phone number because it is specified in an unsupported
-format. The <tt class="docutils literal"><span class="pre">errors</span></tt> field contains a list of messages to signify why an ad could not be imported.</p>
+format. The <code class="docutils literal"><span class="pre">errors</span></code> field contains a list of messages to signify why an ad could not be imported.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The field <tt class="docutils literal"><span class="pre">vendorId</span></tt> maps to the XML field <tt class="docutils literal"><span class="pre">externalId</span></tt> and is stored for imported ads as <a class="reference internal" href="../ads.html#ad-vendorid"><em>vendorId</em></a>.</p>
+<p class="last">The field <code class="docutils literal"><span class="pre">vendorId</span></code> maps to the XML field <code class="docutils literal"><span class="pre">externalId</span></code> and is stored for imported ads as <a class="reference internal" href="../ads.html#ad-vendorid"><span class="std std-ref">vendorId</span></a>.</p>
 </div>
 <p>Since a feed XML file can contain an arbitrary number of ads, API clients need a way to retrieve
-status information for only a subset of all ads. This is achieved by using the <tt class="docutils literal"><span class="pre">limit</span></tt> and <tt class="docutils literal"><span class="pre">offset</span></tt> parameters:
-<tt class="docutils literal"><span class="pre">limit</span></tt> controls the number of returned entities and <tt class="docutils literal"><span class="pre">offset</span></tt> allows for skipping entities.</p>
+status information for only a subset of all ads. This is achieved by using the <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">offset</span></code> parameters:
+<code class="docutils literal"><span class="pre">limit</span></code> controls the number of returned entities and <code class="docutils literal"><span class="pre">offset</span></code> allows for skipping entities.</p>
 <p>The endpoint returns <strong>404 Not Found</strong> when import details are requested for:</p>
 <ul class="simple">
 <li>an unknown feed import</li>

@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /ad/{id}/funnel" href="get-ad-id-funnel.html"/>
@@ -150,7 +153,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api-reference.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="get-ad.html">GET /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /ad/byVendor/{vendorId}</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /ad/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-ids.html">GET /ad/ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
@@ -229,7 +232,7 @@
     <li>GET /ad/byVendor/{vendorId}</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-ad-vendor-id.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-ad-vendor-id.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,37 +242,37 @@
             
   <div class="section" id="get-ad-byvendor-vendorid">
 <span id="get-ad-vendor-id"></span><span id="index-0"></span><h1>GET /ad/byVendor/{vendorId}<a class="headerlink" href="#get-ad-byvendor-vendorid" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.ad-v2+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad-v2+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>This URL returns a single ad with the given <tt class="docutils literal"><span class="pre">vendorId</span></tt>.</p>
+<p>This URL returns a single ad with the given <code class="docutils literal"><span class="pre">vendorId</span></code>.</p>
 <p>If the ad does not exist or does not belong to the user the server returns
-<strong>404 Not Found</strong>. If the <tt class="docutils literal"><span class="pre">vendorId</span></tt> is bigger than 64 characters the
+<strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">vendorId</span></code> is bigger than 64 characters the
 server returns <strong>400 Bad Request</strong>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><em>Categories V2</em></a> and must only
-be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><em>Category V2 Compatible Endpoints</em></a>. Otherwise,
+<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and must only
+be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><span class="std std-ref">Category V2 Compatible Endpoints</span></a>. Otherwise,
 the attributes may not be recognized or editable.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><em>pageNumber</em></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><em>suggestedCpcForPageOne</em></a> are
+<p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><span class="std std-ref">pageNumber</span></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><span class="std std-ref">suggestedCpcForPageOne</span></a> are
 currently expensive to compute. If you do not need their values consider
 excluding them to speed up the response. To exclude the fields add the
 following parameter to the request URL.</p>
-<div class="last highlight-python"><div class="highlight"><pre><span></span>?_exclude=pageNumber,suggestedCpcForPageOne
+<div class="last highlight-default"><div class="highlight"><pre><span></span>?_exclude=pageNumber,suggestedCpcForPageOne
 </pre></div>
 </div>
 </div>

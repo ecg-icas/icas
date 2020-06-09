@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="PUT /campaign/{id}/linkedAds" href="put-campaign-linkedads.html"/>
@@ -177,7 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign-targeting.html">POST /campaign/{id}/targeting</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /campaign/{id}/linkedAds</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-linkedads.html">PUT /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
@@ -229,7 +232,7 @@
     <li>GET /campaign/{id}/linkedAds</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-campaign-linkedads.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-campaign-linkedads.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,21 +242,21 @@
             
   <div class="section" id="get-campaign-id-linkedads">
 <span id="get-campaign-linkedads"></span><span id="index-0"></span><h1>GET /campaign/{id}/linkedAds<a class="headerlink" href="#get-campaign-id-linkedads" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.campaign.linkedad-list-v1+json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign.linkedad-list-v1+json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>Returns the linkedAds of the specified campaign. A linkedAd (<a class="reference internal" href="../campaign-linkedads.html#id1"><em>Campaign Linked Ads</em></a>) is the reference of an ad in a campaign, with possible overrides.
+<p>Returns the linkedAds of the specified campaign. A linkedAd (<a class="reference internal" href="../campaign-linkedads.html#id1"><span class="std std-ref">Campaign Linked Ads</span></a>) is the reference of an ad in a campaign, with possible overrides.
 A single linkedAd has the following response model structure:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
@@ -287,17 +290,17 @@ A single linkedAd has the following response model structure:</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">adId</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">adId</span></code></td>
 <td>The ID of the ad that this linkedAd refers to</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">status</span></tt></td>
-<td>The current status of this linkedAd. One of <tt class="docutils literal"><span class="pre">ACTIVE</span></tt> or <tt class="docutils literal"><span class="pre">BUDGET_REACHED</span></tt>. This is read-only field</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">status</span></code></td>
+<td>The current status of this linkedAd. One of <code class="docutils literal"><span class="pre">ACTIVE</span></code> or <code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code>. This is read-only field</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">cpc</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
 <td>Instead of using the campaign&#8217;s CPC, use this override (cents)</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">budgets</span></tt></td>
-<td>An object containing the budget current limits and spent for the linkedAd. Does not void campaign budgets. The unit for <tt class="docutils literal"><span class="pre">limit</span></tt> and <tt class="docutils literal"><span class="pre">spent</span></tt> is cents. The default <tt class="docutils literal"><span class="pre">limit</span></tt> values are set to <strong>-1 (Unlimited)</strong></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
+<td>An object containing the budget current limits and spent for the linkedAd. Does not void campaign budgets. The unit for <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">spent</span></code> is cents. The default <code class="docutils literal"><span class="pre">limit</span></code> values are set to <strong>-1 (Unlimited)</strong></td>
 </tr>
 </tbody>
 </table>

@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="next" title="Error Handling" href="error-handling.html"/>
         <link rel="prev" title="XML Feeds" href="feeds.html"/> 
@@ -132,7 +135,7 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Reporting</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reporting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dimensions-and-metrics">Dimensions and Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#time-ranges">Time Ranges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#time-aggregation">Time Aggregation</a></li>
@@ -226,7 +229,7 @@
     <li>Reporting</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/reporting.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/reporting.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -383,27 +386,27 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:date</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:date</span></code></td>
 <td>String</td>
 <td>The date when the events happened. See <a class="reference internal" href="#time-aggregation">Time Aggregation</a></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:adID</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:adID</span></code></td>
 <td>Long</td>
 <td>ID of the ad(s)</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:CPC</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:CPC</span></code></td>
 <td>Long</td>
 <td>The Cost Per Click (in Cents) of the ad(s)</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:categoryID</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:categoryID</span></code></td>
 <td>Long</td>
 <td>The category ID of the ad(s)</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:regionID</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:regionID</span></code></td>
 <td>Long</td>
 <td>The region ID of the ad(s)</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:campaignID</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:campaignID</span></code></td>
 <td>Long</td>
 <td>The ID of the campaign</td>
 </tr>
@@ -431,92 +434,92 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:clicks</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:clicks</span></code></td>
 <td>Long</td>
 <td>Hit</td>
 <td>Number of clicks</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:impressions</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:impressions</span></code></td>
 <td>Long</td>
 <td>Hit</td>
 <td>Nnumber of impressions</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:websiteClicks</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:websiteClicks</span></code></td>
 <td>Long</td>
 <td>Hit</td>
 <td>Number of website clicks</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:emails</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:emails</span></code></td>
 <td>Long</td>
 <td>Hit</td>
 <td>Number of emails</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:engagements</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:engagements</span></code></td>
 <td>Long</td>
 <td>Hit</td>
 <td>Number of engagements from clicks</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:viewCTR</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:viewCTR</span></code></td>
 <td>Double</td>
 <td>Hit</td>
 <td>Number of clicks leads from impressions, also known as Click-through rate</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:websiteCTR</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:websiteCTR</span></code></td>
 <td>Double</td>
 <td>Hit</td>
 <td>Number of website leads from clicks</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:spent</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:spent</span></code></td>
 <td>Long</td>
 <td>Hit</td>
 <td>Amount spent (in Cents)</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:engagementCTR</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:engagementCTR</span></code></td>
 <td>Double</td>
 <td>Hit</td>
 <td>Number of engagements leads from clicks</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:avgCPC</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:avgCPC</span></code></td>
 <td>Double</td>
 <td>Hit</td>
 <td>Average Cost Per Click. Calculation</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:sessionsWithClicks</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithClicks</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions with clicks</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:sessionsWithImpressions</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithImpressions</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions with impressions</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:sessionsWithWebsiteClicks</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithWebsiteClicks</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions with website clicks</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:sessionsWithEmails</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithEmails</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions sending emails</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:sessionsWithEngagements</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithEngagements</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions with engagements</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:sessionViewCTR</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionViewCTR</span></code></td>
 <td>Double</td>
 <td>Session</td>
 <td>Number of unique sessions with clicks leads from unique sessions with impressions</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:sessionWebsiteCTR</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionWebsiteCTR</span></code></td>
 <td>Double</td>
 <td>Session</td>
 <td>Number of unique sessions with website leads from unique sessions with clicks</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:sessionEngagementCTR</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionEngagementCTR</span></code></td>
 <td>Double</td>
 <td>Session</td>
 <td>Number of unique sessions with engagements leads from unique sessions with clicks</td>
@@ -525,7 +528,7 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 </table>
 <div class="section" id="scope">
 <h4>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h4>
-<p>A scope for a metric defines the level at which that metric is defined — hit, session, or user. For example, <tt class="docutils literal"><span class="pre">am:clicks</span></tt> and <tt class="docutils literal"><span class="pre">am:impressions</span></tt> are <strong>hit</strong> level metrics, since they occur in a hit, whereas <tt class="docutils literal"><span class="pre">am:sessionsWithClicks</span></tt> and <tt class="docutils literal"><span class="pre">am:sessionsWithImpressions</span></tt> are <strong>session</strong> level metrics since there is a single value for these per session. Conceptually, <strong>user</strong> is the highest level scope and <strong>hit</strong> is the lowest level scope. We plan to extend support for <strong>user</strong>-level scoped metrics if there is demand for it.</p>
+<p>A scope for a metric defines the level at which that metric is defined — hit, session, or user. For example, <code class="docutils literal"><span class="pre">am:clicks</span></code> and <code class="docutils literal"><span class="pre">am:impressions</span></code> are <strong>hit</strong> level metrics, since they occur in a hit, whereas <code class="docutils literal"><span class="pre">am:sessionsWithClicks</span></code> and <code class="docutils literal"><span class="pre">am:sessionsWithImpressions</span></code> are <strong>session</strong> level metrics since there is a single value for these per session. Conceptually, <strong>user</strong> is the highest level scope and <strong>hit</strong> is the lowest level scope. We plan to extend support for <strong>user</strong>-level scoped metrics if there is demand for it.</p>
 </div>
 </div>
 </div>
@@ -534,83 +537,83 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <p id="id2">This field is used to specify one ore more distinct time periods to fetch data for, across which all other query parameters will be the same.
 Supplying a single range is sufficient for most needs, but the flexibility is provided to ask for multiple at the same time.</p>
 <p id="time-range">Each time range clause is defined as follows:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
-    &quot;period&quot;:   &lt;string&gt;
-    &quot;from&quot;:     &lt;string&gt;
-    &quot;to&quot;:       &lt;string&gt;
-}
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;period&quot;</span><span class="p">:</span>   <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+    <span class="s2">&quot;from&quot;</span><span class="p">:</span>     <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+    <span class="s2">&quot;to&quot;</span><span class="p">:</span>       <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>There are several <em>predefined</em> period values at your disposal: <tt class="docutils literal"><span class="pre">today</span></tt>, <tt class="docutils literal"><span class="pre">yesterday</span></tt>, <tt class="docutils literal"><span class="pre">thisWeek</span></tt>, <tt class="docutils literal"><span class="pre">lastWeek</span></tt>, <tt class="docutils literal"><span class="pre">thisMonth</span></tt>, <tt class="docutils literal"><span class="pre">lastMonth</span></tt>, <tt class="docutils literal"><span class="pre">thisYear</span></tt>, and <tt class="docutils literal"><span class="pre">lastYear</span></tt>, with their obvious meanings. A week runs from Monday to Sunday.
+<p>There are several <em>predefined</em> period values at your disposal: <code class="docutils literal"><span class="pre">today</span></code>, <code class="docutils literal"><span class="pre">yesterday</span></code>, <code class="docutils literal"><span class="pre">thisWeek</span></code>, <code class="docutils literal"><span class="pre">lastWeek</span></code>, <code class="docutils literal"><span class="pre">thisMonth</span></code>, <code class="docutils literal"><span class="pre">lastMonth</span></code>, <code class="docutils literal"><span class="pre">thisYear</span></code>, and <code class="docutils literal"><span class="pre">lastYear</span></code>, with their obvious meanings. A week runs from Monday to Sunday.
 If you use a predefined period for a particular time range, the <em>from</em> and <em>to</em> fields of that time range will be ignored.</p>
-<p>To use a <em>custom</em> period, you need to provide the start (<em>from</em>) and end (<em>to</em>) date (<strong>both inclusive</strong>) in the following format: <tt class="docutils literal"><span class="pre">YYYY-MM-DD</span></tt>.
+<p>To use a <em>custom</em> period, you need to provide the start (<em>from</em>) and end (<em>to</em>) date (<strong>both inclusive</strong>) in the following format: <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>.
 The end date cannot be before the start one. For example:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>&quot;timeRanges&quot;: [
-    {
-            &quot;period&quot;:   &quot;custom&quot;,
-            &quot;from&quot;:     &quot;2017-01-01&quot;,
-            &quot;to&quot;:       &quot;2017-10-22&quot;
-    }
-]
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+            <span class="s2">&quot;period&quot;</span><span class="p">:</span>   <span class="s2">&quot;custom&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;from&quot;</span><span class="p">:</span>     <span class="s2">&quot;2017-01-01&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;to&quot;</span><span class="p">:</span>       <span class="s2">&quot;2017-10-22&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 <p>Example with multiple time ranges, mixed custom and predefined:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>&quot;timeRanges&quot;: [
-    {
-        &quot;period&quot;:   &quot;thisWeek&quot;
-    },
-    {
-        &quot;period&quot;:   &quot;custom&quot;,
-        &quot;from&quot;:     &quot;2017-01-08&quot;,
-        &quot;to&quot;:       &quot;2017-01-15&quot;
-    }
-]
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span>   <span class="s2">&quot;thisWeek&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span>   <span class="s2">&quot;custom&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span>     <span class="s2">&quot;2017-01-08&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span>       <span class="s2">&quot;2017-01-15&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="time-aggregation">
 <h2>Time Aggregation<a class="headerlink" href="#time-aggregation" title="Permalink to this headline">¶</a></h2>
-<p id="id3">The <tt class="docutils literal"><span class="pre">aggregate</span></tt> parameter is used in combination with the <tt class="docutils literal"><span class="pre">am:date</span></tt> dimension; <tt class="docutils literal"><span class="pre">aggregate</span></tt> is in fact <strong>mandatory</strong> when <tt class="docutils literal"><span class="pre">am:date</span></tt> is used. It specifies the granularity/resolution of the time according to which the metrics data will be grouped in buckets. Possible values are: <tt class="docutils literal"><span class="pre">daily</span></tt>, <tt class="docutils literal"><span class="pre">weekly</span></tt>, <tt class="docutils literal"><span class="pre">quarterly</span></tt>, <tt class="docutils literal"><span class="pre">montly</span></tt>, <tt class="docutils literal"><span class="pre">yearly</span></tt>.</p>
+<p id="id3">The <code class="docutils literal"><span class="pre">aggregate</span></code> parameter is used in combination with the <code class="docutils literal"><span class="pre">am:date</span></code> dimension; <code class="docutils literal"><span class="pre">aggregate</span></code> is in fact <strong>mandatory</strong> when <code class="docutils literal"><span class="pre">am:date</span></code> is used. It specifies the granularity/resolution of the time according to which the metrics data will be grouped in buckets. Possible values are: <code class="docutils literal"><span class="pre">daily</span></code>, <code class="docutils literal"><span class="pre">weekly</span></code>, <code class="docutils literal"><span class="pre">quarterly</span></code>, <code class="docutils literal"><span class="pre">montly</span></code>, <code class="docutils literal"><span class="pre">yearly</span></code>.</p>
 </div>
 <div class="section" id="filters">
 <h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
-<p id="id4">To request a subset of your data, use filters. For example, you can filter on particular category, region, or ad ID. Filters can currently be used on any of the supported dimensions (except for <tt class="docutils literal"><span class="pre">am:date</span></tt>). In the request query, they should be provided as an array of filter clauses which filters out the requested data on particular field values. Each filter clause is of the following form:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
-        &quot;field&quot;:   &lt;string&gt;
-        &quot;operator&quot;:  &lt;string&gt;
-        &quot;value&quot;:  [&lt;long&gt;, ...]
-}
+<p id="id4">To request a subset of your data, use filters. For example, you can filter on particular category, region, or ad ID. Filters can currently be used on any of the supported dimensions (except for <code class="docutils literal"><span class="pre">am:date</span></code>). In the request query, they should be provided as an array of filter clauses which filters out the requested data on particular field values. Each filter clause is of the following form:</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;field&quot;</span><span class="p">:</span>   <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+        <span class="s2">&quot;operator&quot;</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span>  <span class="p">[</span><span class="o">&lt;</span><span class="n">long</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Each filter in the list adds more restriction on the result, i.e., there is implicit <em>AND</em> operation between them.
-The only valid <tt class="docutils literal"><span class="pre">operator</span></tt> at the moment is the set operator <tt class="docutils literal"><span class="pre">in</span></tt>, and requires an array of values to be passed in the <tt class="docutils literal"><span class="pre">value</span></tt> field of the filter. For example:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>&quot;filters&quot;: [
-    {
-        &quot;field&quot;:&quot;am:adID&quot;,
-        &quot;operator&quot;:&quot;in&quot;,
-        &quot;value&quot;: [1111,2222,3333]
-    },
-    {
-        &quot;field&quot;:&quot;am:regionID&quot;,
-        &quot;operator&quot;:&quot;in&quot;,
-        &quot;value&quot;: [1234, 5678]
-    }
-]
+The only valid <code class="docutils literal"><span class="pre">operator</span></code> at the moment is the set operator <code class="docutils literal"><span class="pre">in</span></code>, and requires an array of values to be passed in the <code class="docutils literal"><span class="pre">value</span></code> field of the filter. For example:</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;am:adID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;operator&quot;</span><span class="p">:</span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1111</span><span class="p">,</span><span class="mi">2222</span><span class="p">,</span><span class="mi">3333</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;am:regionID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;operator&quot;</span><span class="p">:</span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="sorting">
 <span id="sorts"></span><h2>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
 <p>To sort the resulting data, use the <strong>sorts</strong> top-level query field. Sorts is an array of sort clauses, each of the following form:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
-    &quot;field&quot;:        &lt;string&gt;
-    &quot;direction&quot;:    &lt;string&gt;
-}
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;field&quot;</span><span class="p">:</span>        <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+    <span class="s2">&quot;direction&quot;</span><span class="p">:</span>    <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested. There are two directions for sorting: <tt class="docutils literal"><span class="pre">asc</span></tt> (ascending) and <tt class="docutils literal"><span class="pre">desc</span></tt> (descending).
+<p>A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested. There are two directions for sorting: <code class="docutils literal"><span class="pre">asc</span></code> (ascending) and <code class="docutils literal"><span class="pre">desc</span></code> (descending).
 The following example sorts first on date in descending order, followed by the ad ID in ascending order.</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;sorts&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span>
@@ -628,11 +631,11 @@ The following example sorts first on date in descending order, followed by the a
 </div>
 <div class="section" id="pagination-with-offset-and-limit">
 <h2>Pagination with offset and limit<a class="headerlink" href="#pagination-with-offset-and-limit" title="Permalink to this headline">¶</a></h2>
-<p>Depending on the amount and shape of the requested data, it is worthwhile to paginate the results, for efficiency. Use the top-level <tt class="docutils literal"><span class="pre">offset</span></tt> and <tt class="docutils literal"><span class="pre">limit</span></tt> fields of the request query, with their standard meanings.</p>
+<p>Depending on the amount and shape of the requested data, it is worthwhile to paginate the results, for efficiency. Use the top-level <code class="docutils literal"><span class="pre">offset</span></code> and <code class="docutils literal"><span class="pre">limit</span></code> fields of the request query, with their standard meanings.</p>
 </div>
 <div class="section" id="enrichment">
 <h2>Enrichment<a class="headerlink" href="#enrichment" title="Permalink to this headline">¶</a></h2>
-<p>It is possible to enrich the reports with &#8220;handy&#8221; ad-related data for which only the present-moment values are available, such as the ad title, or category description. Requesting these fields makes sense <strong>only</strong> if <tt class="docutils literal"><span class="pre">am:adID</span></tt> is in the requested dimensions. The supported fields are listed below:</p>
+<p>It is possible to enrich the reports with &#8220;handy&#8221; ad-related data for which only the present-moment values are available, such as the ad title, or category description. Requesting these fields makes sense <strong>only</strong> if <code class="docutils literal"><span class="pre">am:adID</span></code> is in the requested dimensions. The supported fields are listed below:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
@@ -646,51 +649,51 @@ The following example sorts first on date in descending order, followed by the a
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:currentAdTitle</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdTitle</span></code></td>
 <td>String</td>
 <td>Current title of the ad</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:currentAdStartDate</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdStartDate</span></code></td>
 <td>Timestamp</td>
 <td>Current start date of the ad</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:currentAdEndDate</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdEndDate</span></code></td>
 <td>Timestamp</td>
 <td>Current end date of the ad, if applicable</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:currentAdCPC</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCPC</span></code></td>
 <td>Integer</td>
 <td>Currect CPC of the ad</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:currentAdCategoryL1</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL1</span></code></td>
 <td>String</td>
 <td>Description of the current top-level category the ad</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:currentAdCategoryL2</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL2</span></code></td>
 <td>String</td>
 <td>Description of the current second-level category the ad</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:currentAdCategoryL3</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL3</span></code></td>
 <td>String</td>
 <td>Description of the current third-level category the ad, if applicable</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:currentAdImage</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdImage</span></code></td>
 <td>String</td>
 <td>Path to the current (first) image of the ad in the smallest resolution (64x64 pixels), if available</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:currentAdVendorID</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdVendorID</span></code></td>
 <td>String</td>
 <td>Current vendorID of the ad, if available</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:currentAdRegion</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdRegion</span></code></td>
 <td>String</td>
 <td>Description of the current (lowest-level) region of the ad, if applicable</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:currentAdExternalID</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdExternalID</span></code></td>
 <td>String</td>
 <td>Current externalID of the ad, if available</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:currentCampaignID</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentCampaignID</span></code></td>
 <td>Long</td>
 <td>Current campaignID to which the ad belongs // TODO: need to check if this makes sense in general</td>
 </tr>
@@ -703,8 +706,8 @@ The following example sorts first on date in descending order, followed by the a
 <h3>Query<a class="headerlink" href="#query" title="Permalink to this headline">¶</a></h3>
 <p>The metrics query should be provided as a JSON object of type <a class="reference internal" href="#metrics-request">Metrics Request</a>, which has these minimum requirements:</p>
 <ul class="simple">
-<li>At least one valid entry in the  <a class="reference internal" href="#id2"><em>Time Ranges</em></a> field.</li>
-<li>At least one valid entry in the <a class="reference internal" href="#id1"><em>Metrics</em></a> field.</li>
+<li>At least one valid entry in the  <a class="reference internal" href="#id2"><span class="std std-ref">Time Ranges</span></a> field.</li>
+<li>At least one valid entry in the <a class="reference internal" href="#id1"><span class="std std-ref">Metrics</span></a> field.</li>
 </ul>
 <p>Here is a sample request with all top-level query fields expanded:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
@@ -712,7 +715,7 @@ The following example sorts first on date in descending order, followed by the a
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
     <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
   <span class="p">}],</span>
@@ -773,34 +776,34 @@ The following example sorts first on date in descending order, followed by the a
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">timeRanges</span></tt></td>
-<td>Array of <a class="reference internal" href="#id2"><em>Time Ranges</em></a> objects, separated by commas</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">timeRanges</span></code></td>
+<td>Array of <a class="reference internal" href="#id2"><span class="std std-ref">Time Ranges</span></a> objects, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">aggregate</span></tt></td>
-<td>One of <a class="reference internal" href="#id3"><em>Time Aggregation</em></a> string values</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">aggregate</span></code></td>
+<td>One of <a class="reference internal" href="#id3"><span class="std std-ref">Time Aggregation</span></a> string values</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">dimensions</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dimensions</span></code></td>
 <td>Array of dimensions, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">metrics</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">metrics</span></code></td>
 <td>Array of metrics, separated by commas. At least one element is mandatory</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sorts</span></tt></td>
-<td>Array of <a class="reference internal" href="#sorts"><em>Sort</em></a>  objects, separated by commas</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">sorts</span></code></td>
+<td>Array of <a class="reference internal" href="#sorts"><span class="std std-ref">Sort</span></a>  objects, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">filters</span></tt></td>
-<td>Array of <a class="reference internal" href="#id4"><em>Filters</em></a> objects, separated by commas</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">filters</span></code></td>
+<td>Array of <a class="reference internal" href="#id4"><span class="std std-ref">Filters</span></a> objects, separated by commas</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">enrichment</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">enrichment</span></code></td>
 <td>Array of ad enrichment fields, separated by commas</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">limit</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">limit</span></code></td>
 <td>Number of elements in the response, per time range. By default there is no limit</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">offset</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">offset</span></code></td>
 <td>Index of first row of the requested data (per time range), beginning with 0</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">searchPhrase</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">searchPhrase</span></code></td>
 <td>String to match against an ad title</td>
 </tr>
 </tbody>
@@ -810,78 +813,78 @@ The following example sorts first on date in descending order, followed by the a
 <div class="section" id="response">
 <h3>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h3>
 <p>The response body of the API request is a JSON object of <a class="reference internal" href="#metrics-response">Metrics Response</a> type. Here is a sample response for the sample request above.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>{
-  &quot;data&quot;: [{
-    &quot;rows&quot;: [
-      {
-        &quot;dimensions&quot;: [&quot;2018-01-10 00:00:00&quot;, &quot;4444&quot;],
-        &quot;metrics&quot;: [11, 22, 0.634],
-        &quot;enrichment&quot;: [
-          &quot;Some title of ad #4444&quot;,
-          &quot;Category L1 description&quot;,
-          &quot;2016-02-10 10:15:15&quot;,
-          &quot;&quot;,
-          &quot;fsd23432&quot;,
-          &quot;City of Toronto&quot;,
-          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
-        ]
-      },
-      {
-        &quot;dimensions&quot;: [&quot;2018-01-11 00:00:00&quot;, &quot;5555&quot;],
-        &quot;metrics&quot;: [9, 20, 0.244],
-        &quot;enrichment&quot;: [
-          &quot;Some title of ad #5555&quot;,
-          &quot;Category L1 description&quot;,
-          &quot;2016-05-11 09:10:15&quot;,
-          &quot;2016-07-11 06:10:10&quot;,
-          &quot;123425d&quot;,
-          &quot;Canada&quot;
-          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
-        ]
-      },
-      {
-        &quot;dimensions&quot;: [&quot;2018-01-12 00:00:00&quot;, &quot;4444&quot;],
-        &quot;metrics&quot;: [34, 67, 0.252],
-        &quot;enrichment&quot;: [
-          &quot;Some title of ad #4444&quot;,
-          &quot;Category L1 description&quot;,
-          &quot;2016-02-10 10:15:15&quot;,
-          &quot;&quot;,
-          &quot;fsd23432&quot;,
-          &quot;City of Toronto&quot;,
-          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
-        ]
-      },
-      {
-        &quot;dimensions&quot;: [&quot;2018-01-13 00:00:00&quot;, &quot;5555&quot;],
-        &quot;metrics&quot;: [55, 61, 0.312],
-        &quot;enrichment&quot;: [
-          &quot;Some title of ad #5555&quot;,
-          &quot;Category L1 description&quot;,
-          &quot;2016-05-11 09:10:15&quot;,
-          &quot;2016-07-11 06:10:10&quot;,
-          &quot;123425d&quot;,
-          &quot;Canada&quot;,
-          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
-        ]
-      },
-      {
-        &quot;dimensions&quot;: [&quot;2018-01-14 00:00:00&quot;, &quot;5555&quot;],
-        &quot;metrics&quot;: [43, 76, 0.543]
-        &quot;enrichment&quot;: [
-          &quot;Some title of ad #5555&quot;,
-          &quot;Category L1 description&quot;,
-          &quot;2016-05-11 09:10:15&quot;,
-          &quot;2016-07-11 06:10:10&quot;,
-          &quot;123425d&quot;,
-          &quot;Canada&quot;,
-          &quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;
-        ]
-      }
-    ],
-    &quot;count&quot;: 5
-  }
-]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-10 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;4444&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mf">0.634</span><span class="p">],</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #4444&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-02-10 10:15:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;fsd23432&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;City of Toronto&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-11 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.244</span><span class="p">],</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Canada&quot;</span>
+          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-12 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;4444&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mf">0.252</span><span class="p">],</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #4444&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-02-10 10:15:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;fsd23432&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;City of Toronto&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-13 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mf">0.312</span><span class="p">],</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mf">0.543</span><span class="p">]</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://i.ebayimg.com/00/s/MjY1WDI2NQ==/z/0LwAAOSwhrpcB9eE/$_14.JPG&quot;</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="metrics-response">
@@ -914,24 +917,24 @@ The following example sorts first on date in descending order, followed by the a
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">rows</span></tt></td>
-<td>Array of <tt class="docutils literal"><span class="pre">dimensions</span></tt>, <tt class="docutils literal"><span class="pre">metrics</span></tt> and <tt class="docutils literal"><span class="pre">enrichment</span></tt> values. Each element is one row of a response</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">rows</span></code></td>
+<td>Array of <code class="docutils literal"><span class="pre">dimensions</span></code>, <code class="docutils literal"><span class="pre">metrics</span></code> and <code class="docutils literal"><span class="pre">enrichment</span></code> values. Each element is one row of a response</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">dimensions</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dimensions</span></code></td>
 <td>Array of dimension values for this row, in string format</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">metrics</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">metrics</span></code></td>
 <td>Array of metric values for this row, in number format</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">enrichment</span></tt></td>
-<td>Array of enrichment values for this row, in string format. Valid only if <tt class="docutils literal"><span class="pre">am:adID</span></tt> is in the requested dimensions</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">enrichment</span></code></td>
+<td>Array of enrichment values for this row, in string format. Valid only if <code class="docutils literal"><span class="pre">am:adID</span></code> is in the requested dimensions</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">count</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">count</span></code></td>
 <td>Actual number of rows returned</td>
 </tr>
 </tbody>
 </table>
-<p>The <tt class="docutils literal"><span class="pre">data</span></tt> field contains an array of objects, one for each of the requested <a class="reference internal" href="#id2"><em>Time Ranges</em></a>. It is <strong>important to remember</strong> that the order in which the <tt class="docutils literal"><span class="pre">metrics</span></tt>, <tt class="docutils literal"><span class="pre">dimensions</span></tt>, and <tt class="docutils literal"><span class="pre">enrichment</span></tt> fields are requested is the same order in which they are listed in the response. The order of the objects in the <cite>rows</cite> array is not guaranteed to be deterministic unless explicit <cite>Sorting &lt;Sorts&gt;</cite> is used.</p>
+<p>The <code class="docutils literal"><span class="pre">data</span></code> field contains an array of objects, one for each of the requested <a class="reference internal" href="#id2"><span class="std std-ref">Time Ranges</span></a>. It is <strong>important to remember</strong> that the order in which the <code class="docutils literal"><span class="pre">metrics</span></code>, <code class="docutils literal"><span class="pre">dimensions</span></code>, and <code class="docutils literal"><span class="pre">enrichment</span></code> fields are requested is the same order in which they are listed in the response. The order of the objects in the <cite>rows</cite> array is not guaranteed to be deterministic unless explicit <cite>Sorting &lt;Sorts&gt;</cite> is used.</p>
 </div>
 </div>
 </div>
@@ -940,33 +943,33 @@ The following example sorts first on date in descending order, followed by the a
 <p>To understand the concept of dimensions and metrics, some examples of request and response are provided below, gradually increasing in complexity. In addition, a &#8220;tabular&#8221; view of the response is provided; in our experience it makes it easier to grasp these concepts.</p>
 <div class="section" id="example-1">
 <h3>Example 1:<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
-<p>Get all clicks and impressions for category <tt class="docutils literal"><span class="pre">1234</span></tt> for the previous week:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
-Content-Type: application/sellside.metrics.data-v1+json
-Accept: application/json
-{
-    &quot;timeRanges&quot;: [{
-        &quot;period&quot;: &quot;lastWeek&quot;
-    }],
-    &quot;dimensions&quot;: [],
-    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
-    &quot;filters&quot;: [{
-        &quot;field&quot;: &quot;am:categoryID&quot;,
-        &quot;operator&quot;: &quot;in&quot;,
-        &quot;value&quot;: [1234]
-    }]
-}
+<p>Get all clicks and impressions for category <code class="docutils literal"><span class="pre">1234</span></code> for the previous week:</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">]</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
-    &quot;data&quot;: [{
-        &quot;rows&quot;: [{
-            &quot;dimensions&quot;: [],
-            &quot;metrics&quot;: [1483, 36623] // 1483 clicks, 36623 impressions
-        }],
-    &quot;count&quot;: 1
-    }]
-}
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1483</span><span class="p">,</span> <span class="mi">36623</span><span class="p">]</span> <span class="o">//</span> <span class="mi">1483</span> <span class="n">clicks</span><span class="p">,</span> <span class="mi">36623</span> <span class="n">impressions</span>
+        <span class="p">}],</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -988,37 +991,37 @@ Accept: application/json
 </div>
 <div class="section" id="example-2">
 <h3>Example 2:<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
-<p>Get all clicks and impressions for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per category:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
-Content-Type: application/sellside.metrics.data-v1+json
-Accept: application/json
-{
-    &quot;timeRanges&quot;: [{
-        &quot;period&quot;: &quot;lastWeek&quot;
-    }],
-    &quot;dimensions&quot;: [&quot;am:categoryID&quot;],
-    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
-    &quot;filters&quot;: [{
-        &quot;field&quot;: &quot;am:categoryID&quot;,
-        &quot;operator&quot;: &quot;in&quot;,
-        &quot;value&quot;: [1234, 5678]
-    }]
-}
+<p>Get all clicks and impressions for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per category:</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
-    &quot;data&quot;: [{
-        &quot;rows&quot;: [{
-            &quot;dimensions&quot;: [&quot;1234&quot;],
-            &quot;metrics&quot;: [200, 400] // 200 clicks, 400 impressions for category &quot;1234&quot;
-        },
-        {
-            &quot;dimensions&quot;: [&quot;5678&quot;],
-            &quot;metrics&quot;: [300, 400]
-        }],
-    &quot;count&quot;: 2
-    }]
-}
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span> <span class="o">//</span> <span class="mi">200</span> <span class="n">clicks</span><span class="p">,</span> <span class="mi">400</span> <span class="n">impressions</span> <span class="k">for</span> <span class="n">category</span> <span class="s2">&quot;1234&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">]</span>
+        <span class="p">}],</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -1047,59 +1050,59 @@ Accept: application/json
 </div>
 <div class="section" id="example-3">
 <h3>Example 3:<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
-<p>Get all clicks and impressions for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
-Content-Type: application/sellside.metrics.data-v1+json
-Accept: application/json
-{
-    &quot;timeRanges&quot;: [{
-        &quot;period&quot;: &quot;lastWeek&quot;
-    }],
-    &quot;dimensions&quot;: [&quot;am:date&quot;, &quot;am:categoryID&quot;],
-    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:impressions&quot;],
-    &quot;filters&quot;: [{
-        &quot;field&quot;: &quot;am:categoryID&quot;,
-        &quot;operator&quot;: &quot;in&quot;,
-        &quot;value&quot;: [1234, 5678]
-    }],
-    &quot;sorts&quot;:[
-    {
-        &quot;field&quot;:&quot;am:date&quot;,
-        &quot;direction&quot;:&quot;asc&quot;
-    }],
-}
+<p>Get all clicks and impressions for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;sorts&quot;</span><span class="p">:[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;direction&quot;</span><span class="p">:</span><span class="s2">&quot;asc&quot;</span>
+    <span class="p">}],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>{
-    &quot;data&quot;: [{
-        &quot;rows&quot;: [{
-            &quot;dimensions&quot;: [&quot;2018-12-08 00:00:00&quot;, &quot;1234&quot;],
-            &quot;metrics&quot;: [11, 12]
-        },
-        {
-            &quot;dimensions&quot;: [&quot;2018-12-08 00:00:00&quot;, &quot;5678&quot;],
-            &quot;metrics&quot;: [9, 20]
-        },
-        {
-            &quot;dimensions&quot;: [&quot;2018-12-09 00:00:00&quot;, &quot;1234&quot;],
-            &quot;metrics&quot;: [34, 67]
-        },
-                    {
-            &quot;dimensions&quot;: [&quot;2018-12-09 00:00:00&quot;, &quot;5678&quot;],
-            &quot;metrics&quot;: [19, 20]
-        },
-        ...
-        {
-            &quot;dimensions&quot;: [&quot;2018-12-14 00:00:00&quot;, &quot;1234&quot;],
-            &quot;metrics&quot;: [12, 90]
-        },
-        {
-            &quot;dimensions&quot;: [&quot;2018-12-14 00:00:00&quot;, &quot;5678&quot;],
-            &quot;metrics&quot;: [43, 76]
-        }],
-    &quot;count&quot;: 54
-    }]
-}
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">67</span><span class="p">]</span>
+        <span class="p">},</span>
+                    <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="o">...</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">76</span><span class="p">]</span>
+        <span class="p">}],</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">54</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -1138,9 +1141,9 @@ Accept: application/json
 <td>20</td>
 </tr>
 <tr class="row-even"><td>...</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>2018-12-14 00:00:00</td>
 <td>1234</td>
@@ -1157,27 +1160,27 @@ Accept: application/json
 </div>
 <div class="section" id="example-4">
 <h3>Example 4:<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
-<p>Get all clicks, and average CPC for categories <tt class="docutils literal"><span class="pre">1234</span></tt> and <tt class="docutils literal"><span class="pre">5678</span></tt> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span>POST /api/sellside/metrics/data
-Content-Type: application/sellside.metrics.data-v1+json
-Accept: application/json
-{
-    &quot;timeRanges&quot;: [{
-        &quot;period&quot;: &quot;lastWeek&quot;
-    }],
-    &quot;dimensions&quot;: [&quot;am:adID&quot;],
-    &quot;metrics&quot;: [&quot;am:clicks&quot;, &quot;am:avgCPC&quot;],
-    &quot;filters&quot;: [{
-            &quot;field&quot;: &quot;am:categoryID&quot;,
-            &quot;operator&quot;: &quot;in&quot;,
-            &quot;value&quot;: [1234, 5678]
-    }],
-    &quot;enrichment&quot;:[&quot;am:currentAdTitle&quot;, &quot;am:currentAdVendorID&quot;]
-    &quot;limit&quot;: 3
-}
+<p>Get all clicks, and average CPC for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgCPC&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;enrichment&quot;</span><span class="p">:[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span> <span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
+    <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
         <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
@@ -1250,7 +1253,7 @@ Accept: application/json
 <h3>Final remarks:<a class="headerlink" href="#final-remarks" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li>In the <a class="reference internal" href="#sql-note"><em>SQL note</em></a>, the enrichment fields can be seen as a left outer join operation.</li>
+<li>In the <a class="reference internal" href="#sql-note"><span class="std std-ref">SQL note</span></a>, the enrichment fields can be seen as a left outer join operation.</li>
 <li>The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data.</li>
 </ul>
 </div></blockquote>
@@ -1258,7 +1261,7 @@ Accept: application/json
 </div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<p>Each error contains a <tt class="docutils literal"><span class="pre">code</span></tt> and <tt class="docutils literal"><span class="pre">text</span></tt> attributes providing a numeric error code and a simple English error message. An error may contain a <tt class="docutils literal"><span class="pre">field</span></tt> attribute describing the field where the error occurred and an additonal <tt class="docutils literal"><span class="pre">arg</span></tt> attribute further specifying the error.</p>
+<p>Each error contains a <code class="docutils literal"><span class="pre">code</span></code> and <code class="docutils literal"><span class="pre">text</span></code> attributes providing a numeric error code and a simple English error message. An error may contain a <code class="docutils literal"><span class="pre">field</span></code> attribute describing the field where the error occurred and an additonal <code class="docutils literal"><span class="pre">arg</span></code> attribute further specifying the error.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -1284,12 +1287,12 @@ Accept: application/json
 <td>invalid json</td>
 <td>Could not parse request data</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">am:date</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:date</span></code></td>
 <td>2000</td>
 <td>missing argument</td>
 <td>The field &#8216;aggregate&#8217; was missing</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">am:metrics</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:metrics</span></code></td>
 <td>2000</td>
 <td>missing argument</td>
 <td>The field &#8216;metrics&#8217; was missing</td>

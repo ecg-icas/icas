@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /ad/mapping/externalids" href="get-ad-externalid-mapping.html"/>
@@ -152,7 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">GET /ad/ids</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /ad/ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
@@ -229,7 +232,7 @@
     <li>GET /ad/ids</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-ad-ids.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-ad-ids.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,20 +242,20 @@
             
   <div class="section" id="get-ad-ids">
 <span id="index-0"></span><span id="id1"></span><h1>GET /ad/ids<a class="headerlink" href="#get-ad-ids" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#get-ad-ids-v1"><em>GET /ad/ids v1</em></a></p>
+<p><a class="reference internal" href="#get-ad-ids-v1"><span class="std std-ref">GET /ad/ids v1</span></a></p>
 <div class="section" id="get-ad-ids-v1">
 <span id="id2"></span><h2>GET /ad/ids v1<a class="headerlink" href="#get-ad-ids-v1" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_ro</span></tt> or <tt class="docutils literal"><span class="pre">console_ro</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.ad.ids-v1+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad.ids-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -260,9 +263,9 @@
 This utility call is intended for uncommon usecases, such as when a client on-boards an already
 existing admarkt user and needs to do a one-time import of adIds, or
 other cases where data got lost at the client.</p>
-<p>The <tt class="docutils literal"><span class="pre">status</span></tt> parameter allows the user to get only ad ids of ads having given status.</p>
-<p>The number of ads returned can be limited with the <tt class="docutils literal"><span class="pre">limit</span></tt> parameter.
-The <tt class="docutils literal"><span class="pre">offset</span></tt> parameter allows to skip some ads and together with <tt class="docutils literal"><span class="pre">limit</span></tt>
+<p>The <code class="docutils literal"><span class="pre">status</span></code> parameter allows the user to get only ad ids of ads having given status.</p>
+<p>The number of ads returned can be limited with the <code class="docutils literal"><span class="pre">limit</span></code> parameter.
+The <code class="docutils literal"><span class="pre">offset</span></code> parameter allows to skip some ads and together with <code class="docutils literal"><span class="pre">limit</span></code>
 allows for pagination.</p>
 <div class="section" id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
@@ -289,7 +292,7 @@ allows for pagination.</p>
 </tr>
 <tr class="row-even"><td>status</td>
 <td>list&lt;string&gt;</td>
-<td>Limits the ad ids returned to ads with given status. Default <tt class="docutils literal"><span class="pre">ACTIVE</span></tt></td>
+<td>Limits the ad ids returned to ads with given status. Default <code class="docutils literal"><span class="pre">ACTIVE</span></code></td>
 </tr>
 </tbody>
 </table>

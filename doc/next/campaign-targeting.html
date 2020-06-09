@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="up" title="Campaigns" href="campaigns.html"/>
         <link rel="next" title="XML Feeds" href="feeds.html"/>
@@ -122,7 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-linkedads.html">Campaign Linked Ads</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Campaign Targeting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Targeting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
@@ -229,7 +232,7 @@
     <li>Campaign Targeting</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/campaign-targeting.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/campaign-targeting.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -241,7 +244,7 @@
 <span id="campaign-targeting-overview"></span><h1>Campaign Targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this headline">¶</a></h1>
 <p id="id1">Campaigns allow you to target specific groups of buyers. Buyers not in these target groups will typically not
 see any ads from this campaign (some exceptions apply). Currently, only geographic targeting is supported but we
-are looking to add other forms of targeting. See <a class="reference internal" href="reference/post-campaign.html#post-campaign"><em>POST /campaign</em></a> for more details.</p>
+are looking to add other forms of targeting. See <a class="reference internal" href="reference/post-campaign.html#post-campaign"><span class="std std-ref">POST /campaign</span></a> for more details.</p>
 <div class="section" id="geo-targeting">
 <h2>Geo Targeting<a class="headerlink" href="#geo-targeting" title="Permalink to this headline">¶</a></h2>
 <p>Geo targeting allows you to specify one or more (circular) areas in the targeting criteria of a campaign
@@ -278,23 +281,23 @@ to have the ads of that campaign only be shown to buyers located in that region.
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">geos</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">geos</span></code></td>
 <td>A list of circular areas for geo-targeting. Default is empty array, which implies nationwide targeting (no targeting restrictions).</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">lat</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">lat</span></code></td>
 <td>Latitude of the center-point of the circular area for geo-targeting</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">lon</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">lon</span></code></td>
 <td>Longitude of the center-point of the circular area for geo-targeting</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">radius</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">radius</span></code></td>
 <td>Radius (in km) of the circular area for geo-targeting</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">diplayValue</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">diplayValue</span></code></td>
 <td>Description of the circular area for geo-targeting. Only visible on your dashboard, it will never be shown to buyers.</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">regionIds</span></tt></td>
-<td>A list of valid regionIds from the <a class="reference internal" href="regions.html#regions"><em>Regions</em></a> taxonomy. Default is empty array or <tt class="docutils literal"><span class="pre">[0]</span></tt>, either of which implies nationwide targeting (no targeting restrictions).</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">regionIds</span></code></td>
+<td>A list of valid regionIds from the <a class="reference internal" href="regions.html#regions"><span class="std std-ref">Regions</span></a> taxonomy. Default is empty array or <code class="docutils literal"><span class="pre">[0]</span></code>, either of which implies nationwide targeting (no targeting restrictions).</td>
 </tr>
 </tbody>
 </table>

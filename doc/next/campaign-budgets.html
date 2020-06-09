@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
         <link rel="up" title="Campaigns" href="campaigns.html"/>
         <link rel="next" title="Campaign Linked Ads" href="campaign-linkedads.html"/>
@@ -120,7 +123,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="campaigns.html">Campaigns</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Campaign Budgets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Campaign Budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-linkedads.html">Campaign Linked Ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
@@ -229,7 +232,7 @@
     <li>Campaign Budgets</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/campaign-budgets.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/campaign-budgets.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -287,14 +290,14 @@ If no monthly budget is set, and you <strong>add</strong> a monthly budget after
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">daily</span></tt></td>
-<td>The maximum amount (in cents) that a campaign can spend per day (<tt class="docutils literal"><span class="pre">limit</span></tt>), and the current-day <tt class="docutils literal"><span class="pre">spent</span></tt>. The <tt class="docutils literal"><span class="pre">spent</span></tt> amount value will be reset at midnight every day. If not set, the <tt class="docutils literal"><span class="pre">limit</span></tt> will be shown as <strong>-1 (Unlimited)</strong>.</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">daily</span></code></td>
+<td>The maximum amount (in cents) that a campaign can spend per day (<code class="docutils literal"><span class="pre">limit</span></code>), and the current-day <code class="docutils literal"><span class="pre">spent</span></code>. The <code class="docutils literal"><span class="pre">spent</span></code> amount value will be reset at midnight every day. If not set, the <code class="docutils literal"><span class="pre">limit</span></code> will be shown as <strong>-1 (Unlimited)</strong>.</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">monthly</span></tt></td>
-<td>The maximum amount (in cents) that a campaign can spend per calendar month (<tt class="docutils literal"><span class="pre">limit</span></tt>), and the current-month <tt class="docutils literal"><span class="pre">spent</span></tt>. The <tt class="docutils literal"><span class="pre">spent</span></tt> value will be reset at the beginning of the month. If not set, the <tt class="docutils literal"><span class="pre">limit</span></tt> will be shown as <strong>-1 (Unlimited)</strong>.</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">monthly</span></code></td>
+<td>The maximum amount (in cents) that a campaign can spend per calendar month (<code class="docutils literal"><span class="pre">limit</span></code>), and the current-month <code class="docutils literal"><span class="pre">spent</span></code>. The <code class="docutils literal"><span class="pre">spent</span></code> value will be reset at the beginning of the month. If not set, the <code class="docutils literal"><span class="pre">limit</span></code> will be shown as <strong>-1 (Unlimited)</strong>.</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">total</span></tt></td>
-<td>The maximum amount (in cents) that a campaign can spend in its lifetime, and the current total <tt class="docutils literal"><span class="pre">spent</span></tt>. The <tt class="docutils literal"><span class="pre">spent</span></tt> value will never be reset. If not set, the <tt class="docutils literal"><span class="pre">limit</span></tt> will be shown as <strong>-1 (Unlimited)</strong>.</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">total</span></code></td>
+<td>The maximum amount (in cents) that a campaign can spend in its lifetime, and the current total <code class="docutils literal"><span class="pre">spent</span></code>. The <code class="docutils literal"><span class="pre">spent</span></code> value will never be reset. If not set, the <code class="docutils literal"><span class="pre">limit</span></code> will be shown as <strong>-1 (Unlimited)</strong>.</td>
 </tr>
 </tbody>
 </table>

@@ -30,6 +30,9 @@
   
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /campaign/{id}/linkedAds" href="get-campaign-linkedads.html"/>
@@ -176,7 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">POST /campaign/{id}/targeting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">POST /campaign/{id}/targeting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-linkedads.html">GET /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-linkedads.html">PUT /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
@@ -229,7 +232,7 @@
     <li>POST /campaign/{id}/targeting</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/post-campaign-targeting.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/post-campaign-targeting.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,26 +242,26 @@
             
   <div class="section" id="post-campaign-id-targeting">
 <span id="index-0"></span><h1>POST /campaign/{id}/targeting<a class="headerlink" href="#post-campaign-id-targeting" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Scope</td>
-<td><tt class="docutils literal"><span class="pre">api_rw</span></tt> or <tt class="docutils literal"><span class="pre">console_rw</span></tt></td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.campaign.targeting-v2+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign.targeting-v2+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 <tr class="row-odd"><td>Content-Type</td>
-<td><tt class="docutils literal"><span class="pre">application/sellside.campaign.targeting-v2+json,</span> <span class="pre">application/json</span></tt></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign.targeting-v2+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>Updates the targeting for the specified campaign (see <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><em>Campaign Targeting Object</em></a> for more). If the <tt class="docutils literal"><span class="pre">id</span></tt> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
+<p>Updates the targeting for the specified campaign (see <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a> for more). If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
 Any previous targeting setting on the specified campaign will be overwritten.</p>
-<p>Setting targeting on a campaign in a <tt class="docutils literal"><span class="pre">DELETED</span></tt> state is not allowed.</p>
+<p>Setting targeting on a campaign in a <code class="docutils literal"><span class="pre">DELETED</span></code> state is not allowed.</p>
 <div class="section" id="examples">
 <h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">targeting</span>
