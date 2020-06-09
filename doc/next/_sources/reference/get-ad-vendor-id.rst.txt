@@ -51,12 +51,6 @@ If the ad does not exist or does not belong to the user the server returns
 **404 Not Found**. If the ``vendorId`` is bigger than 64 characters the
 server returns **400 Bad Request**.
 
-.. warning::
-
-	This call is only compatible with :ref:`categories_v2` and must only
-	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
-	the attributes may not be recognized or editable.
-
 .. note::
 
     The fields :ref:`ad_pageNumber` and :ref:`ad_suggestedCpcForPageOne` are

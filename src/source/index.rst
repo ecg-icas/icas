@@ -51,6 +51,7 @@ History
 * v.0.117 - 9 June 2020 - tw
 
   * clean out deprecated methods from manual
+  * minor restructure removing redirect layer of categories
 
 * v.0.116 - 15 May 2020 - dr
 
@@ -276,7 +277,7 @@ History
 
 * v0.62 - 13 Aug 2015 - fs
 
-  * :ref:`categories_v2`: Added missing ``defaults`` field to attributes.
+  * :ref:`categories`: Added missing ``defaults`` field to attributes.
 
 * v0.61 - 02 Jul 2015 - ak
 
@@ -325,7 +326,7 @@ History
 
 * v0.54 - 29 May 2015 - be,fs
 
-  * Added documentation for :ref:`categories_v2`
+  * Added documentation for :ref:`categories` V2
   * Renamed Admarkt to iCAS
   * Replaced support email address with link to Google Plus Community
   * Added links for DBA and Kijiji Canada

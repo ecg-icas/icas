@@ -21,7 +21,7 @@ GET /category/{id} v2
    - ``application/sellside.category-v2+json, application/json``
 
 This URL returns the category tree or parts of it in the format described in
-:ref:`categories_v2` starting from the category with the given category
+:ref:`categories` starting from the category with the given category
 ``id``. To return the category tree starting from the root node use id ``0``.
 If the category does not exist the server returns **404 Not Found**. If the
 ``id`` is invalid, i.e. not a positive integer the server returns **400 Bad
