@@ -5,7 +5,7 @@
 GET /ad
 =======
 
-:ref:`get_ad_v4` | :ref:`get_ad_v3` | :ref:`get_ad_v2` | :ref:`get_ad_v1`
+:ref:`get_ad_v4` | :ref:`get_ad_v3`
 
 .. _get_ad_v4:
 
@@ -25,8 +25,8 @@ GET /ad v4
 .. note::
 
     The only backwards-incompatible change from :ref:`get_ad_v3` is with respect to the usage of ``startDate`` and ``endDate`` parameters.
-    Namely, ads which were live during this selected period but did not recieve a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
-    **This does not include ads which received sellside updates anymore.**
+    Namely, ads which were live during this selected period but did not receive a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
+    **This does not include ads which received updates anymore.**
 
     In addition, the response contains a field **statusReasons**. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
     This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
@@ -55,12 +55,6 @@ GET /ad v3
 
 This URL returns a list of ads for the current user and the total size of the
 result set matching the filter criteria.
-
-.. warning::
-
-	This call is only compatible with :ref:`categories_v2` and must only
-	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
-	the attributes may not be recognized or editable.
 
 The number of ads returned can be limited with the ``limit`` parameter.
 The ``offset`` parameter allows to skip some ads and together with ``limit``
@@ -198,61 +192,3 @@ Example
 -------
 
 .. include:: ../examples/get-ad-v3-example.rst
-
-.. _get_ad_v2:
-
-GET /ad v2
-----------
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_ro`` or ``console_ro``
-
- * - Accept
-   - ``application/sellside.ad.list-v2+json, application/json``
-
-Version 2 works just like :ref:`get_ad_v3` except that it is only compatible with
-:ref:`categories_v1`.
-
-.. warning::
-
-	This call is deprecated and will be removed after September 2015.  It is
-	only compatible with :ref:`categories_v1` and must only be used with the
-	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
-	may not be recognized or editable.
-
-Example
--------
-
-.. include:: ../examples/get-ad-v2-example.rst
-
-.. _get_ad_v1:
-
-GET /ad v1
-----------
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_ro`` or ``console_ro``
-
- * - Accept
-   - ``application/sellside.ad.list-v1+json, application/json``
-
-Version 1 of this URL returns returns a list of ads.
-
-.. warning::
-
-	This call is deprecated and will be removed after September 2015.  It is
-	only compatible with :ref:`categories_v1` and must only be used with the
-	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
-	may not be recognized or editable.
-
-
-Example
-~~~~~~~
-
-.. include:: ../examples/get-ad-v1-example.rst

@@ -4,7 +4,7 @@
 PUT /ad/{id}
 ============
 
-:ref:`put_ad_id_v3` | :ref:`put_ad_id_v2` | :ref:`put_ad_id_v1`
+:ref:`put_ad_id_v3` | :ref:`put_ad_id_v2`
 
 .. _put_ad_id_v3:
 
@@ -52,12 +52,6 @@ PUT /ad/{id} v2
    - ``application/sellside.ad-v2+json; charset=utf-8``
 
 This URL updates the ad with the given ``id``.
-
-.. warning::
-
-    This call is only compatible with :ref:`categories_v2` and must only
-    be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
-    the attributes may not be recognized or editable.
 
 If the ad was successfully updated then a **200 OK** is returned. The
 **optional** query parameter ``_body`` with value ``true`` or ``false`` can be
@@ -142,36 +136,3 @@ Example
 -------
 
 .. include:: ../examples/put-ad-v2-example.rst
-
-.. _put_ad_id_v1:
-
-PUT /ad/{id} v1
----------------
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_rw`` or ``console_rw``
-
- * - Accept
-   - ``application/sellside.ad-v1+json, application/json``
-
- * - Content-Type
-   - ``application/sellside.ad-v1+json; charset=utf-8``
-
-Version 1 works just like :ref:`put_ad_id_v2` except that it is compatible
-with :ref:`categories_v1`.
-
-.. warning::
-
-    This call is deprecated and will be removed after September 2015.  It is
-    only compatible with :ref:`categories_v1` and must only be used with the
-    other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
-    may not be recognized or editable.
-
-Example
--------
-
-.. include:: ../examples/put-ad-v1-example.rst
-

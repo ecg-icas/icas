@@ -48,6 +48,10 @@ History
 
 ..  role:: strike
 
+* v.0.117 - 9 June 2020 - tw
+
+  * clean out deprecated methods from manual
+
 * v.0.116 - 15 May 2020 - dr
 
   * add "statusReason" to ad endpoints
@@ -291,13 +295,13 @@ History
   * Added :ref:`post_ad_v2`
   * Added :ref:`put_ad_id_v2`
   * Added :ref:`deprecation_plan`
-  * Deprecated :ref:`get_ad_v2`
-  * Deprecated :ref:`get_ad_id_v1`
-  * Deprecated :ref:`get_category`
-  * Deprecated :ref:`get_category_id_v1`
-  * Deprecated :ref:`get_category_id_attributes`
-  * Deprecated :ref:`post_ad_v1`
-  * Deprecated :ref:`put_ad_id_v1`
+  * Deprecated 'GET /ad V2'
+  * Deprecated 'GET /ad/{id} V1'
+  * Deprecated 'GET /category'
+  * Deprecated 'GET /category/{id} V1'
+  * Deprecated 'GET /category{id}/attributes V1'
+  * Deprecated 'POST /ad V1'
+  * Deprecated 'PUT /ad V1'
   * Moved all deprecations to after September 2015
 
 * v0.58 - 15 Jun 2015 - fs
@@ -367,7 +371,7 @@ History
 
 * v0.44 - 24 Feb 2015 - fs
 
-  * Pushed deadline for removal of :ref:`get_ad_v1` of :ref:`get_ad` from 1 Mar 2015 to 1 May 2015
+  * Pushed deadline for removal of 'GET /ad V1' of :ref:`get_ad` from 1 Mar 2015 to 1 May 2015
   * Pushed deadline for removal of :ref:`get_report_v1` of :ref:`get_report` from 1 Mar 2015 to 1 May 2015
 
 * v0.43 - 13 Jan 2015 - ak
@@ -392,7 +396,7 @@ History
 
 * v0.39 - 20 Nov 2014 - ak
 
-  * Added :ref:`get_ad_v2` of :ref:`get_ad` which includes the size of the result set
+  * Added 'GET /ad V2' of :ref:`get_ad` which includes the size of the result set
 
 * v0.38 - 03 Nov 2014 - ak
 
@@ -448,9 +452,9 @@ History
 
   * :ref:`get_ad`
   * :ref:`get_ad_id`
-  * :ref:`get_category`
+  * 'GET /category'
   * :ref:`get_category_id`
-  * :ref:`get_category_id_attributes`
+  * 'GET /category/{id}/attributes'
   * :ref:`get_report`
   * :ref:`post_ad`
   * :ref:`put_ad_id`
@@ -552,7 +556,7 @@ History
 
 * v0.10 - 8 Oct 2012 - fs, ml
 
-  * :ref:`get_category_id_attributes`: only leaf categories have attributes
+  * 'GET /category/{id}/attributes': only leaf categories have attributes
   * Added additional user attribute examples
   * Changed *valueType* for *MULTI* category attribute example
   * Changed *name* to *key* in user attribute example
@@ -564,7 +568,7 @@ History
 * v0.8 - 4 Oct 2012 - fs
 
   * Added a section for attributes
-  * Added :ref:`get_category_id_attributes`
+  * Added 'GET /category/{id}/attributes'
   * Removed the *media* attribute from ads
   * Updated the handling of images in ads
   * :ref:`post_ad`: Removed all *media* related errors
