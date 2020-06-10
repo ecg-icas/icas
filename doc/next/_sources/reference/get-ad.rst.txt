@@ -7,6 +7,11 @@ GET /ad
 
 :ref:`get_ad_v4` | :ref:`get_ad_v3`
 
+.. warning::
+
+    :ref:`get_ad_v3` is now officially deprecated and scheduled for removal (date TBD). Please move to use :ref:`get_ad_v4`. If you were not
+    using ``startDate`` or ``endDate`` parameters in your calls the output will be the same in :ref:`get_ad_v4`.
+
 .. _get_ad_v4:
 
 GET /ad v4
@@ -30,8 +35,6 @@ GET /ad v4
 
     In addition, the response contains a field **statusReasons**. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
     This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
-
-
 
 Example
 -------
