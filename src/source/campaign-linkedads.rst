@@ -26,5 +26,6 @@ Overrides
 A linkedAd can have certain overrides as well. For instance, it is possible to set a specific budget for an ad in a campaign, in addition to an overal campaign budget; if the campaign has a daily budget of 20 euros,
 it is possible to limit the spent of a single ad in that campaign to 10 euros, making sure that the budget of the campaign
 is more fairly spread out over the remaining campaign ads (in case you have a very high performing ad in the campaign, for example).
-It is also possible to let a bidding agent automatically manage the CPC and budgets on a particular linkedAd, in a more optiomal way.
+
+It is also possible to let a bidding agent automatically manage the CPC and budgets on a particular linkedAd, in a more optimal way.
 See :ref:`put_campaign_linkedads` for more details.
