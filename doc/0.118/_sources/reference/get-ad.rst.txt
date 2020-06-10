@@ -47,6 +47,11 @@ Example
 GET /ad v3
 ----------
 
+.. warning::
+
+    :ref:`get_ad_v3` is now officially deprecated and scheduled for removal (date TBD). Please move to use :ref:`get_ad_v4`. If you were not
+    using ``startDate`` or ``endDate`` parameters in your calls the output will be the same in :ref:`get_ad_v4`.
+
 .. list-table::
  :widths: 20 80
 
