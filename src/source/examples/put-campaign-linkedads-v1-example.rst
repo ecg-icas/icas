@@ -15,5 +15,5 @@
     {
        "adId": 12315452,
        "status": "ACTIVE"
-       "cpc": 3
+       "autoBid": true
     }

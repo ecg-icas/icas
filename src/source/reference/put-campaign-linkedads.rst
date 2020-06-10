@@ -59,4 +59,4 @@ Adds multiple linkedAds to the campaign. Overrides existing linkedAds with same 
 .. include:: ../examples/put-campaign-linkedads-list-v1-example.rst
 .. include:: ../examples/put-campaign-linkedads-list-v1-example2.rst
 
-In the example above, the first linkedAd has no overrides, it merely links the ad to the campaign; the second linkedAd overrides the cpc value that the campaign may have as a setting; the third linkedAd overrides any campaign budgets with ones specific for that ad.
+In the example above, the first linkedAd has autobidding enabled on a particular ad within the campaign; the second linkedAd specifies the cpc value that the ad will have, but omits the budgets (which will set them to unlimited); the third linkedAd also overrides any campaign budgets with ones specific for that ad.

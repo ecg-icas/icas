@@ -185,7 +185,6 @@
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign-linkedads.html">DELETE /campaign/{id}/linkedAds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-funnel.html">GET /campaign/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-campaign-cpc.html">PUT /campaign/{id}/cpc/{cpc}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
@@ -262,13 +261,14 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
             <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
         <span class="p">}</span>
     <span class="p">}</span>
+    <span class="s2">&quot;autoBid&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">bool</span><span class="o">&gt;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col width="5%" />
+<col width="95%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
@@ -277,13 +277,16 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">adId</span></code></td>
-<td>The ID of the ad that this linkedAd refers to.</td>
+<td>The ID of the ad that this linkedAd refers to. This field is mandatory.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
-<td>Instead of using the campaign&#8217;s CPC, use this override (cents)</td>
+<td>The CPC (in cents) to use for this ad in the context of the given campaign. This field is mandatory if <code class="docutils literal"><span class="pre">autoBid</span></code> is <code class="docutils literal"><span class="pre">false</span></code>.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
-<td>An object containing the budget limits for the linkedAd. Does not void campaign budgets. The <code class="docutils literal"><span class="pre">limits</span></code> unit is cents. The default values are set to <strong>-1 (Unlimited)</strong>.</td>
+<td>An object containing the budget limits for the linkedAd. Does not void campaign budgets. The <code class="docutils literal"><span class="pre">limits</span></code> unit is cents. If not supplied, the default values are set to <strong>-1 (Unlimited)</strong>.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">autobid</span></code></td>
+<td>Whether the automatic bidding agent should act on the cost (per click, for now) and budgets on this ad within the given campaign. If the value is <code class="docutils literal"><span class="pre">true</span></code>, the payload should <strong>not</strong> contain the <code class="docutils literal"><span class="pre">cpc</span></code> and <code class="docutils literal"><span class="pre">budgets</span></code> fields, they will be auto-managed instead. Not every user is enabled for this functionality; if interested, please get in touch with us on Discord. Default value is <code class="docutils literal"><span class="pre">false</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -322,7 +325,7 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 <span class="p">{</span>
    <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span>
-   <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span>
+   <span class="s2">&quot;autoBid&quot;</span><span class="o">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -373,7 +376,8 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 
 <span class="p">[</span>
     <span class="p">{</span>
-       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span>
+       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
+       <span class="s2">&quot;autoBid&quot;</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541253</span><span class="p">,</span>
@@ -403,32 +407,35 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 <span class="p">[</span>
     <span class="p">{</span>
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
-       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="nx">ACTIVE</span>
+       <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="nx">ACTIVE</span><span class="p">,</span>
+       <span class="s2">&quot;autoBid&quot;</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541253</span><span class="p">,</span>
        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="nx">ACTIVE</span><span class="p">,</span>
-       <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span>
+       <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+       <span class="s2">&quot;autoBid&quot;</span><span class="o">:</span> <span class="kc">false</span>
     <span class="p">},</span>
     <span class="p">{</span>
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541254</span><span class="p">,</span>
        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="nx">ACTIVE</span><span class="p">,</span>
        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
-           <span class="p">{</span>
-               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">10</span>
-                <span class="p">},</span>
-               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">100</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">123</span>
-                <span class="p">}</span>
-           <span class="p">}</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">10</span>
+            <span class="p">},</span>
+           <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">100</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">123</span>
+            <span class="p">}</span>
+       <span class="p">},</span>
+       <span class="s2">&quot;autoBid&quot;</span><span class="o">:</span> <span class="kc">false</span>
     <span class="p">},</span>
 <span class="p">]</span>
 </pre></div>
@@ -439,7 +446,8 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 
 <span class="p">[</span>
     <span class="p">{</span>
-       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span>
+       <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">12315452</span><span class="p">,</span>
+       <span class="s2">&quot;autoBid&quot;</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="p">{</span>
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541253</span><span class="p">,</span>
@@ -449,17 +457,17 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
        <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="mi">23541254</span><span class="p">,</span>
        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
        <span class="s2">&quot;budgets&quot;</span><span class="o">:</span>
-           <span class="p">{</span>
-               <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
-                <span class="p">},</span>
-               <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
-                <span class="p">}</span>
-           <span class="p">}</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
+            <span class="p">},</span>
+           <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="p">}</span>
+       <span class="p">}</span>
     <span class="p">},</span>
 <span class="p">]</span>
 
@@ -474,7 +482,7 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>In the example above, the first linkedAd has no overrides, it merely links the ad to the campaign; the second linkedAd overrides the cpc value that the campaign may have as a setting; the third linkedAd overrides any campaign budgets with ones specific for that ad.</p>
+<p>In the example above, the first linkedAd has autobidding enabled on a particular ad within the campaign; the second linkedAd specifies the cpc value that the ad will have, but omits the budgets (which will set them to unlimited); the third linkedAd also overrides any campaign budgets with ones specific for that ad.</p>
 </div>
 </div>
 

@@ -6,7 +6,8 @@
 
     [
         {
-           "adId": 12315452
+           "adId": 12315452,
+           "autoBid": true
         },
         {
            "adId": 23541253,
@@ -36,31 +37,34 @@
     [
         {
            "adId": 12315452,
-           "status": ACTIVE
+           "status": ACTIVE,
+           "autoBid": true
         },
         {
            "adId": 23541253,
            "status": ACTIVE,
-           "cpc": 3
+           "cpc": 3,
+           "autoBid": false
         },
         {
            "adId": 23541254,
            "status": ACTIVE,
            "cpc": 25,
            "budgets":
-               {
-                   "daily": {
-                        "limit": 1000,
-                        "spent": 10
-                    },
-                   "monthly": {
-                        "limit": 12300,
-                        "spent": 100
-                    },
-                    "total": {
-                        "limit": -1,
-                        "spent": 123
-                    }
-               }
+           {
+               "daily": {
+                    "limit": 1000,
+                    "spent": 10
+                },
+               "monthly": {
+                    "limit": 12300,
+                    "spent": 100
+                },
+                "total": {
+                    "limit": -1,
+                    "spent": 123
+                }
+           },
+           "autoBid": false
         },
     ]

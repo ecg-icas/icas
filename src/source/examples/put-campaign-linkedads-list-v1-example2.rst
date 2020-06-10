@@ -6,7 +6,8 @@
 
     [
         {
-           "adId": 12315452
+           "adId": 12315452,
+           "autoBid": true
         },
         {
            "adId": 23541253,
@@ -16,17 +17,17 @@
            "adId": 23541254,
            "cpc": 25,
            "budgets":
-               {
-                   "daily": {
-                        "limit": 1000
-                    },
-                   "monthly": {
-                        "limit": 12300
-                    },
-                    "total": {
-                        "limit": -1
-                    }
-               }
+           {
+               "daily": {
+                    "limit": 1000
+                },
+               "monthly": {
+                    "limit": 12300
+                },
+                "total": {
+                    "limit": -1
+                }
+           }
         },
     ]
 
