@@ -9,12 +9,28 @@
     [
         {
             "adId": 12315452,
-            "status": "ACTIVE"
+            "status": "ACTIVE",
+            "autoBid": true
         },
         {
             "adId": 23541252,
             "status": "ACTIVE",
-            "cpc": 3
+            "cpc": 3,
+            "budgets": {
+                "daily": {
+                    "limit": -1,
+                    "spent": 0,
+                },
+                "monthly": {
+                    "limit": -1,
+                    "spent": 0
+                },
+                "total": {
+                    "limit": -1,
+                    "spent": 0
+                }
+            },
+            "autoBid": false
         },
         {
             "adId": 23541252,
@@ -27,12 +43,13 @@
                 },
                 "monthly": {
                     "limit": 12300,
-                    "spent": 234
+                    "spent": 12300
                 },
                 "total": {
                     "limit": -1,
                     "spent": 1346
                 }
-            }
+            },
+            "autoBid": false
         },
     ]

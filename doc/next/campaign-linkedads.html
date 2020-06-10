@@ -243,7 +243,7 @@
   <div class="section" id="campaign-linked-ads">
 <span id="campaign-linkedads-overview"></span><h1>Campaign Linked Ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this headline">¶</a></h1>
 <p id="id1">Campaign&#8217;s linkedAds component defines which ads are part of the campaign. It is possible to add / remove (link / unlink) ads from a campaign using
-<a class="reference internal" href="reference/put-campaign-linkedads.html#put-campaign-linkedads"><span class="std std-ref">PUT /campaign/{id}/linkedAds</span></a> / <span class="xref std std-ref">delete_campaign_linkedads</span>. Deleting a linkedAd from a campaign does not remove the ad from your inventory, it merely takes it offline in the context of the particular campaign.</p>
+<a class="reference internal" href="reference/put-campaign-linkedads.html#put-campaign-linkedads"><span class="std std-ref">PUT /campaign/{id}/linkedAds</span></a> / <a class="reference internal" href="reference/delete-campaign-linkedads.html#delete-campaign-linkedads"><span class="std std-ref">DELETE /campaign/{id}/linkedAds</span></a>. Deleting a linkedAd from a campaign does not remove the ad from your inventory, it merely takes it offline in the context of the particular campaign.</p>
 <p>LinkedAds are stored as part of the campaign, and have a reference to an Ad using its ID. A linkedAd consists of two parts:
 the Ad ID and optional overrides from the campaign defaults.
 Using linkedAds, it is possible to add a single ad to multiple campaigns (which may have different budgets and targeting criteria).

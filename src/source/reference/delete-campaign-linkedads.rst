@@ -1,8 +1,10 @@
 .. index:: DELETE /campaign/{id}/linkedAds
-.. _delete_campaign_linkedads:
+
 
 TODO: WE DO NOT YET HAVE AN IMPLEMENTATION FOR A SINGLE REMOVAL, ONLY LIST!
 
+
+.. _delete_campaign_linkedads:
 
 DELETE /campaign/{id}/linkedAds
 ===============================
