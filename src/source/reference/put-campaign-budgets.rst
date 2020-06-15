@@ -1,9 +1,7 @@
-.. index:: POST /campaign/{id}/budgets
+.. index:: PUT /campaign/{id}/budgets
 
-POST /campaign/{id}/budgets
+PUT /campaign/{id}/budgets
 ============================
-
-DEPRECATED, please use ``PUT /campaign/{id}/budgets`` instead.
 
 .. list-table::
  :widths: 20 80
@@ -17,8 +15,8 @@ DEPRECATED, please use ``PUT /campaign/{id}/budgets`` instead.
  * - Content-Type
    - ``application/sellside.campaign.budgets-v2+json, application/json``
 
-Updates the budgets limits for the specified campaign (see :ref:`Campaign Budgets Object <campaign-budgets-object>` for more). If the ``id`` is invalid, i.e., not a positive integer, the server returns *400 Bad Request.*
-Any previous budgets limits on the specified campaign will be overwritten.
+Creates (if they don't exist) or updates the budgets limits for the specified campaign (see :ref:`Campaign Budgets Object <campaign-budgets-object>` for more). If the ``id`` is invalid, i.e., not a positive integer, the server returns *400 Bad Request.*
+The call is idempotent; any previous budgets limits on the specified campaign will be overwritten.
 All types of budgets (``Daily``, ``Monthly``, ``Total``) should be sent while updating,
 or an empty object, in which case all types of budgets will be created **-1 (Unlimited**). Partial update are not allowed.
 
@@ -27,9 +25,9 @@ Setting a budget on a campaign in a ``DELETED`` state is not allowed.
 Examples:
 ---------
 
-.. include:: ../examples/post-campaign-budgets-example-v2.rst
-.. include:: ../examples/post-campaign-budgets-example2-v2.rst
-.. include:: ../examples/post-campaign-budgets-example3-v2.rst
+.. include:: ../examples/put-campaign-budgets-example-v2.rst
+.. include:: ../examples/put-campaign-budgets-example2-v2.rst
+.. include:: ../examples/put-campaign-budgets-example3-v2.rst
 
 
 The ``spent`` values in each budget type are **read-only**.

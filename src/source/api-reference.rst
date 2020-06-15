@@ -33,6 +33,7 @@ API Reference
    reference/get-campaign-vendor-id
    reference/get-campaign-budgets
    reference/post-campaign-budgets
+   reference/put-campaign-budgets
    reference/get-campaign-targeting
    reference/post-campaign-targeting
    reference/get-campaign-linkedads
@@ -40,8 +41,6 @@ API Reference
    reference/delete-campaign-linkedads
    reference/get-campaign-funnel
    reference/put-campaign-status
-   .. reference/put-campaign-cpc
-
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import
