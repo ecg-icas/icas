@@ -48,6 +48,10 @@ History
 
 ..  role:: strike
 
+* v.0.119 - 24 June 2020 - tw
+
+  * set deprecation date of :ref:`get_ad_v3` to July 15th 2020
+
 * v.0.118 - 10 June 2020 - tw
 
   * mark :ref:`get_ad_v3` as deprecated, replaced by :ref:`get_ad_v4`
