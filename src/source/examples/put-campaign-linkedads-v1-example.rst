@@ -6,7 +6,8 @@
 
     {
        "adId": 12315452,
-       "cpc": 3
+       "cpc": 3,
+       "autoBid": true
     }
 
     HTTP 200 OK

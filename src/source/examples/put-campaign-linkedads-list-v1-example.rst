@@ -44,7 +44,19 @@
            "adId": 23541253,
            "status": ACTIVE,
            "cpc": 3,
-           "autoBid": false
+           "autoBid": false,
+           "budgets":
+               {
+                   "daily": {
+                        "limit": -1
+                    },
+                   "monthly": {
+                        "limit": -1
+                    },
+                    "total": {
+                        "limit": -1
+                    }
+               }
         },
         {
            "adId": 23541254,
