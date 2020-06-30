@@ -84,17 +84,17 @@ Parameters
 Name             Type             Description
 ===============  ============     ============================================================================
 limit            int              Limits the number of records returned. Default **and** maximum is 100.
-nextPageToken    string           Skips the first N records.
+pageToken        string           Skips the first N records.
 titleKeywords    string           Case-insensitive filter for a keyword in the title.
-status           string           Filters the result set by the ad status. Should be a comma separated list of [ACTIVE, PAUSED, DELETED, DELETED_BY_CS, SUSPENDED_BY_CS, BUDGET_REACHED, DAILY_BUDGET_REACHED]. Default value is ACTIVE.
-orderBy          string           Orders the result set by the given field. Default value is DATE_CREATED. See :ref:`order_by`.
+status           string           Filters the result set by the ad status. Should be a comma separated list of [ACTIVE, DELETED, DELETED_BY_CS, SUSPENDED_BY_CS]. Default value is ACTIVE.
+orderBy          string           Orders the result set by the given field. Default value is DATE_CREATED. See :ref:`order_by_v5`.
 direction        string           Determines the direction of the sort. Should be one of [ASCENDING, DESCENDING]. Default is ASCENDING.
 changedSince     date             Returns ads which have ``changedSince`` >= ``dateLastUpdated``.
 externalId       string           Only ads matching this externalId will be returned. Optional.
 categoryIds      list of ints     List of category id's to filter by. Only leaf category id's are useful, since ads can only be placed in leaf categories.
 ===============  ============     ============================================================================
 
-.. _order_by:
+.. _order_by_v5:
 
 Order By
 ~~~~~~~~
@@ -117,8 +117,6 @@ Field                   Code    Error message               Description
 ====================    ====    =======================     ==============================================================================
 limit                   2001    invalid argument            not a valid number
 limit                   2002    out of range                less than 1 or greater than 100.
-offset                  2001    invalid argument            not a valid number
-offset                  2002    out of range                less than 0.
 titleKeywords           2004    value too short             must be 3 characters or more.
 status                  2001    invalid argument            not a recognised status to filter on
 orderBy                 2001    invalid argument            not a recognised orderBy to filter on

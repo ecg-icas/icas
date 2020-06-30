@@ -242,6 +242,9 @@
             
   <div class="section" id="put-ad-id-status">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}/status<a class="headerlink" href="#put-ad-id-status" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#put-ad-id-status-v5"><span class="std std-ref">GET /ad/{id}/status v5</span></a> | <a class="reference internal" href="#put-ad-id-status-v1"><span class="std std-ref">GET /ad/{id}/status v1</span></a></p>
+<div class="section" id="get-ad-id-status-v5">
+<span id="put-ad-id-status-v5"></span><h2>GET /ad/{id}/status v5<a class="headerlink" href="#get-ad-id-status-v5" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -262,16 +265,7 @@ If the <code class="docutils literal"><span class="pre">id</span></code> is inva
 Bad Request</strong>.</p>
 <p>To set the new status append it to the base url. The status can be one of the
 user controlled status values as defined in <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>.</p>
-<p>Changing the status to <strong>ACTIVE</strong> also changes the number of active
-ads in this category for this user. If the current number of active ads
-for this user in this category exceeds <code class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></code> as defined
-in the category then an error is returned. Setting a different status
-than <strong>ACTIVE</strong> is always allowed.</p>
-<p>If an ad has is in status <strong>PAUSED</strong> and also has no daily budget or total budget
-remaining, this call will succeed. The resulting status of the ad will be either
-<a class="reference internal" href="../ad-status.html#ad-status-budget-reached"><span class="std std-ref">BUDGET_REACHED</span></a> or <a class="reference internal" href="../ad-status.html#ad-status-daily-budget-reached"><span class="std std-ref">DAILY_BUDGET_REACHED</span></a>,
-depending on which budget has run out. In this case the ad will go live as soon
-as budget is added.</p>
+</div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -322,7 +316,7 @@ as budget is added.</p>
 <tr class="row-odd"><td>status</td>
 <td>2001</td>
 <td>invalid argument</td>
-<td>must be either <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em></td>
+<td>must be either <em>ACTIVE</em> or <em>DELETED</em></td>
 </tr>
 <tr class="row-even"><td>status</td>
 <td>2017</td>
@@ -334,6 +328,105 @@ as budget is added.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">DELETED</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-ad-id-status-v1">
+<span id="put-ad-id-status-v1"></span><h2>GET /ad/{id}/status v1<a class="headerlink" href="#get-ad-id-status-v1" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>This URL updates the status of the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. If the ad does
+not exist or does not belong to the user the server returns <strong>404 Not Found</strong>.
+If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
+Bad Request</strong>.</p>
+<p>To set the new status append it to the base url. The status can be one of the
+user controlled status values as defined in <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>.</p>
+<p>Changing the status to <strong>ACTIVE</strong> also changes the number of active
+ads in this category for this user. If the current number of active ads
+for this user in this category exceeds <code class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></code> as defined
+in the category then an error is returned. Setting a different status
+than <strong>ACTIVE</strong> is always allowed.</p>
+<p>If an ad has is in status <strong>PAUSED</strong> and also has no daily budget or total budget
+remaining, this call will succeed. The resulting status of the ad will be either
+<a class="reference internal" href="../ad-status.html#ad-status-budget-reached"><span class="std std-ref">BUDGET_REACHED</span></a> or <a class="reference internal" href="../ad-status.html#ad-status-daily-budget-reached"><span class="std std-ref">DAILY_BUDGET_REACHED</span></a>,
+depending on which budget has run out. In this case the ad will go live as soon
+as budget is added.</p>
+</div>
+<div class="section" id="id2">
+<h2>Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="7%" />
+<col width="7%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>_validate</td>
+<td>boolean</td>
+<td>false</td>
+<td>Validate the request without executing it.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>Errors<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="3%" />
+<col width="22%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Code</th>
+<th class="head">Error message</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>not a valid number</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>must be either <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em></td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>2017</td>
+<td>ad status change not allowed</td>
+<td>changing the status of an ad is not allowed</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span>
 </pre></div>
 </div>
