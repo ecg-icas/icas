@@ -12,6 +12,11 @@ GET /ad/ids
 GET /ad/ids v1
 --------------
 
+.. warning::
+
+    This call is deprecated and scheduled for removal on August 15th 2020.
+
+
 .. list-table::
  :widths: 20 80
 
