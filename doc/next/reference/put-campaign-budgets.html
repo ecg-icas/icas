@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id}/status &mdash; iCAS Sellside API 0.200 documentation</title>
+  <title>PUT /campaign/{id}/budgets &mdash; iCAS Sellside API 0.200 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /categories" href="get-categories.html"/>
-        <link rel="prev" title="PUT /ad/{id}" href="put-ad-id.html"/> 
+        <link rel="next" title="GET /campaign/{id}/targeting" href="get-campaign-targeting.html"/>
+        <link rel="prev" title="POST /campaign/{id}/budgets" href="post-campaign-budgets.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -160,7 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
@@ -178,7 +178,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign-budgets.html">POST /campaign/{id}/budgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign-targeting.html">POST /campaign/{id}/targeting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-linkedads.html">GET /campaign/{id}/linkedAds</a></li>
@@ -229,10 +229,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>PUT /ad/{id}/status</li>
+    <li>PUT /campaign/{id}/budgets</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/put-ad-id-status.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/put-campaign-budgets.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -240,11 +240,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="put-ad-id-status">
-<span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}/status<a class="headerlink" href="#put-ad-id-status" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#put-ad-id-status-v5"><span class="std std-ref">GET /ad/{id}/status v5</span></a> | <a class="reference internal" href="#put-ad-id-status-v1"><span class="std std-ref">GET /ad/{id}/status v1</span></a></p>
-<div class="section" id="get-ad-id-status-v5">
-<span id="put-ad-id-status-v5"></span><h2>GET /ad/{id}/status v5<a class="headerlink" href="#get-ad-id-status-v5" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="put-campaign-id-budgets">
+<span id="index-0"></span><h1>PUT /campaign/{id}/budgets<a class="headerlink" href="#put-campaign-id-budgets" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -255,181 +252,90 @@
 <td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/json</span></code></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign.budgets-v2+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+<tr class="row-odd"><td>Content-Type</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign.budgets-v2+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>This URL updates the status of the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. If the ad does
-not exist or does not belong to the user the server returns <strong>404 Not Found</strong>.
-If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
-Bad Request</strong>.</p>
-<p>To set the new status append it to the base url. The status can be one of the
-user controlled status values as defined in <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>.</p>
-</div>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="17%" />
-<col width="7%" />
-<col width="7%" />
-<col width="69%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>_validate</td>
-<td>boolean</td>
-<td>false</td>
-<td>Validate the request without executing it.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="errors">
-<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="15%" />
-<col width="3%" />
-<col width="22%" />
-<col width="60%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Code</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>id</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>not a valid number</td>
-</tr>
-<tr class="row-odd"><td>status</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>must be either <em>ACTIVE</em> or <em>DELETED</em></td>
-</tr>
-<tr class="row-even"><td>status</td>
-<td>2017</td>
-<td>ad status change not allowed</td>
-<td>changing the status of an ad is not allowed</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">DELETED</span>
+<p>Creates (if they don&#8217;t exist) or updates the budgets limits for the specified campaign (see <a class="reference internal" href="../campaign-budgets.html#campaign-budgets-object"><span class="std std-ref">Campaign Budgets Object</span></a> for more). If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
+The call is idempotent; any previous budgets limits on the specified campaign will be overwritten.
+All types of budgets (<code class="docutils literal"><span class="pre">Daily</span></code>, <code class="docutils literal"><span class="pre">Monthly</span></code>, <code class="docutils literal"><span class="pre">Total</span></code>) should be sent while updating,
+or an empty object, in which case all types of budgets will be created <strong>-1 (Unlimited</strong>). Partial update are not allowed.</p>
+<p>Setting a budget on a campaign in a <code class="docutils literal"><span class="pre">DELETED</span></code> state is not allowed.</p>
+<div class="section" id="examples">
+<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">budgets</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="mi">400</span> <span class="nx">Bad</span> <span class="nx">Request</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="mi">2001</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;invalid argument&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;The value of field &#39;budgets&#39; was invalid&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="get-ad-id-status-v1">
-<span id="put-ad-id-status-v1"></span><h2>GET /ad/{id}/status v1<a class="headerlink" href="#get-ad-id-status-v1" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
-</tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/json</span></code></td>
-</tr>
-</tbody>
-</table>
-<p>This URL updates the status of the ad with the given <code class="docutils literal"><span class="pre">id</span></code>. If the ad does
-not exist or does not belong to the user the server returns <strong>404 Not Found</strong>.
-If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
-Bad Request</strong>.</p>
-<p>To set the new status append it to the base url. The status can be one of the
-user controlled status values as defined in <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>.</p>
-<p>Changing the status to <strong>ACTIVE</strong> also changes the number of active
-ads in this category for this user. If the current number of active ads
-for this user in this category exceeds <code class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></code> as defined
-in the category then an error is returned. Setting a different status
-than <strong>ACTIVE</strong> is always allowed.</p>
-<p>If an ad has is in status <strong>PAUSED</strong> and also has no daily budget or total budget
-remaining, this call will succeed. The resulting status of the ad will be either
-<a class="reference internal" href="../ad-status.html#ad-status-budget-reached"><span class="std std-ref">BUDGET_REACHED</span></a> or <a class="reference internal" href="../ad-status.html#ad-status-daily-budget-reached"><span class="std std-ref">DAILY_BUDGET_REACHED</span></a>,
-depending on which budget has run out. In this case the ad will go live as soon
-as budget is added.</p>
-</div>
-<div class="section" id="id2">
-<h2>Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="17%" />
-<col width="7%" />
-<col width="7%" />
-<col width="69%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Type</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>_validate</td>
-<td>boolean</td>
-<td>false</td>
-<td>Validate the request without executing it.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id3">
-<h2>Errors<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="15%" />
-<col width="3%" />
-<col width="22%" />
-<col width="60%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Code</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>id</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>not a valid number</td>
-</tr>
-<tr class="row-odd"><td>status</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>must be either <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em></td>
-</tr>
-<tr class="row-even"><td>status</td>
-<td>2017</td>
-<td>ad status change not allowed</td>
-<td>changing the status of an ad is not allowed</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id4">
-<h2>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">budgets</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">1000</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">12300</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="mi">400</span> <span class="nx">Bad</span> <span class="nx">Request</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="mi">2040</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;campaign deleted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;The campaign is DELETED, setting budgets not allowed&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">budgets</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="p">{}</span>
+
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">budgets</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">23</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">234</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="mi">1346</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">spent</span></code> values in each budget type are <strong>read-only</strong>.</p>
 </div>
 </div>
 
@@ -439,10 +345,10 @@ as budget is added.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-categories.html" class="btn btn-neutral float-right" title="GET /categories"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-campaign-targeting.html" class="btn btn-neutral float-right" title="GET /campaign/{id}/targeting"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="put-ad-id.html" class="btn btn-neutral" title="PUT /ad/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="post-campaign-budgets.html" class="btn btn-neutral" title="POST /campaign/{id}/budgets"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

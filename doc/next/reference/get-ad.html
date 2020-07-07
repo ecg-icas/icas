@@ -242,9 +242,282 @@
             
   <div class="section" id="get-ad">
 <span id="id1"></span><h1>GET /ad<a class="headerlink" href="#get-ad" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> | <a class="reference internal" href="#get-ad-v2"><span class="std std-ref">GET /ad v2</span></a> | <a class="reference internal" href="#get-ad-v1"><span class="std std-ref">GET /ad v1</span></a></p>
+<p><a class="reference internal" href="#get-ad-v5"><span class="std std-ref">GET /ad v5</span></a> | <a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> | <a class="reference internal" href="#get-ad-v2"><span class="std std-ref">GET /ad v2</span></a> | <a class="reference internal" href="#get-ad-v1"><span class="std std-ref">GET /ad v1</span></a></p>
+<div class="section" id="get-ad-v5">
+<span id="id2"></span><h2>GET /ad v5<a class="headerlink" href="#get-ad-v5" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.ad.list-v5+json,</span> <span class="pre">application/json</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>This URL returns a single page of ads for the current user, the total size of the
+result set matching the filter criteria and next page token if additional pages
+are available.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and must only
+be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><span class="std std-ref">Category V2 Compatible Endpoints</span></a>. Otherwise,
+the attributes may not be recognized or editable.</p>
+</div>
+<p>The number of ads returned can be limited with the <code class="docutils literal"><span class="pre">limit</span></code> parameter.
+The <code class="docutils literal"><span class="pre">nextPageToken</span></code> parameter could be provided to fetch next page if available.</p>
+<p>The <code class="docutils literal"><span class="pre">status</span></code> parameter returns only ads with the given status. The default
+is to return only ads with status <strong>ACTIVE</strong>.</p>
+<p>The <code class="docutils literal"><span class="pre">orderBy</span></code> and <code class="docutils literal"><span class="pre">direction</span></code> parameters control the sort field and
+direction. By default results are ordered by created date.</p>
+<p>The <code class="docutils literal"><span class="pre">titleKeywords</span></code> parameter is case-insensitive and will include only ads
+which contain the given keyword in their title.</p>
+<p>The <code class="docutils literal"><span class="pre">changedSince</span></code> parameter can be used to retrieve only ads that have
+<a class="reference internal" href="../ads.html#ad-datelastupdated"><span class="std std-ref">dateLastUpdated</span></a> &gt;= <code class="docutils literal"><span class="pre">changedSince</span></code>. The <code class="docutils literal"><span class="pre">changedSince</span></code> value must be a
+valid <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date which usually lies in the past but cannot lie in
+the future.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This call returns only creative part of the ad. CPC and budget are managed
+separately as part of the campaign.</p>
+</div>
+</div>
+<div class="section" id="caching-all-ads-for-a-user">
+<h2>Caching all ads for a user<a class="headerlink" href="#caching-all-ads-for-a-user" title="Permalink to this headline">¶</a></h2>
+<p>If an application needs to keep a cache of the entire set of ads for a user
+then it should perform the following steps:</p>
+<p>1. Fetch all ads by using <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">nextPageToken</span></code> until all
+ads have been retrieved. No filters should be used.</p>
+<p>2. Retrieve updates by using <code class="docutils literal"><span class="pre">changedSince</span></code>, <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">nextPageToken</span></code>.
+No additional filters should be used. <code class="docutils literal"><span class="pre">changedSince</span></code> should be set to a value
+a somewhat before (e.g. 1 min) of <code class="docutils literal"><span class="pre">dateLastUpdated</span></code> of the last modified ad.</p>
+<p>Due to the nature of this system retrieving updates as described in step 2
+will always return at least the ad that was modified last. Also, the API can
+currently not guarantee that all updates are retrieved when <code class="docutils literal"><span class="pre">changedSince</span></code>
+is set to <code class="docutils literal"><span class="pre">dateLastUpdated</span></code> of the last modified ad. That&#8217;s why you should
+use <code class="docutils literal"><span class="pre">dateLastUpdated</span></code> - 1 minute. To determine whether an ad has changed
+compare the <code class="docutils literal"><span class="pre">dateLastUpdated</span></code> value.</p>
+<p>Unless you have a very small set of ads (&lt; 10) do not retrieve all ads every
+time since this will not give you decent performance and also puts unnecessary
+load on the system.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="7%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>limit</td>
+<td>int</td>
+<td>Limits the number of records returned. Default <strong>and</strong> maximum is 100.</td>
+</tr>
+<tr class="row-odd"><td>pageToken</td>
+<td>string</td>
+<td>Skips the first N records.</td>
+</tr>
+<tr class="row-even"><td>titleKeywords</td>
+<td>string</td>
+<td>Case-insensitive filter for a keyword in the title.</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>string</td>
+<td>Filters the result set by the ad status. Should be a comma separated list of [ACTIVE, DELETED, DELETED_BY_CS, SUSPENDED_BY_CS]. Default value is ACTIVE.</td>
+</tr>
+<tr class="row-even"><td>orderBy</td>
+<td>string</td>
+<td>Orders the result set by the given field. Default value is DATE_CREATED. See <a class="reference internal" href="#order-by-v5"><span class="std std-ref">Order By</span></a>.</td>
+</tr>
+<tr class="row-odd"><td>direction</td>
+<td>string</td>
+<td>Determines the direction of the sort. Should be one of [ASCENDING, DESCENDING]. Default is ASCENDING.</td>
+</tr>
+<tr class="row-even"><td>changedSince</td>
+<td>date</td>
+<td>Returns ads which have <code class="docutils literal"><span class="pre">changedSince</span></code> &gt;= <code class="docutils literal"><span class="pre">dateLastUpdated</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>externalId</td>
+<td>string</td>
+<td>Only ads matching this externalId will be returned. Optional.</td>
+</tr>
+<tr class="row-even"><td>categoryIds</td>
+<td>list of ints</td>
+<td>List of category id&#8217;s to filter by. Only leaf category id&#8217;s are useful, since ads can only be placed in leaf categories.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="order-by">
+<span id="order-by-v5"></span><h3>Order By<a class="headerlink" href="#order-by" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DATE_CREATED</td>
+<td>Default. Will order ads by creation date.</td>
+</tr>
+<tr class="row-odd"><td>DATE_LAST_UPDATED</td>
+<td>Will order ads by last modification date.</td>
+</tr>
+<tr class="row-even"><td>STATUS</td>
+<td>Will order ads by Status; This is an internally defined ordering intended to have ads requiring attention on top/bottom, depending on direction.</td>
+</tr>
+<tr class="row-odd"><td>TITLE</td>
+<td>Will order ads alphabetically by title</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="errors">
+<h3>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="3%" />
+<col width="18%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Code</th>
+<th class="head">Error message</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>limit</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>not a valid number</td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>2002</td>
+<td>out of range</td>
+<td>less than 1 or greater than 100.</td>
+</tr>
+<tr class="row-even"><td>titleKeywords</td>
+<td>2004</td>
+<td>value too short</td>
+<td>must be 3 characters or more.</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>not a recognised status to filter on</td>
+</tr>
+<tr class="row-even"><td>orderBy</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>not a recognised orderBy to filter on</td>
+</tr>
+<tr class="row-odd"><td>direction</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>not a recognised direction to filter on</td>
+</tr>
+<tr class="row-even"><td>changedSince</td>
+<td>2001</td>
+<td>invalid argument</td>
+<td>not a valid date</td>
+</tr>
+<tr class="row-odd"><td>changedSince</td>
+<td>2002</td>
+<td>out of range</td>
+<td>date is in the future</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">nextPageToken</span><span class="o">=</span><span class="nx">token</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">]</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;ads&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Brother Fax voor 99,99&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;\u003cSTRONG\u003eNU extra voordelig op ourshop.com.\u003c/STRONG\u003e Fax nu voor slechts \u003cSTRONG\u003e99,99!\u003c/STRONG\u003e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;category_id&quot;</span><span class="o">:</span> <span class="mi">826</span><span class="p">,</span>
+            <span class="s2">&quot;price_type&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
+            <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;seller_name&quot;</span><span class="o">:</span> <span class="s2">&quot;My Shop&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone_number&quot;</span><span class="o">:</span> <span class="s2">&quot;0207894561&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allow_contact_by_email&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-06-15T13:23:33Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-06-15T13:23:33Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="s2">&quot;myshop-5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/index.php?param1=value1\u0026amp;param2=value2\u0026amp;param3=value3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;displayUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;www.ourshop.com/Faxes&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/ad/5&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/826&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Sister Notebook voor 99,99&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;\u003cSTRONG\u003eNU extra voordelig op ourshop.com.\u003c/STRONG\u003e Fax nu voor slechts \u003cSTRONG\u003e99,99!\u003c/STRONG\u003e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;category_id&quot;</span><span class="o">:</span> <span class="mi">826</span><span class="p">,</span>
+            <span class="s2">&quot;price_type&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
+            <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;seller_name&quot;</span><span class="o">:</span> <span class="s2">&quot;My Shop&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone_number&quot;</span><span class="o">:</span> <span class="s2">&quot;0207894561&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allow_contact_by_email&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-06-15T13:23:40Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-06-15T13:23:40Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="s2">&quot;myshop-6&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/index.php?param1=value1\u0026amp;param2=value2\u0026amp;param3=value3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;displayUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;www.ourshop.com/Faxes&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/ad/6&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/826&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="s2">&quot;next_page_token&quot;</span><span class="o">:</span> <span class="s2">&quot;eyJpZCI6Nywic3RyaW5nX3ZhbHVlIjpudWxsLCJpbnQ2NF92YWx1ZSI6MTU5MjIyNzQzOTI5OX0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="get-ad-v3">
-<span id="id2"></span><h2>GET /ad v3<a class="headerlink" href="#get-ad-v3" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>GET /ad v3<a class="headerlink" href="#get-ad-v3" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -305,8 +578,8 @@ following parameter to the request URL.</p>
 </div>
 </div>
 </div>
-<div class="section" id="caching-all-ads-for-a-user">
-<h2>Caching all ads for a user<a class="headerlink" href="#caching-all-ads-for-a-user" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>Caching all ads for a user<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>If an application needs to keep a cache of the entire set of ads for a user
 then it should perform the following steps:</p>
 <p>1. Fetch all ads by using <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">offset</span></code> until all
@@ -323,8 +596,8 @@ compare the <code class="docutils literal"><span class="pre">dateLastUpdated</sp
 <p>Unless you have a very small set of ads (&lt; 10) do not retrieve all ads every
 time since this will not give you decent performance and also puts unnecessary
 load on the system.</p>
-<div class="section" id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="7%" />
@@ -356,7 +629,7 @@ load on the system.</p>
 </tr>
 <tr class="row-even"><td>orderBy</td>
 <td>string</td>
-<td>Orders the result set by the given field. Default value is DATE_CREATED. See <a class="reference internal" href="#order-by"><span class="std std-ref">Order By</span></a>.</td>
+<td>Orders the result set by the given field. Default value is DATE_CREATED. See <a class="reference internal" href="#id6"><span class="std std-ref">Order By</span></a>.</td>
 </tr>
 <tr class="row-odd"><td>direction</td>
 <td>string</td>
@@ -397,8 +670,8 @@ load on the system.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="order-by">
-<span id="id3"></span><h3>Order By<a class="headerlink" href="#order-by" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<span id="id7"></span><h3>Order By<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -437,8 +710,8 @@ load on the system.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="errors">
-<h3>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>Errors<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="16%" />
@@ -528,8 +801,8 @@ load on the system.</p>
 </table>
 </div>
 </div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">04</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">13</span><span class="p">]</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -612,7 +885,7 @@ load on the system.</p>
 </div>
 </div>
 <div class="section" id="get-ad-v2">
-<span id="id4"></span><h2>GET /ad v2<a class="headerlink" href="#get-ad-v2" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>GET /ad v2<a class="headerlink" href="#get-ad-v2" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -637,8 +910,8 @@ other <a class="reference internal" href="../categories-v1.html#categories-v1-co
 may not be recognized or editable.</p>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>Example<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">04</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">13</span><span class="p">]</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -720,7 +993,7 @@ may not be recognized or editable.</p>
 </div>
 </div>
 <div class="section" id="get-ad-v1">
-<span id="id6"></span><h2>GET /ad v1<a class="headerlink" href="#get-ad-v1" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>GET /ad v1<a class="headerlink" href="#get-ad-v1" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -743,8 +1016,8 @@ only compatible with <a class="reference internal" href="../categories-v1.html#c
 other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span class="std std-ref">Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
 may not be recognized or editable.</p>
 </div>
-<div class="section" id="id7">
-<h3>Example<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>Example<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">]</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
