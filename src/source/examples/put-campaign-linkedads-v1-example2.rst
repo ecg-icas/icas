@@ -6,7 +6,7 @@
 
     {
        "adId": 12315452,
-       "cpc": 3
+       "autoBid": true
     }
 
     400 Bad Request
