@@ -34,7 +34,7 @@ API Reference
    reference/get-campaign-budgets
    reference/put-campaign-budgets
    reference/get-campaign-targeting
-   reference/post-campaign-targeting
+   reference/put-campaign-targeting
    reference/get-campaign-linkedads
    reference/put-campaign-linkedads
    reference/delete-campaign-linkedads

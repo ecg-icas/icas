@@ -1,6 +1,6 @@
-.. index:: POST /campaign/{id}/targeting
+.. index:: PUT /campaign/{id}/targeting
 
-POST /campaign/{id}/targeting
+PUT /campaign/{id}/targeting
 ===============================
 
 
@@ -24,5 +24,5 @@ Setting targeting on a campaign in a ``DELETED`` state is not allowed.
 Examples:
 ---------
 
-.. include:: ../examples/post-campaign-targeting-example-v2.rst
+.. include:: ../examples/put-campaign-targeting-example-v2.rst
 
