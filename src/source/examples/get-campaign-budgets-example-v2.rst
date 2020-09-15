@@ -6,7 +6,7 @@
     200 OK
     Content-Type: application/sellside.campaign.budgets-v2+json
 
-    "budgets": {
+    {
         "daily": {
             "limit": 1000,
             "spent": 23,
