@@ -47,7 +47,7 @@ Field                 Description
 ``dateCreated``       The ISO 8601 UTC date and time the campaign was created.
 ``dateLastUpdated``   The ISO 8601 UTC date and time the campaign was last updated.
 ``status``            The desired state of the campaign. Can be one of the user-controlled status values described in :ref:`User Controlled States <user-controlled-states>`. Default value is ``PAUSED``.
-``vendorId``          Seller-provided unique reference the campaign. Once set, it cannot be modified.
+``vendorId``          Optional, eller-provided unique reference the campaign. Once set, it cannot be modified. Maximum length is 64 characters.
 ``cpc``               Fixed CPC (in cents) that applies for all :ref:`Campaign Linked Ads <campaign-linked-ads>` in this campaign.
 ``budgets``           An object containing the budget current limits and spent for this campaign. See :ref:`Budget types <campaign-budget-types>` for more. The unit for ``limit`` and ``spent`` is cents. The default ``limit`` values are set to **-1 (Unlimited)**. If the campaign is ``DELETED``, no budgets are shown.
 ``targeting``         A :ref:`Campaign Targeting Object <campaign-targeting-object>`, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).

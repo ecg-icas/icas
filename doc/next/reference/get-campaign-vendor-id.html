@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.200 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /campaign/{id}/budgets" href="get-campaign-budgets.html"/>
+        <link rel="next" title="PUT /campaign/{id}/vendorId/{vendorId}" href="put-campaign-vendor-id.html"/>
         <link rel="prev" title="GET /campaign/{id}" href="get-campaign-id.html"/> 
 
   
@@ -176,6 +176,7 @@
 <li class="toctree-l2"><a class="reference internal" href="delete-campaign.html">DELETE /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /campaign/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-vendor-id.html">PUT /campaign/{id}/vendorId/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-targeting.html">GET /campaign/{id}/targeting</a></li>
@@ -363,7 +364,7 @@ Content-Type: application/sellside.campaign-v2+json
 <td>The desired state of the campaign. Can be one of the user-controlled status values described in <a class="reference internal" href="../campaign-status.html#id1"><span class="std std-ref">User Controlled States</span></a>. Default value is <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">vendorId</span></code></td>
-<td>Seller-provided unique reference the campaign. Once set, it cannot be modified.</td>
+<td>Optional, eller-provided unique reference the campaign. Once set, it cannot be modified. Maximum length is 64 characters.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
 <td>Fixed CPC (in cents) that applies for all <a class="reference internal" href="../campaign-linkedads.html#id1"><span class="std std-ref">Campaign Linked Ads</span></a> in this campaign.</td>
@@ -388,7 +389,7 @@ Content-Type: application/sellside.campaign-v2+json
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-campaign-budgets.html" class="btn btn-neutral float-right" title="GET /campaign/{id}/budgets"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="put-campaign-vendor-id.html" class="btn btn-neutral float-right" title="PUT /campaign/{id}/vendorId/{vendorId}"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="get-campaign-id.html" class="btn btn-neutral" title="GET /campaign/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
