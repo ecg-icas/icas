@@ -35,15 +35,15 @@ The number of ads returned can be limited with the ``limit`` parameter.
 The ``nextPageToken`` parameter could be provided to fetch next page if available.
 
 The ``status`` parameter returns only ads with the given status. The default
-is to return only ads with status **ACTIVE**.
+is to return **non-deleted** ads.
 
 The ``orderBy`` and ``direction`` parameters control the sort field and
-direction. By default results are ordered by created date.
+direction. By default results are ordered by created date in ascending order.
 
 The ``titleKeywords`` parameter is case-insensitive and will include only ads
-which contain the given keyword in their title.
+which contain the given keyword in the title.
 
-The ``changedSince`` parameter can be used to retrieve only ads that have
+The ``changedSince`` parameter can be used to retrieve ads that have
 :ref:`ad_dateLastUpdated` >= ``changedSince``. The ``changedSince`` value must be a
 valid `ISO 8601`_ UTC date which usually lies in the past but cannot lie in
 the future.
@@ -51,7 +51,7 @@ the future.
 .. note::
 
 	This call returns only creative part of the ad. CPC and budget are managed
-	separately as part of the campaign.
+	separately as part of the campaign membership.
 
 Caching all ads for a user
 --------------------------
@@ -86,12 +86,13 @@ Name             Type             Description
 limit            int              Limits the number of records returned. Default **and** maximum is 100.
 pageToken        string           Skips the first N records.
 titleKeywords    string           Case-insensitive filter for a keyword in the title.
-status           string           Filters the result set by the ad status. Should be a comma separated list of [ACTIVE, DELETED, DELETED_BY_CS, SUSPENDED_BY_CS]. Default value is ACTIVE.
-orderBy          string           Orders the result set by the given field. Default value is DATE_CREATED. See :ref:`order_by_v5`.
-direction        string           Determines the direction of the sort. Should be one of [ASCENDING, DESCENDING]. Default is ASCENDING.
+status           string           Filters the result set by the ad status. Should be a comma separated list of ``[ACTIVE, DOMAIN_PENDING, SUSPENDED_BY_CS, DELETED, DELETED_BY_CS]``. Default value is ``ACTIVE, DOMAIN_PENDING, SUSPENDED_BY_CS``.
+orderBy          string           Orders the result set by the given field. Default value is ``DATE_CREATED``. See :ref:`order_by_v5`.
+direction        string           Determines the direction of the sort. Should be one of ``[ASCENDING, DESCENDING]``. Default is ``ASCENDING``.
 changedSince     date             Returns ads which have ``changedSince`` >= ``dateLastUpdated``.
 externalId       string           Only ads matching this externalId will be returned. Optional.
 categoryIds      list of ints     List of category id's to filter by. Only leaf category id's are useful, since ads can only be placed in leaf categories.
+adIds            list of ints     List of ad id's to filter by.
 ===============  ============     ============================================================================
 
 .. _order_by_v5:

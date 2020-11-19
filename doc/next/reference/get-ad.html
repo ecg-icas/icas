@@ -271,19 +271,19 @@ the attributes may not be recognized or editable.</p>
 <p>The number of ads returned can be limited with the <code class="docutils literal"><span class="pre">limit</span></code> parameter.
 The <code class="docutils literal"><span class="pre">nextPageToken</span></code> parameter could be provided to fetch next page if available.</p>
 <p>The <code class="docutils literal"><span class="pre">status</span></code> parameter returns only ads with the given status. The default
-is to return only ads with status <strong>ACTIVE</strong>.</p>
+is to return <strong>non-deleted</strong> ads.</p>
 <p>The <code class="docutils literal"><span class="pre">orderBy</span></code> and <code class="docutils literal"><span class="pre">direction</span></code> parameters control the sort field and
-direction. By default results are ordered by created date.</p>
+direction. By default results are ordered by created date in ascending order.</p>
 <p>The <code class="docutils literal"><span class="pre">titleKeywords</span></code> parameter is case-insensitive and will include only ads
-which contain the given keyword in their title.</p>
-<p>The <code class="docutils literal"><span class="pre">changedSince</span></code> parameter can be used to retrieve only ads that have
+which contain the given keyword in the title.</p>
+<p>The <code class="docutils literal"><span class="pre">changedSince</span></code> parameter can be used to retrieve ads that have
 <a class="reference internal" href="../ads.html#ad-datelastupdated"><span class="std std-ref">dateLastUpdated</span></a> &gt;= <code class="docutils literal"><span class="pre">changedSince</span></code>. The <code class="docutils literal"><span class="pre">changedSince</span></code> value must be a
 valid <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date which usually lies in the past but cannot lie in
 the future.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This call returns only creative part of the ad. CPC and budget are managed
-separately as part of the campaign.</p>
+separately as part of the campaign membership.</p>
 </div>
 </div>
 <div class="section" id="caching-all-ads-for-a-user">
@@ -308,9 +308,9 @@ load on the system.</p>
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="7%" />
-<col width="85%" />
+<col width="6%" />
+<col width="5%" />
+<col width="89%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -333,15 +333,15 @@ load on the system.</p>
 </tr>
 <tr class="row-odd"><td>status</td>
 <td>string</td>
-<td>Filters the result set by the ad status. Should be a comma separated list of [ACTIVE, DELETED, DELETED_BY_CS, SUSPENDED_BY_CS]. Default value is ACTIVE.</td>
+<td>Filters the result set by the ad status. Should be a comma separated list of <code class="docutils literal"><span class="pre">[ACTIVE,</span> <span class="pre">DOMAIN_PENDING,</span> <span class="pre">SUSPENDED_BY_CS,</span> <span class="pre">DELETED,</span> <span class="pre">DELETED_BY_CS]</span></code>. Default value is <code class="docutils literal"><span class="pre">ACTIVE,</span> <span class="pre">DOMAIN_PENDING,</span> <span class="pre">SUSPENDED_BY_CS</span></code>.</td>
 </tr>
 <tr class="row-even"><td>orderBy</td>
 <td>string</td>
-<td>Orders the result set by the given field. Default value is DATE_CREATED. See <a class="reference internal" href="#order-by-v5"><span class="std std-ref">Order By</span></a>.</td>
+<td>Orders the result set by the given field. Default value is <code class="docutils literal"><span class="pre">DATE_CREATED</span></code>. See <a class="reference internal" href="#order-by-v5"><span class="std std-ref">Order By</span></a>.</td>
 </tr>
 <tr class="row-odd"><td>direction</td>
 <td>string</td>
-<td>Determines the direction of the sort. Should be one of [ASCENDING, DESCENDING]. Default is ASCENDING.</td>
+<td>Determines the direction of the sort. Should be one of <code class="docutils literal"><span class="pre">[ASCENDING,</span> <span class="pre">DESCENDING]</span></code>. Default is <code class="docutils literal"><span class="pre">ASCENDING</span></code>.</td>
 </tr>
 <tr class="row-even"><td>changedSince</td>
 <td>date</td>
@@ -354,6 +354,10 @@ load on the system.</p>
 <tr class="row-even"><td>categoryIds</td>
 <td>list of ints</td>
 <td>List of category id&#8217;s to filter by. Only leaf category id&#8217;s are useful, since ads can only be placed in leaf categories.</td>
+</tr>
+<tr class="row-odd"><td>adIds</td>
+<td>list of ints</td>
+<td>List of ad id&#8217;s to filter by.</td>
 </tr>
 </tbody>
 </table>
