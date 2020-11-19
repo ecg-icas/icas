@@ -131,6 +131,11 @@ Example
 
 .. include:: ../examples/get-ad-v5-example.rst
 
+Pagination Example
+------------------
+
+.. include:: ../examples/get-ad-v5-pagination-example.rst
+
 .. _get_ad_v3:
 
 GET /ad v3
