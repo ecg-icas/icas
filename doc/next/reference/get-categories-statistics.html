@@ -129,7 +129,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -225,11 +225,12 @@
   <div class="section" id="get-categories-statistics">
 <span id="index-0"></span><span id="id1"></span><h1>GET /categories/statistics<a class="headerlink" href="#get-categories-statistics" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <blockquote>
-<div>This call is scheduled to be deprecated. Please
-use the faster and more flexible generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead, with the following payload to get the equivalent data:</div></blockquote>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<div><p>This call is scheduled to be deprecated. Please
+use the faster and more flexible generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead, with the following payload to get the equivalent data:</p>
+</div></blockquote>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -249,31 +250,31 @@ use the faster and more flexible generic endpoint <a class="reference internal" 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p class="last">As you can see, the date range in this call is not limited to a single date parameter.</p>
+<p>As you can see, the date range in this call is not limited to a single date parameter.</p>
 </div>
 <div class="section" id="id2">
 <h2>GET /categories/statistics<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20%" />
+<col style="width: 80%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.category.statistics-v1+json,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.category.statistics-v1+json,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns a list of category statistics elements with statistics per category
 for the provided day. It is also possible to request only statistics for certain
-categories by using the parameter <code class="docutils literal"><span class="pre">categoryIds</span></code>.</p>
-<p>If the parameter <code class="docutils literal"><span class="pre">categoryIds</span></code> contains invalid data, i.e. not a positive
+categories by using the parameter <code class="docutils literal notranslate"><span class="pre">categoryIds</span></code>.</p>
+<p>If the parameter <code class="docutils literal notranslate"><span class="pre">categoryIds</span></code> contains invalid data, i.e. not a positive
 integer, the server returns <strong>400 Bad Request</strong>.</p>
-<p>If the parameter <code class="docutils literal"><span class="pre">date</span></code> contains an invalid date, the server returns <strong>400 Bad Request</strong>.
-The <code class="docutils literal"><span class="pre">date</span></code> parameter is mandatory, the <code class="docutils literal"><span class="pre">categoryIds</span></code> parameter is not. By default
+<p>If the parameter <code class="docutils literal notranslate"><span class="pre">date</span></code> contains an invalid date, the server returns <strong>400 Bad Request</strong>.
+The <code class="docutils literal notranslate"><span class="pre">date</span></code> parameter is mandatory, the <code class="docutils literal notranslate"><span class="pre">categoryIds</span></code> parameter is not. By default
 all data for all categories (having data) is returned. Categories which have no data for the
 specified day will not have a statistics object in this result.</p>
 <p>This method only allows 1 date parameter and not a date range is to make sure the individual calls
@@ -281,81 +282,81 @@ are still manageable in both time and amount of data to process internally.</p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="14%" />
-<col width="5%" />
-<col width="81%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 81%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>categoryIds</td>
-<td>string</td>
-<td>Comma-separated-list of integer id&#8217;s of the categories to get statistics for. Optional, default is for all categories.</td>
+<tbody>
+<tr class="row-even"><td><p>categoryIds</p></td>
+<td><p>string</p></td>
+<td><p>Comma-separated-list of integer id’s of the categories to get statistics for. Optional, default is for all categories.</p></td>
 </tr>
-<tr class="row-odd"><td>date</td>
-<td>string</td>
-<td>Mandatory date for the statistics. Must be a valid date in format &#8216;yyyy-MM-dd&#8217;</td>
+<tr class="row-odd"><td><p>date</p></td>
+<td><p>string</p></td>
+<td><p>Mandatory date for the statistics. Must be a valid date in format ‘yyyy-MM-dd’</p></td>
 </tr>
-<tr class="row-even"><td>_include</td>
-<td>string</td>
-<td>Comma-separated-list of fields to include. Optional, default is all fields.</td>
+<tr class="row-even"><td><p>_include</p></td>
+<td><p>string</p></td>
+<td><p>Comma-separated-list of fields to include. Optional, default is all fields.</p></td>
 </tr>
-<tr class="row-odd"><td>_exclude</td>
-<td>string</td>
-<td>Comma-separated-list of fields to omit. Optional, default empty.</td>
+<tr class="row-odd"><td><p>_exclude</p></td>
+<td><p>string</p></td>
+<td><p>Comma-separated-list of fields to omit. Optional, default empty.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="16%" />
-<col width="3%" />
-<col width="18%" />
-<col width="62%" />
+<col style="width: 16%" />
+<col style="width: 3%" />
+<col style="width: 18%" />
+<col style="width: 62%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Code</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Code</p></th>
+<th class="head"><p>Error message</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>date</td>
-<td>2000</td>
-<td>missing argument</td>
-<td>The date parameter needs to be present</td>
+<tbody>
+<tr class="row-even"><td><p>date</p></td>
+<td><p>2000</p></td>
+<td><p>missing argument</p></td>
+<td><p>The date parameter needs to be present</p></td>
 </tr>
-<tr class="row-odd"><td>date</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>The date parameter is not a correct date</td>
+<tr class="row-odd"><td><p>date</p></td>
+<td><p>2001</p></td>
+<td><p>invalid argument</p></td>
+<td><p>The date parameter is not a correct date</p></td>
 </tr>
-<tr class="row-even"><td>categoryIds</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>The comma-separated-list contains one or more non-integer values</td>
+<tr class="row-even"><td><p>categoryIds</p></td>
+<td><p>2001</p></td>
+<td><p>invalid argument</p></td>
+<td><p>The comma-separated-list contains one or more non-integer values</p></td>
 </tr>
-<tr class="row-odd"><td>categoryIds</td>
-<td>2004</td>
-<td>too short</td>
-<td>The value needs to be non-empty</td>
+<tr class="row-odd"><td><p>categoryIds</p></td>
+<td><p>2004</p></td>
+<td><p>too short</p></td>
+<td><p>The value needs to be non-empty</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">categories</span><span class="o">/</span><span class="nx">statistics</span><span class="o">?</span><span class="nx">categoryIds</span><span class="o">=</span><span class="mi">2412</span><span class="p">,</span><span class="mi">525</span><span class="p">,</span><span class="mi">4216</span><span class="o">&amp;</span><span class="nx">date</span><span class="o">=</span><span class="mi">2017</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">09</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">categories</span><span class="o">/</span><span class="nx">statistics</span><span class="o">?</span><span class="nx">categoryIds</span><span class="o">=</span><span class="mi">2412</span><span class="p">,</span><span class="mi">525</span><span class="p">,</span><span class="mi">4216</span><span class="o">&amp;</span><span class="nx">date</span><span class="o">=</span><span class="mi">2017</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">09</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="p">.</span><span class="nx">statistics</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -433,6 +434,7 @@ are still manageable in both time and amount of data to process internally.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 
