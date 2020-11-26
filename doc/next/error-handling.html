@@ -128,7 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -226,18 +226,18 @@ machine-readable error message is returned. Since some calls may return more
 than one error for a given call, e.g. during the validation of a new ad, all
 error responses contain lists of errors with one or more structured error
 objects in them.</p>
-<p>Each error contains a <code class="docutils literal"><span class="pre">code</span></code> and <code class="docutils literal"><span class="pre">text</span></code> attributes providing a numeric
+<p>Each error contains a <code class="docutils literal notranslate"><span class="pre">code</span></code> and <code class="docutils literal notranslate"><span class="pre">text</span></code> attributes providing a numeric
 error code and a simple English error message. An error may contain a
-<code class="docutils literal"><span class="pre">field</span></code> attribute describing the field where the error occurred and an
-additonal <code class="docutils literal"><span class="pre">arg</span></code> attribute further specifying the error, i.e. the maximum
-length of a field in case of a &#8220;string too long&#8221; error.</p>
+<code class="docutils literal notranslate"><span class="pre">field</span></code> attribute describing the field where the error occurred and an
+additonal <code class="docutils literal notranslate"><span class="pre">arg</span></code> attribute further specifying the error, i.e. the maximum
+length of a field in case of a “string too long” error.</p>
 <p>The validation will first check if the input parameters are of the correct type,
 i.e. an integer should be an integer, not a string or a decimal value.
 Secondly, the Sellside API will check if the provided input parameters are meaningful
 within the context of the call. E.g. a category ID should be a positive integer.
 Only the context specific checks are mentioned in the Errors section of the documentation page of
 each call, as the type checks are considered generic.</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="mi">400</span> <span class="nx">Bad</span> <span class="nx">Request</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="mi">400</span> <span class="nx">Bad</span> <span class="nx">Request</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">[</span>
@@ -300,6 +300,7 @@ each call, as the type checks are considered generic.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 
