@@ -20,7 +20,7 @@ A single linkedAd has the following response model structure:
 .. include:: ../examples/campaign-ad-response.rst
 
 
-The status of the linkedAd cannot be set by the user; it is always ACTIVE.
+User can set the status for the linkedAd to either ``ACTIVE`` or ``PAUSED``
 
 If the campaign is in DELETED status, `404 Not Found` is returned.
 If there are no linkedAds, an empty list is returned.

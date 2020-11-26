@@ -295,7 +295,7 @@ A single linkedAd has the following response model structure:</p>
 <td>The ID of the ad that this linkedAd refers to</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">status</span></code></td>
-<td>The current status of this linkedAd. One of <code class="docutils literal"><span class="pre">ACTIVE</span></code> or <code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code>. This is read-only field</td>
+<td>The current status of this linkedAd. One of <code class="docutils literal"><span class="pre">ACTIVE</span></code>, <code class="docutils literal"><span class="pre">PAUSED</span></code>, <code class="docutils literal"><span class="pre">SUSPENDED_BY_CS</span></code> or <code class="docutils literal"><span class="pre">BUDGET_REACHED</span></code>.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
 <td>The CPC (in cents) to use for this ad in the context of the given campaign. If <code class="docutils literal"><span class="pre">autoBid</span></code> is <code class="docutils literal"><span class="pre">true</span></code>, this field is omitted.</td>
@@ -308,7 +308,7 @@ A single linkedAd has the following response model structure:</p>
 </tr>
 </tbody>
 </table>
-<p>The status of the linkedAd cannot be set by the user; it is always ACTIVE.</p>
+<p>User can set the status for the linkedAd to either <code class="docutils literal"><span class="pre">ACTIVE</span></code> or <code class="docutils literal"><span class="pre">PAUSED</span></code></p>
 <p>If the campaign is in DELETED status, <cite>404 Not Found</cite> is returned.
 If there are no linkedAds, an empty list is returned.</p>
 <div class="section" id="parameters">

@@ -243,13 +243,14 @@
   <div class="section" id="put-campaign-id-linkedads">
 <span id="put-campaign-linkedads"></span><span id="index-0"></span><h1>PUT /campaign/{id}/linkedAds<a class="headerlink" href="#put-campaign-id-linkedads" title="Permalink to this headline">¶</a></h1>
 <p>It is possible to add/override a <a class="reference internal" href="#single-linkedad"><span class="std std-ref">single</span></a> linkedAd or <a class="reference internal" href="#list-linkedad"><span class="std std-ref">multiple</span></a> linkedAds to a campaign in one go.
-If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overriden with
+If the campaign already has a linkedAd with the same adId, the existing linkedAd will be overwritten with
 the provided one.
 It is not possible to have multiple linkedAds in one campaign with the same adId.
 Setting linkedAds on a campaign in a <code class="docutils literal"><span class="pre">DELETED</span></code> state is not allowed.</p>
 <p>A single linkedAd has the following request model structure:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;adId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -280,13 +281,16 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">adId</span></code></td>
 <td>The ID of the ad that this linkedAd refers to. This field is mandatory.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">status</span></code></td>
+<td>The status of the linkedAd.  One of <code class="docutils literal"><span class="pre">ACTIVE</span></code>, <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
 <td>The CPC (in cents) to use for this ad in the context of the given campaign. This field is mandatory if <code class="docutils literal"><span class="pre">autoBid</span></code> is <code class="docutils literal"><span class="pre">false</span></code>.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
 <td>An object containing the budget limits for the linkedAd. Does not void campaign budgets. The <code class="docutils literal"><span class="pre">limits</span></code> unit is cents. If not supplied, the default values are set to <strong>-1 (Unlimited)</strong>.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">autoBid</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">autoBid</span></code></td>
 <td>Whether the automatic bidding agent should act on the cost (per click, for now) and budgets on this ad within the given campaign. If the value is <code class="docutils literal"><span class="pre">true</span></code>, the payload should <strong>not</strong> contain the <code class="docutils literal"><span class="pre">cpc</span></code> and <code class="docutils literal"><span class="pre">budgets</span></code> fields, they will be auto-managed instead. Not every user is enabled for this functionality; if interested, please get in touch with us on Discord. Default value is <code class="docutils literal"><span class="pre">false</span></code>.</td>
 </tr>
 </tbody>
