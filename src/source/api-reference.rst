@@ -10,7 +10,6 @@ API Reference
    reference/get-ad-id
    reference/get-ad-vendor-id
    reference/get-ad-id-funnel
-   reference/get-ad-ids
    reference/get-ad-externalid-mapping
    reference/post-ad
    reference/post-ad-prefill
