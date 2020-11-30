@@ -129,7 +129,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -223,51 +223,51 @@
             
   <div class="section" id="get-report-detail-id">
 <span id="index-0"></span><span id="id1"></span><h1>GET /report/detail/{id}<a class="headerlink" href="#get-report-detail-id" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20%" />
+<col style="width: 80%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal"><span class="pre">text/csv</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal notranslate"><span class="pre">text/csv</span></code></p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is scheduled to be deprecated. Please
+<p class="admonition-title">Warning</p>
+<p>This call is scheduled to be deprecated. Please
 use the faster and synchronous replacement endpoint <a class="reference internal" href="get-metrics-ads.html#get-metrics-ads"><span class="std std-ref">GET /metrics/ads</span></a> instead.
 Keep in mind that the new endpoint only returns data for <strong>ads which have had performance-related activity in the requested period</strong>.</p>
 </div>
 <p>This URL returns a previously submittted report either in Excel or in CSV format depending on the
-<code class="docutils literal"><span class="pre">Accept</span></code> header. If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created.
-If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created.
+<code class="docutils literal notranslate"><span class="pre">Accept</span></code> header. If the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header is <code class="docutils literal notranslate"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created.
+If the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header is <code class="docutils literal notranslate"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created.
 In CSV documents values are separated by comma and double quotation marks are used around all fields.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="13%" />
-<col width="7%" />
-<col width="81%" />
+<col style="width: 13%" />
+<col style="width: 7%" />
+<col style="width: 81%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>filename</td>
-<td>string</td>
-<td>File name of the downloaded report.
+<tbody>
+<tr class="row-even"><td><p>filename</p></td>
+<td><p>string</p></td>
+<td><p>File name of the downloaded report.
 Default is <strong>[tenantId]-report-[userId]-[date].[xls|csv]</strong>
 where <cite>tenantId</cite> is the id of the host platform requesting the report,
-<cite>userId</cite> is the id of the logged in user and date is the current date in yyyyMMdd-HHmmss format</td>
+<cite>userId</cite> is the id of the logged in user and date is the current date in yyyyMMdd-HHmmss format</p></td>
 </tr>
 </tbody>
 </table>
@@ -275,76 +275,76 @@ where <cite>tenantId</cite> is the id of the host platform requesting the report
 <div class="section" id="report-columns">
 <h2>Report Columns<a class="headerlink" href="#report-columns" title="Permalink to this headline">¶</a></h2>
 <p>Both excel and csv contain the following columns:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20%" />
+<col style="width: 80%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Date</td>
-<td>Date of the report row</td>
+<tbody>
+<tr class="row-even"><td><p>Date</p></td>
+<td><p>Date of the report row</p></td>
 </tr>
-<tr class="row-odd"><td>Ad id</td>
-<td>Id of the ad</td>
+<tr class="row-odd"><td><p>Ad id</p></td>
+<td><p>Id of the ad</p></td>
 </tr>
-<tr class="row-even"><td>L1 Category</td>
-<td>Level 1 category name</td>
+<tr class="row-even"><td><p>L1 Category</p></td>
+<td><p>Level 1 category name</p></td>
 </tr>
-<tr class="row-odd"><td>L2 Category</td>
-<td>Level 2 category name</td>
+<tr class="row-odd"><td><p>L2 Category</p></td>
+<td><p>Level 2 category name</p></td>
 </tr>
-<tr class="row-even"><td>L3 Category</td>
-<td>Level 3 category name if it exists</td>
+<tr class="row-even"><td><p>L3 Category</p></td>
+<td><p>Level 3 category name if it exists</p></td>
 </tr>
-<tr class="row-odd"><td>Title</td>
-<td>Ad title</td>
+<tr class="row-odd"><td><p>Title</p></td>
+<td><p>Ad title</p></td>
 </tr>
-<tr class="row-even"><td>Start Date</td>
-<td>The creation date of the ad</td>
+<tr class="row-even"><td><p>Start Date</p></td>
+<td><p>The creation date of the ad</p></td>
 </tr>
-<tr class="row-odd"><td>End Date</td>
-<td>If the ad is deleted, deletion date of the ad</td>
+<tr class="row-odd"><td><p>End Date</p></td>
+<td><p>If the ad is deleted, deletion date of the ad</p></td>
 </tr>
-<tr class="row-even"><td>Total Budget</td>
-<td>Total budget of the ad</td>
+<tr class="row-even"><td><p>Total Budget</p></td>
+<td><p>Total budget of the ad</p></td>
 </tr>
-<tr class="row-odd"><td>Daily Limit</td>
-<td>Daily budget of the ad</td>
+<tr class="row-odd"><td><p>Daily Limit</p></td>
+<td><p>Daily budget of the ad</p></td>
 </tr>
-<tr class="row-even"><td>Total spent</td>
-<td>Total amount spent for this ad</td>
+<tr class="row-even"><td><p>Total spent</p></td>
+<td><p>Total amount spent for this ad</p></td>
 </tr>
-<tr class="row-odd"><td>Cpc</td>
-<td>Cpc of the ad</td>
+<tr class="row-odd"><td><p>Cpc</p></td>
+<td><p>Cpc of the ad</p></td>
 </tr>
-<tr class="row-even"><td>Impressions</td>
-<td>Number of impressions that the ad received</td>
+<tr class="row-even"><td><p>Impressions</p></td>
+<td><p>Number of impressions that the ad received</p></td>
 </tr>
-<tr class="row-odd"><td>CTR</td>
-<td>Click through rate</td>
+<tr class="row-odd"><td><p>CTR</p></td>
+<td><p>Click through rate</p></td>
 </tr>
-<tr class="row-even"><td>Clicks</td>
-<td>Number of clicks that the ad received</td>
+<tr class="row-even"><td><p>Clicks</p></td>
+<td><p>Number of clicks that the ad received</p></td>
 </tr>
-<tr class="row-odd"><td>URL clicks</td>
-<td>Number of URL clicks that the ad received</td>
+<tr class="row-odd"><td><p>URL clicks</p></td>
+<td><p>Number of URL clicks that the ad received</p></td>
 </tr>
-<tr class="row-even"><td>Emails</td>
-<td>Number of email events that the ad received</td>
+<tr class="row-even"><td><p>Emails</p></td>
+<td><p>Number of email events that the ad received</p></td>
 </tr>
-<tr class="row-odd"><td>External id</td>
-<td>External id of the ad</td>
+<tr class="row-odd"><td><p>External id</p></td>
+<td><p>External id of the ad</p></td>
 </tr>
-<tr class="row-even"><td>Region</td>
-<td>Region of the ad</td>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p>Region of the ad</p></td>
 </tr>
-<tr class="row-odd"><td>Vendor id</td>
-<td>Vendor id of the ad</td>
+<tr class="row-odd"><td><p>Vendor id</p></td>
+<td><p>Vendor id of the ad</p></td>
 </tr>
 </tbody>
 </table>
@@ -398,6 +398,7 @@ where <cite>tenantId</cite> is the id of the host platform requesting the report
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 
