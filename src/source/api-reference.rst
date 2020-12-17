@@ -28,15 +28,11 @@ API Reference
    reference/post-image
    reference/get-campaigns
    reference/post-campaign
-   reference/delete-campaign
    reference/get-campaign-id
    reference/get-campaign-vendor-id
    reference/put-campaign-vendor-id
    reference/get-campaign-budgets
    reference/put-campaign-budgets
-   reference/get-campaign-targeting
-   reference/put-campaign-targeting
-   reference/get-campaign-funnel
    reference/put-campaign-status
    reference/get-feed-config
    reference/post-feed-config
