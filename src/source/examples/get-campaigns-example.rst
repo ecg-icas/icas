@@ -35,8 +35,7 @@
                             "lon": 5.678,
                             "radius": 10,
                             "displayValue": "Amsterdam"
-                            }],
-                        "regionIds": [9007, 9008]
+                        }]
                     }
                 }
             ]
@@ -65,8 +64,7 @@
                             "lon": 5.678,
                             "radius": 10,
                             "displayValue": "Amsterdam"
-                            }],
-                        "regionIds": [9007, 9008]
+                        }]
                     }
                 }
             ]
