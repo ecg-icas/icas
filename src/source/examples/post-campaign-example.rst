@@ -12,9 +12,6 @@
         "dateCreated": "2016-02-03T15:35:33Z",
         "dateLastUpdated": "2016-02-03T15:35:33Z",
         "status": "PAUSED",
-        "links": {
-            "linkedAds": "/api/sellside/campaign/1234/linkedAds"
-        },
         "budgets": {
             "daily": {
                 "limit": -1,

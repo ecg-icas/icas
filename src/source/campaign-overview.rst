@@ -22,10 +22,8 @@ Component                 Short description
 :ref:`campaign_title`     User-provided title
 :ref:`campaign_vendorid`  Unique reference for the seller to the campaign
 :ref:`campaign_status`    Status of the campaign
-:ref:`campaign_linkedads` Ads in this campaign
 :ref:`campaign_budgets`   Budgets of this campaign
 :ref:`campaign_targeting` Targeting options of this campaign
-:ref:`campaign_cpc`       CPC for all ads in this campaign
 ========================= ================================================
 
 
@@ -63,15 +61,6 @@ Campaign status
 The status the campaign currently has. It can be any value from the list in :ref:`campaign_status_overview`. You can set only one
 of the user-controlled states *ACTIVE*, *PAUSED* or *DELETED*. *DELETED* is a final state.
 
-.. _campaign_linkedads:
-
-Campaign linked ads
-"""""""""""""""""""
-
-A *linkedAd* defines an ad in the context of a particular campaign, with possible overrides for certain campaign-level properties (budgets, cpc, ...).
-This construction makes ads into mere data containers, and can allow for an ad to be linked to multiple campaigns (future plans).
-A campaign without linkedAds is an empty campaign, which is a valid scenario. See :ref:`campaign_linkedads_overview` for more info.
-
 .. _campaign_budgets:
 
 Campaign budgets
@@ -86,11 +75,3 @@ Campaign targeting
 """"""""""""""""""
 
 Campaigns can have targeting criteria, allowing you some customization on the target group of customers that your ads will be shown to. See :ref:`campaign_targeting_overview` for more info.
-
-.. _campaign_cpc:
-
-Campaign CPC
-""""""""""""
-
-You can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad(s) will be shown (higher or lower in the results page, etc).
-This CPC will be charged for every click on ads in this campaign. The campaign CPC can be overridden for individual ads in the campaign using :ref:`campaign_linkedads_overview`.

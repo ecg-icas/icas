@@ -15,7 +15,6 @@
                     "dateCreated": "2016-02-03T15:35:33Z",
                     "dateLastUpdated": "2016-02-03T15:35:33Z",
                     "status": "ACTIVE",
-                    "cpc": 10,
                     "budgets": {
                         "daily": {
                             "limit": 120,
@@ -39,9 +38,6 @@
                             }],
                         "regionIds": [9007, 9008]
                     }
-                    "links": {
-                        "linkedAds": "api/sellside/campaign/1234/linkedAds"
-                    }
                 }
             ]
         },
@@ -63,7 +59,6 @@
                     "dateCreated": "2016-02-03T15:35:33Z",
                     "dateLastUpdated": "2018-02-03T15:35:33Z",
                     "status": "DELETED",
-                    "cpc": 10,
                     "targeting": {
                         "geos": [{
                             "lat": 1.234,
@@ -72,9 +67,6 @@
                             "displayValue": "Amsterdam"
                             }],
                         "regionIds": [9007, 9008]
-                    }
-                    "links": {
-                        "linkedAds": "api/sellside/campaign/1234/linkedAds"
                     }
                 }
             ]

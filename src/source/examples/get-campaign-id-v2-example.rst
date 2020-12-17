@@ -12,10 +12,7 @@
         "dateCreated": "2016-02-03T15:35:33Z",
         "dateLastUpdated": "2016-02-03T15:35:33Z",
         "status": "ACTIVE",
-        "vendorId: "201907-garden-furniture-II"
-        "links": {
-            "linkedAds": "api/sellside/campaign/124512/linkedAds"
-        },
+        "vendorId: "201907-garden-furniture-II",
         "budgets": {
             "daily": {
                 "limit": -1,

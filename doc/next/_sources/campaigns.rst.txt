@@ -9,5 +9,4 @@ Campaigns
    campaign-overview
    campaign-status
    campaign-budgets
-   campaign-linkedads
    campaign-targeting
