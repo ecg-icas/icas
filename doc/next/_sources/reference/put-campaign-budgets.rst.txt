@@ -10,10 +10,10 @@ PUT /campaign/{id}/budgets
    - ``api_rw`` or ``console_rw``
 
  * - Accept
-   - ``application/sellside.campaign.budgets-v2+json, application/json``
+   - ``application/sellside.campaign.budgets-v2+json``
 
  * - Content-Type
-   - ``application/sellside.campaign.budgets-v2+json, application/json``
+   - ``application/sellside.campaign.budgets-v2+json``
 
 Creates (if they don't exist) or updates the budgets limits for the specified campaign (see :ref:`Campaign Budgets Object <campaign-budgets-object>` for more). If the ``id`` is invalid, i.e., not a positive integer, the server returns *400 Bad Request.*
 The call is idempotent; any previous budgets limits on the specified campaign will be overwritten.

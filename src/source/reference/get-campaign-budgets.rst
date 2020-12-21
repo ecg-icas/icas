@@ -10,7 +10,7 @@ GET /campaign/{id}/budgets
    - ``api_ro`` or ``console_ro``
 
  * - Accept
-   - ``application/sellside.campaign.budgets-v2+json, application/json``
+   - ``application/sellside.campaign.budgets-v2+json``
 
 Returns a :ref:`Campaign Budgets Object <campaign-budgets-object>` for the specified campaign. If the ``id`` is invalid, i.e., not a positive integer, the server returns *400 Bad Request.*
 
