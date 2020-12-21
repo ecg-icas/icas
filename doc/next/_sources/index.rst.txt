@@ -31,12 +31,9 @@ Contents
    overview
    authentication
    ads
-   ad-status
    categories
-   price-types
    attributes
    regions
-   campaigns
    feeds
    reporting
    error-handling
@@ -51,9 +48,34 @@ History
 
 ..  role:: strike
 
-* v.0.200 -18 Jul 2019 - tw/dr
+* v.0.119 - 24 June 2020 - tw
 
-  * add :ref:`campaigns` endpoints and information
+  * set deprecation date of :ref:`get_ad_v3` to July 15th 2020
+
+* v.0.118 - 10 June 2020 - tw
+
+  * mark :ref:`get_ad_v3` as deprecated, replaced by :ref:`get_ad_v4`
+
+* v.0.117 - 9 June 2020 - tw
+
+  * clean out deprecated methods from manual
+  * minor restructure removing redirect layer of categories
+
+* v.0.116 - 15 May 2020 - dr
+
+  * add "statusReason" to ad endpoints
+
+* v.0.115 - 3 Feb 2020 - dr
+
+  * remove "includeDeleted" parameter documentation from :ref:`post_metrics_data`, clarify on filtering for ad statuses
+
+* v.0.114 - 6 Jan 2020 - tw
+
+  * added "includeDeleted" parameter documentation in :ref:`post_metrics_data`
+
+* v.0.113 - 3 Dec 2019 - tw
+
+  * updated :ref:`deprecation_plan` stating /report/* endpoints are deprecated and will be removed by March 1st 2020. These will be replaced by /metrics/* endpoints.
 
 * v.0.112 - 18 Jul 2019 - tw
 
@@ -263,7 +285,7 @@ History
 
 * v0.62 - 13 Aug 2015 - fs
 
-  * :ref:`categories_v2`: Added missing ``defaults`` field to attributes.
+  * :ref:`categories`: Added missing ``defaults`` field to attributes.
 
 * v0.61 - 02 Jul 2015 - ak
 
@@ -282,13 +304,13 @@ History
   * Added :ref:`post_ad_v2`
   * Added :ref:`put_ad_id_v2`
   * Added :ref:`deprecation_plan`
-  * Deprecated :ref:`get_ad_v2`
-  * Deprecated :ref:`get_ad_id_v1`
-  * Deprecated :ref:`get_category`
-  * Deprecated :ref:`get_category_id_v1`
-  * Deprecated :ref:`get_category_id_attributes`
-  * Deprecated :ref:`post_ad_v1`
-  * Deprecated :ref:`put_ad_id_v1`
+  * Deprecated 'GET /ad V2'
+  * Deprecated 'GET /ad/{id} V1'
+  * Deprecated 'GET /category'
+  * Deprecated 'GET /category/{id} V1'
+  * Deprecated 'GET /category{id}/attributes V1'
+  * Deprecated 'POST /ad V1'
+  * Deprecated 'PUT /ad V1'
   * Moved all deprecations to after September 2015
 
 * v0.58 - 15 Jun 2015 - fs
@@ -312,7 +334,7 @@ History
 
 * v0.54 - 29 May 2015 - be,fs
 
-  * Added documentation for :ref:`categories_v2`
+  * Added documentation for :ref:`categories` V2
   * Renamed Admarkt to iCAS
   * Replaced support email address with link to Google Plus Community
   * Added links for DBA and Kijiji Canada
@@ -358,7 +380,7 @@ History
 
 * v0.44 - 24 Feb 2015 - fs
 
-  * Pushed deadline for removal of :ref:`get_ad_v1` of :ref:`get_ad` from 1 Mar 2015 to 1 May 2015
+  * Pushed deadline for removal of 'GET /ad V1' of :ref:`get_ad` from 1 Mar 2015 to 1 May 2015
   * Pushed deadline for removal of :ref:`get_report_v1` of :ref:`get_report` from 1 Mar 2015 to 1 May 2015
 
 * v0.43 - 13 Jan 2015 - ak
@@ -383,7 +405,7 @@ History
 
 * v0.39 - 20 Nov 2014 - ak
 
-  * Added :ref:`get_ad_v2` of :ref:`get_ad` which includes the size of the result set
+  * Added 'GET /ad V2' of :ref:`get_ad` which includes the size of the result set
 
 * v0.38 - 03 Nov 2014 - ak
 
@@ -439,9 +461,9 @@ History
 
   * :ref:`get_ad`
   * :ref:`get_ad_id`
-  * :ref:`get_category`
+  * 'GET /category'
   * :ref:`get_category_id`
-  * :ref:`get_category_id_attributes`
+  * 'GET /category/{id}/attributes'
   * :ref:`get_report`
   * :ref:`post_ad`
   * :ref:`put_ad_id`
@@ -543,7 +565,7 @@ History
 
 * v0.10 - 8 Oct 2012 - fs, ml
 
-  * :ref:`get_category_id_attributes`: only leaf categories have attributes
+  * 'GET /category/{id}/attributes': only leaf categories have attributes
   * Added additional user attribute examples
   * Changed *valueType* for *MULTI* category attribute example
   * Changed *name* to *key* in user attribute example
@@ -555,7 +577,7 @@ History
 * v0.8 - 4 Oct 2012 - fs
 
   * Added a section for attributes
-  * Added :ref:`get_category_id_attributes`
+  * Added 'GET /category/{id}/attributes'
   * Removed the *media* attribute from ads
   * Updated the handling of images in ads
   * :ref:`post_ad`: Removed all *media* related errors

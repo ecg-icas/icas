@@ -18,9 +18,7 @@ API Reference
    reference/put-ad-id-status
    reference/get-categories
    reference/get-categories-statistics
-   reference/get-category
    reference/get-category-id
-   reference/get-category-id-attributes
    reference/get-category-id-funnel
    reference/get-region-id
    reference/get-regions
@@ -44,8 +42,9 @@ API Reference
    reference/get-report-detail
    reference/get-report-detail-id
    reference/post-report-detail
-   reference/get-metrics-ads
    reference/get-report-summary
+   reference/get-metrics-ads
+   reference/get-metrics-report
    reference/post-metrics-data
    reference/get-user
    reference/error-codes

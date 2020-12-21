@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Advertisements &mdash; iCAS Sellside API 0.200 documentation</title>
+  <title>Advertisements &mdash; iCAS Sellside API 0.119 documentation</title>
   
 
   
@@ -33,8 +33,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.200 documentation" href="index.html"/>
-        <link rel="next" title="Ad Status" href="ad-status.html"/>
+    <link rel="top" title="iCAS Sellside API 0.119 documentation" href="index.html"/>
+        <link rel="next" title="Categories" href="categories.html"/>
         <link rel="prev" title="Authentication" href="authentication.html"/> 
 
   
@@ -92,18 +92,22 @@
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ad-status.html">Ad Status</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#user-controlled-states">User Controlled States</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#customer-service-states">Customer Service States</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#system-states">System States</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-rendering">Attribute Rendering</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
@@ -117,13 +121,6 @@
 <li class="toctree-l2"><a class="reference internal" href="regions.html#data-model">Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
@@ -161,9 +158,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories-statistics.html">GET /categories/statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
@@ -187,8 +182,9 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
@@ -498,12 +494,12 @@ action.</p>
 </div>
 <div class="section" id="title">
 <span id="ad-title"></span><span id="index-2"></span><h3>title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h3>
-<p>Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a>. URLs are not allowed as part of the title.</p>
+<p>Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories.html#categories"><span class="std std-ref">Categories</span></a>. URLs are not allowed as part of the title.</p>
 </div>
 <div class="section" id="description">
 <span id="ad-description"></span><span id="index-3"></span><h3>description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
 <p>The description field of the ad.
-Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a>. URLs are not allowed as part of the title.
+Any string, with minimum and maximum length determined by the category. See <a class="reference internal" href="categories.html#categories"><span class="std std-ref">Categories</span></a>. URLs are not allowed as part of the title.
 All HTML elements except for the ones below will be removed:</p>
 <div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
 </pre></div>
@@ -599,7 +595,7 @@ This field can only set once during creation of an ad.</p>
 <p>This field is mandatory if the <cite>region</cite> field of category configuration is <code class="docutils literal"><span class="pre">MANDATORY</span></code>
 and optional if the <cite>region</cite> field is <code class="docutils literal"><span class="pre">OPTIONAL</span></code>.
 This field must be omitted if the <cite>region</cite> field of category configuration is <code class="docutils literal"><span class="pre">DISABLED</span></code>.</p>
-<p>Please refer to <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and <a class="reference internal" href="regions.html#regions"><span class="std std-ref">Regions</span></a></p>
+<p>Please refer to <a class="reference internal" href="categories.html#categories"><span class="std std-ref">Categories</span></a> and <a class="reference internal" href="regions.html#regions"><span class="std std-ref">Regions</span></a></p>
 </div>
 <div class="section" id="pagenumber">
 <span id="ad-pagenumber"></span><span id="index-20"></span><h3>pageNumber<a class="headerlink" href="#pagenumber" title="Permalink to this headline">¶</a></h3>
@@ -740,7 +736,7 @@ they will be ignored.</p>
 <span id="ad-shippingoptions"></span><span id="index-36"></span><h3>shippingOptions<a class="headerlink" href="#shippingoptions" title="Permalink to this headline">¶</a></h3>
 <p>A list of shipping options available for an ad.
 Ads can contain maximum one shipping option per shipping option type.
-Whether shipping options are disabled/optional/mandatory for an ad is configured per category, see <a class="reference internal" href="categories-v2.html#category-config-v2"><span class="std std-ref">Category Configuration</span></a>.</p>
+Whether shipping options are disabled/optional/mandatory for an ad is configured per category, see <a class="reference internal" href="categories.html#category-config-v2"><span class="std std-ref">Category Configuration</span></a>.</p>
 <p>Shipping option has the following fields:</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -894,7 +890,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ad-status.html" class="btn btn-neutral float-right" title="Ad Status"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="categories.html" class="btn btn-neutral float-right" title="Categories"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="authentication.html" class="btn btn-neutral" title="Authentication"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -906,7 +902,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The iCAS Team.
+        &copy; Copyright 2017 The iCAS Team.
     </p>
   </div>
 
@@ -926,7 +922,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.200',
+            VERSION:'0.119',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

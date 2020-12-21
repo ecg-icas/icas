@@ -84,7 +84,7 @@ action.
 title
 """""
 
-Any string, with minimum and maximum length determined by the category. See :ref:`categories_v2`. URLs are not allowed as part of the title.
+Any string, with minimum and maximum length determined by the category. See :ref:`categories`. URLs are not allowed as part of the title.
 
 .. index:: description
 .. _ad_description:
@@ -93,7 +93,7 @@ description
 """""""""""
 
 The description field of the ad.
-Any string, with minimum and maximum length determined by the category. See :ref:`categories_v2`. URLs are not allowed as part of the title.
+Any string, with minimum and maximum length determined by the category. See :ref:`categories`. URLs are not allowed as part of the title.
 All HTML elements except for the ones below will be removed:
 
 .. code-block:: html
@@ -261,7 +261,7 @@ This field is mandatory if the `region` field of category configuration is ``MAN
 and optional if the `region` field is ``OPTIONAL``.
 This field must be omitted if the `region` field of category configuration is ``DISABLED``.
 
-Please refer to :ref:`categories_v2` and :ref:`regions`
+Please refer to :ref:`categories` and :ref:`regions`
 
 .. index:: pageNumber
 .. _ad_pageNumber:

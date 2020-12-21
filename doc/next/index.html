@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; iCAS Sellside API 0.200 documentation</title>
+  <title>Introduction &mdash; iCAS Sellside API 0.119 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.200 documentation" href="#"/>
+    <link rel="top" title="iCAS Sellside API 0.119 documentation" href="#"/>
         <link rel="next" title="Overview" href="overview.html"/> 
 
   
@@ -91,18 +91,22 @@
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ad-status.html">Ad Status</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#user-controlled-states">User Controlled States</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#customer-service-states">Customer Service States</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#system-states">System States</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-rendering">Attribute Rendering</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
@@ -116,13 +120,6 @@
 <li class="toctree-l2"><a class="reference internal" href="regions.html#data-model">Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
@@ -160,9 +157,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories-statistics.html">GET /categories/statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
@@ -186,8 +181,9 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
@@ -276,18 +272,22 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ad-status.html">Ad Status</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#user-controlled-states">User Controlled States</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#customer-service-states">Customer Service States</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html#system-states">System States</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-rendering">Attribute Rendering</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
@@ -301,13 +301,6 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#data-model">Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="campaign-overview.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-budgets.html">Campaign Budgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
@@ -345,9 +338,7 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories-statistics.html">GET /categories/statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
@@ -371,8 +362,9 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
@@ -385,8 +377,33 @@ Notifications about maintenance will also go through this channel.</p>
 <div class="section" id="history">
 <span id="id2"></span><h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>v.0.200 -18 Jul 2019 - tw/dr<ul>
-<li>add <a class="reference internal" href="campaigns.html#campaigns"><span class="std std-ref">Campaigns</span></a> endpoints and information</li>
+<li>v.0.119 - 24 June 2020 - tw<ul>
+<li>set deprecation date of <a class="reference internal" href="reference/get-ad.html#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> to July 15th 2020</li>
+</ul>
+</li>
+<li>v.0.118 - 10 June 2020 - tw<ul>
+<li>mark <a class="reference internal" href="reference/get-ad.html#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> as deprecated, replaced by <a class="reference internal" href="reference/get-ad.html#get-ad-v4"><span class="std std-ref">GET /ad v4</span></a></li>
+</ul>
+</li>
+<li>v.0.117 - 9 June 2020 - tw<ul>
+<li>clean out deprecated methods from manual</li>
+<li>minor restructure removing redirect layer of categories</li>
+</ul>
+</li>
+<li>v.0.116 - 15 May 2020 - dr<ul>
+<li>add &#8220;statusReason&#8221; to ad endpoints</li>
+</ul>
+</li>
+<li>v.0.115 - 3 Feb 2020 - dr<ul>
+<li>remove &#8220;includeDeleted&#8221; parameter documentation from <a class="reference internal" href="reference/post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a>, clarify on filtering for ad statuses</li>
+</ul>
+</li>
+<li>v.0.114 - 6 Jan 2020 - tw<ul>
+<li>added &#8220;includeDeleted&#8221; parameter documentation in <a class="reference internal" href="reference/post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a></li>
+</ul>
+</li>
+<li>v.0.113 - 3 Dec 2019 - tw<ul>
+<li>updated <a class="reference internal" href="deprecation.html#deprecation-plan"><span class="std std-ref">Deprecation Plan</span></a> stating /report/* endpoints are deprecated and will be removed by March 1st 2020. These will be replaced by /metrics/* endpoints.</li>
 </ul>
 </li>
 <li>v.0.112 - 18 Jul 2019 - tw<ul>
@@ -596,7 +613,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.62 - 13 Aug 2015 - fs<ul>
-<li><a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a>: Added missing <code class="docutils literal"><span class="pre">defaults</span></code> field to attributes.</li>
+<li><a class="reference internal" href="categories.html#categories"><span class="std std-ref">Categories</span></a>: Added missing <code class="docutils literal"><span class="pre">defaults</span></code> field to attributes.</li>
 </ul>
 </li>
 <li>v0.61 - 02 Jul 2015 - ak<ul>
@@ -615,13 +632,13 @@ Notifications about maintenance will also go through this channel.</p>
 <li>Added <a class="reference internal" href="reference/post-ad.html#post-ad-v2"><span class="std std-ref">POST /ad v2</span></a></li>
 <li>Added <a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v2"><span class="std std-ref">PUT /ad/{id} v2</span></a></li>
 <li>Added <a class="reference internal" href="deprecation.html#deprecation-plan"><span class="std std-ref">Deprecation Plan</span></a></li>
-<li>Deprecated <span class="xref std std-ref">get_ad_v2</span></li>
-<li>Deprecated <span class="xref std std-ref">get_ad_id_v1</span></li>
-<li>Deprecated <a class="reference internal" href="reference/get-category.html#get-category"><span class="std std-ref">GET /category</span></a></li>
-<li>Deprecated <a class="reference internal" href="reference/get-category-id.html#get-category-id-v1"><span class="std std-ref">GET /category/{id} v1</span></a></li>
-<li>Deprecated <a class="reference internal" href="reference/get-category-id-attributes.html#get-category-id-attributes"><span class="std std-ref">GET /category/{id}/attributes</span></a></li>
-<li>Deprecated <span class="xref std std-ref">post_ad_v1</span></li>
-<li>Deprecated <span class="xref std std-ref">put_ad_id_v1</span></li>
+<li>Deprecated &#8216;GET /ad V2&#8217;</li>
+<li>Deprecated &#8216;GET /ad/{id} V1&#8217;</li>
+<li>Deprecated &#8216;GET /category&#8217;</li>
+<li>Deprecated &#8216;GET /category/{id} V1&#8217;</li>
+<li>Deprecated &#8216;GET /category{id}/attributes V1&#8217;</li>
+<li>Deprecated &#8216;POST /ad V1&#8217;</li>
+<li>Deprecated &#8216;PUT /ad V1&#8217;</li>
 <li>Moved all deprecations to after September 2015</li>
 </ul>
 </li>
@@ -645,7 +662,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.54 - 29 May 2015 - be,fs<ul>
-<li>Added documentation for <a class="reference internal" href="categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a></li>
+<li>Added documentation for <a class="reference internal" href="categories.html#categories"><span class="std std-ref">Categories</span></a> V2</li>
 <li>Renamed Admarkt to iCAS</li>
 <li>Replaced support email address with link to Google Plus Community</li>
 <li>Added links for DBA and Kijiji Canada</li>
@@ -691,7 +708,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.44 - 24 Feb 2015 - fs<ul>
-<li>Pushed deadline for removal of <span class="xref std std-ref">get_ad_v1</span> of <a class="reference internal" href="reference/get-ad.html#get-ad"><span class="std std-ref">GET /ad</span></a> from 1 Mar 2015 to 1 May 2015</li>
+<li>Pushed deadline for removal of &#8216;GET /ad V1&#8217; of <a class="reference internal" href="reference/get-ad.html#get-ad"><span class="std std-ref">GET /ad</span></a> from 1 Mar 2015 to 1 May 2015</li>
 <li>Pushed deadline for removal of <a class="reference internal" href="reference/get-report.html#get-report-v1"><span class="std std-ref">v1</span></a> of <a class="reference internal" href="reference/get-report.html#get-report"><span class="std std-ref">GET /report</span></a> from 1 Mar 2015 to 1 May 2015</li>
 </ul>
 </li>
@@ -716,7 +733,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.39 - 20 Nov 2014 - ak<ul>
-<li>Added <span class="xref std std-ref">get_ad_v2</span> of <a class="reference internal" href="reference/get-ad.html#get-ad"><span class="std std-ref">GET /ad</span></a> which includes the size of the result set</li>
+<li>Added &#8216;GET /ad V2&#8217; of <a class="reference internal" href="reference/get-ad.html#get-ad"><span class="std std-ref">GET /ad</span></a> which includes the size of the result set</li>
 </ul>
 </li>
 <li>v0.38 - 03 Nov 2014 - ak<ul>
@@ -769,9 +786,9 @@ Notifications about maintenance will also go through this channel.</p>
 <li>Added support for <cite>_include</cite> and <cite>_exclude</cite> to</li>
 <li><a class="reference internal" href="reference/get-ad.html#get-ad"><span class="std std-ref">GET /ad</span></a></li>
 <li><a class="reference internal" href="reference/get-ad-id.html#get-ad-id"><span class="std std-ref">GET /ad/{id}</span></a></li>
-<li><a class="reference internal" href="reference/get-category.html#get-category"><span class="std std-ref">GET /category</span></a></li>
+<li>&#8216;GET /category&#8217;</li>
 <li><a class="reference internal" href="reference/get-category-id.html#get-category-id"><span class="std std-ref">GET /category/{id}</span></a></li>
-<li><a class="reference internal" href="reference/get-category-id-attributes.html#get-category-id-attributes"><span class="std std-ref">GET /category/{id}/attributes</span></a></li>
+<li>&#8216;GET /category/{id}/attributes&#8217;</li>
 <li><a class="reference internal" href="reference/get-report.html#get-report"><span class="std std-ref">GET /report</span></a></li>
 <li><a class="reference internal" href="reference/post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a></li>
 <li><a class="reference internal" href="reference/put-ad-id.html#put-ad-id"><span class="std std-ref">PUT /ad/{id}</span></a></li>
@@ -873,7 +890,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.10 - 8 Oct 2012 - fs, ml<ul>
-<li><a class="reference internal" href="reference/get-category-id-attributes.html#get-category-id-attributes"><span class="std std-ref">GET /category/{id}/attributes</span></a>: only leaf categories have attributes</li>
+<li>&#8216;GET /category/{id}/attributes&#8217;: only leaf categories have attributes</li>
 <li>Added additional user attribute examples</li>
 <li>Changed <em>valueType</em> for <em>MULTI</em> category attribute example</li>
 <li>Changed <em>name</em> to <em>key</em> in user attribute example</li>
@@ -885,7 +902,7 @@ Notifications about maintenance will also go through this channel.</p>
 </li>
 <li>v0.8 - 4 Oct 2012 - fs<ul>
 <li>Added a section for attributes</li>
-<li>Added <a class="reference internal" href="reference/get-category-id-attributes.html#get-category-id-attributes"><span class="std std-ref">GET /category/{id}/attributes</span></a></li>
+<li>Added &#8216;GET /category/{id}/attributes&#8217;</li>
 <li>Removed the <em>media</em> attribute from ads</li>
 <li>Updated the handling of images in ads</li>
 <li><a class="reference internal" href="reference/post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a>: Removed all <em>media</em> related errors</li>
@@ -940,7 +957,7 @@ Notifications about maintenance will also go through this channel.</p>
 <li>Added <a class="reference internal" href="ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a></li>
 <li>Updated <a class="reference internal" href="reference/error-codes.html#error-codes"><span class="std std-ref">Error Codes</span></a></li>
 <li>Updated <a class="reference internal" href="ads.html#ads"><span class="std std-ref">Advertisements</span></a></li>
-<li>Updated <a class="reference internal" href="categories-v1.html#categories"><span class="std std-ref">Categories V1</span></a></li>
+<li>Updated <a class="reference internal" href="categories.html#categories"><span class="std std-ref">Categories</span></a></li>
 <li>Updated <a class="reference internal" href="attributes.html#attributes"><span class="std std-ref">Attributes</span></a></li>
 </ul>
 </li>
@@ -974,7 +991,7 @@ Notifications about maintenance will also go through this channel.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The iCAS Team.
+        &copy; Copyright 2017 The iCAS Team.
     </p>
   </div>
 
@@ -994,7 +1011,7 @@ Notifications about maintenance will also go through this channel.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.200',
+            VERSION:'0.119',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

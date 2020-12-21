@@ -17,7 +17,7 @@ GET /categories
    - ``application/sellside.category.list-v1+json, application/json``
 
 This URL returns the a map of id to categories in the format described in
-:ref:`categories_v2` for the id's requested in parameter ``categoryIds``.
+:ref:`categories` for the id's requested in parameter ``categoryIds``.
 This parameter is a comma separated list of integers.
 If the parameter ``categoryIds`` contains invalid data, i.e. not a positive
 integer, the server returns **400 Bad Request**.
