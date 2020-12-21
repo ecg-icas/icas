@@ -8,7 +8,7 @@ PUT /ad/{id}/status
 
 .. _put_ad_id_status_v5:
 
-GET /ad/{id}/status v5
+PUT /ad/{id}/status v5
 ----------------------
 
 .. list-table::
@@ -26,7 +26,7 @@ If the ``id`` is invalid, i.e. not a positive integer the server returns **400
 Bad Request**.
 
 To set the new status append it to the base url. The status can be one of the
-user controlled status values as defined in :ref:`ad_status_overview`.
+user controlled status values: either *ACTIVE* or *DELETED*.
 
 Parameters
 ----------
@@ -57,7 +57,7 @@ Example
 
 .. _put_ad_id_status_v1:
 
-GET /ad/{id}/status v1
+PUT /ad/{id}/status v1
 ----------------------
 
 .. list-table::

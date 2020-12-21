@@ -234,9 +234,9 @@
             
   <div class="section" id="put-ad-id-status">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}/status<a class="headerlink" href="#put-ad-id-status" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#put-ad-id-status-v5"><span class="std std-ref">GET /ad/{id}/status v5</span></a> | <a class="reference internal" href="#put-ad-id-status-v1"><span class="std std-ref">GET /ad/{id}/status v1</span></a></p>
-<div class="section" id="get-ad-id-status-v5">
-<span id="put-ad-id-status-v5"></span><h2>GET /ad/{id}/status v5<a class="headerlink" href="#get-ad-id-status-v5" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#put-ad-id-status-v5"><span class="std std-ref">PUT /ad/{id}/status v5</span></a> | <a class="reference internal" href="#put-ad-id-status-v1"><span class="std std-ref">PUT /ad/{id}/status v1</span></a></p>
+<div class="section" id="put-ad-id-status-v5">
+<span id="id2"></span><h2>PUT /ad/{id}/status v5<a class="headerlink" href="#put-ad-id-status-v5" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -256,7 +256,7 @@ not exist or does not belong to the user the server returns <strong>404 Not Foun
 If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
 Bad Request</strong>.</p>
 <p>To set the new status append it to the base url. The status can be one of the
-user controlled status values as defined in <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>.</p>
+user controlled status values: either <em>ACTIVE</em> or <em>DELETED</em>.</p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -324,8 +324,8 @@ user controlled status values as defined in <a class="reference internal" href="
 </pre></div>
 </div>
 </div>
-<div class="section" id="get-ad-id-status-v1">
-<span id="put-ad-id-status-v1"></span><h2>GET /ad/{id}/status v1<a class="headerlink" href="#get-ad-id-status-v1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="put-ad-id-status-v1">
+<span id="id3"></span><h2>PUT /ad/{id}/status v1<a class="headerlink" href="#put-ad-id-status-v1" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -357,8 +357,8 @@ remaining, this call will succeed. The resulting status of the ad will be either
 depending on which budget has run out. In this case the ad will go live as soon
 as budget is added.</p>
 </div>
-<div class="section" id="id2">
-<h2>Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -382,8 +382,8 @@ as budget is added.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id3">
-<h2>Errors<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>Errors<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="15%" />
@@ -417,8 +417,8 @@ as budget is added.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id4">
-<h2>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span>
 </pre></div>
 </div>
