@@ -248,6 +248,17 @@
 </table>
 <p>Returns a <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a> for the specified campaign. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em></p>
 <p>If the campaign is in DELETED status, <cite>404 Not Found</cite> is returned.</p>
+<div class="admonition note" id="campaign-restrictions">
+<p class="first admonition-title">Note</p>
+<p><strong>At the moment, the following restrictions apply to campaigns:</strong></p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>each seller account can have <strong>at most one campaign</strong>. In the next stage we plan to lift this restriction and bring the full potential of campaigns to everyone.</li>
+<li>we are still in an experimental stage with the campaign <strong>targeting options</strong>. Please do not use this field yet, setting it can cause unexpected behaviours. Do shout out to us on Discord if you are interested in using it, we would love to hear.</li>
+<li>to make the transition to campaigns easier and smoother, we will initially take care of the ownership of ads in campaigns and manage it behind the scenes. In other words, every ad will be added to a campaign, if a campaign exists for the seller. In the next stage, that will become a responsibility of the API client.</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="example">
 <h2>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">targeting</span>

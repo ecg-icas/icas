@@ -20,6 +20,9 @@ Creates a new campaign for the user. If successful, it returns an object represe
 default values on certain fields, if not provided. A minimum payload is an empty JSON, as none of the fields
 are mandatory.
 
+..  include:: /campaign-restrictions.rst
+
+
 .. include:: ../examples/post-campaign-example.rst
 
 The full campaign request payload model that can be provided, has the following structure:

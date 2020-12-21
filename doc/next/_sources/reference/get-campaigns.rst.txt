@@ -15,6 +15,8 @@ GET /campaigns
 
 Returns a list of campaigns which belong to the user. At the moment there is a restriction of *at most* one campaign per seller. This restriction will be lifted-off in later stages.
 
+..  include:: /campaign-restrictions.rst
+
 Parameters
 ----------
 

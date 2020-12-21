@@ -20,6 +20,8 @@ If the campaign does not exist or does not belong to the user the server returns
 **404 Not Found**. If the ``id`` is invalid, i.e. not a positive integer the
 server returns **400 Bad Request**.
 
+..  include:: /campaign-restrictions.rst
+
 Example:
 --------
 

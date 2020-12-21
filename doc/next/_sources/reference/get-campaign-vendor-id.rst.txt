@@ -23,6 +23,7 @@ server returns **400 Bad Request**.
 The vendorId is unique for a user; It is not possible for a single user to create
 multiple campaigns with the same vendorId (even if other campaigns are in status ``DELETED``).
 
+
 Example
 -------
 

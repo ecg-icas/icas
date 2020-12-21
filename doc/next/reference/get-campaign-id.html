@@ -255,6 +255,17 @@
 <p>If the campaign does not exist or does not belong to the user the server returns
 <strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the
 server returns <strong>400 Bad Request</strong>.</p>
+<div class="admonition note" id="campaign-restrictions">
+<p class="first admonition-title">Note</p>
+<p><strong>At the moment, the following restrictions apply to campaigns:</strong></p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>each seller account can have <strong>at most one campaign</strong>. In the next stage we plan to lift this restriction and bring the full potential of campaigns to everyone.</li>
+<li>we are still in an experimental stage with the campaign <strong>targeting options</strong>. Please do not use this field yet, setting it can cause unexpected behaviours. Do shout out to us on Discord if you are interested in using it, we would love to hear.</li>
+<li>to make the transition to campaigns easier and smoother, we will initially take care of the ownership of ads in campaigns and manage it behind the scenes. In other words, every ad will be added to a campaign, if a campaign exists for the seller. In the next stage, that will become a responsibility of the API client.</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="example">
 <h2>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span>GET /api/sellside/campaign/124512

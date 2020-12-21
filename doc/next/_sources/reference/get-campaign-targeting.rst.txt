@@ -16,6 +16,8 @@ Returns a :ref:`Campaign Targeting Object <campaign-targeting-object>` for the s
 
 If the campaign is in DELETED status, `404 Not Found` is returned.
 
+..  include:: /campaign-restrictions.rst
+
 Example:
 --------
 
