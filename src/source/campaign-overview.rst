@@ -3,9 +3,22 @@
 Overview
 ========
 
-Campaigns allow you, the seller, to group your ads together, having shared budgets, same targeting rules, and other components. You can create separate campaigns to run ads in different locations or using different budgets.
+Campaigns allow you, the seller, to group and manage your ads together, having shared budgets, targeting rules, and other settings. You can create separate campaigns to run ads in different locations or using different budgets.
 
-Reporting, as well as status management, can also be done on the level of campaigns, instead of individual ads. It is possible to pause a campaign, resulting in all ads in the campaign to be taken offline. When a campaign reaches one of its :ref:`campaign_budgets`, all ads in that campaign will be taken offline. When budget becomes available again, all ads in the campaign will come
+Campaigns are a simpler way to organize and manage your products, services, and ads in general.
+They are becoming first-class citizen in Admarkt, and as such, are a primary container to get your advertisements online.
+
+Even though they are restricted in their current capabilities, we plan to evolve the concepts in line with other advertising platforms like Google and Facebook. We will keep you posted as we release more campaign-centric features in the future.
+
+.. note::
+    **At the moment, the following restrictions apply to campaigns:**
+
+     - each seller account can have **at most one campaign**. In the next stage we plan to lift this restriction and bring the full potential of campaigns to everyone.
+     - we are still in an experimental stage with the campaign **targeting options**. Please do not use this field yet, setting it can cause unexpected behaviours. Do shout out to us on Discord if you are interested in using it, we would love to hear.
+     - to make the transition to campaigns easier and smoother, we will initially take care of the ownership of ads in campaigns and manage it behind the scenes. In other words, every ad will be added to a campaign, if a campaign exists for the seller. In the next stage, that will become a responsibility of the API client.
+
+
+To give you an idea, it is possible to pause a campaign, resulting in all ads in the campaign to be taken offline. When a campaign reaches one of its :ref:`campaign_budgets`, all ads in that campaign will be taken offline. When budget becomes available again, all ads in the campaign will come
 online again.
 
 .. _components:
