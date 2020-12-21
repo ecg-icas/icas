@@ -5,11 +5,16 @@
 GET /ad
 =======
 
-:ref:`get_ad_v5` | :ref:`get_ad_v3` | :ref:`get_ad_v2` | :ref:`get_ad_v1`
+:ref:`get_ad_v4` | :ref:`get_ad_v3`
 
-.. _get_ad_v5:
+.. warning::
 
-GET /ad v5
+    :ref:`get_ad_v3` is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use :ref:`get_ad_v4`. If you were not
+    using ``startDate`` or ``endDate`` parameters in your calls the output will be the same in :ref:`get_ad_v4`.
+
+.. _get_ad_v4:
+
+GET /ad v4
 ----------
 
 .. list-table::
@@ -19,127 +24,33 @@ GET /ad v5
    - ``api_ro`` or ``console_ro``
 
  * - Accept
-   - ``application/sellside.ad.list-v5+json, application/json``
+   - ``application/sellside.ad.list-v4+json, application/json``
 
-This URL returns a single page of ads for the current user, the total size of the
-result set matching the filter criteria and next page token if additional pages
-are available.
-
-.. warning::
-
-	This call is only compatible with :ref:`categories_v2` and must only
-	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
-	the attributes may not be recognized or editable.
-
-The number of ads returned can be limited with the ``limit`` parameter.
-The ``nextPageToken`` parameter could be provided to fetch next page if available.
-
-The ``status`` parameter returns only ads with the given status. The default
-is to return **non-deleted** ads.
-
-The ``orderBy`` and ``direction`` parameters control the sort field and
-direction. By default results are ordered by created date in ascending order.
-
-The ``titleKeywords`` parameter is case-insensitive and will include only ads
-which contain the given keyword in the title.
-
-The ``changedSince`` parameter can be used to retrieve ads that have
-:ref:`ad_dateLastUpdated` >= ``changedSince``. The ``changedSince`` value must be a
-valid `ISO 8601`_ UTC date which usually lies in the past but cannot lie in
-the future.
 
 .. note::
 
-	This call returns only creative part of the ad. CPC and budget are managed
-	separately as part of the campaign membership.
+    The only backwards-incompatible change from :ref:`get_ad_v3` is with respect to the usage of ``startDate`` and ``endDate`` parameters.
+    Namely, ads which were live during this selected period but did not receive a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
+    **This does not include ads which received updates anymore.**
 
-Caching all ads for a user
---------------------------
-
-If an application needs to keep a cache of the entire set of ads for a user
-then it should perform the following steps:
-
-1. Fetch all ads by using ``limit`` and ``nextPageToken`` until all
-ads have been retrieved. No filters should be used.
-
-2. Retrieve updates by using ``changedSince``, ``limit`` and ``nextPageToken``.
-No additional filters should be used. ``changedSince`` should be set to a value
-a somewhat before (e.g. 1 min) of ``dateLastUpdated`` of the last modified ad.
-
-Due to the nature of this system retrieving updates as described in step 2
-will always return at least the ad that was modified last. Also, the API can
-currently not guarantee that all updates are retrieved when ``changedSince``
-is set to ``dateLastUpdated`` of the last modified ad. That's why you should
-use ``dateLastUpdated`` - 1 minute. To determine whether an ad has changed
-compare the ``dateLastUpdated`` value.
-
-Unless you have a very small set of ads (< 10) do not retrieve all ads every
-time since this will not give you decent performance and also puts unnecessary
-load on the system.
-
-Parameters
-~~~~~~~~~~
-
-===============  ============     ============================================================================
-Name             Type             Description
-===============  ============     ============================================================================
-limit            int              Limits the number of records returned. Default **and** maximum is 100.
-pageToken        string           Skips the first N records.
-titleKeywords    string           Case-insensitive filter for a keyword in the title.
-status           string           Filters the result set by the ad status. Should be a comma separated list of ``[ACTIVE, DOMAIN_PENDING, SUSPENDED_BY_CS, DELETED, DELETED_BY_CS]``. Default value is ``ACTIVE, DOMAIN_PENDING, SUSPENDED_BY_CS``.
-orderBy          string           Orders the result set by the given field. Default value is ``DATE_CREATED``. See :ref:`order_by_v5`.
-direction        string           Determines the direction of the sort. Should be one of ``[ASCENDING, DESCENDING]``. Default is ``ASCENDING``.
-changedSince     date             Returns ads which have ``changedSince`` >= ``dateLastUpdated``.
-externalId       string           Only ads matching this externalId will be returned. Optional.
-categoryIds      list of ints     List of category id's to filter by. Only leaf category id's are useful, since ads can only be placed in leaf categories.
-adIds            list of ints     List of ad id's to filter by.
-===============  ============     ============================================================================
-
-.. _order_by_v5:
-
-Order By
-~~~~~~~~
-
-===================   =================================================
-Value                 Description
-===================   =================================================
-DATE_CREATED          Default. Will order ads by creation date.
-DATE_LAST_UPDATED     Will order ads by last modification date.
-STATUS                Will order ads by Status; This is an internally defined ordering intended to have ads requiring attention on top/bottom, depending on direction.
-TITLE                 Will order ads alphabetically by title
-===================   =================================================
-
-
-Errors
-~~~~~~
-
-====================    ====    =======================     ==============================================================================
-Field                   Code    Error message               Description
-====================    ====    =======================     ==============================================================================
-limit                   2001    invalid argument            not a valid number
-limit                   2002    out of range                less than 1 or greater than 100.
-titleKeywords           2004    value too short             must be 3 characters or more.
-status                  2001    invalid argument            not a recognised status to filter on
-orderBy                 2001    invalid argument            not a recognised orderBy to filter on
-direction               2001    invalid argument            not a recognised direction to filter on
-changedSince            2001    invalid argument            not a valid date
-changedSince            2002    out of range                date is in the future
-====================    ====    =======================     ==============================================================================
+    In addition, the response contains a field **statusReasons**. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+    This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
 
 Example
 -------
 
-.. include:: ../examples/get-ad-v5-example.rst
+.. include:: ../examples/get-ad-v4-example.rst
 
-Pagination Example
-------------------
-
-.. include:: ../examples/get-ad-v5-pagination-example.rst
 
 .. _get_ad_v3:
 
 GET /ad v3
 ----------
+
+.. warning::
+
+    :ref:`get_ad_v3` is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use :ref:`get_ad_v4`. If you were not
+    using ``startDate`` or ``endDate`` parameters in your calls the output will be the same in :ref:`get_ad_v4`.
 
 .. list-table::
  :widths: 20 80
@@ -152,12 +63,6 @@ GET /ad v3
 
 This URL returns a list of ads for the current user and the total size of the
 result set matching the filter criteria.
-
-.. warning::
-
-	This call is only compatible with :ref:`categories_v2` and must only
-	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
-	the attributes may not be recognized or editable.
 
 The number of ads returned can be limited with the ``limit`` parameter.
 The ``offset`` parameter allows to skip some ads and together with ``limit``
@@ -295,61 +200,3 @@ Example
 -------
 
 .. include:: ../examples/get-ad-v3-example.rst
-
-.. _get_ad_v2:
-
-GET /ad v2
-----------
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_ro`` or ``console_ro``
-
- * - Accept
-   - ``application/sellside.ad.list-v2+json, application/json``
-
-Version 2 works just like :ref:`get_ad_v3` except that it is only compatible with
-:ref:`categories_v1`.
-
-.. warning::
-
-	This call is deprecated and will be removed after September 2015.  It is
-	only compatible with :ref:`categories_v1` and must only be used with the
-	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
-	may not be recognized or editable.
-
-Example
--------
-
-.. include:: ../examples/get-ad-v2-example.rst
-
-.. _get_ad_v1:
-
-GET /ad v1
-----------
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_ro`` or ``console_ro``
-
- * - Accept
-   - ``application/sellside.ad.list-v1+json, application/json``
-
-Version 1 of this URL returns returns a list of ads.
-
-.. warning::
-
-	This call is deprecated and will be removed after September 2015.  It is
-	only compatible with :ref:`categories_v1` and must only be used with the
-	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
-	may not be recognized or editable.
-
-
-Example
-~~~~~~~
-
-.. include:: ../examples/get-ad-v1-example.rst

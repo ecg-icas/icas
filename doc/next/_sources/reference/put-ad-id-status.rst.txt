@@ -4,62 +4,6 @@
 PUT /ad/{id}/status
 ===================
 
-:ref:`put_ad_id_status_v5` | :ref:`put_ad_id_status_v1`
-
-.. _put_ad_id_status_v5:
-
-PUT /ad/{id}/status v5
-----------------------
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_rw`` or ``console_rw``
-
- * - Accept
-   - ``application/json``
-
-This URL updates the status of the ad with the given ``id``. If the ad does
-not exist or does not belong to the user the server returns **404 Not Found**.
-If the ``id`` is invalid, i.e. not a positive integer the server returns **400
-Bad Request**.
-
-To set the new status append it to the base url. The status can be one of the
-user controlled status values: either *ACTIVE* or *DELETED*.
-
-Parameters
-----------
-
-====================    ========    ========    ================================================================================
-Name                    Type        Default     Description
-====================    ========    ========    ================================================================================
-_validate               boolean     false       Validate the request without executing it.
-====================    ========    ========    ================================================================================
-
-Errors
-------
-
-====================    ====    ============================    ==============================================================================
-Field                   Code    Error message                   Description
-====================    ====    ============================    ==============================================================================
-id                      2001    invalid argument                not a valid number
-status                  2001    invalid argument                must be either *ACTIVE* or *DELETED*
-status                  2017    ad status change not allowed    changing the status of an ad is not allowed
-====================    ====    ============================    ==============================================================================
-
-Example
--------
-
-.. code-block:: javascript
-
-    PUT /ad/42/status/DELETED
-
-.. _put_ad_id_status_v1:
-
-PUT /ad/{id}/status v1
-----------------------
-
 .. list-table::
  :widths: 20 80
 
