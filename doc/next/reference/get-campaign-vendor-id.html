@@ -244,7 +244,7 @@
 <td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.campaign-v2+json,</span> <span class="pre">application/json</span></code></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.campaign-v2+json</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -282,6 +282,15 @@ Content-Type: application/sellside.campaign-v2+json
             &quot;limit&quot;: 2000,
             &quot;spent&quot;: 1000
         }
+    },
+    &quot;targeting&quot;: {
+        &quot;geos&quot;: [{
+            &quot;lat&quot;: 41.234,
+            &quot;lon&quot;: 54.678,
+            &quot;radius&quot;: 40,
+            &quot;displayValue&quot;: &quot;Amsterdam&quot;
+        }],
+        &quot;regionIds&quot;: []
     }
 }
 </pre></div>

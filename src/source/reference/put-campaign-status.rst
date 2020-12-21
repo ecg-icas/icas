@@ -11,9 +11,9 @@ PUT /campaign/{id}/status/{status}
    - ``api_rw`` or ``console_rw``
 
  * - Accept
-   - ``application/sellside.campaign.status-v2+json``
+   - ``application/sellside.campaign-v2+json``
 
 
-Updates the status for the specified campaign. Can be one of the user-controlled status values described in :ref:`User Controlled States <user-controlled-states>`. If successful, the server responds with `HTTP 200`.
+Updates the status for the specified campaign. Can be one of the user-controlled status values described in :ref:`User Controlled States <user-controlled-states>`. If successful, the server responds with `HTTP 200` and returns the full updated campaign payload.
 
 .. include:: ../examples/put-campaign-status-v2-example.rst

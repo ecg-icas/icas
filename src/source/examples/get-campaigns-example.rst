@@ -36,7 +36,8 @@
                             "radius": 10,
                             "displayValue": "Amsterdam"
                         }]
-                    }
+                    },
+                    "regionIds": []
                 }
             ]
         },
@@ -65,7 +66,8 @@
                             "radius": 10,
                             "displayValue": "Amsterdam"
                         }]
-                    }
+                    },
+                     "regionIds": []
                 }
             ]
         },

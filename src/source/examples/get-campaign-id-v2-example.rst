@@ -33,6 +33,7 @@
                 "lon": 54.678,
                 "radius": 40,
                 "displayValue": "Amsterdam"
-            }]
+            }],
+            "regionIds": []
         }
     }

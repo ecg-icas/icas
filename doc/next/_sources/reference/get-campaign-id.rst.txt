@@ -11,7 +11,7 @@ GET /campaign/{id}
    - ``api_ro`` or ``console_ro``
 
  * - Accept
-   - ``application/sellside.campaign-v2+json, application/json``
+   - ``application/sellside.campaign-v2+json``
 
 
 Returns a single campaign with the given ``id``.

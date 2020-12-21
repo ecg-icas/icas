@@ -1,7 +1,39 @@
 .. code-block:: javascript
 
-    PUT /api/sellside/campaign/123/status/PAUSED
-    Accept: application/sellside.campaign.status-v2+json; charset=utf-8
+    PUT /api/sellside/campaign/124512/status/PAUSED
+    Accept: application/sellside.campaign-v2+json
 
-    HTTP 200 OK
-    Content-Type: application/sellside.campaign.status-v2+json; charset=utf-8
+    200 OK
+    Content-Type: application/sellside.campaign-v2+json
+
+    {
+        "id": 124512,
+        "title": "2017 garden furniture high segment",
+        "dateCreated": "2016-02-03T15:35:33Z",
+        "dateLastUpdated": "2016-02-03T15:35:33Z",
+        "status": "PAUSED",
+        "vendorId: "201907-garden-furniture-II",
+        "budgets": {
+            "daily": {
+                "limit": -1,
+                "spent": 10
+            },
+            "monthly": {
+                "limit": -1,
+                "spent": 100
+            },
+            "total": {
+                "limit": 2000,
+                "spent": 1000
+            }
+        },
+        "targeting": {
+            "geos": [{
+                "lat": 41.234,
+                "lon": 54.678,
+                "radius": 40,
+                "displayValue": "Amsterdam"
+            }],
+            "regionIds": []
+        }
+    }
