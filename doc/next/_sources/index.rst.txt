@@ -30,6 +30,7 @@ Contents
 
    overview
    authentication
+   campaigns
    ads
    categories
    attributes
