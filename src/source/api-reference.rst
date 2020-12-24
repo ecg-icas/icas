@@ -37,6 +37,7 @@ API Reference
    reference/get-campaign-targeting
    reference/put-campaign-targeting
    reference/get-campaign-linkedads
+   reference/get-campaign-linkedad-funnel
    reference/put-campaign-linkedads
    reference/delete-campaign-linkedads
    reference/get-campaign-funnel
