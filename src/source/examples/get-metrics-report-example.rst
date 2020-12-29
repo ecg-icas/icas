@@ -1,10 +1,10 @@
 .. code-block:: javascript
 
     GET /api/sellside/metricsreport?startDate=2014-11-24&endDate=2014-11-25&status=ACTIVE,PAUSED
-    Accept: application/sellside.report-v3+json
+    Accept: application/sellside.metrics.ad-hit-v1+json
 
     200 OK
-    Content-Type: application/sellside.report-v3+json; charset=utf-8
+    Content-Type: application/sellside.metrics.ad-hit-v1+json
 
     {
       "createDate":"2014-12-05T14:47:04Z",

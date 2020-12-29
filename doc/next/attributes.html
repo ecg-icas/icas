@@ -128,7 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -235,31 +235,31 @@ In order to add attributes to an ad you need to supply user defined attributes (
 link. Each category attribute has a <strong>key</strong>, a <strong>label</strong>, a <strong>locale</strong> for the label and values,
 a <strong>type</strong> and depending on the type one or more additional properties describing the constraints.</p>
 <p>The following types are supported:</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>type</p></th>
-<th class="head"><p>description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>STRING</p></td>
-<td><p>User can select a single value from  <strong>values</strong></p></td>
+<tbody valign="top">
+<tr class="row-even"><td>STRING</td>
+<td>User can select a single value from  <strong>values</strong></td>
 </tr>
-<tr class="row-odd"><td><p>LIST</p></td>
-<td><p>User can select one or more values from <strong>values</strong></p></td>
+<tr class="row-odd"><td>LIST</td>
+<td>User can select one or more values from <strong>values</strong></td>
 </tr>
-<tr class="row-even"><td><p>NUMBER</p></td>
-<td><p>User can provide a number between <strong>minValue</strong> and <strong>maxValue</strong></p></td>
+<tr class="row-even"><td>NUMBER</td>
+<td>User can provide a number between <strong>minValue</strong> and <strong>maxValue</strong></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Levering&quot;</span><span class="p">,</span>
         <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Levering&quot;</span><span class="p">,</span>
@@ -313,7 +313,7 @@ the iCAS system will automatically start indexing the user-defined
 attributes and update the ads accordingly without user interaction.</p>
 <div class="section" id="id4">
 <h3>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;key&quot;</span> <span class="o">:</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span>
         <span class="s2">&quot;label&quot;</span> <span class="o">:</span> <span class="s2">&quot;kleur&quot;</span><span class="p">,</span>
@@ -347,38 +347,39 @@ attributes and update the ads accordingly without user interaction.</p>
 </pre></div>
 </div>
 <p>For user-defined attributes the following types are supported:</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 66%" />
+<col width="8%" />
+<col width="25%" />
+<col width="66%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>type</p></th>
-<th class="head"><p>constraints</p></th>
-<th class="head"><p>description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">constraints</th>
+<th class="head">description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>STRING</p></td>
-<td><p>max. 512 chars</p></td>
-<td><p>A single string value, e.g. “rood”</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>STRING</td>
+<td>max. 512 chars</td>
+<td>A single string value, e.g. &#8220;rood&#8221;</td>
 </tr>
-<tr class="row-odd"><td><p>LIST</p></td>
-<td><p>max. 512 chars <a class="footnote-reference brackets" href="#f1" id="id5">1</a></p></td>
-<td><p>A list of string or number values, e.g. [“S”, “M”, “L”, “XL”]</p></td>
+<tr class="row-odd"><td>LIST</td>
+<td>max. 512 chars <a class="footnote-reference" href="#f1" id="id5">[1]</a></td>
+<td>A list of string or number values, e.g. [&#8220;S&#8221;, &#8220;M&#8221;, &#8220;L&#8221;, &#8220;XL&#8221;]</td>
 </tr>
-<tr class="row-even"><td><p>NUMBER</p></td>
-<td><p>int or double</p></td>
-<td><p>A single number value, e.g. 1500 or 46.5</p></td>
+<tr class="row-even"><td>NUMBER</td>
+<td>int or double</td>
+<td>A single number value, e.g. 1500 or 46.5</td>
 </tr>
 </tbody>
 </table>
-<dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
-<dd><p>The JSON representation <strong>of the value</strong> of a <em>list</em> attribute must not exceed 512 characters.</p>
-</dd>
-</dl>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td>The JSON representation <strong>of the value</strong> of a <em>list</em> attribute must not exceed 512 characters.</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -430,7 +431,6 @@ attributes and update the ads accordingly without user interaction.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/language_data.js"></script>
 
   
 

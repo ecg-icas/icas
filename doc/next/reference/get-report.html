@@ -129,7 +129,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -224,28 +224,28 @@
   <div class="section" id="get-report">
 <span id="index-0"></span><span id="id1"></span><h1>GET /report<a class="headerlink" href="#get-report" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This call is scheduled to be deprecated. Please
+<p class="first admonition-title">Warning</p>
+<p class="last">This call is scheduled to be deprecated. Please
 use the faster replacement <a class="reference internal" href="get-metrics-report.html#get-metrics-report"><span class="std std-ref">GET /metrics/report</span></a> or the more flexible generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead.
 Keep in mind that the new endpoint only returns data for <strong>ads which have had performance-related activity in the requested period</strong>.</p>
 </div>
 <p><a class="reference internal" href="#v3">v3</a> | <a class="reference internal" href="#v2">v2</a> | <a class="reference internal" href="#v1">v1</a></p>
 <div class="section" id="v3">
 <span id="get-report-v3"></span><h2>v3<a class="headerlink" href="#v3" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
+<col width="20%" />
+<col width="80%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Scope</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Accept</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.report-v3+json,</span> <span class="pre">application/json</span></code></p></td>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.report-v3+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Content-Type</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.report-v3+json</span></code></p></td>
+<tr class="row-odd"><td>Content-Type</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.report-v3+json</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -253,204 +253,204 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
 report contains statistics for performance events like impressions, clicks,
 url clicks, emails for all ads which match the filter criteria.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The V3 endpoint replaces the V2 endpoint. Please move to V3 if you are
+<p class="first admonition-title">Note</p>
+<p class="last">The V3 endpoint replaces the V2 endpoint. Please move to V3 if you are
 still using V2.</p>
 </div>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 14%" />
-<col style="width: 5%" />
-<col style="width: 68%" />
+<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="68%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Info</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>startDate</p></td>
-<td><p>“2014-11-24”</p></td>
-<td><p>string</p></td>
-<td><p>Report start date</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>startDate</td>
+<td>&#8220;2014-11-24&#8221;</td>
+<td>string</td>
+<td>Report start date</td>
 </tr>
-<tr class="row-odd"><td><p>endDate</p></td>
-<td><p>“2014-11-24”</p></td>
-<td><p>string</p></td>
-<td><p>Report end date (inclusive)</p></td>
+<tr class="row-odd"><td>endDate</td>
+<td>&#8220;2014-11-24&#8221;</td>
+<td>string</td>
+<td>Report end date (inclusive)</td>
 </tr>
-<tr class="row-even"><td><p>adIds</p></td>
-<td><p>“1,2,3”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of ad id’s which to filter the result set on. Optional, default empty to include data for all ads.</p></td>
+<tr class="row-even"><td>adIds</td>
+<td>&#8220;1,2,3&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of ad id&#8217;s which to filter the result set on. Optional, default empty to include data for all ads.</td>
 </tr>
-<tr class="row-odd"><td><p>status</p></td>
-<td><p>“ACTIVE,DELETED”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of ad statuses which to filter the result set on. Optional, default is ACTIVE.</p></td>
+<tr class="row-odd"><td>status</td>
+<td>&#8220;ACTIVE,DELETED&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of ad statuses which to filter the result set on. Optional, default is ACTIVE.</td>
 </tr>
-<tr class="row-even"><td><p>_include</p></td>
-<td><p>“totalSpent,title”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of fields to include. Optional, default is all fields.</p></td>
+<tr class="row-even"><td>_include</td>
+<td>&#8220;totalSpent,title&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of fields to include. Optional, default is all fields.</td>
 </tr>
-<tr class="row-odd"><td><p>_exclude</p></td>
-<td><p>“totalSpent,title”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of fields to omit. Optional, default empty.</p></td>
+<tr class="row-odd"><td>_exclude</td>
+<td>&#8220;totalSpent,title&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of fields to omit. Optional, default empty.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="fields">
 <h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 19%" />
-<col style="width: 6%" />
-<col style="width: 57%" />
+<col width="18%" />
+<col width="19%" />
+<col width="6%" />
+<col width="57%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Info</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>createDate</p></td>
-<td><p>“2014-12-05T16:12:53Z”</p></td>
-<td><p>dateTime</p></td>
-<td><p>The date/time this report call got requested.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>createDate</td>
+<td>&#8220;2014-12-05T16:12:53Z&#8221;</td>
+<td>dateTime</td>
+<td>The date/time this report call got requested.</td>
 </tr>
-<tr class="row-odd"><td><p>startDate</p></td>
-<td><p>“2014-11-23”</p></td>
-<td><p>string</p></td>
-<td><p>The start of the period this report covers.</p></td>
+<tr class="row-odd"><td>startDate</td>
+<td>&#8220;2014-11-23&#8221;</td>
+<td>string</td>
+<td>The start of the period this report covers.</td>
 </tr>
-<tr class="row-even"><td><p>endDate</p></td>
-<td><p>“2014-11-24”</p></td>
-<td><p>string</p></td>
-<td><p>The end of the period this report covers.</p></td>
+<tr class="row-even"><td>endDate</td>
+<td>&#8220;2014-11-24&#8221;</td>
+<td>string</td>
+<td>The end of the period this report covers.</td>
 </tr>
-<tr class="row-odd"><td><p>data</p></td>
-<td><p>see below</p></td>
-<td><p>array</p></td>
-<td><p>The report data; each element in this array represents the data for an ad.</p></td>
+<tr class="row-odd"><td>data</td>
+<td>see below</td>
+<td>array</td>
+<td>The report data; each element in this array represents the data for an ad.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="data-contents">
 <h2>Data contents<a class="headerlink" href="#data-contents" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 4%" />
-<col style="width: 69%" />
+<col width="13%" />
+<col width="13%" />
+<col width="4%" />
+<col width="69%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Info</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>adId</p></td>
-<td><p>12</p></td>
-<td><p>long</p></td>
-<td><p>Id of the ad to which the report row belongs to.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>adId</td>
+<td>12</td>
+<td>long</td>
+<td>Id of the ad to which the report row belongs to.</td>
 </tr>
-<tr class="row-odd"><td><p>categoryId</p></td>
-<td><p>631</p></td>
-<td><p>int</p></td>
-<td><p>Category id of the ad.</p></td>
+<tr class="row-odd"><td>categoryId</td>
+<td>631</td>
+<td>int</td>
+<td>Category id of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>title</p></td>
-<td><p>“Brother Fax voor 99,99”</p></td>
-<td><p>string</p></td>
-<td><p>Title of the ad.</p></td>
+<tr class="row-even"><td>title</td>
+<td>&#8220;Brother Fax voor 99,99&#8221;</td>
+<td>string</td>
+<td>Title of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>startDate</p></td>
-<td><p>“2012-08-31T16:12:53Z”</p></td>
-<td><p>date</p></td>
-<td><p>Creation date of the ad.</p></td>
+<tr class="row-odd"><td>startDate</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Creation date of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>endDate</p></td>
-<td><p>“2012-08-31T16:12:53Z”</p></td>
-<td><p>date</p></td>
-<td><p>Deletion date of the ad if the ad is deleted, null otherwise.</p></td>
+<tr class="row-even"><td>endDate</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Deletion date of the ad if the ad is deleted, null otherwise.</td>
 </tr>
-<tr class="row-odd"><td><p>totalBudget</p></td>
-<td><p>5000</p></td>
-<td><p>long</p></td>
-<td><p>Total budget of the ad.</p></td>
+<tr class="row-odd"><td>totalBudget</td>
+<td>5000</td>
+<td>long</td>
+<td>Total budget of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>dailyLimit</p></td>
-<td><p>2000</p></td>
-<td><p>long</p></td>
-<td><p>Daily limit of the ad.</p></td>
+<tr class="row-even"><td>dailyLimit</td>
+<td>2000</td>
+<td>long</td>
+<td>Daily limit of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>totalSpent</p></td>
-<td><p>2000</p></td>
-<td><p>long</p></td>
-<td><p>Total amount spent for this ad.</p></td>
+<tr class="row-odd"><td>totalSpent</td>
+<td>2000</td>
+<td>long</td>
+<td>Total amount spent for this ad.</td>
 </tr>
-<tr class="row-even"><td><p>cpc</p></td>
-<td><p>12</p></td>
-<td><p>int</p></td>
-<td><p>Cpc of the ad.</p></td>
+<tr class="row-even"><td>cpc</td>
+<td>12</td>
+<td>int</td>
+<td>Cpc of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>impressions</p></td>
-<td><p>40</p></td>
-<td><p>long</p></td>
-<td><p>Number of impressions this ad received.</p></td>
+<tr class="row-odd"><td>impressions</td>
+<td>40</td>
+<td>long</td>
+<td>Number of impressions this ad received.</td>
 </tr>
-<tr class="row-even"><td><p>clicks</p></td>
-<td><p>10</p></td>
-<td><p>long</p></td>
-<td><p>Number of clicks this ad received.</p></td>
+<tr class="row-even"><td>clicks</td>
+<td>10</td>
+<td>long</td>
+<td>Number of clicks this ad received.</td>
 </tr>
-<tr class="row-odd"><td><p>urlClicks</p></td>
-<td><p>3</p></td>
-<td><p>int</p></td>
-<td><p>Number of url clicks this ad received.</p></td>
+<tr class="row-odd"><td>urlClicks</td>
+<td>3</td>
+<td>int</td>
+<td>Number of url clicks this ad received.</td>
 </tr>
-<tr class="row-even"><td><p>emails</p></td>
-<td><p>2</p></td>
-<td><p>int</p></td>
-<td><p>Number of email requests this ad received.</p></td>
+<tr class="row-even"><td>emails</td>
+<td>2</td>
+<td>int</td>
+<td>Number of email requests this ad received.</td>
 </tr>
-<tr class="row-odd"><td><p>externalId</p></td>
-<td><p>“c3po-r2d2”</p></td>
-<td><p>string</p></td>
-<td><p>External id of the ad.</p></td>
+<tr class="row-odd"><td>externalId</td>
+<td>&#8220;c3po-r2d2&#8221;</td>
+<td>string</td>
+<td>External id of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>vendorId</p></td>
-<td><p>“vndr”</p></td>
-<td><p>string</p></td>
-<td><p>Vendor id of the ad.</p></td>
+<tr class="row-even"><td>vendorId</td>
+<td>&#8220;vndr&#8221;</td>
+<td>string</td>
+<td>Vendor id of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>engagement</p></td>
-<td><p>5</p></td>
-<td><p>int</p></td>
-<td><p>Engagement count of the ad. Depending on the tenant, this could be the same as urlClicks, or a summation of several metrics.</p></td>
+<tr class="row-odd"><td>engagement</td>
+<td>5</td>
+<td>int</td>
+<td>Engagement count of the ad. Depending on the tenant, this could be the same as urlClicks, or a summation of several metrics.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -487,23 +487,23 @@ still using V2.</p>
 <div class="section" id="v2">
 <span id="get-report-v2"></span><h2>v2<a class="headerlink" href="#v2" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>V2 is deprecated. Date of removal is still TBD.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">V2 is deprecated. Date of removal is still TBD.</p>
 </div>
-<table class="colwidths-given docutils align-default">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
+<col width="20%" />
+<col width="80%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Scope</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Accept</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.report-v2+json,</span> <span class="pre">application/json</span></code></p></td>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.report-v2+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
-<tr class="row-odd"><td><p>Content-Type</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.report-v2+json</span></code></p></td>
+<tr class="row-odd"><td>Content-Type</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.report-v2+json</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -511,199 +511,199 @@ still using V2.</p>
 report contains statistics for performance events like impressions, clicks,
 url clicks, emails for all ads which match the filter criteria.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Contrary to the rest of the API all dates are in <strong>GMT+1</strong> timezone.
+<p class="first admonition-title">Note</p>
+<p class="last">Contrary to the rest of the API all dates are in <strong>GMT+1</strong> timezone.
 This will be fixed in a later release.</p>
 </div>
 </div>
 <div class="section" id="id2">
 <h2>Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 14%" />
-<col style="width: 5%" />
-<col style="width: 68%" />
+<col width="13%" />
+<col width="14%" />
+<col width="5%" />
+<col width="68%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Info</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>startDate</p></td>
-<td><p>“2014-11-24”</p></td>
-<td><p>string</p></td>
-<td><p>Report start date</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>startDate</td>
+<td>&#8220;2014-11-24&#8221;</td>
+<td>string</td>
+<td>Report start date</td>
 </tr>
-<tr class="row-odd"><td><p>endDate</p></td>
-<td><p>“2014-11-24”</p></td>
-<td><p>string</p></td>
-<td><p>Report end date (inclusive)</p></td>
+<tr class="row-odd"><td>endDate</td>
+<td>&#8220;2014-11-24&#8221;</td>
+<td>string</td>
+<td>Report end date (inclusive)</td>
 </tr>
-<tr class="row-even"><td><p>adIds</p></td>
-<td><p>“1,2,3”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of ad id’s which to filter the result set on. Optional, default empty to include data for all ads.</p></td>
+<tr class="row-even"><td>adIds</td>
+<td>&#8220;1,2,3&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of ad id&#8217;s which to filter the result set on. Optional, default empty to include data for all ads.</td>
 </tr>
-<tr class="row-odd"><td><p>status</p></td>
-<td><p>“ACTIVE,DELETED”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of ad statuses which to filter the result set on. Optional, default is ACTIVE.</p></td>
+<tr class="row-odd"><td>status</td>
+<td>&#8220;ACTIVE,DELETED&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of ad statuses which to filter the result set on. Optional, default is ACTIVE.</td>
 </tr>
-<tr class="row-even"><td><p>_include</p></td>
-<td><p>“totalSpent,title”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of fields to include. Optional, default is all fields.</p></td>
+<tr class="row-even"><td>_include</td>
+<td>&#8220;totalSpent,title&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of fields to include. Optional, default is all fields.</td>
 </tr>
-<tr class="row-odd"><td><p>_exclude</p></td>
-<td><p>“totalSpent,title”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of fields to omit. Optional, default empty.</p></td>
+<tr class="row-odd"><td>_exclude</td>
+<td>&#8220;totalSpent,title&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of fields to omit. Optional, default empty.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id3">
 <h2>Fields<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 19%" />
-<col style="width: 6%" />
-<col style="width: 57%" />
+<col width="18%" />
+<col width="19%" />
+<col width="6%" />
+<col width="57%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Info</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>createDate</p></td>
-<td><p>“2014-12-05T16:12:53Z”</p></td>
-<td><p>dateTime</p></td>
-<td><p>The date/time this report call got requested.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>createDate</td>
+<td>&#8220;2014-12-05T16:12:53Z&#8221;</td>
+<td>dateTime</td>
+<td>The date/time this report call got requested.</td>
 </tr>
-<tr class="row-odd"><td><p>startDate</p></td>
-<td><p>“2014-11-23T01:00:00Z”</p></td>
-<td><p>dateTime</p></td>
-<td><p>The start of the period this report covers.</p></td>
+<tr class="row-odd"><td>startDate</td>
+<td>&#8220;2014-11-23T01:00:00Z&#8221;</td>
+<td>dateTime</td>
+<td>The start of the period this report covers.</td>
 </tr>
-<tr class="row-even"><td><p>endDate</p></td>
-<td><p>“2014-11-24T01:00:00Z”</p></td>
-<td><p>dateTime</p></td>
-<td><p>The end of the period this report covers.</p></td>
+<tr class="row-even"><td>endDate</td>
+<td>&#8220;2014-11-24T01:00:00Z&#8221;</td>
+<td>dateTime</td>
+<td>The end of the period this report covers.</td>
 </tr>
-<tr class="row-odd"><td><p>data</p></td>
-<td><p>see below</p></td>
-<td><p>array</p></td>
-<td><p>The report data; each element in this array represents the data for an ad.</p></td>
+<tr class="row-odd"><td>data</td>
+<td>see below</td>
+<td>array</td>
+<td>The report data; each element in this array represents the data for an ad.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id4">
 <h2>Data contents<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 21%" />
-<col style="width: 7%" />
-<col style="width: 53%" />
+<col width="20%" />
+<col width="21%" />
+<col width="7%" />
+<col width="53%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Info</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>adId</p></td>
-<td><p>12</p></td>
-<td><p>long</p></td>
-<td><p>Id of the ad to which the report row belongs to.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>adId</td>
+<td>12</td>
+<td>long</td>
+<td>Id of the ad to which the report row belongs to.</td>
 </tr>
-<tr class="row-odd"><td><p>categoryId</p></td>
-<td><p>631</p></td>
-<td><p>int</p></td>
-<td><p>Category id of the ad.</p></td>
+<tr class="row-odd"><td>categoryId</td>
+<td>631</td>
+<td>int</td>
+<td>Category id of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>title</p></td>
-<td><p>“Brother Fax voor 99,99”</p></td>
-<td><p>string</p></td>
-<td><p>Title of the ad.</p></td>
+<tr class="row-even"><td>title</td>
+<td>&#8220;Brother Fax voor 99,99&#8221;</td>
+<td>string</td>
+<td>Title of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>startDate</p></td>
-<td><p>“2012-08-31T16:12:53Z”</p></td>
-<td><p>date</p></td>
-<td><p>Creation date of the ad.</p></td>
+<tr class="row-odd"><td>startDate</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Creation date of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>endDate</p></td>
-<td><p>“2012-08-31T16:12:53Z”</p></td>
-<td><p>date</p></td>
-<td><p>Deletion date of the ad if the ad is deleted, null otherwise.</p></td>
+<tr class="row-even"><td>endDate</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Deletion date of the ad if the ad is deleted, null otherwise.</td>
 </tr>
-<tr class="row-odd"><td><p>totalBudget</p></td>
-<td><p>5000</p></td>
-<td><p>long</p></td>
-<td><p>Total budget of the ad.</p></td>
+<tr class="row-odd"><td>totalBudget</td>
+<td>5000</td>
+<td>long</td>
+<td>Total budget of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>dailyLimit</p></td>
-<td><p>2000</p></td>
-<td><p>long</p></td>
-<td><p>Daily limit of the ad.</p></td>
+<tr class="row-even"><td>dailyLimit</td>
+<td>2000</td>
+<td>long</td>
+<td>Daily limit of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>totalSpent</p></td>
-<td><p>2000</p></td>
-<td><p>long</p></td>
-<td><p>Total amount spent for this ad.</p></td>
+<tr class="row-odd"><td>totalSpent</td>
+<td>2000</td>
+<td>long</td>
+<td>Total amount spent for this ad.</td>
 </tr>
-<tr class="row-even"><td><p>cpc</p></td>
-<td><p>12</p></td>
-<td><p>int</p></td>
-<td><p>Cpc of the ad.</p></td>
+<tr class="row-even"><td>cpc</td>
+<td>12</td>
+<td>int</td>
+<td>Cpc of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>impressions</p></td>
-<td><p>40</p></td>
-<td><p>long</p></td>
-<td><p>Number of impressions this ad received.</p></td>
+<tr class="row-odd"><td>impressions</td>
+<td>40</td>
+<td>long</td>
+<td>Number of impressions this ad received.</td>
 </tr>
-<tr class="row-even"><td><p>clicks</p></td>
-<td><p>10</p></td>
-<td><p>long</p></td>
-<td><p>Number of clicks this ad received.</p></td>
+<tr class="row-even"><td>clicks</td>
+<td>10</td>
+<td>long</td>
+<td>Number of clicks this ad received.</td>
 </tr>
-<tr class="row-odd"><td><p>urlClicks</p></td>
-<td><p>3</p></td>
-<td><p>int</p></td>
-<td><p>Number of url clicks this ad received.</p></td>
+<tr class="row-odd"><td>urlClicks</td>
+<td>3</td>
+<td>int</td>
+<td>Number of url clicks this ad received.</td>
 </tr>
-<tr class="row-even"><td><p>emails</p></td>
-<td><p>2</p></td>
-<td><p>int</p></td>
-<td><p>Number of email requests this ad received.</p></td>
+<tr class="row-even"><td>emails</td>
+<td>2</td>
+<td>int</td>
+<td>Number of email requests this ad received.</td>
 </tr>
-<tr class="row-odd"><td><p>externalId</p></td>
-<td><p>“c3po-r2d2”</p></td>
-<td><p>string</p></td>
-<td><p>External id of the ad.</p></td>
+<tr class="row-odd"><td>externalId</td>
+<td>&#8220;c3po-r2d2&#8221;</td>
+<td>string</td>
+<td>External id of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>vendorId</p></td>
-<td><p>“vndr”</p></td>
-<td><p>string</p></td>
-<td><p>Vendor id of the ad.</p></td>
+<tr class="row-even"><td>vendorId</td>
+<td>&#8220;vndr&#8221;</td>
+<td>string</td>
+<td>Vendor id of the ad.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id5">
 <h2>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -738,17 +738,17 @@ This will be fixed in a later release.</p>
 </div>
 <div class="section" id="v1">
 <span id="get-report-v1"></span><h2>v1<a class="headerlink" href="#v1" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
+<col width="20%" />
+<col width="80%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Scope</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">api_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
-<tr class="row-even"><td><p>Accept</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.report-v1+json,</span> <span class="pre">application/json</span></code></p></td>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.report-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -756,152 +756,152 @@ This will be fixed in a later release.</p>
 report contains statistics for performance events like impressions, clicks,
 url clicks, emails for all ads which received at least one event that day.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Version 1 is deprecated and will be removed after September 2015.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">Version 1 is deprecated and will be removed after September 2015.</p>
 </div>
 <div class="section" id="id6">
 <h3>Parameters<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 6%" />
-<col style="width: 58%" />
+<col width="18%" />
+<col width="18%" />
+<col width="6%" />
+<col width="58%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Info</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>date</p></td>
-<td><p>“2014-01-30”</p></td>
-<td><p>string</p></td>
-<td><p>Report date.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>date</td>
+<td>&#8220;2014-01-30&#8221;</td>
+<td>string</td>
+<td>Report date.</td>
 </tr>
-<tr class="row-odd"><td><p>_include</p></td>
-<td><p>“id,date,title”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of fields to include. Optional, default is all fields.</p></td>
+<tr class="row-odd"><td>_include</td>
+<td>&#8220;id,date,title&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of fields to include. Optional, default is all fields.</td>
 </tr>
-<tr class="row-even"><td><p>_exclude</p></td>
-<td><p>“id,date,title”</p></td>
-<td><p>string</p></td>
-<td><p>Comma-separated-list of fields to omit. Optional, default empty.</p></td>
+<tr class="row-even"><td>_exclude</td>
+<td>&#8220;id,date,title&#8221;</td>
+<td>string</td>
+<td>Comma-separated-list of fields to omit. Optional, default empty.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id7">
 <h3>Fields<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 21%" />
-<col style="width: 7%" />
-<col style="width: 53%" />
+<col width="20%" />
+<col width="21%" />
+<col width="7%" />
+<col width="53%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Info</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+<th class="head">Type</th>
+<th class="head">Info</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>id</p></td>
-<td><p>42</p></td>
-<td><p>long</p></td>
-<td><p>Id of the report row.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>42</td>
+<td>long</td>
+<td>Id of the report row.</td>
 </tr>
-<tr class="row-odd"><td><p>date</p></td>
-<td><p>“2012-08-31T16:12:53Z”</p></td>
-<td><p>date</p></td>
-<td><p>Date of the report.</p></td>
+<tr class="row-odd"><td>date</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Date of the report.</td>
 </tr>
-<tr class="row-even"><td><p>adId</p></td>
-<td><p>12</p></td>
-<td><p>long</p></td>
-<td><p>Id of the ad to which the report row belongs to.</p></td>
+<tr class="row-even"><td>adId</td>
+<td>12</td>
+<td>long</td>
+<td>Id of the ad to which the report row belongs to.</td>
 </tr>
-<tr class="row-odd"><td><p>categoryId</p></td>
-<td><p>631</p></td>
-<td><p>int</p></td>
-<td><p>Category id of the ad.</p></td>
+<tr class="row-odd"><td>categoryId</td>
+<td>631</td>
+<td>int</td>
+<td>Category id of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>title</p></td>
-<td><p>“Brother Fax voor 99,99”</p></td>
-<td><p>string</p></td>
-<td><p>Title of the ad.</p></td>
+<tr class="row-even"><td>title</td>
+<td>&#8220;Brother Fax voor 99,99&#8221;</td>
+<td>string</td>
+<td>Title of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>startDate</p></td>
-<td><p>“2012-08-31T16:12:53Z”</p></td>
-<td><p>date</p></td>
-<td><p>Creation date of the ad.</p></td>
+<tr class="row-odd"><td>startDate</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Creation date of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>endDate</p></td>
-<td><p>“2012-08-31T16:12:53Z”</p></td>
-<td><p>date</p></td>
-<td><p>Deletion date of the ad if the ad is deleted, null otherwise.</p></td>
+<tr class="row-even"><td>endDate</td>
+<td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
+<td>date</td>
+<td>Deletion date of the ad if the ad is deleted, null otherwise.</td>
 </tr>
-<tr class="row-odd"><td><p>totalBudget</p></td>
-<td><p>5000</p></td>
-<td><p>long</p></td>
-<td><p>Total budget of the ad.</p></td>
+<tr class="row-odd"><td>totalBudget</td>
+<td>5000</td>
+<td>long</td>
+<td>Total budget of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>dailyLimit</p></td>
-<td><p>2000</p></td>
-<td><p>long</p></td>
-<td><p>Daily limit of the ad.</p></td>
+<tr class="row-even"><td>dailyLimit</td>
+<td>2000</td>
+<td>long</td>
+<td>Daily limit of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>totalSpent</p></td>
-<td><p>2000</p></td>
-<td><p>long</p></td>
-<td><p>Total amount spent for this ad.</p></td>
+<tr class="row-odd"><td>totalSpent</td>
+<td>2000</td>
+<td>long</td>
+<td>Total amount spent for this ad.</td>
 </tr>
-<tr class="row-even"><td><p>cpc</p></td>
-<td><p>12</p></td>
-<td><p>int</p></td>
-<td><p>Cpc of the ad.</p></td>
+<tr class="row-even"><td>cpc</td>
+<td>12</td>
+<td>int</td>
+<td>Cpc of the ad.</td>
 </tr>
-<tr class="row-odd"><td><p>impressions</p></td>
-<td><p>40</p></td>
-<td><p>long</p></td>
-<td><p>Number of impressions this ad received.</p></td>
+<tr class="row-odd"><td>impressions</td>
+<td>40</td>
+<td>long</td>
+<td>Number of impressions this ad received.</td>
 </tr>
-<tr class="row-even"><td><p>clicks</p></td>
-<td><p>10</p></td>
-<td><p>long</p></td>
-<td><p>Number of clicks this ad received.</p></td>
+<tr class="row-even"><td>clicks</td>
+<td>10</td>
+<td>long</td>
+<td>Number of clicks this ad received.</td>
 </tr>
-<tr class="row-odd"><td><p>urlClicks</p></td>
-<td><p>3</p></td>
-<td><p>int</p></td>
-<td><p>Number of url clicks this ad received.</p></td>
+<tr class="row-odd"><td>urlClicks</td>
+<td>3</td>
+<td>int</td>
+<td>Number of url clicks this ad received.</td>
 </tr>
-<tr class="row-even"><td><p>emails</p></td>
-<td><p>2</p></td>
-<td><p>int</p></td>
-<td><p>Number of email requests this ad received.</p></td>
+<tr class="row-even"><td>emails</td>
+<td>2</td>
+<td>int</td>
+<td>Number of email requests this ad received.</td>
 </tr>
-<tr class="row-odd"><td><p>externalId</p></td>
-<td><p>“c3po-r2d2”</p></td>
-<td><p>string</p></td>
-<td><p>External id of the ad.</p></td>
+<tr class="row-odd"><td>externalId</td>
+<td>&#8220;c3po-r2d2&#8221;</td>
+<td>string</td>
+<td>External id of the ad.</td>
 </tr>
-<tr class="row-even"><td><p>vendorId</p></td>
-<td><p>“vndr”</p></td>
-<td><p>string</p></td>
-<td><p>Vendor id of the ad.</p></td>
+<tr class="row-even"><td>vendorId</td>
+<td>&#8220;vndr&#8221;</td>
+<td>string</td>
+<td>Vendor id of the ad.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id8">
 <h3>Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">report</span><span class="o">/?</span><span class="nx">date</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">30</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">report</span><span class="o">/?</span><span class="nx">date</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">30</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
@@ -1000,7 +1000,6 @@ url clicks, emails for all ads which received at least one event that day.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 
