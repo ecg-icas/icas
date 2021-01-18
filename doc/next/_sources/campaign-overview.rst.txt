@@ -74,8 +74,9 @@ of the user-controlled states *ACTIVE*, *PAUSED* or *DELETED*. *DELETED* is a fi
 Campaign budgets
 """"""""""""""""
 
-Campaigns can have multiple types of budgets, see :ref:`campaign_budgets_overview`. Budgets are seen as limiting factors, meaning that, as soon
-as one runs out, all ads of this campaign will be taken offline until budget(s) becomes available.
+Campaigns have multiple types of budgets, see :ref:`campaign_budgets_overview`. Budgets are seen as limiting factors, meaning that, as soon
+as one runs out, all ads of this campaign will be taken offline until budget(s) becomes available. Campaign budgets **must be defined**, even if they are set to *unlimited*.
+Absence of campaign budgets means that the ads will not be live.
 
 .. _campaign_targeting:
 
