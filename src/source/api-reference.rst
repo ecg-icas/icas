@@ -47,4 +47,6 @@ API Reference
    reference/get-metrics-report
    reference/post-metrics-data
    reference/get-user
+   reference/ad-status
+   reference/price-types
    reference/error-codes

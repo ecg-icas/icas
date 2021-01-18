@@ -195,6 +195,8 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -265,7 +267,7 @@ other cases where data got lost at the client.</p>
 </div>
 <p>The number of ads returned can be limited with the <code class="docutils literal"><span class="pre">limit</span></code> parameter.
 The <code class="docutils literal"><span class="pre">offset</span></code> parameter allows to skip some ads and together with <code class="docutils literal"><span class="pre">limit</span></code>
-allows for pagination. The <code class="docutils literal"><span class="pre">status</span></code> parameter acts as a filter for ads in <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a> and
+allows for pagination. The <code class="docutils literal"><span class="pre">status</span></code> parameter acts as a filter for ads in <a class="reference internal" href="ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a> and
 has default value <code class="docutils literal"><span class="pre">ACTIVE</span></code>.</p>
 <div class="section" id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
@@ -284,7 +286,7 @@ has default value <code class="docutils literal"><span class="pre">ACTIVE</span>
 <tbody valign="top">
 <tr class="row-even"><td>status</td>
 <td>string</td>
-<td>One of <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>. Default <code class="docutils literal"><span class="pre">ACTIVE</span></code>.</td>
+<td>One of <a class="reference internal" href="ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>. Default <code class="docutils literal"><span class="pre">ACTIVE</span></code>.</td>
 </tr>
 <tr class="row-odd"><td>limit</td>
 <td>int</td>

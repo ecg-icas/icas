@@ -195,6 +195,8 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -382,13 +384,13 @@ the current number of active ads for the same user in this category exceeds
 Ads with <strong>status</strong> equals to <strong>PAUSED</strong> do not have this restriction.</p>
 <p>The <strong>currency</strong> must be set to <strong>EUR</strong> and all price amounts must be
 specified in euro cents.</p>
-<p>The <strong>priceType</strong> must be one of the valid types listed in <span class="xref doc">price-types</span>.
+<p>The <strong>priceType</strong> must be one of the valid types listed in <a class="reference internal" href="price-types.html"><span class="doc">Price Types</span></a>.
 If the <strong>priceType</strong> is either <strong>FIXED_PRICE</strong> or <strong>BIDDING_FROM</strong> then a
 <strong>price</strong> in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code> must be specified. For all
 other price types <strong>price</strong> must be omitted.</p>
 <p>A new ad must have a <strong>status</strong> which can be either <em>ACTIVE</em> or <em>PAUSED</em>. An
 active ad is shown on the site whereas a paused ad is not. See
-<span class="xref doc">ad-status</span> for the list of valid ad status values.</p>
+<a class="reference internal" href="ad-status.html"><span class="doc">Ad Status</span></a> for the list of valid ad status values.</p>
 <p>The <strong>cpc</strong> is a mandatory field whose value depends on
 the category. The <strong>totalbudget</strong> and <strong>dailyBudget</strong> are optional fields whose value
 depend on the category. Omitting them will remove budget limits for this ad.

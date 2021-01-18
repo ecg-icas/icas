@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ad Status &mdash; iCAS Sellside API 0.119 documentation</title>
+  <title>&lt;no title&gt; &mdash; iCAS Sellside API 0.119 documentation</title>
   
 
   
@@ -192,6 +192,8 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -219,10 +221,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Ad Status</li>
+    <li>&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/ad-status.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/campaign-restrictions.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -230,47 +232,16 @@
 </div>
           <div role="main">
             
-  <div class="section" id="ad-status">
-<span id="ad-status-overview"></span><h1>Ad Status<a class="headerlink" href="#ad-status" title="Permalink to this headline">¶</a></h1>
-<p>Each advertisement can be in one of the following states. Some of the states can be set by the user, others
-are set by the system or by customer service.</p>
-<div class="section" id="user-controlled-states">
-<h2>User Controlled States<a class="headerlink" href="#user-controlled-states" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="active">
-<span id="ad-status-active"></span><span id="index-0"></span><h3>ACTIVE<a class="headerlink" href="#active" title="Permalink to this headline">¶</a></h3>
-<p>The ad is shown on the site.</p>
-</div>
-<div class="section" id="paused">
-<span id="ad-status-paused"></span><span id="index-1"></span><h3>PAUSED<a class="headerlink" href="#paused" title="Permalink to this headline">¶</a></h3>
-<p>The ad is not shown on the site and can be re-activated.</p>
-</div>
-<div class="section" id="deleted">
-<span id="ad-status-deleted"></span><span id="index-2"></span><h3>DELETED<a class="headerlink" href="#deleted" title="Permalink to this headline">¶</a></h3>
-<p>The ad has been deleted by the user and cannot be re-activated.</p>
-</div>
-</div>
-<div class="section" id="customer-service-states">
-<h2>Customer Service States<a class="headerlink" href="#customer-service-states" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="deleted-by-cs">
-<span id="ad-status-deleted-by-cs"></span><span id="index-3"></span><h3>DELETED_BY_CS<a class="headerlink" href="#deleted-by-cs" title="Permalink to this headline">¶</a></h3>
-<p>The ad has been deleted by Customer Service and cannot be re-activated by the user. The seller should have received an email with an explanation for this status change.</p>
-</div>
-<div class="section" id="suspended-by-cs">
-<span id="ad-status-suspended-by-cs"></span><span id="index-4"></span><h3>SUSPENDED_BY_CS<a class="headerlink" href="#suspended-by-cs" title="Permalink to this headline">¶</a></h3>
-<p>The ad has been paused by Customer Service and can be re-activated by the user by updating the ad to comply to the terms and conditions. The seller should have received an email with an explanation for this status change.</p>
-</div>
-</div>
-<div class="section" id="system-states">
-<h2>System States<a class="headerlink" href="#system-states" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="budget-reached">
-<span id="ad-status-budget-reached"></span><span id="index-5"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this headline">¶</a></h3>
-<p>The <strong>ad.spentBudget</strong> has reached the <strong>ad.totalBudget</strong>. Therefore the ad is no longer shown on the site.</p>
-</div>
-<div class="section" id="daily-budget-reached">
-<span id="ad-status-daily-budget-reached"></span><span id="index-6"></span><h3>DAILY_BUDGET_REACHED<a class="headerlink" href="#daily-budget-reached" title="Permalink to this headline">¶</a></h3>
-<p>The daily budget of the ad has been reached. For the rest of the day the ad will not be shown on the site.</p>
-</div>
-</div>
+  <div class="admonition note" id="campaign-restrictions">
+<p class="first admonition-title">Note</p>
+<p><strong>At the moment, the following restrictions apply to campaigns:</strong></p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>each seller account can have <strong>at most one campaign</strong>. In the next stage we plan to lift this restriction and bring the full potential of campaigns to everyone.</li>
+<li>we are still in an experimental stage with the campaign <strong>targeting options</strong>. Please do not use this field yet, setting it can cause unexpected behaviours. Do shout out to us on Discord if you are interested in using it, we would love to hear.</li>
+<li>to make the transition to campaigns easier and smoother, we will initially take care of the ownership of ads in campaigns and manage it behind the scenes. In other words, every ad will be added to a campaign, if a campaign exists for the seller. In the next stage, that will become a responsibility of the API client.</li>
+</ul>
+</div></blockquote>
 </div>
 
 

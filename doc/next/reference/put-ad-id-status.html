@@ -195,6 +195,8 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -256,7 +258,7 @@ not exist or does not belong to the user the server returns <strong>404 Not Foun
 If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the server returns <strong>400
 Bad Request</strong>.</p>
 <p>To set the new status append it to the base url. The status can be one of the
-user controlled status values as defined in <a class="reference internal" href="../ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>.</p>
+user controlled status values as defined in <a class="reference internal" href="ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>.</p>
 <p>Changing the status to <strong>ACTIVE</strong> also changes the number of active
 ads in this category for this user. If the current number of active ads
 for this user in this category exceeds <code class="docutils literal"><span class="pre">maxNumberOfActiveAds</span></code> as defined
@@ -264,7 +266,7 @@ in the category then an error is returned. Setting a different status
 than <strong>ACTIVE</strong> is always allowed.</p>
 <p>If an ad has is in status <strong>PAUSED</strong> and also has no daily budget or total budget
 remaining, this call will succeed. The resulting status of the ad will be either
-<a class="reference internal" href="../ad-status.html#ad-status-budget-reached"><span class="std std-ref">BUDGET_REACHED</span></a> or <a class="reference internal" href="../ad-status.html#ad-status-daily-budget-reached"><span class="std std-ref">DAILY_BUDGET_REACHED</span></a>,
+<a class="reference internal" href="ad-status.html#ad-status-budget-reached"><span class="std std-ref">BUDGET_REACHED</span></a> or <a class="reference internal" href="ad-status.html#ad-status-daily-budget-reached"><span class="std std-ref">DAILY_BUDGET_REACHED</span></a>,
 depending on which budget has run out. In this case the ad will go live as soon
 as budget is added.</p>
 <div class="section" id="parameters">

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /user &mdash; iCAS Sellside API 0.119 documentation</title>
+  <title>Price Types &mdash; iCAS Sellside API 0.119 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.119 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="Ad Status" href="ad-status.html"/>
-        <link rel="prev" title="POST /metrics/data" href="post-metrics-data.html"/> 
+        <link rel="next" title="Error Codes" href="error-codes.html"/>
+        <link rel="prev" title="Ad Status" href="ad-status.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -194,9 +194,9 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -226,10 +226,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>GET /user</li>
+    <li>Price Types</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-user.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/price-types.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -237,110 +237,65 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-user">
-<span id="index-0"></span><span id="id1"></span><h1>GET /user<a class="headerlink" href="#get-user" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#get-user-v3"><span class="std std-ref">GET /user v3</span></a> | <a class="reference internal" href="#get-user-v1"><span class="std std-ref">GET /user v1</span></a></p>
-<div class="section" id="get-user-v3">
-<span id="id2"></span><h2>GET /user v3<a class="headerlink" href="#get-user-v3" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
+  <div class="section" id="price-types">
+<span id="price-types-overview"></span><span id="id1"></span><h1>Price Types<a class="headerlink" href="#price-types" title="Permalink to this headline">¶</a></h1>
+<p>Each advertisement has a price type which determines the type of transaction the seller would like to perform.
+The following table lists the valid price types and their descriptions.</p>
+<table border="1" class="docutils">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col width="11%" />
+<col width="11%" />
+<col width="78%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">PRICE_TYPE</th>
+<th class="head">Price required?</th>
+<th class="head">Description</th>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.user-v3+json,</span> <span class="pre">application/json</span></code></td>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>BIDDING</td>
+<td>no</td>
+<td>Request a bid on the ad starting from 0 EUR.</td>
+</tr>
+<tr class="row-odd"><td>BIDDING_FROM</td>
+<td>yes</td>
+<td>Request a bid with a starting price &gt; 0 EUR. <strong>price</strong> must contain a value in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code>.</td>
+</tr>
+<tr class="row-even"><td>FIXED_PRICE</td>
+<td>yes</td>
+<td>Request a fixed price. <strong>price</strong> must contain a value in the interval of <code class="docutils literal"><span class="pre">(0,10000000000]</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>FREE</td>
+<td>no</td>
+<td>Request no price.</td>
+</tr>
+<tr class="row-even"><td>NEGOTIABLE</td>
+<td>no</td>
+<td>Request a negotiation between buyer and seller.</td>
+</tr>
+<tr class="row-odd"><td>SEE_DESCRIPTION</td>
+<td>no</td>
+<td>Additional information is in the description of the ad.</td>
+</tr>
+<tr class="row-even"><td>SWAP</td>
+<td>no</td>
+<td>Request an exchange of one item for another.</td>
+</tr>
+<tr class="row-odd"><td>CREDIBLE_BID</td>
+<td>no</td>
+<td>Request for any reasonable offer.</td>
+</tr>
+<tr class="row-even"><td>ON_DEMAND</td>
+<td>no</td>
+<td>Price is communicated on request.</td>
+</tr>
+<tr class="row-odd"><td>RESERVED</td>
+<td>&#160;</td>
+<td>Flag for transaction in progress.</td>
 </tr>
 </tbody>
 </table>
-<p>This URL returns information of the current user. The <code class="docutils literal"><span class="pre">id</span></code> field contains
-a unique user identifier. The <code class="docutils literal"><span class="pre">options.feed</span></code> field is <code class="docutils literal"><span class="pre">true</span></code> if the user
-is an XML feed customer. The <code class="docutils literal"><span class="pre">options.vanityUrl</span></code> field is <code class="docutils literal"><span class="pre">true</span></code> if the
-value of the <a class="reference internal" href="../ads.html#ad-links-displayurl"><span class="std std-ref">links.displayUrl</span></a> field in the advertisement is shown
-in the search results. The <code class="docutils literal"><span class="pre">hasAds</span></code> field is <code class="docutils literal"><span class="pre">false</span></code> if the user has no ads at all (not even deleted).
-The <code class="docutils literal"><span class="pre">locations</span></code> field contains the user (or webshop) locations.</p>
-<div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">user</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-
-<span class="mi">200</span> <span class="nx">OK</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
-<span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
-    <span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span> <span class="s2">&quot;someuser@ebay.com&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;Some User&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;feed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;vanityUrl&quot;</span><span class="o">:</span> <span class="kc">false</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;locations&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;houseNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;123&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;streetName&quot;</span><span class="o">:</span> <span class="s2">&quot;Some street&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;city&quot;</span><span class="o">:</span> <span class="s2">&quot;Some city&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;country&quot;</span><span class="o">:</span> <span class="s2">&quot;Some country&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;postalCode&quot;</span><span class="o">:</span> <span class="s2">&quot;1432AB&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0612345678&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;hasAds&quot;</span><span class="o">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="get-user-v1">
-<span id="id3"></span><h2>GET /user v1<a class="headerlink" href="#get-user-v1" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-user-v3"><span class="std std-ref">GET /user v3</span></a> instead.</p>
-</div>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
-</tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.user-v1+json,</span> <span class="pre">application/json</span></code></td>
-</tr>
-</tbody>
-</table>
-<p>This URL returns information of the current user. The <code class="docutils literal"><span class="pre">id</span></code> field contains
-a unique user identifier. The <code class="docutils literal"><span class="pre">options.feed</span></code> field is <code class="docutils literal"><span class="pre">true</span></code> if the user
-is an XML feed customer. The <code class="docutils literal"><span class="pre">options.vanityUrl</span></code> field is <code class="docutils literal"><span class="pre">true</span></code> if the
-value of the <a class="reference internal" href="../ads.html#ad-links-displayurl"><span class="std std-ref">links.displayUrl</span></a> field in the advertisement is shown
-in the search results.</p>
-<div class="section" id="id4">
-<h3>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">user</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-
-<span class="mi">200</span> <span class="nx">OK</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
-
-<span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span>           <span class="mi">123</span><span class="p">,</span>
-    <span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span> <span class="s2">&quot;someuser@ebay.com&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span>   <span class="s2">&quot;Some User&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span>  <span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;feed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;vanityUrl&quot;</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 
 
@@ -349,10 +304,10 @@ in the search results.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ad-status.html" class="btn btn-neutral float-right" title="Ad Status"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="error-codes.html" class="btn btn-neutral float-right" title="Error Codes"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="post-metrics-data.html" class="btn btn-neutral" title="POST /metrics/data"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ad-status.html" class="btn btn-neutral" title="Ad Status"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
