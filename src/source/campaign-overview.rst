@@ -67,7 +67,7 @@ Campaign status
 """""""""""""""
 
 The status the campaign currently has. It can be any value from the list in :ref:`campaign_status_overview`. You can set only one
-of the user-controlled states *ACTIVE*, *PAUSED* or *DELETED*. *DELETED* is a final state.
+of the user-controlled states *ACTIVE*, *PAUSED* or *DELETED*, where *DELETED* is considered a final state.
 
 .. _campaign_budgets:
 
@@ -76,7 +76,7 @@ Campaign budgets
 
 Campaigns have multiple types of budgets, see :ref:`campaign_budgets_overview`. Budgets are seen as limiting factors, meaning that, as soon
 as one runs out, all ads of this campaign will be taken offline until budget(s) becomes available. Campaign budgets **must be defined**, even if they are set to *unlimited*.
-Absence of campaign budgets means that the ads will not be live.
+When campaign budgets are not set, the ads for this campaign will *not* be live.
 
 .. _campaign_targeting:
 

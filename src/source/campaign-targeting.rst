@@ -18,7 +18,7 @@ to have the ads of that campaign only be shown to buyers located in any of the g
 Region Targeting
 """"""""""""""""
 
-For tenants that use regions (currently KJCA), you can specify one or more regions in the targeting criteria of a campaign
+For tenants that use regions (currently Kijiji Canada), you can specify one or more regions in the targeting criteria of a campaign
 to have the ads of that campaign only be shown to buyers located in that region.
 
 Geo-circles and regions **cannot and should not** be used in combination on the same campaign. This is currently not supported.

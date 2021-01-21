@@ -4,9 +4,10 @@ Campaign Budgets
 ================
 
 Budgets are used to limit the spending for an individual campaign. Your actual spent for a campaign may be lower than the limits you set, depending on a lot of factors; however, it can never be higher.
-Campaign budgets **must be defined**, even if they are intended to be set to *unlimited*. Absence of campaign budgets means that the ads will not be live.
+Campaign budgets **must be defined**, even if they are intended to be set to *unlimited*.
+When campaign budgets are not set, the ads for this campaign will *not* be live.
 When ads in this campaign receive clicks, all budgets of this campaign will be checked for remaining balance. In case balance
-runs out on any one of the configured budgets, all ads in this campaign will be taken offline until the budget(s) balance is reset or budgets are increased. The campaign will then be in status *BUDGET_REACHED*.
+runs out on any one of the configured budgets, all ads in this campaign will be taken offline until the budget(s) balance is reset or budgets are increased. The campaign will then be marked with the status *BUDGET_REACHED*.
 
 Budget types
 ------------
