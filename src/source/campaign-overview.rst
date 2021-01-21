@@ -6,7 +6,7 @@ Overview
 Campaigns allow you, the seller, to group and manage your ads together, having shared budgets, targeting rules, and other settings. You can create separate campaigns to run ads in different locations or using different budgets.
 
 Campaigns are a simpler way to organize and manage your products, services, and ads in general.
-They are becoming first-class citizen in Admarkt, and as such, are a primary container to get your advertisements online.
+They are the standard for organising your ads, and they will serve as the primary container to get your ads online.
 
 Even though they are restricted in their current capabilities, we plan to evolve the concepts in line with other advertising platforms like Google and Facebook. We will keep you posted as we release more campaign-centric features in the future.
 

@@ -242,23 +242,25 @@
 <p>Budgets are used to limit the spending for an individual campaign. Your actual spent for a campaign may be lower than the limits you set, depending on a lot of factors; however, it can never be higher.
 Campaign budgets <strong>must be defined</strong>, even if they are intended to be set to <em>unlimited</em>.
 When campaign budgets are not set, the ads for this campaign will <em>not</em> be live.
-When ads in this campaign receive clicks, all budgets of this campaign will be checked for remaining balance. In case balance
-runs out on any one of the configured budgets, all ads in this campaign will be taken offline until the budget(s) balance is reset or budgets are increased. The campaign will then be marked with the status <em>BUDGET_REACHED</em>.</p>
+When ads in this campaign receive clicks, all budgets of this campaign will be checked for remaining budget. In case the budget
+runs out on any one of the configured budgets, all ads in this campaign will be taken offline until the budget(s) are reset or budget(s) limits are increased. The campaign will then be marked with the status <em>BUDGET_REACHED</em>.</p>
 <div class="section" id="budget-types">
 <h2>Budget types<a class="headerlink" href="#budget-types" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="campaign-budget-types"></span><div class="section" id="daily">
 <span id="campaign-budget-daily"></span><span id="index-0"></span><h3>DAILY<a class="headerlink" href="#daily" title="Permalink to this headline">¶</a></h3>
-<p>This is the maximum the campaign can spend per day. Resets every day, close to midnight.
+<p>This is the maximum the campaign can spend per day. Resets every day.
 If no daily budget is set, and you <strong>add</strong> a daily budget after the campaign has already been active, spent for this day will already be taken into account.</p>
 </div>
 <div class="section" id="monthly">
 <span id="campaign-budget-monthly"></span><span id="index-1"></span><h3>MONTHLY<a class="headerlink" href="#monthly" title="Permalink to this headline">¶</a></h3>
-<p>This is the maximum the campaign can spend per calendar month. Resets every month, close to midnight on the 1st of the month.
-If no monthly budget is set, and you <strong>add</strong> a monthly budget after the campaign has already been active, spent for this month will already be taken into account.</p>
+<p>This is the maximum the campaign can spend per calendar month. Resets every month, on the 1st of the month.
+If no monthly budget is set, and you <strong>add</strong> a monthly budget after the campaign has already been active, spent for this month will already be taken into account.
+Please note that the Admarkt Console does not show the monthly limits, even if they are set.</p>
 </div>
 <div class="section" id="total">
 <h3>TOTAL<a class="headerlink" href="#total" title="Permalink to this headline">¶</a></h3>
-<p>This is the total the campaign can spend and will <strong>not</strong> be reset periodically. You will explicitly need to change this limit to get the ads of this campaign back online if this limit has been reached. The total spent of the campaign so far will already be taken into account.</p>
+<p>This is the total the campaign can spend and will <strong>not</strong> be reset periodically. You will explicitly need to change this limit to get the ads of this campaign back online if this limit has been reached. The total spent of the campaign so far will already be taken into account.
+Please note that the Admarkt Console does not show the total limits, even if they are set.</p>
 <div class="section" id="campaign-budgets-object">
 <span id="id1"></span><h4>Campaign Budgets Object<a class="headerlink" href="#campaign-budgets-object" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
