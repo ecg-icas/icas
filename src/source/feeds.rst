@@ -98,6 +98,7 @@ Example XML
                 <admarkt:cpc>2</admarkt:cpc>
             </admarkt:budget>
             <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
+            <admarkt:microTip>Lease 499 per mnd</admarkt:microTip>
         </admarkt:ad>
     </admarkt:ads>
 
