@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /report/summary &mdash; iCAS Sellside API 0.113 documentation</title>
+  <title>GET /report/summary &mdash; iCAS Sellside API 0.119 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.113 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.119 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /metrics/ads" href="get-metrics-ads.html"/>
         <link rel="prev" title="POST /report/detail" href="post-report-detail.html"/> 
@@ -94,8 +94,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../categories-v1.html">Categories V1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../categories-v2.html">Categories V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-rendering">Attribute Rendering</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../attributes.html">Attributes</a><ul>
@@ -140,7 +151,6 @@
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-ad-ids.html">GET /ad/ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
@@ -148,9 +158,7 @@
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
@@ -545,7 +553,7 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.113',
+            VERSION:'0.119',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

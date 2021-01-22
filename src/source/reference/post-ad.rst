@@ -5,7 +5,36 @@ POST |an|/ad
 ============
 .. |an| unicode:: 0x20 .. Workaround for ad blocker: apparently it blocks a section with id 'post-ad'
 
-:ref:`post_ad_v2` | :ref:`post_ad_v1`
+:ref:`post_ad_v3` | :ref:`post_ad_v2`
+
+.. _post_ad_v3:
+
+POST /ad v3
+-----------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v3+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v3+json; charset=utf-8``
+
+
+Version 3 works just like :ref:`post_ad_v2`, except the response body contains an additional field **statusReasons**.
+This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
+
+
+Example
+-------
+
+.. include:: ../examples/post-ad-v3-example.rst
+
 
 .. _post_ad_v2:
 
@@ -25,12 +54,6 @@ POST /ad v2
    - ``application/sellside.ad-v2+json; charset=utf-8``
 
 This URL creates a new ad for the current user.
-
-.. warning::
-
-	This call is only compatible with :ref:`categories_v2` and must only
-	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
-	the attributes may not be recognized or editable.
 
 If the ad was successfully
 created then a **201 Created** is returned and the **Location** header
@@ -113,37 +136,4 @@ Example
 
 .. include:: ../examples/post-ad-v2-example.rst
 
-
-.. _post_ad_v1:
-
-POST /ad v1
------------
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_rw`` or ``console_rw``
-
- * - Accept
-   - ``application/sellside.ad-v1+json, application/json``
-
- * - Content-Type
-   - ``application/sellside.ad-v1+json; charset=utf-8``
-
-
-Version 1 works just like :ref:`post_ad_v2` except that it is only compatible with
-:ref:`categories_v1`.
-
-.. warning::
-
-	This call is deprecated and will be removed after September 2015.  It is
-	only compatible with :ref:`categories_v1` and must only be used with the
-	other :ref:`categories_v1_compatible_endpoints`. Otherwise, the attributes
-	may not be recognized or editable.
-
-Example
--------
-
-.. include:: ../examples/post-ad-v1-example.rst
 

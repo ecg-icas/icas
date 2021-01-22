@@ -10,7 +10,6 @@ API Reference
    reference/get-ad-id
    reference/get-ad-vendor-id
    reference/get-ad-id-funnel
-   reference/get-ad-ids
    reference/get-ad-externalid-mapping
    reference/post-ad
    reference/post-ad-prefill
@@ -18,9 +17,7 @@ API Reference
    reference/put-ad-id-status
    reference/get-categories
    reference/get-categories-statistics
-   reference/get-category
    reference/get-category-id
-   reference/get-category-id-attributes
    reference/get-category-id-funnel
    reference/get-feed-config
    reference/post-feed-config

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /ad &mdash; iCAS Sellside API 0.113 documentation</title>
+  <title>GET /ad &mdash; iCAS Sellside API 0.119 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.113 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.119 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /ad/{id}" href="get-ad-id.html"/>
         <link rel="prev" title="API Reference" href="../api-reference.html"/> 
@@ -94,8 +94,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../categories-v1.html">Categories V1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../categories-v2.html">Categories V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-rendering">Attribute Rendering</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../attributes.html">Attributes</a><ul>
@@ -140,7 +151,6 @@
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-ad-ids.html">GET /ad/ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
@@ -148,9 +158,7 @@
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
@@ -215,7 +223,12 @@
             
   <div class="section" id="get-ad">
 <span id="id1"></span><h1>GET /ad<a class="headerlink" href="#get-ad" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#get-ad-v4"><span class="std std-ref">GET /ad v4</span></a> | <a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> | <a class="reference internal" href="#get-ad-v2"><span class="std std-ref">GET /ad v2</span></a> | <a class="reference internal" href="#get-ad-v1"><span class="std std-ref">GET /ad v1</span></a></p>
+<p><a class="reference internal" href="#get-ad-v4"><span class="std std-ref">GET /ad v4</span></a> | <a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use <a class="reference internal" href="#get-ad-v4"><span class="std std-ref">GET /ad v4</span></a>. If you were not
+using <code class="docutils literal"><span class="pre">startDate</span></code> or <code class="docutils literal"><span class="pre">endDate</span></code> parameters in your calls the output will be the same in <a class="reference internal" href="#get-ad-v4"><span class="std std-ref">GET /ad v4</span></a>.</p>
+</div>
 <div class="section" id="get-ad-v4">
 <span id="id2"></span><h2>GET /ad v4<a class="headerlink" href="#get-ad-v4" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
@@ -234,9 +247,11 @@
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The only backwards-incompatible change from <a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> is with respect to the usage of <code class="docutils literal"><span class="pre">startDate</span></code> and <code class="docutils literal"><span class="pre">endDate</span></code> parameters.
-Namely, ads which were live during this selected period but did not recieve a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
-<strong>This does not include ads which received sellside updates anymore.</strong></p>
+<p>The only backwards-incompatible change from <a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> is with respect to the usage of <code class="docutils literal"><span class="pre">startDate</span></code> and <code class="docutils literal"><span class="pre">endDate</span></code> parameters.
+Namely, ads which were live during this selected period but did not receive a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
+<strong>This does not include ads which received updates anymore.</strong></p>
+<p class="last">In addition, the response contains a field <strong>statusReasons</strong>. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.</p>
 </div>
 </div>
 <div class="section" id="example">
@@ -326,6 +341,11 @@ Namely, ads which were live during this selected period but did not recieve a si
 </div>
 <div class="section" id="get-ad-v3">
 <span id="id3"></span><h2>GET /ad v3<a class="headerlink" href="#get-ad-v3" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use <a class="reference internal" href="#get-ad-v4"><span class="std std-ref">GET /ad v4</span></a>. If you were not
+using <code class="docutils literal"><span class="pre">startDate</span></code> or <code class="docutils literal"><span class="pre">endDate</span></code> parameters in your calls the output will be the same in <a class="reference internal" href="#get-ad-v4"><span class="std std-ref">GET /ad v4</span></a>.</p>
+</div>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -342,12 +362,6 @@ Namely, ads which were live during this selected period but did not recieve a si
 </table>
 <p>This URL returns a list of ads for the current user and the total size of the
 result set matching the filter criteria.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and must only
-be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><span class="std std-ref">Category V2 Compatible Endpoints</span></a>. Otherwise,
-the attributes may not be recognized or editable.</p>
-</div>
 <p>The number of ads returned can be limited with the <code class="docutils literal"><span class="pre">limit</span></code> parameter.
 The <code class="docutils literal"><span class="pre">offset</span></code> parameter allows to skip some ads and together with <code class="docutils literal"><span class="pre">limit</span></code>
 allows for pagination.</p>
@@ -693,218 +707,6 @@ load on the system.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="get-ad-v2">
-<span id="id6"></span><h2>GET /ad v2<a class="headerlink" href="#get-ad-v2" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
-</tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.ad.list-v2+json,</span> <span class="pre">application/json</span></code></td>
-</tr>
-</tbody>
-</table>
-<p>Version 2 works just like <a class="reference internal" href="#get-ad-v3"><span class="std std-ref">GET /ad v3</span></a> except that it is only compatible with
-<a class="reference internal" href="../categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a>.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is deprecated and will be removed after September 2015.  It is
-only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a> and must only be used with the
-other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span class="std std-ref">Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
-may not be recognized or editable.</p>
-</div>
-</div>
-<div class="section" id="id7">
-<h2>Example<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">04</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2015</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">13</span><span class="p">]</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
-
-<span class="p">{</span>
-  <span class="s2">&quot;ads&quot;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/453&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/ad/3000000604&quot;</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3000000604</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Franks fiets&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;mijn fiets&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span> <span class="mi">453</span><span class="p">,</span>
-      <span class="s2">&quot;externalId&quot;</span><span class="o">:</span> <span class="s2">&quot;79fb0210-f53c-4663-83c4-6f9de776e98b&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;priceType&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
-      <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>
-      <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span> <span class="mi">10000</span><span class="p">,</span>
-      <span class="s2">&quot;spentBudget&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;Test schildersbedrijf&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;allowContactByEmail&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1011DK&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-      <span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-      <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-06-15T15:06:08Z&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-06-15T15:06:08Z&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Conditie&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Conditie&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Nieuw&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-          <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Merk&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Merk&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Gazelle&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-          <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Framehoogte&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Framehoogte&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;57 tot 61 cm&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-          <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Eigenschappen&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Eigenschappen&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span>
-            <span class="s2">&quot;Versnellingen&quot;</span>
-          <span class="p">],</span>
-          <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">}</span>
-      <span class="p">],</span>
-      <span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[],</span>
-      <span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span> <span class="p">[]</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">1</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="get-ad-v1">
-<span id="id8"></span><h2>GET /ad v1<a class="headerlink" href="#get-ad-v1" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
-</tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.ad.list-v1+json,</span> <span class="pre">application/json</span></code></td>
-</tr>
-</tbody>
-</table>
-<p>Version 1 of this URL returns returns a list of ads.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is deprecated and will be removed after September 2015.  It is
-only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a> and must only be used with the
-other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span class="std std-ref">Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
-may not be recognized or editable.</p>
-</div>
-<div class="section" id="id9">
-<h3>Example<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">]</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
-
-<span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/453&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/ad/3000000604&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3000000604</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Franks fiets&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;mijn fiets&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span> <span class="mi">453</span><span class="p">,</span>
-    <span class="s2">&quot;externalId&quot;</span><span class="o">:</span> <span class="s2">&quot;79fb0210-f53c-4663-83c4-6f9de776e98b&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;priceType&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">12300</span><span class="p">,</span>
-    <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>
-    <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span> <span class="mi">10000</span><span class="p">,</span>
-    <span class="s2">&quot;spentBudget&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;Test schildersbedrijf&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;allowContactByEmail&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1011DK&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-06-15T15:06:08Z&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-06-15T15:06:08Z&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Conditie&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Conditie&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Nieuw&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Merk&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Merk&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Gazelle&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Framehoogte&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Framehoogte&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;57 tot 61 cm&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Eigenschappen&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Eigenschappen&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span>
-          <span class="s2">&quot;Versnellingen&quot;</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-      <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[],</span>
-    <span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span> <span class="p">[]</span>
-  <span class="p">}</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 
 
@@ -945,7 +747,7 @@ may not be recognized or editable.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.113',
+            VERSION:'0.119',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

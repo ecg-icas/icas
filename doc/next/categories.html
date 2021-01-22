@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Categories &mdash; iCAS Sellside API 0.113 documentation</title>
+  <title>Categories &mdash; iCAS Sellside API 0.119 documentation</title>
   
 
   
@@ -33,8 +33,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.113 documentation" href="index.html"/>
-        <link rel="next" title="Categories V1" href="categories-v1.html"/>
+    <link rel="top" title="iCAS Sellside API 0.119 documentation" href="index.html"/>
+        <link rel="next" title="Attributes" href="attributes.html"/>
         <link rel="prev" title="Advertisements" href="ads.html"/> 
 
   
@@ -93,8 +93,19 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Categories</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attribute-rendering">Attribute Rendering</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
@@ -139,7 +150,6 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-ids.html">GET /ad/ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-ad-prefill.html">POST /ad/prefill</a></li>
@@ -147,9 +157,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories-statistics.html">GET /categories/statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-category.html">GET /category</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-attributes.html">GET /category/{id}/attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
@@ -211,12 +219,983 @@
           <div role="main">
             
   <div class="section" id="categories">
-<h1>Categories<a class="headerlink" href="#categories" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="categories-v1.html">Categories V1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="categories-v2.html">Categories V2</a></li>
+<span id="id1"></span><h1>Categories<a class="headerlink" href="#categories" title="Permalink to this headline">¶</a></h1>
+<p>The category tree contains all the information about category definitions,
+attribute definitions and validation rules for placing ads on iCAS.</p>
+<p>The category tree has the following properties:</p>
+<ul class="simple">
+<li>categories form a tree with a single root node</li>
+<li>each category has a unique id</li>
+<li>each category specifies the locales for which it is available</li>
+<li>each ad belongs to one and only one category</li>
+<li>ads can only be placed in leaf categories</li>
+<li>only leaf categories contain attributes</li>
 </ul>
+<p>The full tree (or a subtree) can be fetched using <a class="reference internal" href="reference/get-categories.html#get-categories"><span class="std std-ref">GET /categories</span></a>.</p>
+<div class="section" id="category-ids">
+<h2>Category Ids<a class="headerlink" href="#category-ids" title="Permalink to this headline">¶</a></h2>
+<p>The root node has category id 0.</p>
+<p>Every other category id is a unique integer value within the range [1..2^53).</p>
+</div>
+<div class="section" id="category-levels">
+<h2>Category Levels<a class="headerlink" href="#category-levels" title="Permalink to this headline">¶</a></h2>
+<p>Although the number of sub levels is not limited, iCAS category tree has
+up to three levels of categories (L1-3). The root node is considered
+special and resides at Level 0 (L0). Performing a search at the root node would
+result in a site-wide search across all categories.</p>
+</div>
+<div class="section" id="category-status">
+<h2>Category Status<a class="headerlink" href="#category-status" title="Permalink to this headline">¶</a></h2>
+<p>Each category has a status of one of the following values:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ACTIVE</td>
+<td>The category is visible.</td>
+</tr>
+<tr class="row-odd"><td>CLOSED</td>
+<td>The category is visible but no ads can be placed. This status should be
+used for leaf categories where no new ads are accepted and which are
+in transition to <code class="docutils literal"><span class="pre">DELETED</span></code>.</td>
+</tr>
+<tr class="row-even"><td>DELETED</td>
+<td>The category is no longer visible and no ads can be placed in it. It is
+still possible for ads to be in this category but they can no longer be
+found through a category search.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="category-configuration">
+<span id="category-config-v2"></span><span id="index-0"></span><h2>Category Configuration<a class="headerlink" href="#category-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Leaf categories provide additional configuration which is provided in
+<code class="docutils literal"><span class="pre">config</span></code> field of the category. Non-leaf categories do not provide that field.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="15%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Constraints</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>currency</td>
+<td>string</td>
+<td>not empty</td>
+<td>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> currency code. Currency code is the same for all categories.</td>
+</tr>
+<tr class="row-odd"><td>priceTypes</td>
+<td>set&lt;string&gt;</td>
+<td>not empty</td>
+<td>The list of available <a class="reference internal" href="#price-types">Price Types</a> for this category.</td>
+</tr>
+<tr class="row-even"><td>cpc</td>
+<td>interval</td>
+<td><code class="docutils literal"><span class="pre">(0,+∞)</span></code></td>
+<td>CPC value for ads in this category.</td>
+</tr>
+<tr class="row-odd"><td>totalBudget</td>
+<td>interval</td>
+<td><code class="docutils literal"><span class="pre">(0,+∞)</span></code></td>
+<td>Total budget for ads in this category.</td>
+</tr>
+<tr class="row-even"><td>minDailyBudget</td>
+<td>int</td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
+<td>Min daily budget for ads in this category. Default is 0 == no daily budget.
+Max should be <code class="docutils literal"><span class="pre">totalBudget</span></code> of the ad.</td>
+</tr>
+<tr class="row-odd"><td>activeAds</td>
+<td>interval</td>
+<td><code class="docutils literal"><span class="pre">(0,+∞)</span></code></td>
+<td>Max active ads per seller in this category.</td>
+</tr>
+<tr class="row-even"><td>images</td>
+<td>interval</td>
+<td><code class="docutils literal"><span class="pre">[0,32]</span></code></td>
+<td>Max number of images for ads in this category.</td>
+</tr>
+<tr class="row-odd"><td>titleLength</td>
+<td>interval</td>
+<td><code class="docutils literal"><span class="pre">(0,120]</span></code></td>
+<td>Max length of the title for ads in this category.</td>
+</tr>
+<tr class="row-even"><td>descriptionLength</td>
+<td>interval</td>
+<td><code class="docutils literal"><span class="pre">(0,65535]</span></code></td>
+<td>Max length of the description for ads in this category.</td>
+</tr>
+<tr class="row-odd"><td>shippingOption</td>
+<td>string</td>
+<td>not empty</td>
+<td>If <code class="docutils literal"><span class="pre">DISABLED</span></code> ads in this category cannot have shipping options, if <code class="docutils literal"><span class="pre">OPTIONAL</span></code> ads can
+have shipping options and if <code class="docutils literal"><span class="pre">MANDATORY</span></code> ads must have shipping options.</td>
+</tr>
+<tr class="row-even"><td>paypalEnabled</td>
+<td>bool</td>
+<td>&#160;</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, Paypal is a payment option for ads in this category.</td>
+</tr>
+<tr class="row-odd"><td>paypalBpEnabled</td>
+<td>bool</td>
+<td>&#160;</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, Paypal Buyer Protection is enabled for ads in this category.</td>
+</tr>
+<tr class="row-even"><td>tags</td>
+<td>map&lt;locale, set&lt;string&gt;&gt;</td>
+<td>&#160;</td>
+<td>Optional localized set of additional keywords that are indexed with ads in this category.</td>
+</tr>
+<tr class="row-odd"><td>verticals</td>
+<td>set&lt;string&gt;</td>
+<td>&#160;</td>
+<td>Optional set of verticals (groups) this category belongs to. The following verticals are
+allowed: <code class="docutils literal"><span class="pre">CARS</span></code>, <code class="docutils literal"><span class="pre">CONTACTS</span></code>, <code class="docutils literal"><span class="pre">JOBS</span></code>, <code class="docutils literal"><span class="pre">HOUSES</span></code>, <code class="docutils literal"><span class="pre">SERVICES</span></code>, <code class="docutils literal"><span class="pre">VACATIONS</span></code></td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td>string</td>
+<td>not empty</td>
+<td>If <code class="docutils literal"><span class="pre">DISABLED</span></code> ads in this category cannot have regions, if <code class="docutils literal"><span class="pre">OPTIONAL</span></code> ads can
+have regions and if <code class="docutils literal"><span class="pre">MANDATORY</span></code> ads must have regions.</td>
+</tr>
+<tr class="row-odd"><td>relatedPaths</td>
+<td>set&lt;string&gt;</td>
+<td>&#160;</td>
+<td>Optional set of paths from related existing categories used for search strategies and/or
+fallback scenarios to expand the search parameters when too few results are returned.</td>
+</tr>
+<tr class="row-even"><td>priceUnits</td>
+<td>map&lt;string, map&lt;locale, string&gt;&gt;</td>
+<td>&#160;</td>
+<td>Optional set of localized price units like <code class="docutils literal"><span class="pre">per</span> <span class="pre">m²</span></code>, <code class="docutils literal"><span class="pre">per</span> <span class="pre">hour</span></code>, etc. Maps an unique
+key to a set localized values.</td>
+</tr>
+<tr class="row-odd"><td>suggestedCpcForPageOne</td>
+<td>int</td>
+<td>&#160;</td>
+<td>The estimated CPC (in cents) the current user needs to set on a new ad in this category to be placed on page 1.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="intervals">
+<h2>Intervals<a class="headerlink" href="#intervals" title="Permalink to this headline">¶</a></h2>
+<p>Parameters which are defined as type <code class="docutils literal"><span class="pre">interval</span></code> use one of the <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_31-11#Sets">ISO 31-11</a> notations for
+describing intervals.  The supported notation is <code class="docutils literal"><span class="pre">[a,b]</span></code>, <code class="docutils literal"><span class="pre">(a,b)</span></code>, <code class="docutils literal"><span class="pre">(a,b]</span></code>
+and <code class="docutils literal"><span class="pre">[a,b)</span></code>. <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> must be valid numbers.</p>
+</div>
+<div class="section" id="locales">
+<h2>Locales<a class="headerlink" href="#locales" title="Permalink to this headline">¶</a></h2>
+<p>Categories have support for multiple locales. A locale is defined as <code class="docutils literal"><span class="pre">language[_territory]</span></code>.
+The language is defined as a <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a> language code and the territory is a
+<a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code. Some examples are:
+<code class="docutils literal"><span class="pre">nl_NL</span></code>, <code class="docutils literal"><span class="pre">nl_BE</span></code>, <code class="docutils literal"><span class="pre">fr_BE</span></code>, <code class="docutils literal"><span class="pre">en_US</span></code>, <code class="docutils literal"><span class="pre">en_AU</span></code></p>
+<p>The <code class="docutils literal"><span class="pre">locales</span></code> parameter defines for which locale a category is available.
+This allows for region specific differences within the same taxonomy tree.</p>
+<p>If the <code class="docutils literal"><span class="pre">locales</span></code> parameter contains multiple entries then all multi-lingual fields
+of type <code class="docutils literal"><span class="pre">map&lt;locale,...&gt;</span></code> have entries for all of these locales.</p>
+</div>
+<div class="section" id="price-types">
+<h2>Price Types<a class="headerlink" href="#price-types" title="Permalink to this headline">¶</a></h2>
+<p>Each leaf category has one or more price types configured which define the payment
+options the seller wants to offer. The valid list of price types is:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Price type</th>
+<th class="head">Price required</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>BIDDING</td>
+<td>no</td>
+<td>Request a bid on the ad starting from price 0.</td>
+</tr>
+<tr class="row-odd"><td>BIDDING_FROM</td>
+<td>yes</td>
+<td>Request a bid with a starting price &gt; 0.</td>
+</tr>
+<tr class="row-even"><td>FIXED_PRICE</td>
+<td>yes</td>
+<td>Request a fixed price.</td>
+</tr>
+<tr class="row-odd"><td>NEGOTIABLE</td>
+<td>no</td>
+<td>Request a negotiation between buyer and seller.</td>
+</tr>
+<tr class="row-even"><td>SEE_DESCRIPTION</td>
+<td>no</td>
+<td>Additional information is in the description of the ad.</td>
+</tr>
+<tr class="row-odd"><td>SWAP</td>
+<td>no</td>
+<td>Request an exchange of one item for another.</td>
+</tr>
+<tr class="row-even"><td>CREDIBLE_BID</td>
+<td>no</td>
+<td>Request for any reasonable offer.</td>
+</tr>
+<tr class="row-odd"><td>ON_DEMAND</td>
+<td>no</td>
+<td>Price is communicated on request.</td>
+</tr>
+<tr class="row-even"><td>RESERVED</td>
+<td>no</td>
+<td>Flag for transaction in progress.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="data-model">
+<h2>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model is designed to support the following use cases:</p>
+<ul class="simple">
+<li>render a user interface for placing an ad on iCAS</li>
+<li>validate an ad that is placed via the iCAS Sellside API</li>
+</ul>
+<p>The category tree is provided as a JSON object which has the following structure:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/0&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;parentId&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;children&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/1&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;parentId&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Antiek en Kunst&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;Antiek en Kunst&quot;</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;children&quot;</span><span class="o">:</span> <span class="p">[</span>
+              <span class="p">...</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Ads can only be placed in leaf categories and leaf objects contain the full
+configuration for this category.</p>
+</div>
+<div class="section" id="non-leaf-categories">
+<h2>Non-Leaf Categories<a class="headerlink" href="#non-leaf-categories" title="Permalink to this headline">¶</a></h2>
+<p>Non-leaf categories only serve as parent nodes for lower level categories.
+Ads cannot be placed within them and therefore they have no configuration
+related to ad placement.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="15%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Constraints</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>links</td>
+<td>map&lt;string,string&gt;</td>
+<td>not empty</td>
+<td>A link to the current category and if level &gt; 1 a link to the parent category.</td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>long</td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
+<td>Unique category id.</td>
+</tr>
+<tr class="row-even"><td>parentId</td>
+<td>long</td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
+<td>Id of the parent category.</td>
+</tr>
+<tr class="row-odd"><td>level</td>
+<td>int</td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
+<td>Level at which the category is defined.</td>
+</tr>
+<tr class="row-even"><td>path</td>
+<td>string</td>
+<td>not empty</td>
+<td>Ids of all ancestors (except the root) and the current category separated by <code class="docutils literal"><span class="pre">_</span></code></td>
+</tr>
+<tr class="row-odd"><td>locales</td>
+<td>list&lt;locale&gt;</td>
+<td>not empty</td>
+<td>Locales for which the category is available.</td>
+</tr>
+<tr class="row-even"><td>label</td>
+<td>map&lt;locale,string&gt;</td>
+<td>one entry per locale</td>
+<td>Display name of the category.</td>
+</tr>
+<tr class="row-odd"><td>breadcrumbs</td>
+<td>map&lt;locale,list&lt;string&gt;&gt;</td>
+<td>one list per locale</td>
+<td>Labels of all of the ancestors (except the root) and the current category.</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>string</td>
+<td>not empty</td>
+<td>One of <code class="docutils literal"><span class="pre">ACTIVE</span></code>, <code class="docutils literal"><span class="pre">CLOSED</span></code>, <code class="docutils literal"><span class="pre">DELETED</span></code></td>
+</tr>
+<tr class="row-odd"><td>children</td>
+<td>list&lt;category&gt;</td>
+<td>not empty</td>
+<td>Ordered list of child categories.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/856&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">856</span><span class="p">,</span>
+    <span class="s2">&quot;parentId&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;856&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Vakantie&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Vakantie&quot;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;children&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="leaf-categories">
+<h2>Leaf Categories<a class="headerlink" href="#leaf-categories" title="Permalink to this headline">¶</a></h2>
+<p>Leaf categories are the categories where ads can be placed. They have by definition
+no children. Leaf categories contain the full configuration for ads placed in this
+category.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="15%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Constraints</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>links</td>
+<td>map&lt;string,string&gt;</td>
+<td>not empty</td>
+<td>Links to the current category and to the parent category.</td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>long</td>
+<td><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">0</span></code></td>
+<td>Unique category id.</td>
+</tr>
+<tr class="row-even"><td>parentId</td>
+<td>long</td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
+<td>Id of the parent category.</td>
+</tr>
+<tr class="row-odd"><td>level</td>
+<td>int</td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
+<td>Level at which the category is defined.</td>
+</tr>
+<tr class="row-even"><td>path</td>
+<td>string</td>
+<td>not empty</td>
+<td>Ids of all ancestors (except the root) and the current category separated by <code class="docutils literal"><span class="pre">_</span></code></td>
+</tr>
+<tr class="row-odd"><td>locales</td>
+<td>list&lt;locale&gt;</td>
+<td>not empty</td>
+<td>Locales for which the category is available.</td>
+</tr>
+<tr class="row-even"><td>label</td>
+<td>map&lt;locale,string&gt;</td>
+<td>one entry per locale</td>
+<td>Display name of the category.</td>
+</tr>
+<tr class="row-odd"><td>breadcrumbs</td>
+<td>map&lt;locale,list&lt;string&gt;&gt;</td>
+<td>one list per locale</td>
+<td>Labels of all of the ancestors (except the root) and the current category.</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>string</td>
+<td>not empty</td>
+<td>One of <code class="docutils literal"><span class="pre">ACTIVE</span></code>, <code class="docutils literal"><span class="pre">CLOSED</span></code>, <code class="docutils literal"><span class="pre">DELETED</span></code></td>
+</tr>
+<tr class="row-odd"><td>suggestedCpcForPageOne</td>
+<td>int</td>
+<td>only included for root of category tree</td>
+<td>Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one.</td>
+</tr>
+<tr class="row-even"><td>config</td>
+<td>config</td>
+<td>not empty</td>
+<td>The category configuration</td>
+</tr>
+<tr class="row-odd"><td>attributeGroups</td>
+<td>list&lt;attributeGroup&gt;</td>
+<td>&#160;</td>
+<td>Ordered list of attribute groups.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attribute-groups">
+<h2>Attribute Groups<a class="headerlink" href="#attribute-groups" title="Permalink to this headline">¶</a></h2>
+<p>Attribute groups combine a list of attributes with a label and an optional tooltip.
+Multiple attribute groups allow the user interface to render multiple groups in
+separate blocks. Expect that attributes are rendered in the order given therefore
+the order in the <code class="docutils literal"><span class="pre">attributes</span></code> field matters. The same applies to the order of the
+attribute groups themselves.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="15%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Constraints</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>label</td>
+<td>map&lt;locale,string&gt;</td>
+<td>one entry per locale</td>
+<td>Localized label of the group.</td>
+</tr>
+<tr class="row-odd"><td>tooltip</td>
+<td>map&lt;locale,string&gt;</td>
+<td>one entry per locale</td>
+<td>Optional tooltip/help text for the label. Can be empty.</td>
+</tr>
+<tr class="row-even"><td>attributes</td>
+<td>list&lt;attribute&gt;</td>
+<td>not empty</td>
+<td>Ordered list of attributes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<p>Attributes define additional fields for ads in this category. The configuration
+parameters allow to render the attribute in a certain way depending on the
+<code class="docutils literal"><span class="pre">type</span></code> and the content of the <code class="docutils literal"><span class="pre">values</span></code> field. See <a class="reference internal" href="#attribute-rendering">Attribute Rendering</a> below.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="15%" />
+<col width="10%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Constraints</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>key</td>
+<td>string</td>
+<td>not empty, unique in category</td>
+<td>Attribute key.</td>
+</tr>
+<tr class="row-odd"><td>label</td>
+<td>map&lt;locale,string&gt;</td>
+<td>one entry per locale</td>
+<td>Localized label of the attribute.</td>
+</tr>
+<tr class="row-even"><td>tooltip</td>
+<td>map&lt;locale,string&gt;</td>
+<td>one entry per locale</td>
+<td>Optional tooltip/help text for the label. Can be empty.</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>string</td>
+<td>not empty</td>
+<td>One of <code class="docutils literal"><span class="pre">STRING</span></code>, <code class="docutils literal"><span class="pre">NUMBER</span></code>, <code class="docutils literal"><span class="pre">LIST</span></code> or <code class="docutils literal"><span class="pre">BOOL</span></code></td>
+</tr>
+<tr class="row-even"><td>values</td>
+<td>map&lt;locale,list&lt;string&gt;&gt;</td>
+<td>&#160;</td>
+<td>Localized values for the attribute.
+The length of the JSON representation of all values for one locale
+must not exceed 512 bytes.</td>
+</tr>
+<tr class="row-odd"><td>defaults</td>
+<td>map&lt;locale,string&gt;</td>
+<td>&#160;</td>
+<td>Localized default value for required attributes.</td>
+</tr>
+<tr class="row-even"><td>mandatory</td>
+<td>bool</td>
+<td>&#160;</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute is mandatory.</td>
+</tr>
+<tr class="row-odd"><td>searchable</td>
+<td>bool</td>
+<td>&#160;</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute is indexed.</td>
+</tr>
+<tr class="row-even"><td>updatable</td>
+<td>bool</td>
+<td>&#160;</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute can be changed after creation.</td>
+</tr>
+<tr class="row-odd"><td>writable</td>
+<td>bool</td>
+<td>&#160;</td>
+<td>If <code class="docutils literal"><span class="pre">true</span></code>, this attribute can be set during creation.</td>
+</tr>
+<tr class="row-even"><td>precision</td>
+<td>int</td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0</span></code></td>
+<td>Precision for <code class="docutils literal"><span class="pre">NUMBER</span></code> fields. <code class="docutils literal"><span class="pre">0</span></code> means value is an <code class="docutils literal"><span class="pre">int</span></code>. Default is <code class="docutils literal"><span class="pre">0</span></code>.
+Note that floats with large precision values are difficult to compare.</td>
+</tr>
+<tr class="row-odd"><td>range</td>
+<td>interval</td>
+<td>&#160;</td>
+<td>Range for <code class="docutils literal"><span class="pre">NUMBER</span></code> attributes.</td>
+</tr>
+<tr class="row-even"><td>length</td>
+<td>interval</td>
+<td><code class="docutils literal"><span class="pre">[0,512]</span></code></td>
+<td>Length range for <code class="docutils literal"><span class="pre">STRING</span></code> attributes without values.</td>
+</tr>
+<tr class="row-odd"><td>prefix</td>
+<td>map&lt;locale,string&gt;</td>
+<td><code class="docutils literal"><span class="pre">[0,16]</span></code></td>
+<td>Optional localized prefix for rendering. Default is empty.</td>
+</tr>
+<tr class="row-even"><td>postfix</td>
+<td>map&lt;locale,string&gt;</td>
+<td><code class="docutils literal"><span class="pre">[0,16]</span></code></td>
+<td>Optional localized postfix for rendering. Default is empty.</td>
+</tr>
+<tr class="row-odd"><td>hints</td>
+<td>list&lt;string&gt;</td>
+<td>&#160;</td>
+<td>Optional list of rendering hints.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attribute-rendering">
+<h2>Attribute Rendering<a class="headerlink" href="#attribute-rendering" title="Permalink to this headline">¶</a></h2>
+<p>How the attribute is rendered and which result type the selected value has depends on
+the combination of the <code class="docutils literal"><span class="pre">type</span></code> and the <code class="docutils literal"><span class="pre">values</span></code> parameters. The following table lists
+the valid combinations.</p>
+<p>The <code class="docutils literal"><span class="pre">hints</span></code> field can provide additional information on how to render the field. For example,
+a text input field should be rendered as a textarea field or rich text input field.</p>
+<p>The list of rendering hints still needs to be provided.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Values</th>
+<th class="head">Result Type</th>
+<th class="head">Rendering</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>STRING</td>
+<td>empty</td>
+<td>string</td>
+<td>text input</td>
+<td>Free text input field of <code class="docutils literal"><span class="pre">length</span></code> characters</td>
+</tr>
+<tr class="row-odd"><td>STRING</td>
+<td>not empty</td>
+<td>string</td>
+<td>drop-down</td>
+<td>Single select field. <code class="docutils literal"><span class="pre">values</span></code> contains the options.</td>
+</tr>
+<tr class="row-even"><td>LIST</td>
+<td>not empty</td>
+<td>list&lt;string&gt;</td>
+<td>check boxes</td>
+<td>Multi select field. <code class="docutils literal"><span class="pre">values</span></code> contains the options.</td>
+</tr>
+<tr class="row-odd"><td>NUMBER</td>
+<td>empty</td>
+<td>int or float</td>
+<td>text input</td>
+<td>Numeric input field with a value defined by <code class="docutils literal"><span class="pre">range</span></code>.
+Result type is <code class="docutils literal"><span class="pre">int</span></code> if <code class="docutils literal"><span class="pre">precision</span> <span class="pre">==</span> <span class="pre">0</span></code>, otherwise <code class="docutils literal"><span class="pre">float</span></code></td>
+</tr>
+<tr class="row-even"><td>BOOL</td>
+<td>not empty</td>
+<td>string</td>
+<td>radio buttons</td>
+<td>Boolean input field. <code class="docutils literal"><span class="pre">values</span></code> contains the options.</td>
+</tr>
+</tbody>
+</table>
+<p>Below is a complete example of a non-leaf category:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;parent&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/856&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/sellside/category/863&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">863</span><span class="p">,</span>
+    <span class="s2">&quot;parentId&quot;</span><span class="o">:</span> <span class="mi">856</span><span class="p">,</span>
+    <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;856_863&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Vakantiehuizen | Duitsland&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Vakantie&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Vakantiehuizen | Duitsland&quot;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="s2">&quot;[1,250]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span> <span class="s2">&quot;[5000,200000000]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;minDailyBudget&quot;</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s2">&quot;activeAds&quot;</span><span class="o">:</span> <span class="s2">&quot;[1,7000]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;titleLength&quot;</span><span class="o">:</span> <span class="s2">&quot;[1,60]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;descriptionLength&quot;</span><span class="o">:</span> <span class="s2">&quot;[1,20000]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="s2">&quot;urlMandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;shippingOption&quot;</span><span class="o">:</span> <span class="s2">&quot;DISABLED&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paypalEnabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;paypalBpEnabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;priceTypes&quot;</span><span class="o">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;verticals&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;VACATIONS&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;vakantiehuis&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;relatedPaths&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;856_892&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;856_862&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;priceUnits&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;64&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;per uur&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;attributeGroups&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Kenmerken&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Geef hier welk type advertentie u gaat maken en wat de conditie van uw product is&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Regio&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;Sauerland&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Beieren&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Berlijn&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Eifel&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Harz&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Moezel&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Noord-Duitsland&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Oost-Duitsland&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Zwarte Woud&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Overige regio&#39;s&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;defaults&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;mandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;searchable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;updatable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;writable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;precision&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;range&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;length&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;postfix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;hints&quot;</span><span class="o">:</span> <span class="p">[]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Type&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;Appartement&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Boerderij of Cottage&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Chalet, Bungalow of Caravan&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Landhuis of Villa&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Overige typen&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;defaults&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;mandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;searchable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;updatable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;writable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;precision&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;range&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;length&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;postfix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;hints&quot;</span><span class="o">:</span> <span class="p">[]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;situated&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Ligging&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;Dorp&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Stad&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Landelijk&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Recreatiepark&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Overige&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;defaults&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;mandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;searchable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;updatable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;writable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;precision&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;range&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;length&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;postfix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;hints&quot;</span><span class="o">:</span> <span class="p">[]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;surroundings&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Omgeving&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;Aan zee&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Aan meer of rivier&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;In bergen of heuvels&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;In bos&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;In wintersportgebied&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;defaults&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;mandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;searchable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;updatable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;writable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;precision&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;range&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;length&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;postfix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;hints&quot;</span><span class="o">:</span> <span class="p">[]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;numberOfBedrooms&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Aantal slaapkamers&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;1 slaapkamer&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;2 slaapkamers&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;3 slaapkamers&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;4 of meer slaapkamers&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Groepsaccommodatie&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;defaults&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;mandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;searchable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;updatable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;writable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;precision&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;range&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;length&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;postfix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;hints&quot;</span><span class="o">:</span> <span class="p">[]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;letter&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Verhuurder&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;Eigenaar&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Bemiddelingsbureau&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;defaults&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;mandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;searchable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;updatable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;writable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;precision&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;range&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;length&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;postfix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;hints&quot;</span><span class="o">:</span> <span class="p">[]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;extras&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Extra&#39;s&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;Afwasmachine&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Airconditioning&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Huisdier toegestaan&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Internet&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Kinderbed&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Open haard&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Rolstoelvriendelijk&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Sauna of Jaccuzi&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Speeltuin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Tuin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Tv&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Wasmachine&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Zwembad&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;defaults&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;mandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;searchable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;updatable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;writable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;precision&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;range&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;length&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;postfix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;hints&quot;</span><span class="o">:</span> <span class="p">[]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;numberOfPersons&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;Aantal personen&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;tooltip&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;defaults&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;mandatory&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;searchable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;updatable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;writable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;precision&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s2">&quot;range&quot;</span><span class="o">:</span> <span class="s2">&quot;[1,99]&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;length&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                    <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;postfix&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span> <span class="s2">&quot;personen&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;hints&quot;</span><span class="o">:</span> <span class="p">[]</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -226,7 +1205,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="categories-v1.html" class="btn btn-neutral float-right" title="Categories V1"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="attributes.html" class="btn btn-neutral float-right" title="Attributes"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="ads.html" class="btn btn-neutral" title="Advertisements"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -258,7 +1237,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.113',
+            VERSION:'0.119',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

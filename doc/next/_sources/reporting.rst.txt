@@ -97,6 +97,8 @@ Name                                Type     `Scope`_    Description
 ``am:spent``                       Long       Hit        Amount spent (in Cents)
 ``am:engagementCTR``               Double     Hit        Number of engagements leads from clicks
 ``am:avgCPC``                      Double     Hit        Average Cost Per Click. Calculation
+``am:eCPC``                        Double     Hit        Effective cost per website click. Total spent on the ad divided by the number of website clicks
+``am:sessionECPC``                 Long       Session    Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks
 ``am:sessionsWithClicks``          Long       Session    Number of unique sessions with clicks
 ``am:sessionsWithImpressions``     Long       Session    Number of unique sessions with impressions
 ``am:sessionsWithWebsiteClicks``   Long       Session    Number of unique sessions with website clicks
@@ -205,6 +207,8 @@ The only valid ``operator`` at the moment is the set operator ``in``, and requir
         }
     ]
 
+
+.. note:: The API **does not allow to filter on the current status of ads**, which means the reporting numbers apply for **all** ads, including those that have been deleted in the meantime. Depending on API clients feedback, we might revisit the API and add support for such filtering in the future.
 
 .. _Sorts:
 

@@ -37,20 +37,20 @@ The data model of the request has the following structure:
     }
 
 
-================  ======================================
-Parameter          Description
-================  ======================================
-``timeRanges``     Array of :ref:`Time Ranges <time-ranges>` objects, separated by commas
-``aggregate``      One of :ref:`Time Aggregation <time-aggregation>` string values
-``dimensions``     Array of dimensions, separated by commas
-``metrics``        Array of metrics, separated by commas. At least one element is mandatory
-``sorts``          Array of :ref:`Sort <Sorts>`  objects, separated by commas
-``filters``        Array of :ref:`Filters <filters>` objects, separated by commas
-``enrichment``     Array of ad enrichment fields, separated by commas
-``limit``          Number of elements in the response, per time range. By default there is no limit
-``offset``         Index of first row of the requested data (per time range), beginning with 0
-``searchPhrase``   String to match against an ad title
-================  ======================================
+==================  ======================================
+Parameter            Description
+==================  ======================================
+``timeRanges``      Array of :ref:`Time Ranges <time-ranges>` objects, separated by commas
+``aggregate``       One of :ref:`Time Aggregation <time-aggregation>` string values
+``dimensions``      Array of dimensions, separated by commas
+``metrics``         Array of metrics, separated by commas. At least one element is mandatory
+``sorts``           Array of :ref:`Sort <Sorts>`  objects, separated by commas
+``filters``         Array of :ref:`Filters <filters>` objects, separated by commas
+``enrichment``      Array of ad enrichment fields, separated by commas
+``limit``           Number of elements in the response, per time range. By default there is no limit
+``offset``          Index of first row of the requested data (per time range), beginning with 0
+``searchPhrase``    String to match against an ad title
+==================  ======================================
 
 Response
 ************************************

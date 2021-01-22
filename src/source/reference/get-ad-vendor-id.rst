@@ -5,6 +5,37 @@
 GET /ad/byVendor/{vendorId}
 ===========================
 
+:ref:`get_ad_Vendor_id_v3` | :ref:`get_ad_vendor_id_v2`
+
+.. _get_ad_vendor_id_v3:
+
+GET /ad/byVendor/{vendorId} v3
+------------------------------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad-v3+json, application/json``
+
+Version 3 works just like :ref:`get_ad_vendor_id_v2`, except the response body contains an additional field **statusReasons**.
+This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
+
+Example
+-------
+
+.. include:: ../examples/get-ad-id-v3-by-vendor.rst
+
+
+.. _get_ad_vendor_id_v2:
+
+GET /ad/byVendor/{vendorId} v2
+------------------------------
+
 .. list-table::
  :widths: 20 80
 
@@ -19,12 +50,6 @@ This URL returns a single ad with the given ``vendorId``.
 If the ad does not exist or does not belong to the user the server returns
 **404 Not Found**. If the ``vendorId`` is bigger than 64 characters the
 server returns **400 Bad Request**.
-
-.. warning::
-
-	This call is only compatible with :ref:`categories_v2` and must only
-	be used with the other :ref:`categories_v2_compatible_endpoints`. Otherwise,
-	the attributes may not be recognized or editable.
 
 .. note::
 
