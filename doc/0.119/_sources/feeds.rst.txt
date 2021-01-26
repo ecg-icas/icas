@@ -1,0 +1,155 @@
+.. _feeds:
+
+XML Feeds
+=========
+XML feeds are the way for users to handle repetitive asynchronous bulk uploading of ads.
+When a user is eligible for feed usage the user can configure an HTTP(s) URL through
+:ref:`post_feed_config` or the frontend to make iCAS, once a day, attempt to download an
+XML file. The contents of this XML file need to adhere to the XSD available for sellers
+at :ref:`get_feed_xsd`.
+
+Once a day we pull the XML file configured for all appliccable users.
+We treat the provided XML file as the desired list of ads the user wants to have live.
+Any ads not present (referred to by **vendorId**) in the XML file will be paused during
+the import of this file.
+
+The (mandatory) **vendorId** field in the XML file is there to let us know, for consecutive imports, which
+ads are the same. This results in allowing us to update an existing ad with the same **vendorId** instead
+of creating a new ad. **vendorId** is mandatory and, as specified in the XSD, unique for each ad in the
+XML file.
+
+.. warning::
+   There is still an **externalId** field in the XSD, this field is replaced by **vendorId**.
+   Please update your XML to reflect this change. This makes naming consistent between feeds and sellside API.
+   The **vendorId** field in the feeds has the same meaning and constraints as the **vendorId** field in the
+   sellside API.
+
+
+Errors
+------
+:ref:`get_feed_import` shows the overview of imported feeds of the user, and
+:ref:`get_feed_import_id_detail` can be a good source of information on possible errors
+or warnings on ads, such as missing mandatory attributes or too low CPC etc. If your XML
+does not pass the XSD at :ref:`get_feed_xsd` this is where you will see why.
+After the XSD validates, it will handle the ads inside it separately, and a failure on one ad
+will then not impact other ads.
+
+
+Character encoding & Line terminators
+-------------------------------------
+Feeds are expected to be in UTF-8 encoding without Byte Order Marker (BOM) with Unix (LF) line terminators.
+Feed files with a BOM marker and/or different line terminators (e.g. CRLF on Windows) will not be processed.
+
+
+Whitelisting
+------------
+
+As mentioned in :ref:`overview_image_downloads` our outgoing IPs for downloading images (also the ones
+defined in the feed) should be whitelisted. We also download the XML file itself using these IPs.
+
+
+Example XML
+-----------
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <admarkt:ads xmlns:admarkt="http://admarkt.marktplaats.nl/schemas/1.0">
+        <admarkt:ad>
+            <admarkt:vendorId>jh2fi82wqjckw</admarkt:vendorId>
+            <admarkt:title>New white leather sofa</admarkt:title>
+            <admarkt:description>This leather sofa is very well suited to sell online. Has happened 12 times
+            already, profit guaranteed! The charming white color and stylish design makes it irresistable
+            for buyers, whether they need it or not.
+            </admarkt:description>
+            <admarkt:categoryId>1234</admarkt:categoryId>
+            <admarkt:url>http://irresistiblecouch.com/charming-white.html?source=marktplaats</admarkt:url>
+            <admarkt:vanityUrl>http://irresistiblecouch.com</admarkt:vanityUrl>
+            <admarkt:price>129900</admarkt:price>
+            <admarkt:priceType>FIXED_PRICE</admarkt:priceType>
+            <admarkt:media>
+                <admarkt:image url="http://irresistiblecouch.com/ProductPhotos/Large/jh2fi82wqjckw.jpg"/>
+            </admarkt:media>
+            <admarkt:budget>
+                <admarkt:totalBudget>1000000</admarkt:totalBudget>
+                <admarkt:dailyBudget>2500</admarkt:dailyBudget>
+                <admarkt:cpc>3</admarkt:cpc>
+            </admarkt:budget>
+            <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
+        </admarkt:ad>
+        <admarkt:ad>
+            <admarkt:vendorId>bvl202kfm2-123</admarkt:vendorId>
+            <admarkt:title>Nice bike</admarkt:title>
+            <admarkt:description>Decent women's bike. A little old, but good enough. Has seen some mileage,
+            been used regularly, but is well maintained. Last month had a large check-up where some key
+            parts were replaced.
+            </admarkt:description>
+            <admarkt:categoryId>43</admarkt:categoryId>
+            <admarkt:url>http://supabike.com/oldie.html?foo=bar</admarkt:url>
+            <admarkt:vanityUrl>http://supabike.com</admarkt:vanityUrl>
+            <admarkt:price>8900</admarkt:price>
+            <admarkt:priceType>FIXED_PRICE</admarkt:priceType>
+            <admarkt:media>
+                <admarkt:image url="http://supabike.com/files/colored/fiets.jpg"/>
+            </admarkt:media>
+            <admarkt:budget>
+                <admarkt:totalBudget>200000</admarkt:totalBudget>
+                <admarkt:dailyBudget></admarkt:dailyBudget>
+                <admarkt:cpc>2</admarkt:cpc>
+            </admarkt:budget>
+            <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
+            <admarkt:microTip>Lease 499 per mnd</admarkt:microTip>
+        </admarkt:ad>
+    </admarkt:ads>
+
+
+Scenario's & Questions
+----------------------
+
+Below are some common asked-for scenarios and questions with their explanations/answers.
+
+- Feed file cannot be fetched
+
+When a feed file cannot be fetched, nothing will change on the user's ads.
+It's as if the import didn't happen. Since the file represents the desired
+list of ads to be live, we won't do anything if we can't get the file -
+we cannot read a change in the desired situation.
+
+- Feed file is empty
+
+When a feed file is empty, all ads of the user will be paused. An empty
+file means the desired list of ads to be live is empty, so all active ads
+are paused. Note that this also means that all ads which are in statuses
+BUDGET_REACHED or DAILY_BUDGET_REACHED are also paused.
+
+- Feed file contains only new ads
+
+In the spirit of the feed file being the desired set of ads to be live for
+a user, all currently active ads (including ads in BUDGET_REACHED or DAILY_BUDGET_REACHED)
+will be paused and the supplied ads will be created (with status ACTIVE).
+
+- Editing ads through frontend / API
+
+In the spirit of the feed file being the desired set of ads to be live for
+a user, all ads will be (re)set to their representing feed values. This means
+you can see changes made throuh API or frontend undone after a successful feed import.
+
+- XML does not validate against XSD
+
+If the fetched XML filed does not validate against the XSD there will not be any changes
+to your ads. Existing ads will remain unchanged and no new ads will be created.
+
+- How to validate XML against XSD
+
+Next to various online capabilities where you can provide both your XML and XSD files,
+a way to check quickly and locally is to use a tool called xmllint. With this tool
+you can use our XSD downloaded from :ref:`get_feed_xsd` to test whether your feed is
+working before you let iCAS fetch it using the following command:
+
+.. code-block:: bash
+
+  xmllint --debug --noout --schema /path/to/admarkt1.0.xsd /path/to/yourfeed.xml
+
+For small chunks of XML you can use online validators as well, such as `<http://www.utilities-online.info/xsdvalidation/>`_ or `<https://www.freeformatter.com/xml-validator-xsd.html>`_. Note that these have a
+limit on the size of the XML you can check, but it should be more than enough to be able
+to test correctness of your structure.
