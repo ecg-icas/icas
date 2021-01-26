@@ -533,7 +533,7 @@ Supplying a single range is sufficient for most needs, but the flexibility is pr
 </div>
 <p>There are several <em>predefined</em> period values at your disposal: <code class="docutils literal"><span class="pre">today</span></code>, <code class="docutils literal"><span class="pre">yesterday</span></code>, <code class="docutils literal"><span class="pre">thisWeek</span></code>, <code class="docutils literal"><span class="pre">lastWeek</span></code>, <code class="docutils literal"><span class="pre">thisMonth</span></code>, <code class="docutils literal"><span class="pre">lastMonth</span></code>, <code class="docutils literal"><span class="pre">thisYear</span></code>, and <code class="docutils literal"><span class="pre">lastYear</span></code>, with their obvious meanings. A week runs from Monday to Sunday.
 If you use a predefined period for a particular time range, the <em>from</em> and <em>to</em> fields of that time range will be ignored.</p>
-<p>To use a <em>custom</em> period, you need to provide the start (<em>from</em>) and end (<em>to</em>) date (<strong>both inclusive</strong>) in the following format: <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>.
+<p>To use a <em>custom</em> period, you need to provide the start (<em>from</em>) and end (<em>to</em>) date (<strong>both inclusive, tenant timezone assumed</strong>) in the following format: <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>.
 The end date cannot be before the start one. For example:</p>
 <div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>

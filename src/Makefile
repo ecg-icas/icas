@@ -51,9 +51,9 @@ version: check-version
 	@echo "Will set version to $(v)"
 	mkdir -p ../doc/$(v)
 	cp -r $(WEBAPPDIR)/ ../doc/$(v)/
-	rm ../doc/prod
+	rm -rf ../doc/prod
 	ln -s $(v) ../doc/prod
-	rm ../doc/sandbox
+	rm -rf ../doc/sandbox
 	ln -s $(v) ../doc/sandbox
 	@echo
 	@echo "Versioning finished. New version is $(v)"

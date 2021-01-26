@@ -40,9 +40,9 @@ Fields
 =======================     ========================    ========    =============================================================
 Field                       Example                     Type        Info
 =======================     ========================    ========    =============================================================
-createDate                  "2014-12-05T16:12:53Z"      dateTime    The date/time this report call got requested.
-startDate                   "2014-11-23"                string      The start of the period this report covers.
-endDate                     "2014-11-24"                string      The end of the period this report covers.
+createDate                  "2014-12-05T16:12:53Z"      dateTime    The date/time this report call got requested (in UTC ISO8601 format)
+startDate                   "2014-11-23"                string      The start of the period this report covers. Tenant time zone is assumed.
+endDate                     "2014-11-24"                string      The end of the period this report covers. Tenant time zone is assumed.
 data                        see below                   array       The report data; each element in this array represents the data for an ad.
 =======================     ========================    ========    =============================================================
 

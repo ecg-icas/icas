@@ -137,7 +137,7 @@ Each time range clause is defined as follows:
 There are several *predefined* period values at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings. A week runs from Monday to Sunday.
 If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
 
-To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: ``YYYY-MM-DD``.
+To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive, tenant timezone assumed**) in the following format: ``YYYY-MM-DD``.
 The end date cannot be before the start one. For example:
 
 .. code:: javascript
