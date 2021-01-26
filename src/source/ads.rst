@@ -62,6 +62,7 @@ Field                               Type       Constraints        Mandatory   Wr
 :strike:`buyItNowEnabled`           deprecated --                 --          --
 :strike:`paypalEmail`               deprecated --                 --          --
 :ref:`ad_vendorId`                  string     max. 64 chars      no          yes (if not set already)
+:ref:`ad_microTip`                  string     max. 18 chars      no          yes (only during update)
 =================================   ========== ================   =========   ========================
 
 .. warning::
@@ -395,6 +396,16 @@ per customer. Can either be set when creating an ad or when updating an
 existing ad. However, once set, it can no longer be modified. When fetching an
 existing ad which does not have a **vendorId**, the field is omitted.
 
+.. index:: microTip
+.. _ad_microTip:
+
+microTip
+""""""""
+A short freeform text with a maximum length of 18 characters, excluding any characters in ``.,/@#<>``.
+It is a feature as part of a package that sellers can purchase (currently available only for Marktplaats tenant).
+It provides extra attention on the ad in the search results.
+At the time of writing, this will only have an effect on ads created via the Console.
+However, it can be adjusted through the API.
 
 .. index:: images
 .. _ad_images:
