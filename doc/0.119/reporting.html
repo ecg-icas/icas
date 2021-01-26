@@ -150,7 +150,6 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-ids.html">GET /ad/ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-ad-prefill.html">POST /ad/prefill</a></li>
@@ -399,10 +398,10 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <h3>Supported Metrics<a class="headerlink" href="#supported-metrics" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="24%" />
-<col width="7%" />
-<col width="7%" />
-<col width="62%" />
+<col width="17%" />
+<col width="5%" />
+<col width="5%" />
+<col width="73%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -461,6 +460,16 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <td>Double</td>
 <td>Hit</td>
 <td>Average Cost Per Click. Calculation</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:eCPC</span></code></td>
+<td>Double</td>
+<td>Hit</td>
+<td>Effective cost per website click. Total spent on the ad divided by the number of website clicks</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionECPC</span></code></td>
+<td>Long</td>
+<td>Session</td>
+<td>Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithClicks</span></code></td>
 <td>Long</td>
@@ -524,7 +533,7 @@ Supplying a single range is sufficient for most needs, but the flexibility is pr
 </div>
 <p>There are several <em>predefined</em> period values at your disposal: <code class="docutils literal"><span class="pre">today</span></code>, <code class="docutils literal"><span class="pre">yesterday</span></code>, <code class="docutils literal"><span class="pre">thisWeek</span></code>, <code class="docutils literal"><span class="pre">lastWeek</span></code>, <code class="docutils literal"><span class="pre">thisMonth</span></code>, <code class="docutils literal"><span class="pre">lastMonth</span></code>, <code class="docutils literal"><span class="pre">thisYear</span></code>, and <code class="docutils literal"><span class="pre">lastYear</span></code>, with their obvious meanings. A week runs from Monday to Sunday.
 If you use a predefined period for a particular time range, the <em>from</em> and <em>to</em> fields of that time range will be ignored.</p>
-<p>To use a <em>custom</em> period, you need to provide the start (<em>from</em>) and end (<em>to</em>) date (<strong>both inclusive</strong>) in the following format: <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>.
+<p>To use a <em>custom</em> period, you need to provide the start (<em>from</em>) and end (<em>to</em>) date (<strong>both inclusive, tenant timezone assumed</strong>) in the following format: <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>.
 The end date cannot be before the start one. For example:</p>
 <div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>

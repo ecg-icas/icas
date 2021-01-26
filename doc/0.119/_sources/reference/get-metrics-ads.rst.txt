@@ -46,8 +46,8 @@ Parameters
 Name             Type                Mandatory           Description
 ==============  ================  ==================  ======================================================================================================================================================================================================================================================================================================
 aggregate       string               no                 Granularity of the timeseries breakdown. Possible values are: ``daily``, ``weekly``, ``monthly``, and ``yearly``. Default is ``daily``.
-startDate       string               yes                Start date of the report in ``YYYY-MM-DD`` format (inclusive)
-endDate         string               yes                End date of the report in ``YYYY-MM-DD`` (inclusive)
+startDate       string               yes                Start date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.
+endDate         string               yes                End date of the report in ``YYYY-MM-DD`` (inclusive). Tenant timezone is assumed.
 includeDeleted  bool                 no                 Deleted ads are included/excluded. Default is ``false``
 query           string               no                 Search phrase to filter on ad titles
 fields          list of strings      no                 Comma-separated list of column fields to include in the report. Possible values are listed in the ``Field`` column in the table below. By default all fields are included, and this may **affect the speed of data generation**.

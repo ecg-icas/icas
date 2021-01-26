@@ -97,6 +97,8 @@ Name                                Type     `Scope`_    Description
 ``am:spent``                       Long       Hit        Amount spent (in Cents)
 ``am:engagementCTR``               Double     Hit        Number of engagements leads from clicks
 ``am:avgCPC``                      Double     Hit        Average Cost Per Click. Calculation
+``am:eCPC``                        Double     Hit        Effective cost per website click. Total spent on the ad divided by the number of website clicks
+``am:sessionECPC``                 Long       Session    Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks
 ``am:sessionsWithClicks``          Long       Session    Number of unique sessions with clicks
 ``am:sessionsWithImpressions``     Long       Session    Number of unique sessions with impressions
 ``am:sessionsWithWebsiteClicks``   Long       Session    Number of unique sessions with website clicks
@@ -135,7 +137,7 @@ Each time range clause is defined as follows:
 There are several *predefined* period values at your disposal: ``today``, ``yesterday``, ``thisWeek``, ``lastWeek``, ``thisMonth``, ``lastMonth``, ``thisYear``, and ``lastYear``, with their obvious meanings. A week runs from Monday to Sunday.
 If you use a predefined period for a particular time range, the *from* and *to* fields of that time range will be ignored.
 
-To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive**) in the following format: ``YYYY-MM-DD``.
+To use a *custom* period, you need to provide the start (*from*) and end (*to*) date (**both inclusive, tenant timezone assumed**) in the following format: ``YYYY-MM-DD``.
 The end date cannot be before the start one. For example:
 
 .. code:: javascript

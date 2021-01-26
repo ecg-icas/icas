@@ -151,7 +151,6 @@
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-ad-ids.html">GET /ad/ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
@@ -297,12 +296,12 @@ Empty strings are not enclosed in quotes.</strong></p>
 <tr class="row-odd"><td>startDate</td>
 <td>string</td>
 <td>yes</td>
-<td>Start date of the report in <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> format (inclusive)</td>
+<td>Start date of the report in <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> format (inclusive). Tenant timezone is assumed.</td>
 </tr>
 <tr class="row-even"><td>endDate</td>
 <td>string</td>
 <td>yes</td>
-<td>End date of the report in <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> (inclusive)</td>
+<td>End date of the report in <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> (inclusive). Tenant timezone is assumed.</td>
 </tr>
 <tr class="row-odd"><td>includeDeleted</td>
 <td>bool</td>
