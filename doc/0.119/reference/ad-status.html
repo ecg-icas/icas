@@ -87,6 +87,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaign-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../campaign-budgets.html">Campaign Budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../campaign-targeting.html">Campaign Targeting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
@@ -161,16 +168,24 @@
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaigns.html">GET /campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-vendor-id.html">PUT /campaign/{id}/vendorId/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -223,43 +238,43 @@
           <div role="main">
             
   <div class="section" id="ad-status">
-<span id="ad-status-overview"></span><span id="index-0"></span><h1>Ad Status<a class="headerlink" href="#ad-status" title="Permalink to this headline">¶</a></h1>
+<span id="ad-status-overview"></span><h1>Ad Status<a class="headerlink" href="#ad-status" title="Permalink to this headline">¶</a></h1>
 <p>Each advertisement can be in one of the following states. Some of the states can be set by the user, others
 are set by the system or by customer service.</p>
 <div class="section" id="user-controlled-states">
 <h2>User Controlled States<a class="headerlink" href="#user-controlled-states" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="active">
-<span id="ad-status-active"></span><span id="index-1"></span><h3>ACTIVE<a class="headerlink" href="#active" title="Permalink to this headline">¶</a></h3>
+<span id="ad-status-active"></span><span id="index-0"></span><h3>ACTIVE<a class="headerlink" href="#active" title="Permalink to this headline">¶</a></h3>
 <p>The ad is shown on the site.</p>
 </div>
 <div class="section" id="paused">
-<span id="ad-status-paused"></span><span id="index-2"></span><h3>PAUSED<a class="headerlink" href="#paused" title="Permalink to this headline">¶</a></h3>
+<span id="ad-status-paused"></span><span id="index-1"></span><h3>PAUSED<a class="headerlink" href="#paused" title="Permalink to this headline">¶</a></h3>
 <p>The ad is not shown on the site and can be re-activated.</p>
 </div>
 <div class="section" id="deleted">
-<span id="ad-status-deleted"></span><span id="index-3"></span><h3>DELETED<a class="headerlink" href="#deleted" title="Permalink to this headline">¶</a></h3>
+<span id="ad-status-deleted"></span><span id="index-2"></span><h3>DELETED<a class="headerlink" href="#deleted" title="Permalink to this headline">¶</a></h3>
 <p>The ad has been deleted by the user and cannot be re-activated.</p>
 </div>
 </div>
 <div class="section" id="customer-service-states">
 <h2>Customer Service States<a class="headerlink" href="#customer-service-states" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="deleted-by-cs">
-<span id="ad-status-deleted-by-cs"></span><span id="index-4"></span><h3>DELETED_BY_CS<a class="headerlink" href="#deleted-by-cs" title="Permalink to this headline">¶</a></h3>
+<span id="ad-status-deleted-by-cs"></span><span id="index-3"></span><h3>DELETED_BY_CS<a class="headerlink" href="#deleted-by-cs" title="Permalink to this headline">¶</a></h3>
 <p>The ad has been deleted by Customer Service and cannot be re-activated by the user. The seller should have received an email with an explanation for this status change.</p>
 </div>
 <div class="section" id="suspended-by-cs">
-<span id="ad-status-suspended-by-cs"></span><span id="index-5"></span><h3>SUSPENDED_BY_CS<a class="headerlink" href="#suspended-by-cs" title="Permalink to this headline">¶</a></h3>
+<span id="ad-status-suspended-by-cs"></span><span id="index-4"></span><h3>SUSPENDED_BY_CS<a class="headerlink" href="#suspended-by-cs" title="Permalink to this headline">¶</a></h3>
 <p>The ad has been paused by Customer Service and can be re-activated by the user by updating the ad to comply to the terms and conditions. The seller should have received an email with an explanation for this status change.</p>
 </div>
 </div>
 <div class="section" id="system-states">
 <h2>System States<a class="headerlink" href="#system-states" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="budget-reached">
-<span id="ad-status-budget-reached"></span><span id="index-6"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this headline">¶</a></h3>
+<span id="ad-status-budget-reached"></span><span id="index-5"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>ad.spentBudget</strong> has reached the <strong>ad.totalBudget</strong>. Therefore the ad is no longer shown on the site.</p>
 </div>
 <div class="section" id="daily-budget-reached">
-<span id="ad-status-daily-budget-reached"></span><span id="index-7"></span><h3>DAILY_BUDGET_REACHED<a class="headerlink" href="#daily-budget-reached" title="Permalink to this headline">¶</a></h3>
+<span id="ad-status-daily-budget-reached"></span><span id="index-6"></span><h3>DAILY_BUDGET_REACHED<a class="headerlink" href="#daily-budget-reached" title="Permalink to this headline">¶</a></h3>
 <p>The daily budget of the ad has been reached. For the rest of the day the ad will not be shown on the site.</p>
 </div>
 </div>

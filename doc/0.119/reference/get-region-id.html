@@ -36,7 +36,7 @@
     <link rel="top" title="iCAS Sellside API 0.119 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /regions" href="get-regions.html"/>
-        <link rel="prev" title="POST /image" href="post-image.html"/> 
+        <link rel="prev" title="GET /category/{id}/funnel" href="get-category-id-funnel.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -85,6 +85,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-another-access-token">Getting another Access Token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#scopes">Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaign-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../campaign-budgets.html">Campaign Budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../campaign-targeting.html">Campaign Targeting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
@@ -161,16 +168,24 @@
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /region/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaigns.html">GET /campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-vendor-id.html">GET /campaign/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-vendor-id.html">PUT /campaign/{id}/vendorId/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-budgets.html">GET /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /region/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -496,7 +511,7 @@ sufficiently large number, e.g. 9999.</p>
         <a href="get-regions.html" class="btn btn-neutral float-right" title="GET /regions"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="post-image.html" class="btn btn-neutral" title="POST /image"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="get-category-id-funnel.html" class="btn btn-neutral" title="GET /category/{id}/funnel"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
