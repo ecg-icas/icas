@@ -26,6 +26,6 @@ Field                 Description
 ``status``            The status of the linkedAd.  One of ``ACTIVE``, ``PAUSED``. If not provided, it will default to ``ACTIVE``.
 ``cpc``               The CPC (in cents) to use for this ad in the context of the given campaign. This field is mandatory if ``autoBid`` is ``false``.
 ``budgets``           An object containing the budget limits for the linkedAd. Does not void campaign budgets. The ``limits`` unit is cents. If not supplied, the default values are set to **-1 (Unlimited)**.
-``autoBid``           Whether the automatic bidding agent should act on the cost (per click, for now) and budgets on this ad within the given campaign. If the value is ``true``, the payload should **not** contain the ``cpc`` and ``budgets`` fields, they will be auto-managed instead. Not every user is enabled for this functionality; if interested, please get in touch with us on Discord. Default value is ``false``.
+``autoBid``           Whether the automatic bidding agent should act on the cost (per click, for now) and budgets on this ad within the given campaign. If the value is ``true``, the payload should **not** contain the ``cpc`` and ``budgets`` fields, they will be auto-managed instead. If not provided, this field will default to a value of ``false``. Not every user is enabled for this functionality; if interested, please get in touch with us on Discord. Default value is ``false``.
 ===================  =========================================================================================
 

@@ -270,8 +270,8 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="5%" />
-<col width="95%" />
+<col width="4%" />
+<col width="96%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
@@ -292,7 +292,7 @@ Setting linkedAds on a campaign in a <code class="docutils literal"><span class=
 <td>An object containing the budget limits for the linkedAd. Does not void campaign budgets. The <code class="docutils literal"><span class="pre">limits</span></code> unit is cents. If not supplied, the default values are set to <strong>-1 (Unlimited)</strong>.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">autoBid</span></code></td>
-<td>Whether the automatic bidding agent should act on the cost (per click, for now) and budgets on this ad within the given campaign. If the value is <code class="docutils literal"><span class="pre">true</span></code>, the payload should <strong>not</strong> contain the <code class="docutils literal"><span class="pre">cpc</span></code> and <code class="docutils literal"><span class="pre">budgets</span></code> fields, they will be auto-managed instead. Not every user is enabled for this functionality; if interested, please get in touch with us on Discord. Default value is <code class="docutils literal"><span class="pre">false</span></code>.</td>
+<td>Whether the automatic bidding agent should act on the cost (per click, for now) and budgets on this ad within the given campaign. If the value is <code class="docutils literal"><span class="pre">true</span></code>, the payload should <strong>not</strong> contain the <code class="docutils literal"><span class="pre">cpc</span></code> and <code class="docutils literal"><span class="pre">budgets</span></code> fields, they will be auto-managed instead. If not provided, this field will default to a value of <code class="docutils literal"><span class="pre">false</span></code>. Not every user is enabled for this functionality; if interested, please get in touch with us on Discord. Default value is <code class="docutils literal"><span class="pre">false</span></code>.</td>
 </tr>
 </tbody>
 </table>
