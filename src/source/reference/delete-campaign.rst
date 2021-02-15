@@ -17,7 +17,7 @@ It is possible to remove a campaign in one go. This does not remove the ads from
  * - Content-Type
    - ``application/sellside.campaign-v2+json; charset=utf-8``
 
-Removes a campaign comepletely. If successful, the server responds with `HTTP 204`.
+Removes a campaign completely. If successful, the server responds with `HTTP 204`.
 If the campaign does not exist or does not belong to the user the server returns **404 Not Found**.
 
 .. include:: ../examples/delete-campaign-v2-example.rst

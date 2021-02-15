@@ -1,9 +1,5 @@
 .. index:: DELETE /campaign/{id}/linkedAds
 
-
-TODO: WE DO NOT YET HAVE AN IMPLEMENTATION FOR A SINGLE REMOVAL, ONLY LIST!
-
-
 .. _delete_campaign_linkedads:
 
 DELETE /campaign/{id}/linkedAds
@@ -26,7 +22,7 @@ Removing a single linkedAd:
  * - Content-Type
    - ``application/sellside.campaign.linkedad-v1+json; charset=utf-8``
 
-Removes a linkedAd from the campaign. If successful, the server responds with `HTTP 204`. TODO: yes or no (silently ignore nonexisting links): If the linkedAd does not exist, the server responds with `HTTP 404`.
+Removes a linkedAd from the campaign. If successful, the server responds with `HTTP 204`. If the linkedAd does not exist, the server responds with `HTTP 404`.
 
 .. include:: ../examples/delete-campaign-linkedads-v1-example.rst
 

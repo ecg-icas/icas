@@ -1,7 +1,7 @@
 .. code-block:: javascript
 
-    1st page is always fetched by applying known query params to the url. The response
-    will indicate if there are additional pages to fetch. The nextPageToken field
+    The 1st page is always fetched by applying known query params to the url. The response
+    will indicate if there are additional pages to fetch (via the nextPageToken). The nextPageToken field
     contains the value that can be used to fetch the next page.
 
     GET /ad?limit=1

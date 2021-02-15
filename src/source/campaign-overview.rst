@@ -3,17 +3,18 @@
 Overview
 ========
 
-Campaigns allow you, the seller, to group and manage your ads together, having shared budgets, targeting rules, and other settings. You can create separate campaigns to run ads in different locations or using different budgets.
+Campaigns allow you to group and manage your ads together, having shared budgets, targeting rules, and other settings. You can create separate campaigns to run ads in different locations or using different budgets.
 
 Campaigns are a simpler way to organize and manage your products, services, and ads in general.
 They are the standard for organising your ads, and they will serve as the primary container to get your ads online.
 
 Even though they are restricted in their current capabilities, we plan to evolve the concepts in line with other advertising platforms like Google and Facebook. We will keep you posted as we release more campaign-centric features in the future.
 
+.. _temporary_campaign_restrictions:
 ..  include:: /campaign-restrictions.rst
 
 
-To give you an idea, it is possible to pause a campaign, resulting in all ads in the campaign to be taken offline. When a campaign reaches one of its :ref:`campaign_budgets`, all ads in that campaign will be taken offline. When budget becomes available again, all ads in the campaign will come
+To give you an idea, it is possible to pause a campaign, resulting in all ads in the campaign to be taken offline. Also, when a campaign reaches one of its :ref:`campaign_budgets`, all ads in that campaign will be taken offline. When budget becomes available again, all ads in the campaign will come
 online again.
 
 .. _components:
@@ -83,4 +84,4 @@ When campaign budgets are not set, the ads for this campaign will *not* be live.
 Campaign targeting
 """"""""""""""""""
 
-Campaigns can have targeting criteria, allowing you some customization on the target group of customers that your ads will be shown to. See :ref:`campaign_targeting_overview` for more info.
+Campaigns can have targeting criteria, allowing you some customization on the target group of customers that your ads will be shown to. See :ref:`campaign_targeting_overview` for more info. Please keep in mind the current restrictions :ref:`temporary_campaign_restrictions`.

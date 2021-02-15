@@ -9,6 +9,9 @@ Campaigns allow you to target specific groups of buyers. Buyers not in these tar
 see any ads from this campaign (some exceptions apply). Currently, only geographic targeting is supported but we
 are looking to add other forms of targeting. See :ref:`post_campaign` for more details.
 
+.. note::
+    **At the moment, we are still in an experimental stage with the campaign targeting options.** Please do not use this field yet, setting it can cause unexpected behaviours. Do shout out to us on Discord if you are interested in using it, we would love to hear.
+
 Geo Targeting
 """""""""""""
 

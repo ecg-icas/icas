@@ -6,7 +6,6 @@
 
     {
        "adId": 12315452,
-       "cpc": 3,
        "autoBid": true
     }
 

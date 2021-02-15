@@ -3,6 +3,9 @@
 PUT /campaign/{id}/targeting
 ===============================
 
+.. note::
+    **At the moment, we are still in an experimental stage with the campaign targeting options.** Please do not use this field yet, setting it can cause unexpected behaviours. Do shout out to us on Discord if you are interested in using it, we would love to hear.
+
 
 .. list-table::
  :widths: 20 80

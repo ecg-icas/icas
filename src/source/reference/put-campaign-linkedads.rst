@@ -16,7 +16,7 @@ A single linkedAd has the following request model structure:
 
 .. _single_linkedad:
 
-Adding/overriding a single linkedAd:
+Adding/replacing a single linkedAd:
 -------------------------------------
 
 .. list-table::
@@ -31,7 +31,7 @@ Adding/overriding a single linkedAd:
  * - Content-Type
    - ``application/sellside.campaign.linkedad-v1+json; charset=utf-8``
 
-Adds a linkedAd to the campaign or overrides ones with same adIds. If successful, the server responds with `HTTP 200`.
+Adds a linkedAd to the campaign or replaces the ones with same adIds. If successful, the server responds with `HTTP 200`.
 
 .. include:: ../examples/put-campaign-linkedads-v1-example.rst
 .. include:: ../examples/put-campaign-linkedads-v1-example2.rst
@@ -54,7 +54,7 @@ Adding/overriding multiple linkedAds:
  * - Content-Type
    - ``application/sellside.campaign.linkedad-list-v1+json; charset=utf-8``
 
-Adds multiple linkedAds to the campaign. Overrides existing linkedAds with same adIds. If successful, the server responds with `HTTP 200`.
+Adds multiple linkedAds to the campaign. Replaces existing linkedAds with same adIds. If successful, the server responds with `HTTP 200`.
 
 .. include:: ../examples/put-campaign-linkedads-list-v1-example.rst
 .. include:: ../examples/put-campaign-linkedads-list-v1-example2.rst

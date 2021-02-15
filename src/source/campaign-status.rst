@@ -20,13 +20,13 @@ User Controlled States
    - Description
 
  * - **ACTIVE**
-   - The campaign is active and its linked ads are shown on the site.
+   - The campaign is active and its ads are shown on the site.
 
  * - **PAUSED**
-   - The campaign is not active and its linked ads are not shown on the site. The campaign can be re-activated, if there is sufficient budget. By default (unless explicitely set) the status of a newly-created campaign is ``PAUSED``.
+   - The campaign is not active and its ads are not shown on the site. The campaign can be re-activated, if there is sufficient budget. By default (unless explicitely set) the status of a newly-created campaign is ``PAUSED``.
 
  * - **DELETED**
-   - The campaign has been deleted by the user and cannot be re-activated. Its linked ads are also not shown on site.
+   - The campaign has been deleted by the user and cannot be re-activated. Its ads are also not shown on site.
 
 
 System States

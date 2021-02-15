@@ -79,6 +79,5 @@
                 "type": "PICKUP",
                 "pickupLocation": "1097DN"
             }
-        ],
-        "paypalEmail": "test@example.com"
+        ]
     }
