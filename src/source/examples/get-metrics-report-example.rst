@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    GET /api/sellside/metricsreport?startDate=2014-11-24&endDate=2014-11-25&status=ACTIVE,PAUSED
+    GET /api/sellside/metrics/report?startDate=2014-11-24&endDate=2014-11-25&status=ACTIVE,PAUSED
     Accept: application/sellside.metrics.ad-hit-v1+json
 
     200 OK
@@ -31,6 +31,7 @@
           "dailyLimit":999,
           "totalBudget":4900,
           "relativePerformance": 65,
+          "eCPC": 0.42
         }
       ]
     }
