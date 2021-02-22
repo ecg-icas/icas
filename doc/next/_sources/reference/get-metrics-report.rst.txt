@@ -71,10 +71,10 @@ vendorId                    "vndr"                      string      Vendor id of
 dailyLimit                  2000                        long        Daily limit of the ad (in cents).
 totalBudget                 5000                        long        Total budget of the ad (in cents).
 relativePerformance         75                          int         Returns the relative performance of the ad (on a scale of [1-100]) compared to competition within the ad's category. Higher score means better performance. A score of 0 could indicate there is not enough data to infer the value at the moment.
+eCPC                        0.42                        float       Returns the eCPC (effective cost per website click) in cents 
 =======================     ========================    ========    =============================================================
 
 Example
 -------
 
 .. include:: ../examples/get-metrics-report-example.rst
-
