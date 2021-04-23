@@ -36,9 +36,9 @@ View Type
 ===================   ===================================================================================================================================================
 Value                 Description
 ===================   ===================================================================================================================================================
-all                   Default. Will not do any filtering
+all                   Default. Will not do any filtering, except for archived ads, which are excluded.
 active                Ads that the seller intends to have actively running. Some ads may not be currently running because of budget or content related issues.
-inactive              Ads that the seller has intentionally paused.
+inactive              Ads that the seller has intentionally paused. Archived ads are excluded.
 archived              Ads that the seller has intentionally archived. These ads cannot be reactivated.
 ===================   ===================================================================================================================================================
 
