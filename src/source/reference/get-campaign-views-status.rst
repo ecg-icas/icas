@@ -27,7 +27,7 @@ limit            int              Limits the number of adLite records returned. 
 categoryIds      list of ints     Comma-separated list of category id's to filter by. Only leaf category id's are useful, since ads can only be placed in leaf categories.
 regionIds        list of ints     Comma-separated list of region id's to filter by.
 pageToken        string           Skips the first N adLite records.
-type             string           The type of status view to show. Possible values are: ``all``, ``active``, ```inactive``,``archived``. Default value is ``all``. Only a single type can be provided.
+type             string           The type of status view to show. Possible values are: ``all``, ``active``, ``inactive``, ``archived``. Default value is ``all``. Only a single type can be provided.
 ===============  ============     ============================================================================
 
 View Type
