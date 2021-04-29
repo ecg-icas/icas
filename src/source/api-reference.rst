@@ -44,6 +44,7 @@ API Reference
    reference/put-campaign-status
    reference/get-campaign-views-status
    reference/get-campaign-views-budget
+   reference/get-campaign-views-performance
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import
