@@ -43,6 +43,7 @@ API Reference
    reference/get-campaign-funnel
    reference/put-campaign-status
    reference/get-campaign-views-status
+   reference/get-campaign-views-budget
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import
