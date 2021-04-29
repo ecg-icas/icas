@@ -42,12 +42,12 @@ inactive              Ads that the seller has intentionally paused. Archived ads
 archived              Ads that the seller has intentionally archived. These ads cannot be reactivated.
 ===================   ===================================================================================================================================================
 
-
-Errors
-~~~~~~
-TBD
-
 Example
 -------
 
-.. include:: ../examples/get-campaign-views-status-v1.rst
+.. include:: ../examples/get-campaign-views-status-v1-example.rst
+
+
+Errors
+~~~~~~
+.. include:: ../examples/get-campaign-views-status-v1-example-errors.rst
