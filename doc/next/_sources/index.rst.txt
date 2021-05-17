@@ -48,6 +48,10 @@ History
 
 ..  role:: strike
 
+* v.0.120 - 17 May 2021 - tw
+
+  * add clarification on image downloads being skipped during feed processing if the entire ad didn't change (including image urls)
+
 * v.0.119 - 24 June 2020 - tw
 
   * set deprecation date of :ref:`get_ad_v3` to July 15th 2020

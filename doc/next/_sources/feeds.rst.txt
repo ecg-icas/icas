@@ -8,7 +8,7 @@ When a user is eligible for feed usage the user can configure an HTTP(s) URL thr
 XML file. The contents of this XML file need to adhere to the XSD available for sellers
 at :ref:`get_feed_xsd`.
 
-Once a day we pull the XML file configured for all appliccable users.
+Once a day we pull the XML file configured for all applicable users.
 We treat the provided XML file as the desired list of ads the user wants to have live.
 Any ads not present (referred to by **vendorId**) in the XML file will be paused during
 the import of this file.
@@ -23,6 +23,13 @@ XML file.
    Please update your XML to reflect this change. This makes naming consistent between feeds and sellside API.
    The **vendorId** field in the feeds has the same meaning and constraints as the **vendorId** field in the
    sellside API.
+
+.. note::
+   If an ad in the feed is unchanged w.r.t. the previous time it was imported, we will skip over this ad and leave
+   it unchanged in our system. This also means we will **not** attempt to download the images and process them again.
+   This will speed up processing significantly and cut down on calls to your image server.
+   Any change in the ad (including it re-appearing in the feed if it wasn't present the previous time) will update the
+   ad and trigger image re-processing.
 
 
 Errors
@@ -153,3 +160,10 @@ working before you let iCAS fetch it using the following command:
 For small chunks of XML you can use online validators as well, such as `<http://www.utilities-online.info/xsdvalidation/>`_ or `<https://www.freeformatter.com/xml-validator-xsd.html>`_. Note that these have a
 limit on the size of the XML you can check, but it should be more than enough to be able
 to test correctness of your structure.
+
+- I'm using the same image URLs on an ad, but the images hosted on these URLs have changed.
+
+If you're changing the images without changing the URLs, the changes may not be picked up,
+in case the rest of the ad is also unchanged. We suggest adding a bogus parameter to the
+image URL to force a re-processing of the ad and its images. Make sure to not change this
+for every feed import, but only when you require images to be re-processed.
