@@ -25,9 +25,9 @@ XML file.
    sellside API.
 
 .. note::
-   If an ad in the feed is unchanged w.r.t. the previous time it was imported, we will skip over this ad and leave
+   If an ad in the feed remains unchanged (compared to previous import, including image urls), we will skip over this ad and leave
    it unchanged in our system. This also means we will **not** attempt to download the images and process them again.
-   This will speed up processing significantly and cut down on calls to your image server.
+   This is an optimisation that allows us to speed up processing significantly and cut down on calls to your image server.
    Any change in the ad (including it re-appearing in the feed if it wasn't present the previous time) will update the
    ad and trigger image re-processing.
 
@@ -161,7 +161,7 @@ For small chunks of XML you can use online validators as well, such as `<http://
 limit on the size of the XML you can check, but it should be more than enough to be able
 to test correctness of your structure.
 
-- I'm using the same image URLs on an ad, but the images hosted on these URLs have changed.
+- Image updates are not processed after successful feed import
 
 If you're changing the images without changing the URLs, the changes may not be picked up,
 in case the rest of the ad is also unchanged. We suggest adding a bogus parameter to the
