@@ -46,3 +46,20 @@
         "total": 6,
         "nextPageToken": "eyJpZCI6MTIwMTkwNDY4Niwic3RyaW5nX3ZhbHVlIjpudWxsLCJpbnQ2NF92YWx1ZSI6bnVsbH0"
     }
+
+.. code-block:: javascript
+
+    GET /api/sellside/campaign/549/views/performance?CategoryIDs=1,2&limit=5
+    Accept: application/sellside.ad-lite.list-v1+json
+
+    400 Bad Request
+    Content-Type: application/json; charset=utf-8
+
+    [
+        {
+            "code": 2001,
+            "text": "unknown field name",
+            "msg": "The field 'CategoryIDs' is unknown",
+            "field": "CategoryIDs",
+        }
+    ]
