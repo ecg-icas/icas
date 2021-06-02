@@ -32,6 +32,9 @@ outOfBudget            bool              Returns ads that are out of total budge
 noLifetimeSpend        bool              Returns ads that have not had any spending activity in their lifetime. Optional; no filtering applied if not provided.
 =====================  ============     ================================================================================================================================================================================================================================
 
+.. include:: ./leniency.rst
+
+
 Example
 -------
 

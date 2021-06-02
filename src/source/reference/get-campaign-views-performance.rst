@@ -55,6 +55,8 @@ LowECpc               Ads that have the lowest ECPC (effective Cost-Per-Click, o
 HighSpend             Ads that have the highest spend in the selected date range. Ads without any traffic are not included.
 ===================   =======================================================================================================================================================================================
 
+.. include:: ./leniency.rst
+
 Example
 -------
 

@@ -42,6 +42,9 @@ inactive              Ads that the seller has intentionally paused. Archived ads
 archived              Ads that the seller has intentionally archived. These ads cannot be reactivated.
 ===================   ===================================================================================================================================================
 
+.. include:: ./leniency.rst
+
+
 Example
 -------
 
