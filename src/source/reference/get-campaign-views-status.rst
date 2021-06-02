@@ -17,6 +17,7 @@ result set matching the parameters criteria, and a next page token if additional
 This view should be used to quickly get insight on the status of ads in a campaign. It should not be used for scrapping the entire inventory of ads from that campaign.
 At the moment ``adLite`` records are comprised of only the ad identifiers (sorted in descending order, newest ads first), however, we plan to enhance the response with more denormalized data pertaining an ad, based on further understanding of how this endpoint will be used.
 
+
 Parameters
 ~~~~~~~~~~
 

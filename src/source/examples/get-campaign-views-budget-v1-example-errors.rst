@@ -110,3 +110,24 @@
             "arg": "10.5"
         }
     ]
+
+.. warning::
+
+    If the number of ads filtered by applying the ``categoryIds`` or ``regionIds`` filter(s) is greater than 5000 (regardless of the ``limit`` parameter), a server error is returned.
+    This is an internal technical restriction that we hope to be able to lift in the future.
+
+
+.. code-block:: javascript
+
+    GET /api/sellside/campaign/549/views/budget?outOfBudget=true&categoryId=1,2,3&limit=5
+    Accept: application/sellside.ad-lite.list-v1+json
+
+    507 "Insufficient Storage"
+    Content-Type: application/json; charset=utf-8
+
+    [
+        {
+            "status": 507,
+            "message": "Maximum number of data points required to compute the result exceeded"
+        }
+    ]

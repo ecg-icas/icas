@@ -91,5 +91,3 @@
             "arg": "2020-02-20"
         }
     ]
-
-ElasticSearchAllocOverloaded
