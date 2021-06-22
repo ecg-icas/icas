@@ -32,7 +32,7 @@ regionIds              list of ints      Comma-separated list of region id's to 
 type                   string            Mandatory field, defines the type of performance view to show. The possible values are described below.
 startDate              string            Start date by which to limit the performance view data. Format ``YYYY-MM-DD``` (inclusive). Default is today-7 days (in the tenant timezone).
 endDate                string            End date by which to limit the performance view data. Format ``YYYY-MM-DD``` (inclusive). Default is today's date (in the tenant timezone).  Cannot be before ``startDate`` chronologically.
-Scope                  string            The level at which the views are defined. Possible values are ``hit`` (default if not provided) and ``session``.
+scope                  string            The level at which the views are defined. Possible values are ``hit`` (default if not provided) and ``session``.
 =====================  ============     ================================================================================================================================================================================================================================
 
 At the ``hit`` scope level, each individual activity event, like click or impression, is counted as one, regardless if that came from the same device/user or not. At the ``session`` level, activity events coming from the same user session are counted as one.
