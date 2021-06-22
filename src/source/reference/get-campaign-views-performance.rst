@@ -44,15 +44,15 @@ View Type
 ===================   =======================================================================================================================================================================================
 Value                 Description
 ===================   =======================================================================================================================================================================================
-HighCtr               Default. Ads that have the highest CTR value in the selected date range. Ads without any traffic are not included.
-LowCtr                Ads that have the lowest CTR value in the selected date range. Ads without any traffic are not included.
-HighUrlCtr            Ads that have the highest URL CTR value in the selected date range. Ads without any traffic are not included.
-LowUrlCtr             Ads that have the lowest URL CTR value in the selected date range. Ads without any traffic are not included.
-HighUrlClicks         Ads that have the highest number of URL clicks in the selected date range. Ads without any traffic are not included.
-HighClicks            Ads that have the highest number of clicks in the selected date range. Ads without any traffic are not included.
-HighECpc              Ads that have the highest ECPC (effective Cost-Per-Click, or the click cost for a URL click) value in the selected date range. Ads without any traffic are not included.
-LowECpc               Ads that have the lowest ECPC (effective Cost-Per-Click, or the click cost for a URL click) value in the selected date range. Ads without any traffic are not included.
-HighSpend             Ads that have the highest spend in the selected date range. Ads without any traffic are not included.
+highCtr               Default. Ads that have the highest CTR value in the selected date range. Ads without any traffic are not included.
+lowCtr                Ads that have the lowest CTR value in the selected date range. Ads without any traffic are not included.
+highUrlCtr            Ads that have the highest URL CTR value in the selected date range. Ads without any traffic are not included.
+lowUrlCtr             Ads that have the lowest URL CTR value in the selected date range. Ads without any traffic are not included.
+highUrlClicks         Ads that have the highest number of URL clicks in the selected date range. Ads without any traffic are not included.
+highClicks            Ads that have the highest number of clicks in the selected date range. Ads without any traffic are not included.
+highECpc              Ads that have the highest ECPC (effective Cost-Per-Click, or the click cost for a URL click) value in the selected date range. Ads without any traffic are not included.
+lowECpc               Ads that have the lowest ECPC (effective Cost-Per-Click, or the click cost for a URL click) value in the selected date range. Ads without any traffic are not included.
+highSpend             Ads that have the highest spend in the selected date range. Ads without any traffic are not included.
 ===================   =======================================================================================================================================================================================
 
 .. include:: ./leniency.rst

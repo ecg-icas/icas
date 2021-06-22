@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    GET /api/sellside/campaign/549/views/performance?limit=10&type=HighSpend&startDate=2020-01-31&endDate=2020-02-20
+    GET /api/sellside/campaign/549/views/performance?limit=10&type=highSpend&startDate=2020-01-31&endDate=2020-02-20
     Accept: application/sellside.ad-lite.list-v1+json
 
     200 OK

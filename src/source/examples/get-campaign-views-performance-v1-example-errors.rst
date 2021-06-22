@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    GET /api/sellside/campaign/234234/views/performance?categoryIds=1340,1350&type=HighSpend&limit=5
+    GET /api/sellside/campaign/234234/views/performance?categoryIds=1340,1350&type=highSpend&limit=5
     Accept: application/sellside.ad-lite.list-v1+json
 
     404 Not found
