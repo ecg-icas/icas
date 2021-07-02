@@ -1,6 +1,10 @@
 .. index:: GET /feed/import/{id}/detail/{vendorId}
 .. _get_feed_import_id_detail_vendor_id:
 
+.. warning::
+
+	This call is scheduled to be deprecated. Please use :ref:`_get_feed_import_id_detail` instead.
+
 GET /feed/import/{id}/detail/{vendorId}
 =======================================
 
