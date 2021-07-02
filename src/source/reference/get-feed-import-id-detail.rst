@@ -77,7 +77,7 @@ GET /feed/import/{id}/detail V1 (depreciated)
 
 .. warning::
 
-	This call is scheduled to be deprecated. Please use :ref:`_get_feed_import_id_detail` V2 instead.
+	This call is scheduled to be deprecated. Please use :ref:`get_feed_import_id_detail` instead.
 
 .. list-table::
  :widths: 20 80
