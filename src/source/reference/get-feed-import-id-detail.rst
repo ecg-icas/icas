@@ -1,8 +1,83 @@
 .. index:: GET /feed/import/{id}/detail
+
 .. _get_feed_import_id_detail:
 
-GET /feed/import/{id}/detail
+GET /feed/import/{id}/detail V2
 ============================
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.feedimportdetail.list-v2+json, application/json``
+
+This endpoint provides summary of the feed import.
+
+Each feed import object contains the time when it was started
+(``accepted``), the URL of the user's XML document (``url``) and whether the
+document could successfully be processed (``status``). The ``status`` field
+
+contains `0` when it is currently being processed status **PENDING**,
+
+contains `1` when the document was processed successfully status **DONE**,
+
+contains `2` when it was either not accessible or syntactically incorrect status **REJECTED**.
+
+In the latter case, the field ``error`` contains a descriptive error message.
+The ``error`` field contains the error message that has affected the whole feed, for example,
+it would be populated if the feed xml schema fails validation.
+
+The feed import object also contains counters to denote the total number of ads specified in the
+XML document (``recordCount``), the number of ads which were processed without errors (``acceptCount``),
+the number of ads which were processed with warnings (``noticeCount``) and the number of ads which
+were rejected due to errors (``rejectCount``). The ``warnings`` field contains
+``warning`` messages indicating data validation issues for successfully imported ads.
+The ``errors`` field contains messages explaining why an ad could not be imported.
+Both ``warnings`` and ``errors`` fields contains a subset of a maximum of 100 ad ids for which
+the message was generated. It is not possible to fetch all affected ad ids.
+
+For example if 10000 ads had the same validation issue on the ads, the ``warnings`` field
+would contain a single warning message describing the issue in more details
+and a 100 ad ids of the ads which had this issue.
+
+Another example - if 55 ads failed validation because
+of the missing category field, ``errors`` field would contain the detailed validation message and all 55 ad
+ids that had the category missing.
+
+To summarize ``error`` is contain error affecting the whole feed, while ``errors`` contains
+errors affecting individual ads.
+
+.. note::
+
+The endpoint returns **404 Not Found** when import details are requested for:
+
+- an unknown feed import
+- a successful feed import of an empty XML document (which contains no ads)
+
+Errors
+~~~~~~
+
+====================    ====    =======================     ==============================================================================
+Field                   Code    Error message               Description
+====================    ====    =======================     ==============================================================================
+id                      2001    invalid argument            not a valid number
+id                      2002    out of range                less than 0
+====================    ====    =======================     ==============================================================================
+
+Example
+~~~~~~~
+
+.. include:: ../examples/get-feed-import-id-detail-v2.rst
+
+GET /feed/import/{id}/detail V1 (depreciated)
+============================
+
+.. warning::
+
+	This call is scheduled to be deprecated. Please use :ref:`_get_feed_import_id_detail` V2 instead.
 
 .. list-table::
  :widths: 20 80

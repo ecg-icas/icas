@@ -48,6 +48,10 @@ History
 
 ..  role:: strike
 
+* v.0.121 - 30 June 2021 - pv
+
+  * add documentation for the new feed endpoint ``/feed/import/{id}/detail`` response, add deprecation warning to ``/feed/import/{id}/detail/{vendorId}`` endpoint
+
 * v.0.120 - 17 May 2021 - tw
 
   * add clarification on image downloads being skipped during feed processing if the entire ad didn't change (including image urls)
