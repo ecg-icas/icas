@@ -355,7 +355,7 @@ errors affecting individual ads.</p>
 <h1>GET /feed/import/{id}/detail V1 (depreciated)<a class="headerlink" href="#get-feed-import-id-detail-v1-depreciated" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This call is scheduled to be deprecated. Please use <span class="xref std std-ref">_get_feed_import_id_detail</span> V2 instead.</p>
+<p class="last">This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> instead.</p>
 </div>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -372,7 +372,7 @@ errors affecting individual ads.</p>
 </tbody>
 </table>
 <p>This endpoint provides detailed import information for each ad during a successful feed import.
-The field <code class="docutils literal"><span class="pre">vendorId</span></code> identifies the ad in the XML feed and can be used in <span class="xref std std-ref">get_feed_import_id_detail_vendor_id</span>.
+The field <code class="docutils literal"><span class="pre">vendorId</span></code> identifies the ad in the XML feed and can be used in <a class="reference internal" href="get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><span class="std std-ref">GET /feed/import/{id}/detail/{vendorId}</span></a>.
 The <code class="docutils literal"><span class="pre">dateCreated</span></code> shows the time when the ad was processed. The <code class="docutils literal"><span class="pre">warnings</span></code> field contains
 a list of descriptive messages when the ad was successfully imported but with warnings,
 e.g. the system has normalized the ad&#8217;s phone number because it is specified in an unsupported
