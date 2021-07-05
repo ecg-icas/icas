@@ -162,7 +162,8 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail-v1-depreciated">GET /feed/import/{id}/detail V1 (depreciated)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
@@ -251,7 +252,7 @@ ad and trigger image re-processing.</p>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a> shows the overview of imported feeds of the user, and
-<a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail</span></a> can be a good source of information on possible errors
+<a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> can be a good source of information on possible errors
 or warnings on ads, such as missing mandatory attributes or too low CPC etc. If your XML
 does not pass the XSD at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> this is where you will see why.
 After the XSD validates, it will handle the ads inside it separately, and a failure on one ad
