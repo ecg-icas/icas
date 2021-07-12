@@ -48,6 +48,10 @@ History
 
 ..  role:: strike
 
+* v.0.121 - 12 Jul 2021 - tw
+
+  * add ``am:currentAdClickoutURL`` to optional enrichment parameters in :ref:`metrics_reporting`
+
 * v.0.120 - 17 May 2021 - tw
 
   * add clarification on image downloads being skipped during feed processing if the entire ad didn't change (including image urls)
