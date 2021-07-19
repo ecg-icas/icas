@@ -266,7 +266,7 @@ Name                          Type         Description
 ``am:currentAdVendorID``      String       Current vendorID of the ad, if available
 ``am:currentAdRegion``        String       Description of the current (lowest-level) region of the ad, if applicable
 ``am:currentAdExternalID``    String       Current externalID of the ad, if available
-``am:currentAdClickoutURL``   String       Current clickout URL of the ad, if available
+``am:currentAdExternalURL``   String       Current external URL of the ad, if available
 ===========================   ===========  =============================
 
 
