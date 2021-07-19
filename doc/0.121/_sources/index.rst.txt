@@ -50,7 +50,7 @@ History
 
 * v.0.121 - 12 Jul 2021 - tw
 
-  * add ``am:currentAdClickoutURL`` to optional enrichment parameters in :ref:`metrics_reporting`
+  * add ``am:currentAdExternalURL`` to optional enrichment parameters in :ref:`metrics_reporting`
 
 * v.0.120 - 17 May 2021 - tw
 
