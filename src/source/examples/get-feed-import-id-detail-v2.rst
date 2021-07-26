@@ -11,7 +11,7 @@
     "userID": 345,
     "URL": "http://feed.com/id/1",
     "accepted": 1625219890,
-    "status": 1,
+    "status": "DONE",
     "error": "",
     "recordCount": 110,
     "acceptCount": 101,
