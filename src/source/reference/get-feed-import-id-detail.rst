@@ -22,13 +22,13 @@ Each feed import object contains the time when it was started
 (``accepted``), the URL of the user's XML document (``url``) and whether the
 document could successfully be processed (``status``). The ``status`` field
 
-===========  ============    =================================================
-Status Code  Status           Description
-===========  ============    =================================================
-0            PENDING         when it is currently being processed status
-1             DONE           when the document was processed successfully status
-2            REJECTED        when it was either not accessible or syntactically incorrect status
-===========  ============    =================================================
+============    =================================================
+Status           Description
+============    =================================================
+PENDING         when it is currently being processed status
+ DONE           when the document was processed successfully status
+REJECTED        when it was either not accessible or syntactically incorrect status
+============    =================================================
 
 In the latter case, the ``error`` field contains the error message that has prevented
 the complete feed from being imported.
