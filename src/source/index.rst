@@ -48,6 +48,12 @@ History
 
 ..  role:: strike
 
+* v.0.121 - 28 July 2021 - pt
+
+  * new version of /import/{id}/detail :ref:`get_feed_import_id_detail_v2` endpoint for fetching feed result
+  * marked depreciated /import/{id}/detail/{vendorId}
+  * removed /feed/import/{id}/detail
+
 * v.0.120 - 17 May 2021 - tw
 
   * add clarification on image downloads being skipped during feed processing if the entire ad didn't change (including image urls)
