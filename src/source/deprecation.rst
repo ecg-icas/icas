@@ -2,9 +2,9 @@
 
 Deprecation Plan
 ================
-The following calls are deprecated and scheduled to be removed on the 1th of August 2021:
+The following calls are deprecated and scheduled to be removed on the 28th of July 2021:
 
- * :ref:`get_feed_import_id_detail_vendor_id`
+ * :ref:`get_feed_import_id_detail_vendor_id` Please use :ref:`get_feed_import_id_detail_v2` instead.
 
 The following calls are deprecated and scheduled to be removed on the 15th of August 2020:
 

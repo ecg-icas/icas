@@ -51,8 +51,7 @@ History
 * v.0.121 - 28 July 2021 - pt
 
   * new version of /import/{id}/detail :ref:`get_feed_import_id_detail_v2` endpoint for fetching feed result
-  * marked depreciated /import/{id}/detail/{vendorId}
-  * removed /feed/import/{id}/detail
+  * removed GET /feed/import/{id}/detail/{vendorId}
 
 * v.0.120 - 17 May 2021 - tw
 
