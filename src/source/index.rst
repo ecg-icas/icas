@@ -51,7 +51,7 @@ History
 * v.0.121 - 28 July 2021 - pt
 
   * new version of /import/{id}/detail :ref:`get_feed_import_id_detail_v2` endpoint for fetching feed result
-  * removed GET /feed/import/{id}/detail/{vendorId}
+  * removed GET /feed/import/{id}/detail/{vendorId} and "/import/{id}/detail" version V1 (FEED_IMPORT_DETAIL_LIST_JSON_V1)
 
 * v.0.120 - 17 May 2021 - tw
 
@@ -234,7 +234,7 @@ History
 
 * v0.76 - 3 Feb 2016 - ak
 
-  * Added :ref:`get_feed_import`, :ref:`get_feed_import_id_detail` and :ref:`get_feed_import_id_detail_vendor_id`
+  * Added :ref:`get_feed_import`, :ref:`get_feed_import_id_detail` and `get_feed_import_id_detail_vendor_id`
 
 * v0.75 - 7 Jan 2016 - ak
 
