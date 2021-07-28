@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.121 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /feed/import/{id}/detail/{vendorId}" href="get-feed-import-id-detail-vendor-id.html"/>
+        <link rel="next" title="GET /feed/xsd" href="get-feed-xsd.html"/>
         <link rel="prev" title="GET /feed/import" href="get-feed-import.html"/> 
 
   
@@ -164,8 +164,6 @@
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/import/{id}/detail V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#get-feed-import-id-detail-v1-depreciated">GET /feed/import/{id}/detail V1 (depreciated)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
@@ -408,119 +406,6 @@ ids that had the category missing.</p>
 </div>
 </div>
 </div>
-<div class="section" id="get-feed-import-id-detail-v1-depreciated">
-<h1>GET /feed/import/{id}/detail V1 (depreciated)<a class="headerlink" href="#get-feed-import-id-detail-v1-depreciated" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> instead.</p>
-</div>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
-</tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.feedimportdetail.list-v1+json,</span> <span class="pre">application/json</span></code></td>
-</tr>
-</tbody>
-</table>
-<p>This endpoint provides detailed import information for each ad during a successful feed import.
-The field <code class="docutils literal"><span class="pre">vendorId</span></code> identifies the ad in the XML feed and can be used in <a class="reference internal" href="get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><span class="std std-ref">GET /feed/import/{id}/detail/{vendorId}</span></a>.
-The <code class="docutils literal"><span class="pre">dateCreated</span></code> shows the time when the ad was processed. The <code class="docutils literal"><span class="pre">warnings</span></code> field contains
-a list of descriptive messages when the ad was successfully imported but with warnings,
-e.g. the system has normalized the ad&#8217;s phone number because it is specified in an unsupported
-format. The <code class="docutils literal"><span class="pre">errors</span></code> field contains a list of messages to signify why an ad could not be imported.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The field <code class="docutils literal"><span class="pre">vendorId</span></code> maps to the XML field <code class="docutils literal"><span class="pre">externalId</span></code> and is stored for imported ads as <a class="reference internal" href="../ads.html#ad-vendorid"><span class="std std-ref">vendorId</span></a>.</p>
-</div>
-<p>Since a feed XML file can contain an arbitrary number of ads, API clients need a way to retrieve
-status information for only a subset of all ads. This is achieved by using the <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">offset</span></code> parameters:
-<code class="docutils literal"><span class="pre">limit</span></code> controls the number of returned entities and <code class="docutils literal"><span class="pre">offset</span></code> allows for skipping entities.</p>
-<p>The endpoint returns <strong>404 Not Found</strong> when import details are requested for:</p>
-<ul class="simple">
-<li>an unknown feed import</li>
-<li>a <strong>REJECTED</strong> feed import</li>
-<li>a successful feed import of an empty XML document (which contains no ads)</li>
-</ul>
-<div class="section" id="id2">
-<h2>Errors<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="3%" />
-<col width="18%" />
-<col width="62%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Code</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>id</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>not a valid number</td>
-</tr>
-<tr class="row-odd"><td>id</td>
-<td>2002</td>
-<td>out of range</td>
-<td>less than 0</td>
-</tr>
-<tr class="row-even"><td>limit</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>not a valid number</td>
-</tr>
-<tr class="row-odd"><td>limit</td>
-<td>2002</td>
-<td>out of range</td>
-<td>less than 1 or greater than 100</td>
-</tr>
-<tr class="row-even"><td>offset</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>not a valid number</td>
-</tr>
-<tr class="row-odd"><td>offset</td>
-<td>2002</td>
-<td>out of range</td>
-<td>less than 0</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id3">
-<h2>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="kr">import</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">detail</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
-
-<span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span>    <span class="s2">&quot;testExternalId&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;errors&quot;</span><span class="o">:</span><span class="p">[</span>
-      <span class="s2">&quot;title \&quot;\&quot; too short, minimum is 1 characters&quot;</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;warnings&quot;</span><span class="o">:</span><span class="p">[</span>
-      <span class="s2">&quot;total budget defaults to 200000000&quot;</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-02-03T14:59:02Z&quot;</span>
-  <span class="p">}</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 
 
           </div>
@@ -528,7 +413,7 @@ status information for only a subset of all ads. This is achieved by using the <
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-feed-import-id-detail-vendor-id.html" class="btn btn-neutral float-right" title="GET /feed/import/{id}/detail/{vendorId}"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-feed-xsd.html" class="btn btn-neutral float-right" title="GET /feed/xsd"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="get-feed-import.html" class="btn btn-neutral" title="GET /feed/import"><span class="fa fa-arrow-circle-left"></span> Previous</a>

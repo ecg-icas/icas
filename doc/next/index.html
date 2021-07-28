@@ -162,8 +162,6 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail-v1-depreciated">GET /feed/import/{id}/detail V1 (depreciated)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
@@ -337,8 +335,6 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail-v1-depreciated">GET /feed/import/{id}/detail V1 (depreciated)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
@@ -367,8 +363,7 @@ Notifications about maintenance will also go through this channel.</p>
 <ul class="simple">
 <li>v.0.121 - 28 July 2021 - pt<ul>
 <li>new version of /import/{id}/detail <a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail-v2"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> endpoint for fetching feed result</li>
-<li>marked depreciated /import/{id}/detail/{vendorId}</li>
-<li>removed /feed/import/{id}/detail</li>
+<li>removed GET /feed/import/{id}/detail/{vendorId} and &#8220;/import/{id}/detail&#8221; version V1 (FEED_IMPORT_DETAIL_LIST_JSON_V1)</li>
 </ul>
 </li>
 <li>v.0.120 - 17 May 2021 - tw<ul>
@@ -551,7 +546,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.76 - 3 Feb 2016 - ak<ul>
-<li>Added <a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a>, <a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> and <a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><span class="std std-ref">GET /feed/import/{id}/detail/{vendorId}</span></a></li>
+<li>Added <a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a>, <a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> and <cite>get_feed_import_id_detail_vendor_id</cite></li>
 </ul>
 </li>
 <li>v0.75 - 7 Jan 2016 - ak<ul>
