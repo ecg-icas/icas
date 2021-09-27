@@ -3,7 +3,7 @@
 
 POST |an|/metrics/data
 ======================
-.. |an| unicode:: 0x20 .. Workaround for ad blocker: apparently it blocks a section with id 'post-ad'
+.. |an| unicode:: 0x20
 
 :ref:`post_metrics_data_v1` | :ref:`post_metrics_data_v2`
 
