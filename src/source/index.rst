@@ -35,7 +35,6 @@ Contents
    attributes
    regions
    feeds
-   reporting
    error-handling
    api-reference
    deprecation
@@ -50,7 +49,7 @@ History
 
 * v.0.121 - 12 Jul 2021 - tw
 
-  * add ``am:currentAdExternalURL`` to optional enrichment parameters in :ref:`metrics_reporting`
+  * add ``am:currentAdExternalURL`` to optional enrichment parameters in :ref:`metrics_reporting_v1`
 
 * v.0.120 - 17 May 2021 - tw
 
@@ -653,4 +652,3 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-

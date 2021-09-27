@@ -129,19 +129,6 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#dimensions-and-metrics">Dimensions and Metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#time-ranges">Time Ranges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#time-aggregation">Time Aggregation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#filters">Filters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#sorting">Sorting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#pagination-with-offset-and-limit">Pagination with offset and limit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#enrichment">Enrichment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#query-and-response">Query and Response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#examples">Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reporting.html#errors">Errors</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api-reference.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-ad.html">GET /ad</a></li>
@@ -174,7 +161,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST  /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
@@ -208,7 +195,7 @@
     <li>Example 1:</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/reporting-examples.rst.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/reporting-examples-v2.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -221,7 +208,7 @@
 <h1>Example 1:<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h1>
 <p>Get all clicks and impressions for category <code class="docutils literal"><span class="pre">1234</span></code> for the previous week:</p>
 <div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
 <span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 <span class="p">{</span>
     <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -269,7 +256,7 @@
 <h1>Example 2:<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h1>
 <p>Get all clicks and impressions for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per category:</p>
 <div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
 <span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 <span class="p">{</span>
     <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -328,7 +315,7 @@
 <h1>Example 3:<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h1>
 <p>Get all clicks and impressions for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
 <div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
 <span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 <span class="p">{</span>
     <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -438,14 +425,14 @@
 <h1>Example 4:<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h1>
 <p>Get all clicks, and average CPC for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
 <div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v1</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
 <span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 <span class="p">{</span>
     <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
         <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
     <span class="p">}],</span>
     <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgCPC&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgBidMicros&quot;</span><span class="p">],</span>
     <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
             <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
@@ -460,7 +447,7 @@
     <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
         <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mf">45000.0</span><span class="p">],</span>
             <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;vendor11111&quot;</span>
@@ -468,7 +455,7 @@
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mf">30000.0</span><span class="p">],</span>
             <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;vendor33333&quot;</span>
@@ -476,7 +463,7 @@
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span>  <span class="mf">2.3</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span>  <span class="mf">20003.0</span><span class="p">],</span>
                 <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;vendor33333&quot;</span>
@@ -493,12 +480,12 @@
 <col width="15%" />
 <col width="20%" />
 <col width="21%" />
-<col width="22%" />
+<col width="23%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">am:adID</th>
 <th class="head">am:clicks</th>
-<th class="head">am:avgCPC</th>
+<th class="head">am:avgBidMicros</th>
 <th class="head">am:currentAdTitle</th>
 <th class="head">am:currentAdVendorID</th>
 </tr>
@@ -506,19 +493,19 @@
 <tbody valign="top">
 <tr class="row-even"><td>11111</td>
 <td>11</td>
-<td>4.5</td>
+<td>45000.0</td>
 <td>Ad title #11111</td>
 <td>vendor11111</td>
 </tr>
 <tr class="row-odd"><td>33333</td>
 <td>9</td>
-<td>3.0</td>
+<td>30000.0</td>
 <td>Ad title #33333</td>
 <td>vendor33333</td>
 </tr>
 <tr class="row-even"><td>22222</td>
 <td>34</td>
-<td>2.3</td>
+<td>23000.0</td>
 <td>Ad title #22222</td>
 <td>vendor22222</td>
 </tr>
@@ -529,7 +516,7 @@
 <h1>Final remarks:<a class="headerlink" href="#final-remarks" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
-<li>In the <a class="reference internal" href="reporting.html#sql-note"><span class="std std-ref">SQL note</span></a>, the enrichment fields can be seen as a left outer join operation.</li>
+<li>In the <a class="reference internal" href="reporting_v2.html#sql-note"><span class="std std-ref">SQL note</span></a>, the enrichment fields can be seen as a left outer join operation.</li>
 <li>The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data.</li>
 <li>The API <strong>does not allow to filter on the current status of ads</strong>, which means the reporting numbers apply for <strong>all</strong> ads, including those that have been deleted in the meantime. Depending on API clients feedback, we might revisit the API and add support for such filtering in the future.</li>
 </ul>

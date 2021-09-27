@@ -1,7 +1,7 @@
 
 Query
 ************************************
-The metrics query should be provided as a JSON object of type `Metrics Request`_, which has these minimum requirements:
+The metrics query should be provided as a JSON object of type `Metrics Request V2`_, which has these minimum requirements:
 
 * At least one valid entry in the  :ref:`Time Ranges <time-ranges>` field.
 
@@ -12,11 +12,11 @@ Here is a sample request with all top-level query fields expanded:
 .. code-block:: javascript
 
     POST /api/sellside/metrics/data
-    Content-Type: application/sellside.metrics.data-v1+json
+    Content-Type: application/sellside.metrics.data-v2+json
     Accept: application/json
-.. literalinclude:: /examples/metrics-query-v1.json
+.. literalinclude:: /examples/metrics-query-v2.json
 
-Metrics Request
+Metrics Request V2
 ######################################################
 
 The data model of the request has the following structure:
@@ -55,11 +55,11 @@ Parameter            Description
 Response
 ************************************
 
-The response body of the API request is a JSON object of `Metrics Response`_ type. Here is a sample response for the sample request above.
+The response body of the API request is a JSON object of `Metrics Response V2`_ type. Here is a sample response for the sample request above.
 
-.. literalinclude:: /examples/metrics-response-v1.json
+.. literalinclude:: /examples/metrics-response-v2.json
 
-Metrics Response
+Metrics Response V2
 ######################################################
 
 The data model of the response has the following structure:

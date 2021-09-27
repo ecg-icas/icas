@@ -8,7 +8,7 @@ GET /report/summary
 .. warning::
 
 	This call is scheduled to be deprecated. Please
-	use the faster and more flexible replacement generic endpoint :ref:`post_metrics_data` instead. Check the first example in the :ref:`examples_post_metrics_data` section.
+	use the faster and more flexible replacement generic endpoint :ref:`post_metrics_data` instead. Check the first example in the :ref:`examples_post_metrics_data_v1` section.
 	Keep in mind that the new endpoint only returns data for **ads which have had performance-related activity in the requested period**.
 
 

@@ -1,9 +1,9 @@
 .. _Google Analytics: https://developers.google.com/analytics/devguides/reporting/core
 .. _Yandex Metrica: https://tech.yandex.com/metrika/
-.. _metrics_reporting:
+.. _metrics_reporting_v1:
 
-Reporting
-===========
+Reporting V1
+============
 
 The Reporting API allows you to get statistics about the performance of your ads in a flexible ad-hoc way. It is inspired by
 APIs like `Google Analytics`_ and `Yandex Metrica`_ and borrows some terminology from them.
@@ -224,7 +224,7 @@ To sort the resulting data, use the **sorts** top-level query field. Sorts is an
     }
 
 
-A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested. There are two directions for sorting: ``asc`` (ascending) and ``desc`` (descending). 
+A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested. There are two directions for sorting: ``asc`` (ascending) and ``desc`` (descending).
 The following example sorts first on date in descending order, followed by the ad ID in ascending order.
 
 .. code:: javascript
@@ -234,7 +234,7 @@ The following example sorts first on date in descending order, followed by the a
             {
                 "field":"am:date",
                 "direction":"desc"
-     
+
             },
             {
                 "field":"am:adID",
@@ -273,13 +273,13 @@ Name                          Type         Description
 Query and Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. include:: reporting-query-and-response.rst
+.. include:: reporting-query-and-response-v1.rst
 
 
 Examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  include:: reporting-examples.rst
+..  include:: reporting-examples-v1.rst
 
 
 Errors
