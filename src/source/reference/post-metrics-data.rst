@@ -1,9 +1,8 @@
 .. index:: POST /metrics/data
 .. _post_metrics_data:
 
-POST |an|/metrics/data
-======================
-.. |an| unicode:: 0x20
+POST /metrics/data
+==================
 
 :ref:`post_metrics_data_v1` | :ref:`post_metrics_data_v2`
 
