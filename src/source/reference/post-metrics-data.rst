@@ -4,6 +4,23 @@
 POST /metrics/data
 =======================
 
+V2
+~~~
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``console_ro`` or ``api_ro``
+
+ * - Accept
+   - ``application/json``
+ * - Content-Type
+   - ``application/sellside.metrics.data-v2+json``
+
+Version 2 is replacing CPC values with BidMicros and BilledMicros. One cent equals to 10000 micros. 
+
+V1
+~~~
 .. list-table::
  :widths: 20 80
 

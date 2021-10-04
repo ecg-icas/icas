@@ -68,15 +68,15 @@ The dimensions supported by the reporting API have discrete values (like *Nether
 Supported Dimensions
 ********************************************
 
-=================  =========  =============================
-Name                 Type      Description
-=================  =========  =============================
-``am:date``         String     The date when the events happened. See `Time Aggregation`_
-``am:adID``         Long       ID of the ad(s)
-``am:CPC``          Long       The Cost Per Click (in Cents) of the ad(s)
-``am:categoryID``   Long       The category ID of the ad(s)
-``am:regionID``     Long       The region ID of the ad(s)
-=================  =========  =============================
+=================  =========  =========  =============================
+Name               Type       Version    Description
+=================  =========  =========  =============================
+``am:date``         String    V1,V2      The date when the events happened. See `Time Aggregation`_
+``am:adID``         Long      V1,V2      ID of the ad(s)
+``am:CPC``          Long      V1,V2      The Cost Per Click (in Cents) of the ad(s)
+``am:categoryID``   Long      V1,V2      The category ID of the ad(s)
+``am:regionID``     Long      V1,V2      The region ID of the ad(s)
+=================  =========  =========  =============================
 
 .. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data is aggregated over units of time (such as days, weeks, months or years) when calculating metrics over it. See `Time Aggregation`_ for options on granularity.
 
@@ -84,30 +84,32 @@ Name                 Type      Description
 Supported Metrics
 ********************************************
 
-================================  =========  =========  ============================================================
-Name                                Type     `Scope`_    Description
-================================  =========  =========  ============================================================
-``am:clicks``                      Long       Hit        Number of clicks
-``am:impressions``                 Long       Hit        Nnumber of impressions
-``am:websiteClicks``               Long       Hit        Number of website clicks
-``am:emails``                      Long       Hit        Number of emails
-``am:engagements``                 Long       Hit        Number of engagements from clicks
-``am:viewCTR``                     Double     Hit        Number of clicks leads from impressions, also known as Click-through rate
-``am:websiteCTR``                  Double     Hit        Number of website leads from clicks
-``am:spent``                       Long       Hit        Amount spent (in Cents)
-``am:engagementCTR``               Double     Hit        Number of engagements leads from clicks
-``am:avgCPC``                      Double     Hit        Average Cost Per Click. Calculation
-``am:eCPC``                        Double     Hit        Effective cost per website click. Total spent on the ad divided by the number of website clicks
-``am:sessionECPC``                 Long       Session    Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks
-``am:sessionsWithClicks``          Long       Session    Number of unique sessions with clicks
-``am:sessionsWithImpressions``     Long       Session    Number of unique sessions with impressions
-``am:sessionsWithWebsiteClicks``   Long       Session    Number of unique sessions with website clicks
-``am:sessionsWithEmails``          Long       Session    Number of unique sessions sending emails
-``am:sessionsWithEngagements``     Long       Session    Number of unique sessions with engagements
-``am:sessionViewCTR``              Double     Session    Number of unique sessions with clicks leads from unique sessions with impressions
-``am:sessionWebsiteCTR``           Double     Session    Number of unique sessions with website leads from unique sessions with clicks
-``am:sessionEngagementCTR``        Double     Session    Number of unique sessions with engagements leads from unique sessions with clicks
-================================  =========  =========  ============================================================
+================================  =========  =========  =========  ======================================
+Name                              Type       Version    `Scope`_   Description
+================================  =========  =========  =========  ======================================
+``am:clicks``                     Long       V1,V2      Hit        Number of clicks
+``am:impressions``                Long       V1,V2      Hit        Nnumber of impressions
+``am:websiteClicks``              Long       V1,V2      Hit        Number of website clicks
+``am:emails``                     Long       V1,V2      Hit        Number of emails
+``am:engagements``                Long       V1,V2      Hit        Number of engagements from clicks
+``am:viewCTR``                    Double     V1,V2      Hit        Number of clicks leads from impressions, also known as Click-through rate
+``am:websiteCTR``                 Double     V1,V2      Hit        Number of website leads from clicks
+``am:spent``                      Long       V1,V2      Hit        Amount spent (in Cents)
+``am:engagementCTR``              Double     V1,V2      Hit        Number of engagements leads from clicks
+``am:avgCPC``                     Double     V1         Hit        Average Cost Per Click. Calculation
+``am:avgBidMicros``               Double     V2         Hit        Average Cost Per Click in micros. Calculation
+``am:avgBilledMicros``            Double     V2         Hit        Average Billed Cost Per Click in micros. Calculation
+``am:eCPC``                       Double     V1,V2      Hit        Effective cost per website click. Total spent on the ad divided by the number of website clicks
+``am:sessionECPC``                Long       V1,V2      Session    Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks
+``am:sessionsWithClicks``         Long       V1,V2      Session    Number of unique sessions with clicks
+``am:sessionsWithImpressions``    Long       V1,V2      Session    Number of unique sessions with impressions
+``am:sessionsWithWebsiteClicks``  Long       V1,V2      Session    Number of unique sessions with website clicks
+``am:sessionsWithEmails``         Long       V1,V2      Session    Number of unique sessions sending emails
+``am:sessionsWithEngagements``    Long       V1,V2      Session    Number of unique sessions with engagements
+``am:sessionViewCTR``             Double     V1,V2      Session    Number of unique sessions with clicks leads from unique sessions with impressions
+``am:sessionWebsiteCTR``          Double     V1,V2      Session    Number of unique sessions with website leads from unique sessions with clicks
+``am:sessionEngagementCTR``       Double     V1,V2      Session    Number of unique sessions with engagements leads from unique sessions with clicks
+================================  =========  =========  =========  ======================================
 
 Scope
 ######################################################
@@ -224,7 +226,7 @@ To sort the resulting data, use the **sorts** top-level query field. Sorts is an
     }
 
 
-A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested. There are two directions for sorting: ``asc`` (ascending) and ``desc`` (descending). 
+A field can be either a valid metric or a valid dimension. It is only permitted to sort on the fields that are requested. There are two directions for sorting: ``asc`` (ascending) and ``desc`` (descending).
 The following example sorts first on date in descending order, followed by the ad ID in ascending order.
 
 .. code:: javascript
@@ -234,7 +236,7 @@ The following example sorts first on date in descending order, followed by the a
             {
                 "field":"am:date",
                 "direction":"desc"
-     
+
             },
             {
                 "field":"am:adID",
@@ -252,22 +254,23 @@ Enrichment
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 It is possible to enrich the reports with "handy" ad-related data for which only the present-moment values are available, such as the ad title, or category description. Requesting these fields makes sense **only** if ``am:adID`` is in the requested dimensions. The supported fields are listed below:
 
-===========================   ===========  =============================
-Name                          Type         Description
-===========================   ===========  =============================
-``am:currentAdTitle``         String       Current title of the ad
-``am:currentAdStartDate``     Timestamp    Current start date of the ad
-``am:currentAdEndDate``       Timestamp    Current end date of the ad, if applicable
-``am:currentAdCPC``           Integer      Currect CPC of the ad
-``am:currentAdCategoryL1``    String       Description of the current top-level category the ad
-``am:currentAdCategoryL2``    String       Description of the current second-level category the ad
-``am:currentAdCategoryL3``    String       Description of the current third-level category the ad, if applicable
-``am:currentAdImage``         String       Path to the current (first) image of the ad in the smallest resolution (64x64 pixels), if available
-``am:currentAdVendorID``      String       Current vendorID of the ad, if available
-``am:currentAdRegion``        String       Description of the current (lowest-level) region of the ad, if applicable
-``am:currentAdExternalID``    String       Current externalID of the ad, if available
-``am:currentAdExternalURL``   String       Current external URL of the ad, if available
-===========================   ===========  =============================
+===========================   ===========  =======  =============================
+Name                          Type         Version  Description
+===========================   ===========  =======  =============================
+``am:currentAdTitle``         String       V1,V2    Current title of the ad
+``am:currentAdStartDate``     Timestamp    V1,V2    Current start date of the ad
+``am:currentAdEndDate``       Timestamp    V1,V2    Current end date of the ad, if applicable
+``am:currentAdCPC``           Integer      V1       Current CPC of the ad
+``am:currentAdBidMicros``     Integer      V2       Current bid micros of the ad
+``am:currentAdCategoryL1``    String       V1,V2    Description of the current top-level category the ad
+``am:currentAdCategoryL2``    String       V1,V2    Description of the current second-level category the ad
+``am:currentAdCategoryL3``    String       V1,V2    Description of the current third-level category the ad, if applicable
+``am:currentAdImage``         String       V1,V2    Path to the current (first) image of the ad in the smallest resolution (64x64 pixels), if available
+``am:currentAdVendorID``      String       V1,V2    Current vendorID of the ad, if available
+``am:currentAdRegion``        String       V1,V2    Description of the current (lowest-level) region of the ad, if applicable
+``am:currentAdExternalID``    String       V1,V2    Current externalID of the ad, if available
+``am:currentAdExternalURL``   String       V1,V2    Current external URL of the ad, if available
+===========================   ===========  =======  =============================
 
 
 Query and Response
