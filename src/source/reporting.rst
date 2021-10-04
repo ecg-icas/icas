@@ -94,7 +94,8 @@ Name                              Type       Version    `Scope`_   Description
 ``am:engagements``                Long       V1,V2      Hit        Number of engagements from clicks
 ``am:viewCTR``                    Double     V1,V2      Hit        Number of clicks leads from impressions, also known as Click-through rate
 ``am:websiteCTR``                 Double     V1,V2      Hit        Number of website leads from clicks
-``am:spent``                      Long       V1,V2      Hit        Amount spent (in Cents)
+``am:spent``                      Long       V1         Hit        Amount spent (in Cents)
+``am:spentMicros``                Long       V2         Hit        Amount spent (in Micros)
 ``am:engagementCTR``              Double     V1,V2      Hit        Number of engagements leads from clicks
 ``am:avgCPC``                     Double     V1         Hit        Average Cost Per Click. Calculation
 ``am:avgBidMicros``               Double     V2         Hit        Average Cost Per Click in micros. Calculation
