@@ -525,6 +525,97 @@
 </tbody>
 </table>
 </div>
+<div class="section" id="example-5">
+<h1>Example 5:<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h1>
+<p>Get all clicks, and average billed micros for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgBilledMicros&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;enrichment&quot;</span><span class="p">:[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span> <span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
+    <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mf">45000.0</span><span class="p">],</span>
+            <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;vendor11111&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span>
+            <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;vendor33333&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span>  <span class="mf">2.3</span><span class="p">],</span>
+                <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;vendor33333&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}],</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="15%" />
+<col width="20%" />
+<col width="21%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">am:adID</th>
+<th class="head">am:clicks</th>
+<th class="head">am:avgBilledMicros</th>
+<th class="head">am:currentAdTitle</th>
+<th class="head">am:currentAdVendorID</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>11111</td>
+<td>11</td>
+<td>45000.0</td>
+<td>Ad title #11111</td>
+<td>vendor11111</td>
+</tr>
+<tr class="row-odd"><td>33333</td>
+<td>9</td>
+<td>30000.0</td>
+<td>Ad title #33333</td>
+<td>vendor33333</td>
+</tr>
+<tr class="row-even"><td>22222</td>
+<td>34</td>
+<td>23000.0</td>
+<td>Ad title #22222</td>
+<td>vendor22222</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="final-remarks">
 <h1>Final remarks:<a class="headerlink" href="#final-remarks" title="Permalink to this headline">¶</a></h1>
 <blockquote>

@@ -14,7 +14,7 @@ Here is a sample request with all top-level query fields expanded:
     POST /api/sellside/metrics/data
     Content-Type: application/sellside.metrics.data-v1+json
     Accept: application/json
-.. literalinclude:: /examples/metrics-query-v1.json
+.. literalinclude:: /examples/metrics-query.json
 
 Metrics Request
 ######################################################
@@ -38,7 +38,7 @@ The data model of the request has the following structure:
 
 
 ==================  ======================================
-Parameter            Description
+Parameter           Description
 ==================  ======================================
 ``timeRanges``      Array of :ref:`Time Ranges <time-ranges>` objects, separated by commas
 ``aggregate``       One of :ref:`Time Aggregation <time-aggregation>` string values
@@ -57,7 +57,7 @@ Response
 
 The response body of the API request is a JSON object of `Metrics Response`_ type. Here is a sample response for the sample request above.
 
-.. literalinclude:: /examples/metrics-response-v1.json
+.. literalinclude:: /examples/metrics-response.json
 
 Metrics Response
 ######################################################

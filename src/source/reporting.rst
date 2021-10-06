@@ -97,9 +97,9 @@ Name                              Type       Version    `Scope`_   Description
 ``am:spent``                      Long       V1         Hit        Amount spent (in Cents)
 ``am:spentMicros``                Long       V2         Hit        Amount spent (in Micros)
 ``am:engagementCTR``              Double     V1,V2      Hit        Number of engagements leads from clicks
-``am:avgCPC``                     Double     V1         Hit        Average Cost Per Click. Calculation
-``am:avgBidMicros``               Double     V2         Hit        Average Cost Per Click in micros. Calculation
-``am:avgBilledMicros``            Double     V2         Hit        Average Billed Cost Per Click in micros. Calculation
+``am:avgCPC``                     Double     V1         Hit        Average Cost Per Click in cents.
+``am:avgBidMicros``               Double     V2         Hit        Average Cost Per Click in micros.
+``am:avgBilledMicros``            Double     V2         Hit        Average Billed Cost Per Click in micros.
 ``am:eCPC``                       Double     V1,V2      Hit        Effective cost per website click. Total spent on the ad divided by the number of website clicks
 ``am:sessionECPC``                Long       V1,V2      Session    Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks
 ``am:sessionsWithClicks``         Long       V1,V2      Session    Number of unique sessions with clicks
