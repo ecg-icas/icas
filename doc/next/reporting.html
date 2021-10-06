@@ -356,42 +356,35 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <h3>Supported Dimensions<a class="headerlink" href="#supported-dimensions" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
-<col width="10%" />
-<col width="10%" />
-<col width="62%" />
+<col width="20%" />
+<col width="14%" />
+<col width="67%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
 <th class="head">Type</th>
-<th class="head">Version</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:date</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>The date when the events happened. See <a class="reference internal" href="#time-aggregation">Time Aggregation</a></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:adID</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>ID of the ad(s)</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:CPC</span></code></td>
-<td>Long</td>
-<td>V1,V2</td>
-<td>The Cost Per Click (in Cents) of the ad(s)</td>
+<td>deprecated</td>
+<td>&#8211;</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:categoryID</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>The category ID of the ad(s)</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:regionID</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>The region ID of the ad(s)</td>
 </tr>
 </tbody>
@@ -405,16 +398,14 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <h3>Supported Metrics<a class="headerlink" href="#supported-metrics" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="16%" />
-<col width="5%" />
-<col width="5%" />
-<col width="5%" />
-<col width="70%" />
+<col width="24%" />
+<col width="9%" />
+<col width="7%" />
+<col width="60%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
 <th class="head">Type</th>
-<th class="head">Version</th>
 <th class="head"><a class="reference internal" href="#scope">Scope</a></th>
 <th class="head">Description</th>
 </tr>
@@ -422,139 +413,116 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:clicks</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Hit</td>
 <td>Number of clicks</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:impressions</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Hit</td>
-<td>Nnumber of impressions</td>
+<td>Number of impressions</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:websiteClicks</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Hit</td>
 <td>Number of website clicks</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:emails</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Hit</td>
 <td>Number of emails</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:engagements</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Hit</td>
 <td>Number of engagements from clicks</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:viewCTR</span></code></td>
 <td>Double</td>
-<td>V1,V2</td>
 <td>Hit</td>
 <td>Number of clicks leads from impressions, also known as Click-through rate</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:websiteCTR</span></code></td>
 <td>Double</td>
-<td>V1,V2</td>
 <td>Hit</td>
 <td>Number of website leads from clicks</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:spent</span></code></td>
-<td>Long</td>
-<td>V1</td>
-<td>Hit</td>
-<td>Amount spent (in Cents)</td>
+<td>deprecated</td>
+<td>&#8211;</td>
+<td>&#8211;</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:spentMicros</span></code></td>
 <td>Long</td>
-<td>V2</td>
 <td>Hit</td>
 <td>Amount spent (in Micros)</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:engagementCTR</span></code></td>
 <td>Double</td>
-<td>V1,V2</td>
 <td>Hit</td>
 <td>Number of engagements leads from clicks</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:avgCPC</span></code></td>
-<td>Double</td>
-<td>V1</td>
-<td>Hit</td>
-<td>Average Cost Per Click in cents.</td>
+<td>deprecated</td>
+<td>&#8211;</td>
+<td>&#8211;</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:avgBidMicros</span></code></td>
 <td>Double</td>
-<td>V2</td>
 <td>Hit</td>
 <td>Average Cost Per Click in micros.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:avgBilledMicros</span></code></td>
 <td>Double</td>
-<td>V2</td>
 <td>Hit</td>
 <td>Average Billed Cost Per Click in micros.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:eCPC</span></code></td>
-<td>Double</td>
-<td>V1,V2</td>
-<td>Hit</td>
-<td>Effective cost per website click. Total spent on the ad divided by the number of website clicks</td>
+<td>deprecated</td>
+<td>&#8211;</td>
+<td>&#8211;</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionECPC</span></code></td>
-<td>Long</td>
-<td>V1,V2</td>
-<td>Session</td>
-<td>Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks</td>
+<td>deprecated</td>
+<td>&#8211;</td>
+<td>&#8211;</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithClicks</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Session</td>
 <td>Number of unique sessions with clicks</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithImpressions</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Session</td>
 <td>Number of unique sessions with impressions</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithWebsiteClicks</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Session</td>
 <td>Number of unique sessions with website clicks</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithEmails</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Session</td>
 <td>Number of unique sessions sending emails</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithEngagements</span></code></td>
 <td>Long</td>
-<td>V1,V2</td>
 <td>Session</td>
 <td>Number of unique sessions with engagements</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionViewCTR</span></code></td>
 <td>Double</td>
-<td>V1,V2</td>
 <td>Session</td>
 <td>Number of unique sessions with clicks leads from unique sessions with impressions</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionWebsiteCTR</span></code></td>
 <td>Double</td>
-<td>V1,V2</td>
 <td>Session</td>
 <td>Number of unique sessions with website leads from unique sessions with clicks</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionEngagementCTR</span></code></td>
 <td>Double</td>
-<td>V1,V2</td>
 <td>Session</td>
 <td>Number of unique sessions with engagements leads from unique sessions with clicks</td>
 </tr>
@@ -676,82 +644,67 @@ The following example sorts first on date in descending order, followed by the a
 <p>It is possible to enrich the reports with &#8220;handy&#8221; ad-related data for which only the present-moment values are available, such as the ad title, or category description. Requesting these fields makes sense <strong>only</strong> if <code class="docutils literal"><span class="pre">am:adID</span></code> is in the requested dimensions. The supported fields are listed below:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="19%" />
+<col width="20%" />
 <col width="8%" />
-<col width="5%" />
-<col width="69%" />
+<col width="72%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
 <th class="head">Type</th>
-<th class="head">Version</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdTitle</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Current title of the ad</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdStartDate</span></code></td>
 <td>Timestamp</td>
-<td>V1,V2</td>
 <td>Current start date of the ad</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdEndDate</span></code></td>
 <td>Timestamp</td>
-<td>V1,V2</td>
 <td>Current end date of the ad, if applicable</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCPC</span></code></td>
-<td>Integer</td>
-<td>V1</td>
-<td>Current CPC of the ad</td>
+<td>deprecated</td>
+<td>&#8211;</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdBidMicros</span></code></td>
 <td>Integer</td>
-<td>V2</td>
 <td>Current bid micros of the ad</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL1</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Description of the current top-level category the ad</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL2</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Description of the current second-level category the ad</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL3</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Description of the current third-level category the ad, if applicable</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdImage</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Path to the current (first) image of the ad in the smallest resolution (64x64 pixels), if available</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdVendorID</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Current vendorID of the ad, if available</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdRegion</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Description of the current (lowest-level) region of the ad, if applicable</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdExternalID</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Current externalID of the ad, if available</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdExternalURL</span></code></td>
 <td>String</td>
-<td>V1,V2</td>
 <td>Current external URL of the ad, if available</td>
 </tr>
 </tbody>
