@@ -2,6 +2,8 @@
 .. _Yandex Metrica: https://tech.yandex.com/metrika/
 .. _metrics_reporting:
 
+..  role:: strike
+
 Reporting
 ===========
 
@@ -73,7 +75,7 @@ Name               Type          Description
 =================  ============  =============================
 ``am:date``        String        The date when the events happened. See `Time Aggregation`_
 ``am:adID``        Long          ID of the ad(s)
-``am:CPC``         deprecated    --
+:strike:`am:CPC`   deprecated    --
 ``am:categoryID``  Long          The category ID of the ad(s)
 ``am:regionID``    Long          The region ID of the ad(s)
 =================  ============  =============================
@@ -94,14 +96,14 @@ Name                              Type          `Scope`_   Description
 ``am:engagements``                Long          Hit        Number of engagements from clicks
 ``am:viewCTR``                    Double        Hit        Number of clicks leads from impressions, also known as Click-through rate
 ``am:websiteCTR``                 Double        Hit        Number of website leads from clicks
-``am:spent``                      deprecated    --         --
+:strike:`am:spent`                deprecated    --         --
 ``am:spentMicros``                Long          Hit        Amount spent (in Micros)
 ``am:engagementCTR``              Double        Hit        Number of engagements leads from clicks
-``am:avgCPC``                     deprecated    --         --
+:strike:`am:avgCPC`               deprecated    --         --
 ``am:avgBidMicros``               Double        Hit        Average Cost Per Click in micros.
 ``am:avgBilledMicros``            Double        Hit        Average Billed Cost Per Click in micros.
-``am:eCPC``                       deprecated    --         --
-``am:sessionECPC``                deprecated    --         --
+:strike:`am:eCPC`                 deprecated    --         --
+:strike:`am:sessionECPC`          deprecated    --         --
 ``am:sessionsWithClicks``         Long          Session    Number of unique sessions with clicks
 ``am:sessionsWithImpressions``    Long          Session    Number of unique sessions with impressions
 ``am:sessionsWithWebsiteClicks``  Long          Session    Number of unique sessions with website clicks
@@ -261,7 +263,7 @@ Name                           Type          Description
 ``am:currentAdTitle``          String       Current title of the ad
 ``am:currentAdStartDate``      Timestamp    Current start date of the ad
 ``am:currentAdEndDate``        Timestamp    Current end date of the ad, if applicable
-``am:currentAdCPC``            deprecated   --
+:strike:`am:currentAdCPC`      deprecated   --
 ``am:currentAdBidMicros``      Integer      Current bid micros of the ad
 ``am:currentAdCategoryL1``     String       Description of the current top-level category the ad
 ``am:currentAdCategoryL2``     String       Description of the current second-level category the ad
