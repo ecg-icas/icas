@@ -23,7 +23,6 @@ API Reference
    reference/post-feed-config
    reference/get-feed-import
    reference/get-feed-import-id-detail
-   reference/get-feed-import-id-detail-vendor-id
    reference/get-feed-xsd
    reference/get-image
    reference/post-image
