@@ -53,11 +53,11 @@ If we add a secondary dimension, for example *Category*, the resulting view coul
 Netherlands     Bicycles         356        0.5678
 Netherlands     Camping Gear     174        0.455
 Netherlands     Mobile Phones    546        0.0245
- . . .             . . .         . . .       . . .
+. . .           . . .            . . .      . . .
 Spain           Bicycles         987        0.123
 Spain           Camping Gear     5537       0.2311
 Spain           Mobile Phones    987        0.123
- . . .             . . .         . . .       . . .
+. . .           . . .            . . .      . . .
 France          Bicycles         12743      0.2357
 France          Camping Gear     753        0.1124
 France          Bicycles         882        0.3575
@@ -252,9 +252,9 @@ Enrichment
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 It is possible to enrich the reports with "handy" ad-related data for which only the present-moment values are available, such as the ad title, or category description. Requesting these fields makes sense **only** if ``am:adID`` is in the requested dimensions. The supported fields are listed below:
 
-===========================  ===========  =============================
-Name                           Type        Description
-===========================  ===========  =============================
+===========================   ===========  =============================
+Name                          Type         Description
+===========================   ===========  =============================
 ``am:currentAdTitle``         String       Current title of the ad
 ``am:currentAdStartDate``     Timestamp    Current start date of the ad
 ``am:currentAdEndDate``       Timestamp    Current end date of the ad, if applicable
@@ -266,7 +266,8 @@ Name                           Type        Description
 ``am:currentAdVendorID``      String       Current vendorID of the ad, if available
 ``am:currentAdRegion``        String       Description of the current (lowest-level) region of the ad, if applicable
 ``am:currentAdExternalID``    String       Current externalID of the ad, if available
-===========================  ===========  =============================
+``am:currentAdExternalURL``   String       Current external URL of the ad, if available
+===========================   ===========  =============================
 
 
 Query and Response

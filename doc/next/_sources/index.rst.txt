@@ -48,11 +48,14 @@ History
 
 ..  role:: strike
 
-* v.0.121 - 28 July 2021 - pt
+* v.0.122 - 12 Oct 2021 - tw
 
   * new version of /import/{id}/detail :ref:`get_feed_import_id_detail_v2` endpoint for fetching feed result
-  * marked depreciated /import/{id}/detail/{vendorId}
-  * removed /feed/import/{id}/detail
+  * removed depreciated /import/{id}/detail/{vendorId}
+  * removed /feed/import/{id}/detail V1
+
+* v.0.121 - 12 Jul 2021 - tw
+  * add ``am:currentAdExternalURL`` to optional enrichment parameters in :ref:`metrics_reporting`
 
 * v.0.120 - 17 May 2021 - tw
 

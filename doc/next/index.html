@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; iCAS Sellside API 0.121 documentation</title>
+  <title>Introduction &mdash; iCAS Sellside API 0.122 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.121 documentation" href="#"/>
+    <link rel="top" title="iCAS Sellside API 0.122 documentation" href="#"/>
         <link rel="next" title="Overview" href="overview.html"/> 
 
   
@@ -161,8 +161,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail-v1-depreciated">GET /feed/import/{id}/detail V1 (depreciated)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
@@ -336,8 +335,7 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail-v1-depreciated">GET /feed/import/{id}/detail V1 (depreciated)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
@@ -365,12 +363,14 @@ Notifications about maintenance will also go through this channel.</p>
 <div class="section" id="history">
 <span id="id2"></span><h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>v.0.121 - 28 July 2021 - pt<ul>
+<li>v.0.122 - 12 Oct 2021 - tw<ul>
 <li>new version of /import/{id}/detail <a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail-v2"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> endpoint for fetching feed result</li>
-<li>marked depreciated /import/{id}/detail/{vendorId}</li>
-<li>removed /feed/import/{id}/detail</li>
+<li>removed depreciated /import/{id}/detail/{vendorId}</li>
+<li>removed /feed/import/{id}/detail V1</li>
 </ul>
 </li>
+<li>v.0.121 - 12 Jul 2021 - tw
+* add <code class="docutils literal"><span class="pre">am:currentAdExternalURL</span></code> to optional enrichment parameters in <a class="reference internal" href="reporting.html#metrics-reporting"><span class="std std-ref">Reporting</span></a></li>
 <li>v.0.120 - 17 May 2021 - tw<ul>
 <li>add clarification on image downloads being skipped during feed processing if the entire ad didn&#8217;t change (including image urls)</li>
 </ul>
@@ -551,7 +551,7 @@ Notifications about maintenance will also go through this channel.</p>
 </ul>
 </li>
 <li>v0.76 - 3 Feb 2016 - ak<ul>
-<li>Added <a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a>, <a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> and <a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><span class="std std-ref">GET /feed/import/{id}/detail/{vendorId}</span></a></li>
+<li>Added <a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a>, <a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail</span></a> and <a class="reference internal" href="reference/get-feed-import-id-detail-vendor-id.html#get-feed-import-id-detail-vendor-id"><span class="std std-ref">GET /feed/import/{id}/detail/{vendorId}</span></a></li>
 </ul>
 </li>
 <li>v0.75 - 7 Jan 2016 - ak<ul>
@@ -1009,7 +1009,7 @@ Notifications about maintenance will also go through this channel.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.121',
+            VERSION:'0.122',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /feed/import/{id}/detail V2 &mdash; iCAS Sellside API 0.121 documentation</title>
+  <title>GET /feed/import/{id}/detail &mdash; iCAS Sellside API 0.122 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.121 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.122 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /feed/import/{id}/detail/{vendorId}" href="get-feed-import-id-detail-vendor-id.html"/>
         <link rel="prev" title="GET /feed/import" href="get-feed-import.html"/> 
@@ -163,8 +163,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/import/{id}/detail V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#get-feed-import-id-detail-v1-depreciated">GET /feed/import/{id}/detail V1 (depreciated)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail-vendor-id.html">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
@@ -211,7 +210,7 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>GET /feed/import/{id}/detail V2</li>
+    <li>GET /feed/import/{id}/detail</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../_sources/reference/get-feed-import-id-detail.rst.txt" rel="nofollow"> View page source</a>
@@ -222,8 +221,11 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-feed-import-id-detail-v2">
-<span id="get-feed-import-id-detail"></span><span id="index-0"></span><span id="id1"></span><h1>GET /feed/import/{id}/detail V2<a class="headerlink" href="#get-feed-import-id-detail-v2" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="get-feed-import-id-detail">
+<span id="index-0"></span><span id="id1"></span><h1>GET /feed/import/{id}/detail<a class="headerlink" href="#get-feed-import-id-detail" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#get-feed-import-id-detail-v2"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> | <a class="reference internal" href="#get-feed-import-id-detail-v1"><span class="std std-ref">GET /feed/import/{id}/detail V1</span></a></p>
+<div class="section" id="get-feed-import-id-detail-v2">
+<span id="id2"></span><h2>GET /feed/import/{id}/detail V2<a class="headerlink" href="#get-feed-import-id-detail-v2" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -234,14 +236,100 @@
 <td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.feedimportdetail.list-v2+json,</span> <span class="pre">application/json</span></code></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.feedimportdetail-v2+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>This endpoint provides a summary of the feed import.</p>
-<p>Each feed import object contains the time when it was started
-(<code class="docutils literal"><span class="pre">accepted</span></code>), the URL of the user&#8217;s XML document (<code class="docutils literal"><span class="pre">url</span></code>) and whether the
-document could successfully be processed (<code class="docutils literal"><span class="pre">status</span></code>). The <code class="docutils literal"><span class="pre">status</span></code> field</p>
+<p>This endpoint provides a summary of the feed import. Use this endpoint to get information on whether there were any
+errors or warnings associated with a specific import.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="4%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>int</td>
+<td>import ID, same as provided in the call</td>
+</tr>
+<tr class="row-odd"><td>url</td>
+<td>string</td>
+<td>URL where the feed file was downloaded</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>string</td>
+<td>status of the import. See <a class="reference internal" href="#get-feed-import-id-detail-v2-status"><span class="std std-ref">Import Status</span></a> for details</td>
+</tr>
+<tr class="row-odd"><td>dateCreated</td>
+<td>string</td>
+<td>ISO 8601 date of when the feed import was started</td>
+</tr>
+<tr class="row-even"><td>error</td>
+<td>string</td>
+<td>the error affecting the whole feed, as opposed to <code class="docutils literal"><span class="pre">errors</span></code> containing errors affecting individual ads. If your feed is in status <code class="docutils literal"><span class="pre">REJECTED</span></code> this should have the reason</td>
+</tr>
+<tr class="row-odd"><td>totalCount</td>
+<td>int</td>
+<td>the total number of ads found in the XML document</td>
+</tr>
+<tr class="row-even"><td>okCount</td>
+<td>int</td>
+<td>the number of ads processed without errors</td>
+</tr>
+<tr class="row-odd"><td>warningCount</td>
+<td>int</td>
+<td>the number of ads processed with warnings</td>
+</tr>
+<tr class="row-even"><td>errorCount</td>
+<td>int</td>
+<td>the number of ads rejected due to errors</td>
+</tr>
+<tr class="row-odd"><td>warnings</td>
+<td>struct</td>
+<td>contains count and a list of vendorIDs of ads having <code class="docutils literal"><span class="pre">warning</span></code> messages, see <a class="reference internal" href="#message-struct"><span class="std std-ref">Error / Warning messages</span></a></td>
+</tr>
+<tr class="row-even"><td>errors</td>
+<td>struct</td>
+<td>contains count and a list of vendorIDs of ads having <code class="docutils literal"><span class="pre">error</span></code> messages, see <a class="reference internal" href="#message-struct"><span class="std std-ref">Error / Warning messages</span></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="error-warning-messages">
+<span id="message-struct"></span><h3>Error / Warning messages<a class="headerlink" href="#error-warning-messages" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="13%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>count</td>
+<td>int</td>
+<td>total number of ads affected by this error/warning message</td>
+</tr>
+<tr class="row-odd"><td>vendorIdsSample</td>
+<td>list&lt;string&gt;</td>
+<td>subset (max 100) of vendorIDs that were affected by this error</td>
+</tr>
+</tbody>
+</table>
+<p>It is not possible to fetch all affected ad ids.</p>
+</div>
+<div class="section" id="import-status">
+<span id="get-feed-import-id-detail-v2-status"></span><h3>Import Status<a class="headerlink" href="#import-status" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="15%" />
@@ -254,7 +342,7 @@ document could successfully be processed (<code class="docutils literal"><span c
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>PENDING</td>
-<td>when it is currently being processed status</td>
+<td>when the feed import is currently processing</td>
 </tr>
 <tr class="row-odd"><td>DONE</td>
 <td>when the document was processed successfully status</td>
@@ -264,60 +352,11 @@ document could successfully be processed (<code class="docutils literal"><span c
 </tr>
 </tbody>
 </table>
-<p>In the latter case, the <code class="docutils literal"><span class="pre">error</span></code> field contains the error message that has prevented
+<p>In the case the feed has status <code class="docutils literal"><span class="pre">REJECTED</span></code>, the <code class="docutils literal"><span class="pre">error</span></code> field contains the error message that has prevented
 the complete feed from being imported.</p>
-<p>Import object contains the following fields:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="11%" />
-<col width="6%" />
-<col width="84%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>recordCount</td>
-<td>int</td>
-<td>the total number of ads found in the XML document</td>
-</tr>
-<tr class="row-odd"><td>acceptCount</td>
-<td>int</td>
-<td>the number of ads processed without errors</td>
-</tr>
-<tr class="row-even"><td>noticeCount</td>
-<td>int</td>
-<td>the number of ads processed with warnings</td>
-</tr>
-<tr class="row-odd"><td>rejectCount</td>
-<td>int</td>
-<td>the number of ads rejected due to errors</td>
-</tr>
-<tr class="row-even"><td>error</td>
-<td>string</td>
-<td>the error affecting the whole feed, as opposed to <code class="docutils literal"><span class="pre">errors</span></code> containing errors affecting individual ads</td>
-</tr>
-<tr class="row-odd"><td>warnings</td>
-<td>struct</td>
-<td>contains <code class="docutils literal"><span class="pre">warning</span></code> messages indicating data validation issues for successfully imported ads</td>
-</tr>
-<tr class="row-even"><td>errors</td>
-<td>struct</td>
-<td>contains messages explaining why an ad could not be imported.</td>
-</tr>
-</tbody>
-</table>
-<p>Both <code class="docutils literal"><span class="pre">warnings</span></code> and <code class="docutils literal"><span class="pre">errors</span></code> fields contains a subset of a maximum of 100 ad ids for which
-the message was generated. It is not possible to fetch all affected ad ids.
-For example if 10000 ads had the same validation issue on the ads, the <code class="docutils literal"><span class="pre">warnings</span></code> field
-would contain a single warning message describing the issue in more details
-and a 100 ad ids of the ads which had this issue.</p>
-<p>Another example - if 55 ads failed validation because
-of the missing category field, <code class="docutils literal"><span class="pre">errors</span></code> field would contain the detailed validation message and all 55 ad
-ids that had the category missing.</p>
+</div>
+<div class="section" id="errors">
+<h3>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The endpoint returns <strong>404 Not Found</strong> when import details are requested for:</p>
@@ -326,8 +365,6 @@ ids that had the category missing.</p>
 <li>a successful feed import of an empty XML document (which contains no ads)</li>
 </ul>
 </div>
-<div class="section" id="errors">
-<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="16%" />
@@ -357,33 +394,31 @@ ids that had the category missing.</p>
 </table>
 </div>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span>  <span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="kr">import</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">detail</span>
-  <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+  <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
   <span class="mi">200</span> <span class="nx">OK</span>
-  <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
+  <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">{</span>
-  <span class="s2">&quot;ID&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
-  <span class="s2">&quot;userID&quot;</span><span class="o">:</span> <span class="mi">345</span><span class="p">,</span>
-  <span class="s2">&quot;URL&quot;</span><span class="o">:</span> <span class="s2">&quot;http://feed.com/id/1&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;accepted&quot;</span><span class="o">:</span> <span class="mi">1625219890</span><span class="p">,</span>
+  <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+  <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://feed.com/id/5324&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2021-08-31T16:12:53Z&quot;</span><span class="p">,</span>
   <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;DONE&quot;</span><span class="p">,</span>
   <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;recordCount&quot;</span><span class="o">:</span> <span class="mi">110</span><span class="p">,</span>
-  <span class="s2">&quot;acceptCount&quot;</span><span class="o">:</span> <span class="mi">101</span><span class="p">,</span>
-  <span class="s2">&quot;rejectCount&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
-  <span class="s2">&quot;noticeCount&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-  <span class="s2">&quot;tenant&quot;</span><span class="o">:</span> <span class="s2">&quot;kjca&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;totalCount&quot;</span><span class="o">:</span> <span class="mi">110</span><span class="p">,</span>
+  <span class="s2">&quot;okCount&quot;</span><span class="o">:</span> <span class="mi">106</span><span class="p">,</span>
+  <span class="s2">&quot;errorCount&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s2">&quot;warningCount&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
   <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{</span>
       <span class="s2">&quot;price should be lower than originalPrice&quot;</span><span class="o">:</span> <span class="p">{</span>
           <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
           <span class="s2">&quot;vendorIdsSample&quot;</span><span class="o">:</span> <span class="p">[</span>
               <span class="s2">&quot;566&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;788&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;990&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;000&quot;</span>
+              <span class="s2">&quot;abc-788&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;990232&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;000mcakjn&quot;</span>
           <span class="p">]</span>
       <span class="p">}</span>
   <span class="p">},</span>
@@ -392,14 +427,14 @@ ids that had the category missing.</p>
           <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
           <span class="s2">&quot;vendorIdsSample&quot;</span><span class="o">:</span> <span class="p">[</span>
               <span class="s2">&quot;vid6778787&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;vendorid&quot;</span>
-          <span class="p">]</span>
+              <span class="s2">&quot;vendorid124&quot;</span>
+          <span class="p">],</span>
       <span class="p">},</span>
       <span class="s2">&quot;mandatory attribute 240 absent&quot;</span><span class="o">:</span> <span class="p">{</span>
           <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
           <span class="s2">&quot;vendorIdsSample&quot;</span><span class="o">:</span> <span class="p">[</span>
-              <span class="s2">&quot;vendorid1&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;vendorid2&quot;</span>
+              <span class="s2">&quot;vendorid124&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;vendorid224&quot;</span>
           <span class="p">]</span>
       <span class="p">}</span>
   <span class="p">}</span>
@@ -408,11 +443,11 @@ ids that had the category missing.</p>
 </div>
 </div>
 </div>
-<div class="section" id="get-feed-import-id-detail-v1-depreciated">
-<h1>GET /feed/import/{id}/detail V1 (depreciated)<a class="headerlink" href="#get-feed-import-id-detail-v1-depreciated" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="get-feed-import-id-detail-v1">
+<span id="id3"></span><h2>GET /feed/import/{id}/detail V1<a class="headerlink" href="#get-feed-import-id-detail-v1" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> instead.</p>
+<p class="last">This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-feed-import-id-detail-v2"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> instead.</p>
 </div>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -447,8 +482,8 @@ status information for only a subset of all ads. This is achieved by using the <
 <li>a <strong>REJECTED</strong> feed import</li>
 <li>a successful feed import of an empty XML document (which contains no ads)</li>
 </ul>
-<div class="section" id="id2">
-<h2>Errors<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Errors<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="16%" />
@@ -497,8 +532,8 @@ status information for only a subset of all ads. This is achieved by using the <
 </tbody>
 </table>
 </div>
-<div class="section" id="id3">
-<h2>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="kr">import</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">detail</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -518,6 +553,7 @@ status information for only a subset of all ads. This is achieved by using the <
   <span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -560,7 +596,7 @@ status information for only a subset of all ads. This is achieved by using the <
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.121',
+            VERSION:'0.122',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
