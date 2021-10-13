@@ -256,47 +256,47 @@ errors or warnings associated with a specific import.</p>
 <tbody valign="top">
 <tr class="row-even"><td>id</td>
 <td>int</td>
-<td>import ID, same as provided in the call</td>
+<td>import ID, same as provided in the call.</td>
 </tr>
 <tr class="row-odd"><td>url</td>
 <td>string</td>
-<td>URL where the feed file was downloaded</td>
+<td>URL where the feed file was downloaded.</td>
 </tr>
 <tr class="row-even"><td>status</td>
 <td>string</td>
-<td>status of the import. See <a class="reference internal" href="#get-feed-import-id-detail-v2-status"><span class="std std-ref">Import Status</span></a> for details</td>
+<td>status of the feed import. See <a class="reference internal" href="#get-feed-import-id-detail-v2-status"><span class="std std-ref">Import Status</span></a> for details.</td>
 </tr>
 <tr class="row-odd"><td>dateCreated</td>
 <td>string</td>
-<td>ISO 8601 date of when the feed import was started</td>
+<td>ISO 8601 date of when the feed import was started.</td>
 </tr>
 <tr class="row-even"><td>error</td>
 <td>string</td>
-<td>the error affecting the whole feed, as opposed to <code class="docutils literal"><span class="pre">errors</span></code> containing errors affecting individual ads. If your feed is in status <code class="docutils literal"><span class="pre">REJECTED</span></code> this should have the reason</td>
+<td>the error affecting the whole feed import, as opposed to <code class="docutils literal"><span class="pre">errors</span></code> containing errors affecting individual ads. If your feed is in status <code class="docutils literal"><span class="pre">REJECTED</span></code> this should have the reason.</td>
 </tr>
 <tr class="row-odd"><td>totalCount</td>
 <td>int</td>
-<td>the total number of ads found in the XML document</td>
+<td>the total number of ads found in the feed file.</td>
 </tr>
 <tr class="row-even"><td>okCount</td>
 <td>int</td>
-<td>the number of ads processed without errors</td>
+<td>the number of ads processed without errors.</td>
 </tr>
 <tr class="row-odd"><td>warningCount</td>
 <td>int</td>
-<td>the number of ads processed with warnings</td>
+<td>the number of ads processed with warnings.</td>
 </tr>
 <tr class="row-even"><td>errorCount</td>
 <td>int</td>
-<td>the number of ads rejected due to errors</td>
+<td>the number of ads rejected due to errors.</td>
 </tr>
 <tr class="row-odd"><td>warnings</td>
-<td>struct</td>
-<td>contains count and a list of vendorIDs of ads having <code class="docutils literal"><span class="pre">warning</span></code> messages, see <a class="reference internal" href="#message-struct"><span class="std std-ref">Error / Warning messages</span></a></td>
+<td>object</td>
+<td>contains count and a subset of vendorIDs (max 100) of ads having <code class="docutils literal"><span class="pre">warning</span></code> messages, see <a class="reference internal" href="#message-struct"><span class="std std-ref">Error / Warning messages</span></a>.</td>
 </tr>
 <tr class="row-even"><td>errors</td>
-<td>struct</td>
-<td>contains count and a list of vendorIDs of ads having <code class="docutils literal"><span class="pre">error</span></code> messages, see <a class="reference internal" href="#message-struct"><span class="std std-ref">Error / Warning messages</span></a></td>
+<td>object</td>
+<td>contains count and a subset of vendorIDs (max 100) of ads having <code class="docutils literal"><span class="pre">error</span></code> messages, see <a class="reference internal" href="#message-struct"><span class="std std-ref">Error / Warning messages</span></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -331,8 +331,8 @@ errors or warnings associated with a specific import.</p>
 <span id="get-feed-import-id-detail-v2-status"></span><h3>Import Status<a class="headerlink" href="#import-status" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="15%" />
-<col width="85%" />
+<col width="9%" />
+<col width="91%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Status</th>
@@ -341,18 +341,18 @@ errors or warnings associated with a specific import.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>PENDING</td>
-<td>when the feed import is currently processing</td>
+<td>the feed import is currently processing.</td>
 </tr>
 <tr class="row-odd"><td>DONE</td>
-<td>when the document was processed successfully status</td>
+<td>the feed import has completed successfully. Individual ads could still have failed updating, but the process completed.</td>
 </tr>
 <tr class="row-even"><td>REJECTED</td>
-<td>when it was either not accessible or syntactically incorrect status</td>
+<td>the feed import failed; either the feed file could not be downloaded or the feed file didn&#8217;t pass validation.</td>
 </tr>
 </tbody>
 </table>
-<p>In the case the feed has status <code class="docutils literal"><span class="pre">REJECTED</span></code>, the <code class="docutils literal"><span class="pre">error</span></code> field contains the error message that has prevented
-the complete feed from being imported.</p>
+<p>In the case the feed import has status <code class="docutils literal"><span class="pre">REJECTED</span></code>, the <code class="docutils literal"><span class="pre">error</span></code> field contains the error message that has prevented
+the feed import from succeeding. Most of the time this is either a failure to download the feed file, or the feed file didn&#8217;t pass validation.</p>
 </div>
 <div class="section" id="errors">
 <h3>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h3>
@@ -360,8 +360,7 @@ the complete feed from being imported.</p>
 <p class="first admonition-title">Note</p>
 <p>The endpoint returns <strong>404 Not Found</strong> when import details are requested for:</p>
 <ul class="last simple">
-<li>an unknown feed import</li>
-<li>a successful feed import of an empty XML document (which contains no ads)</li>
+<li>an unknown feed import id for the user</li>
 </ul>
 </div>
 <table border="1" class="docutils">
@@ -394,6 +393,7 @@ the complete feed from being imported.</p>
 </div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>This is example output of a successful feed import, with some records resulting in warnings/errors:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span>  <span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="kr">import</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">detail</span>
   <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -440,13 +440,57 @@ the complete feed from being imported.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>This is example output of a failed feed import, where XML validation did not succeed:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span>  <span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="kr">import</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">detail</span>
+  <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+  <span class="mi">200</span> <span class="nx">OK</span>
+  <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+  <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://feed.com/id/5324&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2021-08-31T16:12:53Z&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;REJECTED&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;feed validation failure: invalid feed: parsing xml feed: XML syntax error on line 34: invalid character entity &amp;raquo;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;totalCount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;okCount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;errorCount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;warningCount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;warnings&quot;</span><span class="o">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is example output of a failed feed import, where the feed file could not be downloaded:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span>  <span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="kr">import</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">detail</span>
+  <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+  <span class="mi">200</span> <span class="nx">OK</span>
+  <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+  <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://feed.com/id/5324.xml&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2021-08-31T16:12:53Z&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;REJECTED&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;HTTP 404 Not Found for: http://feed.com/id/5324.xml: fetch url failure&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;totalCount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;okCount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;errorCount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;warningCount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;errors&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;warnings&quot;</span><span class="o">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="get-feed-import-id-detail-v1">
 <span id="id3"></span><h2>GET /feed/import/{id}/detail V1<a class="headerlink" href="#get-feed-import-id-detail-v1" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-feed-import-id-detail-v2"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> instead.</p>
+<p class="last">This call is deprecated. Please use <a class="reference internal" href="#get-feed-import-id-detail-v2"><span class="std std-ref">GET /feed/import/{id}/detail V2</span></a> instead.</p>
 </div>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -463,7 +507,7 @@ the complete feed from being imported.</p>
 </tbody>
 </table>
 <p>This endpoint provides detailed import information for each ad during a successful feed import.
-The field <code class="docutils literal"><span class="pre">vendorId</span></code> identifies the ad in the XML feed and can be used in <span class="xref std std-ref">get_feed_import_id_detail_vendor_id</span>.
+The field <code class="docutils literal"><span class="pre">vendorId</span></code> identifies the ad in the XML feed and could have been used in GET /import/{id}/detail/{vendorId}.
 The <code class="docutils literal"><span class="pre">dateCreated</span></code> shows the time when the ad was processed. The <code class="docutils literal"><span class="pre">warnings</span></code> field contains
 a list of descriptive messages when the ad was successfully imported but with warnings,
 e.g. the system has normalized the ad&#8217;s phone number because it is specified in an unsupported

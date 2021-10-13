@@ -238,7 +238,7 @@ History
 
 * v0.76 - 3 Feb 2016 - ak
 
-  * Added :ref:`get_feed_import`, :ref:`get_feed_import_id_detail` and :ref:`get_feed_import_id_detail_vendor_id`
+  * Added :ref:`get_feed_import`, :ref:`get_feed_import_id_detail` and GET /import/{id}/detail/{vendorId}
 
 * v0.75 - 7 Jan 2016 - ak
 
