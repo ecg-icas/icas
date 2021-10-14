@@ -65,7 +65,7 @@ Status          Description
 ============    =================================================
 PENDING         the feed import is currently processing.
 DONE            the feed import has completed successfully. Individual ads could still have failed updating, but the process completed.
-REJECTED        the feed import failed; either the feed file could not be downloaded or the feed file didn't pass validation.
+REJECTED        the feed import failed; either the feed file could not be downloaded or the feed file didn't pass validation. This means NO ads have been processed.
 ============    =================================================
 
 In the case the feed import has status ``REJECTED``, the ``error`` field contains the error message that has prevented
