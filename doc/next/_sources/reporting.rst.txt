@@ -53,11 +53,11 @@ If we add a secondary dimension, for example *Category*, the resulting view coul
 Netherlands     Bicycles         356        0.5678
 Netherlands     Camping Gear     174        0.455
 Netherlands     Mobile Phones    546        0.0245
- . . .             . . .         . . .       . . .
+. . .           . . .            . . .      . . .
 Spain           Bicycles         987        0.123
 Spain           Camping Gear     5537       0.2311
 Spain           Mobile Phones    987        0.123
- . . .             . . .         . . .       . . .
+. . .           . . .            . . .      . . .
 France          Bicycles         12743      0.2357
 France          Camping Gear     753        0.1124
 France          Bicycles         882        0.3575
