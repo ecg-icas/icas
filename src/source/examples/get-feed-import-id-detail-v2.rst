@@ -12,10 +12,10 @@
     "dateCreated": "2021-08-31T16:12:53Z",
     "status": "DONE",
     "error": "",
-    "totalCount": 110,
-    "okCount": 106,
-    "errorCount": 4,
-    "warningCount": 10,
+    "totalRecordsRead": 110,
+    "recordsSucceeded": 106,
+    "recordsFailed": 4,
+    "recordsWithWarnings": 10,
     "errors": {
         "price should be lower than originalPrice": {
             "count": 4,
