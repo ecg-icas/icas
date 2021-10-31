@@ -17,6 +17,8 @@ V2
    - ``application/sellside.metrics.ad-hit-v2+json`` or ``application/sellside.metrics.ad-session-v2+json``
 
 
+V2 replaces market specific currency with our internal universal micros currency. 
+
 V1
 ~~~
 
