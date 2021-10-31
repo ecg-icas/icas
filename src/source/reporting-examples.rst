@@ -245,7 +245,7 @@ am:adID                 am:clicks        am:avgCPC            am:currentAdTitle 
 Example 5:
 ************************************************************************
 
-Get all clicks, and average billed micros for categories ``1234`` and ``5678`` for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:
+Get all clicks, and average spent micros for categories ``1234`` and ``5678`` for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:
 
 
 .. code:: javascript
@@ -258,7 +258,7 @@ Get all clicks, and average billed micros for categories ``1234`` and ``5678`` f
             "period": "lastWeek"
         }],
         "dimensions": ["am:adID"],
-        "metrics": ["am:clicks", "am:avgBilledMicros"],
+        "metrics": ["am:clicks", "am:avgSpentMicros"],
         "filters": [{
                 "field": "am:categoryID",
                 "operator": "in",
@@ -304,7 +304,7 @@ Get all clicks, and average billed micros for categories ``1234`` and ``5678`` f
 
 
 =====================   ==============   ===================  ====================   =====================
-am:adID                 am:clicks        am:avgBilledMicros   am:currentAdTitle      am:currentAdVendorID
+am:adID                 am:clicks        am:avgSpentMicros    am:currentAdTitle      am:currentAdVendorID
 =====================   ==============   ===================  ====================   =====================
 11111                   11               45000.0              Ad title #11111        vendor11111
 33333                   9                30000.0              Ad title #33333        vendor33333

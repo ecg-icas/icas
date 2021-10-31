@@ -17,7 +17,7 @@ V2
  * - Content-Type
    - ``application/sellside.metrics.data-v2+json``
 
-Version 2 is replacing fields that are showing values in cents with their corresponding values in micros. One cent equals to 10000 micros. This allows more granular setting of bid values which was limited down to the size of one cent. This version also introduces billed vs bid values differentiation which is expressed by BidMicros and BilledMicros. 
+Version 2 is replacing fields that are showing values in cents with their corresponding values in micros. One cent equals to 10000 micros. This allows more granular setting of bid values which was limited down to the size of one cent. This version also introduces spent vs bid values differentiation which is expressed by BidMicros and SpentMicros. 
 
 V1
 ~~~

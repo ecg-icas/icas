@@ -101,7 +101,7 @@ Name                              Type          `Scope`_   Description
 ``am:engagementCTR``              Double        Hit        Number of engagements leads from clicks
 :strike:`am:avgCPC`               deprecated    --         --
 ``am:avgBidMicros``               Double        Hit        Average Cost Per Click in micros.
-``am:avgBilledMicros``            Double        Hit        Average Billed Cost Per Click in micros.
+``am:avgSpentMicros``             Double        Hit        Average Spent Cost Per Click micros.
 :strike:`am:eCPC`                 deprecated    --         --
 :strike:`am:sessionECPC`          deprecated    --         --
 ``am:sessionsWithClicks``         Long          Session    Number of unique sessions with clicks
