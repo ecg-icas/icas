@@ -4,6 +4,25 @@
 GET /metrics/ads
 =================
 
+V2
+~~
+.. list-table::
+ :widths: 30 70
+
+ * - Scope
+   - ``console_ro`` or ``api_ro``
+
+ * - Accept
+   - ``application/vnd.ms-excel;v=2`` or ``text/csv;v=2``
+
+ * - Accept-Language
+   - preferred locale (e.g., ``nl-NL``, ``fr-BE``, ``en-CA``)
+
+
+V2 exposes the bidding concept, instead of static CPC we expose the Bid (in Micros). As a result discrepancy is expected between the Bid and the Total Spent column (the bid value used is not the same as the value that is charged). The bid and spent values are represented as Micros instead of the local currency used in V1. One micro (as the name suggests) is equal to 1M local currency units.
+
+V1
+~~
 .. list-table::
  :widths: 30 70
 
@@ -14,7 +33,7 @@ GET /metrics/ads
    - ``application/vnd.ms-excel`` or ``text/csv``
 
  * - Accept-Language
-   - preferred locale (e.g., ``nl-NL``, ``fr-BE``, ``en-CA``) 
+   - preferred locale (e.g., ``nl-NL``, ``fr-BE``, ``en-CA``)
 
 This URL returns an ads performance report either in Excel or in CSV format depending on the
 ``Accept`` header. The report represents a timeseries breakdown of the performance of each ad which
@@ -54,8 +73,37 @@ fields          list of strings      no                 Comma-separated list of 
 ==============  ================  ==================  ======================================================================================================================================================================================================================================================================================================
 
 
-Report Columns
-~~~~~~~~~~~~~~
+Report Columns V2
+~~~~~~~~~~~~~~~~~
+
+Both the excel and the csv formats contain the following columns by default:
+
+====================   =================   ===============================================================
+Name                   Field               Description
+====================   =================   ===============================================================
+Date (Aggregated)      ``date``            Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is ``YYYY-MM-DD``, for monthly aggregation - ``YYYY-MM``, and for yearly - ``YYYY``. All dates are in tenant timezone.
+Ad ID                  ``adID``            ID of the ad
+L1 Category            ``L1Category``      Level 1 category name
+L2 Category            ``L2Category``      Level 2 category name
+L3 Category            ``L3Category``      Level 3 category name, if applicable
+Title                  ``title``           Title of the ad
+Start Date             ``startDate``       Creation date of the ad
+End Date               ``endDate``         If the ad is deleted, deletion date of the ad
+Bid (Micros)           ``bidMicros``       Bid of the ad for which performance metrics are calculated, in Micros
+Total Spent (Micros)   ``spent``           Total amount spent for this ad, in Micros
+Clicks                 ``clicks``          Number of clicks that the ad received
+Impressions            ``impressions``     Number of impressions that the ad received
+CTR                    ``viewCTR``         Click-through rate in %
+URL clicks             ``websiteClicks``   Number of URL clicks that the ad received
+Emails                 ``emails``          Number of email events that the ad received
+Engagement CTR         ``engagementCTR``   Engagement conversion rate in %. Calculation: ``(URL clicks + Emails) / Clicks``
+Region                 ``region``          Region name, of the ad
+Vendor ID              ``vendorID``        Vendor ID of the ad
+====================   =================   ===============================================================
+
+
+Report Columns V1
+~~~~~~~~~~~~~~~~~
 
 Both the excel and the csv formats contain the following columns by default:
 
@@ -93,4 +141,3 @@ Errors
 ~~~~~~~~
 
 .. include:: ../examples/get-metrics-ads-examples-errors.rst
-

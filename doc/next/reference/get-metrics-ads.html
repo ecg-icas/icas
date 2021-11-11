@@ -223,6 +223,29 @@
             
   <div class="section" id="get-metrics-ads">
 <span id="index-0"></span><span id="id1"></span><h1>GET /metrics/ads<a class="headerlink" href="#get-metrics-ads" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v2">
+<h2>V2<a class="headerlink" href="#v2" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel;v=2</span></code> or <code class="docutils literal"><span class="pre">text/csv;v=2</span></code></td>
+</tr>
+<tr class="row-odd"><td>Accept-Language</td>
+<td>preferred locale (e.g., <code class="docutils literal"><span class="pre">nl-NL</span></code>, <code class="docutils literal"><span class="pre">fr-BE</span></code>, <code class="docutils literal"><span class="pre">en-CA</span></code>)</td>
+</tr>
+</tbody>
+</table>
+<p>V2 exposes the bidding concept, instead of static CPC we expose the Bid (in Micros). As a result discrepancy is expected between the Bid and the Total Spent column (the bid value used is not the same as the value that is charged). The bid and spent values are represented as Micros instead of the local currency used in V1. One micro (as the name suggests) is equal to 1M local currency units.</p>
+</div>
+<div class="section" id="v1">
+<h2>V1<a class="headerlink" href="#v1" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="30%" />
@@ -271,6 +294,7 @@ Empty strings are not enclosed in quotes.</strong></p>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -321,8 +345,99 @@ Empty strings are not enclosed in quotes.</strong></p>
 </tbody>
 </table>
 </div>
-<div class="section" id="report-columns">
-<h2>Report Columns<a class="headerlink" href="#report-columns" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="report-columns-v2">
+<h2>Report Columns V2<a class="headerlink" href="#report-columns-v2" title="Permalink to this headline">¶</a></h2>
+<p>Both the excel and the csv formats contain the following columns by default:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="6%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Date (Aggregated)</td>
+<td><code class="docutils literal"><span class="pre">date</span></code></td>
+<td>Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>, for monthly aggregation - <code class="docutils literal"><span class="pre">YYYY-MM</span></code>, and for yearly - <code class="docutils literal"><span class="pre">YYYY</span></code>. All dates are in tenant timezone.</td>
+</tr>
+<tr class="row-odd"><td>Ad ID</td>
+<td><code class="docutils literal"><span class="pre">adID</span></code></td>
+<td>ID of the ad</td>
+</tr>
+<tr class="row-even"><td>L1 Category</td>
+<td><code class="docutils literal"><span class="pre">L1Category</span></code></td>
+<td>Level 1 category name</td>
+</tr>
+<tr class="row-odd"><td>L2 Category</td>
+<td><code class="docutils literal"><span class="pre">L2Category</span></code></td>
+<td>Level 2 category name</td>
+</tr>
+<tr class="row-even"><td>L3 Category</td>
+<td><code class="docutils literal"><span class="pre">L3Category</span></code></td>
+<td>Level 3 category name, if applicable</td>
+</tr>
+<tr class="row-odd"><td>Title</td>
+<td><code class="docutils literal"><span class="pre">title</span></code></td>
+<td>Title of the ad</td>
+</tr>
+<tr class="row-even"><td>Start Date</td>
+<td><code class="docutils literal"><span class="pre">startDate</span></code></td>
+<td>Creation date of the ad</td>
+</tr>
+<tr class="row-odd"><td>End Date</td>
+<td><code class="docutils literal"><span class="pre">endDate</span></code></td>
+<td>If the ad is deleted, deletion date of the ad</td>
+</tr>
+<tr class="row-even"><td>Bid (Micros)</td>
+<td><code class="docutils literal"><span class="pre">bidMicros</span></code></td>
+<td>Bid of the ad for which performance metrics are calculated, in Micros</td>
+</tr>
+<tr class="row-odd"><td>Total Spent (Micros)</td>
+<td><code class="docutils literal"><span class="pre">spent</span></code></td>
+<td>Total amount spent for this ad, in Micros</td>
+</tr>
+<tr class="row-even"><td>Clicks</td>
+<td><code class="docutils literal"><span class="pre">clicks</span></code></td>
+<td>Number of clicks that the ad received</td>
+</tr>
+<tr class="row-odd"><td>Impressions</td>
+<td><code class="docutils literal"><span class="pre">impressions</span></code></td>
+<td>Number of impressions that the ad received</td>
+</tr>
+<tr class="row-even"><td>CTR</td>
+<td><code class="docutils literal"><span class="pre">viewCTR</span></code></td>
+<td>Click-through rate in %</td>
+</tr>
+<tr class="row-odd"><td>URL clicks</td>
+<td><code class="docutils literal"><span class="pre">websiteClicks</span></code></td>
+<td>Number of URL clicks that the ad received</td>
+</tr>
+<tr class="row-even"><td>Emails</td>
+<td><code class="docutils literal"><span class="pre">emails</span></code></td>
+<td>Number of email events that the ad received</td>
+</tr>
+<tr class="row-odd"><td>Engagement CTR</td>
+<td><code class="docutils literal"><span class="pre">engagementCTR</span></code></td>
+<td>Engagement conversion rate in %. Calculation: <code class="docutils literal"><span class="pre">(URL</span> <span class="pre">clicks</span> <span class="pre">+</span> <span class="pre">Emails)</span> <span class="pre">/</span> <span class="pre">Clicks</span></code></td>
+</tr>
+<tr class="row-even"><td>Region</td>
+<td><code class="docutils literal"><span class="pre">region</span></code></td>
+<td>Region name, of the ad</td>
+</tr>
+<tr class="row-odd"><td>Vendor ID</td>
+<td><code class="docutils literal"><span class="pre">vendorID</span></code></td>
+<td>Vendor ID of the ad</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="report-columns-v1">
+<h2>Report Columns V1<a class="headerlink" href="#report-columns-v1" title="Permalink to this headline">¶</a></h2>
 <p>Both the excel and the csv formats contain the following columns by default:</p>
 <table border="1" class="docutils">
 <colgroup>
