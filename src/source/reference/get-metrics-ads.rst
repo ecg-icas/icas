@@ -90,7 +90,7 @@ Title                  ``title``           Title of the ad
 Start Date             ``startDate``       Creation date of the ad
 End Date               ``endDate``         If the ad is deleted, deletion date of the ad
 Bid (Micros)           ``bidMicros``       Bid of the ad for which performance metrics are calculated, in Micros
-Total Spent (Micros)   ``spent``           Total amount spent for this ad, in Micros
+Total Spent (Micros)   ``spentMicros``     Total amount spent for this ad, in Micros
 Clicks                 ``clicks``          Number of clicks that the ad received
 Impressions            ``impressions``     Number of impressions that the ad received
 CTR                    ``viewCTR``         Click-through rate in %
