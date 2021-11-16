@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /feed/import/{id}/detail/{vendorId} &mdash; iCAS Sellside API 0.121 documentation</title>
+  <title>GET /ad/{id}/funnel &mdash; iCAS Sellside API 0.122 documentation</title>
   
 
   
@@ -33,10 +33,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.121 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.122 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /feed/xsd" href="get-feed-xsd.html"/>
-        <link rel="prev" title="GET /feed/import/{id}/detail" href="get-feed-import-id-detail.html"/> 
+        <link rel="next" title="GET /ad/mapping/externalids" href="get-ad-externalid-mapping.html"/>
+        <link rel="prev" title="GET /ad/byVendor/{vendorId}" href="get-ad-vendor-id.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -150,7 +150,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-ad.html">GET /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /ad/{id}/funnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
@@ -164,7 +164,6 @@
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/import/{id}/detail/{vendorId}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
@@ -210,10 +209,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>GET /feed/import/{id}/detail/{vendorId}</li>
+    <li>GET /ad/{id}/funnel</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-feed-import-id-detail-vendor-id.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-ad-id-funnel.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -221,8 +220,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-feed-import-id-detail-vendorid">
-<span id="get-feed-import-id-detail-vendor-id"></span><span id="index-0"></span><h1>GET /feed/import/{id}/detail/{vendorId}<a class="headerlink" href="#get-feed-import-id-detail-vendorid" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="get-ad-id-funnel">
+<span id="index-0"></span><span id="id1"></span><h1>GET /ad/{id}/funnel<a class="headerlink" href="#get-ad-id-funnel" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -233,12 +232,52 @@
 <td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.feedimportdetail-v1+json,</span> <span class="pre">application/json</span></code></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.funnel-v1+json,</span> <span class="pre">application/json</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>This endpoint provides <a class="reference internal" href="get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail</span></a> for an ad during a successful feed import.
-<strong>404 Not Found</strong> is returned if no ad can be found with the specified import and vendor ID&#8217;s.</p>
+<p>This URL returns performance predictions such as number of impressions, clicks
+and url clicks for a given ad and cpc value.</p>
+<p>The endpoint also returns information regarding the current page on which the
+ad is displayed (<code class="docutils literal"><span class="pre">pageNumber</span></code>) and the required cpc value which would place the ad on page
+one (<code class="docutils literal"><span class="pre">averageCpc</span></code>). If <code class="docutils literal"><span class="pre">cpc</span></code> is greater than <code class="docutils literal"><span class="pre">maxCpc</span></code> then this ad does not perform well
+enough to be placed on page one.</p>
+<p>If the performance of an ad cannot be predicted yet, the server returns a
+<code class="docutils literal"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code> response with an empty body. This can happen when, for
+instance, the ad is the only one in a category and no reference ads exist yet
+from which to derive a performance prediction.</p>
+<p>The <code class="docutils literal"><span class="pre">averageCpc</span></code> field in the response marks the required cpc value to place the ad on page one in its category.
+We will rename this field in a future version of the endpoint to make this clearer.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="8%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cpc</td>
+<td>integer</td>
+<td>The cpc value in euro cents for which to make the prediction. Mandatory field.</td>
+</tr>
+<tr class="row-odd"><td>_include</td>
+<td>string</td>
+<td>Comma-separated-list of fields to include. Optional, default is all fields.</td>
+</tr>
+<tr class="row-even"><td>_exclude</td>
+<td>string</td>
+<td>Comma-separated-list of fields to omit. Optional, default empty.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -256,41 +295,32 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>id</td>
+<tr class="row-even"><td>cpc</td>
 <td>2001</td>
 <td>invalid argument</td>
-<td>not a valid number</td>
-</tr>
-<tr class="row-odd"><td>id</td>
-<td>2002</td>
-<td>out of range</td>
-<td>less than 0</td>
-</tr>
-<tr class="row-even"><td>vendorId</td>
-<td>2005</td>
-<td>too long</td>
-<td>longer than the configured tenant&#8217;s maximum length for vendor ID</td>
+<td>the provided value is not a valid number</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="kr">import</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span><span class="nx">detail</span><span class="o">/</span><span class="nx">vndr</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">/</span><span class="nx">funnel</span><span class="o">?</span><span class="nx">cpc</span><span class="o">=</span><span class="mi">50</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">funnel</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
 <span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimportdetail</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">funnel</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
 
 <span class="p">{</span>
-  <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span>    <span class="s2">&quot;vndr&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;errors&quot;</span><span class="o">:</span>      <span class="p">[</span>
-    <span class="s2">&quot;title \&quot;\&quot; too short, minimum is 1 characters&quot;</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;warnings&quot;</span><span class="o">:</span><span class="p">[</span>
-    <span class="s2">&quot;total budget defaults to 200000000&quot;</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-02-03T14:59:02Z&quot;</span>
+  <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+  <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;averageClicks&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="s2">&quot;averageCpc&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;averageImpressions&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+  <span class="s2">&quot;averageUrlClicks&quot;</span><span class="o">:</span> <span class="mi">400</span><span class="p">,</span>
+  <span class="s2">&quot;ctr&quot;</span><span class="o">:</span> <span class="mf">3.5</span><span class="p">,</span>
+  <span class="s2">&quot;urlCtr&quot;</span><span class="o">:</span> <span class="mf">1.2</span><span class="p">,</span>
+  <span class="s2">&quot;maxCpc&quot;</span><span class="o">:</span> <span class="mi">600</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -303,10 +333,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-feed-xsd.html" class="btn btn-neutral float-right" title="GET /feed/xsd"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-ad-externalid-mapping.html" class="btn btn-neutral float-right" title="GET /ad/mapping/externalids"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="get-feed-import-id-detail.html" class="btn btn-neutral" title="GET /feed/import/{id}/detail"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="get-ad-vendor-id.html" class="btn btn-neutral" title="GET /ad/byVendor/{vendorId}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -335,7 +365,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.121',
+            VERSION:'0.122',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
