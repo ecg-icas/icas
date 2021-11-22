@@ -4,42 +4,6 @@
 GET /metrics/report
 =======================
 
-V2
-~~~
-
-.. list-table::
- :widths: 30 70
-
- * - Scope
-   - ``console_ro`` or ``api_ro``
-
- * - Accept
-   - ``application/sellside.metrics.ad-hit-v2+json`` or ``application/sellside.metrics.ad-session-v2+json``
-
-
-V2 replaces market specific currency with our internal universal micros currency. 
-
-V1
-~~~
-
-.. list-table::
- :widths: 30 70
-
- * - Scope
-   - ``console_ro`` or ``api_ro``
-
- * - Accept
-   - ``application/sellside.metrics.ad-hit-v1+json`` or ``application/sellside.metrics.ad-session-v1+json``
-
-Returns a performance report for a selected date period, per ad.
-The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads **which have had performance-related activity**.
-
-The ``Accept`` header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
-Conceptually, user is the highest level scope and hit is the lowest level scope. For example, ``clicks`` counts the number of clicks that ad received when the scope is `hit`,
-whereas it counts the number of sessions with clicks when the scope is `session`.
-
-We plan to extend support for user-level scoped metrics if there is demand for it.
-
 Parameters
 ----------
 
@@ -64,11 +28,25 @@ endDate                     "2014-11-24"                string      The end of t
 data                        see below                   array       The report data; each element in this array represents the data for an ad.
 =======================     ========================    ========    =============================================================
 
-Data contents
--------------
 
 V2
 ~~~
+
+.. list-table::
+ :widths: 30 70
+
+ * - Scope
+   - ``console_ro`` or ``api_ro``
+
+ * - Accept
+   - ``application/sellside.metrics.ad-hit-v2+json`` or ``application/sellside.metrics.ad-session-v2+json``
+
+
+V2 replaces market specific currency with our internal universal micros currency.
+
+
+Data contents
+-------------
 
 =======================     ========================    ========    =============================================================
 Field                       Example                     Type        Info
@@ -95,8 +73,31 @@ relativePerformance         75                          int         Returns the 
 eSpentMicros                0.42                        float       Returns the effective cost per website click in micros
 =======================     ========================    ========    =============================================================
 
+
 V1
 ~~~
+
+.. list-table::
+ :widths: 30 70
+
+ * - Scope
+   - ``console_ro`` or ``api_ro``
+
+ * - Accept
+   - ``application/sellside.metrics.ad-hit-v1+json`` or ``application/sellside.metrics.ad-session-v1+json``
+
+Returns a performance report for a selected date period, per ad.
+The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads **which have had performance-related activity**.
+
+The ``Accept`` header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
+Conceptually, user is the highest level scope and hit is the lowest level scope. For example, ``clicks`` counts the number of clicks that ad received when the scope is `hit`,
+whereas it counts the number of sessions with clicks when the scope is `session`.
+
+We plan to extend support for user-level scoped metrics if there is demand for it.
+
+
+Data contents
+-------------
 
 =======================     ========================    ========    =============================================================
 Field                       Example                     Type        Info
