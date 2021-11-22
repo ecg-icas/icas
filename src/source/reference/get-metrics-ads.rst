@@ -5,6 +5,20 @@ GET /metrics/ads
 =================
 
 
+This URL returns an ads performance report either in Excel or in CSV format depending on the
+``Accept`` header. The report represents a timeseries breakdown of the performance of each ad which
+**has had performance-related activity** in the requested period.
+
+If the ``Accept`` header is ``application/vnd.ms-excel`` an Excel document is created, in ``.xlsx`` format.
+
+If the ``Accept`` header is ``text/csv`` a `CSV <http://en.wikipedia.org/wiki/Comma-separated_values>`_ document is created, in the standard `RFC-4180 <https://tools.ietf.org/html/rfc4180>`_ format.
+**Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
+Empty strings are not enclosed in quotes.**
+
+All dates and times are in the tenant timezone.
+
+The ``Accept-Language`` header advertises the preferred client locales (language and region) for the report column names. Both ``language_REGION`` and ``language-REGION`` are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:
+
 ==============  =======================
 Tenant           Locales
 ==============  =======================
@@ -47,23 +61,8 @@ V2
 V2 exposes the bidding concept, instead of static CPC we expose the Bid (in Micros). As a result discrepancy is expected between the Bid and the Total Spent column (the bid value used is not the same as the value that is charged). The bid and spent values are represented as Micros instead of the local currency used in V1. One micro (as the name suggests) is equal to 1M local currency units.
 
 
-This URL returns an ads performance report either in Excel or in CSV format depending on the
-``Accept`` header. The report represents a timeseries breakdown of the performance of each ad which
-**has had performance-related activity** in the requested period.
-
-If the ``Accept`` header is ``application/vnd.ms-excel`` an Excel document is created, in ``.xlsx`` format.
-
-If the ``Accept`` header is ``text/csv`` a `CSV <http://en.wikipedia.org/wiki/Comma-separated_values>`_ document is created, in the standard `RFC-4180 <https://tools.ietf.org/html/rfc4180>`_ format.
-**Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
-Empty strings are not enclosed in quotes.**
-
-All dates and times are in the tenant timezone.
-
-The ``Accept-Language`` header advertises the preferred client locales (language and region) for the report column names. Both ``language_REGION`` and ``language-REGION`` are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:
-
-
-Report Columns V2
-~~~~~~~~~~~~~~~~~
+Report Columns
+~~~~~~~~~~~~~~
 
 Both the excel and the csv formats contain the following columns by default:
 
@@ -106,8 +105,8 @@ V1
    - preferred locale (e.g., ``nl-NL``, ``fr-BE``, ``en-CA``)
 
 
-Report Columns V1
-~~~~~~~~~~~~~~~~~
+Report Columns
+~~~~~~~~~~~~~~
 
 Both the excel and the csv formats contain the following columns by default:
 
