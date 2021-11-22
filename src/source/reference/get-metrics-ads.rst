@@ -45,6 +45,9 @@ fields          list of strings      no                 Comma-separated list of 
 
 V2
 ~~
+
+V2 exposes the bidding concept, instead of static CPC we expose the Bid (in Micros). As a result discrepancy is expected between the Bid and the Total Spent column (the bid value used is not the same as the value that is charged). The bid and spent values are represented as Micros instead of the local currency used in V1. One micro (as the name suggests) is equal to 1M local currency units.
+
 .. list-table::
  :widths: 30 70
 
@@ -56,9 +59,6 @@ V2
 
  * - Accept-Language
    - preferred locale (e.g., ``nl-NL``, ``fr-BE``, ``en-CA``)
-
-
-V2 exposes the bidding concept, instead of static CPC we expose the Bid (in Micros). As a result discrepancy is expected between the Bid and the Total Spent column (the bid value used is not the same as the value that is charged). The bid and spent values are represented as Micros instead of the local currency used in V1. One micro (as the name suggests) is equal to 1M local currency units.
 
 
 Report Columns
