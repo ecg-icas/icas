@@ -6,6 +6,9 @@ POST /metrics/data
 
 V2
 ~~~
+
+V2 removes ``am:cpc`` from dimensions. It replaces ``am:spent``, ``am:avgCPC``, ``am:eCPC``, ``am:sessionECPC`` and replaces them with their corresponding ``am:spentMicros``, ``am:avgBidMicros``, ``am:avgSpentMicros`` 
+
 .. list-table::
  :widths: 20 80
 
@@ -17,7 +20,7 @@ V2
  * - Content-Type
    - ``application/sellside.metrics.data-v2+json``
 
-Version 2 is replacing fields that are showing values in cents with their corresponding values in micros. One cent equals to 10000 micros. This allows more granular setting of bid values which was limited down to the size of one cent. This version also introduces spent vs bid values differentiation which is expressed by BidMicros and SpentMicros. 
+This URL returns the requested reporting metrics in a format described in the new :ref:`metrics_reporting` API.
 
 V1
 ~~~
@@ -32,7 +35,6 @@ V1
  * - Content-Type
    - ``application/sellside.metrics.data-v1+json``
 
-This URL returns the requested reporting metrics in a format described in the new :ref:`metrics_reporting` API.
 
 Query and Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

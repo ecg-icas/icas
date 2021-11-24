@@ -397,10 +397,10 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <h3>Supported Metrics<a class="headerlink" href="#supported-metrics" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="24%" />
-<col width="9%" />
-<col width="7%" />
-<col width="60%" />
+<col width="16%" />
+<col width="6%" />
+<col width="5%" />
+<col width="74%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -473,17 +473,27 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:avgSpentMicros</span></code></td>
 <td>Double</td>
 <td>Hit</td>
-<td>Average Spent Cost Per Click micros.</td>
+<td>Average Spent Cost Per Click micros</td>
 </tr>
 <tr class="row-odd"><td><span class="strike">am:eCPC</span></td>
 <td>deprecated</td>
 <td>&#8211;</td>
 <td>&#8211;</td>
 </tr>
-<tr class="row-even"><td><span class="strike">am:sessionECPC</span></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:eSpentMicros</span></code></td>
+<td>Double</td>
+<td>Hit</td>
+<td>Effective cost per website click. Total spent on the ad divided by the number of website clicks in micros</td>
+</tr>
+<tr class="row-odd"><td><span class="strike">am:sessionECPC</span></td>
 <td>deprecated</td>
 <td>&#8211;</td>
 <td>&#8211;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionESpentMicros</span></code></td>
+<td>Double</td>
+<td>Session</td>
+<td>Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks in micros</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithClicks</span></code></td>
 <td>Long</td>

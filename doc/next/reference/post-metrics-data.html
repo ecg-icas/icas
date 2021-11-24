@@ -224,6 +224,7 @@
 <span id="index-0"></span><span id="id1"></span><h1>POST /metrics/data<a class="headerlink" href="#post-metrics-data" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="v2">
 <h2>V2<a class="headerlink" href="#v2" title="Permalink to this headline">¶</a></h2>
+<p>V2 removes <code class="docutils literal"><span class="pre">am:cpc</span></code> from dimensions. It replaces <code class="docutils literal"><span class="pre">am:spent</span></code>, <code class="docutils literal"><span class="pre">am:avgCPC</span></code>, <code class="docutils literal"><span class="pre">am:eCPC</span></code>, <code class="docutils literal"><span class="pre">am:sessionECPC</span></code> and replaces them with their corresponding <code class="docutils literal"><span class="pre">am:spentMicros</span></code>, <code class="docutils literal"><span class="pre">am:avgBidMicros</span></code>, <code class="docutils literal"><span class="pre">am:avgSpentMicros</span></code></p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
@@ -241,7 +242,7 @@
 </tr>
 </tbody>
 </table>
-<p>Version 2 is replacing fields that are showing values in cents with their corresponding values in micros. One cent equals to 10000 micros. This allows more granular setting of bid values which was limited down to the size of one cent. This version also introduces spent vs bid values differentiation which is expressed by BidMicros and SpentMicros.</p>
+<p>This URL returns the requested reporting metrics in a format described in the new <a class="reference internal" href="../reporting.html#metrics-reporting"><span class="std std-ref">Reporting</span></a> API.</p>
 </div>
 <div class="section" id="v1">
 <h2>V1<a class="headerlink" href="#v1" title="Permalink to this headline">¶</a></h2>
@@ -262,7 +263,6 @@
 </tr>
 </tbody>
 </table>
-<p>This URL returns the requested reporting metrics in a format described in the new <a class="reference internal" href="../reporting.html#metrics-reporting"><span class="std std-ref">Reporting</span></a> API.</p>
 </div>
 <div class="section" id="query-and-response">
 <h2>Query and Response<a class="headerlink" href="#query-and-response" title="Permalink to this headline">¶</a></h2>
