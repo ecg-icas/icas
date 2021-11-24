@@ -1,5 +1,19 @@
 .. code-block:: console
 
+    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=yearly&fields=date,adID,clicks,spentMicros
+    Accept: text/csv;v=2
+
+    HTTP/1.1 200 OK
+    Content-Type: text/csv;v=2
+    Content-Language: nl-NL
+    Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv
+    Datum (geaggregeerde),Advertentie nummer,Totaal besteed (Micros),Clicks
+
+    2018,7,0.3000000000,200000
+    2018,8,0.1500000000,3000000
+
+.. code-block:: console
+
     GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting
     Accept: text/csv
     Accept-Language: nl_NL, fr_NL;q=0.5
@@ -39,4 +53,3 @@
     Datum (geaggregeerde),Advertentie nummer,Totaal besteed (EUR),Clicks
     2018,7,0.3000000000,20
     2018,8,0.1500000000,0.3000000000
-

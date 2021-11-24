@@ -222,6 +222,16 @@
             
   <div class="section" id="get-metrics-ads">
 <span id="index-0"></span><span id="id1"></span><h1>GET /metrics/ads<a class="headerlink" href="#get-metrics-ads" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>iCas introduces a new unit of micros across our product, where <strong>one cent equals 10000 micros</strong>. <strong>One micro is 1-millionth of the local tenant currency</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
+<p>iCas is substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
+<p class="last">This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. iCas will gradually deprecate any fields with cents and local currency units across the API.</p>
+</div>
+<div class="section" id="v2">
+<h2>V2<a class="headerlink" href="#v2" title="Permalink to this headline">¶</a></h2>
+<p>V2 replaces two columns (<code class="docutils literal"><span class="pre">spent</span></code>, <code class="docutils literal"><span class="pre">cpc</span></code>) that used to be in the tenant local currency (EUR, $) with
+their corresponding <code class="docutils literal"><span class="pre">spentMicros</span></code> and <code class="docutils literal"><span class="pre">bidMicros</span></code> shown in micros unit.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="30%" />
@@ -232,7 +242,7 @@
 <td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal"><span class="pre">text/csv</span></code></td>
+<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel;v=2</span></code> or <code class="docutils literal"><span class="pre">text/csv;v=2</span></code></td>
 </tr>
 <tr class="row-odd"><td>Accept-Language</td>
 <td>preferred locale (e.g., <code class="docutils literal"><span class="pre">nl-NL</span></code>, <code class="docutils literal"><span class="pre">fr-BE</span></code>, <code class="docutils literal"><span class="pre">en-CA</span></code>)</td>
@@ -242,8 +252,8 @@
 <p>This URL returns an ads performance report either in Excel or in CSV format depending on the
 <code class="docutils literal"><span class="pre">Accept</span></code> header. The report represents a timeseries breakdown of the performance of each ad which
 <strong>has had performance-related activity</strong> in the requested period.</p>
-<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created, in <code class="docutils literal"><span class="pre">.xlsx</span></code> format.</p>
-<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
+<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel;v=2</span></code> an Excel document is created, in <code class="docutils literal"><span class="pre">.xlsx</span></code> format.</p>
+<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv;v=2</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
 <strong>Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
 Empty strings are not enclosed in quotes.</strong></p>
 <p>All dates and times are in the tenant timezone.</p>
@@ -270,6 +280,7 @@ Empty strings are not enclosed in quotes.</strong></p>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -327,92 +338,155 @@ Empty strings are not enclosed in quotes.</strong></p>
 <colgroup>
 <col width="7%" />
 <col width="6%" />
-<col width="86%" />
+<col width="3%" />
+<col width="84%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
 <th class="head">Field</th>
+<th class="head">Version</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Date (Aggregated)</td>
 <td><code class="docutils literal"><span class="pre">date</span></code></td>
+<td>V1, V2</td>
 <td>Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>, for monthly aggregation - <code class="docutils literal"><span class="pre">YYYY-MM</span></code>, and for yearly - <code class="docutils literal"><span class="pre">YYYY</span></code>. All dates are in tenant timezone.</td>
 </tr>
 <tr class="row-odd"><td>Ad ID</td>
 <td><code class="docutils literal"><span class="pre">adID</span></code></td>
+<td>V1, V2</td>
 <td>ID of the ad</td>
 </tr>
 <tr class="row-even"><td>L1 Category</td>
 <td><code class="docutils literal"><span class="pre">L1Category</span></code></td>
+<td>V1, V2</td>
 <td>Level 1 category name</td>
 </tr>
 <tr class="row-odd"><td>L2 Category</td>
 <td><code class="docutils literal"><span class="pre">L2Category</span></code></td>
+<td>V1, V2</td>
 <td>Level 2 category name</td>
 </tr>
 <tr class="row-even"><td>L3 Category</td>
 <td><code class="docutils literal"><span class="pre">L3Category</span></code></td>
+<td>V1, V2</td>
 <td>Level 3 category name, if applicable</td>
 </tr>
 <tr class="row-odd"><td>Title</td>
 <td><code class="docutils literal"><span class="pre">title</span></code></td>
+<td>V1, V2</td>
 <td>Title of the ad</td>
 </tr>
 <tr class="row-even"><td>Start Date</td>
 <td><code class="docutils literal"><span class="pre">startDate</span></code></td>
+<td>V1, V2</td>
 <td>Creation date of the ad</td>
 </tr>
 <tr class="row-odd"><td>End Date</td>
 <td><code class="docutils literal"><span class="pre">endDate</span></code></td>
+<td>V1, V2</td>
 <td>If the ad is deleted, deletion date of the ad</td>
+</tr>
+<tr class="row-even"><td>Bid (Micros)</td>
+<td><code class="docutils literal"><span class="pre">bidMicros</span></code></td>
+<td>V2</td>
+<td>Bid of the ad for which performance metrics are calculated, in micros unit</td>
+</tr>
+<tr class="row-odd"><td>Total Spent (Micros)</td>
+<td><code class="docutils literal"><span class="pre">spentMicros</span></code></td>
+<td>V2</td>
+<td>Total amount spent for this ad, in micros unit</td>
 </tr>
 <tr class="row-even"><td>CPC</td>
 <td><code class="docutils literal"><span class="pre">CPC</span></code></td>
-<td>CPC of the ad for which performance metrics are calculated, in Local Currency</td>
+<td>V1</td>
+<td>CPC of the ad for which performance metrics are calculated, in local currency</td>
 </tr>
 <tr class="row-odd"><td>Total spent</td>
 <td><code class="docutils literal"><span class="pre">spent</span></code></td>
+<td>V1</td>
 <td>Total amount spent for this ad, in Local Currency</td>
 </tr>
 <tr class="row-even"><td>Clicks</td>
 <td><code class="docutils literal"><span class="pre">clicks</span></code></td>
+<td>V1, V2</td>
 <td>Number of clicks that the ad received</td>
 </tr>
 <tr class="row-odd"><td>Impressions</td>
 <td><code class="docutils literal"><span class="pre">impressions</span></code></td>
+<td>V1, V2</td>
 <td>Number of impressions that the ad received</td>
 </tr>
 <tr class="row-even"><td>CTR</td>
 <td><code class="docutils literal"><span class="pre">viewCTR</span></code></td>
+<td>V1, V2</td>
 <td>Click-through rate in %</td>
 </tr>
 <tr class="row-odd"><td>URL clicks</td>
 <td><code class="docutils literal"><span class="pre">websiteClicks</span></code></td>
+<td>V1, V2</td>
 <td>Number of URL clicks that the ad received</td>
 </tr>
 <tr class="row-even"><td>Emails</td>
 <td><code class="docutils literal"><span class="pre">emails</span></code></td>
+<td>V1, V2</td>
 <td>Number of email events that the ad received</td>
 </tr>
 <tr class="row-odd"><td>Engagement CTR</td>
 <td><code class="docutils literal"><span class="pre">engagementCTR</span></code></td>
+<td>V1, V2</td>
 <td>Engagement conversion rate in %. Calculation: <code class="docutils literal"><span class="pre">(URL</span> <span class="pre">clicks</span> <span class="pre">+</span> <span class="pre">Emails)</span> <span class="pre">/</span> <span class="pre">Clicks</span></code></td>
 </tr>
 <tr class="row-even"><td>Region</td>
 <td><code class="docutils literal"><span class="pre">region</span></code></td>
+<td>V1, V2</td>
 <td>Region name, of the ad</td>
 </tr>
 <tr class="row-odd"><td>Vendor ID</td>
 <td><code class="docutils literal"><span class="pre">vendorID</span></code></td>
+<td>V1, V2</td>
 <td>Vendor ID of the ad</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="v1">
+<h2>V1<a class="headerlink" href="#v1" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal"><span class="pre">text/csv</span></code></td>
+</tr>
+<tr class="row-odd"><td>Accept-Language</td>
+<td>preferred locale (e.g., <code class="docutils literal"><span class="pre">nl-NL</span></code>, <code class="docutils literal"><span class="pre">fr-BE</span></code>, <code class="docutils literal"><span class="pre">en-CA</span></code>)</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting&amp;aggregate=yearly&amp;fields=date,adID,clicks,spentMicros</span>
+<span class="go">Accept: text/csv;v=2</span>
+
+<span class="go">HTTP/1.1 200 OK</span>
+<span class="go">Content-Type: text/csv;v=2</span>
+<span class="go">Content-Language: nl-NL</span>
+<span class="go">Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv</span>
+<span class="go">Datum (geaggregeerde),Advertentie nummer,Totaal besteed (Micros),Clicks</span>
+
+<span class="go">2018,7,0.3000000000,200000</span>
+<span class="go">2018,8,0.1500000000,3000000</span>
+</pre></div>
+</div>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting</span>
 <span class="go">Accept: text/csv</span>
 <span class="go">Accept-Language: nl_NL, fr_NL;q=0.5</span>
@@ -484,6 +558,7 @@ Empty strings are not enclosed in quotes.</strong></p>
 </pre></div>
 </div>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-07-01&amp;endDate=2018-05-01</span>
+<span class="go">Accept: application/vnd.ms-excel</span>
 
 <span class="go">HTTP/1.1 400 Bad Request</span>
 <span class="go">[</span>
@@ -493,6 +568,21 @@ Empty strings are not enclosed in quotes.</strong></p>
 <span class="go">        &quot;msg&quot;: &quot;The value of the field &#39;endDate&#39; was out of range (&lt; startDate)&quot;,</span>
 <span class="go">        &quot;field&quot;: &quot;endDate&quot;,</span>
 <span class="go">        &quot;arg&quot;: &quot;&lt; startDate&quot;</span>
+<span class="go">    }</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;fields=date,adID,clicks,spent</span>
+<span class="go">Accept: application/vnd.ms-excel;v=2</span>
+
+<span class="go">HTTP/1.1 400 Bad Request</span>
+<span class="go">[</span>
+<span class="go">    {</span>
+<span class="go">        &quot;code&quot;: 2001,</span>
+<span class="go">        &quot;text&quot;: &quot;invalid argument&quot;,</span>
+<span class="go">        &quot;msg&quot;: &quot;The value of field &#39;fields&#39; was invalid: unknown column &#39;spent&#39;&quot;,</span>
+<span class="go">        &quot;field&quot;: &quot;fields&quot;,</span>
+<span class="go">        &quot;arg&quot;: &quot;&quot;</span>
 <span class="go">    }</span>
 <span class="go">]</span>
 </pre></div>

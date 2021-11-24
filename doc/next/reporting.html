@@ -219,6 +219,12 @@
             
   <div class="section" id="reporting">
 <span id="metrics-reporting"></span><h1>Reporting<a class="headerlink" href="#reporting" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>iCas introduces a new unit of micros across our product, where <strong>one cent equals 10000 micros</strong>. <strong>One micro is 1-millionth of the local tenant currency</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
+<p>iCas is substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
+<p class="last">This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. iCas will gradually deprecate any fields with cents and local currency units across the API.</p>
+</div>
 <p>The Reporting API allows you to get statistics about the performance of your ads in a flexible ad-hoc way. It is inspired by
 APIs like <a class="reference external" href="https://developers.google.com/analytics/devguides/reporting/core">Google Analytics</a> and <a class="reference external" href="https://tech.yandex.com/metrika/">Yandex Metrica</a> and borrows some terminology from them.
 It is possible to create a custom-tailored report structure using concepts like dimensions, metrics, filters, and sorting, in the API query.</p>
@@ -356,8 +362,8 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
-<col width="11%" />
-<col width="69%" />
+<col width="14%" />
+<col width="67%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -374,9 +380,9 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <td>Long</td>
 <td>ID of the ad(s)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:CPC</span></code></td>
-<td>Long</td>
-<td>The Cost Per Click (in Cents) of the ad(s)</td>
+<tr class="row-even"><td><span class="strike">am:CPC</span></td>
+<td>deprecated</td>
+<td>&#8211;</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:categoryID</span></code></td>
 <td>Long</td>
@@ -397,10 +403,10 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <h3>Supported Metrics<a class="headerlink" href="#supported-metrics" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="17%" />
+<col width="16%" />
+<col width="6%" />
 <col width="5%" />
-<col width="5%" />
-<col width="73%" />
+<col width="74%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -418,7 +424,7 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:impressions</span></code></td>
 <td>Long</td>
 <td>Hit</td>
-<td>Nnumber of impressions</td>
+<td>Number of impressions</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">am:websiteClicks</span></code></td>
 <td>Long</td>
@@ -445,67 +451,92 @@ For example, the metric <em>Clicks</em> indicates the total number of clicks, wh
 <td>Hit</td>
 <td>Number of website leads from clicks</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:spent</span></code></td>
+<tr class="row-odd"><td><span class="strike">am:spent</span></td>
+<td>deprecated</td>
+<td>&#8211;</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:spentMicros</span></code></td>
 <td>Long</td>
 <td>Hit</td>
-<td>Amount spent (in Cents)</td>
+<td>Amount spent (in Micros)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:engagementCTR</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:engagementCTR</span></code></td>
 <td>Double</td>
 <td>Hit</td>
 <td>Number of engagements leads from clicks</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:avgCPC</span></code></td>
+<tr class="row-even"><td><span class="strike">am:avgCPC</span></td>
+<td>deprecated</td>
+<td>&#8211;</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:avgBidMicros</span></code></td>
 <td>Double</td>
 <td>Hit</td>
-<td>Average Cost Per Click. Calculation</td>
+<td>Average Cost Per Click in micros.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:eCPC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:avgSpentMicros</span></code></td>
 <td>Double</td>
 <td>Hit</td>
-<td>Effective cost per website click. Total spent on the ad divided by the number of website clicks</td>
+<td>Average Spent Cost Per Click micros</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionECPC</span></code></td>
-<td>Long</td>
+<tr class="row-odd"><td><span class="strike">am:eCPC</span></td>
+<td>deprecated</td>
+<td>&#8211;</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:eSpentMicros</span></code></td>
+<td>Double</td>
+<td>Hit</td>
+<td>Effective cost per website click. Total spent on the ad divided by the number of website clicks in micros</td>
+</tr>
+<tr class="row-odd"><td><span class="strike">am:sessionECPC</span></td>
+<td>deprecated</td>
+<td>&#8211;</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionESpentMicros</span></code></td>
+<td>Double</td>
 <td>Session</td>
-<td>Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks</td>
+<td>Effective cost per unique sessions with website click. Total spent on the ad divided by the number of unique sessions with website clicks in micros</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithClicks</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithClicks</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions with clicks</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithImpressions</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithImpressions</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions with impressions</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithWebsiteClicks</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithWebsiteClicks</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions with website clicks</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithEmails</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithEmails</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions sending emails</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionsWithEngagements</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionsWithEngagements</span></code></td>
 <td>Long</td>
 <td>Session</td>
 <td>Number of unique sessions with engagements</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionViewCTR</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionViewCTR</span></code></td>
 <td>Double</td>
 <td>Session</td>
 <td>Number of unique sessions with clicks leads from unique sessions with impressions</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionWebsiteCTR</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionWebsiteCTR</span></code></td>
 <td>Double</td>
 <td>Session</td>
 <td>Number of unique sessions with website leads from unique sessions with clicks</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:sessionEngagementCTR</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:sessionEngagementCTR</span></code></td>
 <td>Double</td>
 <td>Session</td>
 <td>Number of unique sessions with engagements leads from unique sessions with clicks</td>
@@ -651,39 +682,43 @@ The following example sorts first on date in descending order, followed by the a
 <td>Timestamp</td>
 <td>Current end date of the ad, if applicable</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCPC</span></code></td>
-<td>Integer</td>
-<td>Currect CPC of the ad</td>
+<tr class="row-odd"><td><span class="strike">am:currentAdCPC</span></td>
+<td>deprecated</td>
+<td>&#8211;</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL1</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdBidMicros</span></code></td>
+<td>Integer</td>
+<td>Current bid micros of the ad</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL1</span></code></td>
 <td>String</td>
 <td>Description of the current top-level category the ad</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL2</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL2</span></code></td>
 <td>String</td>
 <td>Description of the current second-level category the ad</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL3</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdCategoryL3</span></code></td>
 <td>String</td>
 <td>Description of the current third-level category the ad, if applicable</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdImage</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdImage</span></code></td>
 <td>String</td>
 <td>Path to the current (first) image of the ad in the smallest resolution (64x64 pixels), if available</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdVendorID</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdVendorID</span></code></td>
 <td>String</td>
 <td>Current vendorID of the ad, if available</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdRegion</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdRegion</span></code></td>
 <td>String</td>
 <td>Description of the current (lowest-level) region of the ad, if applicable</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdExternalID</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdExternalID</span></code></td>
 <td>String</td>
 <td>Current externalID of the ad, if available</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">am:currentAdExternalURL</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">am:currentAdExternalURL</span></code></td>
 <td>String</td>
 <td>Current external URL of the ad, if available</td>
 </tr>
@@ -1233,6 +1268,97 @@ The following example sorts first on date in descending order, followed by the a
 <tr class="row-even"><td>22222</td>
 <td>34</td>
 <td>2.3</td>
+<td>Ad title #22222</td>
+<td>vendor22222</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example-5">
+<h3>Example 5:<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
+<p>Get all clicks, and average spent micros for categories <code class="docutils literal"><span class="pre">1234</span></code> and <code class="docutils literal"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">data</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">sellside</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgSpentMicros&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">]</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;enrichment&quot;</span><span class="p">:[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span> <span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
+    <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mf">45000.0</span><span class="p">],</span>
+            <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;vendor11111&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span>
+            <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;vendor33333&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span>  <span class="mf">2.3</span><span class="p">],</span>
+                <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;vendor33333&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}],</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="15%" />
+<col width="20%" />
+<col width="21%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">am:adID</th>
+<th class="head">am:clicks</th>
+<th class="head">am:avgSpentMicros</th>
+<th class="head">am:currentAdTitle</th>
+<th class="head">am:currentAdVendorID</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>11111</td>
+<td>11</td>
+<td>45000.0</td>
+<td>Ad title #11111</td>
+<td>vendor11111</td>
+</tr>
+<tr class="row-odd"><td>33333</td>
+<td>9</td>
+<td>30000.0</td>
+<td>Ad title #33333</td>
+<td>vendor33333</td>
+</tr>
+<tr class="row-even"><td>22222</td>
+<td>34</td>
+<td>23000.0</td>
 <td>Ad title #22222</td>
 <td>vendor22222</td>
 </tr>

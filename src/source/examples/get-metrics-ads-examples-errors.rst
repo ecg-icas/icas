@@ -35,6 +35,7 @@
 .. code-block:: console
 
     GET /api/sellside/metrics/ads?startDate=2018-07-01&endDate=2018-05-01
+    Accept: application/vnd.ms-excel
 
     HTTP/1.1 400 Bad Request
     [
@@ -44,5 +45,21 @@
             "msg": "The value of the field 'endDate' was out of range (< startDate)",
             "field": "endDate",
             "arg": "< startDate"
+        }
+    ]
+
+.. code-block:: console
+
+    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&fields=date,adID,clicks,spent
+    Accept: application/vnd.ms-excel;v=2
+
+    HTTP/1.1 400 Bad Request
+    [
+        {
+            "code": 2001,
+            "text": "invalid argument",
+            "msg": "The value of field 'fields' was invalid: unknown column 'spent'",
+            "field": "fields",
+            "arg": ""
         }
     ]
