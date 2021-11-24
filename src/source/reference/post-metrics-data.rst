@@ -1,13 +1,17 @@
 .. index:: POST /metrics/data
 .. _post_metrics_data:
 
+
 POST /metrics/data
 =======================
+
+.. include:: ../bidding-micros.rst
 
 V2
 ~~~
 
-V2 removes ``am:cpc`` from dimensions. It replaces ``am:spent``, ``am:avgCPC``, ``am:eCPC``, ``am:sessionECPC`` metrics with their corresponding ``am:spentMicros``, ``am:avgBidMicros``, ``am:avgSpentMicros``. It replaces ``am:currentAdCPC`` enrichment with ``am:currentAdBidMicros``.
+V2 removes ``am:cpc`` from dimensions. It replaces ``am:spent``, ``am:avgCPC``, ``am:eCPC``, ``am:sessionECPC`` metrics with their corresponding ``am:spentMicros``, ``am:avgBidMicros``, ``am:eSpentMicros``, ``am:sessionESpentMicros``. It replaces ``am:currentAdCPC`` enrichment with ``am:currentAdBidMicros``.
+
 
 .. list-table::
  :widths: 20 80

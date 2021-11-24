@@ -222,9 +222,15 @@
             
   <div class="section" id="get-metrics-report">
 <span id="index-0"></span><span id="id1"></span><h1>GET /metrics/report<a class="headerlink" href="#get-metrics-report" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>iCas introduces a new unit of micros across our product, where <strong>one cent equals 10000 micros</strong>. <strong>One micro is 1-millionth of the local tenant currency</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
+<p>iCas is substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
+<p class="last">This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. iCas will gradually deprecate any fields with cents and local currency units across the API.</p>
+</div>
 <div class="section" id="v2">
 <h2>V2<a class="headerlink" href="#v2" title="Permalink to this headline">¶</a></h2>
-<p>V2 replaces the columns (<code class="docutils literal"><span class="pre">cpc</span></code>, <code class="docutils literal"><span class="pre">totalSpent</span></code>,  <code class="docutils literal"><span class="pre">dailyLimit</span></code>, <code class="docutils literal"><span class="pre">totalBudget</span></code>, <code class="docutils literal"><span class="pre">eCPC</span></code>) with their corresponding <code class="docutils literal"><span class="pre">bidMicros</span></code>, <code class="docutils literal"><span class="pre">spentMicros</span></code>, <code class="docutils literal"><span class="pre">dailyBudgetMicros</span></code>, <code class="docutils literal"><span class="pre">totalBudgetMicros</span></code>, <code class="docutils literal"><span class="pre">eSpentMicros</span></code> shown in micros unit.</p>
+<p>V2 replaces the fields (<code class="docutils literal"><span class="pre">cpc</span></code>, <code class="docutils literal"><span class="pre">totalSpent</span></code>,  <code class="docutils literal"><span class="pre">dailyLimit</span></code>, <code class="docutils literal"><span class="pre">totalBudget</span></code>, <code class="docutils literal"><span class="pre">eCPC</span></code>) with their corresponding <code class="docutils literal"><span class="pre">bidMicros</span></code>, <code class="docutils literal"><span class="pre">spentMicros</span></code>, <code class="docutils literal"><span class="pre">dailyBudgetMicros</span></code>, <code class="docutils literal"><span class="pre">totalBudgetMicros</span></code>, <code class="docutils literal"><span class="pre">eSpentMicros</span></code> shown in micros unit.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="30%" />
@@ -354,7 +360,7 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 <td>50000</td>
 <td>int</td>
 <td>V2</td>
-<td>Bid Micros of the ad (in micros).</td>
+<td>Current bid value of the ad (in micros).</td>
 </tr>
 <tr class="row-even"><td>cpc</td>
 <td>5</td>

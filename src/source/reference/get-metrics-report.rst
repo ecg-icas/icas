@@ -4,10 +4,13 @@
 GET /metrics/report
 =======================
 
+.. include:: ../bidding-micros.rst
+
 V2
 ~~~
 
-V2 replaces the columns (``cpc``, ``totalSpent``,  ``dailyLimit``, ``totalBudget``, ``eCPC``) with their corresponding ``bidMicros``, ``spentMicros``, ``dailyBudgetMicros``, ``totalBudgetMicros``, ``eSpentMicros`` shown in micros unit.
+V2 replaces the fields (``cpc``, ``totalSpent``,  ``dailyLimit``, ``totalBudget``, ``eCPC``) with their corresponding ``bidMicros``, ``spentMicros``, ``dailyBudgetMicros``, ``totalBudgetMicros``, ``eSpentMicros`` shown in micros unit.
+
 
 .. list-table::
  :widths: 30 70
@@ -62,7 +65,7 @@ Data contents
 Field                       Example                     Type       Version    Info
 =======================     ========================    ========   ========   =============================================================
 adId                        1                           long       V1, V2     Id of the ad to which the report row belongs to.
-bidMicros                   50000                       int        V2         Bid Micros of the ad (in micros).
+bidMicros                   50000                       int        V2         Current bid value of the ad (in micros).
 cpc                         5                           int        V1         CPC of the ad (in cents).
 impressions                 40                          long       V1, V2     Number of impressions this ad received.
 clicks                      10                          long       V1, V2     Number of clicks this ad received.

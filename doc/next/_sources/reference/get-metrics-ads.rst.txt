@@ -4,6 +4,7 @@
 GET /metrics/ads
 =================
 
+.. include:: ../bidding-micros.rst
 
 V2
 ~~
@@ -11,7 +12,6 @@ V2
 V2 replaces two columns (``spent``, ``cpc``) that used to be in the tenant local currency (EUR, $) with
 their corresponding ``spentMicros`` and ``bidMicros`` shown in micros unit.
 
-.. include:: ../bidding-micros.rst
 
 .. list-table::
  :widths: 30 70

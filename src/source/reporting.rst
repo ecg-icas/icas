@@ -7,6 +7,8 @@
 Reporting
 ===========
 
+.. include:: ./bidding-micros.rst
+
 The Reporting API allows you to get statistics about the performance of your ads in a flexible ad-hoc way. It is inspired by
 APIs like `Google Analytics`_ and `Yandex Metrica`_ and borrows some terminology from them.
 It is possible to create a custom-tailored report structure using concepts like dimensions, metrics, filters, and sorting, in the API query.
