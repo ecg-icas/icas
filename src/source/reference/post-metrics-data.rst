@@ -7,7 +7,7 @@ POST /metrics/data
 V2
 ~~~
 
-V2 removes ``am:cpc`` from dimensions. It replaces ``am:spent``, ``am:avgCPC``, ``am:eCPC``, ``am:sessionECPC`` and replaces them with their corresponding ``am:spentMicros``, ``am:avgBidMicros``, ``am:avgSpentMicros`` 
+V2 removes ``am:cpc`` from dimensions. It replaces ``am:spent``, ``am:avgCPC``, ``am:eCPC``, ``am:sessionECPC`` metrics with their corresponding ``am:spentMicros``, ``am:avgBidMicros``, ``am:avgSpentMicros``. It replaces ``am:currentAdCPC`` enrichment with ``am:currentAdBidMicros``.
 
 .. list-table::
  :widths: 20 80
