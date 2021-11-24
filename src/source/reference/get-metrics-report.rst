@@ -7,7 +7,7 @@ GET /metrics/report
 V2
 ~~~
 
-V2 replaces the columns (``cpc``, ``totalSpent``,  ``dailyLimit``, ``totalBudget``, ``eCPC``) that used to be in cents (tenant local currency) with their corresponding ``bidMicros``, ``spentMicros``, ``dailyBudgetMicros``, ``totalBudgetMicros``, ``eSpentMicros`` shown in micros unit.
+V2 replaces the columns (``cpc``, ``totalSpent``,  ``dailyLimit``, ``totalBudget``, ``eCPC``) with their corresponding ``bidMicros``, ``spentMicros``, ``dailyBudgetMicros``, ``totalBudgetMicros``, ``eSpentMicros`` shown in micros unit.
 
 .. list-table::
  :widths: 30 70
