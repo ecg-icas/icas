@@ -449,6 +449,8 @@ attribute groups themselves.
    - Ordered list of attributes.
 
 
+.. _category_attributes_v2:
+
 Attributes
 ----------
 
