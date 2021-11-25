@@ -40,9 +40,9 @@ Get all clicks and impressions for category ``1234`` for the previous week:
 
 
 ==========   ===================
-am:clicks     am:impressions
+am:clicks    am:impressions
 ==========   ===================
-1483          36623
+1483         36623
 ==========   ===================
 
 Example 2:
@@ -83,16 +83,16 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the prev
                 "dimensions": ["5678"],
                 "metrics": [300, 400]
             }],
-        "count": 2            
+        "count": 2
         }]
     }
 
 
 ===============   ==========   ===================
- am:categoryID    am:clicks     am:impressions
+am:categoryID     am:clicks    am:impressions
 ===============   ==========   ===================
-    1234           200          400
-    5678           300          400
+1234              200          400
+5678              300          400
 ===============   ==========   ===================
 
 
@@ -155,21 +155,21 @@ Get all clicks and impressions for categories ``1234`` and ``5678`` for the prev
                 "dimensions": ["2018-12-14 00:00:00", "5678"],
                 "metrics": [43, 76]
             }],
-        "count": 54            
+        "count": 54
         }]
     }
 
 
 =====================   ===============   ==========   ===================
-  am:date                 am:categoryID    am:clicks     am:impressions
+am:date                 am:categoryID     am:clicks    am:impressions
 =====================   ===============   ==========   ===================
- 2018-12-08 00:00:00        1234           11           12
- 2018-12-08 00:00:00        5678           9            20
- 2018-12-09 00:00:00        1234           34           67
- 2018-12-09 00:00:00        5678           19           20
- ...
- 2018-12-14 00:00:00        1234           12           90
- 2018-12-14 00:00:00        5678           43           76 
+2018-12-08 00:00:00     1234              11           12
+2018-12-08 00:00:00     5678              9            20
+2018-12-09 00:00:00     1234              34           67
+2018-12-09 00:00:00     5678              19           20
+...
+2018-12-14 00:00:00     1234              12           90
+2018-12-14 00:00:00     5678              43           76
 =====================   ===============   ==========   ===================
 
 
@@ -235,11 +235,80 @@ Get all clicks, and average CPC for categories ``1234`` and ``5678`` for the pre
 
 
 =====================   ==============   ===================  ====================   =====================
-  am:adID                 am:clicks       am:avgCPC           am:currentAdTitle       am:currentAdVendorID      
+am:adID                 am:clicks        am:avgCPC            am:currentAdTitle      am:currentAdVendorID
 =====================   ==============   ===================  ====================   =====================
-11111                       11            4.5                  Ad title #11111         vendor11111
-33333                       9             3.0                  Ad title #33333         vendor33333
-22222                       34            2.3                  Ad title #22222         vendor22222
+11111                   11               4.5                  Ad title #11111        vendor11111
+33333                   9                3.0                  Ad title #33333        vendor33333
+22222                   34               2.3                  Ad title #22222        vendor22222
+=====================   ==============   ===================  ====================   =====================
+
+Example 5:
+************************************************************************
+
+Get all clicks, and average spent micros for categories ``1234`` and ``5678`` for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:
+
+
+.. code:: javascript
+
+    POST /api/sellside/metrics/data
+    Content-Type: application/sellside.metrics.data-v2+json
+    Accept: application/json
+    {
+        "timeRanges": [{
+            "period": "lastWeek"
+        }],
+        "dimensions": ["am:adID"],
+        "metrics": ["am:clicks", "am:avgSpentMicros"],
+        "filters": [{
+                "field": "am:categoryID",
+                "operator": "in",
+                "value": [1234, 5678]
+        }],
+        "enrichment":["am:currentAdTitle", "am:currentAdVendorID"]
+        "limit": 3
+    }
+
+
+
+.. code:: javascript
+
+    {
+        "data": [{
+            "rows": [{
+                "dimensions": ["11111"],
+                "metrics": [11, 45000.0],
+                "enrichment": [
+                    "Ad title #11111",
+                    "vendor11111"
+                ]
+            },
+            {
+                "dimensions": ["33333"],
+                "metrics": [9, 3.0],
+                "enrichment": [
+                    "Ad title #33333",
+                    "vendor33333"
+                ]
+            },
+            {
+                "dimensions": ["22222"],
+                "metrics": [34,  2.3],
+                    "enrichment": [
+                    "Ad title #33333",
+                    "vendor33333"
+                ]
+            }],
+        "count": 3
+        }]
+    }
+
+
+=====================   ==============   ===================  ====================   =====================
+am:adID                 am:clicks        am:avgSpentMicros    am:currentAdTitle      am:currentAdVendorID
+=====================   ==============   ===================  ====================   =====================
+11111                   11               45000.0              Ad title #11111        vendor11111
+33333                   9                30000.0              Ad title #33333        vendor33333
+22222                   34               23000.0              Ad title #22222        vendor22222
 =====================   ==============   ===================  ====================   =====================
 
 Final remarks:

@@ -222,6 +222,15 @@
             
   <div class="section" id="get-metrics-report">
 <span id="index-0"></span><span id="id1"></span><h1>GET /metrics/report<a class="headerlink" href="#get-metrics-report" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>iCas introduces a new unit of micros across our product, where <strong>one cent equals 10000 micros</strong>. <strong>One micro is 1-millionth of the local tenant currency</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
+<p>iCas is substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
+<p class="last">This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. iCas will gradually deprecate any fields with cents and local currency units across the API.</p>
+</div>
+<div class="section" id="v2">
+<h2>V2<a class="headerlink" href="#v2" title="Permalink to this headline">¶</a></h2>
+<p>V2 replaces the fields (<code class="docutils literal"><span class="pre">cpc</span></code>, <code class="docutils literal"><span class="pre">totalSpent</span></code>,  <code class="docutils literal"><span class="pre">dailyLimit</span></code>, <code class="docutils literal"><span class="pre">totalBudget</span></code>, <code class="docutils literal"><span class="pre">eCPC</span></code>) with their corresponding <code class="docutils literal"><span class="pre">bidMicros</span></code>, <code class="docutils literal"><span class="pre">spentMicros</span></code>, <code class="docutils literal"><span class="pre">dailyBudgetMicros</span></code>, <code class="docutils literal"><span class="pre">totalBudgetMicros</span></code>, <code class="docutils literal"><span class="pre">eSpentMicros</span></code> shown in micros unit.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="30%" />
@@ -232,7 +241,7 @@
 <td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
 </tr>
 <tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.metrics.ad-hit-v1+json</span></code> or <code class="docutils literal"><span class="pre">application/sellside.metrics.ad-session-v1+json</span></code></td>
+<td><code class="docutils literal"><span class="pre">application/sellside.metrics.ad-hit-v2+json</span></code> or <code class="docutils literal"><span class="pre">application/sellside.metrics.ad-session-v2+json</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -243,7 +252,7 @@ Conceptually, user is the highest level scope and hit is the lowest level scope.
 whereas it counts the number of sessions with clicks when the scope is <cite>session</cite>.</p>
 <p>We plan to extend support for user-level scoped metrics if there is demand for it.</p>
 <div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -283,7 +292,7 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 </table>
 </div>
 <div class="section" id="fields">
-<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -323,18 +332,20 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 </table>
 </div>
 <div class="section" id="data-contents">
-<h2>Data contents<a class="headerlink" href="#data-contents" title="Permalink to this headline">¶</a></h2>
+<h3>Data contents<a class="headerlink" href="#data-contents" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%" />
 <col width="8%" />
 <col width="3%" />
-<col width="81%" />
+<col width="3%" />
+<col width="79%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Field</th>
 <th class="head">Example</th>
 <th class="head">Type</th>
+<th class="head">Version</th>
 <th class="head">Info</th>
 </tr>
 </thead>
@@ -342,108 +353,212 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 <tr class="row-even"><td>adId</td>
 <td>1</td>
 <td>long</td>
+<td>V1, V2</td>
 <td>Id of the ad to which the report row belongs to.</td>
 </tr>
-<tr class="row-odd"><td>cpc</td>
+<tr class="row-odd"><td>bidMicros</td>
+<td>50000</td>
+<td>int</td>
+<td>V2</td>
+<td>Current bid value of the ad (in micros).</td>
+</tr>
+<tr class="row-even"><td>cpc</td>
 <td>5</td>
 <td>int</td>
+<td>V1</td>
 <td>CPC of the ad (in cents).</td>
 </tr>
-<tr class="row-even"><td>impressions</td>
+<tr class="row-odd"><td>impressions</td>
 <td>40</td>
 <td>long</td>
+<td>V1, V2</td>
 <td>Number of impressions this ad received.</td>
 </tr>
-<tr class="row-odd"><td>clicks</td>
+<tr class="row-even"><td>clicks</td>
 <td>10</td>
 <td>long</td>
+<td>V1, V2</td>
 <td>Number of clicks this ad received.</td>
 </tr>
-<tr class="row-even"><td>urlClicks</td>
+<tr class="row-odd"><td>urlClicks</td>
 <td>3</td>
 <td>int</td>
+<td>V1, V2</td>
 <td>Number of url clicks this ad received.</td>
 </tr>
-<tr class="row-odd"><td>emails</td>
+<tr class="row-even"><td>emails</td>
 <td>2</td>
 <td>int</td>
+<td>V1, V2</td>
 <td>Number of email requests this ad received.</td>
 </tr>
-<tr class="row-even"><td>engagement</td>
+<tr class="row-odd"><td>engagement</td>
 <td>5</td>
 <td>int</td>
+<td>V1, V2</td>
 <td>Number of engagements this ad received. Depending on the tenant, this could be the same as urlClicks, or a summation of several metrics.</td>
+</tr>
+<tr class="row-even"><td>spentMicros</td>
+<td>5000</td>
+<td>long</td>
+<td>V2</td>
+<td>Total amount spent for this ad (in micros).</td>
 </tr>
 <tr class="row-odd"><td>totalSpent</td>
 <td>2000</td>
 <td>long</td>
+<td>V1</td>
 <td>Total amount spent for this ad (in cents).</td>
 </tr>
 <tr class="row-even"><td>ctr</td>
 <td>0.75</td>
 <td>float</td>
+<td>V1, V2</td>
 <td>Click-through rate of the ad.</td>
 </tr>
 <tr class="row-odd"><td>engagementCTR</td>
 <td>0.7</td>
 <td>float</td>
+<td>V1, V2</td>
 <td>Number of engagements leads from clicks this ad received.</td>
 </tr>
 <tr class="row-even"><td>websiteCTR</td>
 <td>0.7</td>
 <td>float</td>
+<td>V1, V2</td>
 <td>Number of website leads from clicks this ad received.</td>
 </tr>
 <tr class="row-odd"><td>startDate</td>
 <td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
 <td>date</td>
+<td>V1, V2</td>
 <td>Creation date of the ad.</td>
 </tr>
 <tr class="row-even"><td>endDate</td>
 <td>&#8220;2012-08-31T16:12:53Z&#8221;</td>
 <td>date</td>
+<td>V1, V2</td>
 <td>Deletion date of the ad if the ad is deleted, null otherwise.</td>
 </tr>
 <tr class="row-odd"><td>title</td>
 <td>&#8220;Brother Fax voor 99,99&#8221;</td>
 <td>string</td>
+<td>V1, V2</td>
 <td>Title of the ad.</td>
 </tr>
 <tr class="row-even"><td>categoryId</td>
 <td>631</td>
 <td>int</td>
+<td>V1, V2</td>
 <td>Category id of the ad.</td>
 </tr>
 <tr class="row-odd"><td>vendorId</td>
 <td>&#8220;vndr&#8221;</td>
 <td>string</td>
+<td>V1, V2</td>
 <td>Vendor id of the ad.</td>
 </tr>
-<tr class="row-even"><td>dailyLimit</td>
+<tr class="row-even"><td>dailyBudgetMicros</td>
+<td>3000</td>
+<td>long</td>
+<td>V2</td>
+<td>Daily limit of the ad (in micros).</td>
+</tr>
+<tr class="row-odd"><td>dailyLimit</td>
 <td>2000</td>
 <td>long</td>
+<td>V1</td>
 <td>Daily limit of the ad (in cents).</td>
+</tr>
+<tr class="row-even"><td>totalBudgetMicros</td>
+<td>7000</td>
+<td>long</td>
+<td>V2</td>
+<td>Total budget of the ad (in micros).</td>
 </tr>
 <tr class="row-odd"><td>totalBudget</td>
 <td>5000</td>
 <td>long</td>
+<td>V1</td>
 <td>Total budget of the ad (in cents).</td>
 </tr>
 <tr class="row-even"><td>relativePerformance</td>
 <td>75</td>
 <td>int</td>
+<td>V1, V2</td>
 <td>Returns the relative performance of the ad (on a scale of [1-100]) compared to competition within the ad&#8217;s category. Higher score means better performance. A score of 0 could indicate there is not enough data to infer the value at the moment.</td>
 </tr>
-<tr class="row-odd"><td>eCPC</td>
+<tr class="row-odd"><td>eSpentMicros</td>
 <td>0.42</td>
 <td>float</td>
+<td>V2</td>
+<td>Returns the effective cost per website click in micros</td>
+</tr>
+<tr class="row-even"><td>eCPC</td>
+<td>0.42</td>
+<td>float</td>
+<td>V1</td>
 <td>Returns the eCPC (effective cost per website click) in cents</td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
+<div class="section" id="v1">
+<h2>V1<a class="headerlink" href="#v1" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scope</td>
+<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
+</tr>
+<tr class="row-even"><td>Accept</td>
+<td><code class="docutils literal"><span class="pre">application/sellside.metrics.ad-hit-v1+json</span></code> or <code class="docutils literal"><span class="pre">application/sellside.metrics.ad-session-v1+json</span></code></td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+
+<span class="mi">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-25&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mi">1262</span><span class="p">,</span>
+      <span class="s2">&quot;bidMicros&quot;</span><span class="o">:</span><span class="mi">10000</span><span class="p">,</span>
+      <span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mi">73</span><span class="p">,</span>
+      <span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mi">43</span><span class="p">,</span>
+      <span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span>
+      <span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;engagement&quot;</span><span class="o">:</span> <span class="mi">22</span><span class="p">,</span>
+      <span class="s2">&quot;spentMicros&quot;</span><span class="o">:</span><span class="mi">430000</span><span class="p">,</span>
+      <span class="s2">&quot;ctr&quot;</span><span class="o">:</span> <span class="mf">0.589</span><span class="p">,</span>
+      <span class="s2">&quot;engagementCTR&quot;</span><span class="o">:</span> <span class="mf">0.511</span><span class="p">,</span>
+      <span class="s2">&quot;websiteCTR&quot;</span><span class="o">:</span> <span class="mf">0.43</span><span class="p">,</span>
+      <span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mi">573</span><span class="p">,</span>
+      <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;dailyBudgetMicros&quot;</span><span class="o">:</span><span class="mi">9990000</span><span class="p">,</span>
+      <span class="s2">&quot;totalBudgetMicros&quot;</span><span class="o">:</span><span class="mi">49000000</span><span class="p">,</span>
+      <span class="s2">&quot;relativePerformance&quot;</span><span class="o">:</span> <span class="mi">65</span><span class="p">,</span>
+      <span class="s2">&quot;eSpentMicros&quot;</span><span class="o">:</span> <span class="mi">4200</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span>
 <span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
 
@@ -480,6 +595,7 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
   <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
