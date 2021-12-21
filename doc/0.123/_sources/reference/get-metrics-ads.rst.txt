@@ -92,6 +92,7 @@ Emails                 ``emails``          V1, V2     Number of email events tha
 Engagement CTR         ``engagementCTR``   V1, V2     Engagement conversion rate in %. Calculation: ``(URL clicks + Emails) / Clicks``
 Region                 ``region``          V1, V2     Region name, of the ad
 Vendor ID              ``vendorID``        V1, V2     Vendor ID of the ad
+External URL           ``externalURL``     V1, V2     The external website URL of the ad, if provided
 ====================   =================   ========   ===============================================================
 
 
