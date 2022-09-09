@@ -401,8 +401,6 @@ over time but does not require the user to go through the grant flow again.
 The actual scope for a token is the intersection between the scope requested
 by the client as described in `Getting an Access Token`_ and the scope
 granted by the user which is part of the user record.
-Remember that each set if scopes you requested is tied to a unique refresh (and therefore) token.
-For example, a read-only
 
 .. list-table::
  :widths: 20 80
