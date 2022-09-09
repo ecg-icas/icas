@@ -40,6 +40,11 @@ OAuth 2.0 defines the following roles of users and applications:
   In this context *authorization server* is the server hosting authentication
   and token endpoints.
 
+In our Oauth2 flow we rely on the *tenant* as being the **Authentication Server**, the
+one that confirms hte user identity through the use of some kind of credentials (usually username/password).
+The authentication server represents a user or a service account to the **Authorization Server**.
+
+
 .. _oauth2_endpoints:
 
 OAuth 2.0 Endpoints
@@ -125,6 +130,8 @@ Getting an Access Token
 
 The steps for getting an access token are as follows:
 
+If the user is not logge-in with the tenant:
+
 Step 1: Redirect to the authorization url
 `````````````````````````````````````````
 
@@ -170,7 +177,7 @@ GET parameters
 Step 2: Redirect to the redirect_uri
 ````````````````````````````````````
 
-After the resource owner logs in and confirms access request of the client the
+After the resource owner logs in and confirms access request of the client, the
 authorization server redirects the resource owner to the ``redirect_uri``
 specified in the request at step 1 with the following GET parameters
 
@@ -194,6 +201,8 @@ specified in the request at step 1 with the following GET parameters
 
     GET /code?code=AUTH_CODE&state=YOUR_STATE
     Host: yoursite.com
+
+This is how your Authorization server gets the short-lived code to further obtain a token.
 
 Step 3: POST to the token endpoint
 ``````````````````````````````````
@@ -235,7 +244,15 @@ After obtaining the authorization code at step 2 the client needs to make a
     Host: admarkt.demo.qa-mp.so
     Content-Type: application/x-www-form-urlencoded
 
-    grant_type=authorization_code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
+    -d 'grant_type=authorization_code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&rredirect_uri=https://yoursite.com/code' https://admarkt.marktplaats.nl/accounts/oauth/token
+.. warning::
+    Beware of the Content-type: build it as a `multipart/form-data`.
+
+    Beware also that you need to know the `user_id` on behalf of which the Authorization server accesses data. You can
+    obtain this through `passing the proper cookie: <https://pages.github.es.ecg.tools/ecg-icas/api/doc/tenant/api/post_auth_cookie.html>`_
+    from the user's browser (since it's on the same domain as the tenant).
+    Check the `tenant documentation: <https://pages.github.es.ecg.tools/ecg-icas/api/doc/tenant/api/get_config.html>`_ on how to get the `user_id` and which are the relevant cookies to configure for this.
+
 
 Step 4: Receive token response
 ``````````````````````````````
@@ -382,8 +399,10 @@ user group. The list of resources that can be accessed with a scope can change
 over time but does not require the user to go through the grant flow again.
 
 The actual scope for a token is the intersection between the scope requested
-by the  client as described in `Getting an Access Token`_ and the scope
+by the client as described in `Getting an Access Token`_ and the scope
 granted by the user which is part of the user record.
+Remember that each set if scopes you requested is tied to a unique refresh (and therefore) token.
+For example, a read-only
 
 .. list-table::
  :widths: 20 80
@@ -407,3 +426,8 @@ granted by the user which is part of the user record.
  * - reporting
    - Grants access to reporting endpoints only. Allows creation of detailed downloadable reports
 
+
+You can find a generalized sequence diagram of the Oauth2 flow below (click to expand).
+
+.. image:: _static/oauth2Flow.png
+   :scale: 100%
