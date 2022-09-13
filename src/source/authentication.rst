@@ -41,7 +41,7 @@ OAuth 2.0 defines the following roles of users and applications:
   and token endpoints.
 
 In our Oauth2 flow we rely on the *tenant* as being the **Authentication Server**, the
-one that confirms hte user identity through the use of some kind of credentials (usually username/password).
+one that confirms the user identity through the use of some kind of credentials (usually username/password).
 The authentication server represents a user or a service account to the **Authorization Server**.
 
 
