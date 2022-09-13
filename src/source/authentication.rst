@@ -130,7 +130,7 @@ Getting an Access Token
 
 The steps for getting an access token are as follows:
 
-If the user is not logge-in with the tenant:
+If the user is not logged-in with the tenant:
 
 Step 1: Redirect to the authorization url
 `````````````````````````````````````````
