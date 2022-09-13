@@ -40,9 +40,9 @@ OAuth 2.0 defines the following roles of users and applications:
   In this context *authorization server* is the server hosting authentication
   and token endpoints.
 
-In our Oauth2 flow we rely on the *tenant* as being the **Authentication Server**, the
+In our Oauth2 flow we rely on the *tenant* (local market) as being the **Authentication Server**, the
 one that confirms the user identity through the use of some kind of credentials (usually username/password).
-The authentication server represents a user or a service account to the **Authorization Server**.
+The authentication server owns a user or a service account to the **Authorization Server**.
 
 
 .. _oauth2_endpoints:
@@ -202,7 +202,7 @@ specified in the request at step 1 with the following GET parameters
     GET /code?code=AUTH_CODE&state=YOUR_STATE
     Host: yoursite.com
 
-This is how your Authorization server gets the short-lived code to further obtain a token.
+This is how your server gets the short-lived code to subsequently get a refresh & access token.
 
 Step 3: POST to the token endpoint
 ``````````````````````````````````
@@ -244,15 +244,7 @@ After obtaining the authorization code at step 2 the client needs to make a
     Host: admarkt.demo.qa-mp.so
     Content-Type: application/x-www-form-urlencoded
 
-    -d 'grant_type=authorization_code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&rredirect_uri=https://yoursite.com/code' https://admarkt.marktplaats.nl/accounts/oauth/token
-.. warning::
-    Beware of the Content-type: build it as a `multipart/form-data`.
-
-    Beware also that you need to know the `user_id` on behalf of which the Authorization server accesses data. You can
-    obtain this through `passing the proper cookie: <https://pages.github.es.ecg.tools/ecg-icas/api/doc/tenant/api/post_auth_cookie.html>`_
-    from the user's browser (since it's on the same domain as the tenant).
-    Check the `tenant documentation: <https://pages.github.es.ecg.tools/ecg-icas/api/doc/tenant/api/get_config.html>`_ on how to get the `user_id` and which are the relevant cookies to configure for this.
-
+    grant_type=authorization_code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
 
 Step 4: Receive token response
 ``````````````````````````````
