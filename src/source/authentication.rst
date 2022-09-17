@@ -40,7 +40,7 @@ OAuth 2.0 defines the following roles of users and applications:
   In this context *authorization server* is the server hosting authentication
   and token endpoints.
 
-In our Oauth2 flow we rely on the *tenant* (local market) as being the **Authentication Server**, the
+In our OAuth 2.0 flow we rely on the *tenant* (local market) as being the **Authentication Server**, the
 one that confirms the user identity through the use of some kind of credentials (usually username/password).
 The authentication server owns a user or a service account to the **Authorization Server**.
 
