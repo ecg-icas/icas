@@ -202,7 +202,7 @@ specified in the request at step 1 with the following GET parameters
     GET /code?code=AUTH_CODE&state=YOUR_STATE
     Host: yoursite.com
 
-This is how your server gets the short-lived code to subsequently get a refresh & access token.
+This is how your server gets the short-lived authorization code to subsequently get a refresh & access token.
 
 Step 3: POST to the token endpoint
 ``````````````````````````````````
