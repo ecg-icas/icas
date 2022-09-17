@@ -248,12 +248,11 @@ on the resource server. In this context <em>client</em> is the application wanti
 to use the iCAS Sellside API.</p></li>
 <li><p><strong>Authorization Server:</strong> The authorization server is the server
 authorizing the client app to access the resources of the resource owner.
-In this context <em>authorization server</em> is the server hosting authentication
-and token endpoints.</p></li>
+This allows fine-grained access to resources owned by the <strong>resource owner</strong>.</p></li>
 </ul>
-<p>In our Oauth2 flow we rely on the <em>tenant</em> (local market) as being the <strong>Authentication Server</strong>, the
+<p>In our OAuth 2.0 flow we rely on the <em>tenant</em> (local market) as being the <strong>Authentication Server</strong>, the
 one that confirms the user identity through the use of some kind of credentials (usually username/password).
-The authentication server owns a user or a service account to the <strong>Authorization Server</strong>.</p>
+The authentication server is hosting the authentication of a user account (resource owner).</p>
 </section>
 <section id="oauth-2-0-endpoints">
 <span id="oauth2-endpoints"></span><h2>OAuth 2.0 Endpoints<a class="headerlink" href="#oauth-2-0-endpoints" title="Permalink to this heading">¶</a></h2>
@@ -417,7 +416,7 @@ specified in the request at step 1 with the following GET parameters</p>
 <span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">yoursite</span><span class="p">.</span><span class="nx">com</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This is how your server gets the short-lived code to subsequently get a refresh &amp; access token.</p>
+<p>This is how your server gets the short-lived authorization code to subsequently get a refresh &amp; access token.</p>
 </section>
 <section id="step-3-post-to-the-token-endpoint">
 <h3>Step 3: POST to the token endpoint<a class="headerlink" href="#step-3-post-to-the-token-endpoint" title="Permalink to this heading">¶</a></h3>

@@ -48,7 +48,7 @@ History
 
 ..  role:: strike
 
-* v.0.123 - 09/09/2022 - dr
+* v.0.123 - 9 Sep 2022 - dr
   * improved explanation on Oauth2 roles&flows, and added a sequence diagram
 
 * v.0.122 - 12 Oct 2021 - tw
