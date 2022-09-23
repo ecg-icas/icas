@@ -416,7 +416,7 @@ granted by the user which is part of the user record.
    - Grants access to reporting endpoints only. Allows creation of detailed downloadable reports
 
 
-You can find a generalized sequence diagram of the Oauth2 flow below (click to expand).
+You can find a generalised sequence diagram of the OAuth 2.0 flow below (click to expand).
 
 .. image:: _static/oauth2Flow.png
    :scale: 100%
