@@ -25,21 +25,21 @@ OAuth 2.0 defines the following roles of users and applications:
 
 * **Resource Owner:** This is the person or application that owns the data
   that is to be shared. In this context *resource owner*
-  is the iCAS user.
+  is the Admarkt user.
 
 * **Resource Server:** This is the server hosting the resource owned by the
   resource owner. In this context *resource server* is the server hosting
-  iCAS Sellside API.
+  Admarkt Sellside API.
 
 * **Client:** This is the application requesting access to the resources stored
   on the resource server. In this context *client* is the application wanting
-  to use the iCAS Sellside API.
+  to use the Admarkt Sellside API.
 
 * **Authorization Server:** The authorization server is the server
   authorizing the client app to access the resources of the resource owner.
   This allows fine-grained access to resources owned by the **resource owner**.
 
-In our OAuth 2.0 flow we rely on the *tenant* (local market) as being the **Authentication Server**, the
+In our OAuth 2.0 flow we rely on the *tenant* (local market) as providing the **Authentication Server**, the
 one that confirms the user identity through the use of some kind of credentials (usually username/password).
 The authentication server is hosting the authentication of a user account (resource owner).
 
@@ -201,7 +201,7 @@ specified in the request at step 1 with the following GET parameters
     GET /code?code=AUTH_CODE&state=YOUR_STATE
     Host: yoursite.com
 
-This is how your server gets the short-lived authorization code to subsequently get a refresh & access token.
+This is how your client gets the short-lived authorization code to subsequently get a refresh & access token.
 
 Step 3: POST to the token endpoint
 ``````````````````````````````````
