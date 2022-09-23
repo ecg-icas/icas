@@ -239,18 +239,18 @@ OAuth 1.0 protocol and is <em>not</em> backward compatible with OAuth 1.0.</p>
 <ul class="simple">
 <li><p><strong>Resource Owner:</strong> This is the person or application that owns the data
 that is to be shared. In this context <em>resource owner</em>
-is the iCAS user.</p></li>
+is the Admarkt user.</p></li>
 <li><p><strong>Resource Server:</strong> This is the server hosting the resource owned by the
 resource owner. In this context <em>resource server</em> is the server hosting
-iCAS Sellside API.</p></li>
+Admarkt Sellside API.</p></li>
 <li><p><strong>Client:</strong> This is the application requesting access to the resources stored
 on the resource server. In this context <em>client</em> is the application wanting
-to use the iCAS Sellside API.</p></li>
+to use the Admarkt Sellside API.</p></li>
 <li><p><strong>Authorization Server:</strong> The authorization server is the server
 authorizing the client app to access the resources of the resource owner.
 This allows fine-grained access to resources owned by the <strong>resource owner</strong>.</p></li>
 </ul>
-<p>In our OAuth 2.0 flow we rely on the <em>tenant</em> (local market) as being the <strong>Authentication Server</strong>, the
+<p>In our OAuth 2.0 flow we rely on the <em>tenant</em> (local market) as providing the <strong>Authentication Server</strong>, the
 one that confirms the user identity through the use of some kind of credentials (usually username/password).
 The authentication server is hosting the authentication of a user account (resource owner).</p>
 </section>
@@ -416,7 +416,7 @@ specified in the request at step 1 with the following GET parameters</p>
 <span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">yoursite</span><span class="p">.</span><span class="nx">com</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This is how your server gets the short-lived authorization code to subsequently get a refresh &amp; access token.</p>
+<p>This is how your client gets the short-lived authorization code to subsequently get a refresh &amp; access token.</p>
 </section>
 <section id="step-3-post-to-the-token-endpoint">
 <h3>Step 3: POST to the token endpoint<a class="headerlink" href="#step-3-post-to-the-token-endpoint" title="Permalink to this heading">¶</a></h3>
@@ -634,7 +634,7 @@ granted by the user which is part of the user record.</p>
 </tr>
 </tbody>
 </table>
-<p>You can find a generalized sequence diagram of the Oauth2 flow below (click to expand).</p>
+<p>You can find a generalized sequence diagram of the OAuth 2.0 flow below (click to expand).</p>
 <a class="reference internal image-reference" href="_images/oauth2Flow.png"><img alt="_images/oauth2Flow.png" src="_images/oauth2Flow.png" style="width: 2345.0px; height: 1328.0px;" /></a>
 </section>
 </section>
