@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -129,7 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -220,48 +224,48 @@
 </div>
           <div role="main">
             
-  <div class="section" id="ad-status">
-<span id="ad-status-overview"></span><span id="index-0"></span><h1>Ad Status<a class="headerlink" href="#ad-status" title="Permalink to this headline">¶</a></h1>
+  <section id="ad-status">
+<span id="ad-status-overview"></span><span id="index-0"></span><h1>Ad Status<a class="headerlink" href="#ad-status" title="Permalink to this heading">¶</a></h1>
 <p>Each advertisement can be in one of the following states. Some of the states can be set by the user, others
 are set by the system or by customer service.</p>
-<div class="section" id="user-controlled-states">
-<h2>User Controlled States<a class="headerlink" href="#user-controlled-states" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="active">
-<span id="ad-status-active"></span><span id="index-1"></span><h3>ACTIVE<a class="headerlink" href="#active" title="Permalink to this headline">¶</a></h3>
+<section id="user-controlled-states">
+<h2>User Controlled States<a class="headerlink" href="#user-controlled-states" title="Permalink to this heading">¶</a></h2>
+<section id="active">
+<span id="ad-status-active"></span><span id="index-1"></span><h3>ACTIVE<a class="headerlink" href="#active" title="Permalink to this heading">¶</a></h3>
 <p>The ad is shown on the site.</p>
-</div>
-<div class="section" id="paused">
-<span id="ad-status-paused"></span><span id="index-2"></span><h3>PAUSED<a class="headerlink" href="#paused" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="paused">
+<span id="ad-status-paused"></span><span id="index-2"></span><h3>PAUSED<a class="headerlink" href="#paused" title="Permalink to this heading">¶</a></h3>
 <p>The ad is not shown on the site and can be re-activated.</p>
-</div>
-<div class="section" id="deleted">
-<span id="ad-status-deleted"></span><span id="index-3"></span><h3>DELETED<a class="headerlink" href="#deleted" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="deleted">
+<span id="ad-status-deleted"></span><span id="index-3"></span><h3>DELETED<a class="headerlink" href="#deleted" title="Permalink to this heading">¶</a></h3>
 <p>The ad has been deleted by the user and cannot be re-activated.</p>
-</div>
-</div>
-<div class="section" id="customer-service-states">
-<h2>Customer Service States<a class="headerlink" href="#customer-service-states" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="deleted-by-cs">
-<span id="ad-status-deleted-by-cs"></span><span id="index-4"></span><h3>DELETED_BY_CS<a class="headerlink" href="#deleted-by-cs" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="customer-service-states">
+<h2>Customer Service States<a class="headerlink" href="#customer-service-states" title="Permalink to this heading">¶</a></h2>
+<section id="deleted-by-cs">
+<span id="ad-status-deleted-by-cs"></span><span id="index-4"></span><h3>DELETED_BY_CS<a class="headerlink" href="#deleted-by-cs" title="Permalink to this heading">¶</a></h3>
 <p>The ad has been deleted by Customer Service and cannot be re-activated by the user. The seller should have received an email with an explanation for this status change.</p>
-</div>
-<div class="section" id="suspended-by-cs">
-<span id="ad-status-suspended-by-cs"></span><span id="index-5"></span><h3>SUSPENDED_BY_CS<a class="headerlink" href="#suspended-by-cs" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="suspended-by-cs">
+<span id="ad-status-suspended-by-cs"></span><span id="index-5"></span><h3>SUSPENDED_BY_CS<a class="headerlink" href="#suspended-by-cs" title="Permalink to this heading">¶</a></h3>
 <p>The ad has been paused by Customer Service and can be re-activated by the user by updating the ad to comply to the terms and conditions. The seller should have received an email with an explanation for this status change.</p>
-</div>
-</div>
-<div class="section" id="system-states">
-<h2>System States<a class="headerlink" href="#system-states" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="budget-reached">
-<span id="ad-status-budget-reached"></span><span id="index-6"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="system-states">
+<h2>System States<a class="headerlink" href="#system-states" title="Permalink to this heading">¶</a></h2>
+<section id="budget-reached">
+<span id="ad-status-budget-reached"></span><span id="index-6"></span><h3>BUDGET_REACHED<a class="headerlink" href="#budget-reached" title="Permalink to this heading">¶</a></h3>
 <p>The <strong>ad.spentBudget</strong> has reached the <strong>ad.totalBudget</strong>. Therefore the ad is no longer shown on the site.</p>
-</div>
-<div class="section" id="daily-budget-reached">
-<span id="ad-status-daily-budget-reached"></span><span id="index-7"></span><h3>DAILY_BUDGET_REACHED<a class="headerlink" href="#daily-budget-reached" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="daily-budget-reached">
+<span id="ad-status-daily-budget-reached"></span><span id="index-7"></span><h3>DAILY_BUDGET_REACHED<a class="headerlink" href="#daily-budget-reached" title="Permalink to this heading">¶</a></h3>
 <p>The daily budget of the ad has been reached. For the rest of the day the ad will not be shown on the site.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -307,8 +311,10 @@ are set by the system or by customer service.</p>
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
