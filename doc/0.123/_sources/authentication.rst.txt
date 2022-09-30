@@ -25,20 +25,24 @@ OAuth 2.0 defines the following roles of users and applications:
 
 * **Resource Owner:** This is the person or application that owns the data
   that is to be shared. In this context *resource owner*
-  is the iCAS user.
+  is the Admarkt user.
 
 * **Resource Server:** This is the server hosting the resource owned by the
   resource owner. In this context *resource server* is the server hosting
-  iCAS Sellside API.
+  Admarkt Sellside API.
 
 * **Client:** This is the application requesting access to the resources stored
   on the resource server. In this context *client* is the application wanting
-  to use the iCAS Sellside API.
+  to use the Admarkt Sellside API.
 
 * **Authorization Server:** The authorization server is the server
   authorizing the client app to access the resources of the resource owner.
-  In this context *authorization server* is the server hosting authentication
-  and token endpoints.
+  This allows fine-grained access to resources owned by the **resource owner**.
+
+In our OAuth 2.0 flow we rely on the *tenant* (local market) as providing the **Authentication Server**, the
+one that confirms the user identity through the use of some kind of credentials (usually username/password).
+The authentication server is hosting the authentication of a user account (resource owner).
+
 
 .. _oauth2_endpoints:
 
@@ -125,6 +129,8 @@ Getting an Access Token
 
 The steps for getting an access token are as follows:
 
+If the user is not logged-in with the tenant:
+
 Step 1: Redirect to the authorization url
 `````````````````````````````````````````
 
@@ -170,7 +176,7 @@ GET parameters
 Step 2: Redirect to the redirect_uri
 ````````````````````````````````````
 
-After the resource owner logs in and confirms access request of the client the
+After the resource owner logs in and confirms access request of the client, the
 authorization server redirects the resource owner to the ``redirect_uri``
 specified in the request at step 1 with the following GET parameters
 
@@ -194,6 +200,8 @@ specified in the request at step 1 with the following GET parameters
 
     GET /code?code=AUTH_CODE&state=YOUR_STATE
     Host: yoursite.com
+
+This is how your client gets the short-lived authorization code to subsequently get a refresh & access token.
 
 Step 3: POST to the token endpoint
 ``````````````````````````````````
@@ -382,7 +390,7 @@ user group. The list of resources that can be accessed with a scope can change
 over time but does not require the user to go through the grant flow again.
 
 The actual scope for a token is the intersection between the scope requested
-by the  client as described in `Getting an Access Token`_ and the scope
+by the client as described in `Getting an Access Token`_ and the scope
 granted by the user which is part of the user record.
 
 .. list-table::
@@ -407,3 +415,8 @@ granted by the user which is part of the user record.
  * - reporting
    - Grants access to reporting endpoints only. Allows creation of detailed downloadable reports
 
+
+You can find a generalized sequence diagram of the OAuth 2.0 flow below (click to expand).
+
+.. image:: _static/oauth2Flow.png
+   :scale: 100%
