@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -133,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -245,86 +249,86 @@
 </div>
           <div role="main">
             
-  <div class="section" id="put-campaign-id-targeting">
-<span id="index-0"></span><h1>PUT /campaign/{id}/targeting<a class="headerlink" href="#put-campaign-id-targeting" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+  <section id="put-campaign-id-targeting">
+<span id="index-0"></span><h1>PUT /campaign/{id}/targeting<a class="headerlink" href="#put-campaign-id-targeting" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_rw</span></code> or <code class="docutils literal"><span class="pre">console_rw</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_rw</span></code> or <code class="docutils literal notranslate"><span class="pre">console_rw</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.campaign.targeting-v2+json,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.campaign.targeting-v2+json,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
-<tr class="row-odd"><td>Content-Type</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.campaign.targeting-v2+json,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-odd"><td><p>Content-Type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.campaign.targeting-v2+json,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
 </tbody>
 </table>
-<p>Updates the targeting for the specified campaign (see <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a> for more). If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
+<p>Updates the targeting for the specified campaign (see <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a> for more). If the <code class="docutils literal notranslate"><span class="pre">id</span></code> is invalid, i.e., not a positive integer, the server returns <em>400 Bad Request.</em>
 Any previous targeting setting on the specified campaign will be overwritten.</p>
-<p>Setting targeting on a campaign in a <code class="docutils literal"><span class="pre">DELETED</span></code> state is not allowed.</p>
-<div class="section" id="examples">
-<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">targeting</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="mf">41.234</span><span class="p">,</span>
-        <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="mf">54.678</span><span class="p">,</span>
-        <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
-        <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="s2">&quot;Amsterdam&quot;</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<p>Setting targeting on a campaign in a <code class="docutils literal notranslate"><span class="pre">DELETED</span></code> state is not allowed.</p>
+<section id="examples">
+<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">124512</span><span class="o">/</span><span class="nx">targeting</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;geos&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;lat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">41.234</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;lon&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">54.678</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;radius&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;displayValue&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Amsterdam&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="mf">41.234</span><span class="p">,</span>
-        <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="mf">54.678</span><span class="p">,</span>
-        <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
-        <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="s2">&quot;Amsterdam&quot;</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;geos&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;lat&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">41.234</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;lon&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">54.678</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;radius&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;displayValue&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Amsterdam&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Setting the geo-targeting to nationwide:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">targeting</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[]</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">124512</span><span class="o">/</span><span class="nx">targeting</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;geos&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[]</span>
-<span class="p">}</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;geos&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Using regions targeting:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mi">124512</span><span class="o">/</span><span class="nx">targeting</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">2345</span><span class="p">,</span><span class="mi">5674</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">124512</span><span class="o">/</span><span class="nx">targeting</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;regionIds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">2345</span><span class="p">,</span><span class="mf">5674</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">2345</span><span class="p">,</span><span class="mi">5674</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="p">.</span><span class="nx">targeting</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;regionIds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">2345</span><span class="p">,</span><span class="mf">5674</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -370,8 +374,10 @@ Any previous targeting setting on the specified campaign will be overwritten.</p
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

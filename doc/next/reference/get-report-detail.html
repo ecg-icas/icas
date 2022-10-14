@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -133,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -245,109 +249,104 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-report-detail">
-<span id="index-0"></span><span id="id1"></span><h1>GET /report/detail<a class="headerlink" href="#get-report-detail" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+  <section id="get-report-detail">
+<span id="index-0"></span><span id="id1"></span><h1>GET /report/detail<a class="headerlink" href="#get-report-detail" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.report.detail.list-v1+json,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.report.detail.list-v1+json,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns the list of previously submitted reports for the current
 user. A maximum of 3 reports are returned.</p>
-<div class="section" id="errors">
-<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
 <p>There are no specific errors for this call.</p>
-</div>
-<div class="section" id="fields">
-<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h2>
 <p>Each report object in the returned list contains the following fields.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="19%" />
-<col width="8%" />
-<col width="73%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>id</td>
-<td>string</td>
-<td>Unique id of the report</td>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>string</p></td>
+<td><p>Unique id of the report</p></td>
 </tr>
-<tr class="row-odd"><td>dateCreated</td>
-<td>date</td>
-<td>Creation date of the report</td>
+<tr class="row-odd"><td><p>dateCreated</p></td>
+<td><p>date</p></td>
+<td><p>Creation date of the report</p></td>
 </tr>
-<tr class="row-even"><td>startDate</td>
-<td>date</td>
-<td>Start date of the report</td>
+<tr class="row-even"><td><p>startDate</p></td>
+<td><p>date</p></td>
+<td><p>Start date of the report</p></td>
 </tr>
-<tr class="row-odd"><td>endDate</td>
-<td>date</td>
-<td>End date of the report</td>
+<tr class="row-odd"><td><p>endDate</p></td>
+<td><p>date</p></td>
+<td><p>End date of the report</p></td>
 </tr>
-<tr class="row-even"><td>includeDeleted</td>
-<td>bool</td>
-<td>Deleted ads are included/excluded</td>
+<tr class="row-even"><td><p>includeDeleted</p></td>
+<td><p>bool</p></td>
+<td><p>Deleted ads are included/excluded</p></td>
 </tr>
-<tr class="row-odd"><td>count</td>
-<td>int</td>
-<td>Number of rows in the report</td>
+<tr class="row-odd"><td><p>count</p></td>
+<td><p>int</p></td>
+<td><p>Number of rows in the report</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">detail</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">detail</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
 
-<span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;c4e91116-34f7-4bbe-959f-12b7a03157ed&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-16T10:46:41Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;startDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-03T22:00:00Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;endDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-07T22:00:00Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">123</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;d5d4a002-0a82-46f8-8246-9af425490c22&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-16T10:46:29Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;startDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-03T22:00:00Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;endDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-07T22:00:00Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">16</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;32d031e8-fff4-44df-9f82-72b38618a9ca&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-04-09T12:44:47Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;startDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-02-28T23:00:00Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;endDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2015-03-07T23:00:00Z&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mi">0</span>
-    <span class="p">}</span>
-<span class="p">]</span>
+<span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;c4e91116-34f7-4bbe-959f-12b7a03157ed&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-04-16T10:46:41Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-04-03T22:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-04-07T22:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;d5d4a002-0a82-46f8-8246-9af425490c22&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-04-16T10:46:29Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-04-03T22:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-04-07T22:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;32d031e8-fff4-44df-9f82-72b38618a9ca&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-04-09T12:44:47Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-02-28T23:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2015-03-07T23:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;includeDeleted&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -393,8 +392,10 @@ user. A maximum of 3 reports are returned.</p>
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

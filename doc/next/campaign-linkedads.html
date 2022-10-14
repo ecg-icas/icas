@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -133,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -245,28 +249,28 @@
 </div>
           <div role="main">
             
-  <div class="section" id="campaign-linked-ads">
-<span id="campaign-linkedads-overview"></span><h1>Campaign Linked Ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this headline">¶</a></h1>
-<p id="id1">Campaign&#8217;s linkedAds component defines which ads are part of the campaign. It is possible to add / remove (link / unlink) ads from a campaign using
+  <section id="campaign-linked-ads">
+<span id="campaign-linkedads-overview"></span><h1>Campaign Linked Ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this heading">¶</a></h1>
+<p id="id1">Campaign’s linkedAds component defines which ads are part of the campaign. It is possible to add / remove (link / unlink) ads from a campaign using
 <a class="reference internal" href="reference/put-campaign-linkedads.html#put-campaign-linkedads"><span class="std std-ref">PUT /campaign/{id}/linkedAds</span></a> / <a class="reference internal" href="reference/delete-campaign-linkedads.html#delete-campaign-linkedads"><span class="std std-ref">DELETE /campaign/{id}/linkedAds</span></a>. Deleting a linkedAd from a campaign does not remove the ad from your inventory, it merely takes it offline in the context of the particular campaign.</p>
 <p>LinkedAds are stored as part of the campaign, and have a reference to an Ad using its ID. A linkedAd consists of two parts:
 the Ad ID and some possible overrides from the campaign defaults.
 Using linkedAds, it is possible to add a single ad to multiple campaigns (which may have different budgets, CPC and targeting criteria).
 It is, however, not possible to add a single ad multiple times to the same campaign.</p>
 <p>Ads that are not referred to by any linkedAd in any active campaign will <strong>not</strong> be shown on site.</p>
-<div class="section" id="ad-id">
-<h2>Ad ID<a class="headerlink" href="#ad-id" title="Permalink to this headline">¶</a></h2>
+<section id="ad-id">
+<h2>Ad ID<a class="headerlink" href="#ad-id" title="Permalink to this heading">¶</a></h2>
 <p>The ID of the ad that this linkedAd refers to. This is the unique identifier of the ad itself, described in <a class="reference internal" href="ads.html#ad-id"><span class="std std-ref">id</span></a>.</p>
-</div>
-<div class="section" id="overrides">
-<h2>Overrides<a class="headerlink" href="#overrides" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="overrides">
+<h2>Overrides<a class="headerlink" href="#overrides" title="Permalink to this heading">¶</a></h2>
 <p>A linkedAd can have certain overrides as well. For instance, it is possible to set a specific budget for an ad in a campaign, in addition to an overal campaign budget; if the campaign has a daily budget of 20 euros,
 it is possible to limit the spent of a single ad in that campaign to 10 euros, making sure that the budget of the campaign
 is more fairly spread out over the remaining campaign ads (in case you have a very high performing ad in the campaign, for example).</p>
 <p>It is also possible to let a bidding agent automatically manage the CPC and budgets on a particular linkedAd, in a more optimal way.
 See <a class="reference internal" href="reference/put-campaign-linkedads.html#put-campaign-linkedads"><span class="std std-ref">PUT /campaign/{id}/linkedAds</span></a> for more details.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -312,8 +316,10 @@ See <a class="reference internal" href="reference/put-campaign-linkedads.html#pu
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
 
   

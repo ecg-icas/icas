@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -132,7 +136,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -242,8 +246,8 @@
 </div>
           <div role="main">
             
-  <div class="section" id="xml-feeds">
-<span id="feeds"></span><h1>XML Feeds<a class="headerlink" href="#xml-feeds" title="Permalink to this headline">¶</a></h1>
+  <section id="xml-feeds">
+<span id="feeds"></span><h1>XML Feeds<a class="headerlink" href="#xml-feeds" title="Permalink to this heading">¶</a></h1>
 <p>XML feeds are the way for users to handle repetitive asynchronous bulk uploading of ads.
 When a user is eligible for feed usage the user can configure an HTTP(s) URL through
 <a class="reference internal" href="reference/post-feed-config.html#post-feed-config"><span class="std std-ref">POST /feed/config</span></a> or the frontend to make iCAS, once a day, attempt to download an
@@ -258,34 +262,34 @@ ads are the same. This results in allowing us to update an existing ad with the 
 of creating a new ad. <strong>vendorId</strong> is mandatory and, as specified in the XSD, unique for each ad in the
 XML file.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">There is still an <strong>externalId</strong> field in the XSD, this field is replaced by <strong>vendorId</strong>.
+<p class="admonition-title">Warning</p>
+<p>There is still an <strong>externalId</strong> field in the XSD, this field is replaced by <strong>vendorId</strong>.
 Please update your XML to reflect this change. This makes naming consistent between feeds and sellside API.
 The <strong>vendorId</strong> field in the feeds has the same meaning and constraints as the <strong>vendorId</strong> field in the
 sellside API.</p>
 </div>
-<div class="section" id="errors">
-<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a> shows the overview of imported feeds of the user, and
 <a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail</span></a> can be a good source of information on possible errors
 or warnings on ads, such as missing mandatory attributes or too low CPC etc. If your XML
 does not pass the XSD at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> this is where you will see why.
 After the XSD validates, it will handle the ads inside it separately, and a failure on one ad
 will then not impact other ads.</p>
-</div>
-<div class="section" id="character-encoding-line-terminators">
-<h2>Character encoding &amp; Line terminators<a class="headerlink" href="#character-encoding-line-terminators" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="character-encoding-line-terminators">
+<h2>Character encoding &amp; Line terminators<a class="headerlink" href="#character-encoding-line-terminators" title="Permalink to this heading">¶</a></h2>
 <p>Feeds are expected to be in UTF-8 encoding without Byte Order Marker (BOM) with Unix (LF) line terminators.
 Feed files with a BOM marker and/or different line terminators (e.g. CRLF on Windows) will not be processed.</p>
-</div>
-<div class="section" id="whitelisting">
-<h2>Whitelisting<a class="headerlink" href="#whitelisting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="whitelisting">
+<h2>Whitelisting<a class="headerlink" href="#whitelisting" title="Permalink to this heading">¶</a></h2>
 <p>As mentioned in <a class="reference internal" href="overview.html#overview-image-downloads"><span class="std std-ref">Image Downloads</span></a> our outgoing IPs for downloading images (also the ones
 defined in the feed) should be whitelisted. We also download the XML file itself using these IPs.</p>
-</div>
-<div class="section" id="example-xml">
-<h2>Example XML<a class="headerlink" href="#example-xml" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</section>
+<section id="example-xml">
+<h2>Example XML<a class="headerlink" href="#example-xml" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;admarkt:ads</span> <span class="na">xmlns:admarkt=</span><span class="s">&quot;http://admarkt.marktplaats.nl/schemas/1.0&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;admarkt:ad&gt;</span>
         <span class="nt">&lt;admarkt:vendorId&gt;</span>jh2fi82wqjckw<span class="nt">&lt;/admarkt:vendorId&gt;</span>
@@ -334,56 +338,56 @@ defined in the feed) should be whitelisted. We also download the XML file itself
 <span class="nt">&lt;/admarkt:ads&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="scenario-s-questions">
-<h2>Scenario&#8217;s &amp; Questions<a class="headerlink" href="#scenario-s-questions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="scenario-s-questions">
+<h2>Scenario’s &amp; Questions<a class="headerlink" href="#scenario-s-questions" title="Permalink to this heading">¶</a></h2>
 <p>Below are some common asked-for scenarios and questions with their explanations/answers.</p>
 <ul class="simple">
-<li>Feed file cannot be fetched</li>
+<li><p>Feed file cannot be fetched</p></li>
 </ul>
-<p>When a feed file cannot be fetched, nothing will change on the user&#8217;s ads.
-It&#8217;s as if the import didn&#8217;t happen. Since the file represents the desired
-list of ads to be live, we won&#8217;t do anything if we can&#8217;t get the file -
+<p>When a feed file cannot be fetched, nothing will change on the user’s ads.
+It’s as if the import didn’t happen. Since the file represents the desired
+list of ads to be live, we won’t do anything if we can’t get the file -
 we cannot read a change in the desired situation.</p>
 <ul class="simple">
-<li>Feed file is empty</li>
+<li><p>Feed file is empty</p></li>
 </ul>
 <p>When a feed file is empty, all ads of the user will be paused. An empty
 file means the desired list of ads to be live is empty, so all active ads
 are paused. Note that this also means that all ads which are in statuses
 BUDGET_REACHED or DAILY_BUDGET_REACHED are also paused.</p>
 <ul class="simple">
-<li>Feed file contains only new ads</li>
+<li><p>Feed file contains only new ads</p></li>
 </ul>
 <p>In the spirit of the feed file being the desired set of ads to be live for
 a user, all currently active ads (including ads in BUDGET_REACHED or DAILY_BUDGET_REACHED)
 will be paused and the supplied ads will be created (with status ACTIVE).</p>
 <ul class="simple">
-<li>Editing ads through frontend / API</li>
+<li><p>Editing ads through frontend / API</p></li>
 </ul>
 <p>In the spirit of the feed file being the desired set of ads to be live for
 a user, all ads will be (re)set to their representing feed values. This means
 you can see changes made throuh API or frontend undone after a successful feed import.</p>
 <ul class="simple">
-<li>XML does not validate against XSD</li>
+<li><p>XML does not validate against XSD</p></li>
 </ul>
 <p>If the fetched XML filed does not validate against the XSD there will not be any changes
 to your ads. Existing ads will remain unchanged and no new ads will be created.</p>
 <ul class="simple">
-<li>How to validate XML against XSD</li>
+<li><p>How to validate XML against XSD</p></li>
 </ul>
 <p>Next to various online capabilities where you can provide both your XML and XSD files,
 a way to check quickly and locally is to use a tool called xmllint. With this tool
 you can use our XSD downloaded from <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> to test whether your feed is
 working before you let iCAS fetch it using the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>xmllint --debug --noout --schema /path/to/admarkt1.0.xsd /path/to/yourfeed.xml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmllint --debug --noout --schema /path/to/admarkt1.0.xsd /path/to/yourfeed.xml
 </pre></div>
 </div>
 <p>For small chunks of XML you can use online validators as well, such as <a class="reference external" href="http://www.utilities-online.info/xsdvalidation/">http://www.utilities-online.info/xsdvalidation/</a> or <a class="reference external" href="https://www.freeformatter.com/xml-validator-xsd.html">https://www.freeformatter.com/xml-validator-xsd.html</a>. Note that these have a
 limit on the size of the XML you can check, but it should be more than enough to be able
 to test correctness of your structure.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -429,8 +433,10 @@ to test correctness of your structure.</p>
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
 
   

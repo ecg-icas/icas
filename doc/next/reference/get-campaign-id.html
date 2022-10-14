@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -133,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -245,29 +249,29 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-campaign-id">
-<span id="index-0"></span><span id="id1"></span><h1>GET /campaign/{id}<a class="headerlink" href="#get-campaign-id" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+  <section id="get-campaign-id">
+<span id="index-0"></span><span id="id1"></span><h1>GET /campaign/{id}<a class="headerlink" href="#get-campaign-id" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.campaign-v2+json,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.campaign-v2+json,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
 </tbody>
 </table>
-<p>Returns a single campaign with the given <code class="docutils literal"><span class="pre">id</span></code>.</p>
+<p>Returns a single campaign with the given <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <p>If the campaign does not exist or does not belong to the user the server returns
-<strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the
+<strong>404 Not Found</strong>. If the <code class="docutils literal notranslate"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the
 server returns <strong>400 Bad Request</strong>.</p>
-<div class="section" id="example">
-<h2>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>GET /api/sellside/campaign/124512
+<section id="example">
+<h2>Example:<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>GET /api/sellside/campaign/124512
 Accept: application/sellside.campaign-v2+json
 
 200 OK
@@ -309,90 +313,86 @@ Content-Type: application/sellside.campaign-v2+json
 </pre></div>
 </div>
 <p>The full campaign payload model that you get as a response, has the following structure:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;budgets&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;daily&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;monthly&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                    <span class="s2">&quot;spent&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
-            <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;targeting&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                            <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
-                    <span class="p">},</span> <span class="p">...</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;linkedAds&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;budgets&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;daily&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;spent&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;monthly&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;spent&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;spent&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;targeting&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;geos&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                            </span><span class="s2">&quot;lat&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="s2">&quot;lon&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="s2">&quot;radius&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="s2">&quot;displayValue&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;regionIds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;linkedAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="6%" />
-<col width="94%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Description</th>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">id</span></code></td>
-<td>Unique reference to the campaign. Generated by us, and needed for certain actions, to modify the campaign and its properties.</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>Unique reference to the campaign. Generated by us, and needed for certain actions, to modify the campaign and its properties.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">title</span></code></td>
-<td>A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">dateCreated</span></code></td>
-<td>The ISO 8601 UTC date and time the campaign was created.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dateCreated</span></code></p></td>
+<td><p>The ISO 8601 UTC date and time the campaign was created.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dateLastUpdated</span></code></td>
-<td>The ISO 8601 UTC date and time the campaign was last updated.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dateLastUpdated</span></code></p></td>
+<td><p>The ISO 8601 UTC date and time the campaign was last updated.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">status</span></code></td>
-<td>The desired state of the campaign. Can be one of the user-controlled status values described in <a class="reference internal" href="../campaign-status.html#id1"><span class="std std-ref">User Controlled States</span></a>. Default value is <code class="docutils literal"><span class="pre">PAUSED</span></code>.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<td><p>The desired state of the campaign. Can be one of the user-controlled status values described in <a class="reference internal" href="../campaign-status.html#id1"><span class="std std-ref">User Controlled States</span></a> . The response can also contain a <a class="reference internal" href="../campaign-status.html#system-controlled-states"><span class="std std-ref">System Controlled State</span></a> under certain circumstances. Default value is <code class="docutils literal notranslate"><span class="pre">PAUSED</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">vendorId</span></code></td>
-<td>Optional, eller-provided unique reference the campaign. Once set, it cannot be modified. Maximum length is 64 characters.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vendorId</span></code></p></td>
+<td><p>Optional, eller-provided unique reference the campaign. Once set, it cannot be modified. Maximum length is 64 characters.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">cpc</span></code></td>
-<td>Fixed CPC (in cents) that applies for all <a class="reference internal" href="../campaign-linkedads.html#id1"><span class="std std-ref">Campaign Linked Ads</span></a> in this campaign.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cpc</span></code></p></td>
+<td><p>Fixed CPC (in cents) that applies for all <a class="reference internal" href="../campaign-linkedads.html#id1"><span class="std std-ref">Campaign Linked Ads</span></a> in this campaign.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">budgets</span></code></td>
-<td>An object containing the budget current limits and spent for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The unit for <code class="docutils literal"><span class="pre">limit</span></code> and <code class="docutils literal"><span class="pre">spent</span></code> is cents. The default <code class="docutils literal"><span class="pre">limit</span></code> values are set to <strong>-1 (Unlimited)</strong>. If the campaign is <code class="docutils literal"><span class="pre">DELETED</span></code>, no budgets are shown.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">budgets</span></code></p></td>
+<td><p>An object containing the budget current limits and spent for this campaign. See <a class="reference internal" href="../campaign-budgets.html#campaign-budget-types"><span class="std std-ref">Budget types</span></a> for more. The unit for <code class="docutils literal notranslate"><span class="pre">limit</span></code> and <code class="docutils literal notranslate"><span class="pre">spent</span></code> is cents. The default <code class="docutils literal notranslate"><span class="pre">limit</span></code> values are set to <strong>-1 (Unlimited)</strong>. If the campaign is <code class="docutils literal notranslate"><span class="pre">DELETED</span></code>, no budgets are shown.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">targeting</span></code></td>
-<td>A <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">targeting</span></code></p></td>
+<td><p>A <a class="reference internal" href="../campaign-targeting.html#campaign-targeting-object"><span class="std std-ref">Campaign Targeting Object</span></a>, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">links</span></code></td>
-<td>An object containing RESTful links to other related resources.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">links</span></code></p></td>
+<td><p>An object containing RESTful links to other related resources.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -438,8 +438,10 @@ Content-Type: application/sellside.campaign-v2+json
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

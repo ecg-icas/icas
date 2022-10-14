@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -133,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -245,178 +249,167 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-metrics-ads">
-<span id="index-0"></span><span id="id1"></span><h1>GET /metrics/ads<a class="headerlink" href="#get-metrics-ads" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+  <section id="get-metrics-ads">
+<span id="index-0"></span><span id="id1"></span><h1>GET /metrics/ads<a class="headerlink" href="#get-metrics-ads" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">console_ro</span></code> or <code class="docutils literal"><span class="pre">api_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal"><span class="pre">text/csv</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/vnd.ms-excel</span></code> or <code class="docutils literal notranslate"><span class="pre">text/csv</span></code></p></td>
 </tr>
-<tr class="row-odd"><td>Accept-Language</td>
-<td>preferred locale (e.g., <code class="docutils literal"><span class="pre">nl-NL</span></code>, <code class="docutils literal"><span class="pre">fr-BE</span></code>, <code class="docutils literal"><span class="pre">en-CA</span></code>)</td>
+<tr class="row-odd"><td><p>Accept-Language</p></td>
+<td><p>preferred locale (e.g., <code class="docutils literal notranslate"><span class="pre">nl-NL</span></code>, <code class="docutils literal notranslate"><span class="pre">fr-BE</span></code>, <code class="docutils literal notranslate"><span class="pre">en-CA</span></code>)</p></td>
 </tr>
 </tbody>
 </table>
 <p>This URL returns an ads performance report either in Excel or in CSV format depending on the
-<code class="docutils literal"><span class="pre">Accept</span></code> header. The report represents a timeseries breakdown of the performance of each ad which
+<code class="docutils literal notranslate"><span class="pre">Accept</span></code> header. The report represents a timeseries breakdown of the performance of each ad which
 has had performance-related activity in the requested period.</p>
-<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created, in <code class="docutils literal"><span class="pre">.xlsx</span></code> format.</p>
-<p>If the <code class="docutils literal"><span class="pre">Accept</span></code> header is <code class="docutils literal"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
+<p>If the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header is <code class="docutils literal notranslate"><span class="pre">application/vnd.ms-excel</span></code> an Excel document is created, in <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> format.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header is <code class="docutils literal notranslate"><span class="pre">text/csv</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
 <strong>Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
 Empty strings are not enclosed in quotes.</strong></p>
 <p>All dates and times are in the tenant timezone.</p>
-<p>The <code class="docutils literal"><span class="pre">Accept-Language</span></code> header advertises the preferred client locales (language and region) for the report column names. Both <code class="docutils literal"><span class="pre">language_REGION</span></code> and <code class="docutils literal"><span class="pre">language-REGION</span></code> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used.</p>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="4%" />
-<col width="5%" />
-<col width="5%" />
-<col width="86%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Type</th>
-<th class="head">Mandatory</th>
-<th class="head">Description</th>
+<p>The <code class="docutils literal notranslate"><span class="pre">Accept-Language</span></code> header advertises the preferred client locales (language and region) for the report column names. Both <code class="docutils literal notranslate"><span class="pre">language_REGION</span></code> and <code class="docutils literal notranslate"><span class="pre">language-REGION</span></code> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>aggregate</td>
-<td>string</td>
-<td>no</td>
-<td>Granularity of the timeseries breakdown. Possible values are: <code class="docutils literal"><span class="pre">daily</span></code>, <code class="docutils literal"><span class="pre">weekly</span></code>, <code class="docutils literal"><span class="pre">monthly</span></code>, and <code class="docutils literal"><span class="pre">yearly</span></code>. Default is <code class="docutils literal"><span class="pre">daily</span></code>.</td>
+<tbody>
+<tr class="row-even"><td><p>aggregate</p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Granularity of the timeseries breakdown. Possible values are: <code class="docutils literal notranslate"><span class="pre">daily</span></code>, <code class="docutils literal notranslate"><span class="pre">weekly</span></code>, <code class="docutils literal notranslate"><span class="pre">monthly</span></code>, and <code class="docutils literal notranslate"><span class="pre">yearly</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">daily</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td>startDate</td>
-<td>string</td>
-<td>yes</td>
-<td>Start date of the report in <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> format (inclusive)</td>
+<tr class="row-odd"><td><p>startDate</p></td>
+<td><p>string</p></td>
+<td><p>yes</p></td>
+<td><p>Start date of the report in <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code> format (inclusive)</p></td>
 </tr>
-<tr class="row-even"><td>endDate</td>
-<td>string</td>
-<td>yes</td>
-<td>End date of the report in <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code> (inclusive)</td>
+<tr class="row-even"><td><p>endDate</p></td>
+<td><p>string</p></td>
+<td><p>yes</p></td>
+<td><p>End date of the report in <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code> (inclusive)</p></td>
 </tr>
-<tr class="row-odd"><td>includeDeleted</td>
-<td>bool</td>
-<td>no</td>
-<td>Deleted ads are included/excluded. Default is <code class="docutils literal"><span class="pre">false</span></code></td>
+<tr class="row-odd"><td><p>includeDeleted</p></td>
+<td><p>bool</p></td>
+<td><p>no</p></td>
+<td><p>Deleted ads are included/excluded. Default is <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-even"><td>query</td>
-<td>string</td>
-<td>no</td>
-<td>Search phrase to filter on ad titles</td>
+<tr class="row-even"><td><p>query</p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Search phrase to filter on ad titles</p></td>
 </tr>
-<tr class="row-odd"><td>fields</td>
-<td>list of strings</td>
-<td>no</td>
-<td>Comma-separated list of column fields to include in the report. Possible values are listed in the <code class="docutils literal"><span class="pre">Field</span></code> column in the table below. By default all fields are included, and this may <strong>affect the speed of data generation</strong>.</td>
+<tr class="row-odd"><td><p>fields</p></td>
+<td><p>list of strings</p></td>
+<td><p>no</p></td>
+<td><p>Comma-separated list of column fields to include in the report. Possible values are listed in the <code class="docutils literal notranslate"><span class="pre">Field</span></code> column in the table below. By default all fields are included, and this may <strong>affect the speed of data generation</strong>.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="report-columns">
-<h2>Report Columns<a class="headerlink" href="#report-columns" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="report-columns">
+<h2>Report Columns<a class="headerlink" href="#report-columns" title="Permalink to this heading">¶</a></h2>
 <p>Both the excel and the csv formats contain the following columns by default:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="7%" />
-<col width="6%" />
-<col width="86%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Field</th>
-<th class="head">Description</th>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Date (Aggregated)</td>
-<td><code class="docutils literal"><span class="pre">date</span></code></td>
-<td>Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is <code class="docutils literal"><span class="pre">YYYY-MM-DD</span></code>, for monthly aggregation - <code class="docutils literal"><span class="pre">YYYY-MM</span></code>, and for yearly - <code class="docutils literal"><span class="pre">YYYY</span></code>. All dates are in tenant timezone.</td>
+<tbody>
+<tr class="row-even"><td><p>Date (Aggregated)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td><p>Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code>, for monthly aggregation - <code class="docutils literal notranslate"><span class="pre">YYYY-MM</span></code>, and for yearly - <code class="docutils literal notranslate"><span class="pre">YYYY</span></code>. All dates are in tenant timezone.</p></td>
 </tr>
-<tr class="row-odd"><td>Ad ID</td>
-<td><code class="docutils literal"><span class="pre">adID</span></code></td>
-<td>ID of the ad</td>
+<tr class="row-odd"><td><p>Ad ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">adID</span></code></p></td>
+<td><p>ID of the ad</p></td>
 </tr>
-<tr class="row-even"><td>L1 Category</td>
-<td><code class="docutils literal"><span class="pre">L1Category</span></code></td>
-<td>Level 1 category name</td>
+<tr class="row-even"><td><p>L1 Category</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">L1Category</span></code></p></td>
+<td><p>Level 1 category name</p></td>
 </tr>
-<tr class="row-odd"><td>L2 Category</td>
-<td><code class="docutils literal"><span class="pre">L2Category</span></code></td>
-<td>Level 2 category name</td>
+<tr class="row-odd"><td><p>L2 Category</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">L2Category</span></code></p></td>
+<td><p>Level 2 category name</p></td>
 </tr>
-<tr class="row-even"><td>L3 Category</td>
-<td><code class="docutils literal"><span class="pre">L3Category</span></code></td>
-<td>Level 3 category name, if applicable</td>
+<tr class="row-even"><td><p>L3 Category</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">L3Category</span></code></p></td>
+<td><p>Level 3 category name, if applicable</p></td>
 </tr>
-<tr class="row-odd"><td>Title</td>
-<td><code class="docutils literal"><span class="pre">title</span></code></td>
-<td>Title of the ad</td>
+<tr class="row-odd"><td><p>Title</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>Title of the ad</p></td>
 </tr>
-<tr class="row-even"><td>Start Date</td>
-<td><code class="docutils literal"><span class="pre">startDate</span></code></td>
-<td>Creation date of the ad</td>
+<tr class="row-even"><td><p>Start Date</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">startDate</span></code></p></td>
+<td><p>Creation date of the ad</p></td>
 </tr>
-<tr class="row-odd"><td>End Date</td>
-<td><code class="docutils literal"><span class="pre">endDate</span></code></td>
-<td>If the ad is deleted, deletion date of the ad</td>
+<tr class="row-odd"><td><p>End Date</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">endDate</span></code></p></td>
+<td><p>If the ad is deleted, deletion date of the ad</p></td>
 </tr>
-<tr class="row-even"><td>CPC</td>
-<td><code class="docutils literal"><span class="pre">CPC</span></code></td>
-<td>CPC of the ad for which performance metrics are calculated, in Local Currency</td>
+<tr class="row-even"><td><p>CPC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPC</span></code></p></td>
+<td><p>CPC of the ad for which performance metrics are calculated, in Local Currency</p></td>
 </tr>
-<tr class="row-odd"><td>Total spent</td>
-<td><code class="docutils literal"><span class="pre">spent</span></code></td>
-<td>Total amount spent for this ad, in Local Currency</td>
+<tr class="row-odd"><td><p>Total spent</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">spent</span></code></p></td>
+<td><p>Total amount spent for this ad, in Local Currency</p></td>
 </tr>
-<tr class="row-even"><td>Clicks</td>
-<td><code class="docutils literal"><span class="pre">clicks</span></code></td>
-<td>Number of clicks that the ad received</td>
+<tr class="row-even"><td><p>Clicks</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">clicks</span></code></p></td>
+<td><p>Number of clicks that the ad received</p></td>
 </tr>
-<tr class="row-odd"><td>Impressions</td>
-<td><code class="docutils literal"><span class="pre">impressions</span></code></td>
-<td>Number of impressions that the ad received</td>
+<tr class="row-odd"><td><p>Impressions</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">impressions</span></code></p></td>
+<td><p>Number of impressions that the ad received</p></td>
 </tr>
-<tr class="row-even"><td>CTR</td>
-<td><code class="docutils literal"><span class="pre">viewCTR</span></code></td>
-<td>Click-through rate in %</td>
+<tr class="row-even"><td><p>CTR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">viewCTR</span></code></p></td>
+<td><p>Click-through rate in %</p></td>
 </tr>
-<tr class="row-odd"><td>URL clicks</td>
-<td><code class="docutils literal"><span class="pre">websiteClicks</span></code></td>
-<td>Number of URL clicks that the ad received</td>
+<tr class="row-odd"><td><p>URL clicks</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">websiteClicks</span></code></p></td>
+<td><p>Number of URL clicks that the ad received</p></td>
 </tr>
-<tr class="row-even"><td>Emails</td>
-<td><code class="docutils literal"><span class="pre">emails</span></code></td>
-<td>Number of email events that the ad received</td>
+<tr class="row-even"><td><p>Emails</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">emails</span></code></p></td>
+<td><p>Number of email events that the ad received</p></td>
 </tr>
-<tr class="row-odd"><td>Engagement CTR</td>
-<td><code class="docutils literal"><span class="pre">engagementCTR</span></code></td>
-<td>Engagement conversion rate in %. Calculation: <code class="docutils literal"><span class="pre">(URL</span> <span class="pre">clicks</span> <span class="pre">+</span> <span class="pre">Emails)</span> <span class="pre">/</span> <span class="pre">Clicks</span></code></td>
+<tr class="row-odd"><td><p>Engagement CTR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">engagementCTR</span></code></p></td>
+<td><p>Engagement conversion rate in %. Calculation: <code class="docutils literal notranslate"><span class="pre">(URL</span> <span class="pre">clicks</span> <span class="pre">+</span> <span class="pre">Emails)</span> <span class="pre">/</span> <span class="pre">Clicks</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Region</td>
-<td><code class="docutils literal"><span class="pre">region</span></code></td>
-<td>Region name, of the ad</td>
+<tr class="row-even"><td><p>Region</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">region</span></code></p></td>
+<td><p>Region name, of the ad</p></td>
 </tr>
-<tr class="row-odd"><td>Vendor ID</td>
-<td><code class="docutils literal"><span class="pre">vendorID</span></code></td>
-<td>Vendor ID of the ad</td>
+<tr class="row-odd"><td><p>Vendor ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vendorID</span></code></p></td>
+<td><p>Vendor ID of the ad</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting</span>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting</span>
 <span class="go">Accept: text/csv</span>
 <span class="go">Accept-Language: nl_NL, fr_NL;q=0.5</span>
 
@@ -429,7 +422,7 @@ Empty strings are not enclosed in quotes.</strong></p>
 <span class="go">2018-02-03,8,Cd&#39;s en Dvd&#39;s,Cd&#39;s | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting&amp;aggregate=monthly</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting&amp;aggregate=monthly</span>
 <span class="go">Accept: text/csv</span>
 
 <span class="go">HTTP/1.1 200 OK</span>
@@ -441,7 +434,7 @@ Empty strings are not enclosed in quotes.</strong></p>
 <span class="go">2018-02,8,Cd&#39;s en Dvd&#39;s,Cd&#39;s | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting&amp;aggregate=yearly&amp;fields=date,adID,clicks,spent</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting&amp;aggregate=yearly&amp;fields=date,adID,clicks,spent</span>
 <span class="go">Accept: text/csv</span>
 
 <span class="go">HTTP/1.1 200 OK</span>
@@ -453,10 +446,10 @@ Empty strings are not enclosed in quotes.</strong></p>
 <span class="go">2018,8,0.1500000000,0.3000000000</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="errors">
-<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting</span>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01&amp;endDate=2018-05-01&amp;query=Interesting</span>
 <span class="go">Accept: application/json</span>
 
 <span class="go">HTTP/1.1 415 Unsupported Media Type</span>
@@ -471,7 +464,7 @@ Empty strings are not enclosed in quotes.</strong></p>
 <span class="go">]</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-01-01</span>
 <span class="go">Accept: application/vnd.ms-excel</span>
 
 <span class="go">HTTP/1.1 400 Bad Request</span>
@@ -486,7 +479,7 @@ Empty strings are not enclosed in quotes.</strong></p>
 <span class="go">]</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-07-01&amp;endDate=2018-05-01</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">GET /api/sellside/metrics/ads?startDate=2018-07-01&amp;endDate=2018-05-01</span>
 
 <span class="go">HTTP/1.1 400 Bad Request</span>
 <span class="go">[</span>
@@ -500,8 +493,8 @@ Empty strings are not enclosed in quotes.</strong></p>
 <span class="go">]</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -547,8 +540,10 @@ Empty strings are not enclosed in quotes.</strong></p>
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

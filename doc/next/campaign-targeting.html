@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -133,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -245,70 +249,66 @@
 </div>
           <div role="main">
             
-  <div class="section" id="campaign-targeting">
-<span id="campaign-targeting-overview"></span><h1>Campaign Targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this headline">¶</a></h1>
+  <section id="campaign-targeting">
+<span id="campaign-targeting-overview"></span><h1>Campaign Targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this heading">¶</a></h1>
 <p id="id1">Campaigns allow you to target specific groups of buyers. Buyers not in these target groups will typically not
 see any ads from this campaign (some exceptions apply). Currently, only geographic targeting is supported but we
 are looking to add other forms of targeting. See <a class="reference internal" href="reference/post-campaign.html#post-campaign"><span class="std std-ref">POST /campaign</span></a> for more details.</p>
-<div class="section" id="geo-targeting">
-<h2>Geo Targeting<a class="headerlink" href="#geo-targeting" title="Permalink to this headline">¶</a></h2>
+<section id="geo-targeting">
+<h2>Geo Targeting<a class="headerlink" href="#geo-targeting" title="Permalink to this heading">¶</a></h2>
 <p>Geo targeting allows you to specify one or more (circular) areas in the targeting criteria of a campaign
 to have the ads of that campaign only be shown to buyers located in any of the geographical areas specified.</p>
-</div>
-<div class="section" id="region-targeting">
-<h2>Region Targeting<a class="headerlink" href="#region-targeting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="region-targeting">
+<h2>Region Targeting<a class="headerlink" href="#region-targeting" title="Permalink to this heading">¶</a></h2>
 <p>For tenants that use regions (currently KJCA), you can specify one or more regions in the targeting criteria of a campaign
 to have the ads of that campaign only be shown to buyers located in that region.</p>
 <p>Geo-circles and regions <strong>cannot and should not</strong> be used in combination on the same campaign. This is currently not supported.</p>
-<div class="section" id="campaign-targeting-object">
-<span id="id2"></span><h3>Campaign Targeting Object<a class="headerlink" href="#campaign-targeting-object" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>    <span class="p">{</span>
-            <span class="s2">&quot;geos&quot;</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                            <span class="s2">&quot;lat&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;lon&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;radius&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span>
-                            <span class="s2">&quot;displayValue&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
-                    <span class="p">},</span> <span class="p">...</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;regionIds&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span>
-<span class="p">}</span>
+<section id="campaign-targeting-object">
+<span id="id2"></span><h3>Campaign Targeting Object<a class="headerlink" href="#campaign-targeting-object" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;geos&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                            </span><span class="s2">&quot;lat&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="s2">&quot;lon&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="s2">&quot;radius&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="s2">&quot;displayValue&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;regionIds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,...]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Description</th>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">geos</span></code></td>
-<td>A list of circular areas for geo-targeting. Default is empty array, which implies nationwide targeting (no targeting restrictions).</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geos</span></code></p></td>
+<td><p>A list of circular areas for geo-targeting. Default is empty array, which implies nationwide targeting (no targeting restrictions).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">lat</span></code></td>
-<td>Latitude of the center-point of the circular area for geo-targeting</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lat</span></code></p></td>
+<td><p>Latitude of the center-point of the circular area for geo-targeting</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lon</span></code></td>
-<td>Longitude of the center-point of the circular area for geo-targeting</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lon</span></code></p></td>
+<td><p>Longitude of the center-point of the circular area for geo-targeting</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">radius</span></code></td>
-<td>Radius (in km) of the circular area for geo-targeting</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">radius</span></code></p></td>
+<td><p>Radius (in km) of the circular area for geo-targeting</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">diplayValue</span></code></td>
-<td>Description of the circular area for geo-targeting. Only visible on your dashboard, it will never be shown to buyers.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">diplayValue</span></code></p></td>
+<td><p>Description of the circular area for geo-targeting. Only visible on your dashboard, it will never be shown to buyers.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">regionIds</span></code></td>
-<td>A list of valid regionIds from the <a class="reference internal" href="regions.html#regions"><span class="std std-ref">Regions</span></a> taxonomy. Default is empty array or <code class="docutils literal"><span class="pre">[0]</span></code>, either of which implies nationwide targeting (no targeting restrictions).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">regionIds</span></code></p></td>
+<td><p>A list of valid regionIds from the <a class="reference internal" href="regions.html#regions"><span class="std std-ref">Regions</span></a> taxonomy. Default is empty array or <code class="docutils literal notranslate"><span class="pre">[0]</span></code>, either of which implies nationwide targeting (no targeting restrictions).</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -354,8 +354,10 @@ to have the ads of that campaign only be shown to buyers located in that region.
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
 
   

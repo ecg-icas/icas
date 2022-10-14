@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -133,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -245,499 +249,482 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-ad-id">
-<span id="index-0"></span><span id="id1"></span><h1>GET /ad/{id}<a class="headerlink" href="#get-ad-id" title="Permalink to this headline">¶</a></h1>
+  <section id="get-ad-id">
+<span id="index-0"></span><span id="id1"></span><h1>GET /ad/{id}<a class="headerlink" href="#get-ad-id" title="Permalink to this heading">¶</a></h1>
 <p><a class="reference internal" href="#get-ad-id-v5"><span class="std std-ref">GET /ad/{id} v5</span></a> | <a class="reference internal" href="#get-ad-id-v2"><span class="std std-ref">GET /ad/{id} v2</span></a> | <a class="reference internal" href="#get-ad-id-v1"><span class="std std-ref">GET /ad/{id} v1</span></a></p>
-<div class="section" id="get-ad-id-v5">
-<span id="id2"></span><h2>GET /ad/{id} v5<a class="headerlink" href="#get-ad-id-v5" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
+<section id="get-ad-id-v5">
+<span id="id2"></span><h2>GET /ad/{id} v5<a class="headerlink" href="#get-ad-id-v5" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.ad-v5+json,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
 </tbody>
 </table>
-<p>This URL returns a single ad with the given <code class="docutils literal"><span class="pre">id</span></code>.</p>
+<p>This URL returns a single ad with the given <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <p>If the ad does not exist or does not belong to the user the server returns
-<strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the
+<strong>404 Not Found</strong>. If the <code class="docutils literal notranslate"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the
 server returns <strong>400 Bad Request</strong>.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and must only
+<p class="admonition-title">Warning</p>
+<p>This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and must only
 be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><span class="std std-ref">Category V2 Compatible Endpoints</span></a>. Otherwise,
 the attributes may not be recognized or editable.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This call returns only creative part of the ad. CPC and budget are managed
+<p class="admonition-title">Note</p>
+<p>This call returns only creative part of the ad. CPC and budget are managed
 separately as part of the campaign.</p>
 </div>
-</div>
-<div class="section" id="errors">
-<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="3%" />
-<col width="18%" />
-<col width="62%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Code</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Code</p></th>
+<th class="head"><p>Error message</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>id</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>not a valid number</td>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>2001</p></td>
+<td><p>invalid argument</p></td>
+<td><p>not a valid number</p></td>
 </tr>
-<tr class="row-odd"><td>id</td>
-<td>1006</td>
-<td>type mismatch</td>
-<td>the provided value for the field was not of the correct type</td>
+<tr class="row-odd"><td><p>id</p></td>
+<td><p>1006</p></td>
+<td><p>type mismatch</p></td>
+<td><p>the provided value for the field was not of the correct type</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mf">42</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
 
-<span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Brother Fax voor 99,99&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;b&gt;NU extra voordelig op ourshop.com.&lt;/b&gt; Fax nu voor slechts &lt;b&gt;99,99!&lt;/b&gt;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span> <span class="mi">826</span><span class="p">,</span>
-    <span class="s2">&quot;externalId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;priceType&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;priceUnit&quot;</span><span class="o">:</span> <span class="s2">&quot;per_sqm&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
-    <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;My Shop&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;regionId&quot;</span><span class="o">:</span> <span class="mi">1700195</span><span class="p">,</span>
-    <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0207894561&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;allowContactByEmail&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;allowPaypal&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-08-31T16:12:53Z&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-05T04:03:42Z&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/ad/42&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/826&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;displayUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;www.ourshop.com/Faxes&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/index.php?param1=value1&amp;amp;param2=value2&amp;amp;param3=value3&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/img/brother_fax_big.jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/img/brother_fax_side.jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image397493_abc.jpg&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image397493_def.jpg&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Kleur&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Zwart&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Maat&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;software&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Software&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Apple OSX&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Microsoft Windows 7&quot;</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">false</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;SHIP&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;cost&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="s2">&quot;2d-5d&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;PICKUP&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pickupLocation&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Brother Fax voor 99,99&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;b&gt;NU extra voordelig op ourshop.com.&lt;/b&gt; Fax nu voor slechts &lt;b&gt;99,99!&lt;/b&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">826</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;priceType&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;priceUnit&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;per_sqm&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;price&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9999</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;salutation&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;sellerName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;My Shop&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;postcode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1097DN&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;regionId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700195</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0207894561&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;allowContactByEmail&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;allowPaypal&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-08-31T16:12:53Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-05T04:03:42Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/ad/42&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;category&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/category/826&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;displayUrl&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;www.ourshop.com/Faxes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/index.php?param1=value1&amp;amp;param2=value2&amp;amp;param3=value3&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;images&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/img/brother_fax_big.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;50x70&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;120x180&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/img/brother_fax_side.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;50x70&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image397493_abc.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;120x180&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image397493_def.jpg&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;attributes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Kleur&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zwart&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;size&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Maat&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;software&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Software&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;Apple OSX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;Microsoft Windows 7&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SHIP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;cost&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;time&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2d-5d&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PICKUP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;pickupLocation&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1097DN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="get-ad-id-v2">
-<span id="id3"></span><h2>GET /ad/{id} v2<a class="headerlink" href="#get-ad-id-v2" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
+</section>
+<section id="get-ad-id-v2">
+<span id="id3"></span><h2>GET /ad/{id} v2<a class="headerlink" href="#get-ad-id-v2" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.ad-v2+json,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v2+json,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
 </tbody>
 </table>
-<p>This URL returns a single ad with the given <code class="docutils literal"><span class="pre">id</span></code>.</p>
+<p>This URL returns a single ad with the given <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <p>If the ad does not exist or does not belong to the user the server returns
-<strong>404 Not Found</strong>. If the <code class="docutils literal"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the
+<strong>404 Not Found</strong>. If the <code class="docutils literal notranslate"><span class="pre">id</span></code> is invalid, i.e. not a positive integer the
 server returns <strong>400 Bad Request</strong>.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and must only
+<p class="admonition-title">Warning</p>
+<p>This call is only compatible with <a class="reference internal" href="../categories-v2.html#categories-v2"><span class="std std-ref">Categories V2</span></a> and must only
 be used with the other <a class="reference internal" href="../categories-v2.html#categories-v2-compatible-endpoints"><span class="std std-ref">Category V2 Compatible Endpoints</span></a>. Otherwise,
 the attributes may not be recognized or editable.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>The fields <a class="reference internal" href="../ads.html#ad-pagenumber"><span class="std std-ref">pageNumber</span></a> and <a class="reference internal" href="../ads.html#ad-suggestedcpcforpageone"><span class="std std-ref">suggestedCpcForPageOne</span></a> are
 currently expensive to compute. If you do not need their values consider
 excluding them to speed up the response. To exclude the fields add the
 following parameter to the request URL.</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span>?_exclude=pageNumber,suggestedCpcForPageOne
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?_exclude=pageNumber,suggestedCpcForPageOne
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="13%" />
-<col width="8%" />
-<col width="78%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Type</th>
-<th class="head">Description</th>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>_include</td>
-<td>string</td>
-<td>Comma-separated-list of fields to include. Optional, default is all fields.</td>
+<tbody>
+<tr class="row-even"><td><p>_include</p></td>
+<td><p>string</p></td>
+<td><p>Comma-separated-list of fields to include. Optional, default is all fields.</p></td>
 </tr>
-<tr class="row-odd"><td>_exclude</td>
-<td>string</td>
-<td>Comma-separated-list of fields to omit. Optional, default empty.</td>
+<tr class="row-odd"><td><p>_exclude</p></td>
+<td><p>string</p></td>
+<td><p>Comma-separated-list of fields to omit. Optional, default empty.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="id4">
-<h2>Errors<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="3%" />
-<col width="18%" />
-<col width="62%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Code</th>
-<th class="head">Error message</th>
-<th class="head">Description</th>
+</section>
+<section id="id4">
+<h2>Errors<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Code</p></th>
+<th class="head"><p>Error message</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>id</td>
-<td>2001</td>
-<td>invalid argument</td>
-<td>not a valid number</td>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>2001</p></td>
+<td><p>invalid argument</p></td>
+<td><p>not a valid number</p></td>
 </tr>
-<tr class="row-odd"><td>id</td>
-<td>1006</td>
-<td>type mismatch</td>
-<td>the provided value for the field was not of the correct type</td>
+<tr class="row-odd"><td><p>id</p></td>
+<td><p>1006</p></td>
+<td><p>type mismatch</p></td>
+<td><p>the provided value for the field was not of the correct type</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="id5">
-<h2>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+</section>
+<section id="id5">
+<h2>Example<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mf">42</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
 
-<span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Brother Fax voor 99,99&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;b&gt;NU extra voordelig op ourshop.com.&lt;/b&gt; Fax nu voor slechts &lt;b&gt;99,99!&lt;/b&gt;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span> <span class="mi">826</span><span class="p">,</span>
-    <span class="s2">&quot;externalId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;priceType&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;priceUnit&quot;</span><span class="o">:</span> <span class="s2">&quot;per_sqm&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
-    <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
-    <span class="s2">&quot;dailyBudget&quot;</span><span class="o">:</span> <span class="mi">2000</span><span class="p">,</span>
-    <span class="s2">&quot;spentBudget&quot;</span><span class="o">:</span> <span class="mi">2534</span><span class="p">,</span>
-    <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;My Shop&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;regionId&quot;</span><span class="o">:</span> <span class="mi">1700195</span><span class="p">,</span>
-    <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">27</span><span class="p">,</span>
-    <span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span> <span class="mi">74</span><span class="p">,</span>
-    <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0207894561&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;allowContactByEmail&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;allowPaypal&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-08-31T16:12:53Z&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-05T04:03:42Z&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/ad/42&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/826&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;displayUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;www.ourshop.com/Faxes&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/index.php?param1=value1&amp;amp;param2=value2&amp;amp;param3=value3&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/img/brother_fax_big.jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/img/brother_fax_side.jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image397493_abc.jpg&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image397493_def.jpg&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Kleur&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Zwart&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Maat&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;software&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Software&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Apple OSX&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Microsoft Windows 7&quot;</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">false</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;SHIP&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;cost&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="s2">&quot;2d-5d&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;PICKUP&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pickupLocation&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Brother Fax voor 99,99&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;b&gt;NU extra voordelig op ourshop.com.&lt;/b&gt; Fax nu voor slechts &lt;b&gt;99,99!&lt;/b&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">826</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;priceType&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;priceUnit&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;per_sqm&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;price&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9999</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dailyBudget&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;spentBudget&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2534</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;salutation&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;sellerName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;My Shop&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;postcode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1097DN&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;regionId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700195</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">27</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">74</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0207894561&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;allowContactByEmail&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;allowPaypal&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-08-31T16:12:53Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-05T04:03:42Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/ad/42&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;category&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/category/826&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;displayUrl&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;www.ourshop.com/Faxes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/index.php?param1=value1&amp;amp;param2=value2&amp;amp;param3=value3&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;images&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/img/brother_fax_big.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;50x70&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;120x180&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/img/brother_fax_side.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;50x70&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image397493_abc.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;120x180&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image397493_def.jpg&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;attributes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Kleur&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zwart&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;size&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Maat&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;software&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Software&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;Apple OSX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;Microsoft Windows 7&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SHIP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;cost&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;time&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2d-5d&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PICKUP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;pickupLocation&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1097DN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="get-ad-id-v1">
-<span id="id6"></span><h2>GET /ad/{id} v1<a class="headerlink" href="#get-ad-id-v1" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
+</section>
+<section id="get-ad-id-v1">
+<span id="id6"></span><h2>GET /ad/{id} v1<a class="headerlink" href="#get-ad-id-v1" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">api_ro</span></code> or <code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">application/sellside.ad-v1+json,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v1+json,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
 </tbody>
 </table>
 <p>Version 2 works just like <a class="reference internal" href="#get-ad-id-v2"><span class="std std-ref">GET /ad/{id} v2</span></a> except that it is compatible
 with <a class="reference internal" href="../categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a>.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This call is deprecated and will be removed after September 2015.  It is
+<p class="admonition-title">Warning</p>
+<p>This call is deprecated and will be removed after September 2015.  It is
 only compatible with <a class="reference internal" href="../categories-v1.html#categories-v1"><span class="std std-ref">Categories V1</span></a> and must only be used with the
 other <a class="reference internal" href="../categories-v1.html#categories-v1-compatible-endpoints"><span class="std std-ref">Category V1 Compatible Endpoints</span></a>. Otherwise, the attributes
 may not be recognized or editable.</p>
 </div>
-</div>
-<div class="section" id="id7">
-<h2>Example<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mi">42</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+</section>
+<section id="id7">
+<h2>Example<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mf">42</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
 
-<span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Brother Fax voor 99,99&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;b&gt;NU extra voordelig op ourshop.com.&lt;/b&gt; Fax nu voor slechts &lt;b&gt;99,99!&lt;/b&gt;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span> <span class="mi">826</span><span class="p">,</span>
-    <span class="s2">&quot;externalId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;priceType&quot;</span><span class="o">:</span> <span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;priceUnit&quot;</span><span class="o">:</span> <span class="s2">&quot;per_sqm&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;price&quot;</span><span class="o">:</span> <span class="mi">9999</span><span class="p">,</span>
-    <span class="s2">&quot;cpc&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
-    <span class="s2">&quot;dailyBudget&quot;</span><span class="o">:</span> <span class="mi">2000</span><span class="p">,</span>
-    <span class="s2">&quot;spentBudget&quot;</span><span class="o">:</span> <span class="mi">2534</span><span class="p">,</span>
-    <span class="s2">&quot;salutation&quot;</span><span class="o">:</span> <span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;My Shop&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;postcode&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;regionId&quot;</span><span class="o">:</span> <span class="mi">1700195</span><span class="p">,</span>
-    <span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span> <span class="mi">27</span><span class="p">,</span>
-    <span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span> <span class="mi">74</span><span class="p">,</span>
-    <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0207894561&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;allowContactByEmail&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-08-31T16:12:53Z&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-05T04:03:42Z&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span> <span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;self&quot;</span><span class="o">:</span> <span class="s2">&quot;/ad/42&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="s2">&quot;/category/826&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;displayUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;www.ourshop.com/Faxes&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/index.php?param1=value1&amp;amp;param2=value2&amp;amp;param3=value3&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;images&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/img/brother_fax_big.jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ourshop.com/img/brother_fax_side.jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;50x70&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image397493_abc.jpg&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;120x180&quot;</span><span class="o">:</span> <span class="s2">&quot;//i.marktplaats.nl/image397493_def.jpg&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Kleur&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Kleur&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Zwart&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Maat&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Maat&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;Software&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Software&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;locale&quot;</span><span class="o">:</span> <span class="s2">&quot;nl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Apple OSX&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Microsoft Windows 7&quot;</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;recognized&quot;</span><span class="o">:</span> <span class="kc">false</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;SHIP&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;cost&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="s2">&quot;2d-5d&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;PICKUP&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pickupLocation&quot;</span><span class="o">:</span> <span class="s2">&quot;1097DN&quot;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Brother Fax voor 99,99&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;b&gt;NU extra voordelig op ourshop.com.&lt;/b&gt; Fax nu voor slechts &lt;b&gt;99,99!&lt;/b&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">826</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;priceType&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;priceUnit&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;per_sqm&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;price&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9999</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dailyBudget&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;spentBudget&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2534</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;salutation&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;COMPANY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;sellerName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;My Shop&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;postcode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1097DN&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;regionId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700195</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;pageNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">27</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;suggestedCpcForPageOne&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">74</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0207894561&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;allowContactByEmail&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-08-31T16:12:53Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-05T04:03:42Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OURSHOP-1423453-34&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/ad/42&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;category&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/category/826&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;displayUrl&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;www.ourshop.com/Faxes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/index.php?param1=value1&amp;amp;param2=value2&amp;amp;param3=value3&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;images&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/img/brother_fax_big.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;50x70&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image23434_abc.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;120x180&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image23434_def.jpg&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;src&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://www.ourshop.com/img/brother_fax_side.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-09-10T13:11:05Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;50x70&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image397493_abc.jpg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;120x180&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;//i.marktplaats.nl/image397493_def.jpg&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;attributes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Kleur&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Kleur&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zwart&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Maat&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Maat&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Software&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Software&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;Apple OSX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;Microsoft Windows 7&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;recognized&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SHIP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;cost&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;time&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2d-5d&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PICKUP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;pickupLocation&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1097DN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -783,8 +770,10 @@ may not be recognized or editable.</p>
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   

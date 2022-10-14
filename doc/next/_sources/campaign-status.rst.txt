@@ -32,6 +32,8 @@ User Controlled States
 System States
 -------------
 
+.. _system-controlled-states:
+
 .. list-table::
  :widths: 20 80
  :header-rows: 1

@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -133,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -245,62 +249,58 @@
 </div>
           <div role="main">
             
-  <div class="section" id="overview">
-<span id="campaign-overview"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+  <section id="overview">
+<span id="campaign-overview"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h1>
 <p>Campaigns allow you, the seller, to group your ads together, having shared budgets, same targeting rules, and other components. You can create separate campaigns to run ads in different locations or using different budgets.</p>
 <p>Reporting, as well as status management, can also be done on the level of campaigns, instead of individual ads. It is possible to pause a campaign, resulting in all ads in the campaign to be taken offline. When a campaign reaches one of its <a class="reference internal" href="#campaign-budgets"><span class="std std-ref">Campaign budgets</span></a>, all ads in that campaign will be taken offline. When budget becomes available again, all ads in the campaign will come
 online again.</p>
-<div class="section" id="components">
-<span id="id1"></span><h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<section id="components">
+<span id="id1"></span><h2>Components<a class="headerlink" href="#components" title="Permalink to this heading">¶</a></h2>
 <p>A campaign consists of several components:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="34%" />
-<col width="66%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Component</th>
-<th class="head">Short description</th>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Short description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="#campaign-id"><span class="std std-ref">Campaign ID</span></a></td>
-<td>The unique reference to the campaign</td>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-id"><span class="std std-ref">Campaign ID</span></a></p></td>
+<td><p>The unique reference to the campaign</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#campaign-title"><span class="std std-ref">Campaign title</span></a></td>
-<td>User-provided title</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-title"><span class="std std-ref">Campaign title</span></a></p></td>
+<td><p>User-provided title</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#campaign-vendorid"><span class="std std-ref">Campaign vendor ID</span></a></td>
-<td>Unique reference for the seller to the campaign</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-vendorid"><span class="std std-ref">Campaign vendor ID</span></a></p></td>
+<td><p>Unique reference for the seller to the campaign</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#campaign-status"><span class="std std-ref">Campaign status</span></a></td>
-<td>Status of the campaign</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-status"><span class="std std-ref">Campaign status</span></a></p></td>
+<td><p>Status of the campaign</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#campaign-linkedads"><span class="std std-ref">Campaign linked ads</span></a></td>
-<td>Ads in this campaign</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-linkedads"><span class="std std-ref">Campaign linked ads</span></a></p></td>
+<td><p>Ads in this campaign</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#campaign-budgets"><span class="std std-ref">Campaign budgets</span></a></td>
-<td>Budgets of this campaign</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgets"><span class="std std-ref">Campaign budgets</span></a></p></td>
+<td><p>Budgets of this campaign</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#campaign-targeting"><span class="std std-ref">Campaign targeting</span></a></td>
-<td>Targeting options of this campaign</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-targeting"><span class="std std-ref">Campaign targeting</span></a></p></td>
+<td><p>Targeting options of this campaign</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#campaign-cpc"><span class="std std-ref">Campaign CPC</span></a></td>
-<td>CPC for all ads in this campaign</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-cpc"><span class="std std-ref">Campaign CPC</span></a></p></td>
+<td><p>CPC for all ads in this campaign</p></td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="campaign-id">
-<span id="id2"></span><h3>Campaign ID<a class="headerlink" href="#campaign-id" title="Permalink to this headline">¶</a></h3>
+<section id="campaign-id">
+<span id="id2"></span><h3>Campaign ID<a class="headerlink" href="#campaign-id" title="Permalink to this heading">¶</a></h3>
 <p>Unique reference to the Campaign, needs to be omitted in a POST action. Generated by us,
 and needed for certain GET/PUT actions to modify the campaign and its properties.</p>
-</div>
-<div class="section" id="campaign-title">
-<span id="id3"></span><h3>Campaign title<a class="headerlink" href="#campaign-title" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="campaign-title">
+<span id="id3"></span><h3>Campaign title<a class="headerlink" href="#campaign-title" title="Permalink to this heading">¶</a></h3>
 <p>The title of the campaign, provided by you. This makes it easier for you to distingish between your campaigns. Your campaign titles are not visible to your ad viewers.</p>
-</div>
-<div class="section" id="campaign-vendor-id">
-<span id="campaign-vendorid"></span><h3>Campaign vendor ID<a class="headerlink" href="#campaign-vendor-id" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="campaign-vendor-id">
+<span id="campaign-vendorid"></span><h3>Campaign vendor ID<a class="headerlink" href="#campaign-vendor-id" title="Permalink to this heading">¶</a></h3>
 <p>A per-seller unique identifier to identify the campaign. This is provided by you.
 Can either be set when creating a campaign or when updating an
 existing campaign. However, once set, it can no longer be modified. When fetching an
@@ -308,34 +308,34 @@ existing campaign which does not have a <strong>vendorId</strong>, the field is 
 Creating a second campaign with a vendor ID already used by the seller is not allowed.
 Since this also functions as a unique identifier (for the seller) it is possible to fetch the
 campaign by vendor ID using <a class="reference internal" href="reference/get-campaign-vendor-id.html#get-campaign-vendorid"><span class="std std-ref">GET /campaign/byVendor/{vendorId}</span></a>.</p>
-</div>
-<div class="section" id="campaign-status">
-<span id="id4"></span><h3>Campaign status<a class="headerlink" href="#campaign-status" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="campaign-status">
+<span id="id4"></span><h3>Campaign status<a class="headerlink" href="#campaign-status" title="Permalink to this heading">¶</a></h3>
 <p>The status the campaign currently has. It can be any value from the list in <a class="reference internal" href="campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>. You can set only one
 of the user-controlled states <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em>. <em>DELETED</em> is a final state.</p>
-</div>
-<div class="section" id="campaign-linked-ads">
-<span id="campaign-linkedads"></span><h3>Campaign linked ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this headline">¶</a></h3>
-<p>A <em>linkedAd</em> defines an ad in the context of a particular campaign, with possible overrides for certain campaign-level properties (budgets, cpc, ...).
+</section>
+<section id="campaign-linked-ads">
+<span id="campaign-linkedads"></span><h3>Campaign linked ads<a class="headerlink" href="#campaign-linked-ads" title="Permalink to this heading">¶</a></h3>
+<p>A <em>linkedAd</em> defines an ad in the context of a particular campaign, with possible overrides for certain campaign-level properties (budgets, cpc, …).
 This construction makes ads into mere data containers, and can allow for an ad to be linked to multiple campaigns (future plans).
 A campaign without linkedAds is an empty campaign, which is a valid scenario. See <a class="reference internal" href="campaign-linkedads.html#campaign-linkedads-overview"><span class="std std-ref">Campaign Linked Ads</span></a> for more info.</p>
-</div>
-<div class="section" id="campaign-budgets">
-<span id="id5"></span><h3>Campaign budgets<a class="headerlink" href="#campaign-budgets" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="campaign-budgets">
+<span id="id5"></span><h3>Campaign budgets<a class="headerlink" href="#campaign-budgets" title="Permalink to this heading">¶</a></h3>
 <p>Campaigns can have multiple types of budgets, see <a class="reference internal" href="campaign-budgets.html#campaign-budgets-overview"><span class="std std-ref">Campaign Budgets</span></a>. Budgets are seen as limiting factors, meaning that, as soon
 as one runs out, all ads of this campaign will be taken offline until budget(s) becomes available.</p>
-</div>
-<div class="section" id="campaign-targeting">
-<span id="id6"></span><h3>Campaign targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="campaign-targeting">
+<span id="id6"></span><h3>Campaign targeting<a class="headerlink" href="#campaign-targeting" title="Permalink to this heading">¶</a></h3>
 <p>Campaigns can have targeting criteria, allowing you some customization on the target group of customers that your ads will be shown to. See <a class="reference internal" href="campaign-targeting.html#campaign-targeting-overview"><span class="std std-ref">Campaign Targeting</span></a> for more info.</p>
-</div>
-<div class="section" id="campaign-cpc">
-<span id="id7"></span><h3>Campaign CPC<a class="headerlink" href="#campaign-cpc" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="campaign-cpc">
+<span id="id7"></span><h3>Campaign CPC<a class="headerlink" href="#campaign-cpc" title="Permalink to this heading">¶</a></h3>
 <p>You can set a fixed CPC for all ads in this campaign. CPC has impact on where the ad(s) will be shown (higher or lower in the results page, etc).
 This CPC will be charged for every click on ads in this campaign. The campaign CPC can be overridden for individual ads in the campaign using <a class="reference internal" href="campaign-linkedads.html#campaign-linkedads-overview"><span class="std std-ref">Campaign Linked Ads</span></a>.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -381,8 +381,10 @@ This CPC will be charged for every click on ads in this campaign. The campaign C
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
 
   
