@@ -28,6 +28,10 @@
   
 
   
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
         <link rel="index" title="Index"
@@ -129,7 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario&#8217;s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -220,19 +224,19 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-image-id">
-<span id="get-image"></span><span id="index-0"></span><h1>GET /image/{id}<a class="headerlink" href="#get-image-id" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+  <section id="get-image-id">
+<span id="get-image"></span><span id="index-0"></span><h1>GET /image/{id}<a class="headerlink" href="#get-image-id" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
 <colgroup>
-<col width="20%" />
-<col width="80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Scope</td>
-<td><code class="docutils literal"><span class="pre">console_ro</span></code></td>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
 </tr>
-<tr class="row-even"><td>Accept</td>
-<td><code class="docutils literal"><span class="pre">image/*,</span> <span class="pre">application/json</span></code></td>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">image/*,</span> <span class="pre">application/json</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -241,22 +245,22 @@ The <em>id</em>  is the unique identifier provided by the <a class="reference in
 <p>If the image exists and belongs to the user the server sends <strong>200 OK</strong> and the image.
 If the image does not exist the server returns <strong>404 Not Found</strong>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Images which have not been saved with an ad are removed after <strong>30 minutes</strong>.</p>
+<p class="admonition-title">Note</p>
+<p>Images which have not been saved with an ad are removed after <strong>30 minutes</strong>.</p>
 </div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">image</span><span class="o">/</span><span class="mi">9</span><span class="nx">beac3db90c27aa8476cb880a362ceba</span><span class="o">/</span><span class="nx">b2c11184b33bdd3e12a1f46152d37a89</span><span class="p">.</span><span class="nx">jpg</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">image</span><span class="o">/*</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">image</span><span class="o">/</span><span class="mf">9</span><span class="nx">beac3db90c27aa8476cb880a362ceba</span><span class="o">/</span><span class="nx">b2c11184b33bdd3e12a1f46152d37a89</span><span class="p">.</span><span class="nx">jpg</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">image</span><span class="o">/*</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
 
-<span class="mi">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">image</span><span class="o">/</span><span class="nx">jpg</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">image</span><span class="o">/</span><span class="nx">jpg</span><span class="w"></span>
 
-<span class="p">...</span><span class="nx">image</span> <span class="nx">bytes</span><span class="p">...</span>
+<span class="p">...</span><span class="nx">image</span><span class="w"> </span><span class="nx">bytes</span><span class="p">...</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -302,8 +306,10 @@ If the image does not exist the server returns <strong>404 Not Found</strong>.</
             HAS_SOURCE:  true
         };
     </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
