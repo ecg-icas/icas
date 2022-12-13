@@ -35,6 +35,7 @@ Contents
    attributes
    regions
    feeds
+   campaigns
    reporting
    error-handling
    api-reference

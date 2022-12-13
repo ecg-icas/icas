@@ -21,54 +21,65 @@ Fields
 Each ad has a unique identifier by which the ad can retrieved and a set of
 required and optional fields which are listed below:
 
-=================================   ========== ================   =========   ========================
-Field                               Type       Constraints        Mandatory   Writable
-=================================   ========== ================   =========   ========================
-:ref:`ad_id`                        long       positive                       no
-:ref:`ad_title`                     string     see below          yes         yes
-:ref:`ad_description`               string     see below          yes         yes
-:ref:`ad_categoryId`                int        positive           yes         no
-:ref:`ad_externalId`                string     max. 64 chars      no          yes
-:ref:`ad_status`                    string     enum               yes         yes
-:ref:`ad_currency`                  string     cat.Currency       yes         no
-:ref:`ad_priceType`                 string     enum               yes         yes
-:ref:`ad_priceUnit`                 string     see below          no          yes
-:ref:`ad_price`                     long       see below          see below   yes
-:ref:`ad_cpc`                       long       positive           yes	        yes
-:ref:`ad_totalBudget`               long       positive           no          yes
-:ref:`ad_dailyBudget`               long       positive           no          yes
-:ref:`ad_dailySpent`                long       positive           no          no
-:ref:`ad_spentBudget`               long       positive                       no
-:ref:`ad_salutation`                string     enum               yes         yes
-:ref:`ad_sellerName`                string     max. 60 chars      yes         yes
-:ref:`ad_postcode`                  string     max. 6 chars       yes         yes
-:ref:`ad_regionId`                  long       positive           no          yes (only during create)
-:ref:`ad_pageNumber`                int        --                 no          no
-:ref:`ad_suggestedCpcForPageOne`    long       --                 no          no
-:ref:`ad_phoneNumber`               string     max. 32 chars      no          yes
-:ref:`ad_allowContactByEmail`       bool       --                 no          yes
-:ref:`ad_allowPaypal`               bool       --                 no          yes
-:ref:`ad_dateCreated`               date       --                             no
-:ref:`ad_dateLastUpdated`           date       --                             no
-:ref:`ad_dateDeleted`               date       --                             no
-:ref:`ad_links`                     object     --                             no
-:ref:`ad_links_self`                string     max. 2048 chars    no          no
-:ref:`ad_links_category`            string     max. 2048 chars    no          no
-:ref:`ad_links_url`                 string     max. 2048 chars    no          yes
-:ref:`ad_links_displayUrl`          string     max. 256 chars     no          yes
-:ref:`ad_images`                    array      max. 8 items       no          yes
-:ref:`ad_attributes`                array      --                 no          yes
-:ref:`ad_shippingOptions`           array      see below          yes         yes
-:strike:`buyItNowEnabled`           deprecated --                 --          --
-:strike:`paypalEmail`               deprecated --                 --          --
-:ref:`ad_vendorId`                  string     max. 64 chars      no          yes (if not set already)
-:ref:`ad_microTip`                  string     max. 18 chars      no          yes (only during update)
-=================================   ========== ================   =========   ========================
 
-.. warning::
+======================================   ========== ================ ==================   =========   ========================
+Field                                    Type       Deprecated after Constraints          Mandatory   Writable
+======================================   ========== ================ ==================   =========   ========================
+:ref:`ad_id`                             long       --               positive             --          no
+:ref:`ad_title`                          string     --               see below            yes         yes
+:ref:`ad_description`                    string     --               see below            yes         yes
+:ref:`ad_categoryId`                     int        --               positive             yes         no
+:ref:`ad_status`                         string     --               enum                 yes         yes
+:ref:`ad_priceobj`                       object     --               yes                  yes         yes
+:ref:`ad_priceobj_amountCents`           int        --               >= 0                 no          yes
+:ref:`ad_priceobj_priceType`             string     --               enum                 yes         yes
+:ref:`ad_priceobj_priceUnit`             string     --               string, see below    no          no
+:ref:`ad_priceobj_originalAmountCents`   int        --               >= 0, >amountCents   no          yes (if user is allowed)
+:ref:`ad_salutation`                     string     --               enum                 yes         yes
+:ref:`ad_sellerName`                     string     --               max. 60 chars        yes         yes
+:ref:`ad_postcode`                       string     --               max. 6 chars         yes         yes
+:ref:`ad_regionId`                       long       --               positive             no          yes (only during create)
+:ref:`ad_phoneNumber`                    string     --               max. 32 chars        no          yes
+:ref:`ad_allowContactByEmail`            bool       --               --                   no          yes
+:ref:`ad_dateCreated`                    date       --               readonly             no          no
+:ref:`ad_dateLastUpdated`                date       --               readonly             no          no
+:ref:`ad_dateDeleted`                    date       --               readonly             no          no
+:ref:`ad_links`                          object     --               see below            no          yes
+:ref:`ad_links_self`                     string     --               max. 2048 chars      no          no
+:ref:`ad_links_category`                 string     --               max. 2048 chars      no          no
+:ref:`ad_links_url`                      string     --               max. 2048 chars      no          yes
+:ref:`ad_links_displayUrl`               string     --               max. 256 chars       no          yes
+:ref:`ad_images`                         array      --               max. 8 items         no          yes
+:ref:`ad_attributes`                     array      --               --                   no          yes
+:ref:`ad_shippingOptions`                array      --               see below            yes         yes
+:ref:`ad_vendorId`                       string     --               max. 64 chars        no          yes (if not set already)
+:ref:`ad_microTip`                       string     --               max. 18 chars        no          yes (if user is allowed)
+:ref:`ad_campaignId`                     long       --               positive             see below   yes
+:ref:`ad_bidMicros`                      string     --               see below            yes         yes
+:ref:`ad_budgetsobj`                     object     --               see below            yes         yes
+:ref:`ad_budgetsobj_daily`               object     --               see below            yes         yes
+:ref:`ad_budgetsobj_total`               object     --               see below            yes         yes
+:ref:`ad_budgetsobj_daily_limitMicros`   string     --               see below            yes         yes
+:ref:`ad_budgetsobj_total_limitMicros`   string     --               see below            yes         yes
+:ref:`ad_budgetsobj_daily_spentMicros`   string     --               see below            no          no
+:ref:`ad_budgetsobj_total_spentMicros`   string     --               see below            no          no
+:ref:`ad_externalId`                     string     V5               max. 64 chars        no          yes
+:ref:`ad_currency`                       string     V4               cat.Currency         yes         no
+:ref:`ad_priceType`                      string     V4               enum                 yes         yes
+:ref:`ad_priceUnit`                      string     V4               see below            no          yes
+:ref:`ad_price`                          long       V4               see below            see below   yes
+:ref:`ad_cpc`                            long       V4               positive             yes	        yes
+:ref:`ad_status_reasons`                 string     V4               --                   --          no
+:ref:`ad_totalBudget`                    long       V4               positive             no          yes
+:ref:`ad_dailyBudget`                    long       V4               positive             no          yes
+:ref:`ad_dailySpent`                     long       V4               positive             --          no
+:ref:`ad_spentBudget`                    long       V4               positive             --          no
+:ref:`ad_pageNumber`                     int        V4               --                   no          no
+:ref:`ad_suggestedCpcForPageOne`         long       V4               --                   no          no
+:ref:`ad_allowPaypal`                    bool       V2               no                   yes         yes
+======================================   ========== ================ ==================   =========   ========================
 
-    The fields :strike:`buyItNowEnabled` and :strike:`paypalEmail` are deprecated and
-    are not returned with an ad. They will be completely removed on 1\ :sup:`st` July 2015.
+.. include:: bidding-micros.rst
 
 .. index:: id
 .. _ad_id:
@@ -121,6 +132,10 @@ non-zero parent id.
 externalId
 """"""""""
 
+.. warning::
+
+    externalId is deprecated, please transition to :ref:`ad_vendorId`
+
 Any non-empty string with a maximum length of 64 characters. When fetching
 an existing ad which does not have an **externalId**, the field is empty or
 omitted.
@@ -131,7 +146,7 @@ omitted.
 status
 """"""
 
-Is a valid value from the list of :ref:`ad_status`. The user can set only one
+Is a valid value from the list of :ref:`_ad_status_overview`. The user can set only one
 of the user controlled states *ACTIVE*, *PAUSED* or *DELETED*.
 
 .. index:: currency
@@ -140,9 +155,10 @@ of the user controlled states *ACTIVE*, *PAUSED* or *DELETED*.
 currency
 """"""""
 
-The `ISO 4217`_ currency code. Currently only *EUR*, *DKK* and *CAD*  supported.
+The `ISO 4217`_ currency code. Currently only *EUR*, and *CAD*  supported.
 All values are stored in cents (1/100 parts), i.e. EUR 10.50 are represented as 1050,
 DKK 12.34 should be represented as 1234.
+Deprecated in V5, all monetary values are in the currency of the country you are placing for.
 
 .. index:: priceType
 .. _ad_priceType:
@@ -151,6 +167,7 @@ priceType
 """""""""
 
 Must be a valid price type identifier from the list of :ref:`price_types`.
+Deprecated in V5, use :ref:`_ad_priceobj_priceType` instead.
 
 .. index:: priceUnit
 .. _ad_priceUnit:
@@ -160,16 +177,98 @@ priceUnit
 
 Must be a valid price unit identifier from the list of available price units
 of the category.
+Deprecated in V5, use :ref:`_ad_priceobj_priceUnit` instead.
 
-.. index:: price
+.. index:: price (integer)
 .. _ad_price:
 
-price
-"""""
+price (integer)
+""""""""""""""""""
 
 The meaning of the value depends on :ref:`ad_priceType`. If it is
 `FIXED_PRICE` or `BIDDING_FROM` then **price** has to be greater than 0.
 The maximum allowed **price** is ``10000000000`` Euro cents (100.000.000 Euros).
+Deprecated in V5, use :ref:`_ad_priceobj` instead
+
+.. index:: price
+.. _ad_priceobj:
+
+price (object)
+""""""""""""""
+
+Price is an object containing all the information about the cost of the item for sale.
+This includes :ref:`ad_priceobj_amountCents`, :ref:`ad_priceobj_priceType` :ref:`ad_priceobj_priceUnit` and :ref:`ad_priceobj_originalPrice`
+
+.. index:: price.amountCents
+.. _ad_priceobj_amountCents:
+
+price.amountCents
+"""""""""""""""""
+
+The cost of the item (without shipping costs) in cents.
+The meaning of the value depends on :ref:`ad_priceobj_priceType`. If it is
+`FIXED_PRICE` or `BIDDING_FROM` then **price.amountCents** has to be greater than 0.
+The maximum allowed **price.amountCents** is ``10000000000`` Euro cents (100.000.000 Euros).
+
+.. index:: price.priceType
+.. _ad_priceobj_priceType:
+
+price.priceType
+"""""""""""""""
+
+Must be a valid price type identifier from the list of :ref:`price_types`.
+
+.. index:: price.priceUnit
+.. _ad_priceobj_priceUnit:
+
+price.priceUnit
+"""""""""""""""
+
+Must be a valid price unit identifier from the list of available price units
+of the category.
+
+.. index:: price.originalAmountCents
+.. _ad_priceobj_originalAmountCents:
+
+price.originalAmountCents
+"""""""""""""""""""""""""
+
+The cost of the item (without shipping costs) in cents, before discount was applied. Not available to
+all users. Needs to be larger than :ref:`ad_priceobj_amountCents`.
+
+
+.. index:: statusReasons
+.. _ad_status_reasons:
+
+statusReasons
+"""""""""""""
+
+used to indicate the reason why a certain ad might be set to a certain status by our system.
+This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
+Deprecated in V4, :ref:`ad_status`'s enums have been expanded.
+
+.. index:: campaignId
+.. _ad_campaignId:
+
+campaignId
+""""""""""
+
+identifier of the campaign this ad belongs to. See :ref:`campaigns` for more info.
+For the time being this is not mandatory, and we will add the ad to the one-and-only campaign the seller has.
+Once we will start allowing multiple campaigns for a seller, we will change this to become mandatory.
+For the time being, we will also create the campaign underwater if the seller has no campaign created yet, to ensure
+there is one for the seller.
+
+.. index:: bidMicros
+.. _ad_bidMicros:
+
+bidMicros
+"""""""""
+
+The cost per click (bid) in micro-euros/micro-dollars as defined by the seller (10000 micro-euros == 1 cent). The minimum and maximum values
+depend on the category. The type is string, allowing the seller to specify "AUTOMATIC", to let our system
+take care of the bid and try to optimise costs vs clicks.
+
 
 .. index:: cpc
 .. _ad_cpc:
@@ -177,8 +276,64 @@ The maximum allowed **price** is ``10000000000`` Euro cents (100.000.000 Euros).
 cpc
 """
 
-The cost per click as defined by the seller. The minimum and maximum values
-depend on the category.
+The cost per click in cents as defined by the seller in cents. The minimum and maximum values
+depend on the category. Deprecated, replaced by :ref:`ad_bidMicros` in V5.
+
+.. index:: budgets
+.. _ad_budgetsobj:
+
+budgets
+"""""""
+
+a struct encapsulating both :ref:`ad_budgetsobj_daily` and :ref:`ad_budgetsobj_total`.
+
+.. index:: ad_budgetsobj_daily
+.. _ad_budgetsobj_daily:
+
+budgets.daily
+"""""""""""""
+
+a struct encapsulating both :ref:`ad_budgetsobj_daily_limitMicros` and :ref:`ad_budgetsobj_daily_spentMicros`
+
+.. index:: ad_budgetsobj_total
+.. _ad_budgetsobj_total:
+
+budgets.total
+"""""""""""""
+
+a struct encapsulating both :ref:`ad_budgetsobj_total_limitMicros` and :ref:`ad_budgetsobj_total_spentMicros`
+
+.. index:: ad_budgetsobj_daily_limitMicros
+.. _ad_budgetsobj_daily_limitMicros:
+
+budgets.daily.limitMicros
+"""""""""""""""""""""""""
+
+the maximum amount this ad can spend today in micros, after which it will be taken offline for the remainder of the day.
+
+.. index:: ad_budgetsobj_total_limitMicros
+.. _ad_budgetsobj_total_limitMicros:
+
+budgets.total.limitMicros
+"""""""""""""""""""""""""
+
+the maximum amount this ad can spend in micros, after which it will be taken offline until the seller increases the limit.
+
+.. index:: ad_budgetsobj_daily_spentMicros
+.. _ad_budgetsobj_daily_spentMicros:
+
+budgets.daily.spentMicros
+"""""""""""""""""""""""""
+
+the amount spent in micros on this ad sofar, for today. Will be reset back to 0 at midnight.
+
+.. index:: ad_budgetsobj_total_spentMicros
+.. _ad_budgetsobj_total_spentMicros:
+
+budgets.total.spentMicros
+"""""""""""""""""""""""""
+
+the amount spent in micros on this ad in its lifetime. Will be ever increasing and cannot be reset.
 
 .. index:: totalBudget
 .. _ad_totalBudget:
@@ -190,6 +345,7 @@ The total budget for the ad. The minimum and maximum values depend on the
 category. When an ad is updated this value cannot be lower than the
 :ref:`ad_spentBudget`.
 If the total budget is not returned with the ad, it means there is an unlimited total budget.
+Deprecated, replaced by :ref:`ad_budgetsobj_total` in V5.
 
 .. index:: dailyBudget
 .. _ad_dailyBudget:
@@ -200,8 +356,8 @@ dailyBudget
 The daily budget for the ad. When this value is reached the ad will be paused
 for the rest of the day. The minimum value depends on the category. Maximum value
 cannot be higher than the :ref:`ad_totalBudget`
-
 To disable the dailyBudget for an ad set it to ``null``.
+Deprecated, replaced by :ref:`ad_budgetsobj_daily` in V5.
 
 .. index:: dailySpent
 .. _ad_dailySpent:
@@ -210,8 +366,8 @@ dailySpent
 """"""""""
 
 The budget spent for the ad since midnight.
-
 Only provided when the :ref:`ad_dailyBudget` is not ``null`` and ``> 0``.
+Deprecated, replaced by :ref:`ad_budgetsobj_daily_spentMicros` in V5.
 
 .. index:: spentBudget
 .. _ad_spentBudget:
@@ -220,6 +376,7 @@ spentBudget
 """""""""""
 
 The total amount of the budget that has been used so far.
+Deprecated, replaced by :ref:`ad_budgetsobj_total_spentMicros` in V5.
 
 .. index:: salutation
 .. _ad_salutation:
@@ -280,6 +437,8 @@ following parameter to the request URL. ::
 
     ?_exclude=pageNumber,suggestedCpcForPageOne
 
+Deprecated, removed in V5.
+
 .. index:: suggestedCpcForPageOne
 .. _ad_suggestedCpcForPageOne:
 
@@ -297,7 +456,7 @@ following parameter to the request URL. ::
 
     ?_exclude=pageNumber,suggestedCpcForPageOne
 
-
+Deprecated, removed in V5.
 
 .. index:: phoneNumber
 .. _ad_phoneNumber:
@@ -324,6 +483,7 @@ allowPaypal
 """""""""""
 
 Flag for allowing PayPal as a payment option.
+Deprecated, removed in V3.
 
 .. index:: dateCreated
 .. _ad_dateCreated:
@@ -531,6 +691,6 @@ Shipping option has the following fields:
 .. _ad_example:
 
 Example
--------
+--------
 
-.. include:: examples/get-ad-id-v2-example.rst
+.. include:: examples/get-ad-id-v5-example.rst

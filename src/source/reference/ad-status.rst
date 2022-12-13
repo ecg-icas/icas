@@ -71,3 +71,15 @@ DAILY_BUDGET_REACHED
 """"""""""""""""""""
 
 The daily budget of the ad has been reached. For the rest of the day the ad will not be shown on the site.
+
+.. index:: pair: Ad Status; DOMAIN_PENDING
+.. _ad_status_domain_pending:
+
+DOMAIN_PENDING
+""""""""""""""
+
+The ad will be put live after the seller confirms the domain the :ref:`ad_links_url` is pointing to.
+The first time a seller uses a new domain, they will receive an email to confirm they want to create
+an ad directing people to that domain (for security reasons).
+
+
