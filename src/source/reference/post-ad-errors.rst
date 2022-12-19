@@ -21,7 +21,7 @@ cpc                     1006    type mismatch               not an integer numbe
 cpc                     2000    missing argument            mandatory field
 cpc                     2002    out of range                value not between category.minCpc and category.maxCpc
 currency                2000    missing argument            mandatory field
-currency                2001    invalid argument            not "EUR", "DKK" or "CAD"
+currency                2001    invalid argument            not "EUR" or "CAD"
 dailyBudget             1006    type mismatch               not an integer number
 dailyBudget             2002    out of range                value lower than category.minDailyBudget or higher than totalBudget
 description             2000    missing argument            mandatory field

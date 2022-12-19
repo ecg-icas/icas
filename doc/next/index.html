@@ -67,10 +67,10 @@
         
             <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
@@ -223,7 +223,7 @@
             
   <section id="introduction">
 <span id="index"></span><span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
-<p>This document describes the iCAS Sellside API to place ads on iCAS.</p>
+<p>This document describes the Sellside API to place ads.</p>
 <p>The API is designed as a RESTful API supporting JSON as data formats.
 Authentication is provided va OAuth2 to allow simple integration with existing
 client libraries.</p>
@@ -231,9 +231,9 @@ client libraries.</p>
 <section id="help-feedback">
 <h1>Help / Feedback<a class="headerlink" href="#help-feedback" title="Permalink to this heading">¶</a></h1>
 <p>If you have questions or would like to provide feedback, you can do so via our
-<a class="reference external" href="https://discordapp.com">Discord</a> channel. Please talk to your contact at the tenant to get access, this
+<a class="reference external" href="https://discord.com">Discord</a> channel. Please talk to your contact at the tenant (local marketplace) to get access, this
 is an <strong>invite-only</strong> chat channel. This channel is highly interactive, and contains
-several iCAS developers as well so deeper technical support can also be found here.
+several of our developers as well so deeper technical support can also be found here.
 Notifications about maintenance will also go through this channel.</p>
 </section>
 <section id="contents">
@@ -241,10 +241,10 @@ Notifications about maintenance will also go through this channel.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
@@ -966,7 +966,7 @@ Notifications about maintenance will also go through this channel.</p>
 </li>
 <li><p>v0.17 - 6 mar 2013 - fs</p>
 <ul>
-<li><p><a class="reference internal" href="reference/post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a>, <a class="reference internal" href="reference/put-ad-id.html#put-ad-id"><span class="std std-ref">PUT /ad/{id}</span></a>: Return <em>1006 - Type mismatch</em> if the value for an integer field is a string or a float (<a class="reference internal" href="ads.html#ad-id"><span class="std std-ref">id</span></a>, <a class="reference internal" href="ads.html#ad-categoryid"><span class="std std-ref">categoryId</span></a>, <a class="reference internal" href="ads.html#ad-cpc"><span class="std std-ref">cpc</span></a>, <a class="reference internal" href="ads.html#ad-dailybudget"><span class="std std-ref">dailyBudget</span></a>, <a class="reference internal" href="ads.html#ad-totalbudget"><span class="std std-ref">totalBudget</span></a>, <a class="reference internal" href="ads.html#ad-price"><span class="std std-ref">price (integer)</span></a>)</p></li>
+<li><p><a class="reference internal" href="reference/post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a>, <a class="reference internal" href="reference/put-ad-id.html#put-ad-id"><span class="std std-ref">PUT /ad/{id}</span></a>: Return <em>1006 - Type mismatch</em> if the value for an integer field is a string or a float (<a class="reference internal" href="ads.html#ad-id"><span class="std std-ref">id</span></a>, <a class="reference internal" href="ads.html#ad-categoryid"><span class="std std-ref">categoryId</span></a>, <a class="reference internal" href="ads.html#ad-cpc"><span class="std std-ref">cpc</span></a>, <a class="reference internal" href="ads.html#ad-dailybudget"><span class="std std-ref">dailyBudget</span></a>, <a class="reference internal" href="ads.html#ad-totalbudget"><span class="std std-ref">totalBudget</span></a>, <a class="reference internal" href="ads.html#ad-price"><span class="std std-ref">price</span></a>)</p></li>
 </ul>
 </li>
 <li><p>v0.16 - 26 feb 2013 - be, tw</p>

@@ -31,10 +31,10 @@ Field                                    Type       Deprecated after Constraints
 :ref:`ad_categoryId`                     int        --               positive             yes         no
 :ref:`ad_status`                         string     --               enum                 yes         yes
 :ref:`ad_priceobj`                       object     --               yes                  yes         yes
-:ref:`ad_priceobj_amountCents`           int        --               >= 0                 no          yes
-:ref:`ad_priceobj_priceType`             string     --               enum                 yes         yes
-:ref:`ad_priceobj_priceUnit`             string     --               string, see below    no          no
-:ref:`ad_priceobj_originalAmountCents`   int        --               >= 0, >amountCents   no          yes (if user is allowed)
+:ref:`ad_priceobj_amountcents`           int        --               >= 0                 no          yes
+:ref:`ad_priceobj_pricetype`             string     --               enum                 yes         yes
+:ref:`ad_priceobj_priceunit`             string     --               string, see below    no          no
+:ref:`ad_priceobj_originalamountcents`   int        --               >= 0, >amountCents   no          yes (if user is allowed)
 :ref:`ad_salutation`                     string     --               enum                 yes         yes
 :ref:`ad_sellerName`                     string     --               max. 60 chars        yes         yes
 :ref:`ad_postcode`                       string     --               max. 6 chars         yes         yes
@@ -63,7 +63,7 @@ Field                                    Type       Deprecated after Constraints
 :ref:`ad_budgetsobj_total_limitMicros`   string     --               see below            yes         yes
 :ref:`ad_budgetsobj_daily_spentMicros`   string     --               see below            no          no
 :ref:`ad_budgetsobj_total_spentMicros`   string     --               see below            no          no
-:ref:`ad_externalId`                     string     V5               max. 64 chars        no          yes
+:ref:`ad_externalId`                     string     V4               max. 64 chars        no          yes
 :ref:`ad_currency`                       string     V4               cat.Currency         yes         no
 :ref:`ad_priceType`                      string     V4               enum                 yes         yes
 :ref:`ad_priceUnit`                      string     V4               see below            no          yes
@@ -87,8 +87,7 @@ Field                                    Type       Deprecated after Constraints
 id
 ""
 
-Unique reference to the iCAS ad, needs to be omitted in a POST or PUT
-action.
+Unique reference to the ad, needs to be omitted in a POST action.
 
 .. index:: title
 .. _ad_title:
@@ -146,7 +145,7 @@ omitted.
 status
 """"""
 
-Is a valid value from the list of :ref:`_ad_status_overview`. The user can set only one
+Is a valid value from the list of :ref:`ad_status_overview`. The user can set only one
 of the user controlled states *ACTIVE*, *PAUSED* or *DELETED*.
 
 .. index:: currency
@@ -157,50 +156,51 @@ currency
 
 The `ISO 4217`_ currency code. Currently only *EUR*, and *CAD*  supported.
 All values are stored in cents (1/100 parts), i.e. EUR 10.50 are represented as 1050,
-DKK 12.34 should be represented as 1234.
+CAD 12.34 should be represented as 1234.
 Deprecated in V5, all monetary values are in the currency of the country you are placing for.
 
 .. index:: priceType
-.. _ad_priceType:
+.. _ad_pricetype:
 
 priceType
 """""""""
 
 Must be a valid price type identifier from the list of :ref:`price_types`.
-Deprecated in V5, use :ref:`_ad_priceobj_priceType` instead.
+Deprecated in V5, use :ref:`ad_priceobj_pricetype` instead.
 
 .. index:: priceUnit
-.. _ad_priceUnit:
+.. _ad_priceunit:
 
 priceUnit
 """""""""
 
 Must be a valid price unit identifier from the list of available price units
 of the category.
-Deprecated in V5, use :ref:`_ad_priceobj_priceUnit` instead.
+Deprecated in V5, use :ref:`ad_priceobj_priceunit` instead.
 
 .. index:: price (integer)
 .. _ad_price:
 
-price (integer)
-""""""""""""""""""
+price
+"""""
 
-The meaning of the value depends on :ref:`ad_priceType`. If it is
+The meaning of the value depends on :ref:`ad_pricetype`. If it is
 `FIXED_PRICE` or `BIDDING_FROM` then **price** has to be greater than 0.
 The maximum allowed **price** is ``10000000000`` Euro cents (100.000.000 Euros).
-Deprecated in V5, use :ref:`_ad_priceobj` instead
+Deprecated in V5, use :ref:`ad_priceobj` instead.
 
 .. index:: price
 .. _ad_priceobj:
 
-price (object)
-""""""""""""""
+price
+"""""
 
 Price is an object containing all the information about the cost of the item for sale.
-This includes :ref:`ad_priceobj_amountCents`, :ref:`ad_priceobj_priceType` :ref:`ad_priceobj_priceUnit` and :ref:`ad_priceobj_originalPrice`
+This includes :ref:`ad_priceobj_amountcents`, :ref:`ad_priceobj_pricetype` :ref:`ad_priceobj_priceunit`
+and :ref:`ad_priceobj_originalAmountCents`.
 
 .. index:: price.amountCents
-.. _ad_priceobj_amountCents:
+.. _ad_priceobj_amountcents:
 
 price.amountCents
 """""""""""""""""
@@ -211,7 +211,7 @@ The meaning of the value depends on :ref:`ad_priceobj_priceType`. If it is
 The maximum allowed **price.amountCents** is ``10000000000`` Euro cents (100.000.000 Euros).
 
 .. index:: price.priceType
-.. _ad_priceobj_priceType:
+.. _ad_priceobj_pricetype:
 
 price.priceType
 """""""""""""""
@@ -219,7 +219,7 @@ price.priceType
 Must be a valid price type identifier from the list of :ref:`price_types`.
 
 .. index:: price.priceUnit
-.. _ad_priceobj_priceUnit:
+.. _ad_priceobj_priceunit:
 
 price.priceUnit
 """""""""""""""
@@ -510,8 +510,14 @@ dateDeleted
 The `ISO 8601`_ UTC date and time the ad was deleted. Omitted if the ad is
 still active or paused.
 
-.. index:: links.self
 .. _ad_links:
+
+links
+"""""
+
+An object encapsulating :ref:`ad_links_self`, :ref:`ad_links_category`, :ref:`ad_links_url` and :ref:`ad_links_displayUrl`
+
+.. index:: links.self
 .. _ad_links_self:
 
 links.self
@@ -573,8 +579,8 @@ However, it can be adjusted through the API.
 Images
 ------
 Each ad can contain up to X images (range is defined per category in the taxonomy)
-which can be provided by the caller as a set of URLs. iCAS will download the images and if they meet the
-requirements then they will be stored on iCAS servers in several sizes
+which can be provided by the caller as a set of URLs. The system will download the images and if they meet the
+requirements then they will be stored on our servers in several sizes
 so that they can then be used by the user.
 
 An image is valid if it is in JPG, PNG, GIF or BMP format and is smaller than 8MB
@@ -601,7 +607,7 @@ image objects which contain only the source url.
         ...
      ]
 
-The images are then downloaded by iCAS and the server adds additional
+The images are then downloaded by the system and we add some additional
 fields which describe the status of the download.
 
 .. code-block:: javascript
@@ -625,7 +631,7 @@ status is either **OK** (image was successfully downloaded), **PENDING**
 or invalid.
 
 If the ``status`` is **OK** then a **links** map is added which contains
-*protocol agnostic* links to copies on the iCAS servers of the uploaded image
+*protocol agnostic* links to copies on our servers of the uploaded image
 in various sizes. The dimensions are specified as *max width* x *max height*.
 
 The server also adds the ``dateLastUpdated`` field which specifies the time

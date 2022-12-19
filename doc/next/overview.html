@@ -68,10 +68,10 @@
         
             <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#customize-response-body">Customize response body</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dates-and-times">Dates and Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prices-and-currencies">Prices and Currencies</a></li>
@@ -224,7 +224,7 @@
             
   <section id="overview">
 <span id="id1"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h1>
-<p>The iCAS Sellside API is a RESTful API to manage ads on iCAS either for your
+<p>The Sellside API is a RESTful API to manage ads either for your
 own account or on behalf of other users. The base URLs for the API are:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -270,21 +270,19 @@ current customer on Marktplaats Production becomes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">admarkt</span><span class="o">.</span><span class="n">marktplaats</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">sellside</span><span class="o">/</span><span class="n">ad</span><span class="o">/</span><span class="mi">1234</span>
 </pre></div>
 </div>
-<section id="image-downloads">
-<span id="overview-image-downloads"></span><h2>Image Downloads<a class="headerlink" href="#image-downloads" title="Permalink to this heading">¶</a></h2>
-<p>Images are downloaded from the following ip addresses. Ensure that all image
-URLs are accessible by these ip addresses and that there is no rate limit.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>5.255.156.110 (production)</p></li>
-<li><p>5.255.156.126 (production)</p></li>
-<li><p>91.211.74.6   (sandbox)</p></li>
-</ul>
-</div></blockquote>
-<p>To reduce the latency when updating an ad we suggest that the response
-contains either an <code class="docutils literal notranslate"><span class="pre">ETag</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Last-Modified</span></code> header which only changes
-when the image itself has changed. It should also be possible to check these
-headers using a <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> request.</p>
+<section id="authentication">
+<span id="overview-authentication"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">¶</a></h2>
+<p>Authentication is provided using <em>OAuth2</em> tokens and the so called
+<a class="reference external" href="http://tools.ietf.org/html/rfc6749#section-4.1">Authorization Code Grant</a>
+which means that you need a client id and client secret to access the api with
+an access token that the API provides. It is not possible to use username and
+password to get an access token.</p>
+<p>To request a client id and secret please ask your contact at the respective tenant
+(marktplaats, kijiji.ca, tweedehands). Your contact can also send you an invite
+for our <a class="reference external" href="http://https://discordapp.com">Discord</a> channel, where you can go for maintenance notifications and
+support.</p>
+<p>See the <a class="reference internal" href="authentication.html#authentication"><span class="std std-ref">Authentication</span></a> section for the full details and also
+the <a class="reference external" href="http://oauth.net/2/">OAuth 2.0 website</a>.</p>
 </section>
 <section id="media-types">
 <span id="overview-media-types"></span><h2>Media Types<a class="headerlink" href="#media-types" title="Permalink to this heading">¶</a></h2>
@@ -314,19 +312,21 @@ header to:</p>
 </pre></div>
 </div>
 </section>
-<section id="authentication">
-<span id="overview-authentication"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">¶</a></h2>
-<p>Authentication is provided using <em>OAuth2</em> tokens and the so called
-<a class="reference external" href="http://tools.ietf.org/html/rfc6749#section-4.1">Authorization Code Grant</a>
-which means that you need a client id and client secret to access the api with
-an access token that the API provides. It is not possible to use username and
-password to get an access token.</p>
-<p>To request a client id and secret please ask your contact at the respective tenant
-(marktplaats, kijiji.ca, tweedehands). Your contact can also send you an invite
-for our <a class="reference external" href="http://https://discordapp.com">Discord</a> channel, where you can go for maintenance notifications and
-support.</p>
-<p>See the <a class="reference internal" href="authentication.html#authentication"><span class="std std-ref">Authentication</span></a> section for the full details and also
-the <a class="reference external" href="http://oauth.net/2/">OAuth 2.0 website</a>.</p>
+<section id="image-downloads">
+<span id="overview-image-downloads"></span><h2>Image Downloads<a class="headerlink" href="#image-downloads" title="Permalink to this heading">¶</a></h2>
+<p>Images are downloaded from the following ip addresses. Ensure that all image
+URLs are accessible by these ip addresses and that there is no rate limit.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>5.255.156.110 (production)</p></li>
+<li><p>5.255.156.126 (production)</p></li>
+<li><p>91.211.74.6   (sandbox)</p></li>
+</ul>
+</div></blockquote>
+<p>To reduce the latency when updating an ad we suggest that the response
+contains either an <code class="docutils literal notranslate"><span class="pre">ETag</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Last-Modified</span></code> header which only changes
+when the image itself has changed. It should also be possible to check these
+headers using a <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> request.</p>
 </section>
 <section id="customize-response-body">
 <span id="overview-customize-response-body"></span><h2>Customize response body<a class="headerlink" href="#customize-response-body" title="Permalink to this heading">¶</a></h2>

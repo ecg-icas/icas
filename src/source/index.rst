@@ -1,4 +1,4 @@
-.. _Discord: https://discordapp.com
+.. _Discord: https://discord.com
 
 .. _index:
 
@@ -7,7 +7,7 @@
 Introduction
 ============
 
-This document describes the iCAS Sellside API to place ads on iCAS.
+This document describes the Sellside API to place ads.
 
 The API is designed as a RESTful API supporting JSON as data formats.
 Authentication is provided va OAuth2 to allow simple integration with existing
@@ -17,9 +17,9 @@ Help / Feedback
 ===============
 
 If you have questions or would like to provide feedback, you can do so via our
-`Discord`_ channel. Please talk to your contact at the tenant to get access, this
+`Discord`_ channel. Please talk to your contact at the tenant (local marketplace) to get access, this
 is an **invite-only** chat channel. This channel is highly interactive, and contains
-several iCAS developers as well so deeper technical support can also be found here.
+several of our developers as well so deeper technical support can also be found here.
 Notifications about maintenance will also go through this channel.
 
 Contents

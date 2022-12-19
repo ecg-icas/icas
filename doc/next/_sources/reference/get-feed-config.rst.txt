@@ -15,8 +15,8 @@ GET /feed/config
 
 This URL returns the feed configuration of the current user.
 
-An iCAS user can update his or her ads by describing them in an XML document, called **feed**.
-The iCAS platform reads all user feeds once per day and synchronizes ads in the system.
+A user can update his or her ads by describing them in an XML document, called **feed**.
+The system reads all user feeds once per day and synchronizes ads in the system.
 
 The feed configuration object contains an ``enabled`` field. It is **true** when the current user
 has enabled feed publication and **false** otherwise. When feed publication is enabled, the

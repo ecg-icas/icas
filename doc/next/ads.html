@@ -68,10 +68,10 @@
         
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
@@ -278,7 +278,7 @@ required and optional fields which are listed below:</p>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ad-priceobj"><span class="std std-ref">price (object)</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ad-priceobj"><span class="std std-ref">price</span></a></p></td>
 <td><p>object</p></td>
 <td><p>–</p></td>
 <td><p>yes</p></td>
@@ -376,7 +376,7 @@ required and optional fields which are listed below:</p>
 <td><p>no</p></td>
 <td><p>no</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ad-links"><span class="std std-ref">links.self</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ad-links"><span class="std std-ref">links</span></a></p></td>
 <td><p>object</p></td>
 <td><p>–</p></td>
 <td><p>see below</p></td>
@@ -511,7 +511,7 @@ required and optional fields which are listed below:</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ad-externalid"><span class="std std-ref">externalId</span></a></p></td>
 <td><p>string</p></td>
-<td><p>V5</p></td>
+<td><p>V4</p></td>
 <td><p>max. 64 chars</p></td>
 <td><p>no</p></td>
 <td><p>yes</p></td>
@@ -537,7 +537,7 @@ required and optional fields which are listed below:</p>
 <td><p>no</p></td>
 <td><p>yes</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ad-price"><span class="std std-ref">price (integer)</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ad-price"><span class="std std-ref">price</span></a></p></td>
 <td><p>long</p></td>
 <td><p>V4</p></td>
 <td><p>see below</p></td>
@@ -611,14 +611,13 @@ required and optional fields which are listed below:</p>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>iCas introduces a new unit of micros across our product, where <strong>one cent equals 10000 micros</strong>. <strong>One micro is 1-millionth of the local tenant currency</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
-<p>iCas is substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
-<p>This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. iCas will gradually deprecate any fields with cents and local currency units across the API.</p>
+<p>We introduce a new monetary unit of micros across our product, where <strong>one cent equals 10000 micros</strong>. <strong>One micro is 1-millionth of the local tenant currency</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
+<p>We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
+<p>This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.</p>
 </div>
 <section id="ad-id">
 <span id="index-1"></span><span id="id"></span><h3>id<a class="headerlink" href="#ad-id" title="Permalink to this heading">¶</a></h3>
-<p>Unique reference to the iCAS ad, needs to be omitted in a POST or PUT
-action.</p>
+<p>Unique reference to the ad, needs to be omitted in a POST action.</p>
 </section>
 <section id="title">
 <span id="ad-title"></span><span id="index-2"></span><h3>title<a class="headerlink" href="#title" title="Permalink to this heading">¶</a></h3>
@@ -653,38 +652,39 @@ omitted.</p>
 </section>
 <section id="status">
 <span id="ad-status"></span><span id="index-6"></span><h3>status<a class="headerlink" href="#status" title="Permalink to this heading">¶</a></h3>
-<p>Is a valid value from the list of <span class="xref std std-ref">_ad_status_overview</span>. The user can set only one
+<p>Is a valid value from the list of <a class="reference internal" href="reference/ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a>. The user can set only one
 of the user controlled states <em>ACTIVE</em>, <em>PAUSED</em> or <em>DELETED</em>.</p>
 </section>
 <section id="currency">
 <span id="ad-currency"></span><span id="index-7"></span><h3>currency<a class="headerlink" href="#currency" title="Permalink to this heading">¶</a></h3>
 <p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> currency code. Currently only <em>EUR</em>, and <em>CAD</em>  supported.
 All values are stored in cents (1/100 parts), i.e. EUR 10.50 are represented as 1050,
-DKK 12.34 should be represented as 1234.
+CAD 12.34 should be represented as 1234.
 Deprecated in V5, all monetary values are in the currency of the country you are placing for.</p>
 </section>
 <section id="pricetype">
 <span id="ad-pricetype"></span><span id="index-8"></span><h3>priceType<a class="headerlink" href="#pricetype" title="Permalink to this heading">¶</a></h3>
 <p>Must be a valid price type identifier from the list of <a class="reference internal" href="reference/price-types.html#price-types"><span class="std std-ref">Price Types</span></a>.
-Deprecated in V5, use <span class="xref std std-ref">_ad_priceobj_priceType</span> instead.</p>
+Deprecated in V5, use <a class="reference internal" href="#ad-priceobj-pricetype"><span class="std std-ref">price.priceType</span></a> instead.</p>
 </section>
 <section id="priceunit">
 <span id="ad-priceunit"></span><span id="index-9"></span><h3>priceUnit<a class="headerlink" href="#priceunit" title="Permalink to this heading">¶</a></h3>
 <p>Must be a valid price unit identifier from the list of available price units
 of the category.
-Deprecated in V5, use <span class="xref std std-ref">_ad_priceobj_priceUnit</span> instead.</p>
+Deprecated in V5, use <a class="reference internal" href="#ad-priceobj-priceunit"><span class="std std-ref">price.priceUnit</span></a> instead.</p>
 </section>
-<section id="price-integer">
-<span id="ad-price"></span><span id="index-10"></span><h3>price (integer)<a class="headerlink" href="#price-integer" title="Permalink to this heading">¶</a></h3>
+<section id="price">
+<span id="ad-price"></span><span id="index-10"></span><h3>price<a class="headerlink" href="#price" title="Permalink to this heading">¶</a></h3>
 <p>The meaning of the value depends on <a class="reference internal" href="#ad-pricetype"><span class="std std-ref">priceType</span></a>. If it is
 <cite>FIXED_PRICE</cite> or <cite>BIDDING_FROM</cite> then <strong>price</strong> has to be greater than 0.
 The maximum allowed <strong>price</strong> is <code class="docutils literal notranslate"><span class="pre">10000000000</span></code> Euro cents (100.000.000 Euros).
-Deprecated in V5, use <span class="xref std std-ref">_ad_priceobj</span> instead</p>
+Deprecated in V5, use <a class="reference internal" href="#ad-priceobj"><span class="std std-ref">price</span></a> instead.</p>
 </section>
-<section id="price-object">
-<span id="ad-priceobj"></span><span id="index-11"></span><h3>price (object)<a class="headerlink" href="#price-object" title="Permalink to this heading">¶</a></h3>
+<section id="ad-priceobj">
+<span id="index-11"></span><span id="id1"></span><h3>price<a class="headerlink" href="#ad-priceobj" title="Permalink to this heading">¶</a></h3>
 <p>Price is an object containing all the information about the cost of the item for sale.
-This includes <a class="reference internal" href="#ad-priceobj-amountcents"><span class="std std-ref">price.amountCents</span></a>, <a class="reference internal" href="#ad-priceobj-pricetype"><span class="std std-ref">price.priceType</span></a> <a class="reference internal" href="#ad-priceobj-priceunit"><span class="std std-ref">price.priceUnit</span></a> and <span class="xref std std-ref">ad_priceobj_originalPrice</span></p>
+This includes <a class="reference internal" href="#ad-priceobj-amountcents"><span class="std std-ref">price.amountCents</span></a>, <a class="reference internal" href="#ad-priceobj-pricetype"><span class="std std-ref">price.priceType</span></a> <a class="reference internal" href="#ad-priceobj-priceunit"><span class="std std-ref">price.priceUnit</span></a>
+and <a class="reference internal" href="#ad-priceobj-originalamountcents"><span class="std std-ref">price.originalAmountCents</span></a>.</p>
 </section>
 <section id="price-amountcents">
 <span id="ad-priceobj-amountcents"></span><span id="index-12"></span><h3>price.amountCents<a class="headerlink" href="#price-amountcents" title="Permalink to this heading">¶</a></h3>
@@ -866,8 +866,12 @@ Deprecated, removed in V3.</p>
 <p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date and time the ad was deleted. Omitted if the ad is
 still active or paused.</p>
 </section>
+<section id="links">
+<span id="ad-links"></span><h3>links<a class="headerlink" href="#links" title="Permalink to this heading">¶</a></h3>
+<p>An object encapsulating <a class="reference internal" href="#ad-links-self"><span class="std std-ref">links.self</span></a>, <a class="reference internal" href="#ad-links-category"><span class="std std-ref">links.category</span></a>, <a class="reference internal" href="#ad-links-url"><span class="std std-ref">links.url</span></a> and <a class="reference internal" href="#ad-links-displayurl"><span class="std std-ref">links.displayUrl</span></a></p>
+</section>
 <section id="links-self">
-<span id="ad-links-self"></span><span id="ad-links"></span><span id="index-43"></span><h3>links.self<a class="headerlink" href="#links-self" title="Permalink to this heading">¶</a></h3>
+<span id="ad-links-self"></span><span id="index-43"></span><h3>links.self<a class="headerlink" href="#links-self" title="Permalink to this heading">¶</a></h3>
 <p>A link referencing the current ad. This will be provided by the Sellside API.</p>
 </section>
 <section id="links-category">
@@ -903,8 +907,8 @@ However, it can be adjusted through the API.</p>
 <section id="images">
 <span id="ad-images"></span><span id="index-49"></span><h2>Images<a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h2>
 <p>Each ad can contain up to X images (range is defined per category in the taxonomy)
-which can be provided by the caller as a set of URLs. iCAS will download the images and if they meet the
-requirements then they will be stored on iCAS servers in several sizes
+which can be provided by the caller as a set of URLs. The system will download the images and if they meet the
+requirements then they will be stored on our servers in several sizes
 so that they can then be used by the user.</p>
 <p>An image is valid if it is in JPG, PNG, GIF or BMP format and is smaller than 8MB
 in size. Images larger than 1024x1024 px are being scaled down.</p>
@@ -922,7 +926,7 @@ image objects which contain only the source url.</p>
 <span class="w"> </span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The images are then downloaded by iCAS and the server adds additional
+<p>The images are then downloaded by the system and we add some additional
 fields which describe the status of the download.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;images&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
@@ -943,7 +947,7 @@ status is either <strong>OK</strong> (image was successfully downloaded), <stron
 (image is scheduled to be downloaded) or <strong>ERROR</strong> if the image was not found
 or invalid.</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">status</span></code> is <strong>OK</strong> then a <strong>links</strong> map is added which contains
-<em>protocol agnostic</em> links to copies on the iCAS servers of the uploaded image
+<em>protocol agnostic</em> links to copies on our servers of the uploaded image
 in various sizes. The dimensions are specified as <em>max width</em> x <em>max height</em>.</p>
 <p>The server also adds the <code class="docutils literal notranslate"><span class="pre">dateLastUpdated</span></code> field which specifies the time
 the image was last updated.</p>

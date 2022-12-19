@@ -5,12 +5,33 @@
 GET /ad
 =======
 
-:ref:`get_ad_v4` | :ref:`get_ad_v3`
+:ref:`get_ad_v5` | :ref:`get_ad_v4` | :ref:`get_ad_v3`
 
 .. warning::
 
-    :ref:`get_ad_v3` is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use :ref:`get_ad_v4`. If you were not
-    using ``startDate`` or ``endDate`` parameters in your calls the output will be the same in :ref:`get_ad_v4`.
+    :ref:`get_ad_v4` is now officially deprecated and scheduled for removal on April, 1st 2022. Please move to use :ref:`get_ad_v5`.
+
+    :ref:`get_ad_v3` is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use :ref:`get_ad_v5`.
+
+.. _get_ad_v5:
+
+GET /ad v5
+----------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad.list-v5+json, application/json``
+
+Example
+-------
+
+.. include:: ../examples/get-ad-v5-example.rst
+
 
 .. _get_ad_v4:
 

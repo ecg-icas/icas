@@ -68,10 +68,10 @@
         
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
@@ -225,7 +225,7 @@
   <section id="categories">
 <span id="id1"></span><h1>Categories<a class="headerlink" href="#categories" title="Permalink to this heading">¶</a></h1>
 <p>The category tree contains all the information about category definitions,
-attribute definitions and validation rules for placing ads on iCAS.</p>
+attribute definitions and validation rules for placing ads.</p>
 <p>The category tree has the following properties:</p>
 <ul class="simple">
 <li><p>categories form a tree with a single root node</p></li>
@@ -243,7 +243,7 @@ attribute definitions and validation rules for placing ads on iCAS.</p>
 </section>
 <section id="category-levels">
 <h2>Category Levels<a class="headerlink" href="#category-levels" title="Permalink to this heading">¶</a></h2>
-<p>Although the number of sub levels is not limited, iCAS category tree has
+<p>Although the number of sub levels is not limited, the category tree has
 up to three levels of categories (L1-3). The root node is considered
 special and resides at Level 0 (L0). Performing a search at the root node would
 result in a site-wide search across all categories.</p>
@@ -473,8 +473,8 @@ options the seller wants to offer. The valid list of price types is:</p>
 <h2>Data Model<a class="headerlink" href="#data-model" title="Permalink to this heading">¶</a></h2>
 <p>The data model is designed to support the following use cases:</p>
 <ul class="simple">
-<li><p>render a user interface for placing an ad on iCAS</p></li>
-<li><p>validate an ad that is placed via the iCAS Sellside API</p></li>
+<li><p>render a user interface for placing an ad</p></li>
+<li><p>validate an ad that is placed via the Sellside API</p></li>
 </ul>
 <p>The category tree is provided as a JSON object which has the following structure:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
