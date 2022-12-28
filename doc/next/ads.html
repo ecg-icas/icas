@@ -135,7 +135,10 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reporting.html#dimensions-and-metrics">Dimensions and Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reporting.html#time-ranges">Time Ranges</a></li>
@@ -160,19 +163,21 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id.html">PUT /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -181,9 +186,12 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign.html">PUT /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-status.html">PUT /campaign/{id}status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -236,7 +244,7 @@ required and optional fields which are listed below:</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Deprecated after</p></th>
+<th class="head"><p>Deprecated in</p></th>
 <th class="head"><p>Constraints</p></th>
 <th class="head"><p>Mandatory</p></th>
 <th class="head"><p>Writable</p></th>
@@ -488,19 +496,19 @@ required and optional fields which are listed below:</p>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#ad-budgetsobj-total-limitmicros"><span class="std std-ref">budgets.total.limitMicros</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ad-budgetsobj-daily-spentmicros"><span class="std std-ref">budgets.daily.spentMicros</span></a></p></td>
 <td><p>string</p></td>
 <td><p>–</p></td>
 <td><p>see below</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#ad-budgetsobj-daily-spentmicros"><span class="std std-ref">budgets.daily.spentMicros</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#ad-budgetsobj-total-limitmicros"><span class="std std-ref">budgets.total.limitMicros</span></a></p></td>
 <td><p>string</p></td>
 <td><p>–</p></td>
 <td><p>see below</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ad-budgetsobj-total-spentmicros"><span class="std std-ref">budgets.total.spentMicros</span></a></p></td>
 <td><p>string</p></td>
@@ -511,98 +519,98 @@ required and optional fields which are listed below:</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ad-externalid"><span class="std std-ref">externalId</span></a></p></td>
 <td><p>string</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>max. 64 chars</p></td>
 <td><p>no</p></td>
 <td><p>yes</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ad-currency"><span class="std std-ref">currency</span></a></p></td>
 <td><p>string</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>cat.Currency</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ad-pricetype"><span class="std std-ref">priceType</span></a></p></td>
 <td><p>string</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>enum</p></td>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ad-priceunit"><span class="std std-ref">priceUnit</span></a></p></td>
 <td><p>string</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>see below</p></td>
 <td><p>no</p></td>
 <td><p>yes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ad-price"><span class="std std-ref">price</span></a></p></td>
 <td><p>long</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>see below</p></td>
 <td><p>see below</p></td>
 <td><p>yes</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ad-cpc"><span class="std std-ref">cpc</span></a></p></td>
 <td><p>long</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>positive</p></td>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ad-status-reasons"><span class="std std-ref">statusReasons</span></a></p></td>
 <td><p>string</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>–</p></td>
 <td><p>–</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ad-totalbudget"><span class="std std-ref">totalBudget</span></a></p></td>
 <td><p>long</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>positive</p></td>
 <td><p>no</p></td>
 <td><p>yes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ad-dailybudget"><span class="std std-ref">dailyBudget</span></a></p></td>
 <td><p>long</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>positive</p></td>
 <td><p>no</p></td>
 <td><p>yes</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ad-dailyspent"><span class="std std-ref">dailySpent</span></a></p></td>
 <td><p>long</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>positive</p></td>
 <td><p>–</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ad-spentbudget"><span class="std std-ref">spentBudget</span></a></p></td>
 <td><p>long</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>positive</p></td>
 <td><p>–</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ad-pagenumber"><span class="std std-ref">pageNumber</span></a></p></td>
 <td><p>int</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>–</p></td>
 <td><p>no</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ad-suggestedcpcforpageone"><span class="std std-ref">suggestedCpcForPageOne</span></a></p></td>
 <td><p>long</p></td>
-<td><p>V4</p></td>
+<td><p>V5</p></td>
 <td><p>–</p></td>
 <td><p>no</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ad-allowpaypal"><span class="std std-ref">allowPaypal</span></a></p></td>
 <td><p>bool</p></td>
-<td><p>V2</p></td>
+<td><p>V3</p></td>
 <td><p>no</p></td>
 <td><p>yes</p></td>
 <td><p>yes</p></td>
@@ -969,37 +977,48 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 <p>Shipping option has the following fields:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 30.0%" />
-<col style="width: 50.0%" />
+<col style="width: 16.7%" />
+<col style="width: 25.0%" />
+<col style="width: 16.7%" />
+<col style="width: 41.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Deprecated in</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>type</cite></p></td>
 <td><p>Mandatory</p></td>
+<td></td>
 <td><p><em>SHIP</em> or <em>PICKUP</em>. <em>SHIP</em> means the item can be delivered to the buyer in the provided <cite>time</cite> and for the provided <cite>cost</cite>. <em>PICKUP</em> means the item can be picked up at the provided <cite>location</cite>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>cost</cite></p></td>
 <td><p>Optional</p></td>
+<td><p>V5</p></td>
+<td><p>Deprecated, use costCents. Cost of shipping in cents. Only valid when type is <em>SHIP</em>. Must be greater than or equal to 0. Field can be omitted if costs are unknown.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>costCents</cite></p></td>
+<td><p>Optional</p></td>
+<td></td>
 <td><p>Cost of shipping in cents. Only valid when type is <em>SHIP</em>. Must be greater than or equal to 0. Field can be omitted if costs are unknown.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>time</cite></p></td>
+<tr class="row-odd"><td><p><cite>time</cite></p></td>
 <td><p>Optional</p></td>
+<td></td>
 <td><p>Time it takes to deliver the ad. Only valid when type is <em>SHIP</em>. Supported values are “2d-5d”, “6d-10d”  and everything in the form “&lt;number&gt;d” where &lt;number&gt; is &gt; 0. Field can be omitted if time is unknown.</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>pickupLocation</cite></p></td>
+<tr class="row-even"><td><p><cite>pickupLocation</cite></p></td>
 <td><p>Mandatory when type is <em>PICKUP</em></p></td>
-<td><p>Pick up location of the item.</p></td>
+<td></td>
+<td><p>Pick up location of the item, in <a class="reference internal" href="#ad-postcode"><span class="std std-ref">postcode</span></a> structure.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SHIP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cost&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;time&quot;</span><span class="o">:</span><span class="s2">&quot;2d-5d&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SHIP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;costCents&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;time&quot;</span><span class="o">:</span><span class="s2">&quot;2d-5d&quot;</span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PICKUP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pickupLocation&quot;</span><span class="o">:</span><span class="s2">&quot;1097DN&quot;</span><span class="p">}</span><span class="w"></span>
 <span class="w"> </span><span class="p">]</span><span class="w"></span>
 </pre></div>
@@ -1104,7 +1123,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 <span class="w">    </span><span class="s2">&quot;shippingOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SHIP&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;cost&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;costCents&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">495</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="s2">&quot;time&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2d-5d&quot;</span><span class="w"></span>
 <span class="w">        </span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>

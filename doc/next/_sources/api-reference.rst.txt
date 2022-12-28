@@ -15,19 +15,21 @@ API Reference
    reference/post-ad-prefill
    reference/put-ad-id
    reference/put-ad-id-status
+   reference/ad-status
+   reference/price-types
+   reference/get-image
+   reference/post-image
    reference/get-categories
    reference/get-categories-statistics
    reference/get-category-id
    reference/get-category-id-funnel
+   reference/get-regions
+   reference/get-region-id
    reference/get-feed-config
    reference/post-feed-config
    reference/get-feed-import
    reference/get-feed-import-id-detail
    reference/get-feed-xsd
-   reference/get-image
-   reference/post-image
-   reference/get-region-id
-   reference/get-regions
    reference/get-report
    reference/get-report-detail
    reference/get-report-detail-id
@@ -36,7 +38,10 @@ API Reference
    reference/get-metrics-ads
    reference/get-metrics-report
    reference/post-metrics-data
+   reference/campaign-status
+   reference/post-campaign
+   reference/put-campaign
+   reference/put-campaign-status
+   reference/put-campaign-budgets
    reference/get-user
-   reference/ad-status
-   reference/price-types
    reference/error-codes

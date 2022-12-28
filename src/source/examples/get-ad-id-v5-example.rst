@@ -96,7 +96,7 @@
         "shippingOptions": [
             {
                 "type": "SHIP",
-                "cost": 0,
+                "costCents": 495,
                 "time": "2d-5d"
             },
             {

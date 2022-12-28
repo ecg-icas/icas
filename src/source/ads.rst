@@ -22,62 +22,62 @@ Each ad has a unique identifier by which the ad can retrieved and a set of
 required and optional fields which are listed below:
 
 
-======================================   ========== ================ ==================   =========   ========================
-Field                                    Type       Deprecated after Constraints          Mandatory   Writable
-======================================   ========== ================ ==================   =========   ========================
-:ref:`ad_id`                             long       --               positive             --          no
-:ref:`ad_title`                          string     --               see below            yes         yes
-:ref:`ad_description`                    string     --               see below            yes         yes
-:ref:`ad_categoryId`                     int        --               positive             yes         no
-:ref:`ad_status`                         string     --               enum                 yes         yes
-:ref:`ad_priceobj`                       object     --               yes                  yes         yes
-:ref:`ad_priceobj_amountcents`           int        --               >= 0                 no          yes
-:ref:`ad_priceobj_pricetype`             string     --               enum                 yes         yes
-:ref:`ad_priceobj_priceunit`             string     --               string, see below    no          no
-:ref:`ad_priceobj_originalamountcents`   int        --               >= 0, >amountCents   no          yes (if user is allowed)
-:ref:`ad_salutation`                     string     --               enum                 yes         yes
-:ref:`ad_sellerName`                     string     --               max. 60 chars        yes         yes
-:ref:`ad_postcode`                       string     --               max. 6 chars         yes         yes
-:ref:`ad_regionId`                       long       --               positive             no          yes (only during create)
-:ref:`ad_phoneNumber`                    string     --               max. 32 chars        no          yes
-:ref:`ad_allowContactByEmail`            bool       --               --                   no          yes
-:ref:`ad_dateCreated`                    date       --               readonly             no          no
-:ref:`ad_dateLastUpdated`                date       --               readonly             no          no
-:ref:`ad_dateDeleted`                    date       --               readonly             no          no
-:ref:`ad_links`                          object     --               see below            no          yes
-:ref:`ad_links_self`                     string     --               max. 2048 chars      no          no
-:ref:`ad_links_category`                 string     --               max. 2048 chars      no          no
-:ref:`ad_links_url`                      string     --               max. 2048 chars      no          yes
-:ref:`ad_links_displayUrl`               string     --               max. 256 chars       no          yes
-:ref:`ad_images`                         array      --               max. 8 items         no          yes
-:ref:`ad_attributes`                     array      --               --                   no          yes
-:ref:`ad_shippingOptions`                array      --               see below            yes         yes
-:ref:`ad_vendorId`                       string     --               max. 64 chars        no          yes (if not set already)
-:ref:`ad_microTip`                       string     --               max. 18 chars        no          yes (if user is allowed)
-:ref:`ad_campaignId`                     long       --               positive             see below   yes
-:ref:`ad_bidMicros`                      string     --               see below            yes         yes
-:ref:`ad_budgetsobj`                     object     --               see below            yes         yes
-:ref:`ad_budgetsobj_daily`               object     --               see below            yes         yes
-:ref:`ad_budgetsobj_total`               object     --               see below            yes         yes
-:ref:`ad_budgetsobj_daily_limitMicros`   string     --               see below            yes         yes
-:ref:`ad_budgetsobj_total_limitMicros`   string     --               see below            yes         yes
-:ref:`ad_budgetsobj_daily_spentMicros`   string     --               see below            no          no
-:ref:`ad_budgetsobj_total_spentMicros`   string     --               see below            no          no
-:ref:`ad_externalId`                     string     V4               max. 64 chars        no          yes
-:ref:`ad_currency`                       string     V4               cat.Currency         yes         no
-:ref:`ad_priceType`                      string     V4               enum                 yes         yes
-:ref:`ad_priceUnit`                      string     V4               see below            no          yes
-:ref:`ad_price`                          long       V4               see below            see below   yes
-:ref:`ad_cpc`                            long       V4               positive             yes	        yes
-:ref:`ad_status_reasons`                 string     V4               --                   --          no
-:ref:`ad_totalBudget`                    long       V4               positive             no          yes
-:ref:`ad_dailyBudget`                    long       V4               positive             no          yes
-:ref:`ad_dailySpent`                     long       V4               positive             --          no
-:ref:`ad_spentBudget`                    long       V4               positive             --          no
-:ref:`ad_pageNumber`                     int        V4               --                   no          no
-:ref:`ad_suggestedCpcForPageOne`         long       V4               --                   no          no
-:ref:`ad_allowPaypal`                    bool       V2               no                   yes         yes
-======================================   ========== ================ ==================   =========   ========================
+======================================   ========== ============= ==================   =========   ========================
+Field                                    Type       Deprecated in Constraints          Mandatory   Writable
+======================================   ========== ============= ==================   =========   ========================
+:ref:`ad_id`                             long       --            positive             --          no
+:ref:`ad_title`                          string     --            see below            yes         yes
+:ref:`ad_description`                    string     --            see below            yes         yes
+:ref:`ad_categoryId`                     int        --            positive             yes         no
+:ref:`ad_status`                         string     --            enum                 yes         yes
+:ref:`ad_priceobj`                       object     --            yes                  yes         yes
+:ref:`ad_priceobj_amountcents`           int        --            >= 0                 no          yes
+:ref:`ad_priceobj_pricetype`             string     --            enum                 yes         yes
+:ref:`ad_priceobj_priceunit`             string     --            string, see below    no          no
+:ref:`ad_priceobj_originalamountcents`   int        --            >= 0, >amountCents   no          yes (if user is allowed)
+:ref:`ad_salutation`                     string     --            enum                 yes         yes
+:ref:`ad_sellerName`                     string     --            max. 60 chars        yes         yes
+:ref:`ad_postcode`                       string     --            max. 6 chars         yes         yes
+:ref:`ad_regionId`                       long       --            positive             no          yes (only during create)
+:ref:`ad_phoneNumber`                    string     --            max. 32 chars        no          yes
+:ref:`ad_allowContactByEmail`            bool       --            --                   no          yes
+:ref:`ad_dateCreated`                    date       --            readonly             no          no
+:ref:`ad_dateLastUpdated`                date       --            readonly             no          no
+:ref:`ad_dateDeleted`                    date       --            readonly             no          no
+:ref:`ad_links`                          object     --            see below            no          yes
+:ref:`ad_links_self`                     string     --            max. 2048 chars      no          no
+:ref:`ad_links_category`                 string     --            max. 2048 chars      no          no
+:ref:`ad_links_url`                      string     --            max. 2048 chars      no          yes
+:ref:`ad_links_displayUrl`               string     --            max. 256 chars       no          yes
+:ref:`ad_images`                         array      --            max. 8 items         no          yes
+:ref:`ad_attributes`                     array      --            --                   no          yes
+:ref:`ad_shippingOptions`                array      --            see below            yes         yes
+:ref:`ad_vendorId`                       string     --            max. 64 chars        no          yes (if not set already)
+:ref:`ad_microTip`                       string     --            max. 18 chars        no          yes (if user is allowed)
+:ref:`ad_campaignId`                     long       --            positive             see below   yes
+:ref:`ad_bidMicros`                      string     --            see below            yes         yes
+:ref:`ad_budgetsobj`                     object     --            see below            yes         yes
+:ref:`ad_budgetsobj_daily`               object     --            see below            yes         yes
+:ref:`ad_budgetsobj_total`               object     --            see below            yes         yes
+:ref:`ad_budgetsobj_daily_limitMicros`   string     --            see below            yes         yes
+:ref:`ad_budgetsobj_daily_spentMicros`   string     --            see below            no          no
+:ref:`ad_budgetsobj_total_limitMicros`   string     --            see below            yes         yes
+:ref:`ad_budgetsobj_total_spentMicros`   string     --            see below            no          no
+:ref:`ad_externalId`                     string     V5            max. 64 chars        no          yes
+:ref:`ad_currency`                       string     V5            cat.Currency         yes         no
+:ref:`ad_priceType`                      string     V5            enum                 yes         yes
+:ref:`ad_priceUnit`                      string     V5            see below            no          yes
+:ref:`ad_price`                          long       V5            see below            see below   yes
+:ref:`ad_cpc`                            long       V5            positive             yes	        yes
+:ref:`ad_status_reasons`                 string     V5            --                   --          no
+:ref:`ad_totalBudget`                    long       V5            positive             no          yes
+:ref:`ad_dailyBudget`                    long       V5            positive             no          yes
+:ref:`ad_dailySpent`                     long       V5            positive             --          no
+:ref:`ad_spentBudget`                    long       V5            positive             --          no
+:ref:`ad_pageNumber`                     int        V5            --                   no          no
+:ref:`ad_suggestedCpcForPageOne`         long       V5            --                   no          no
+:ref:`ad_allowPaypal`                    bool       V3            no                   yes         yes
+======================================   ========== ============= ==================   =========   ========================
 
 .. include:: bidding-micros.rst
 
@@ -663,34 +663,44 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 Shipping option has the following fields:
 
 .. list-table::
- :widths: 20 30 50
+ :widths: 20 30 20 50
  :header-rows: 1
 
  * - Field
    - Mandatory
+   - Deprecated in
    - Description
 
  * - `type`
    - Mandatory
+   -
    - *SHIP* or *PICKUP*. *SHIP* means the item can be delivered to the buyer in the provided `time` and for the provided `cost`. *PICKUP* means the item can be picked up at the provided `location`.
 
  * - `cost`
    - Optional
+   - V5
+   - Deprecated, use costCents. Cost of shipping in cents. Only valid when type is *SHIP*. Must be greater than or equal to 0. Field can be omitted if costs are unknown.
+
+ * - `costCents`
+   - Optional
+   -
    - Cost of shipping in cents. Only valid when type is *SHIP*. Must be greater than or equal to 0. Field can be omitted if costs are unknown.
 
  * - `time`
    - Optional
+   -
    - Time it takes to deliver the ad. Only valid when type is *SHIP*. Supported values are "2d-5d", "6d-10d"  and everything in the form "<number>d" where <number> is > 0. Field can be omitted if time is unknown.
 
  * - `pickupLocation`
    - Mandatory when type is *PICKUP*
-   - Pick up location of the item.
+   -
+   - Pick up location of the item, in :ref:`ad_postcode` structure.
 
 
 .. code-block:: javascript
 
     "shippingOptions": [
-        {"type": "SHIP", "cost": 0, "time":"2d-5d"},
+        {"type": "SHIP", "costCents": 0, "time":"2d-5d"},
         {"type": "PICKUP", "pickupLocation":"1097DN"}
      ]
 

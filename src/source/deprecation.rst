@@ -3,10 +3,6 @@
 Deprecation Plan
 ================
 
-The following calls are deprecated and scheduled to be removed on the 15th of August 2020:
-
- * :ref:`get_ad_ids_v1`
-
 The following calls are deprecated and scheduled to be removed on the 15th of July 2020:
 
  * :ref:`get_ad_v3`

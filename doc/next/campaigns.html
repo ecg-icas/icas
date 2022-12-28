@@ -135,7 +135,10 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Campaigns</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reporting.html#dimensions-and-metrics">Dimensions and Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reporting.html#time-ranges">Time Ranges</a></li>
@@ -160,19 +163,21 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id.html">PUT /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -181,9 +186,12 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign.html">PUT /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-status.html">PUT /campaign/{id}status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -224,7 +232,143 @@
             
   <section id="campaigns">
 <span id="index-0"></span><span id="id1"></span><h1>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h1>
-<p>TODO</p>
+<p>A Campaign is a group of ads, sharing a campaign budget. Campaigns can be modified separately by using <a class="reference internal" href="reference/post-campaign.html#post-campaign"><span class="std std-ref">POST /campaign</span></a>,
+<a class="reference internal" href="reference/put-campaign.html#put-campaign"><span class="std std-ref">PUT /campaign</span></a> and <a class="reference internal" href="reference/put-campaign-status.html#put-campaign-status"><span class="std std-ref">PUT /campaign/{id}status</span></a>.
+For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign. We have
+the aim to, later on, allow for multiple campaigns per seller.
+Campaigns can have their own budgets, both daily and total. If these are not set, they will automatically be set to “UNLIMITED”.
+To make transitions to use campaigns easier, we will ensure that each (new or existing) seller already has a campaign, and if the
+seller has ads, these will be part of the campaign.</p>
+<p>With campaigns it is possible to control spending for this entire list of ads and,
+in one go, start/stop advertising with the entire list of (active) ads.</p>
+<section id="fields">
+<span id="campaign-fields"></span><h2>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Mandatory</p></th>
+<th class="head"><p>Writable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-id"><span class="std std-ref">id</span></a></p></td>
+<td><p>integer</p></td>
+<td><p>positive,readonly</p></td>
+<td><p>–</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-status"><span class="std std-ref">status</span></a></p></td>
+<td><p>string</p></td>
+<td><p>enum</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-datecreated"><span class="std std-ref">dateCreated</span></a></p></td>
+<td><p>string</p></td>
+<td><p>readonly</p></td>
+<td><p>–</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-datelastupdated"><span class="std std-ref">datLastUpdated</span></a></p></td>
+<td><p>string</p></td>
+<td><p>readonly</p></td>
+<td><p>–</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj"><span class="std std-ref">budgets</span></a></p></td>
+<td><p>[]Budget</p></td>
+<td><p>readonly</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj-daily"><span class="std std-ref">budgets.daily</span></a></p></td>
+<td><p>object</p></td>
+<td><p>see below</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj-total"><span class="std std-ref">budgets.total</span></a></p></td>
+<td><p>object</p></td>
+<td><p>see below</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj-daily-limitmicros"><span class="std std-ref">budgets.daily.limitMicros</span></a></p></td>
+<td><p>string</p></td>
+<td><p>see below</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj-daily-spentmicros"><span class="std std-ref">budgets.daily.spentMicros</span></a></p></td>
+<td><p>string</p></td>
+<td><p>see below</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj-total-limitmicros"><span class="std std-ref">budgets.total.limitMicros</span></a></p></td>
+<td><p>string</p></td>
+<td><p>see below</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj-total-spentmicros"><span class="std std-ref">budgets.total.spentMicros</span></a></p></td>
+<td><p>string</p></td>
+<td><p>see below</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+<section id="campaign-id">
+<span id="index-1"></span><span id="id"></span><h3>id<a class="headerlink" href="#campaign-id" title="Permalink to this heading">¶</a></h3>
+<p>Unique reference to the campaign, needs to be omitted in a POST action. One of <a class="reference internal" href="reference/campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a></p>
+</section>
+<section id="status">
+<span id="campaign-status"></span><span id="index-2"></span><h3>status<a class="headerlink" href="#status" title="Permalink to this heading">¶</a></h3>
+<p>The status of the campaign, one of <a class="reference internal" href="reference/campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>.</p>
+</section>
+<section id="datecreated">
+<span id="campaign-datecreated"></span><span id="index-3"></span><h3>dateCreated<a class="headerlink" href="#datecreated" title="Permalink to this heading">¶</a></h3>
+<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date and time the campaign was craeted.</p>
+</section>
+<section id="datlastupdated">
+<span id="campaign-datelastupdated"></span><span id="index-4"></span><h3>datLastUpdated<a class="headerlink" href="#datlastupdated" title="Permalink to this heading">¶</a></h3>
+<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date and time the campaign was last updated.</p>
+</section>
+<section id="budgets">
+<span id="campaign-budgetsobj"></span><span id="index-5"></span><h3>budgets<a class="headerlink" href="#budgets" title="Permalink to this heading">¶</a></h3>
+<p>The budgets for this campaign. If either of these run out, ads from this campaign will no longer be
+visible on site.</p>
+</section>
+<section id="budgets-daily">
+<span id="campaign-budgetsobj-daily"></span><span id="index-6"></span><h3>budgets.daily<a class="headerlink" href="#budgets-daily" title="Permalink to this heading">¶</a></h3>
+<p>The daily budget for the campaign. Includes <a class="reference internal" href="#campaign-budgetsobj-daily-limitmicros"><span class="std std-ref">budgets.daily.limitMicros</span></a> and <a class="reference internal" href="#campaign-budgetsobj-daily-spentmicros"><span class="std std-ref">budgets.daily.spentMicros</span></a>.</p>
+</section>
+<section id="budgets-total">
+<span id="campaign-budgetsobj-total"></span><span id="index-7"></span><h3>budgets.total<a class="headerlink" href="#budgets-total" title="Permalink to this heading">¶</a></h3>
+<p>The total budget for the campaign. Includes <a class="reference internal" href="#campaign-budgetsobj-total-limitmicros"><span class="std std-ref">budgets.total.limitMicros</span></a> and <a class="reference internal" href="#campaign-budgetsobj-total-spentmicros"><span class="std std-ref">budgets.total.spentMicros</span></a>.</p>
+</section>
+<section id="budgets-daily-limitmicros">
+<span id="campaign-budgetsobj-daily-limitmicros"></span><span id="index-8"></span><h3>budgets.daily.limitMicros<a class="headerlink" href="#budgets-daily-limitmicros" title="Permalink to this heading">¶</a></h3>
+<p>The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign
+will remain offline for the rest of the day.</p>
+</section>
+<section id="budgets-total-limitmicros">
+<span id="campaign-budgetsobj-total-limitmicros"></span><span id="index-9"></span><h3>budgets.total.limitMicros<a class="headerlink" href="#budgets-total-limitmicros" title="Permalink to this heading">¶</a></h3>
+<p>The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign
+will remain offline until this limit has been increased.</p>
+</section>
+<section id="budgets-daily-spentmicros">
+<span id="campaign-budgetsobj-daily-spentmicros"></span><span id="index-10"></span><h3>budgets.daily.spentMicros<a class="headerlink" href="#budgets-daily-spentmicros" title="Permalink to this heading">¶</a></h3>
+<p>The amount all the ads combined in this campaign have spent sofar, today. This will be reset every day around midnight.</p>
+</section>
+<section id="budgets-total-spentmicros">
+<span id="campaign-budgetsobj-total-spentmicros"></span><span id="index-11"></span><h3>budgets.total.spentMicros<a class="headerlink" href="#budgets-total-spentmicros" title="Permalink to this heading">¶</a></h3>
+<p>The amount all the ads combined in this campaign have spent sofar. This will never be reset.</p>
+</section>
+</section>
 </section>
 
 
