@@ -44,7 +44,7 @@ errors               object  contains count and a subset of vendorIDs (max 100) 
 .. _message_struct:
 
 Error / Warning messages
-~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""
 
 ===============    ============ ====================================
 Field              Type         Description
@@ -58,7 +58,7 @@ It is not possible to fetch all affected ad ids.
 .. _get_feed_import_id_detail_v2_status:
 
 Import Status
-~~~~~~~~~~~~~
+"""""""""""""
 
 ============    =================================================
 Status          Description
@@ -72,7 +72,7 @@ In the case the feed import has status ``REJECTED``, the ``error`` field contain
 the feed import from succeeding. Most of the time this is either a failure to download the feed file, or the feed file didn't pass validation.
 
 Errors
-~~~~~~
+""""""
 
 .. note::
 
@@ -88,16 +88,16 @@ id                      2002    out of range                less than 0
 ====================    ====    =======================     ==============================================================================
 
 Example
-~~~~~~~
+"""""""
 
 This is example output of a successful feed import, with some records resulting in warnings/errors:
 
 .. include:: ../examples/get-feed-import-id-detail-v2.rst
 
-
 This is example output of a failed feed import, where XML validation did not succeed:
 
 .. include:: ../examples/get-feed-import-id-detail-v2-failure.rst
+
 
 This is example output of a failed feed import, where the feed file could not be downloaded:
 

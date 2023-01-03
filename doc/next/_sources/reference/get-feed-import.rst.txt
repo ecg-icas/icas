@@ -39,7 +39,7 @@ the erroneous ads in the XML document via :ref:`get_feed_import_id_detail`.
 
 
 Errors
-~~~~~~
+""""""
 
 ====================    ====    =======================     ==============================================================================
 Field                   Code    Error message               Description
@@ -49,6 +49,6 @@ limit                   2002    out of range                less than 1 or great
 ====================    ====    =======================     ==============================================================================
 
 Example
-~~~~~~~
+"""""""
 
 .. include:: ../examples/get-feed-import.rst

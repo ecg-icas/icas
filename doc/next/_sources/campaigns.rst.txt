@@ -14,8 +14,9 @@ Campaigns can have their own budgets, both daily and total. If these are not set
 To make transitions to use campaigns easier, we will ensure that each (new or existing) seller already has a campaign, and if the
 seller has ads, these will be part of the campaign. 
 
-You can get your campaign(s) by calling :ref:`get_campaign` or :ref:`get_campaign_id`. Campaign budgets can be modified by using :ref:`put_campaign_budgets`,
-and controlling campaign status can be done by :ref:`put_campaign_status`. We expect to add more campaign functionality in the future.
+You can get your campaign(s) by calling :ref:`get_campaign` or :ref:`get_campaign_id`. Campaign budgets can be modified by using 
+:ref:`put_campaign_id_budgets`, and controlling campaign status can be done by :ref:`put_campaign_id_status`. We expect to 
+add more campaign functionality in the future.
 
 
 .. _campaign-fields:

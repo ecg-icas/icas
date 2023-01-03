@@ -41,7 +41,7 @@ API Reference
    reference/campaign-status
    reference/get-campaign
    reference/get-campaign-id
-   reference/put-campaign-status
-   reference/put-campaign-budgets
+   reference/put-campaign-id-status
+   reference/put-campaign-id-budgets
    reference/get-user
    reference/error-codes
