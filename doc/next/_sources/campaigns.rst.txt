@@ -5,7 +5,7 @@
 Campaigns
 =========
 
-A Campaign is a group of ads, sharing a campaign budget. With campaigns it is possible to control spending for this entire list of ads and,
+A Campaign is a group of ads, sharing a campaign budget. With campaigns, it is possible to control spending for this entire list of ads and,
 in one go, start/stop advertising with the entire list of (active) ads.
 
 For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign. We have
@@ -63,9 +63,9 @@ The status of the campaign, one of :ref:`campaign_status_overview`.
 dateCreated
 """""""""""
 
-The `ISO 8601`_ UTC date and time the campaign was craeted.
+The `ISO 8601`_ UTC date and time the campaign was created.
 
-.. index:: datelastUpdated
+.. index:: dateLastUpdated
 .. _campaign_dateLastUpdated:
 
 datLastUpdated
@@ -122,7 +122,7 @@ will remain offline until this limit has been increased.
 budgets.daily.spentMicros
 """""""""""""""""""""""""
 
-The amount all the ads combined in this campaign have spent sofar, today. This will be reset every day around midnight.
+The amount all the ads combined in this campaign have spent so far, today. This will be reset every day around midnight.
 
 .. index:: budgets.total.spentMicros
 .. _campaign_budgetsobj_total_spentMicros:
@@ -130,4 +130,4 @@ The amount all the ads combined in this campaign have spent sofar, today. This w
 budgets.total.spentMicros
 """""""""""""""""""""""""
 
-The amount all the ads combined in this campaign have spent sofar. This will never be reset.
+The amount all the ads combined in this campaign have spent so far. This will never be reset.
