@@ -3,3 +3,5 @@
 
 POST /campaign
 ==============
+
+TODO later when we unlock multiple campaigns per user

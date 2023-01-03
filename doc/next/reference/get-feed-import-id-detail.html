@@ -187,10 +187,9 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-campaign.html">PUT /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-status.html">PUT /campaign/{id}status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
@@ -388,93 +387,93 @@ the feed import from succeeding. Most of the time this is either a failure to do
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <p>This is example output of a successful feed import, with some records resulting in warnings/errors:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>  GET /api/sellside/feed/import/123/detail
-  Accept: application/sellside.feedimportdetail-v2+json; application/json
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>GET /api/sellside/feed/import/123/detail
+Accept: application/sellside.feedimportdetail-v2+json, application/json
 
-  200 OK
-  Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
+200 OK HTTP/1.1
+Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
 
 {
-  &quot;id&quot;: 123,
-  &quot;url&quot;: &quot;http://feed.com/id/5324&quot;,
-  &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
-  &quot;status&quot;: &quot;DONE&quot;,
-  &quot;error&quot;: &quot;&quot;,
-  &quot;totalRecordsRead&quot;: 110,
-  &quot;recordsSucceeded&quot;: 106,
-  &quot;recordsFailed&quot;: 4,
-  &quot;recordsWithWarnings&quot;: 10,
-  &quot;errors&quot;: {
-      &quot;price should be lower than originalPrice&quot;: {
-          &quot;count&quot;: 4,
-          &quot;vendorIdsSample&quot;: [
-              &quot;566&quot;,
-              &quot;abc-788&quot;,
-              &quot;990232&quot;,
-              &quot;000mcakjn&quot;
-          ]
-      }
-  },
-  &quot;warnings&quot;: {
-      &quot;externalId is deprecated (use only vendorId)&quot;: {
-          &quot;count&quot;: 2,
-          &quot;vendorIdsSample&quot;: [
-              &quot;vid6778787&quot;,
-              &quot;vendorid124&quot;
-          ],
-      },
-      &quot;mandatory attribute 240 absent&quot;: {
-          &quot;count&quot;: 8,
-          &quot;vendorIdsSample&quot;: [
-              &quot;vendorid124&quot;,
-              &quot;vendorid224&quot;
-          ]
-      }
-  }
+    &quot;id&quot;: 123,
+    &quot;url&quot;: &quot;http://feed.com/id/5324&quot;,
+    &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
+    &quot;status&quot;: &quot;DONE&quot;,
+    &quot;error&quot;: &quot;&quot;,
+    &quot;totalRecordsRead&quot;: 110,
+    &quot;recordsSucceeded&quot;: 106,
+    &quot;recordsFailed&quot;: 4,
+    &quot;recordsWithWarnings&quot;: 10,
+    &quot;errors&quot;: {
+        &quot;price should be lower than originalPrice&quot;: {
+            &quot;count&quot;: 4,
+            &quot;vendorIdsSample&quot;: [
+                &quot;566&quot;,
+                &quot;abc-788&quot;,
+                &quot;990232&quot;,
+                &quot;000mcakjn&quot;
+            ]
+        }
+    },
+    &quot;warnings&quot;: {
+        &quot;externalId is deprecated (use only vendorId)&quot;: {
+            &quot;count&quot;: 2,
+            &quot;vendorIdsSample&quot;: [
+                &quot;vid6778787&quot;,
+                &quot;vendorid124&quot;
+            ]
+        },
+        &quot;mandatory attribute 240 absent&quot;: {
+            &quot;count&quot;: 8,
+            &quot;vendorIdsSample&quot;: [
+                &quot;vendorid124&quot;,
+                &quot;vendorid224&quot;
+            ]
+        }
+    }
 }
 </pre></div>
 </div>
 <p>This is example output of a failed feed import, where XML validation did not succeed:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>  GET /api/sellside/feed/import/123/detail
-  Accept: application/sellside.feedimportdetail-v2+json; application/json
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>GET /api/sellside/feed/import/123/detail
+Accept: application/sellside.feedimportdetail-v2+json, application/json
 
-  200 OK
-  Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
+200 OK HTTP/1.1
+Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
 
 {
-  &quot;id&quot;: 123,
-  &quot;url&quot;: &quot;http://feed.com/id/5324&quot;,
-  &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
-  &quot;status&quot;: &quot;REJECTED&quot;,
-  &quot;error&quot;: &quot;feed validation failure: invalid feed: parsing xml feed: XML syntax error on line 34: invalid character entity &amp;raquo;&quot;,
-  &quot;totalCount&quot;: 0,
-  &quot;okCount&quot;: 0,
-  &quot;errorCount&quot;: 0,
-  &quot;warningCount&quot;: 0,
-  &quot;errors&quot;: {},
-  &quot;warnings&quot;: {}
+    &quot;id&quot;: 123,
+    &quot;url&quot;: &quot;http://feed.com/id/5324&quot;,
+    &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
+    &quot;status&quot;: &quot;REJECTED&quot;,
+    &quot;error&quot;: &quot;feed validation failure: invalid feed: parsing xml feed: XML syntax error on line 34: invalid character entity &amp;raquo;&quot;,
+    &quot;totalCount&quot;: 0,
+    &quot;okCount&quot;: 0,
+    &quot;errorCount&quot;: 0,
+    &quot;warningCount&quot;: 0,
+    &quot;errors&quot;: {},
+    &quot;warnings&quot;: {}
 }
 </pre></div>
 </div>
 <p>This is example output of a failed feed import, where the feed file could not be downloaded:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>  GET /api/sellside/feed/import/123/detail
-  Accept: application/sellside.feedimportdetail-v2+json; application/json
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>GET /api/sellside/feed/import/123/detail
+Accept: application/sellside.feedimportdetail-v2+json; application/json
 
-  200 OK
-  Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
+200 OK HTTP/1.1
+Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
 
 {
-  &quot;id&quot;: 123,
-  &quot;url&quot;: &quot;http://feed.com/id/5324.xml&quot;,
-  &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
-  &quot;status&quot;: &quot;REJECTED&quot;,
-  &quot;error&quot;: &quot;HTTP 404 Not Found for: http://feed.com/id/5324.xml: fetch url failure&quot;,
-  &quot;totalCount&quot;: 0,
-  &quot;okCount&quot;: 0,
-  &quot;errorCount&quot;: 0,
-  &quot;warningCount&quot;: 0,
-  &quot;errors&quot;: {},
-  &quot;warnings&quot;: {}
+    &quot;id&quot;: 123,
+    &quot;url&quot;: &quot;http://feed.com/id/5324.xml&quot;,
+    &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
+    &quot;status&quot;: &quot;REJECTED&quot;,
+    &quot;error&quot;: &quot;HTTP 404 Not Found for: http://feed.com/id/5324.xml: fetch url failure&quot;,
+    &quot;totalCount&quot;: 0,
+    &quot;okCount&quot;: 0,
+    &quot;errorCount&quot;: 0,
+    &quot;warningCount&quot;: 0,
+    &quot;errors&quot;: {},
+    &quot;warnings&quot;: {}
 }
 </pre></div>
 </div>

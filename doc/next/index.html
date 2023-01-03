@@ -185,10 +185,9 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign.html">PUT /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-status.html">PUT /campaign/{id}status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
@@ -368,10 +367,9 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign.html">PUT /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-status.html">PUT /campaign/{id}status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
@@ -387,7 +385,8 @@ Notifications about maintenance will also go through this channel.</p>
 <ul class="simple">
 <li><p>v.0.124 - 3 Jan 2023 - tw
 * Added ad V5 related endpoints
-* Added campaign related endpoints</p></li>
+* Added campaign related endpoints
+* removed GET /ad/ids docs as it’s already gone</p></li>
 <li><p>v.0.123 - 9 Sep 2022 - dr
 * improved explanation on OAuth 2.0 roles&amp;flows, and added a sequence diagram</p></li>
 <li><p>v.0.122 - 12 Oct 2021 - tw</p>
@@ -509,7 +508,7 @@ Notifications about maintenance will also go through this channel.</p>
 </li>
 <li><p>v.0.99 -3 Nov 2017 - tw</p>
 <ul>
-<li><p>add <span class="xref std std-ref">get_ad_ids</span></p></li>
+<li><p>added GET /ad/ids</p></li>
 </ul>
 </li>
 <li><p>v.0.98 -25 Oct 2017 - tw</p>
