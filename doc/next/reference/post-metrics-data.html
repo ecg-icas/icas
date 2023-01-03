@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>POST /metrics/data &mdash; iCAS Sellside API 0.123 documentation</title>
+  <title>POST /metrics/data &mdash; iCAS Sellside API 0.124 documentation</title>
   
 
   
@@ -37,9 +37,9 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.123 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="Campaign Status" href="campaign-status.html"/>
+        <link rel="next" title="GET /campaign" href="get-campaign.html"/>
         <link rel="prev" title="GET /metrics/report" href="get-metrics-report.html"/> 
 
   
@@ -97,6 +97,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../categories.html#category-ids">Category Ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../categories.html#category-levels">Category Levels</a></li>
@@ -134,10 +138,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -187,6 +187,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign.html">PUT /campaign</a></li>
@@ -945,7 +946,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="campaign-status.html" class="btn btn-neutral float-right" title="Campaign Status"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="get-campaign.html" class="btn btn-neutral float-right" title="GET /campaign"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="get-metrics-report.html" class="btn btn-neutral" title="GET /metrics/report"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -977,7 +978,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.123',
+            VERSION:'0.124',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

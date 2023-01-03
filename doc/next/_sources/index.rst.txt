@@ -31,11 +31,11 @@ Contents
    overview
    authentication
    ads
+   campaigns
    categories
    attributes
    regions
    feeds
-   campaigns
    reporting
    error-handling
    api-reference
@@ -48,6 +48,10 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.124 - 3 Jan 2023 - tw
+  * Added ad V5 related endpoints
+  * Added campaign related endpoints
 
 * v.0.123 - 9 Sep 2022 - dr
   * improved explanation on OAuth 2.0 roles&flows, and added a sequence diagram

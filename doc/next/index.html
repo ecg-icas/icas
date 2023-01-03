@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; iCAS Sellside API 0.123 documentation</title>
+  <title>Introduction &mdash; iCAS Sellside API 0.124 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.123 documentation" href="#"/>
+    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="#"/>
         <link rel="next" title="Overview" href="overview.html"/> 
 
   
@@ -95,6 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
@@ -132,10 +136,6 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#example-xml">Example XML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -185,6 +185,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign.html">PUT /campaign</a></li>
@@ -277,6 +278,10 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
@@ -314,10 +319,6 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#example-xml">Example XML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -367,6 +368,7 @@ Notifications about maintenance will also go through this channel.</p>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign.html">PUT /campaign</a></li>
@@ -383,6 +385,9 @@ Notifications about maintenance will also go through this channel.</p>
 <section id="history">
 <span id="id2"></span><h1>History<a class="headerlink" href="#history" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
+<li><p>v.0.124 - 3 Jan 2023 - tw
+* Added ad V5 related endpoints
+* Added campaign related endpoints</p></li>
 <li><p>v.0.123 - 9 Sep 2022 - dr
 * improved explanation on OAuth 2.0 roles&amp;flows, and added a sequence diagram</p></li>
 <li><p>v.0.122 - 12 Oct 2021 - tw</p>
@@ -1152,7 +1157,7 @@ Notifications about maintenance will also go through this channel.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.123',
+            VERSION:'0.124',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

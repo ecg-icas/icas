@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Campaigns &mdash; iCAS Sellside API 0.123 documentation</title>
+  <title>Campaigns &mdash; iCAS Sellside API 0.124 documentation</title>
   
 
   
@@ -37,9 +37,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.123 documentation" href="index.html"/>
-        <link rel="next" title="Reporting" href="reporting.html"/>
-        <link rel="prev" title="XML Feeds" href="feeds.html"/> 
+    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="index.html"/>
+        <link rel="next" title="Categories" href="categories.html"/>
+        <link rel="prev" title="Advertisements" href="ads.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -96,6 +96,10 @@
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
@@ -133,10 +137,6 @@
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#example-xml">Example XML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
@@ -186,6 +186,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign.html">PUT /campaign</a></li>
@@ -233,12 +234,12 @@
   <section id="campaigns">
 <span id="index-0"></span><span id="id1"></span><h1>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h1>
 <p>A Campaign is a group of ads, sharing a campaign budget. Campaigns can be modified separately by using <a class="reference internal" href="reference/post-campaign.html#post-campaign"><span class="std std-ref">POST /campaign</span></a>,
-<a class="reference internal" href="reference/put-campaign.html#put-campaign"><span class="std std-ref">PUT /campaign</span></a> and <a class="reference internal" href="reference/put-campaign-status.html#put-campaign-status"><span class="std std-ref">PUT /campaign/{id}status</span></a>.
-For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign. We have
+<a class="reference internal" href="reference/put-campaign.html#put-campaign"><span class="std std-ref">PUT /campaign</span></a> and <a class="reference internal" href="reference/put-campaign-status.html#put-campaign-status"><span class="std std-ref">PUT /campaign/{id}status</span></a>. It is also possible to only change the budgets by using <a class="reference internal" href="reference/put-campaign-budgets.html#put-campaign-budgets"><span class="std std-ref">PUT /campaign/{id}/budgets</span></a>.</p>
+<p>For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign. We have
 the aim to, later on, allow for multiple campaigns per seller.
 Campaigns can have their own budgets, both daily and total. If these are not set, they will automatically be set to “UNLIMITED”.
 To make transitions to use campaigns easier, we will ensure that each (new or existing) seller already has a campaign, and if the
-seller has ads, these will be part of the campaign.</p>
+seller has ads, these will be part of the campaign. You can get your campaign(s) by calling <a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaign</span></a>.</p>
 <p>With campaigns it is possible to control spending for this entire list of ads and,
 in one go, start/stop advertising with the entire list of (active) ads.</p>
 <section id="fields">
@@ -298,8 +299,8 @@ in one go, start/stop advertising with the entire list of (active) ads.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj-daily-limitmicros"><span class="std std-ref">budgets.daily.limitMicros</span></a></p></td>
 <td><p>string</p></td>
 <td><p>see below</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj-daily-spentmicros"><span class="std std-ref">budgets.daily.spentMicros</span></a></p></td>
 <td><p>string</p></td>
@@ -310,8 +311,8 @@ in one go, start/stop advertising with the entire list of (active) ads.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj-total-limitmicros"><span class="std std-ref">budgets.total.limitMicros</span></a></p></td>
 <td><p>string</p></td>
 <td><p>see below</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj-total-spentmicros"><span class="std std-ref">budgets.total.spentMicros</span></a></p></td>
 <td><p>string</p></td>
@@ -377,10 +378,10 @@ will remain offline until this limit has been increased.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="reporting.html" class="btn btn-neutral float-right" title="Reporting"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="categories.html" class="btn btn-neutral float-right" title="Categories"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="feeds.html" class="btn btn-neutral" title="XML Feeds"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ads.html" class="btn btn-neutral" title="Advertisements"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -409,7 +410,7 @@ will remain offline until this limit has been increased.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.123',
+            VERSION:'0.124',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

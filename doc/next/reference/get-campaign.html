@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /feed/xsd &mdash; iCAS Sellside API 0.124 documentation</title>
+  <title>GET /campaign &mdash; iCAS Sellside API 0.124 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /report" href="get-report.html"/>
-        <link rel="prev" title="GET /feed/import/{id}/detail" href="get-feed-import-id-detail.html"/> 
+        <link rel="next" title="Campaign Status" href="campaign-status.html"/>
+        <link rel="prev" title="POST /metrics/data" href="post-metrics-data.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -178,7 +178,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/xsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -187,7 +187,7 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign.html">PUT /campaign</a></li>
@@ -223,10 +223,10 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>GET /feed/xsd</li>
+    <li>GET /campaign</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/get-feed-xsd.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/get-campaign.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -234,25 +234,8 @@
 </div>
           <div role="main">
             
-  <section id="get-feed-xsd">
-<span id="index-0"></span><span id="id1"></span><h1>GET /feed/xsd<a class="headerlink" href="#get-feed-xsd" title="Permalink to this heading">¶</a></h1>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 80.0%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Scope</p></td>
-<td><p>&lt;none&gt;</p></td>
-</tr>
-<tr class="row-even"><td><p>Accept</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">text/xml</span></code></p></td>
-</tr>
-</tbody>
-</table>
-<p>This URL returns the XSD used to validate <strong>feed</strong> XML files against. No scopes are needed for this call.
-Users can use this XSD to check their <strong>feed</strong> XML themselves, instead of just submitting it and waiting for
-results the next day.</p>
+  <section id="get-campaign">
+<span id="index-0"></span><span id="id1"></span><h1>GET /campaign<a class="headerlink" href="#get-campaign" title="Permalink to this heading">¶</a></h1>
 </section>
 
 
@@ -261,10 +244,10 @@ results the next day.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-report.html" class="btn btn-neutral float-right" title="GET /report"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="campaign-status.html" class="btn btn-neutral float-right" title="Campaign Status"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="get-feed-import-id-detail.html" class="btn btn-neutral" title="GET /feed/import/{id}/detail"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="post-metrics-data.html" class="btn btn-neutral" title="POST /metrics/data"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
