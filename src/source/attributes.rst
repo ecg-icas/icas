@@ -21,10 +21,10 @@ They serve as a basis for the attributes the seller can supply in addition
 to his own user-defined attributes. You cannot post/put category attributes.
 In order to add attributes to an ad you need to supply user defined attributes (See below).
 
-Category attributes are provided as part of the category in the **attributes**
-link. Each category attribute has a **key**, a **label**, a **locale** for the label and values,
+Category attributes are provided as part of the category taxonomy  tree, in the **attributes**
+subsection. Each category attribute has a **key**, a **label**, a **locale** for the label and values,
 a **type** and depending on the type one or more additional properties describing the constraints.
-
+For more information on category attributes, see :ref:`category_attributes_v2`.
 
 The following types are supported:
 
@@ -39,33 +39,59 @@ NUMBER      User can provide a number between **minValue** and **maxValue**
 Example
 ^^^^^^^
 
+Below is an excerpt from the attributes section of a category tree, for a particular category
+
 .. code-block:: javascript
+
 
     [
         {
-            "key": "Levering",
-            "label": "Levering",
-            "locale": "nl",
+            "key": "delivery",
+            "label": {
+                "nl_NL": "Levering",
+                "en_NL": "Delivery"
+            }
             "type" : "STRING",
-            "values" : ["Ophalen", "Verzenden", "Ophalen of Verzenden"]
-            "mandatory" : false
+            "values" : {
+                "nl_NL": ["Ophalen", "Verzenden", "Ophalen of Verzenden"],
+                "en_NL": ["Pickup", "Deliver", "Pickup or Deliver"]
+
+            },
+            "defaults": {
+                "nl_NL": "Ophalen",
+                "en_NL": "Pickup"
+            }
+            "mandatory" : true,
+            "writable": true,
+            "updatable": true
         },
         {
-            "key": "Eigenschappen",
-            "label": "Eigenschappen",
-            "locale": "nl",
+            "key": "subtitles",
+            "label": {
+                "nl_NL": "Ondertiteling",
+                "en_NL": "Subtitles"
+            },
             "type" : "LIST",
-            "values" : ["Met bandje", "Met ketting", "Verguld"],
-            "mandatory" : false
+            "values" : {
+                "nl_NL": ["Engels", "Duits", "Nederlands"],
+                "en_NL": ["English", "German", "Dutch"]
+            },
+            "defaults":{},
+            "mandatory" : false,
+            "writable": true,
+            "updatable": true
         },
         {
-            "key": "Motorinhoud",
-            "label": "Motorinhoud",
-            "locale": "nl",
+            "key": "motorinhoud",
+            "label": {
+                "nl_NL": "Motorinhoud",
+                "en_NL":"Engine capacity"
+            }
             "type" : "NUMBER",
-            "minValue" : 1,
-            "maxValue" : 8500,
-            "mandatory" : true
+            "range" : [1,8500],
+            "mandatory" : true,
+            "writable": true,
+            "updatable": false
         },
         ...
     ]
@@ -90,11 +116,14 @@ Locale must contain a valid locale string (e.g. one of en, nl, fr, en_US, en_GB,
 All of the user attributes will be stored with the ad. After placing an ad the
 system will analyze the user-defined attributes for familiarities with respect to
 category attributes. If a user-defined attribute is recognized by
-us, the **recognized** flag is set to **true**.
+us, the **recognized** flag is set to **true**. An attribute is recognized if the provided
+type and value(s) for that particular attribute key match the type and possible values
+as defined in the category tree. The recognized attributes can be used to apply the desired
+filtering criteria supplied by potential buyers searching on the tenant marketplace.
 
-Currently, the user-defined attributes will only be stored. At a later stage
-the system will automatically start indexing the user-defined
-attributes and update the ads accordingly without user interaction.
+Beware that category attributes which are marked as ``mandatory`` in the category tree must
+be supplied with the ad, otherwise the ad will be invalidated. Attributes that are not ``updatable``
+cannot be changed, once they are supplied. An attempt to change the value of such attribute will also result in ad invalidation.
 
 Example
 ^^^^^^^
@@ -105,28 +134,28 @@ Example
         { 
             "key" : "color",
             "label" : "kleur",
-            "locale" : "nl",
+            "locale" : "nl_NL",
             "type": "STRING", 
             "value" : "Zwart"
         },
         {
             "key" : "color",
             "label" : "color",
-            "locale" : "en",
+            "locale" : "en_EN",
             "type": "STRING",
             "value" : "Black"
         },
         { 
             "key" : "size",
             "label" : "size",
-            "locale" : "en",
+            "locale" : "en_EN",
             "type" : "NUMBER",
             "value" : 6
         },
         {
             "key" : "daysOfWeek",
             "label" : "Days of the week",
-            "locale" : "en",
+            "locale" : "en_EN",
             "type" : "LIST",
             "value" : ["Monday", "Tuesday", "Friday"]
         },

@@ -448,6 +448,7 @@ attribute groups themselves.
    - not empty
    - Ordered list of attributes.
 
+.. _category_attributes_v2:
 
 Attributes
 ----------
