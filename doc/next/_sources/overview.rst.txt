@@ -148,8 +148,11 @@ UTC format.
 Prices and Currencies
 ---------------------
 
-All monetary amounts like prices and budgets are currently in Euros and stored as euro cents.
-Currencies are specified as three character `ISO 4217`_ code.
+Monetary amounts like prices and budgets are currently undergoing changes; newer
+versions of endpoints mention whether the amount is either in cents or in micro 
+units of the currency the local markets. If this is not mentioned, this is 
+represented as (euro/dollar) cents. Currencies are specified as three character `ISO 4217`_ code.
+1 euro/dollar == 100 cents == 1000000 micros.
 
 .. _overview_http_response_codes_and_error_handling:
 
