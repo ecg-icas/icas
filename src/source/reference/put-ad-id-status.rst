@@ -4,6 +4,34 @@
 PUT /ad/{id}/status
 ===================
 
+:ref:`put_ad_status_v5` | :ref:`put_ad_status`
+
+.. _put_ad_status_v5:
+
+PUT /ad/{id}/status v5:
+-----------------------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v5+json, application/json``
+
+:ref:`put_ad_status_v5` introduces an accept header. See :ref:`ad_status_overview` for details on statuses.
+
+Example
+-------
+
+.. include:: ../examples/put-ad-status-v5-example.rst
+
+.. _put_ad_status:
+
+PUT /ad/{id}/status without version
+-----------------------------------
+
 .. list-table::
  :widths: 20 80
 
@@ -51,7 +79,7 @@ Field                   Code    Error message                   Description
 ====================    ====    ============================    ==============================================================================
 id                      2001    invalid argument                not a valid number
 status                  2001    invalid argument                must be either *ACTIVE*, *PAUSED* or *DELETED*
-status                  2017    ad status change not allowed    changing the status of an ad is not allowed
+status                  2017    ad status change not allowed    changing the status of the ad to the provided status is not allowed
 ====================    ====    ============================    ==============================================================================
 
 Example
