@@ -5,7 +5,32 @@
 GET /ad/byVendor/{vendorId}
 ===========================
 
-:ref:`get_ad_Vendor_id_v3` | :ref:`get_ad_vendor_id_v2`
+:ref:`get_ad_vendor_id_v5` | :ref:`get_ad_vendor_id_v3` | :ref:`get_ad_vendor_id_v2`
+
+.. _get_ad_vendor_id_v5:
+
+GET /ad/byVendor/{vendorId} v5
+------------------------------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad-v5+json, application/json``
+
+This URL returns a single ad with the given ``vendorId``.
+
+If the ad does not exist or does not belong to the user the server returns
+**404 Not Found**. If the ``vendorId`` is bigger than 64 characters the
+server returns **400 Bad Request**.
+
+Example
+-------
+
+.. include:: ../examples/get-ad-vendorid-v5-example.rst
 
 .. _get_ad_vendor_id_v3:
 

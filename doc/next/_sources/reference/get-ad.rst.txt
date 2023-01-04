@@ -9,7 +9,7 @@ GET /ad
 
 .. warning::
 
-    :ref:`get_ad_v4` is now officially deprecated and scheduled for removal on April, 1st 2022. Please move to use :ref:`get_ad_v5`.
+    :ref:`get_ad_v4` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_ad_v5`.
 
     :ref:`get_ad_v3` is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use :ref:`get_ad_v5`.
 

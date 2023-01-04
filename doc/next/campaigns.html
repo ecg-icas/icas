@@ -233,13 +233,13 @@
   <section id="campaigns">
 <span id="index-0"></span><span id="id1"></span><h1>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h1>
 <p>A Campaign is a group of ads, sharing a campaign budget. With campaigns, it is possible to control spending for this entire list of ads and,
-in one go, start/stop advertising with the entire list of (active) ads.</p>
-<p>For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign. We have
-the aim to, later on, allow for multiple campaigns per seller.
-Campaigns can have their own budgets, both daily and total. If these are not set, they will automatically be set to “UNLIMITED”.
+in one go, start/stop advertising with the entire list of (active) ads.
+Campaigns can have their own budgets, both daily and total. If these are not set, they will automatically be set to “UNLIMITED” to
+be compatible with the times when campaigns did not exist yet.</p>
+<p>For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign.
 To make transitions to use campaigns easier, we will ensure that each (new or existing) seller already has a campaign, and if the
 seller has ads, these will be part of the campaign.</p>
-<p>You can get your campaign(s) by calling <a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaign</span></a> or <a class="reference internal" href="reference/get-campaign-id.html#get-campaign-id"><span class="std std-ref">GET /campaign/{id}</span></a>. Campaign budgets can be modified by using
+<p>You can get your campaign by calling <a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaign</span></a> or <a class="reference internal" href="reference/get-campaign-id.html#get-campaign-id"><span class="std std-ref">GET /campaign/{id}</span></a>. Campaign budgets can be modified by using
 <a class="reference internal" href="reference/put-campaign-id-budgets.html#put-campaign-id-budgets"><span class="std std-ref">PUT /campaign/{id}/budgets</span></a>, and controlling campaign status can be done by <a class="reference internal" href="reference/put-campaign-id-status.html#put-campaign-id-status"><span class="std std-ref">PUT /campaign/{id}/status</span></a>. We expect to
 add more campaign functionality in the future.</p>
 <section id="fields">

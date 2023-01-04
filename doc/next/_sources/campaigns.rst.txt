@@ -7,17 +7,16 @@ Campaigns
 
 A Campaign is a group of ads, sharing a campaign budget. With campaigns, it is possible to control spending for this entire list of ads and,
 in one go, start/stop advertising with the entire list of (active) ads.
+Campaigns can have their own budgets, both daily and total. If these are not set, they will automatically be set to "UNLIMITED" to
+be compatible with the times when campaigns did not exist yet.
 
-For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign. We have
-the aim to, later on, allow for multiple campaigns per seller.
-Campaigns can have their own budgets, both daily and total. If these are not set, they will automatically be set to "UNLIMITED".
+For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign. 
 To make transitions to use campaigns easier, we will ensure that each (new or existing) seller already has a campaign, and if the
 seller has ads, these will be part of the campaign. 
 
-You can get your campaign(s) by calling :ref:`get_campaign` or :ref:`get_campaign_id`. Campaign budgets can be modified by using 
+You can get your campaign by calling :ref:`get_campaign` or :ref:`get_campaign_id`. Campaign budgets can be modified by using 
 :ref:`put_campaign_id_budgets`, and controlling campaign status can be done by :ref:`put_campaign_id_status`. We expect to 
 add more campaign functionality in the future.
-
 
 .. _campaign-fields:
 

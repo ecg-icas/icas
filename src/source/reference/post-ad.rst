@@ -5,7 +5,44 @@ POST |an|/ad
 ============
 .. |an| unicode:: 0x20 .. Workaround for ad blocker: apparently it blocks a section with id 'post-ad'
 
-:ref:`post_ad_v3` | :ref:`post_ad_v2`
+:ref:`post_ad_v5` | :ref:`post_ad_v3` | :ref:`post_ad_v2`
+
+.. _post_ad_v5:
+
+POST /ad/ v5
+------------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v5+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v5+json; charset=utf-8``
+
+.. note::
+
+    Ads created with POST Ad V5 have a slightly different structure than :ref:`get_ad_id_v3`.
+    It is correct that V4 is skipped.
+
+    .. list-table::
+     :widths: 100
+
+     * - The fields related to `price` are consolidated into one mandatory :ref:`ad_priceobj` object.
+     * - The field :ref:`ad_campaignId` is added.
+     * - The daily and total budgets are now consolidated in one mandatory :ref:`ad_budgetsobj` object.
+     * - CPC is no longer, it has changed into mandatory :ref:`ad_bidMicros`.
+     * - :ref:`ad_bidMicros`, :ref:`ad_budgetsobj_daily_limitMicros`, :ref:`ad_budgetsobj_daily_spentMicros`, :ref:`ad_budgetsobj_total_limitMicros` and :ref:`ad_budgetsobj_total_spentMicros` are now all in micro currencies.
+     * - several other fields are removed. See :ref:`ad-fields` for details.
+
+Example
+-------
+
+.. include:: ../examples/post-ad-v5-example.rst
 
 .. _post_ad_v3:
 
