@@ -9,7 +9,7 @@ Categories
 ==========
 
 The category tree contains all the information about category definitions,
-attribute definitions and validation rules for placing ads on iCAS.
+attribute definitions and validation rules for placing ads.
 
 The category tree has the following properties:
 
@@ -32,7 +32,7 @@ Every other category id is a unique integer value within the range [1..2^53).
 Category Levels
 ---------------
 
-Although the number of sub levels is not limited, iCAS category tree has
+Although the number of sub levels is not limited, the category tree has
 up to three levels of categories (L1-3). The root node is considered
 special and resides at Level 0 (L0). Performing a search at the root node would
 result in a site-wide search across all categories.
@@ -252,8 +252,8 @@ Data Model
 
 The data model is designed to support the following use cases:
 
-* render a user interface for placing an ad on iCAS
-* validate an ad that is placed via the iCAS Sellside API
+* render a user interface for placing an ad
+* validate an ad that is placed via the Sellside API
 
 The category tree is provided as a JSON object which has the following structure:
 
@@ -448,6 +448,7 @@ attribute groups themselves.
    - not empty
    - Ordered list of attributes.
 
+.. _category_attributes_v2:
 
 Attributes
 ----------

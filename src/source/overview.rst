@@ -7,7 +7,7 @@
 Overview
 ========
 
-The iCAS Sellside API is a RESTful API to manage ads on iCAS either for your
+The Sellside API is a RESTful API to manage ads either for your
 own account or on behalf of other users. The base URLs for the API are:
 
 .. list-table::
@@ -47,22 +47,24 @@ current customer on Marktplaats Production becomes::
 
     https://admarkt.marktplaats.nl/api/sellside/ad/1234
 
-.. _overview_image_downloads:
+.. _overview_authentication:
 
-Image Downloads
----------------
+Authentication
+--------------
 
-Images are downloaded from the following ip addresses. Ensure that all image
-URLs are accessible by these ip addresses and that there is no rate limit.
+Authentication is provided using *OAuth2* tokens and the so called
+`Authorization Code Grant`_
+which means that you need a client id and client secret to access the api with
+an access token that the API provides. It is not possible to use username and
+password to get an access token.
 
- * 5.255.156.110 (production)
- * 5.255.156.126 (production)
- * 91.211.74.6   (sandbox)
+To request a client id and secret please ask your contact at the respective tenant
+(marktplaats, kijiji.ca, tweedehands). Your contact can also send you an invite
+for our `Discord`_ channel, where you can go for maintenance notifications and
+support.
 
-To reduce the latency when updating an ad we suggest that the response
-contains either an ``ETag`` and/or ``Last-Modified`` header which only changes
-when the image itself has changed. It should also be possible to check these
-headers using a ``HEAD`` request.
+See the :ref:`authentication` section for the full details and also
+the `OAuth 2.0 website <http://oauth.net/2/>`_.
 
 .. _overview_media_types:
 
@@ -100,24 +102,22 @@ header to::
 
     <Media Type of the body content>
 
-.. _overview_authentication:
+.. _overview_image_downloads:
 
-Authentication
---------------
+Image Downloads
+---------------
 
-Authentication is provided using *OAuth2* tokens and the so called
-`Authorization Code Grant`_
-which means that you need a client id and client secret to access the api with
-an access token that the API provides. It is not possible to use username and
-password to get an access token.
+Images are downloaded from the following ip addresses. Ensure that all image
+URLs are accessible by these ip addresses and that there is no rate limit.
 
-To request a client id and secret please ask your contact at the respective tenant
-(marktplaats, kijiji.ca, tweedehands). Your contact can also send you an invite
-for our `Discord`_ channel, where you can go for maintenance notifications and
-support.
+ * 5.255.156.110 (production)
+ * 5.255.156.126 (production)
+ * 91.211.74.6   (sandbox)
 
-See the :ref:`authentication` section for the full details and also
-the `OAuth 2.0 website <http://oauth.net/2/>`_.
+To reduce the latency when updating an ad we suggest that the response
+contains either an ``ETag`` and/or ``Last-Modified`` header which only changes
+when the image itself has changed. It should also be possible to check these
+headers using a ``HEAD`` request.
 
 .. _overview_customize_response_body:
 
@@ -148,8 +148,11 @@ UTC format.
 Prices and Currencies
 ---------------------
 
-All monetary amounts like prices and budgets are currently in Euros and stored as euro cents.
-Currencies are specified as three character `ISO 4217`_ code.
+Monetary amounts like prices and budgets are currently undergoing changes; newer
+versions of endpoints mention whether the amount is either in cents or in micro 
+units of the currency the local markets. If this is not mentioned, this is 
+represented as (euro/dollar) cents. Currencies are specified as three character `ISO 4217`_ code.
+1 euro/dollar == 100 cents == 1000000 micros.
 
 .. _overview_http_response_codes_and_error_handling:
 

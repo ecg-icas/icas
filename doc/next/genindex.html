@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; iCAS Sellside API 0.123 documentation</title>
+  <title>Index &mdash; iCAS Sellside API 0.124 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="#"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.123 documentation" href="index.html"/> 
+    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="index.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -66,10 +66,10 @@
         
             <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
@@ -92,6 +92,10 @@
 <li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
@@ -157,19 +161,21 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id.html">PUT /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -178,9 +184,12 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -249,6 +258,8 @@
       <ul>
         <li><a href="reference/ad-status.html#index-1">Ad Status</a>
 </li>
+        <li><a href="reference/campaign-status.html#index-1">Campaign Status</a>
+</li>
       </ul></li>
       <li><a href="reference/ad-status.html#index-0">Ad Status</a>
 
@@ -263,6 +274,8 @@
 </li>
         <li><a href="reference/ad-status.html#index-4">DELETED_BY_CS</a>
 </li>
+        <li><a href="reference/ad-status.html#index-8">DOMAIN_PENDING</a>
+</li>
         <li><a href="reference/ad-status.html#index-2">PAUSED</a>
 </li>
         <li><a href="reference/ad-status.html#index-5">SUSPENDED_BY_CS</a>
@@ -270,17 +283,29 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ads.html#index-21">ad_budgetsobj_daily</a>
+</li>
+      <li><a href="ads.html#index-23">ad_budgetsobj_daily_limitMicros</a>
+</li>
+      <li><a href="ads.html#index-25">ad_budgetsobj_daily_spentMicros</a>
+</li>
+      <li><a href="ads.html#index-22">ad_budgetsobj_total</a>
+</li>
+      <li><a href="ads.html#index-24">ad_budgetsobj_total_limitMicros</a>
+</li>
+      <li><a href="ads.html#index-26">ad_budgetsobj_total_spentMicros</a>
+</li>
       <li><a href="ads.html#index-0">Ads</a>
 </li>
       <li><a href="ads.html#index-0">Advertisments</a>
 </li>
-      <li><a href="ads.html#index-23">allowContactByEmail</a>
+      <li><a href="ads.html#index-38">allowContactByEmail</a>
 </li>
-      <li><a href="ads.html#index-24">allowPaypal</a>
+      <li><a href="ads.html#index-39">allowPaypal</a>
 </li>
       <li><a href="attributes.html#index-0">Attributes</a>
 </li>
-      <li><a href="ads.html#index-36">attributes</a>
+      <li><a href="ads.html#index-51">attributes</a>
 </li>
       <li><a href="authentication.html#index-0">Authentication</a>
 </li>
@@ -304,29 +329,63 @@
         <li><a href="reference/price-types.html#index-0">Price Types</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ads.html#index-18">bidMicros</a>
+</li>
       <li>
     BUDGET_REACHED
 
       <ul>
         <li><a href="reference/ad-status.html#index-6">Ad Status</a>
 </li>
+        <li><a href="reference/campaign-status.html#index-3">Campaign Status</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ads.html#index-20">budgets</a>, <a href="campaigns.html#index-5">[1]</a>
+</li>
+      <li><a href="campaigns.html#index-6">budgets.daily</a>
+</li>
+      <li><a href="campaigns.html#index-8">budgets.daily.limitMicros</a>
+</li>
+      <li><a href="campaigns.html#index-10">budgets.daily.spentMicros</a>
+</li>
+      <li><a href="campaigns.html#index-7">budgets.total</a>
+</li>
+      <li><a href="campaigns.html#index-9">budgets.total.limitMicros</a>
+</li>
+      <li><a href="campaigns.html#index-11">budgets.total.spentMicros</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/campaign-status.html#index-0">Campaign Status</a>
+
+      <ul>
+        <li><a href="reference/campaign-status.html#index-1">ACTIVE</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-3">BUDGET_REACHED</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-4">DAILY_BUDGET_REACHED</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-2">PAUSED</a>
+</li>
+      </ul></li>
+      <li><a href="ads.html#index-17">campaignId</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="campaigns.html#index-0">Campaigns</a>
+</li>
       <li><a href="categories.html#index-0">categoryConfigV2</a>
 </li>
       <li><a href="ads.html#index-4">categoryId</a>
 </li>
-      <li><a href="ads.html#index-11">cpc</a>
+      <li><a href="ads.html#index-19">cpc</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     CREDIBLE_BID
 
@@ -348,18 +407,20 @@
       <ul>
         <li><a href="reference/ad-status.html#index-7">Ad Status</a>
 </li>
+        <li><a href="reference/campaign-status.html#index-4">Campaign Status</a>
+</li>
       </ul></li>
-      <li><a href="ads.html#index-13">dailyBudget</a>
+      <li><a href="ads.html#index-28">dailyBudget</a>
 </li>
-      <li><a href="ads.html#index-14">dailySpent</a>
+      <li><a href="ads.html#index-29">dailySpent</a>
 </li>
-      <li><a href="ads.html#index-25">dateCreated</a>
+      <li><a href="ads.html#index-40">dateCreated</a>, <a href="campaigns.html#index-3">[1]</a>
 </li>
-      <li><a href="ads.html#index-27">dateDeleted</a>
+      <li><a href="ads.html#index-42">dateDeleted</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-26">dateLastUpdated</a>
+      <li><a href="ads.html#index-41">dateLastUpdated</a>, <a href="campaigns.html#index-4">[1]</a>
 </li>
       <li>
     DELETED
@@ -377,6 +438,13 @@
       </ul></li>
       <li><a href="ads.html#index-3">description</a>
 </li>
+      <li>
+    DOMAIN_PENDING
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-8">Ad Status</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -423,13 +491,15 @@
 </li>
       <li><a href="reference/get-ad-vendor-id.html#index-0">GET /ad/byVendor/{vendorId}</a>
 </li>
-      <li><a href="reference/get-ad-ids.html#index-0">GET /ad/ids</a>
-</li>
       <li><a href="reference/get-ad-externalid-mapping.html#index-0">GET /ad/mapping/externalids</a>
 </li>
       <li><a href="reference/get-ad-id.html#index-0">GET /ad/{id}</a>
 </li>
       <li><a href="reference/get-ad-id-funnel.html#index-0">GET /ad/{id}/funnel</a>
+</li>
+      <li><a href="reference/get-campaign.html#index-0">GET /campaign</a>
+</li>
+      <li><a href="reference/get-campaign-id.html#index-0">GET /campaign/{id}</a>
 </li>
       <li><a href="reference/get-categories.html#index-0">GET /categories</a>
 </li>
@@ -441,10 +511,10 @@
 </li>
       <li><a href="reference/get-feed-config.html#index-0">GET /feed/config</a>
 </li>
-      <li><a href="reference/get-feed-import.html#index-0">GET /feed/import</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/get-feed-import.html#index-0">GET /feed/import</a>
+</li>
       <li><a href="reference/get-feed-import-id-detail.html#index-0">GET /feed/import/{id}/detail</a>
 </li>
       <li><a href="reference/get-feed-xsd.html#index-0">GET /feed/xsd</a>
@@ -475,13 +545,13 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-1">id</a>
+      <li><a href="ads.html#index-1">id</a>, <a href="campaigns.html#index-1">[1]</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-35">image objects</a>
+      <li><a href="ads.html#index-50">image objects</a>
 </li>
-      <li><a href="ads.html#index-34">images</a>
+      <li><a href="ads.html#index-49">images</a>
 </li>
   </ul></td>
 </tr></table>
@@ -489,15 +559,15 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-29">links.category</a>
+      <li><a href="ads.html#index-44">links.category</a>
 </li>
-      <li><a href="ads.html#index-31">links.displayUrl</a>
+      <li><a href="ads.html#index-46">links.displayUrl</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-28">links.self</a>
+      <li><a href="ads.html#index-43">links.self</a>
 </li>
-      <li><a href="ads.html#index-30">links.url</a>
+      <li><a href="ads.html#index-45">links.url</a>
 </li>
   </ul></td>
 </tr></table>
@@ -505,7 +575,7 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-33">microTip</a>
+      <li><a href="ads.html#index-48">microTip</a>
 </li>
   </ul></td>
 </tr></table>
@@ -539,7 +609,7 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-20">pageNumber</a>
+      <li><a href="ads.html#index-35">pageNumber</a>
 </li>
       <li>
     PAUSED
@@ -547,12 +617,16 @@
       <ul>
         <li><a href="reference/ad-status.html#index-2">Ad Status</a>
 </li>
+        <li><a href="reference/campaign-status.html#index-2">Campaign Status</a>
+</li>
       </ul></li>
-      <li><a href="ads.html#index-22">phoneNumber</a>
+      <li><a href="ads.html#index-37">phoneNumber</a>
 </li>
       <li><a href="reference/post-ad.html#index-0">POST /ad</a>
 </li>
       <li><a href="reference/post-ad-prefill.html#index-0">POST /ad/prefill</a>
+</li>
+      <li><a href="reference/post-campaign.html#index-0">POST /campaign</a>
 </li>
       <li><a href="reference/post-feed-config.html#index-0">POST /feed/config</a>
 </li>
@@ -562,10 +636,14 @@
 </li>
       <li><a href="reference/post-report-detail.html#index-0">POST /report/detail</a>
 </li>
-      <li><a href="ads.html#index-18">postcode</a>
+      <li><a href="ads.html#index-33">postcode</a>
 </li>
-      <li><a href="ads.html#index-10">price</a>
+      <li><a href="ads.html#index-11">price</a>
+
+      <ul>
+        <li><a href="ads.html#index-10">(integer)</a>
 </li>
+      </ul></li>
       <li><a href="reference/price-types.html#index-0">Price Types</a>
 
       <ul>
@@ -592,6 +670,14 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ads.html#index-12">price.amountCents</a>
+</li>
+      <li><a href="ads.html#index-15">price.originalAmountCents</a>
+</li>
+      <li><a href="ads.html#index-13">price.priceType</a>
+</li>
+      <li><a href="ads.html#index-14">price.priceUnit</a>
+</li>
       <li><a href="ads.html#index-8">priceType</a>
 </li>
       <li><a href="ads.html#index-9">priceUnit</a>
@@ -600,13 +686,19 @@
 </li>
       <li><a href="reference/put-ad-id-status.html#index-0">PUT /ad/{id}/status</a>
 </li>
+      <li><a href="reference/put-campaign.html#index-0">PUT /campaign</a>
+</li>
+      <li><a href="reference/put-campaign-id-budgets.html#index-0">PUT /campaign/{id}/budgets</a>
+</li>
+      <li><a href="reference/put-campaign-id-status.html#index-0">PUT /campaign/{id}/status</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-19">regionId</a>
+      <li><a href="ads.html#index-34">regionId</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -623,7 +715,7 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-16">salutation</a>
+      <li><a href="ads.html#index-31">salutation</a>
 </li>
       <li>
     SEE_DESCRIPTION
@@ -632,17 +724,19 @@
         <li><a href="reference/price-types.html#index-0">Price Types</a>
 </li>
       </ul></li>
-      <li><a href="ads.html#index-17">sellerName</a>
+      <li><a href="ads.html#index-32">sellerName</a>
 </li>
-      <li><a href="ads.html#index-37">shippingOptions</a>
+      <li><a href="ads.html#index-52">shippingOptions</a>
 </li>
-      <li><a href="ads.html#index-15">spentBudget</a>
+      <li><a href="ads.html#index-30">spentBudget</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-6">status</a>
+      <li><a href="ads.html#index-6">status</a>, <a href="campaigns.html#index-2">[1]</a>
 </li>
-      <li><a href="ads.html#index-21">suggestedCpcForPageOne</a>
+      <li><a href="ads.html#index-16">statusReasons</a>
+</li>
+      <li><a href="ads.html#index-36">suggestedCpcForPageOne</a>
 </li>
       <li>
     SUSPENDED_BY_CS
@@ -668,7 +762,7 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-12">totalBudget</a>
+      <li><a href="ads.html#index-27">totalBudget</a>
 </li>
   </ul></td>
 </tr></table>
@@ -676,7 +770,7 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ads.html#index-32">vendorId</a>
+      <li><a href="ads.html#index-47">vendorId</a>
 </li>
   </ul></td>
 </tr></table>
@@ -711,7 +805,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.123',
+            VERSION:'0.124',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -722,6 +816,7 @@
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 
   
 

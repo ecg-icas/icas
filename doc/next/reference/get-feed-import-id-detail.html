@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /feed/import/{id}/detail &mdash; iCAS Sellside API 0.123 documentation</title>
+  <title>GET /feed/import/{id}/detail &mdash; iCAS Sellside API 0.124 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.123 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /feed/xsd" href="get-feed-xsd.html"/>
         <link rel="prev" title="GET /feed/import" href="get-feed-import.html"/> 
@@ -69,10 +69,10 @@
         
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#customize-response-body">Customize response body</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#dates-and-times">Dates and Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#prices-and-currencies">Prices and Currencies</a></li>
@@ -95,6 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -160,19 +164,21 @@
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -181,9 +187,12 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -378,93 +387,93 @@ the feed import from succeeding. Most of the time this is either a failure to do
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <p>This is example output of a successful feed import, with some records resulting in warnings/errors:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>  GET /api/sellside/feed/import/123/detail
-  Accept: application/sellside.feedimportdetail-v2+json; application/json
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>GET /api/sellside/feed/import/123/detail
+Accept: application/sellside.feedimportdetail-v2+json, application/json
 
-  200 OK
-  Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
+200 OK HTTP/1.1
+Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
 
 {
-  &quot;id&quot;: 123,
-  &quot;url&quot;: &quot;http://feed.com/id/5324&quot;,
-  &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
-  &quot;status&quot;: &quot;DONE&quot;,
-  &quot;error&quot;: &quot;&quot;,
-  &quot;totalRecordsRead&quot;: 110,
-  &quot;recordsSucceeded&quot;: 106,
-  &quot;recordsFailed&quot;: 4,
-  &quot;recordsWithWarnings&quot;: 10,
-  &quot;errors&quot;: {
-      &quot;price should be lower than originalPrice&quot;: {
-          &quot;count&quot;: 4,
-          &quot;vendorIdsSample&quot;: [
-              &quot;566&quot;,
-              &quot;abc-788&quot;,
-              &quot;990232&quot;,
-              &quot;000mcakjn&quot;
-          ]
-      }
-  },
-  &quot;warnings&quot;: {
-      &quot;externalId is deprecated (use only vendorId)&quot;: {
-          &quot;count&quot;: 2,
-          &quot;vendorIdsSample&quot;: [
-              &quot;vid6778787&quot;,
-              &quot;vendorid124&quot;
-          ],
-      },
-      &quot;mandatory attribute 240 absent&quot;: {
-          &quot;count&quot;: 8,
-          &quot;vendorIdsSample&quot;: [
-              &quot;vendorid124&quot;,
-              &quot;vendorid224&quot;
-          ]
-      }
-  }
+    &quot;id&quot;: 123,
+    &quot;url&quot;: &quot;http://feed.com/id/5324&quot;,
+    &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
+    &quot;status&quot;: &quot;DONE&quot;,
+    &quot;error&quot;: &quot;&quot;,
+    &quot;totalRecordsRead&quot;: 110,
+    &quot;recordsSucceeded&quot;: 106,
+    &quot;recordsFailed&quot;: 4,
+    &quot;recordsWithWarnings&quot;: 10,
+    &quot;errors&quot;: {
+        &quot;price should be lower than originalPrice&quot;: {
+            &quot;count&quot;: 4,
+            &quot;vendorIdsSample&quot;: [
+                &quot;566&quot;,
+                &quot;abc-788&quot;,
+                &quot;990232&quot;,
+                &quot;000mcakjn&quot;
+            ]
+        }
+    },
+    &quot;warnings&quot;: {
+        &quot;externalId is deprecated (use only vendorId)&quot;: {
+            &quot;count&quot;: 2,
+            &quot;vendorIdsSample&quot;: [
+                &quot;vid6778787&quot;,
+                &quot;vendorid124&quot;
+            ]
+        },
+        &quot;mandatory attribute 240 absent&quot;: {
+            &quot;count&quot;: 8,
+            &quot;vendorIdsSample&quot;: [
+                &quot;vendorid124&quot;,
+                &quot;vendorid224&quot;
+            ]
+        }
+    }
 }
 </pre></div>
 </div>
 <p>This is example output of a failed feed import, where XML validation did not succeed:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>  GET /api/sellside/feed/import/123/detail
-  Accept: application/sellside.feedimportdetail-v2+json; application/json
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>GET /api/sellside/feed/import/123/detail
+Accept: application/sellside.feedimportdetail-v2+json, application/json
 
-  200 OK
-  Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
+200 OK HTTP/1.1
+Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
 
 {
-  &quot;id&quot;: 123,
-  &quot;url&quot;: &quot;http://feed.com/id/5324&quot;,
-  &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
-  &quot;status&quot;: &quot;REJECTED&quot;,
-  &quot;error&quot;: &quot;feed validation failure: invalid feed: parsing xml feed: XML syntax error on line 34: invalid character entity &amp;raquo;&quot;,
-  &quot;totalCount&quot;: 0,
-  &quot;okCount&quot;: 0,
-  &quot;errorCount&quot;: 0,
-  &quot;warningCount&quot;: 0,
-  &quot;errors&quot;: {},
-  &quot;warnings&quot;: {}
+    &quot;id&quot;: 123,
+    &quot;url&quot;: &quot;http://feed.com/id/5324&quot;,
+    &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
+    &quot;status&quot;: &quot;REJECTED&quot;,
+    &quot;error&quot;: &quot;feed validation failure: invalid feed: parsing xml feed: XML syntax error on line 34: invalid character entity &amp;raquo;&quot;,
+    &quot;totalCount&quot;: 0,
+    &quot;okCount&quot;: 0,
+    &quot;errorCount&quot;: 0,
+    &quot;warningCount&quot;: 0,
+    &quot;errors&quot;: {},
+    &quot;warnings&quot;: {}
 }
 </pre></div>
 </div>
 <p>This is example output of a failed feed import, where the feed file could not be downloaded:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>  GET /api/sellside/feed/import/123/detail
-  Accept: application/sellside.feedimportdetail-v2+json; application/json
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>GET /api/sellside/feed/import/123/detail
+Accept: application/sellside.feedimportdetail-v2+json; application/json
 
-  200 OK
-  Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
+200 OK HTTP/1.1
+Content-Type: application/sellside.feedimportdetail-v2+json; charset=UTF-8
 
 {
-  &quot;id&quot;: 123,
-  &quot;url&quot;: &quot;http://feed.com/id/5324.xml&quot;,
-  &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
-  &quot;status&quot;: &quot;REJECTED&quot;,
-  &quot;error&quot;: &quot;HTTP 404 Not Found for: http://feed.com/id/5324.xml: fetch url failure&quot;,
-  &quot;totalCount&quot;: 0,
-  &quot;okCount&quot;: 0,
-  &quot;errorCount&quot;: 0,
-  &quot;warningCount&quot;: 0,
-  &quot;errors&quot;: {},
-  &quot;warnings&quot;: {}
+    &quot;id&quot;: 123,
+    &quot;url&quot;: &quot;http://feed.com/id/5324.xml&quot;,
+    &quot;dateCreated&quot;: &quot;2021-08-31T16:12:53Z&quot;,
+    &quot;status&quot;: &quot;REJECTED&quot;,
+    &quot;error&quot;: &quot;HTTP 404 Not Found for: http://feed.com/id/5324.xml: fetch url failure&quot;,
+    &quot;totalCount&quot;: 0,
+    &quot;okCount&quot;: 0,
+    &quot;errorCount&quot;: 0,
+    &quot;warningCount&quot;: 0,
+    &quot;errors&quot;: {},
+    &quot;warnings&quot;: {}
 }
 </pre></div>
 </div>
@@ -510,7 +519,7 @@ the feed import from succeeding. Most of the time this is either a failure to do
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.123',
+            VERSION:'0.124',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -521,6 +530,7 @@ the feed import from succeeding. Most of the time this is either a failure to do
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 

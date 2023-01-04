@@ -3,9 +3,17 @@
 Deprecation Plan
 ================
 
-The following calls are deprecated and scheduled to be removed on the 15th of August 2020:
+The following calls are deprecated and scheduled to be removed on May 1st, 2023:
 
- * :ref:`get_ad_ids_v1`
+ * :ref:`get_ad_v4`
+ * :ref:`get_ad_id_v3`
+ * :ref:`get_ad_id_v2`
+ * :ref:`get_ad_vendor_id_v3`
+ * :ref:`get_ad_vendor_id_v2`
+ * :ref:`post_ad_v3`
+ * :ref:`post_ad_v2`
+ * :ref:`put_ad_id_v3`
+ * :ref:`put_ad_id_v2`
 
 The following calls are deprecated and scheduled to be removed on the 15th of July 2020:
 

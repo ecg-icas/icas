@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id}/status &mdash; iCAS Sellside API 0.123 documentation</title>
+  <title>PUT /ad/{id}/status &mdash; iCAS Sellside API 0.124 documentation</title>
   
 
   
@@ -37,9 +37,9 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.123 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
-        <link rel="next" title="GET /categories" href="get-categories.html"/>
+        <link rel="next" title="Ad Status" href="ad-status.html"/>
         <link rel="prev" title="PUT /ad/{id}" href="put-ad-id.html"/> 
 
   
@@ -69,10 +69,10 @@
         
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#media-types">Media Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#image-downloads">Image Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#customize-response-body">Customize response body</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#dates-and-times">Dates and Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#prices-and-currencies">Prices and Currencies</a></li>
@@ -95,6 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -160,19 +164,21 @@
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -181,9 +187,12 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
@@ -226,6 +235,36 @@
             
   <section id="put-ad-id-status">
 <span id="index-0"></span><span id="id1"></span><h1>PUT /ad/{id}/status<a class="headerlink" href="#put-ad-id-status" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference internal" href="#put-ad-status-v5"><span class="std std-ref">PUT /ad/{id}/status v5:</span></a> | <a class="reference internal" href="#put-ad-status"><span class="std std-ref">PUT /ad/{id}/status without version</span></a></p>
+<section id="put-ad-id-status-v5">
+<span id="put-ad-status-v5"></span><h2>PUT /ad/{id}/status v5:<a class="headerlink" href="#put-ad-id-status-v5" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_rw</span></code> or <code class="docutils literal notranslate"><span class="pre">console_rw</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json,</span> <span class="pre">application/json</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="#put-ad-status-v5"><span class="std std-ref">PUT /ad/{id}/status v5:</span></a> introduces an accept header. See <a class="reference internal" href="ad-status.html#ad-status-overview"><span class="std std-ref">Ad Status</span></a> for details on statuses.</p>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mf">42</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span><span class="w"></span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="put-ad-id-status-without-version">
+<span id="put-ad-status"></span><h2>PUT /ad/{id}/status without version<a class="headerlink" href="#put-ad-id-status-without-version" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -256,6 +295,7 @@ remaining, this call will succeed. The resulting status of the ad will be either
 <a class="reference internal" href="ad-status.html#ad-status-budget-reached"><span class="std std-ref">BUDGET_REACHED</span></a> or <a class="reference internal" href="ad-status.html#ad-status-daily-budget-reached"><span class="std std-ref">DAILY_BUDGET_REACHED</span></a>,
 depending on which budget has run out. In this case the ad will go live as soon
 as budget is added.</p>
+</section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -299,13 +339,13 @@ as budget is added.</p>
 <tr class="row-even"><td><p>status</p></td>
 <td><p>2017</p></td>
 <td><p>ad status change not allowed</p></td>
-<td><p>changing the status of an ad is not allowed</p></td>
+<td><p>changing the status of the ad to the provided status is not allowed</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<section id="id2">
+<h2>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mf">42</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span><span class="w"></span>
 </pre></div>
 </div>
@@ -318,7 +358,7 @@ as budget is added.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="get-categories.html" class="btn btn-neutral float-right" title="GET /categories"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ad-status.html" class="btn btn-neutral float-right" title="Ad Status"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="put-ad-id.html" class="btn btn-neutral" title="PUT /ad/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -350,7 +390,7 @@ as budget is added.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.123',
+            VERSION:'0.124',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -361,6 +401,7 @@ as budget is added.</p>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 

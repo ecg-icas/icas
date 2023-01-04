@@ -12,7 +12,7 @@ Regions
 
 
 The region tree contains all the information about region definitions
-for placing ads on iCAS.
+for placing ads.
 
 The region tree has the following properties:
 
@@ -59,7 +59,7 @@ Data Model
 
 The data model is designed to support the following use cases:
 
-* render a user interface for placing an ad on iCAS
+* render a user interface for placing an ad
 * validate an ad
 * allow for region filter and distance search/sort
 

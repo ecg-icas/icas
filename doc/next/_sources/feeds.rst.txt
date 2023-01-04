@@ -4,7 +4,7 @@ XML Feeds
 =========
 XML feeds are the way for users to handle repetitive asynchronous bulk uploading of ads.
 When a user is eligible for feed usage the user can configure an HTTP(s) URL through
-:ref:`post_feed_config` or the frontend to make iCAS, once a day, attempt to download an
+:ref:`post_feed_config` or the frontend to make the system, once a day, attempt to download an
 XML file. The contents of this XML file need to adhere to the XSD available for sellers
 at :ref:`get_feed_xsd`.
 
@@ -151,7 +151,7 @@ to your ads. Existing ads will remain unchanged and no new ads will be created.
 Next to various online capabilities where you can provide both your XML and XSD files,
 a way to check quickly and locally is to use a tool called xmllint. With this tool
 you can use our XSD downloaded from :ref:`get_feed_xsd` to test whether your feed is
-working before you let iCAS fetch it using the following command:
+working before you let our system fetch it using the following command:
 
 .. code-block:: bash
 

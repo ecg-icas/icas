@@ -5,7 +5,43 @@
 GET /ad/{id}
 ============
 
-:ref:`get_ad_id_v3` | :ref:`get_ad_id_v2`
+:ref:`get_ad_id_v5` | :ref:`get_ad_id_v3` | :ref:`get_ad_id_v2`
+
+.. _get_ad_id_v5:
+
+GET /ad/{id} v5
+---------------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad-v5+json, application/json``
+
+
+.. note::
+
+    Ads fetched with GET Ad V5 have a slightly different structure than :ref:`get_ad_id_v3`.
+    It is correct that V4 is skipped.
+
+    .. list-table::
+     :widths: 100
+
+     * - The fields related to `price` are consolidated into one :ref:`ad_priceobj` object.
+     * - The field :ref:`ad_campaignId` is added.
+     * - The daily and total budgets are now consolidated in one :ref:`ad_budgetsobj` object.
+     * - CPC is no longer, it has changed into :ref:`ad_bidMicros`.
+     * - :ref:`ad_bidMicros`, :ref:`ad_budgetsobj_daily_limitMicros`, :ref:`ad_budgetsobj_daily_spentMicros`, :ref:`ad_budgetsobj_total_limitMicros` and :ref:`ad_budgetsobj_total_spentMicros` are now all in micro currencies.
+     * - several other fields are removed. See :ref:`ad-fields` for details.
+
+
+Example
+-------
+
+.. include:: ../examples/get-ad-id-v5-example.rst
 
 .. _get_ad_id_v3:
 

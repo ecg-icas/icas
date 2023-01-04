@@ -4,7 +4,44 @@
 PUT /ad/{id}
 ============
 
-:ref:`put_ad_id_v3` | :ref:`put_ad_id_v2`
+:ref:`put_ad_id_v5` | :ref:`put_ad_id_v3` | :ref:`put_ad_id_v2`
+
+.. _put_ad_id_v5:
+
+PUT /ad/{id} v5
+---------------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.ad-v5+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.ad-v5+json; charset=utf-8``
+
+.. note::
+
+    Ads updated with PUT Ad V5 have a slightly different structure than :ref:`get_ad_id_v3`.
+    It is correct that V4 is skipped.
+
+    .. list-table::
+     :widths: 100
+
+     * - The fields related to `price` are consolidated into one mandatory :ref:`ad_priceobj` object.
+     * - The field :ref:`ad_campaignId` is added.
+     * - The daily and total budgets are now consolidated in one mandatory :ref:`ad_budgetsobj` object.
+     * - CPC is no longer, it has changed into mandatory :ref:`ad_bidMicros`.
+     * - :ref:`ad_bidMicros`, :ref:`ad_budgetsobj_daily_limitMicros`, :ref:`ad_budgetsobj_daily_spentMicros`, :ref:`ad_budgetsobj_total_limitMicros` and :ref:`ad_budgetsobj_total_spentMicros` are now all in micro currencies.
+     * - several other fields are removed. See :ref:`ad-fields` for details.
+
+Example
+-------
+
+.. include:: ../examples/put-ad-v5-example.rst
 
 .. _put_ad_id_v3:
 

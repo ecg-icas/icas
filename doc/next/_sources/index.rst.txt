@@ -1,4 +1,4 @@
-.. _Discord: https://discordapp.com
+.. _Discord: https://discord.com
 
 .. _index:
 
@@ -7,7 +7,7 @@
 Introduction
 ============
 
-This document describes the iCAS Sellside API to place ads on iCAS.
+This document describes the Sellside API to place ads.
 
 The API is designed as a RESTful API supporting JSON as data formats.
 Authentication is provided va OAuth2 to allow simple integration with existing
@@ -17,9 +17,9 @@ Help / Feedback
 ===============
 
 If you have questions or would like to provide feedback, you can do so via our
-`Discord`_ channel. Please talk to your contact at the tenant to get access, this
+`Discord`_ channel. Please talk to your contact at the tenant (local marketplace) to get access, this
 is an **invite-only** chat channel. This channel is highly interactive, and contains
-several iCAS developers as well so deeper technical support can also be found here.
+several of our developers as well so deeper technical support can also be found here.
 Notifications about maintenance will also go through this channel.
 
 Contents
@@ -31,6 +31,7 @@ Contents
    overview
    authentication
    ads
+   campaigns
    categories
    attributes
    regions
@@ -47,6 +48,11 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.124 - 3 Jan 2023 - tw
+  * Added ad V5 related endpoints
+  * Added campaign related endpoints
+  * removed GET /ad/ids docs as it's already gone
 
 * v.0.123 - 9 Sep 2022 - dr
   * improved explanation on OAuth 2.0 roles&flows, and added a sequence diagram
@@ -149,7 +155,7 @@ History
 
 * v.0.99 -3 Nov 2017 - tw
 
-  * add :ref:`get_ad_ids`
+  * added GET /ad/ids
 
 * v.0.98 -25 Oct 2017 - tw
 
