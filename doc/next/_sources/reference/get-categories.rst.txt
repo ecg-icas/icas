@@ -2,10 +2,41 @@
 .. _get_categories:
 
 GET /categories
-==================
+===============
 
-GET /categories
----------------------
+:ref:`get_categories_v5` | :ref:`get_categories_v1`
+
+This URL returns the a map of id to categories in the format described in
+:ref:`categories` for the id's requested in parameter ``categoryIds``.
+This parameter is a comma separated list of integers.
+If the parameter ``categoryIds`` contains invalid data, i.e. not a positive
+integer, the server returns **400 Bad Request**.
+
+.. _get_categories_v5:
+
+GET /categories V5
+------------------
+
+GET /categories V5 has the same functionality as V1, except that it returns the categories in V5 format, see :ref:`categories` for details.
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.category.list-v5+json, application/json``
+
+Example
+-------
+
+.. include:: ../examples/get-categories-v5-example.rst
+
+.. _get_categories_v1:
+
+GET /categories V1
+------------------
 
 .. list-table::
  :widths: 20 80
@@ -16,11 +47,6 @@ GET /categories
  * - Accept
    - ``application/sellside.category.list-v1+json, application/json``
 
-This URL returns the a map of id to categories in the format described in
-:ref:`categories` for the id's requested in parameter ``categoryIds``.
-This parameter is a comma separated list of integers.
-If the parameter ``categoryIds`` contains invalid data, i.e. not a positive
-integer, the server returns **400 Bad Request**.
 
 Parameters
 ----------
