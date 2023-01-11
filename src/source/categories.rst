@@ -72,109 +72,146 @@ Leaf categories provide additional configuration which is provided in
 ``config`` field of the category. Non-leaf categories do not provide that field.
 
 .. list-table::
- :widths: 5 15 10 70
+ :widths: 2 10 15 10 70
  :header-rows: 1
 
  * - Key
    - Type
+   - Deprecated in
    - Constraints
    - Info
 
- * - currency
-   - string
-   - not empty
-   - The `ISO 4217`_ currency code. Currency code is the same for all categories.
-
  * - priceTypes
    - set<string>
+   - 
    - not empty
    - The list of available `Price Types`_ for this category.
 
- * - cpc
+ * - bidMicros
    - interval
+   - 
    - ``(0,+∞)``
-   - CPC value for ads in this category.
+   - bid value in micros for ads in this category.
 
- * - totalBudget
+ * - totalBudgetMicros
    - interval
+   - 
    - ``(0,+∞)``
-   - Total budget for ads in this category.
+   - Total budget for ads in this category in micros.
 
- * - minDailyBudget
-   - int
-   - ``>= 0``
-   - Min daily budget for ads in this category. Default is 0 == no daily budget.
-     Max should be ``totalBudget`` of the ad.
+ * - dailyBudgetMicros
+   - interval
+   -
+   - ``(0,+∞)``
+   - Daily budget for ads in this category in micros.
 
  * - activeAds
    - interval
-   - ``(0,+∞)``
+   - 
+   - ``[0,+∞)``
    - Max active ads per seller in this category.
 
  * - images
    - interval
-   - ``[0,32]``
+   - 
+   - ``(0,+∞)``
    - Max number of images for ads in this category.
 
  * - titleLength
    - interval
+   - 
    - ``(0,120]``
    - Max length of the title for ads in this category.
 
  * - descriptionLength
    - interval
+   - 
    - ``(0,65535]``
    - Max length of the description for ads in this category.
 
  * - shippingOption
    - string
+   - 
    - not empty
    - If ``DISABLED`` ads in this category cannot have shipping options, if ``OPTIONAL`` ads can
      have shipping options and if ``MANDATORY`` ads must have shipping options.
 
- * - paypalEnabled
-   - bool
-   -
-   - If ``true``, Paypal is a payment option for ads in this category.
-
- * - paypalBpEnabled
-   - bool
-   -
-   - If ``true``, Paypal Buyer Protection is enabled for ads in this category.
-
  * - tags
    - map<locale, set<string>>
+   - 
    -
    - Optional localized set of additional keywords that are indexed with ads in this category.
 
  * - verticals
    - set<string>
+   - 
    -
    - Optional set of verticals (groups) this category belongs to. The following verticals are
      allowed: ``CARS``, ``CONTACTS``, ``JOBS``, ``HOUSES``, ``SERVICES``, ``VACATIONS``
 
  * - region
    - string
+   - 
    - not empty
    - If ``DISABLED`` ads in this category cannot have regions, if ``OPTIONAL`` ads can
      have regions and if ``MANDATORY`` ads must have regions.
 
  * - relatedPaths
    - set<string>
+   - 
    -
    - Optional set of paths from related existing categories used for search strategies and/or
      fallback scenarios to expand the search parameters when too few results are returned.
 
  * - priceUnits
    - map<string, map<locale, string>>
+   - 
    -
    - Optional set of localized price units like ``per m²``, ``per hour``, etc. Maps an unique
      key to a set localized values.
 
+ * - currency
+   - string
+   - V5
+   - not empty
+   - The `ISO 4217`_ currency code. Currency code is the same for all categories.
+
+ * - cpc
+   - interval
+   - V5
+   - ``(0,+∞)``
+   - CPC value for ads in this category. Deprecated, use bidMicros instead.
+
+ * - totalBudget
+   - interval
+   - V5
+   - ``(0,+∞)``
+   - Total budget for ads in this category. Deprecated, use totalBudgetMicros instead.
+
+ * - minDailyBudget
+   - int
+   - V5
+   - ``>= 0``
+   - Min daily budget for ads in this category. Default is 0 == no daily budget.
+     Max should be ``totalBudget`` of the ad.
+
+ * - paypalEnabled
+   - bool
+   - V5
+   - 
+   - If ``true``, Paypal is a payment option for ads in this category.
+
+ * - paypalBpEnabled
+   - bool
+   - V5
+   -
+   - If ``true``, Paypal Buyer Protection is enabled for ads in this category.
+
  * - suggestedCpcForPageOne
    - int
-   -
-   - The estimated CPC (in cents) the current user needs to set on a new ad in this category to be placed on page 1.
+   - V5
+   - 
+   - The estimated CPC (in cents) the current user needs to set on a new ad in this category to be placed on page 1 for a browse action in the leaf category.
 
 Intervals
 ---------
@@ -605,6 +642,6 @@ The list of rendering hints still needs to be provided.
 
 Below is a complete example of a non-leaf category:
 
-.. literalinclude:: examples/category-leaf-v2.json
+.. literalinclude:: examples/category-leaf-v5.json
    :tab-width: 2
    :language: javascript

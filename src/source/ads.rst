@@ -696,6 +696,8 @@ Shipping option has the following fields:
    -
    - Pick up location of the item, in :ref:`ad_postcode` structure.
 
+shippingOptions example
+"""""""""""""""""""""""
 
 .. code-block:: javascript
 
@@ -706,7 +708,7 @@ Shipping option has the following fields:
 
 .. _ad_example:
 
-Example
---------
+Ad Example
+----------
 
 .. include:: examples/get-ad-id-v5-example.rst

@@ -29,6 +29,7 @@
                 "spentMicros": "24370000"
             }
         },
+        "campaignId": 54212,
         "salutation": "COMPANY",
         "sellerName": "My Shop",
         "postcode": "1097DN",

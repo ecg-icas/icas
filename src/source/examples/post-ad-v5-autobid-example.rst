@@ -15,13 +15,13 @@
             "amountCents": 5600,
             "originalAmountCents": 6500
         },
-        "bidMicros": "10000",
+        "bidMicros": "AUTOMATIC",
         "budgets": {
             "daily": {
-                "limitMicros": "UNLIMITED",
+                "limitMicros": "30000000",
             },
             "total": {
-                "limitMicros": "350000000",
+                "limitMicros": "UNLIMITED",
             }
         },
         "campaignId": 54212,
