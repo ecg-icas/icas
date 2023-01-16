@@ -25,13 +25,13 @@ GET /category/{id} v5
 ---------------------
 
 .. list-table::
-:widths: 20 80
+ :widths: 20 80
 
-* - Scope
-- ``api_ro`` or ``console_ro``
+ * - Scope
+   - ``api_ro`` or ``console_ro``
 
-* - Accept
-- ``application/sellside.category-v5+json, application/json``
+ * - Accept
+   - ``application/sellside.category-v5+json, application/json``
 
 Example
 -------

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /campaign/{id}/status &mdash; iCAS Sellside API 0.124 documentation</title>
+  <title>PUT /campaign/{id}/status/{status} &mdash; iCAS Sellside API 0.124 documentation</title>
   
 
   
@@ -164,7 +164,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
@@ -191,7 +191,7 @@
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /campaign/{id}/status</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
@@ -223,7 +223,7 @@
       
           <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
       
-    <li>PUT /campaign/{id}/status</li>
+    <li>PUT /campaign/{id}/status/{status}</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../_sources/reference/put-campaign-id-status.rst.txt" rel="nofollow"> View page source</a>
@@ -234,11 +234,11 @@
 </div>
           <div role="main">
             
-  <section id="put-campaign-id-status">
-<span id="index-0"></span><span id="id1"></span><h1>PUT /campaign/{id}/status<a class="headerlink" href="#put-campaign-id-status" title="Permalink to this heading">¶</a></h1>
-<p><a class="reference internal" href="#put-campaign-id-status-v5"><span class="std std-ref">PUT /campaign/{id}/status v5</span></a></p>
-<section id="put-campaign-id-status-v5">
-<span id="id2"></span><h2>PUT /campaign/{id}/status v5<a class="headerlink" href="#put-campaign-id-status-v5" title="Permalink to this heading">¶</a></h2>
+  <section id="put-campaign-id-status-status">
+<span id="put-campaign-id-status"></span><span id="index-0"></span><h1>PUT /campaign/{id}/status/{status}<a class="headerlink" href="#put-campaign-id-status-status" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference internal" href="#put-campaign-id-status-v5"><span class="std std-ref">PUT /campaign/{id}/status/{status} v5</span></a></p>
+<section id="put-campaign-id-status-status-v5">
+<span id="put-campaign-id-status-v5"></span><h2>PUT /campaign/{id}/status/{status} v5<a class="headerlink" href="#put-campaign-id-status-status-v5" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -256,7 +256,7 @@
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">123</span><span class="o">/</span><span class="nx">PAUSED</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">123</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span><span class="w"></span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
 
 <span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w"></span>
