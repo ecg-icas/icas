@@ -6,8 +6,17 @@ GET /metrics/report
 
 .. include:: ../bidding-micros.rst
 
+Returns a performance report for a selected date period, per ad.
+The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads **which have had performance-related activity**.
+
+The ``Accept`` header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
+Conceptually, user is the highest level scope and hit is the lowest level scope. For example, ``clicks`` counts the number of clicks that ad received when the scope is `hit`,
+whereas it counts the number of sessions with clicks when the scope is `session`.
+
+We plan to extend support for user-level scoped metrics if there is demand for it.
+
 V2
-~~~
+~~
 
 V2 replaces the fields (``cpc``, ``totalSpent``,  ``dailyLimit``, ``totalBudget``, ``eCPC``) with their corresponding ``bidMicros``, ``spentMicros``, ``dailyBudgetMicros``, ``totalBudgetMicros``, ``eSpentMicros`` shown in micros unit.
 
@@ -20,17 +29,6 @@ V2 replaces the fields (``cpc``, ``totalSpent``,  ``dailyLimit``, ``totalBudget`
 
  * - Accept
    - ``application/sellside.metrics.ad-hit-v2+json`` or ``application/sellside.metrics.ad-session-v2+json``
-
-Returns a performance report for a selected date period, per ad.
-The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads **which have had performance-related activity**.
-
-The ``Accept`` header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
-Conceptually, user is the highest level scope and hit is the lowest level scope. For example, ``clicks`` counts the number of clicks that ad received when the scope is `hit`,
-whereas it counts the number of sessions with clicks when the scope is `session`.
-
-We plan to extend support for user-level scoped metrics if there is demand for it.
-
-
 
 Parameters
 ----------
@@ -55,8 +53,6 @@ startDate                   "2014-11-23"                string      The start of
 endDate                     "2014-11-24"                string      The end of the period this report covers. Tenant time zone is assumed.
 data                        see below                   array       The report data; each element in this array represents the data for an ad.
 =======================     ========================    ========    =============================================================
-
-
 
 Data contents
 -------------
@@ -91,9 +87,13 @@ eSpentMicros                0.42                        float      V2         Re
 eCPC                        0.42                        float      V1         Returns the eCPC (effective cost per website click) in cents
 =======================     ========================    ========   ========   =============================================================
 
+Example
+-------
+.. include:: ../examples/get-metrics-report-example-v2.rst
+
 
 V1
-~~~
+~~
 
 .. list-table::
  :widths: 30 70
@@ -109,6 +109,5 @@ V1
 
 Example
 -------
-.. include:: ../examples/get-metrics-report-example-v2.rst
 
 .. include:: ../examples/get-metrics-report-example.rst

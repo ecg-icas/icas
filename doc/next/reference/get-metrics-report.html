@@ -164,7 +164,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
@@ -191,7 +191,7 @@
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
@@ -242,6 +242,12 @@
 <p>We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
 <p>This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.</p>
 </div>
+<p>Returns a performance report for a selected date period, per ad.
+The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads <strong>which have had performance-related activity</strong>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
+Conceptually, user is the highest level scope and hit is the lowest level scope. For example, <code class="docutils literal notranslate"><span class="pre">clicks</span></code> counts the number of clicks that ad received when the scope is <cite>hit</cite>,
+whereas it counts the number of sessions with clicks when the scope is <cite>session</cite>.</p>
+<p>We plan to extend support for user-level scoped metrics if there is demand for it.</p>
 <section id="v2">
 <h2>V2<a class="headerlink" href="#v2" title="Permalink to this heading">¶</a></h2>
 <p>V2 replaces the fields (<code class="docutils literal notranslate"><span class="pre">cpc</span></code>, <code class="docutils literal notranslate"><span class="pre">totalSpent</span></code>,  <code class="docutils literal notranslate"><span class="pre">dailyLimit</span></code>, <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code>, <code class="docutils literal notranslate"><span class="pre">eCPC</span></code>) with their corresponding <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">spentMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">dailyBudgetMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">totalBudgetMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">eSpentMicros</span></code> shown in micros unit.</p>
@@ -259,12 +265,6 @@
 </tr>
 </tbody>
 </table>
-<p>Returns a performance report for a selected date period, per ad.
-The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads <strong>which have had performance-related activity</strong>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
-Conceptually, user is the highest level scope and hit is the lowest level scope. For example, <code class="docutils literal notranslate"><span class="pre">clicks</span></code> counts the number of clicks that ad received when the scope is <cite>hit</cite>,
-whereas it counts the number of sessions with clicks when the scope is <cite>session</cite>.</p>
-<p>We plan to extend support for user-level scoped metrics if there is demand for it.</p>
 <section id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
@@ -498,23 +498,6 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 </tbody>
 </table>
 </section>
-</section>
-<section id="v1">
-<h2>V1<a class="headerlink" href="#v1" title="Permalink to this heading">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 30.0%" />
-<col style="width: 70.0%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Scope</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Accept</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.metrics.ad-hit-v1+json</span></code> or <code class="docutils literal notranslate"><span class="pre">application/sellside.metrics.ad-session-v1+json</span></code></p></td>
-</tr>
-</tbody>
-</table>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span><span class="w"></span>
@@ -554,6 +537,26 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="v1">
+<h2>V1<a class="headerlink" href="#v1" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.metrics.ad-hit-v1+json</span></code> or <code class="docutils literal notranslate"><span class="pre">application/sellside.metrics.ad-session-v1+json</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<section id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span><span class="w"></span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
 

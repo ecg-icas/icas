@@ -1,15 +1,15 @@
-.. index:: PUT /ad/{id}/status
+.. index:: PUT /ad/{id}/status/{status}
 .. _put_ad_id_status:
 
-PUT /ad/{id}/status
-===================
+PUT /ad/{id}/status/{status}
+============================
 
 :ref:`put_ad_status_v5` | :ref:`put_ad_status`
 
 .. _put_ad_status_v5:
 
-PUT /ad/{id}/status v5:
------------------------
+PUT /ad/{id}/status/{status} v5:
+--------------------------------
 
 .. list-table::
  :widths: 20 80
@@ -29,8 +29,8 @@ Example
 
 .. _put_ad_status:
 
-PUT /ad/{id}/status without version
------------------------------------
+PUT /ad/{id}/status/{status} without version
+--------------------------------------------
 
 .. list-table::
  :widths: 20 80

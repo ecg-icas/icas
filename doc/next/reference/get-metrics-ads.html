@@ -164,7 +164,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
@@ -191,7 +191,7 @@
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
-<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
@@ -246,6 +246,15 @@
 <h2>V2<a class="headerlink" href="#v2" title="Permalink to this heading">¶</a></h2>
 <p>V2 replaces two columns (<code class="docutils literal notranslate"><span class="pre">spent</span></code>, <code class="docutils literal notranslate"><span class="pre">cpc</span></code>) that used to be in the tenant local currency (EUR, $) with
 their corresponding <code class="docutils literal notranslate"><span class="pre">spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code> shown in micros unit.</p>
+<p>This URL returns an ads performance report either in Excel or in CSV format depending on the
+<code class="docutils literal notranslate"><span class="pre">Accept</span></code> header. The report represents a timeseries breakdown of the performance of each ad which
+<strong>has had performance-related activity</strong> in the requested period.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header is <code class="docutils literal notranslate"><span class="pre">application/vnd.ms-excel;v=2</span></code> an Excel document is created, in <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> format.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header is <code class="docutils literal notranslate"><span class="pre">text/csv;v=2</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
+<strong>Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
+Empty strings are not enclosed in quotes.</strong></p>
+<p>All dates and times are in the tenant timezone.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Accept-Language</span></code> header advertises the preferred client locales (language and region) for the report column names. Both <code class="docutils literal notranslate"><span class="pre">language_REGION</span></code> and <code class="docutils literal notranslate"><span class="pre">language-REGION</span></code> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 30.0%" />
@@ -263,15 +272,6 @@ their corresponding <code class="docutils literal notranslate"><span class="pre"
 </tr>
 </tbody>
 </table>
-<p>This URL returns an ads performance report either in Excel or in CSV format depending on the
-<code class="docutils literal notranslate"><span class="pre">Accept</span></code> header. The report represents a timeseries breakdown of the performance of each ad which
-<strong>has had performance-related activity</strong> in the requested period.</p>
-<p>If the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header is <code class="docutils literal notranslate"><span class="pre">application/vnd.ms-excel;v=2</span></code> an Excel document is created, in <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> format.</p>
-<p>If the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header is <code class="docutils literal notranslate"><span class="pre">text/csv;v=2</span></code> a <a class="reference external" href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> document is created, in the standard <a class="reference external" href="https://tools.ietf.org/html/rfc4180">RFC-4180</a> format.
-<strong>Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes.
-Empty strings are not enclosed in quotes.</strong></p>
-<p>All dates and times are in the tenant timezone.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Accept-Language</span></code> header advertises the preferred client locales (language and region) for the report column names. Both <code class="docutils literal notranslate"><span class="pre">language_REGION</span></code> and <code class="docutils literal notranslate"><span class="pre">language-REGION</span></code> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Tenant</p></th>

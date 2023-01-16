@@ -12,20 +12,6 @@ V2
 V2 replaces two columns (``spent``, ``cpc``) that used to be in the tenant local currency (EUR, $) with
 their corresponding ``spentMicros`` and ``bidMicros`` shown in micros unit.
 
-
-.. list-table::
- :widths: 30 70
-
- * - Scope
-   - ``console_ro`` or ``api_ro``
-
- * - Accept
-   - ``application/vnd.ms-excel;v=2`` or ``text/csv;v=2``
-
- * - Accept-Language
-   - preferred locale (e.g., ``nl-NL``, ``fr-BE``, ``en-CA``)
-
-
 This URL returns an ads performance report either in Excel or in CSV format depending on the
 ``Accept`` header. The report represents a timeseries breakdown of the performance of each ad which
 **has had performance-related activity** in the requested period.
@@ -41,26 +27,41 @@ All dates and times are in the tenant timezone.
 
 The ``Accept-Language`` header advertises the preferred client locales (language and region) for the report column names. Both ``language_REGION`` and ``language-REGION`` are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:
 
+
+.. list-table::
+ :widths: 30 70
+
+ * - Scope
+   - ``console_ro`` or ``api_ro``
+
+ * - Accept
+   - ``application/vnd.ms-excel;v=2`` or ``text/csv;v=2``
+
+ * - Accept-Language
+   - preferred locale (e.g., ``nl-NL``, ``fr-BE``, ``en-CA``)
+
+
+
 ==============  =======================
-Tenant           Locales
+Tenant          Locales
 ==============  =======================
-Marktplaats       ``nl_NL``
-2dehands          ``nl_BE``, ``fr_BE``
-Kijiji            ``en_CA``, ``fr_CA``
+Marktplaats     ``nl_NL``
+2dehands        ``nl_BE``, ``fr_BE``
+Kijiji          ``en_CA``, ``fr_CA``
 ==============  =======================
 
 Parameters
 ~~~~~~~~~~
 
 ==============  ================  ==================  ======================================================================================================================================================================================================================================================================================================
-Name             Type                Mandatory           Description
+Name            Type              Mandatory           Description
 ==============  ================  ==================  ======================================================================================================================================================================================================================================================================================================
-aggregate       string               no                 Granularity of the timeseries breakdown. Possible values are: ``daily``, ``weekly``, ``monthly``, and ``yearly``. Default is ``daily``.
-startDate       string               yes                Start date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.
-endDate         string               yes                End date of the report in ``YYYY-MM-DD`` (inclusive). Tenant timezone is assumed.
-includeDeleted  bool                 no                 Deleted ads are included/excluded. Default is ``false``
-query           string               no                 Search phrase to filter on ad titles
-fields          list of strings      no                 Comma-separated list of column fields to include in the report. Possible values are listed in the ``Field`` column in the table below. By default all fields are included, and this may **affect the speed of data generation**.
+aggregate       string            no                  Granularity of the timeseries breakdown. Possible values are: ``daily``, ``weekly``, ``monthly``, and ``yearly``. Default is ``daily``.
+startDate       string            yes                 Start date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.
+endDate         string            yes                 End date of the report in ``YYYY-MM-DD`` (inclusive). Tenant timezone is assumed.
+includeDeleted  bool              no                  Deleted ads are included/excluded. Default is ``false``
+query           string            no                  Search phrase to filter on ad titles
+fields          list of strings   no                  Comma-separated list of column fields to include in the report. Possible values are listed in the ``Field`` column in the table below. By default all fields are included, and this may **affect the speed of data generation**.
 ==============  ================  ==================  ======================================================================================================================================================================================================================================================================================================
 
 
