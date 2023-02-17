@@ -13,16 +13,63 @@ We treat the provided XML file as the desired list of ads the user wants to have
 Any ads not present (referred to by **vendorId**) in the XML file will be paused during
 the import of this file.
 
+Fields
+------
+A set of required and optional fields which defined in XSD is listed below:
+
+====================================== ==================================== ===================  =========== 
+Field                                  Description                          Restrictions         Mandatory 
+====================================== ==================================== ===================  =========== 
+:ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
+:ref:`feed_externalId`                 **deprecated**                       --                   --
+:ref:`feed_sellerName`                 seller name                          max. 60 chars        no
+:ref:`feed_t`                          product title                        see :ref:`feed_t`    yes
+:ref:`feed_descr`                      product description                  :ref:`feed_descr`    yes       
+:ref:`feed_categoryId`                 category identifier                  numeric, positive    yes       
+:ref:`feed_status`                     desired status (default ACTIVE)      ACTIVE,PAUSED        no       
+:ref:`feed_url`                        product URL                          max. 2048 chars      no        
+:ref:`feed_vanityUrl`                  displayed URL                        max. 256 chars       no        
+:ref:`feed_priceType`                  sales model for product              enum                 yes       
+:ref:`feed_price`                      product price in cents if applicable positive integer     yes/no       
+:ref:`feed_originalPrice`              original price before discount       positive integer     no        
+:ref:`feed_media`                      product images                       :ref:`feed_media`    no
+:ref:`feed_attr`                       collection of ad attributes          :ref:`feed_attr`     no        
+:ref:`feed_budget`                     budget details                       :ref:`feed_budget`   no        
+:ref:`feed_ship`                       shipping options                     :ref:`feed_ship`     no
+:ref:`feed_phoneNumber`                phone number                         max. 32 chars        no        
+:ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
+:ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no        
+:ref:`feed_engines`                    targeted search engines for this ad  emunerated list      no
+:ref:`feed_microTip`                   tiny product hightlight              max. 18 chars        no
+:ref:`feed_mpn`                        Manufacturer Part Number (MPN)       len. 2-70 chars      no   
+:ref:`feed_googleProductCategory`      google category for your product     string               no
+:ref:`feed_productType`                customer product type                max. 750 chars       no    
+:ref:`feed_brand`                      product brand name                   max. 70 chars        no
+:ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no  
+:ref:`feed_itemGroupId`                groups product variants in your      len. 1-50 chars      no
+:ref:`feed_condition`                  condition of product                 enum                 no
+:ref:`feed_material`                   main product fabric or material      max. 200 chars       no
+:ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
+:ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
+:ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
+:ref:`feed_color`                      product color                        len. 1-100 chars     no
+:ref:`feed_gender`                     gender product is designed for       enum                 no
+:ref:`feed_ageGroup`                   age group product is intended for    enum                 no
+:ref:`feed_size`                       size information                     enum                 no
+:ref:`feed_unitPricingBaseMeasure`     denominator for product unit price   string               no
+:ref:`feed_unitPricingMeasure`         measure and dimension of product     string               no
+====================================== ==================================== ===================  =========== 
+
+.. index:: vendorId
+.. _feed_vendorId:
+
+vendorId
+""""""""
+
 The (mandatory) **vendorId** field in the XML file is there to let us know, for consecutive imports, which
 ads are the same. This results in allowing us to update an existing ad with the same **vendorId** instead
 of creating a new ad. **vendorId** is mandatory and, as specified in the XSD, unique for each ad in the
-XML file.
-
-.. warning::
-   There is still an **externalId** field in the XSD, this field is replaced by **vendorId**.
-   Please update your XML to reflect this change. This makes naming consistent between feeds and sellside API.
-   The **vendorId** field in the feeds has the same meaning and constraints as the **vendorId** field in the
-   sellside API.
+XML file. Any non-empty string with a maximum length of 64 characters.
 
 .. note::
    If an ad in the feed remains unchanged (compared to previous import, including image urls), we will skip over this ad and leave
@@ -31,6 +78,635 @@ XML file.
    Any change in the ad (including it re-appearing in the feed if it wasn't present the previous time) will update the
    ad and trigger image re-processing.
 
+======= ====================================================
+Example	<ad:vendorId>15839942</ad:vendorId>
+======= ====================================================
+
+.. index:: externalId
+.. _feed_externalId:
+
+externalId
+""""""""""
+.. warning::
+   There is still an **externalId** field in the XSD, this field is replaced by **vendorId**.
+   Please update your XML to reflect this change. This makes naming consistent between feeds and sellside API.
+   The **vendorId** field in the feeds has the same meaning and constraints as the **vendorId** field in the
+   sellside API.
+
+.. index:: sellerName
+.. _feed_sellerName:
+
+sellerName
+""""""""""
+
+Display name of the seller (max. 60 characters).
+
+======= ====================================================
+Example	<ad:sellerName>Cups, Caps &amp; Craps</ad:sellerName>
+======= ====================================================
+
+.. index:: title
+.. _feed_t:
+
+title
+"""""
+
+Any string, with minimum and maximum length determined by the category, with a maximum cap of 1024 characters. See :ref:`categories`. URLs are not allowed as part of the title.
+
+======= ====================================================
+Example	<ad:title>Goedkope A-merk herenfietsen</ad:title>
+======= ====================================================
+
+.. index:: description
+.. _feed_descr:
+
+description
+"""""""""""
+
+The description field of the ad.
+Any string, with minimum and maximum length determined by the category, with a maximum cap of 1MB characters. See :ref:`categories`. URLs are not allowed as part of the description.
+All HTML elements except for the ones below will be removed:
+
+.. code-block:: html
+
+    <u> <em> <ul> <li> <p> <strong> <br> <blink>*
+    
+*\*paid extra*
+
+======= =========================================================================================================
+Example .. code-block:: html 
+    
+            <ad:description><![CDATA[
+                <p><strong><u>De goedkoopste webshop</u></strong> 
+                    <strong>voor tweedehands fietsen met garantie! Gratis en rijklaar thuisbezorgd!</strong>
+                </p>
+                <p><strong><br></strong>
+                </p>
+                <ul>
+                    <li><strong>Laagste prijsgarantie</strong></li>
+                    <li>Fietsen <strong>100% rijklaar</strong> gratis thuisbezorgd</li>
+                    <li><strong>Ruime voorraad</strong>, voor ieder wat wils</li>
+                    <li>Snelle <strong>customer service</strong> via Whatsapp, bellen en e-mail</li>
+                    <li>1 <strong>maand garantie</strong></li>
+                    <li>Aangesloten bij <strong>Webwinkelkeur</strong></li>
+                </ul>
+                <strong><br></strong>
+                <p>Check dus snel onze website en vind de fiets die bij je past!<br>
+                </p>
+                <strong><br></strong>
+                <p>WhatsApp, bel of mail ons voor verdere vragen.
+                </p>]]>
+            <ad:description/>
+======= =========================================================================================================
+
+
+.. index:: categoryId
+.. _feed_categoryId:
+
+categoryId
+""""""""""
+
+The category in which the ad is placed in the :ref:`categories` tree.
+
+Each ad belongs to one and only one category and the category of an ad cannot be changed.
+This field can only be set once during the lifecycle of an ad.
+
+An integer value from the category list. Must be an id of a category with a
+non-zero parent id.
+
+======= ====================================================
+Example	<ad:categoryId>945</ad:categoryId>
+======= ====================================================
+
+.. index:: status
+.. _feed_status:
+
+status
+""""""
+
+Ad status. One of the following:
+
+====== ====================================================
+Name   Description
+====== ====================================================
+ACTIVE The ad is active, it can be found on the website
+PAUSED The ad is paused, it cannot be found on the website
+====== ====================================================
+
+The provided (desired) status may differ from the resulting one, depending on the other conditions.
+For instance, budget may be depleted, or the seller may have too many active ads already in the category.
+
+======= =============================
+Example <ad:status>PAUSED</ad:status>
+======= =============================
+
+.. index:: url
+.. _feed_url:
+
+url
+"""
+
+An external URL that is shown on the ad page. This must be a valid http(s)
+url.
+
+======= =============================
+Example <ad:url>https://www.bmw.de</ad:url>
+======= =============================
+
+.. index:: vanityUrl
+.. _feed_vanityUrl:
+
+vanityUrl
+"""""""""
+
+The text/url that will be displayed instead of the url in :ref:`feed_url`.
+
+======= =============================
+Example <ad:vanityUrl>BMW</ad:vanityUrl>
+======= =============================
+
+.. index:: priceType
+.. _feed_priceType:
+
+priceType
+"""""""""
+
+Must be a valid price type identifier from the list of :ref:`price_types`.
+
+======= =============================
+Example <ad:priceType>FIXED_PRICE</ad:priceType>
+======= =============================
+
+.. index:: price
+.. _feed_price:
+
+price
+"""""
+
+The meaning of the value depends on the :ref:`feed_priceType`. 
+
+If it is `FIXED_PRICE` or `BIDDING_FROM` then **price** is mandatory and needs to be greater than 0.
+The maximum allowed **price** value is ``10000000000`` of the local market currency. (100.000.000,00 EUR / CAD / ... ).
+
+======= =============================
+Example <ad:price>1500</ad:price>
+======= =============================
+
+.. index:: originalPrice
+.. _feed_originalPrice:
+
+originalPrice
+""""""""""""""
+
+Product price before discount. Ignored if a seller does not have a discount option enabled. Must be greater than :ref:`feed_price`.
+The maximum allowed **originalPrice** value is ``10000000000`` of the local market currency. (100.000.000,00 EUR / CAD / ... ).
+
+======= =============================
+Example <ad:originalPrice>1500</ad:originalPrice>
+======= =============================
+
+.. index:: media
+.. _feed_media:
+
+media
+"""""
+
+Product images. Media should contain from 0 to N **<image>** elements, where the exact limit depends on the category in taxonomy. **<image>** elements must contain an URL attribute. URL should be a complete link pointing to an image on a publicly available webserver.
+
+Allowed image formats: JPEG, JPG, PNG, GIF, BMP. 
+
+All images will be resized if necessary to a size of maximum 1024px height and 1024px width (preserving the aspect ratio)
+The system will download the images and, if they meet the requirements, store them on our servers in several sizes.
+
+The images will be presented in the order as provided. The first image is shown in search results and as the main image on the item page.
+
+======= =========================================================================================================
+Example .. code-block:: html 
+
+            <ad:media>
+                <ad:image url="https://images.pexels.com/photos/62289/yemen-chameleon-chamaeleo-calyptratus-chameleon-reptile-62289.jpeg"/>
+                <ad:image url="https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2"/>
+            <ad:media/>
+======= =========================================================================================================
+
+.. index:: attributes
+.. _feed_attr:
+
+attributes
+""""""""""
+
+Optional collection of ad :ref:`user_defined_attributes` (category-dependent). 
+Note that categories can have mandatory attributes, for which a default value will be filled in if not supplied.
+
+======= =========================================================================================================
+Example .. code-block:: html 
+
+            <ad:attributes>
+                <ad:attribute>
+                    <ad:attributeName>color</ad:attributeName>
+                    <ad:attributeLocale>nl</ad:attributeLocale>
+                    <ad:attributeLabel>Kleu</ad:attributeLabel>
+                    <ad:attributeValue>Rood</ad:attributeValue>
+                </ad:attribute>
+                <ad:attribute>
+                    <ad:attributeName>color</ad:attributeName>
+                    <ad:attributeLocale>en</ad:attributeLocale>
+                    <ad:attributeLabel>Color</ad:attributeLabel>
+                    <ad:attributeValue>Red</ad:attributeValue>
+                </ad:attribute>
+                <ad:attribute>
+                    <ad:attributeName>Model</ad:attributeName>
+                    <ad:attributeValue>Slim</ad:attributeValue>
+                    <ad:attributeValue>Spro</ad:attributeValue>
+                </ad:attribute>
+            </ad:attributes>
+
+======= =========================================================================================================
+
+.. index:: budgetDetails
+.. _feed_budget:
+
+budgetDetails
+"""""""""""""
+
+Section with budget details
+
+============= ========================================== ========
+Name          Description                                Required
+============= ========================================== ========
+autobid       use auto bidding option true/false         No
+cpc           CPC for the given ad in cents              Yes
+totalBudget   total budget for the given ad in cents     No
+dailyBudget   daily budget for the given ad in cents     No
+============= ========================================== ========
+
+The minimum and maximum values for the total budget depend on the category. 
+If the total budget is not returned with the ad, it means there is an unlimited total budget.
+
+When this value of the daily budget is reached the ad will be paused for the rest of the day. 
+The minimum value depends on the category. Maximum value cannot be higher than the total budget.
+
+The minimum and maximum values of the cost per click (cpc) depend on the category.
+
+======= =========================================================================================================
+Example .. code-block:: html 
+
+            <ad:budget>
+                <ad:totalBudget>5000</ad:totalBudget>
+                <ad:dailyBudget>1000</ad:dailyBudget>
+                <ad:cpc>2</ad:cpc>
+            </ad:budget>
+
+======= =========================================================================================================
+
+.. index:: shippingOptions
+.. _feed_ship:
+
+shippingOptions
+"""""""""""""""
+
+Section with shipping options available for a product.
+Options can be defined for single selected type or both.
+
+============= ========================================== ========
+Name          Description                                Required
+============= ========================================== ========
+shippingType  SHIP, PICKUP                               Yes
+cost          cost of shipping in cents                  No
+time          time it takes to deliver the product       No
+location      pick up location of the product            No
+============= ========================================== ========
+
+*SHIP* means the item can be delivered to the buyer in the provided `time` and for the provided `cost`. 
+For shippingType 'SHIP' provide 'cost' in cents and 'time' in days. 'location' is ignored.
+
+*PICKUP* means the item can be picked up at the provided `location`
+For shippingType 'PICKUP' provide 'location'. Both 'cost' and 'time' are ignored.
+
+Whether shipping options are disabled/optional/mandatory for an ad is configured per category, see :ref:`category_config_v2`.
+
+======= =========================================================================================================
+Example .. code-block:: html 
+
+            <ad:shippingOptions>
+                    <ad:shippingOption>
+                        <ad:shippingType>PICKUP</ad:shippingType>
+                        <ad:location>1097DN</ad:location>
+                    </ad:shippingOption>
+                </ad:shippingOptions>
+
+======= =========================================================================================================
+
+.. index:: phoneNumber
+.. _feed_phoneNumber:
+
+phoneNumber
+"""""""""""
+
+The phone number of the advertiser as international phone number format, e.g.
++31207894561 or as a local phone number, e.g. 06789456612. 0900 and 0800
+numbers are not allowed.
+
+======= =============================
+Example <ad:phoneNumber>+31207894561</ad:phoneNumber>
+======= =============================
+
+.. index:: emailAdvertiser
+.. _feed_emailAdvertiser:
+
+emailAdvertiser
+"""""""""""""""
+
+Flag for allowing emails to be sent to the advertiser.
+
+======= =============================
+Example <ad:emailAdvertiser>true</ad:emailAdvertiser>
+======= =============================
+
+.. index:: regionId
+.. _feed_regionId:
+
+regionId
+""""""""
+
+The region in which the ad is placed. (only applicable for Kijiji Canada)
+A long value from the region tree. Must be the id of a leaf region.
+
+Each ad belongs to one and only one region and region of an ad cannot be updated.
+This field can only set once during creation of an ad.
+
+This field is mandatory if the `region` field of category configuration is ``MANDATORY``
+and optional if the `region` field is ``OPTIONAL``.
+This field must be omitted if the `region` field of category configuration is ``DISABLED``.
+
+Please refer to :ref:`categories` and :ref:`regions`
+
+======= =============================
+Example <ad:regionId>1700274</ad:regionId>
+======= =============================
+
+.. index:: engines
+.. _feed_engines:
+
+engines
+"""""""
+
+Collection of business features used internally for distinguishing between business propositions for the product. 
+If not provided, the default is *classic*.
+Must be one of the models enabled for the seller. Currently multiple values are not supported.
+
+Available options:
+
+========== =============
+Name       Description
+========== =============
+classic    default proposition
+auctions   deprecated
+promotions enables promotions feature
+amnext     ancestor of the classic (still experimental)
+========== =============
+
+======= =========================================================================================================
+Example .. code-block:: html 
+
+            <ad:engines>
+                <engine>promotions</engine>
+            </ad:engines>
+
+======= =========================================================================================================
+
+.. index:: microTip
+.. _feed_microTip:
+
+microTip
+""""""""
+
+A short freeform text with a maximum length of 18 characters, excluding any characters in ``.,/@#<>``.
+It is a feature as part of a package that sellers can purchase (currently available only for Marktplaats tenant).
+It provides extra attention on the ad in the search results.
+
+======= =============================
+Example <ad:microTip>TODAY 15% DISCOUNT</ad:microTipd>
+======= =============================
+
+.. index:: mpn
+.. _feed_mpn: 
+
+MPN
+"""
+
+Manufacturer Part Number (MPN), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+String identifier max 2-70 chars.
+
+======= =============================
+Example  <ad:mpn>AB12345R89TN6E</ad:mpn>
+======= =============================
+
+.. index:: googleProductCategory
+.. _feed_googleProductCategory: 
+
+googleProductCategory
+""""""""""""""""""""""
+
+Product category from Google's product taxonomy. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
+
+======= =============================
+Example <ad:googleProductCategory>Apparel &amp; Accessories &gt; Clothing &gt; Dresses</ad:googleProductCategory>
+======= =============================
+
+.. index:: productType
+.. _feed_productType: 
+
+productType
+""""""""""""""""""""""
+
+Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+String identifier max 750 chars.
+
+======= =============================
+Example <ad:productType>Home &gt; Women &gt; Dresses &gt; Maxi Dresses</ad:productType>
+======= =============================
+
+.. index:: brand
+.. _feed_brand: 
+
+brand
+""""""""""""""""""""""
+
+Brand definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+String identifier max 70 chars.
+
+======= =============================
+Example <ad:brand>Little black dress</ad:brand>
+======= =============================
+
+.. index:: gtin
+.. _feed_gtin: 
+
+GTIN
+""""""""""""""""""""""
+
+GTIN, definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+String identifier max 50 chars.
+
+======= =============================
+Example <ad:gtin>44320194113475</ad:gtin>
+======= =============================
+
+.. index:: itemGroupId
+.. _feed_itemGroupId: 
+
+itemGroupId
+""""""""""""""""""""""
+
+Item Group Id definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+String identifier max 1-50 chars.
+
+======= =============================
+Example <ad:itemGroupId>BC23456</ad:itemGroupId>
+======= =============================
+
+.. index:: condition
+.. _feed_condition: 
+
+condition
+""""""""""""""""""""""
+
+Condition definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Accepted values: *new*, *refurbished*, *used*
+
+======= =============================
+Example <ad:condition>used</ad:condition>
+======= =============================
+
+.. index:: material
+.. _feed_material: 
+
+material
+""""""""""""""""""""""
+
+Material definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+String identifier max 200 chars.
+  
+======= =============================
+Example <ad:material>Wool</ad:material>
+======= =============================
+
+.. index:: energyEfficiencyClass
+.. _feed_energyEfficiencyClass: 
+
+energyEfficiencyClass
+""""""""""""""""""""""
+
+Energy Efficiency Class See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
+
+Allowed values: *A+++*, *A++*, *A+*, *A++*,	*B*, *C*, *B*, *E*,	*F*, *G*
+
+======= =============================
+Example <ad:energyEfficiencyClass>A+</ad:energyEfficiencyClass>
+======= =============================
+
+.. index:: minEnergyEfficiencyClass
+.. _feed_minEnergyEfficiencyClass: 
+
+minEnergyEfficiencyClass
+""""""""""""""""""""""""
+
+Minimal energy efficiency class. Possible values defined in :ref:`feed_energyEfficiencyClass`
+
+======= =============================
+Example <ad:minEnergyEfficiencyClass>E</ad:minEnergyEfficiencyClass>
+======= =============================
+
+.. index:: maxEnergyEfficiencyClass
+.. _feed_maxEnergyEfficiencyClass: 
+
+maxEnergyEfficiencyClass
+""""""""""""""""""""""""
+
+Maximal energy efficiency class. Possible values defined in :ref:`feed_energyEfficiencyClass`
+
+======= =============================
+Example <ad:maxEnergyEfficiencyClass>B</ad:maxEnergyEfficiencyClass>
+======= =============================
+
+.. index:: color
+.. _feed_color: 
+
+color
+""""""""""""""""""""""""
+
+Color definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+String identifier max 1-100 chars.
+
+======= =============================
+Example <ad:color>Black</ad:color>
+======= =============================
+
+.. index:: gender
+.. _feed_gender: 
+
+gender
+""""""""""""""""""""""""
+
+Gender definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+
+Allowed values: *male*, *female*, *unisex*
+
+======= =============================
+Example <ad:gender>unisex</ad:gender>
+======= =============================
+
+.. index:: ageGroup
+.. _feed_ageGroup: 
+
+ageGroup
+""""""""""""""""""""""""
+
+Age group definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+
+Allowed values: *newborn*, *infant*, *toddler*, *children*, *adult*
+
+======= =============================
+Example <ad:ageGroup>adult</ad:ageGroup>
+======= =============================
+
+.. index:: size
+.. _feed_size: 
+
+size
+""""""""""""""""""""""""
+
+Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+String identifier max 1-100 chars.
+
+.. index:: unitPricingBaseMeasure
+.. _feed_unitPricingBaseMeasure: 
+
+======= =============================
+Example <ad:size>S</ad:size>
+======= =============================
+
+unitPricingBaseMeasure
+""""""""""""""""""""""""
+
+The denominator for product unit price. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
+
+======= =============================
+Example <ad:unitPricingBaseMeasure>1kg</ad:unitPricingBaseMeasure>
+======= =============================
+
+.. index:: unitPricingMeasure
+.. _feed_unitPricingMeasure:         
+
+unitPricingMeasure
+""""""""""""""""""""""""
+
+Defines the measure and dimension of the product. Example 125ml, 100g. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
+
+======= =============================
+Example <ad:unitPricingMeasure>15kg</ad:unitPricingMeasure>
+======= =============================
 
 Errors
 ------
