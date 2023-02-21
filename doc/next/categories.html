@@ -93,12 +93,10 @@
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Categories</a><ul>
@@ -196,7 +194,12 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -236,14 +239,25 @@
 <p>The category tree contains all the information about category definitions,
 attribute definitions and validation rules for placing ads.</p>
 <p>The category tree has the following properties:</p>
-<ul class="simple">
-<li><p>categories form a tree with a single root node</p></li>
-<li><p>each category has a unique id</p></li>
-<li><p>each category specifies the locales for which it is available</p></li>
-<li><p>each ad belongs to one and only one category</p></li>
-<li><p>ads can only be placed in leaf categories</p></li>
-<li><p>only leaf categories contain attributes</p></li>
-</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>categories form a tree with a single root node</p></td>
+</tr>
+<tr class="row-even"><td><p>each category has a unique id</p></td>
+</tr>
+<tr class="row-odd"><td><p>each category specifies the locales for which it is available</p></td>
+</tr>
+<tr class="row-even"><td><p>each ad belongs to one and only one category</p></td>
+</tr>
+<tr class="row-odd"><td><p>ads can only be placed in leaf categories</p></td>
+</tr>
+<tr class="row-even"><td><p>only leaf categories contain attributes</p></td>
+</tr>
+</tbody>
+</table>
 <p>The full tree (or a subtree) can be fetched using <a class="reference internal" href="reference/get-categories.html#get-categories"><span class="std std-ref">GET /categories</span></a>.</p>
 <section id="category-ids">
 <h2>Category Ids<a class="headerlink" href="#category-ids" title="Permalink to this heading">¶</a></h2>
@@ -524,44 +538,44 @@ options the seller wants to offer. The valid list of price types is:</p>
 <li><p>validate an ad that is placed via the Sellside API</p></li>
 </ul>
 <p>The category tree is provided as a JSON object which has the following structure:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/0&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/1&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Antiek en Kunst&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;Antiek en Kunst&quot;</span><span class="w"></span>
-<span class="w">                </span><span class="p">]</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">              </span><span class="p">...</span><span class="w"></span>
-<span class="w">            </span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="p">...</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/0&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/1&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Antiek en Kunst&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;Antiek en Kunst&quot;</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">...</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Ads can only be placed in leaf categories and leaf objects contain the full
@@ -640,27 +654,27 @@ related to ad placement.</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/856&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">856</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;856&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Vakantie&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;Vakantie&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">...</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/856&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">856</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;856&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Vakantie&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;Vakantie&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -952,295 +966,295 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 </tbody>
 </table>
 <p>Below is a complete example of a non-leaf category:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/856&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/863&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">863</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">856</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;856_863&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Vakantiehuizen | Duitsland&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;Vakantie&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;Vakantiehuizen | Duitsland&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;config&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;bidMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[10000,2500000]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;totalBudgetMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[5000000,200000000000]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;dailyBudgetMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1000000,200000000000]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;activeAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[0,7000]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;titleLength&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,60]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;descriptionLength&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,20000]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;images&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,24]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;urlMandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;shippingOption&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;DISABLED&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;priceTypes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;BIDDING_FROM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;SEE_DESCRIPTION&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;priceUnits&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;per_night&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;per nacht&quot;</span><span class="w"></span>
-<span class="w">          </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;verticals&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;VACATIONS&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;vakantiehuis&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;relatedPaths&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;856_892&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;856_862&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;attributeGroups&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Kenmerken&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Geef hier welk type advertentie u gaat maken en wat de conditie van uw product is&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;attributes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;region&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regio&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Sauerland&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Beieren&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Berlijn&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Eifel&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Harz&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Moezel&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Noord-Duitsland&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Oost-Duitsland&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Zwarte Woud&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Overige regio&#39;s&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="p">]</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;type&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Type&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Appartement&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Boerderij of Cottage&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Chalet, Bungalow of Caravan&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Landhuis of Villa&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Overige typen&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="p">]</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;situated&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ligging&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Dorp&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Stad&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Landelijk&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Recreatiepark&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Overige&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="p">]</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;surroundings&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Omgeving&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Aan zee&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Aan meer of rivier&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;In bergen of heuvels&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;In bos&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;In wintersportgebied&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="p">]</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;numberOfBedrooms&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aantal slaapkamers&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;1 slaapkamer&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;2 slaapkamers&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;3 slaapkamers&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;4 of meer slaapkamers&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Groepsaccommodatie&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="p">]</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;letter&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Verhuurder&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Eigenaar&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Bemiddelingsbureau&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="p">]</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;extras&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Extra&#39;s&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Afwasmachine&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Airconditioning&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Huisdier toegestaan&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Internet&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Kinderbed&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Open haard&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Rolstoelvriendelijk&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Sauna of Jaccuzi&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Speeltuin&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Tuin&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Tv&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Wasmachine&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s2">&quot;Zwembad&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="p">]</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;numberOfPersons&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aantal personen&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,99]&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;personen&quot;</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/856&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/863&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">863</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">856</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;856_863&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Vakantiehuizen | Duitsland&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;breadcrumbs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;Vakantie&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;Vakantiehuizen | Duitsland&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;config&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;bidMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[10000,2500000]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;totalBudgetMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[5000000,200000000000]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;dailyBudgetMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1000000,200000000000]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;activeAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[0,7000]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;titleLength&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,60]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;descriptionLength&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,20000]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;images&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,24]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;urlMandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;shippingOption&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;DISABLED&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;priceTypes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;BIDDING_FROM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;SEE_DESCRIPTION&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="s2">&quot;priceUnits&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="s2">&quot;per_night&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;per nacht&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;verticals&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;VACATIONS&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="s2">&quot;tags&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;vakantiehuis&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;relatedPaths&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;856_892&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;856_862&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;attributeGroups&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Kenmerken&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Geef hier welk type advertentie u gaat maken en wat de conditie van uw product is&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">&quot;attributes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;region&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regio&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;Sauerland&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Beieren&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Berlijn&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Eifel&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Harz&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Moezel&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Noord-Duitsland&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Oost-Duitsland&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Zwarte Woud&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Overige regio&#39;s&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;type&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Type&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;Appartement&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Boerderij of Cottage&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Chalet, Bungalow of Caravan&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Landhuis of Villa&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Overige typen&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;situated&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ligging&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;Dorp&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Stad&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Landelijk&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Recreatiepark&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Overige&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;surroundings&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Omgeving&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;Aan zee&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Aan meer of rivier&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;In bergen of heuvels&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;In bos&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;In wintersportgebied&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;numberOfBedrooms&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aantal slaapkamers&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;1 slaapkamer&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;2 slaapkamers&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;3 slaapkamers&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;4 of meer slaapkamers&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Groepsaccommodatie&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;letter&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Verhuurder&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;Eigenaar&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Bemiddelingsbureau&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;extras&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Extra&#39;s&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;Afwasmachine&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Airconditioning&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Huisdier toegestaan&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Internet&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Kinderbed&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Open haard&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Rolstoelvriendelijk&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Sauna of Jaccuzi&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Speeltuin&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Tuin&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Tv&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Wasmachine&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;Zwembad&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;numberOfPersons&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aantal personen&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;tooltip&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;values&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;mandatory&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,99]&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">                    </span><span class="s2">&quot;postfix&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;personen&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">&quot;hints&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -1291,9 +1305,6 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
         };
     </script>
       <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 

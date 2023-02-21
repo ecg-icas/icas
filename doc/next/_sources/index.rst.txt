@@ -39,7 +39,7 @@ Contents
    reporting
    error-handling
    api-reference
-   deprecation
+   release-notes
 
 
 .. _History:
@@ -54,6 +54,7 @@ History
   * Added ad V5 related endpoints
   * Added campaign related endpoints
   * removed GET /ad/ids docs as it's already gone
+  * moved ``deprecation plan`` into :ref:`release_notes`
 
 * v.0.123 - 9 Sep 2022 - dr
 
@@ -99,7 +100,7 @@ History
 
 * v.0.113 - 3 Dec 2019 - tw
 
-  * updated :ref:`deprecation_plan` stating /report/* endpoints are deprecated and will be removed by March 1st 2020. These will be replaced by /metrics/* endpoints.
+  * updated :ref:`release_notes` stating /report/* endpoints are deprecated and will be removed by March 1st 2020. These will be replaced by /metrics/* endpoints.
 
 * v.0.112 - 18 Jul 2019 - tw
 
@@ -327,7 +328,7 @@ History
   * Added :ref:`get_ad_id_v2`
   * Added :ref:`post_ad_v2`
   * Added :ref:`put_ad_id_v2`
-  * Added :ref:`deprecation_plan`
+  * Added ``deprecation plan`` page
   * Deprecated 'GET /ad V2'
   * Deprecated 'GET /ad/{id} V1'
   * Deprecated 'GET /category'

@@ -13,12 +13,16 @@ attribute definitions and validation rules for placing ads.
 
 The category tree has the following properties:
 
-* categories form a tree with a single root node
-* each category has a unique id
-* each category specifies the locales for which it is available
-* each ad belongs to one and only one category
-* ads can only be placed in leaf categories
-* only leaf categories contain attributes
+.. list-table::
+ :widths: 70
+ :header-rows: 0
+
+ - * categories form a tree with a single root node
+ - * each category has a unique id
+ - * each category specifies the locales for which it is available
+ - * each ad belongs to one and only one category
+ - * ads can only be placed in leaf categories
+ - * only leaf categories contain attributes
 
 The full tree (or a subtree) can be fetched using :ref:`get_categories`.
 

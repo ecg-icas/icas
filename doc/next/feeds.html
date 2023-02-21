@@ -93,12 +93,10 @@
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
@@ -196,7 +194,12 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -283,52 +286,52 @@ defined in the feed) should be whitelisted. We also download the XML file itself
 <section id="example-xml">
 <h2>Example XML<a class="headerlink" href="#example-xml" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;admarkt:ads</span> <span class="na">xmlns:admarkt=</span><span class="s">&quot;http://admarkt.marktplaats.nl/schemas/1.0&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;admarkt:ad&gt;</span>
-        <span class="nt">&lt;admarkt:vendorId&gt;</span>jh2fi82wqjckw<span class="nt">&lt;/admarkt:vendorId&gt;</span>
-        <span class="nt">&lt;admarkt:title&gt;</span>New white leather sofa<span class="nt">&lt;/admarkt:title&gt;</span>
-        <span class="nt">&lt;admarkt:description&gt;</span>This leather sofa is very well suited to sell online. Has happened 12 times
-        already, profit guaranteed! The charming white color and stylish design makes it irresistable
-        for buyers, whether they need it or not.
-        <span class="nt">&lt;/admarkt:description&gt;</span>
-        <span class="nt">&lt;admarkt:categoryId&gt;</span>1234<span class="nt">&lt;/admarkt:categoryId&gt;</span>
-        <span class="nt">&lt;admarkt:url&gt;</span>http://irresistiblecouch.com/charming-white.html?source=marktplaats<span class="nt">&lt;/admarkt:url&gt;</span>
-        <span class="nt">&lt;admarkt:vanityUrl&gt;</span>http://irresistiblecouch.com<span class="nt">&lt;/admarkt:vanityUrl&gt;</span>
-        <span class="nt">&lt;admarkt:price&gt;</span>129900<span class="nt">&lt;/admarkt:price&gt;</span>
-        <span class="nt">&lt;admarkt:priceType&gt;</span>FIXED_PRICE<span class="nt">&lt;/admarkt:priceType&gt;</span>
-        <span class="nt">&lt;admarkt:media&gt;</span>
-            <span class="nt">&lt;admarkt:image</span> <span class="na">url=</span><span class="s">&quot;http://irresistiblecouch.com/ProductPhotos/Large/jh2fi82wqjckw.jpg&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/admarkt:media&gt;</span>
-        <span class="nt">&lt;admarkt:budget&gt;</span>
-            <span class="nt">&lt;admarkt:totalBudget&gt;</span>1000000<span class="nt">&lt;/admarkt:totalBudget&gt;</span>
-            <span class="nt">&lt;admarkt:dailyBudget&gt;</span>2500<span class="nt">&lt;/admarkt:dailyBudget&gt;</span>
-            <span class="nt">&lt;admarkt:cpc&gt;</span>3<span class="nt">&lt;/admarkt:cpc&gt;</span>
-        <span class="nt">&lt;/admarkt:budget&gt;</span>
-        <span class="nt">&lt;admarkt:emailAdvertiser&gt;</span>true<span class="nt">&lt;/admarkt:emailAdvertiser&gt;</span>
-    <span class="nt">&lt;/admarkt:ad&gt;</span>
-    <span class="nt">&lt;admarkt:ad&gt;</span>
-        <span class="nt">&lt;admarkt:vendorId&gt;</span>bvl202kfm2-123<span class="nt">&lt;/admarkt:vendorId&gt;</span>
-        <span class="nt">&lt;admarkt:title&gt;</span>Nice bike<span class="nt">&lt;/admarkt:title&gt;</span>
-        <span class="nt">&lt;admarkt:description&gt;</span>Decent women&#39;s bike. A little old, but good enough. Has seen some mileage,
-        been used regularly, but is well maintained. Last month had a large check-up where some key
-        parts were replaced.
-        <span class="nt">&lt;/admarkt:description&gt;</span>
-        <span class="nt">&lt;admarkt:categoryId&gt;</span>43<span class="nt">&lt;/admarkt:categoryId&gt;</span>
-        <span class="nt">&lt;admarkt:url&gt;</span>http://supabike.com/oldie.html?foo=bar<span class="nt">&lt;/admarkt:url&gt;</span>
-        <span class="nt">&lt;admarkt:vanityUrl&gt;</span>http://supabike.com<span class="nt">&lt;/admarkt:vanityUrl&gt;</span>
-        <span class="nt">&lt;admarkt:price&gt;</span>8900<span class="nt">&lt;/admarkt:price&gt;</span>
-        <span class="nt">&lt;admarkt:priceType&gt;</span>FIXED_PRICE<span class="nt">&lt;/admarkt:priceType&gt;</span>
-        <span class="nt">&lt;admarkt:media&gt;</span>
-            <span class="nt">&lt;admarkt:image</span> <span class="na">url=</span><span class="s">&quot;http://supabike.com/files/colored/fiets.jpg&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/admarkt:media&gt;</span>
-        <span class="nt">&lt;admarkt:budget&gt;</span>
-            <span class="nt">&lt;admarkt:totalBudget&gt;</span>200000<span class="nt">&lt;/admarkt:totalBudget&gt;</span>
-            <span class="nt">&lt;admarkt:dailyBudget&gt;&lt;/admarkt:dailyBudget&gt;</span>
-            <span class="nt">&lt;admarkt:cpc&gt;</span>2<span class="nt">&lt;/admarkt:cpc&gt;</span>
-        <span class="nt">&lt;/admarkt:budget&gt;</span>
-        <span class="nt">&lt;admarkt:emailAdvertiser&gt;</span>true<span class="nt">&lt;/admarkt:emailAdvertiser&gt;</span>
-        <span class="nt">&lt;admarkt:microTip&gt;</span>Lease 499 per mnd<span class="nt">&lt;/admarkt:microTip&gt;</span>
-    <span class="nt">&lt;/admarkt:ad&gt;</span>
+<span class="nt">&lt;admarkt:ads</span><span class="w"> </span><span class="na">xmlns:admarkt=</span><span class="s">&quot;http://admarkt.marktplaats.nl/schemas/1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;admarkt:ad&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:vendorId&gt;</span>jh2fi82wqjckw<span class="nt">&lt;/admarkt:vendorId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:title&gt;</span>New<span class="w"> </span>white<span class="w"> </span>leather<span class="w"> </span>sofa<span class="nt">&lt;/admarkt:title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:description&gt;</span>This<span class="w"> </span>leather<span class="w"> </span>sofa<span class="w"> </span>is<span class="w"> </span>very<span class="w"> </span>well<span class="w"> </span>suited<span class="w"> </span>to<span class="w"> </span>sell<span class="w"> </span>online.<span class="w"> </span>Has<span class="w"> </span>happened<span class="w"> </span>12<span class="w"> </span>times
+<span class="w">        </span>already,<span class="w"> </span>profit<span class="w"> </span>guaranteed!<span class="w"> </span>The<span class="w"> </span>charming<span class="w"> </span>white<span class="w"> </span>color<span class="w"> </span>and<span class="w"> </span>stylish<span class="w"> </span>design<span class="w"> </span>makes<span class="w"> </span>it<span class="w"> </span>irresistable
+<span class="w">        </span>for<span class="w"> </span>buyers,<span class="w"> </span>whether<span class="w"> </span>they<span class="w"> </span>need<span class="w"> </span>it<span class="w"> </span>or<span class="w"> </span>not.
+<span class="w">        </span><span class="nt">&lt;/admarkt:description&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:categoryId&gt;</span>1234<span class="nt">&lt;/admarkt:categoryId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:url&gt;</span>http://irresistiblecouch.com/charming-white.html?source=marktplaats<span class="nt">&lt;/admarkt:url&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:vanityUrl&gt;</span>http://irresistiblecouch.com<span class="nt">&lt;/admarkt:vanityUrl&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:price&gt;</span>129900<span class="nt">&lt;/admarkt:price&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:priceType&gt;</span>FIXED_PRICE<span class="nt">&lt;/admarkt:priceType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:media&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:image</span><span class="w"> </span><span class="na">url=</span><span class="s">&quot;http://irresistiblecouch.com/ProductPhotos/Large/jh2fi82wqjckw.jpg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/admarkt:media&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:budget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:totalBudget&gt;</span>1000000<span class="nt">&lt;/admarkt:totalBudget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:dailyBudget&gt;</span>2500<span class="nt">&lt;/admarkt:dailyBudget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:cpc&gt;</span>3<span class="nt">&lt;/admarkt:cpc&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/admarkt:budget&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:emailAdvertiser&gt;</span>true<span class="nt">&lt;/admarkt:emailAdvertiser&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/admarkt:ad&gt;</span>
+<span class="w">    </span><span class="nt">&lt;admarkt:ad&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:vendorId&gt;</span>bvl202kfm2-123<span class="nt">&lt;/admarkt:vendorId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:title&gt;</span>Nice<span class="w"> </span>bike<span class="nt">&lt;/admarkt:title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:description&gt;</span>Decent<span class="w"> </span>women&#39;s<span class="w"> </span>bike.<span class="w"> </span>A<span class="w"> </span>little<span class="w"> </span>old,<span class="w"> </span>but<span class="w"> </span>good<span class="w"> </span>enough.<span class="w"> </span>Has<span class="w"> </span>seen<span class="w"> </span>some<span class="w"> </span>mileage,
+<span class="w">        </span>been<span class="w"> </span>used<span class="w"> </span>regularly,<span class="w"> </span>but<span class="w"> </span>is<span class="w"> </span>well<span class="w"> </span>maintained.<span class="w"> </span>Last<span class="w"> </span>month<span class="w"> </span>had<span class="w"> </span>a<span class="w"> </span>large<span class="w"> </span>check-up<span class="w"> </span>where<span class="w"> </span>some<span class="w"> </span>key
+<span class="w">        </span>parts<span class="w"> </span>were<span class="w"> </span>replaced.
+<span class="w">        </span><span class="nt">&lt;/admarkt:description&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:categoryId&gt;</span>43<span class="nt">&lt;/admarkt:categoryId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:url&gt;</span>http://supabike.com/oldie.html?foo=bar<span class="nt">&lt;/admarkt:url&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:vanityUrl&gt;</span>http://supabike.com<span class="nt">&lt;/admarkt:vanityUrl&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:price&gt;</span>8900<span class="nt">&lt;/admarkt:price&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:priceType&gt;</span>FIXED_PRICE<span class="nt">&lt;/admarkt:priceType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:media&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:image</span><span class="w"> </span><span class="na">url=</span><span class="s">&quot;http://supabike.com/files/colored/fiets.jpg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/admarkt:media&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:budget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:totalBudget&gt;</span>200000<span class="nt">&lt;/admarkt:totalBudget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:dailyBudget&gt;&lt;/admarkt:dailyBudget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:cpc&gt;</span>2<span class="nt">&lt;/admarkt:cpc&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/admarkt:budget&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:emailAdvertiser&gt;</span>true<span class="nt">&lt;/admarkt:emailAdvertiser&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:microTip&gt;</span>Lease<span class="w"> </span>499<span class="w"> </span>per<span class="w"> </span>mnd<span class="nt">&lt;/admarkt:microTip&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/admarkt:ad&gt;</span>
 <span class="nt">&lt;/admarkt:ads&gt;</span>
 </pre></div>
 </div>
@@ -374,7 +377,7 @@ to your ads. Existing ads will remain unchanged and no new ads will be created.<
 a way to check quickly and locally is to use a tool called xmllint. With this tool
 you can use our XSD downloaded from <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> to test whether your feed is
 working before you let our system fetch it using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmllint --debug --noout --schema /path/to/admarkt1.0.xsd /path/to/yourfeed.xml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmllint<span class="w"> </span>--debug<span class="w"> </span>--noout<span class="w"> </span>--schema<span class="w"> </span>/path/to/admarkt1.0.xsd<span class="w"> </span>/path/to/yourfeed.xml
 </pre></div>
 </div>
 <p>For small chunks of XML you can use online validators as well, such as <a class="reference external" href="http://www.utilities-online.info/xsdvalidation/">http://www.utilities-online.info/xsdvalidation/</a> or <a class="reference external" href="https://www.freeformatter.com/xml-validator-xsd.html">https://www.freeformatter.com/xml-validator-xsd.html</a>. Note that these have a
@@ -435,9 +438,6 @@ for every feed import, but only when you require images to be re-processed.</p>
         };
     </script>
       <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 

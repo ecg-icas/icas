@@ -50,7 +50,7 @@ offset           int              Skips the first N records.
 ===============  ============     ============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-mapping-externalids-v2-example.rst
 
@@ -100,6 +100,6 @@ offset           int              Skips the first N records.
 ===============  ============     ============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-mapping-externalids-v1-example.rst

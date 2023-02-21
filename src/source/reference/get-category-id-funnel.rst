@@ -53,6 +53,6 @@ cpc                     2001    invalid argument            the provided value i
 ====================    ====    =======================     ==============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-category-id-funnel-example.rst

@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -197,7 +195,12 @@
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -308,77 +311,77 @@ integer, the server returns <strong>400 Bad Request</strong>.</p>
 </tr>
 </tbody>
 </table>
-</section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">regions</span><span class="o">?</span><span class="nx">regionIds</span><span class="o">=</span><span class="mf">1700093</span><span class="p">,</span><span class="mf">1700195</span><span class="p">,</span><span class="mf">1700196</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">region</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">regions</span><span class="o">?</span><span class="nx">regionIds</span><span class="o">=</span><span class="mf">1700093</span><span class="p">,</span><span class="mf">1700195</span><span class="p">,</span><span class="mf">1700196</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">region</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="o">:</span><span class="w"> </span><span class="mf">808</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">region</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
-<span class="nb">Date</span><span class="o">:</span><span class="w"> </span><span class="nx">Fri</span><span class="p">,</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="nx">Sep</span><span class="w"> </span><span class="mf">2016</span><span class="w"> </span><span class="mf">14</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mf">35</span><span class="w"> </span><span class="nx">GMT</span><span class="w"></span>
-<span class="nx">Oauth</span><span class="o">-</span><span class="nx">Scope</span><span class="o">:</span><span class="w"> </span><span class="nx">api_ro</span><span class="w"> </span><span class="nx">api_rw</span><span class="w"></span>
-<span class="nx">Oauth</span><span class="o">-</span><span class="nx">Scope</span><span class="o">-</span><span class="nx">Required</span><span class="o">:</span><span class="w"> </span><span class="nx">get_region</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="o">:</span><span class="w"> </span><span class="mf">808</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">region</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
+<span class="nb">Date</span><span class="o">:</span><span class="w"> </span><span class="nx">Fri</span><span class="p">,</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="nx">Sep</span><span class="w"> </span><span class="mf">2016</span><span class="w"> </span><span class="mf">14</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mf">35</span><span class="w"> </span><span class="nx">GMT</span>
+<span class="nx">Oauth</span><span class="o">-</span><span class="nx">Scope</span><span class="o">:</span><span class="w"> </span><span class="nx">api_ro</span><span class="w"> </span><span class="nx">api_rw</span>
+<span class="nx">Oauth</span><span class="o">-</span><span class="nx">Scope</span><span class="o">-</span><span class="nx">Required</span><span class="o">:</span><span class="w"> </span><span class="nx">get_region</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;1700093&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/9009&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700093&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700093</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9009</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700093&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.283</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">107.767</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Swift Current&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Swift Current&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;1700195&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700195&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700195</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194_1700195&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.4</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">105.55</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Moose Jaw&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Moose Jaw&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;1700196&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700196&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700196</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194_1700196&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.448009</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">104.595177</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;1700093&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/9009&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700093&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700093</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9009</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700093&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.283</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">107.767</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Swift Current&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Swift Current&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;1700195&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700195&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700195</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194_1700195&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.4</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">105.55</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Moose Jaw&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Moose Jaw&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;1700196&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700196&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700196</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194_1700196&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.448009</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">104.595177</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -427,9 +430,6 @@ integer, the server returns <strong>400 Bad Request</strong>.</p>
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 

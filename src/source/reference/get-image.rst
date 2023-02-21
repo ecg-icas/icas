@@ -25,7 +25,7 @@ If the image does not exist the server returns **404 Not Found**.
 
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-image-example.rst
 

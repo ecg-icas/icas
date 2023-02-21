@@ -51,6 +51,6 @@ Code    Error message               Description
 ====    ========================    ==============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/post-image-example.rst

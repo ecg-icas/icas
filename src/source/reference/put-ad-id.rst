@@ -39,7 +39,7 @@ PUT /ad/{id} v5
      * - several other fields are removed. See :ref:`ad-fields` for details.
 
 Example
--------
+"""""""
 
 .. include:: ../examples/put-ad-v5-example.rst
 
@@ -66,7 +66,7 @@ This field is currently used to indicate the reason why a certain ad might be se
 This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
 
 Example
--------
+"""""""
 
 .. include:: ../examples/put-ad-v3-example.rst
 
@@ -170,6 +170,6 @@ Error codes for POST /ad.
 .. include:: post-ad-errors.rst
 
 Example
--------
+"""""""
 
 .. include:: ../examples/put-ad-v2-example.rst

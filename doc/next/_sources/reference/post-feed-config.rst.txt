@@ -37,6 +37,6 @@ feedUrl                 2006    invalid url                 The value of field '
 ====================    ====    =======================     ==============================================================================
 
 Example
-~~~~~~~
+"""""""
 
 .. include:: ../examples/post-feed-config-example.rst

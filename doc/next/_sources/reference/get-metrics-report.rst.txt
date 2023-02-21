@@ -88,7 +88,7 @@ eCPC                        0.42                        float      V1         Re
 =======================     ========================    ========   ========   =============================================================
 
 Example
--------
+"""""""
 .. include:: ../examples/get-metrics-report-example-v2.rst
 
 
@@ -108,6 +108,6 @@ V1
 
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-metrics-report-example.rst

@@ -93,12 +93,10 @@
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
@@ -196,7 +194,12 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -249,18 +252,18 @@ Secondly, the Sellside API will check if the provided input parameters are meani
 within the context of the call. E.g. a category ID should be a positive integer.
 Only the context specific checks are mentioned in the Errors section of the documentation page of
 each call, as the type checks are considered generic.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="mf">400</span><span class="w"> </span><span class="nx">Bad</span><span class="w"> </span><span class="nx">Request</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="mf">400</span><span class="w"> </span><span class="nx">Bad</span><span class="w"> </span><span class="nx">Request</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="mf">2005</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="s2">&quot;too long&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;arg&quot;</span><span class="o">:</span><span class="mf">60</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;msg&quot;</span><span class="o">:</span><span class="s2">&quot;The field &#39;name&#39; must not be longer than 60 characters.&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="mf">2005</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="s2">&quot;too long&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;arg&quot;</span><span class="o">:</span><span class="mf">60</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;msg&quot;</span><span class="o">:</span><span class="s2">&quot;The field &#39;name&#39; must not be longer than 60 characters.&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -310,9 +313,6 @@ each call, as the type checks are considered generic.</p>
         };
     </script>
       <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 

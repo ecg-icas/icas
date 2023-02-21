@@ -47,6 +47,6 @@ count           int     Number of rows in the report
 ==============  ======  =====================================================
 
 Example
-~~~~~~~
+"""""""
 
 .. include:: ../examples/get-report-detail-example.rst

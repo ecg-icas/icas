@@ -93,12 +93,10 @@
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
@@ -196,7 +194,12 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -281,41 +284,41 @@ Non-leaf regions <em>do not have</em> that field.</p>
 <li><p>allow for region filter and distance search/sort</p></li>
 </ul>
 <p>The regions tree is provided as a JSON object which has the following structure:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/9009&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9009</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina Area&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina Area&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">      </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700196&quot;</span><span class="w"></span>
-<span class="w">          </span><span class="p">},</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700196</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194_1700196&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.448009</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">104.595177</span><span class="w"></span>
-<span class="w">          </span><span class="p">},</span><span class="w"></span>
-<span class="w">          </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">              </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">              </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="w"></span>
-<span class="w">          </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/9009&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9009</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina Area&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina Area&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700196&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700196</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194_1700196&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.448009</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">104.595177</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">...</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Ads can only be placed in leaf regions and all leaf regions contain a center point.</p>
@@ -377,23 +380,23 @@ Ads cannot be placed within them and therefore they have no center point.</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/9009&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9009</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina Area&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina Area&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">...</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/9009&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9009</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina Area&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina Area&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;children&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -454,24 +457,24 @@ no children. Leaf regions have coordinates of the center point.</p>
 </tbody>
 </table>
 <p>Example:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700196&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700196</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194_1700196&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.448009</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">104.595177</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700194&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;self&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/region/1700196&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700196</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;parentId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1700194</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9009_1700194_1700196&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;center&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;latitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">50.448009</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;longitude&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">104.595177</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;en_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;fr_CA&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Regina&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -522,9 +525,6 @@ no children. Leaf regions have coordinates of the center point.</p>
         };
     </script>
       <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 

@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -197,7 +195,12 @@
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -242,24 +245,24 @@
 <div><p>This call is scheduled to be deprecated. Please
 use the faster and more flexible generic endpoint <a class="reference internal" href="post-metrics-data.html#post-metrics-data"><span class="std std-ref">POST /metrics/data</span></a> instead, with the following payload to get the equivalent data:</p>
 </div></blockquote>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;custom&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;from&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;to&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2020-01-01&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}],</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:countDistinctAdID&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:impressions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:websiteClicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:emails&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:spent&quot;</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="c1">// optional, default is all categories</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;custom&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;from&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;to&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2020-01-01&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:countDistinctAdID&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:impressions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:websiteClicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:emails&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:spent&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="c1">// optional, default is all categories</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>As you can see, the date range in this call is not limited to a single date parameter.</p>
@@ -354,37 +357,37 @@ are still manageable in both time and amount of data to process internally.</p>
 </tr>
 </tbody>
 </table>
-</section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">categories</span><span class="o">/</span><span class="nx">statistics</span><span class="o">?</span><span class="nx">categoryIds</span><span class="o">=</span><span class="mf">2412</span><span class="p">,</span><span class="mf">525</span><span class="p">,</span><span class="mf">4216</span><span class="o">&amp;</span><span class="nx">date</span><span class="o">=</span><span class="mf">2017</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">09</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="p">.</span><span class="nx">statistics</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">categories</span><span class="o">/</span><span class="nx">statistics</span><span class="o">?</span><span class="nx">categoryIds</span><span class="o">=</span><span class="mf">2412</span><span class="p">,</span><span class="mf">525</span><span class="p">,</span><span class="mf">4216</span><span class="o">&amp;</span><span class="nx">date</span><span class="o">=</span><span class="mf">2017</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">09</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="p">.</span><span class="nx">statistics</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="p">.</span><span class="nx">statistics</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">category</span><span class="p">.</span><span class="nx">statistics</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">525</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;numAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;spent&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">126</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2412</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;numAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">630</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">72</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;spent&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1262</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">525</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;numAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;spent&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">126</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2412</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;numAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">630</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">72</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;spent&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1262</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -433,9 +436,6 @@ are still manageable in both time and amount of data to process internally.</p>
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 

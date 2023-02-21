@@ -29,7 +29,7 @@ GET /categories V5 has the same functionality as V1, except that it returns the 
    - ``application/sellside.category.list-v5+json, application/json``
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-categories-v5-example.rst
 
@@ -71,6 +71,6 @@ categoryIds             2004    too short                   The value needs to b
 ====================    ====    =======================     ==============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-categories-example.rst
