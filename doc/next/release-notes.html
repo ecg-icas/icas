@@ -185,8 +185,10 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
@@ -361,15 +363,17 @@
 <h3>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h3>
 <p>Added first campaign support. See <a class="reference internal" href="campaigns.html#campaigns"><span class="std std-ref">Campaigns</span></a> for full details.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaign</span></a>  GET /campaign with application/sellside.campaign.list-v5+json to get list of campaigns for a user. Expected 0 or 1 result.</p></li>
+<li><p><a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaign</span></a> to get list of campaigns for a user. Expected 0 or 1 result.</p></li>
 <li><p><a class="reference internal" href="reference/get-campaign-id.html#get-campaign-id"><span class="std std-ref">GET /campaign/{id}</span></a> to fetch the individual campaign.</p></li>
-<li><p><a class="reference internal" href="reference/put-campaign-id-status.html#put-campaign-id-status"><span class="std std-ref">PUT /campaign/{id}/status/{status}</span></a> to manage the campaign status (ACTIVE,PAUSED).</p></li>
-<li><p><a class="reference internal" href="reference/put-campaign-id-budgets.html#put-campaign-id-budgets"><span class="std std-ref">PUT /campaign/{id}/budgets</span></a> to manage the campaign’s budgets.</p></li>
+<li><p><a class="reference internal" href="reference/post-campaign.html#post-campaign"><span class="std std-ref">POST /campaign/</span></a> to create a campaign. Currently only 1 allowed per seller.</p></li>
+<li><p><a class="reference internal" href="reference/put-campaign-id.html#put-campaign-id"><span class="std std-ref">PUT /campaign/{id}</span></a> to update the campaign. Currently only status &amp; budgets can be updated.</p></li>
+<li><p><a class="reference internal" href="reference/put-campaign-id-status.html#put-campaign-id-status"><span class="std std-ref">PUT /campaign/{id}/status/{status}</span></a> to manage the campaign status (ACTIVE,PAUSED) directly.</p></li>
+<li><p><a class="reference internal" href="reference/put-campaign-id-budgets.html#put-campaign-id-budgets"><span class="std std-ref">PUT /campaign/{id}/budgets</span></a> to manage the campaign’s budgets directly.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We will create a campaign underwater for users who start placing ads without having a campaign, be sure to check the budgets of that campaign as
-a default campaign will have unlimited budget.
+<p>For the time being, we will create a campaign underwater for users who start placing ads without first having created a campaign.
+Be sure to check the budgets of that campaign as a default campaign will have unlimited budget.
 Deleting a campaign is currently not allowed.</p>
 </div>
 </section>

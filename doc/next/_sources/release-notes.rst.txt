@@ -98,14 +98,16 @@ Campaigns
 """""""""
 Added first campaign support. See :ref:`campaigns` for full details.
 
-* :ref:`get_campaign`  GET /campaign with application/sellside.campaign.list-v5+json to get list of campaigns for a user. Expected 0 or 1 result.
+* :ref:`get_campaign` to get list of campaigns for a user. Expected 0 or 1 result.
 * :ref:`get_campaign_id` to fetch the individual campaign.
-* :ref:`put_campaign_id_status` to manage the campaign status (ACTIVE,PAUSED).
-* :ref:`put_campaign_id_budgets` to manage the campaign's budgets.
+* :ref:`post_campaign` to create a campaign. Currently only 1 allowed per seller.
+* :ref:`put_campaign_id` to update the campaign. Currently only status & budgets can be updated.
+* :ref:`put_campaign_id_status` to manage the campaign status (ACTIVE,PAUSED) directly.
+* :ref:`put_campaign_id_budgets` to manage the campaign's budgets directly.
 
 .. note::
- We will create a campaign underwater for users who start placing ads without having a campaign, be sure to check the budgets of that campaign as 
- a default campaign will have unlimited budget.
+ For the time being, we will create a campaign underwater for users who start placing ads without first having created a campaign. 
+ Be sure to check the budgets of that campaign as a default campaign will have unlimited budget.
  Deleting a campaign is currently not allowed.
 
 User

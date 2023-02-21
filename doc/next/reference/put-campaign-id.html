@@ -37,7 +37,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/> 
+    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/>
+        <link rel="up" title="API Reference" href="../api-reference.html"/>
+        <link rel="next" title="PUT /campaign/{id}/status/{status}" href="put-campaign-id-status.html"/>
+        <link rel="prev" title="GET /campaign/{id}" href="get-campaign-id.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -64,7 +67,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#media-types">Media Types</a></li>
@@ -150,7 +153,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../error-handling.html">Error Handling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api-reference.html">API Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../api-reference.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="get-ad.html">GET /ad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
@@ -184,8 +187,10 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
@@ -221,10 +226,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
+      
     <li>PUT /campaign/{id}</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/reference/put-campaign.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/reference/put-campaign-id.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -233,13 +240,83 @@
           <div role="main">
             
   <section id="put-campaign-id">
-<span id="put-campaign"></span><span id="index-0"></span><h1>PUT /campaign/{id}<a class="headerlink" href="#put-campaign-id" title="Permalink to this heading">¶</a></h1>
-<p>TODO later when we unlock multiple campaigns per user</p>
+<span id="index-0"></span><span id="id1"></span><h1>PUT /campaign/{id}<a class="headerlink" href="#put-campaign-id" title="Permalink to this heading">¶</a></h1>
+<p>This URL updates a campaign as defined in <a class="reference internal" href="../campaigns.html#campaigns"><span class="std std-ref">Campaigns</span></a>.</p>
+<section id="put-campaign-id-v5">
+<span id="id2"></span><h2>PUT /campaign/{id} v5<a class="headerlink" href="#put-campaign-id-v5" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_rw</span></code> or <code class="docutils literal notranslate"><span class="pre">console_rw</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.campaign-v5+json,</span> <span class="pre">application/json</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Content-Type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.campaign-v5+json;</span> <span class="pre">charset=utf-8</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">123</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;budgets&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;daily&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;limitMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;10000000&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;limitMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;UNLIMITED&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2022-12-25T10:04:23Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2022-12-28T22:40:15Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;budgets&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;daily&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;limitMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;10000000&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;spentMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9520000&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;limitMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;UNLIMITED&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;spentMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;124520000&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="put-campaign-id-status.html" class="btn btn-neutral float-right" title="PUT /campaign/{id}/status/{status}"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="get-campaign-id.html" class="btn btn-neutral" title="GET /campaign/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
