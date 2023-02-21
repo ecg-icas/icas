@@ -3,7 +3,7 @@
 
 GET /user
 =========
-:ref:`get_user_v4` | :ref:`get_user_v3` | :ref:`get_user_v1`
+:ref:`get_user_v4` | :ref:`get_user_v3` | :ref:`get_user_v2` | :ref:`get_user_v1`
 
 This URL returns information of the current user. The ``id`` field contains
 a unique user identifier. The ``options.feed`` field is ``true`` if the user

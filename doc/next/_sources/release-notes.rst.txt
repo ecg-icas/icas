@@ -24,6 +24,8 @@ Synopsis
 Ads
 """
 
+See :ref:`ads` for full details.
+
 .. list-table::
  :widths: 20 80
  :header-rows: 1
@@ -68,6 +70,9 @@ Ads
 
 Categories
 """"""""""
+
+See :ref:`categories` for full details.
+
 .. list-table::
  :widths: 20 80
  :header-rows: 1
@@ -91,7 +96,7 @@ Categories
 
 Campaigns
 """""""""
-Added first campaign support.
+Added first campaign support. See :ref:`campaigns` for full details.
 
 * :ref:`get_campaign`  GET /campaign with application/sellside.campaign.list-v5+json to get list of campaigns for a user. Expected 0 or 1 result.
 * :ref:`get_campaign_id` to fetch the individual campaign.
@@ -105,6 +110,8 @@ Added first campaign support.
 
 User
 """"
+
+See :ref:`get_user` for full details.
 
 Start using V4. There are 2 new fields in comparison with V2:
 ``hasAds`` (**bool**), whether a user has ads in the system and 

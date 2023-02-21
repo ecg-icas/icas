@@ -710,6 +710,6 @@ shippingOptions example
 .. _ad_example:
 
 Ad Example
-"""""""---
+""""""""""
 
 .. include:: examples/get-ad-id-v5-example.rst
