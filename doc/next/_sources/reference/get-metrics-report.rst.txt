@@ -16,7 +16,7 @@ whereas it counts the number of sessions with clicks when the scope is `session`
 We plan to extend support for user-level scoped metrics if there is demand for it.
 
 V2
-~~
+""
 
 V2 replaces the fields (``cpc``, ``totalSpent``,  ``dailyLimit``, ``totalBudget``, ``eCPC``) with their corresponding ``bidMicros``, ``spentMicros``, ``dailyBudgetMicros``, ``totalBudgetMicros``, ``eSpentMicros`` shown in micros unit.
 
@@ -89,11 +89,11 @@ eCPC                        0.42                        float      V1         Re
 
 Example
 """""""
+
 .. include:: ../examples/get-metrics-report-example-v2.rst
 
-
 V1
-~~
+""
 
 .. list-table::
  :widths: 30 70
@@ -103,9 +103,6 @@ V1
 
  * - Accept
    - ``application/sellside.metrics.ad-hit-v1+json`` or ``application/sellside.metrics.ad-session-v1+json``
-
-
-
 
 Example
 """""""

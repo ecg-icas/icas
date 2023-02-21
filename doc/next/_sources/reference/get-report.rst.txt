@@ -204,7 +204,7 @@ url clicks, emails for all ads which received at least one event that day.
     Version 1 is deprecated and will be removed after September 2015.
 
 Parameters
-~~~~~~~~~~
+""""""""""
 
 =======================     ========================    ========    =============================================================
 Field                       Example                     Type        Info
@@ -215,7 +215,7 @@ _exclude                    "id,date,title"             string      Comma-separa
 =======================     ========================    ========    =============================================================
 
 Fields
-~~~~~~
+""""""
 
 =======================     ========================    ========    =============================================================
 Field                       Example                     Type        Info
