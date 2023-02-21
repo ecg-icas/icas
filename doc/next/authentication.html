@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Authentication &mdash; iCAS Sellside API 0.124 documentation</title>
+  <title>Authentication &mdash; iCAS Sellside API 0.125 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.125 documentation" href="index.html"/>
         <link rel="next" title="Advertisements" href="ads.html"/>
         <link rel="prev" title="Overview" href="overview.html"/> 
 
@@ -133,6 +133,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="feeds.html">XML Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feeds.html#whitelisting">Whitelisting</a></li>
@@ -389,8 +390,8 @@ should then be discussed with your contact point.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">authorize</span><span class="o">?</span><span class="nx">response_type</span><span class="o">=</span><span class="nx">code</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">scope</span><span class="o">=</span><span class="nx">api_ro</span><span class="o">+</span><span class="nx">api_rw</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code&amp;state=YOUR_STATE</span><span class="w"></span>
-<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">authorize</span><span class="o">?</span><span class="nx">response_type</span><span class="o">=</span><span class="nx">code</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">scope</span><span class="o">=</span><span class="nx">api_ro</span><span class="o">+</span><span class="nx">api_rw</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code&amp;state=YOUR_STATE</span>
+<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
 </pre></div>
 </div>
 </section>
@@ -422,8 +423,8 @@ specified in the request at step 1 with the following GET parameters</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">code</span><span class="o">?</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">state</span><span class="o">=</span><span class="nx">YOUR_STATE</span><span class="w"></span>
-<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">yoursite</span><span class="p">.</span><span class="nx">com</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">code</span><span class="o">?</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">state</span><span class="o">=</span><span class="nx">YOUR_STATE</span>
+<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">yoursite</span><span class="p">.</span><span class="nx">com</span>
 </pre></div>
 </div>
 <p>This is how your client gets the short-lived authorization code to subsequently get a refresh &amp; access token.</p>
@@ -467,11 +468,11 @@ specified in the request at step 1 with the following GET parameters</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span><span class="w"></span>
-<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span>
+<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
 
-<span class="nx">grant_type</span><span class="o">=</span><span class="nx">authorization_code</span><span class="o">&amp;</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code</span><span class="w"></span>
+<span class="nx">grant_type</span><span class="o">=</span><span class="nx">authorization_code</span><span class="o">&amp;</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code</span>
 </pre></div>
 </div>
 </section>
@@ -511,22 +512,22 @@ format if the token request at step 3 is valid.</p>
 <p class="admonition-title">Note</p>
 <p>Check <a class="reference internal" href="#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a> on the behavior of the <code class="docutils literal notranslate"><span class="pre">refresh_token</span></code> field.</p>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span><span class="w"></span>
-<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span>
+<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
 
-<span class="nx">grant_type</span><span class="o">=</span><span class="nx">authorization_code</span><span class="o">&amp;</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code</span><span class="w"></span>
+<span class="nx">grant_type</span><span class="o">=</span><span class="nx">authorization_code</span><span class="o">&amp;</span><span class="nx">code</span><span class="o">=</span><span class="nx">AUTH_CODE</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span><span class="o">&amp;</span><span class="nx">redirect_uri</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//yoursite.com/code</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;access_token&quot;</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1dc19b97-fd12-4feb-8c9d-042b4ba80747&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;token_type&quot;</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bearer&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;expires_in&quot;</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;refresh_token&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;7432aa20-97d1-4426-bab7-dbeed8b5d997&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;scope&quot;</span><span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;api_ro api_rw&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;access_token&quot;</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1dc19b97-fd12-4feb-8c9d-042b4ba80747&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;token_type&quot;</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;expires_in&quot;</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;refresh_token&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;7432aa20-97d1-4426-bab7-dbeed8b5d997&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;scope&quot;</span><span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;api_ro api_rw&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -535,9 +536,9 @@ format if the token request at step 3 is valid.</p>
 <span id="id2"></span><h2>Using an Access Token<a class="headerlink" href="#using-an-access-token" title="Permalink to this heading">¶</a></h2>
 <p>To use the access token for an actual API call you have to provide it in the
 <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header as follows:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">ad</span><span class="w"></span>
-<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span><span class="w"></span>
-<span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">Bearer</span><span class="w"> </span><span class="mf">1</span><span class="nx">dc19b97</span><span class="o">-</span><span class="nx">fd12</span><span class="o">-</span><span class="mf">4</span><span class="nx">feb</span><span class="o">-</span><span class="mf">8</span><span class="nx">c9d</span><span class="o">-</span><span class="mo">042</span><span class="nx">b4ba80747</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">ad</span>
+<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
+<span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="nx">Bearer</span><span class="w"> </span><span class="mf">1</span><span class="nx">dc19b97</span><span class="o">-</span><span class="nx">fd12</span><span class="o">-</span><span class="mf">4</span><span class="nx">feb</span><span class="o">-</span><span class="mf">8</span><span class="nx">c9d</span><span class="o">-</span><span class="mo">042</span><span class="nx">b4ba80747</span>
 </pre></div>
 </div>
 </section>
@@ -581,22 +582,22 @@ endpoint</em> with the following parameters is necessary.</p>
 <p>If the refresh token request is valid the authorization server returns a new
 access token. The token response is identical to the token response explained
 at step 4 of <a class="reference internal" href="#obtaining-an-access-token"><span class="std std-ref">Getting an Access Token</span></a>.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span><span class="w"></span>
-<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">accounts</span><span class="o">/</span><span class="nx">oauth</span><span class="o">/</span><span class="nx">token</span>
+<span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">admarkt</span><span class="p">.</span><span class="nx">demo</span><span class="p">.</span><span class="nx">qa</span><span class="o">-</span><span class="nx">mp</span><span class="p">.</span><span class="nx">so</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
 
-<span class="nx">grant_type</span><span class="o">=</span><span class="nx">refresh_token</span><span class="o">&amp;</span><span class="nx">refresh_token</span><span class="o">=</span><span class="nx">YOUR_CURRENT_REFRESH_TOKEN</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span><span class="w"></span>
+<span class="nx">grant_type</span><span class="o">=</span><span class="nx">refresh_token</span><span class="o">&amp;</span><span class="nx">refresh_token</span><span class="o">=</span><span class="nx">YOUR_CURRENT_REFRESH_TOKEN</span><span class="o">&amp;</span><span class="nx">client_id</span><span class="o">=</span><span class="nx">YOUR_CLIENT_ID</span><span class="o">&amp;</span><span class="nx">client_secret</span><span class="o">=</span><span class="nx">YOUR_CLIENT_SECRET</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;access_token&quot;</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;52f1492d-8ad7-4d4c-88aa-2c38da2d45a2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;token_type&quot;</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bearer&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;expires_in&quot;</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;refresh_token&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fc668806-739d-4089-a9b0-f8ee10e53ded&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;scope&quot;</span><span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;api_ro api_rw&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;access_token&quot;</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;52f1492d-8ad7-4d4c-88aa-2c38da2d45a2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;token_type&quot;</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bearer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;expires_in&quot;</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;refresh_token&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fc668806-739d-4089-a9b0-f8ee10e53ded&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;scope&quot;</span><span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;api_ro api_rw&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -687,16 +688,13 @@ granted by the user which is part of the user record.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.124',
+            VERSION:'0.125',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 

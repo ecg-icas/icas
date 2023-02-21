@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /report &mdash; iCAS Sellside API 0.124 documentation</title>
+  <title>GET /report &mdash; iCAS Sellside API 0.125 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.125 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /report/detail" href="get-report-detail.html"/>
         <link rel="prev" title="GET /feed/xsd" href="get-feed-xsd.html"/> 
@@ -134,6 +134,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../feeds.html">XML Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
@@ -445,37 +446,37 @@ still using V2.</p>
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-25&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">1262</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">573</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">4900</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">999</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">13</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">73</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="s2">&quot;ad123ecec&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;engagement&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">74</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-25&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">1262</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">573</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">4900</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">999</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">13</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">73</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="s2">&quot;ad123ecec&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;engagement&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">74</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -680,36 +681,36 @@ This will be fixed in a later release.</p>
 </section>
 <section id="id5">
 <h2>Example<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-23T23:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24T23:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">1262</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">573</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">4900</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">999</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">13</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">73</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="s2">&quot;ad123ecec&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-23T23:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24T23:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">1262</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">573</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">4900</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">999</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">13</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">73</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="s2">&quot;ad123ecec&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -866,52 +867,52 @@ url clicks, emails for all ads which received at least one event that day.</p>
 </section>
 <section id="id8">
 <h3>Example<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">report</span><span class="o">/?</span><span class="nx">date</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mf">30</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">report</span><span class="o">/?</span><span class="nx">date</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mf">30</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mf">544023</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;date&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-29T23:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">210338</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad 1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-30T10:05:41Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-30T10:11:21Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">5000</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">1000</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">60</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">120</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">6</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="s2">&quot;f985f7eecc&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mf">544028</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;date&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-29T23:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">210339</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad 2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-30T10:11:28Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">5000</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">1000</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">20</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">24</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="s2">&quot;bffb7103d5&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mf">544023</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;date&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-29T23:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">210338</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">2</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad 1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-30T10:05:41Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-30T10:11:21Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">5000</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">60</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">120</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">6</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">3</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="s2">&quot;f985f7eecc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mf">544028</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;date&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-29T23:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">210339</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">3</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad 2&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-01-30T10:11:28Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">5000</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">20</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">24</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">2</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;externalId&quot;</span><span class="o">:</span><span class="s2">&quot;bffb7103d5&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -956,16 +957,13 @@ url clicks, emails for all ads which received at least one event that day.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.124',
+            VERSION:'0.125',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 

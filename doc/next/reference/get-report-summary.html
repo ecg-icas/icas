@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /report/summary &mdash; iCAS Sellside API 0.124 documentation</title>
+  <title>GET /report/summary &mdash; iCAS Sellside API 0.125 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.125 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /metrics/ads" href="get-metrics-ads.html"/>
         <link rel="prev" title="POST /report/detail" href="post-report-detail.html"/> 
@@ -134,6 +134,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../feeds.html">XML Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
@@ -346,19 +347,19 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
 </section>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">summary</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mf">12</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">21</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">summary</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mf">12</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">21</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">spent</span><span class="o">:</span><span class="w"> </span><span class="mf">640100</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">impressions</span><span class="o">:</span><span class="w"> </span><span class="mf">162533</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">clicks</span><span class="o">:</span><span class="w"> </span><span class="mf">12823</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">engagement</span><span class="o">:</span><span class="w"> </span><span class="mf">713</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">averageCtr</span><span class="o">:</span><span class="w"> </span><span class="mf">0.078894748</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nx">spent</span><span class="o">:</span><span class="w"> </span><span class="mf">640100</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">impressions</span><span class="o">:</span><span class="w"> </span><span class="mf">162533</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">clicks</span><span class="o">:</span><span class="w"> </span><span class="mf">12823</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">engagement</span><span class="o">:</span><span class="w"> </span><span class="mf">713</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">averageCtr</span><span class="o">:</span><span class="w"> </span><span class="mf">0.078894748</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -475,21 +476,21 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
 </section>
 <section id="id7">
 <h3>Example<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">summary</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mf">12</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">21</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">summary</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mf">12</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">21</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">ads</span><span class="o">:</span><span class="w"> </span><span class="mf">28496</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">spent</span><span class="o">:</span><span class="w"> </span><span class="mf">640100</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">impressions</span><span class="o">:</span><span class="w"> </span><span class="mf">162533</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">clicks</span><span class="o">:</span><span class="w"> </span><span class="mf">12823</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">urlClicks</span><span class="o">:</span><span class="w"> </span><span class="mf">701</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">averageCtr</span><span class="o">:</span><span class="w"> </span><span class="mf">0.078894748</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">emails</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nx">ads</span><span class="o">:</span><span class="w"> </span><span class="mf">28496</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">spent</span><span class="o">:</span><span class="w"> </span><span class="mf">640100</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">impressions</span><span class="o">:</span><span class="w"> </span><span class="mf">162533</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">clicks</span><span class="o">:</span><span class="w"> </span><span class="mf">12823</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">urlClicks</span><span class="o">:</span><span class="w"> </span><span class="mf">701</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">averageCtr</span><span class="o">:</span><span class="w"> </span><span class="mf">0.078894748</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">emails</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -534,16 +535,13 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.124',
+            VERSION:'0.125',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
