@@ -180,7 +180,7 @@ The category in which the ad is placed in the :ref:`categories` tree.
 Each ad belongs to one and only one category and the category of an ad cannot be changed.
 This field can only be set once during the lifecycle of an ad.
 
-An integer value from the category list. Must be an id of a category with a
+An integer value from the category list. Must be an id of a leaf category with a
 non-zero parent id.
 
 ======= ====================================================
