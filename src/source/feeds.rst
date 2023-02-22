@@ -294,7 +294,7 @@ Example .. code-block:: html
 media
 """""
 
-Product images. Media should contain from 0 to N **<image>** elements, where the exact limit depends on the category in taxonomy. **<image>** elements must contain an URL attribute. URL should be a complete link pointing to an image on a publicly available webserver.
+Complex type used currently for product images. **<media>** should contain from 0 to N **<image>** ordered elements, where the exact limit depends on the category in taxonomy. **<image>** elements must contain a complete URL link pointing to an image on a publicly available webserver.
 
 Allowed image formats: JPEG, JPG, PNG, GIF\*, BMP.
 
