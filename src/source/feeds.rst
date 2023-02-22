@@ -19,7 +19,7 @@ Fields
 A set of required and optional fields defined by feed XSD is listed below.
 All the values provided should conform to the rules specified for the valid XML document.
 For the more complex data (that contains, for example HTML tags) we recommend using `character data (CDATA) <https://en.wikipedia.org/wiki/CDATA>`_.
-XML escape characters, are also supported.
+XML escape characters are also supported.
 
 ====================================== ==================================== ===================  =========== 
 Field                                  Description                          Restrictions         Mandatory 
