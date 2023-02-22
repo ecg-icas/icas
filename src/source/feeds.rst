@@ -462,7 +462,7 @@ The region in which the ad is placed. (only applicable for Kijiji Canada)
 A long value from the region tree. Must be the id of a leaf region.
 
 Each ad belongs to one and only one region and region of an ad cannot be updated.
-This field can only set once during creation of an ad.
+This field can only be set once during creation of an ad.
 
 This field is mandatory if the `region` field of category configuration is ``MANDATORY``
 and optional if the `region` field is ``OPTIONAL``.
