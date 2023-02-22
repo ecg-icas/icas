@@ -368,7 +368,7 @@ dailyBudget   daily budget for the given ad in cents     No
 The minimum and maximum values for the total budget depend on the category. 
 If the total budget is not returned with the ad, it means there is an unlimited total budget.
 
-When this value of the daily budget is reached the ad will be paused for the rest of the day. 
+When this value of the daily budget is reached the ad will be paused for the rest of the day, and reset the following day. 
 The minimum value depends on the category. Maximum value cannot be higher than the total budget.
 
 The minimum and maximum values of the cost per click (cpc) depend on the category.
