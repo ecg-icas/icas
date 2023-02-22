@@ -83,7 +83,9 @@ XML file. Any non-empty string with a maximum length of 64 characters.
    ad and trigger image re-processing.
 
 ======= ====================================================
-Example	<ad:vendorId>15839942</ad:vendorId>
+Example	.. code-block:: html
+        
+          <ad:vendorId>15839942</ad:vendorId>
 ======= ====================================================
 
 .. index:: externalId
@@ -105,9 +107,11 @@ sellerName
 
 Display name of the seller (max. 60 characters).
 
-======= ====================================================
-Example	<ad:sellerName>Cups, Caps &amp; Craps</ad:sellerName>
-======= ====================================================
+======= ======================================================
+Example	.. code-block:: html
+        
+         <ad:sellerName>Cups, Caps &amp; Craps</ad:sellerName>
+======= ======================================================
 
 .. index:: title
 .. _feed_t:
@@ -118,7 +122,9 @@ title
 Any string, with minimum and maximum length determined by the category, with a maximum cap of 1024 characters. See :ref:`categories`. URLs are not allowed as part of the title.
 
 ======= ====================================================
-Example	<ad:title>Goedkope A-merk herenfietsen</ad:title>
+Example	.. code-block:: html
+        
+         <ad:title>Goedkope A-merk herenfietsen</ad:title>
 ======= ====================================================
 
 .. index:: description
@@ -133,9 +139,8 @@ All HTML elements except for the ones below will be removed:
 
 .. code-block:: html
 
-    <u> <em> <ul> <li> <p> <strong> <br> <blink>*
+    <u> <em> <ul> <li> <p> <strong> <br>
     
-*\*paid extra*
 
 ======= =========================================================================================================
 Example .. code-block:: html 
@@ -179,7 +184,9 @@ An integer value from the category list. Must be an id of a category with a
 non-zero parent id.
 
 ======= ====================================================
-Example	<ad:categoryId>945</ad:categoryId>
+Example	.. code-block:: html
+        
+         <ad:categoryId>945</ad:categoryId>
 ======= ====================================================
 
 .. index:: status
@@ -201,7 +208,9 @@ The provided (desired) status may differ from the resulting one, depending on th
 For instance, budget may be depleted, or the seller may have too many active ads already in the category.
 
 ======= =============================
-Example <ad:status>PAUSED</ad:status>
+Example .. code-block:: html
+        
+         <ad:status>PAUSED</ad:status>
 ======= =============================
 
 .. index:: url
@@ -214,7 +223,9 @@ An external URL that is shown on the ad page. This must be a valid http(s)
 url.
 
 ======= =======================================
-Example <ad:url>https://www.bmw.de</ad:url>
+Example .. code-block:: html
+        
+         <ad:url>https://www.bmw.de</ad:url>
 ======= =======================================
 
 .. index:: vanityUrl
@@ -226,7 +237,9 @@ vanityUrl
 The text/url that will be displayed instead of the url in :ref:`feed_url`.
 
 ======= ==================================
-Example <ad:vanityUrl>BMW</ad:vanityUrl>
+Example .. code-block:: html
+        
+         <ad:vanityUrl>BMW</ad:vanityUrl>
 ======= ==================================
 
 .. index:: priceType
@@ -238,7 +251,9 @@ priceType
 Must be a valid price type identifier from the list of :ref:`price_types`.
 
 ======= ============================================
-Example <ad:priceType>FIXED_PRICE</ad:priceType>
+Example .. code-block:: html
+        
+         <ad:priceType>FIXED_PRICE</ad:priceType>
 ======= ============================================
 
 .. index:: price
@@ -253,7 +268,9 @@ If it is `FIXED_PRICE` or `BIDDING_FROM` then **price** is mandatory and needs t
 The maximum allowed **price** value is ``10000000000`` of the local market currency. (100.000.000,00 EUR / CAD / ... ).
 
 ======= =============================
-Example <ad:price>1500</ad:price>
+Example .. code-block:: html
+        
+         <ad:price>1500</ad:price>
 ======= =============================
 
 .. index:: originalPrice
@@ -266,7 +283,9 @@ Product price before discount. Ignored if a seller does not have a discount opti
 The maximum allowed **originalPrice** value is ``10000000000`` of the local market currency. (100.000.000,00 EUR / CAD / ... ).
 
 ======= ============================================
-Example <ad:originalPrice>1500</ad:originalPrice>
+Example .. code-block:: html
+        
+         <ad:originalPrice>1500</ad:originalPrice>
 ======= ============================================
 
 .. index:: media
@@ -391,7 +410,7 @@ For shippingType 'PICKUP' provide 'location'. Both 'cost' and 'time' are ignored
 
 Whether shipping options are disabled/optional/mandatory for an ad is configured per category, see :ref:`category_config_v2`.
 
-======= =========================================================================================================
+======= ==============================================================
 Example .. code-block:: html 
 
             <ad:shippingOptions>
@@ -401,7 +420,7 @@ Example .. code-block:: html
                     </ad:shippingOption>
                 </ad:shippingOptions>
 
-======= =========================================================================================================
+======= ==============================================================
 
 .. index:: phoneNumber
 .. _feed_phoneNumber:
@@ -414,7 +433,9 @@ The phone number of the advertiser as international phone number format, e.g.
 numbers are not allowed.
 
 ======= =================================================
-Example <ad:phoneNumber>+31207894561</ad:phoneNumber>
+Example .. code-block:: html
+        
+         <ad:phoneNumber>+31207894561</ad:phoneNumber>
 ======= =================================================
 
 .. index:: emailAdvertiser
@@ -426,7 +447,9 @@ emailAdvertiser
 Flag for allowing emails to be sent to the advertiser.
 
 ======= =================================================
-Example <ad:emailAdvertiser>true</ad:emailAdvertiser>
+Example .. code-block:: html
+        
+         <ad:emailAdvertiser>true</ad:emailAdvertiser>
 ======= =================================================
 
 .. index:: regionId
@@ -448,7 +471,9 @@ This field must be omitted if the `region` field of category configuration is ``
 Please refer to :ref:`categories` and :ref:`regions`
 
 ======= =======================================
-Example <ad:regionId>1700274</ad:regionId>
+Example .. code-block:: html
+        
+         <ad:regionId>1700274</ad:regionId>
 ======= =======================================
 
 .. index:: engines
@@ -478,7 +503,6 @@ Example .. code-block:: html
             <ad:engines>
                 <engine>promotions</engine>
             </ad:engines>
-
 ======= =======================================
 
 .. index:: microTip
@@ -492,7 +516,9 @@ It is a feature as part of a package that sellers can purchase (currently availa
 It provides extra attention on the ad in the search results.
 
 ======= ===========================================
-Example <ad:microTip>TODAY 15% SALE</ad:microTipd>
+Example .. code-block:: html
+        
+         <ad:microTip>TODAY 15% SALE</ad:microTip>
 ======= ===========================================
 
 .. index:: mpn
@@ -505,7 +531,9 @@ Manufacturer Part Number (MPN), definition follows `Google Merchant Center <http
 String identifier max 2-70 chars.
 
 ======= ==================================
-Example  <ad:mpn>AB12345R89TN6E</ad:mpn>
+Example .. code-block:: html
+        
+         <ad:mpn>AB12345R89TN6E</ad:mpn>
 ======= ==================================
 
 .. index:: googleProductCategory
@@ -517,7 +545,11 @@ googleProductCategory
 Product category from Google's product taxonomy. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
 
 ======= =============================================================================================================
-Example <ad:googleProductCategory>Apparel &amp; Accessories &gt; Clothing &gt; Dresses</ad:googleProductCategory>
+Example .. code-block:: html
+        
+         <ad:googleProductCategory>
+            Apparel &amp; Accessories &gt; Clothing &gt; Dresses
+         </ad:googleProductCategory>
 ======= =============================================================================================================
 
 .. index:: productType
@@ -530,7 +562,11 @@ Definition follows `Google Merchant Center <https://support.google.com/merchants
 String identifier max 750 chars.
 
 ======= ===============================================================================
-Example <ad:productType>Home &gt; Women &gt; Dresses &gt; Maxi Dresses</ad:productType>
+Example .. code-block:: html
+        
+         <ad:productType>
+            Home &gt; Women &gt; Dresses &gt; Maxi Dresses
+         </ad:productType>
 ======= ===============================================================================
 
 .. index:: brand
@@ -543,7 +579,9 @@ Brand definition follows `Google Merchant Center <https://support.google.com/mer
 String identifier max 70 chars.
 
 ======= ============================================
-Example <ad:brand>Little black dress</ad:brand>
+Example .. code-block:: html
+        
+         <ad:brand>Little black dress</ad:brand>
 ======= ============================================
 
 .. index:: gtin
@@ -556,7 +594,9 @@ GTIN, definition follows `Google Merchant Center <https://support.google.com/mer
 String identifier max 50 chars.
 
 ======= ==================================
-Example <ad:gtin>44320194113475</ad:gtin>
+Example .. code-block:: html
+        
+         <ad:gtin>44320194113475</ad:gtin>
 ======= ==================================
 
 .. index:: itemGroupId
@@ -569,7 +609,9 @@ Item Group Id definition follows `Google Merchant Center <https://support.google
 String identifier max 1-50 chars.
 
 ======= ============================================
-Example <ad:itemGroupId>BC23456</ad:itemGroupId>
+Example .. code-block:: html
+        
+         <ad:itemGroupId>BC23456</ad:itemGroupId>
 ======= ============================================
 
 .. index:: condition
@@ -582,7 +624,9 @@ Condition definition follows `Google Merchant Center <https://support.google.com
 Accepted values: *new*, *refurbished*, *used*
 
 ======= ==================================
-Example <ad:condition>used</ad:condition>
+Example .. code-block:: html
+        
+         <ad:condition>used</ad:condition>
 ======= ==================================
 
 .. index:: material
@@ -595,7 +639,9 @@ Material definition follows `Google Merchant Center <https://support.google.com/
 String identifier max 200 chars.
   
 ======= ==================================
-Example <ad:material>Wool</ad:material>
+Example .. code-block:: html
+        
+         <ad:material>Wool</ad:material>
 ======= ==================================
 
 .. index:: energyEfficiencyClass
@@ -609,7 +655,9 @@ Energy Efficiency Class See `Google Merchant Center <https://support.google.com/
 Allowed values: *A+++*, *A++*, *A+*, *A++*,	*B*, *C*, *B*, *E*,	*F*, *G*
 
 ======= ===========================================================
-Example <ad:energyEfficiencyClass>A+</ad:energyEfficiencyClass>
+Example .. code-block:: html
+        
+         <ad:energyEfficiencyClass>A+</ad:energyEfficiencyClass>
 ======= ===========================================================
 
 .. index:: minEnergyEfficiencyClass
@@ -621,7 +669,9 @@ minEnergyEfficiencyClass
 Minimal energy efficiency class. Possible values defined in :ref:`feed_energyEfficiencyClass`
 
 ======= ================================================================
-Example <ad:minEnergyEfficiencyClass>E</ad:minEnergyEfficiencyClass>
+Example .. code-block:: html
+        
+         <ad:minEnergyEfficiencyClass>E</ad:minEnergyEfficiencyClass>
 ======= ================================================================
 
 .. index:: maxEnergyEfficiencyClass
@@ -633,7 +683,9 @@ maxEnergyEfficiencyClass
 Maximal energy efficiency class. Possible values defined in :ref:`feed_energyEfficiencyClass`
 
 ======= ================================================================
-Example <ad:maxEnergyEfficiencyClass>B</ad:maxEnergyEfficiencyClass>
+Example .. code-block:: html
+        
+         <ad:maxEnergyEfficiencyClass>B</ad:maxEnergyEfficiencyClass>
 ======= ================================================================
 
 .. index:: color
@@ -646,7 +698,9 @@ Color definition follows `Google Merchant Center <https://support.google.com/mer
 String identifier max 1-100 chars.
 
 ======= ==================================
-Example <ad:color>Black/Grey</ad:color>
+Example .. code-block:: html
+        
+         <ad:color>Black/Grey</ad:color>
 ======= ==================================
 
 .. index:: gender
@@ -660,7 +714,9 @@ Gender definition follows `Google Merchant Center <https://support.google.com/me
 Allowed values: *male*, *female*, *unisex*
 
 ======= =============================
-Example <ad:gender>unisex</ad:gender>
+Example .. code-block:: html
+        
+         <ad:gender>unisex</ad:gender>
 ======= =============================
 
 .. index:: ageGroup
@@ -674,7 +730,9 @@ Age group definition follows `Google Merchant Center <https://support.google.com
 Allowed values: *newborn*, *infant*, *toddler*, *children*, *adult*
 
 ======= ==================================
-Example <ad:ageGroup>adult</ad:ageGroup>
+Example .. code-block:: html
+        
+         <ad:ageGroup>adult</ad:ageGroup>
 ======= ==================================
 
 .. index:: size
@@ -687,7 +745,9 @@ Size definition follows `Google Merchant Center <https://support.google.com/merc
 String identifier max 1-100 chars.
 
 ======= =============================
-Example <ad:size>S</ad:size>
+Example .. code-block:: html
+        
+         <ad:size>S</ad:size>
 ======= =============================
 
 .. index:: unitPricingBaseMeasure
@@ -699,7 +759,9 @@ unitPricingBaseMeasure
 The denominator for product unit price. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
 
 ======= ===========================================================
-Example <ad:unitPricingBaseMeasure>1kg</ad:unitPricingBaseMeasure>
+Example .. code-block:: html
+        
+         <ad:unitPricingBaseMeasure>1kg</ad:unitPricingBaseMeasure>
 ======= ===========================================================
 
 .. index:: unitPricingMeasure
@@ -711,7 +773,9 @@ unitPricingMeasure
 Defines the measure and dimension of the product. Example 125ml, 100g. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
 
 ======= ======================================================
-Example <ad:unitPricingMeasure>15kg</ad:unitPricingMeasure>
+Example .. code-block:: html
+        
+         <ad:unitPricingMeasure>15kg</ad:unitPricingMeasure>
 ======= ======================================================
 
 Errors
