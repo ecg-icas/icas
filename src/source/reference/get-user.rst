@@ -12,7 +12,7 @@ value of the :ref:`ad_links_displayUrl` field in the advertisement is shown
 in the search results. The ``hasAds`` field is ``false`` if the user has no ads at all (not even deleted).
 The ``locations`` field contains the user (or webshop) locations.
 The ``isAPIManaged`` field is ``true`` when there is (at least one) API partner
-using RW-scopes for this customer. API partners using RO-scopes only will not
+using ``api-rw`` scope for this customer. API partners using ``api-ro`` only will not
 count towards this value being ``true``.
 
 .. _get_user_v4:

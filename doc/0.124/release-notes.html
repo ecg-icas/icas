@@ -237,21 +237,27 @@
             
   <section id="release-notes">
 <span id="index-0"></span><span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this heading">¶</a></h1>
-<p>This section attempts to give a little more insight on what our various releases contain, as compared to previous versions.</p>
+<p>This section gives insight on what our current and previous releases contain.</p>
 <section id="feb-2023-campaigns-micros">
 <h2>Feb 2023: ‘Campaigns &amp; Micros’<a class="headerlink" href="#feb-2023-campaigns-micros" title="Permalink to this heading">¶</a></h2>
 <section id="synopsis">
 <h3>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>For bid, budgets &amp; spent values we now report in micros: 1 cent == 10000 micros. These fields will now also be named accordingly, mentioning whether they represent a value in cents or micros. This is also represented in the categories data, where the interval of allowed values is defined. Mind, this does not include values like ‘AUTOMATIC’ or ‘UNLIMITED’.</p></li>
-<li><p>Introduced campaigns, campaign ID not (yet) mandatory while placing ads. Campaigns have their own daily/total budgets. Since currently only 1 campaign is allowed per user, this effectively represents the seller’s complete budget.</p></li>
+<li><p>changing wording of <code class="docutils literal notranslate"><span class="pre">cpc</span></code> to <code class="docutils literal notranslate"><span class="pre">bid</span></code>, Functionality has not changed.</p></li>
+<li><p>For bid, budgets &amp; spent values we now communicate in micros: 1 cent == 10000 micros. Fields representing a monetary value will now also be named accordingly, mentioning whether they represent a value in cents or micros. This will result in fields like <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">amountCents</span></code>. The change into micros is also represented in the category data, where the interval of allowed values is defined.</p></li>
+<li><p>Introduced campaigns, campaign ID not (yet) mandatory while placing ads. Campaigns have their own daily/total budgets. Since currently only 1 campaign is allowed per user, the budgets from this campaign effectively act on all ads.</p></li>
 <li><p>Moved price and related fields into a struct.</p></li>
+</ul>
+<section id="removed-fields">
+<h4>Removed Fields<a class="headerlink" href="#removed-fields" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
 <li><p>removed externalID, use vendorID instead.</p></li>
 <li><p>removed currency, 1 country == 1 currency anyway. Monetary values always in local currency.</p></li>
 <li><p>removed pageNumber &amp; suggestedCpcForPageOne: Numbers are unreliable and only work for the leaf category browse action, which by now is only a very small portion of our traffic on any of our marketplaces. Therefore, these numbers are not representative anymore, and we chose to remove them.</p></li>
 <li><p>Use the V2 version of /metrics/ads and /metrics/report to get spent and bid values in micros too, to avoid confusion. V1 is deprecated.</p></li>
-<li><p>User endpoint updated to V4, this adds 1 new field to V3 (which added 1 field to V2).</p></li>
+<li><p>User endpoint updated to V4, this adds 1 new field to V3 (which added 1 field to V2). Older versions than V4 are deprecated.</p></li>
 </ul>
+</section>
 </section>
 <section id="ads">
 <h3>Ads<a class="headerlink" href="#ads" title="Permalink to this heading">¶</a></h3>
@@ -372,7 +378,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For the time being, we will create a campaign underwater for users who start placing ads without first having created a campaign.
+<p>For the time being, we will create a campaign underwater for users who start placing ads without first having created a campaign. All subsequent ads will belong to that default campaign.
 Be sure to check the budgets of that campaign as a default campaign will have unlimited budget.
 Deleting a campaign is currently not allowed.</p>
 </div>

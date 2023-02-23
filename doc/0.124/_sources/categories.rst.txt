@@ -95,43 +95,43 @@ Leaf categories provide additional configuration which is provided in
    - interval
    - 
    - ``(0,+∞)``
-   - bid value in micros for ads in this category.
+   - Allowed bid value in micros for ads in this category.
 
  * - totalBudgetMicros
    - interval
    - 
    - ``(0,+∞)``
-   - Total budget for ads in this category in micros.
+   - Allowed range for total budget in micros for ads in this category.
 
  * - dailyBudgetMicros
    - interval
    -
    - ``(0,+∞)``
-   - Daily budget for ads in this category in micros.
+   - Allowed range for daily budget in micros for ads in this category.
 
  * - activeAds
    - interval
    - 
    - ``[0,+∞)``
-   - Max active ads per seller in this category.
+   - Allowed range of active ads per seller in this category.
 
  * - images
    - interval
    - 
    - ``(0,+∞)``
-   - Max number of images for ads in this category.
+   - Allowed range of images count for ads in this category.
 
  * - titleLength
    - interval
    - 
    - ``(0,120]``
-   - Max length of the title for ads in this category.
+   - Allowed range of the title length for ads in this category.
 
  * - descriptionLength
    - interval
    - 
    - ``(0,65535]``
-   - Max length of the description for ads in this category.
+   - Allowed range of the description length for ads in this category.
 
  * - shippingOption
    - string

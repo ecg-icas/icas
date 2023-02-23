@@ -12,14 +12,19 @@ Feb 2023: 'Campaigns & Micros'
 Synopsis
 """"""""
 
-* For bid, budgets & spent values we now report in micros: 1 cent == 10000 micros. These fields will now also be named accordingly, mentioning whether they represent a value in cents or micros. This is also represented in the categories data, where the interval of allowed values is defined. Mind, this does not include values like 'AUTOMATIC' or 'UNLIMITED'.
-* Introduced campaigns, campaign ID not (yet) mandatory while placing ads. Campaigns have their own daily/total budgets. Since currently only 1 campaign is allowed per user, this effectively represents the seller's complete budget.
+* changing wording of ``cpc`` to ``bid``, Functionality has not changed.
+* For bid, budgets & spent values we now communicate in micros: 1 cent == 10000 micros. Fields representing a monetary value will now also be named accordingly, mentioning whether they represent a value in cents or micros. This will result in fields like ``bidMicros`` and ``amountCents``. The change into micros is also represented in the category data, where the interval of allowed values is defined.
+* Introduced campaigns, campaign ID not (yet) mandatory while placing ads. Campaigns have their own daily/total budgets. Since currently only 1 campaign is allowed per user, the budgets from this campaign effectively act on all ads.
 * Moved price and related fields into a struct.
+
+Removed Fields
+^^^^^^^^^^^^^^
+
 * removed externalID, use vendorID instead.
 * removed currency, 1 country == 1 currency anyway. Monetary values always in local currency.
 * removed pageNumber & suggestedCpcForPageOne: Numbers are unreliable and only work for the leaf category browse action, which by now is only a very small portion of our traffic on any of our marketplaces. Therefore, these numbers are not representative anymore, and we chose to remove them.
 * Use the V2 version of /metrics/ads and /metrics/report to get spent and bid values in micros too, to avoid confusion. V1 is deprecated.
-* User endpoint updated to V4, this adds 1 new field to V3 (which added 1 field to V2).
+* User endpoint updated to V4, this adds 1 new field to V3 (which added 1 field to V2). Older versions than V4 are deprecated.
 
 Ads
 """
