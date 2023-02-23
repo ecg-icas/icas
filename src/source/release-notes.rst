@@ -4,7 +4,7 @@
 Release Notes
 =============
 
-This section attempts to give a little more insight on what our various releases contain, as compared to previous versions.
+This section gives insight on what our current and previous releases contain.
 
 Feb 2023: 'Campaigns & Micros'
 ------------------------------
