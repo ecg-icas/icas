@@ -37,26 +37,25 @@ Field                                  Description                          Rest
 :ref:`feed_price`                      product price in cents if applicable positive integer     yes/no       
 :ref:`feed_originalPrice`              original price before discount       positive integer     no        
 :ref:`feed_media`                      product images                       :ref:`feed_media`    no
-:ref:`feed_attr`                       collection of ad attributes          :ref:`feed_attr`     no        
+:ref:`feed_attr`                       collection of product attributes     :ref:`feed_attr`     no        
 :ref:`feed_budget`                     budget details                       :ref:`feed_budget`   no        
 :ref:`feed_ship`                       shipping options                     :ref:`feed_ship`     no
 :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no        
 :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
 :ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no        
-:ref:`feed_engines`                    targeted search engines for this ad  emunerated list      no
 :ref:`feed_microTip`                   tiny product hightlight              max. 18 chars        no
-:ref:`feed_mpn`                        Manufacturer Part Number (MPN)       len. 2-70 chars      no   
+:ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no   
 :ref:`feed_googleProductCategory`      google category for your product     string               no
 :ref:`feed_productType`                customer product type                max. 750 chars       no    
 :ref:`feed_brand`                      product brand name                   max. 70 chars        no
 :ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no  
-:ref:`feed_itemGroupId`                groups product variants in your      len. 1-50 chars      no
+:ref:`feed_itemGroupId`                groups product variants in your      max. 50 chars        no
 :ref:`feed_condition`                  condition of product                 enum                 no
-:ref:`feed_material`                   main product fabric or material      max. 200 chars       no
+:ref:`feed_material`                   main product fabrics or materials    max. 200 chars       no
 :ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
 :ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
 :ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
-:ref:`feed_color`                      product color                        len. 1-100 chars     no
+:ref:`feed_color`                      product colors                       max. 100 chars       no
 :ref:`feed_gender`                     gender product is designed for       enum                 no
 :ref:`feed_ageGroup`                   age group product is intended for    enum                 no
 :ref:`feed_size`                       size information                     enum                 no
@@ -134,7 +133,7 @@ description
 """""""""""
 
 The description field of the ad.
-Any string, with minimum and maximum length determined by the category, with a maximum cap of 1MB characters. See :ref:`categories`. URLs are not allowed as part of the description.
+Any string, with minimum and maximum length determined by the category. See :ref:`categories`. URLs are not allowed as part of the description.
 All HTML elements except for the ones below will be removed:
 
 .. code-block:: html
@@ -142,20 +141,23 @@ All HTML elements except for the ones below will be removed:
     <u> <em> <ul> <li> <p> <strong> <br>
     
 
-======= =========================================================================================================
+======= =================================================================================
 Example .. code-block:: html 
     
             <ad:description><![CDATA[
                 <p><strong><u>De goedkoopste webshop</u></strong> 
-                    <strong>voor tweedehands fietsen met garantie! Gratis en rijklaar thuisbezorgd!</strong>
+                    <strong>voor tweedehands fietsen met garantie! 
+                    Gratis en rijklaar thuisbezorgd!</strong>
                 </p>
                 <p><strong><br></strong>
                 </p>
                 <ul>
                     <li><strong>Laagste prijsgarantie</strong></li>
-                    <li>Fietsen <strong>100% rijklaar</strong> gratis thuisbezorgd</li>
+                    <li>Fietsen <strong>100% rijklaar</strong>
+                     gratis thuisbezorgd</li>
                     <li><strong>Ruime voorraad</strong>, voor ieder wat wils</li>
-                    <li>Snelle <strong>customer service</strong> via Whatsapp, bellen en e-mail</li>
+                    <li>Snelle <strong>customer service</strong>
+                     via Whatsapp, bellen en e-mail</li>
                     <li>1 <strong>maand garantie</strong></li>
                     <li>Aangesloten bij <strong>Webwinkelkeur</strong></li>
                 </ul>
@@ -166,7 +168,7 @@ Example .. code-block:: html
                 <p>WhatsApp, bel of mail ons voor verdere vragen.
                 </p>]]>
             <ad:description/>
-======= =========================================================================================================
+======= =================================================================================
 
 
 .. index:: categoryId
@@ -175,10 +177,9 @@ Example .. code-block:: html
 categoryId
 """"""""""
 
-The category in which the ad is placed in the :ref:`categories` tree.
+The leaf category in which the product is placed in the :ref:`categories` tree.
 
-Each ad belongs to one and only one category and the category of an ad cannot be changed.
-This field can only be set once during the lifecycle of an ad.
+Each product belongs to one and only one category.
 
 An integer value from the category list. Must be an id of a leaf category with a
 non-zero parent id.
@@ -265,7 +266,7 @@ price
 The meaning of the value depends on the :ref:`feed_priceType`. 
 
 If it is `FIXED_PRICE` or `BIDDING_FROM` then **price** is mandatory and needs to be greater than 0.
-The maximum allowed **price** value is ``10000000000`` of the local market currency. (100.000.000,00 EUR / CAD / ... ).
+The maximum allowed **price** value is ``10000000000`` given in ``cents`` of the local market currency. (100.000.000,00 EUR / CAD / ... ).
 
 ======= =============================
 Example .. code-block:: html
@@ -279,8 +280,8 @@ Example .. code-block:: html
 originalPrice
 """"""""""""""
 
-Product price before discount. Ignored if a seller does not have a discount option enabled. Must be greater than :ref:`feed_price`.
-The maximum allowed **originalPrice** value is ``10000000000`` of the local market currency. (100.000.000,00 EUR / CAD / ... ).
+Product price before discount. Ignored if a seller does not have a discount feature enabled. Must be greater than :ref:`feed_price`.
+The maximum allowed **originalPrice** value is ``10000000000`` given in ``cents`` of the local market currency. (100.000.000,00 EUR / CAD / ... ).
 
 ======= ============================================
 Example .. code-block:: html
@@ -320,17 +321,17 @@ Example .. code-block:: html
 attributes
 """"""""""
 
-Optional collection of ad :ref:`user_defined_attributes` (category-dependent). 
+Optional collection of product :ref:`user_defined_attributes` (category-dependent), that can be used to influence the ad relevance. 
 Note that categories can have mandatory attributes, for which a default value will be filled in if not supplied.
 
-======= =========================================================================================================
+======= =========================================================
 Example .. code-block:: html 
 
             <ad:attributes>
                 <ad:attribute>
                     <ad:attributeName>color</ad:attributeName>
                     <ad:attributeLocale>nl</ad:attributeLocale>
-                    <ad:attributeLabel>Kleu</ad:attributeLabel>
+                    <ad:attributeLabel>Kleur</ad:attributeLabel>
                     <ad:attributeValue>Rood</ad:attributeValue>
                 </ad:attribute>
                 <ad:attribute>
@@ -342,11 +343,11 @@ Example .. code-block:: html
                 <ad:attribute>
                     <ad:attributeName>Model</ad:attributeName>
                     <ad:attributeValue>Slim</ad:attributeValue>
-                    <ad:attributeValue>Spro</ad:attributeValue>
+                    <ad:attributeValue>Pro</ad:attributeValue>
                 </ad:attribute>
             </ad:attributes>
 
-======= =========================================================================================================
+======= =========================================================
 
 .. index:: budgetDetails
 .. _feed_budget:
@@ -371,7 +372,7 @@ If the total budget is not returned with the ad, it means there is an unlimited 
 When this value of the daily budget is reached the ad will be paused for the rest of the day, and reset the following day. 
 The minimum value depends on the category. Maximum value cannot be higher than the total budget.
 
-The minimum and maximum values of the cost per click (cpc) depend on the category.
+The minimum and maximum values of the cost per click (CPC) depend on the category.
 
 ======= =========================================================================================================
 Example .. code-block:: html 
@@ -391,7 +392,7 @@ shippingOptions
 """""""""""""""
 
 Section with shipping options available for a product.
-Options can be defined for single selected type or both.
+Options can be defined for single selected shippingType or both.
 
 ============= ========================================== ========
 Name          Description                                Required
@@ -414,12 +415,11 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 Example .. code-block:: html 
 
             <ad:shippingOptions>
-                    <ad:shippingOption>
-                        <ad:shippingType>PICKUP</ad:shippingType>
-                        <ad:location>1097DN</ad:location>
-                    </ad:shippingOption>
-                </ad:shippingOptions>
-
+                <ad:shippingOption>
+                    <ad:shippingType>PICKUP</ad:shippingType>
+                    <ad:location>1097DN</ad:location>
+                </ad:shippingOption>
+            </ad:shippingOptions>
 ======= ==============================================================
 
 .. index:: phoneNumber
@@ -428,7 +428,7 @@ Example .. code-block:: html
 phoneNumber
 """""""""""
 
-The phone number of the advertiser as international phone number format, e.g.
+The phone number of the seller as international phone number format, e.g.
 +31207894561 or as a local phone number, e.g. 06789456612. 0900 and 0800
 numbers are not allowed.
 
@@ -444,7 +444,8 @@ Example .. code-block:: html
 emailAdvertiser
 """""""""""""""
 
-Flag for allowing emails to be sent to the advertiser.
+Flag which enables emails, (or the other tenant defined forms of contact) to the seller.
+The default value is false.
 
 ======= =================================================
 Example .. code-block:: html
@@ -459,7 +460,7 @@ regionId
 """"""""
 
 The region in which the ad is placed. (only applicable for Kijiji Canada)
-A long value from the region tree. Must be the id of a leaf region.
+An integer value from the region tree. Must be the id of a leaf region.
 
 Each ad belongs to one and only one region and region of an ad cannot be updated.
 This field can only be set once during creation of an ad.
@@ -474,35 +475,6 @@ Please refer to :ref:`categories` and :ref:`regions`
 Example .. code-block:: html
         
          <ad:regionId>1700274</ad:regionId>
-======= =======================================
-
-.. index:: engines
-.. _feed_engines:
-
-engines
-"""""""
-
-Collection of business features used internally for distinguishing between business propositions for the product. 
-If not provided, the default is *classic*.
-Must be one of the models enabled for the seller. Currently multiple values are not supported.
-
-Available options:
-
-========== ================================================
-Name       Description
-========== ================================================
-classic    default proposition
-auctions   deprecated
-promotions enables promotions feature
-amnext     ancestor of the classic (still experimental)
-========== ================================================
-
-======= =======================================
-Example .. code-block:: html 
-
-            <ad:engines>
-                <engine>promotions</engine>
-            </ad:engines>
 ======= =======================================
 
 .. index:: microTip
@@ -544,13 +516,13 @@ googleProductCategory
 
 Product category from Google's product taxonomy. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
 
-======= =============================================================================================================
+======= ===========================================================
 Example .. code-block:: html
         
          <ad:googleProductCategory>
             Apparel &amp; Accessories &gt; Clothing &gt; Dresses
          </ad:googleProductCategory>
-======= =============================================================================================================
+======= ===========================================================
 
 .. index:: productType
 .. _feed_productType: 
@@ -561,13 +533,13 @@ productType
 Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
 String identifier max 750 chars.
 
-======= ===============================================================================
+======= =====================================================
 Example .. code-block:: html
         
          <ad:productType>
             Home &gt; Women &gt; Dresses &gt; Maxi Dresses
          </ad:productType>
-======= ===============================================================================
+======= =====================================================
 
 .. index:: brand
 .. _feed_brand: 
@@ -581,7 +553,7 @@ String identifier max 70 chars.
 ======= ============================================
 Example .. code-block:: html
         
-         <ad:brand>Little black dress</ad:brand>
+         <ad:brand>iPhone</ad:brand>
 ======= ============================================
 
 .. index:: gtin
@@ -590,7 +562,7 @@ Example .. code-block:: html
 GTIN
 """"""""""""""""""""""
 
-GTIN, definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+GTIN (Your product’s Global Trade Item Number), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
 String identifier max 50 chars.
 
 ======= ==================================
@@ -652,7 +624,7 @@ energyEfficiencyClass
 
 Energy Efficiency Class See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
 
-Allowed values: *A+++*, *A++*, *A+*, *A++*,	*B*, *C*, *B*, *E*,	*F*, *G*
+Allowed values: *A+++*, *A++*, *A+*, *A++*, *B*, *C*, *B*, *E*, *F*, *G*
 
 ======= ===========================================================
 Example .. code-block:: html
