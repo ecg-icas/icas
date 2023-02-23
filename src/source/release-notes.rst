@@ -106,7 +106,7 @@ Added first campaign support. See :ref:`campaigns` for full details.
 * :ref:`put_campaign_id_budgets` to manage the campaign's budgets directly.
 
 .. note::
- For the time being, we will create a campaign underwater for users who start placing ads without first having created a campaign. 
+ For the time being, we will create a campaign underwater for users who start placing ads without first having created a campaign. All subsequent ads will belong to that default campaign.
  Be sure to check the budgets of that campaign as a default campaign will have unlimited budget.
  Deleting a campaign is currently not allowed.
 
