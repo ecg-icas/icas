@@ -304,7 +304,7 @@ Allowed image formats: JPEG, JPG, PNG, GIF\*, BMP.
 All images will be resized if necessary to a size of maximum 1024px height and 1024px width (preserving the aspect ratio)
 The system will download the images and, if they meet the requirements, store them on our servers in several sizes.
 
-The images will be presented in the order as provided. The first image is shown in search results and as the main image on the item page.
+The images will be presented in the order as provided. The first image is shown in search results and acts as the main image on the item page.
 
 ======= ========================================================================================================================
 Example .. code-block:: html 
