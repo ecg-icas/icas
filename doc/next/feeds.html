@@ -676,7 +676,7 @@ The maximum allowed <strong>originalPrice</strong> value is <code class="docutil
 <span id="feed-media"></span><span id="index-12"></span><h3>media<a class="headerlink" href="#media" title="Permalink to this heading">¶</a></h3>
 <p>Complex type used currently for product images. <strong>&lt;media&gt;</strong> should contain from 0 to N <strong>&lt;image&gt;</strong> ordered elements, where the exact limit depends on the category in taxonomy. <strong>&lt;image&gt;</strong> elements must contain a complete URL link pointing to an image on a publicly available webserver.</p>
 <p>Allowed image formats: JPEG, JPG, PNG, GIF*, BMP.</p>
-<p>* Please note that GIFs are not recommended format as thay are only 256 colors or less.</p>
+<p>* Please note that GIFs are not recommended format as they are only 256 colors or less. Also animated gif are not supported.</p>
 <p>All images will be resized if necessary to a size of maximum 1024px height and 1024px width (preserving the aspect ratio)
 The system will download the images and, if they meet the requirements, store them on our servers in several sizes.</p>
 <p>The images will be presented in the order as provided. The first image is shown in search results and as the main image on the item page.</p>
@@ -696,8 +696,7 @@ The system will download the images and, if they meet the requirements, store th
 </section>
 <section id="attributes">
 <span id="feed-attr"></span><span id="index-13"></span><h3>attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">¶</a></h3>
-<p>Optional collection of product <a class="reference internal" href="attributes.html#user-defined-attributes"><span class="std std-ref">User-Defined Attributes</span></a> (category-dependent), that can be used to influence the ad relevance.
-Note that categories can have mandatory attributes, for which a default value will be filled in if not supplied.</p>
+<p>Optional collection of product <a class="reference internal" href="attributes.html#user-defined-attributes"><span class="std std-ref">User-Defined Attributes</span></a> (category-dependent), that can be used to influence the ad relevance.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
@@ -744,7 +743,7 @@ Note that categories can have mandatory attributes, for which a default value wi
 </tr>
 <tr class="row-odd"><td><p>cpc</p></td>
 <td><p>CPC for the given ad in cents</p></td>
-<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p>totalBudget</p></td>
 <td><p>total budget for the given ad in cents</p></td>
@@ -759,7 +758,7 @@ Note that categories can have mandatory attributes, for which a default value wi
 <p>The minimum and maximum values for the total budget depend on the category.
 If the total budget is not returned with the ad, it means there is an unlimited total budget.</p>
 <p>When this value of the daily budget is reached the ad will be paused for the rest of the day, and reset the following day.
-The minimum value depends on the category. Maximum value cannot be higher than the total budget.</p>
+The minimum value depends on the category.</p>
 <p>The minimum and maximum values of the cost per click (CPC) depend on the category.</p>
 <table class="docutils align-default">
 <tbody>
@@ -897,7 +896,7 @@ It provides extra attention on the ad in the search results.</p>
 </section>
 <section id="mpn">
 <span id="feed-mpn"></span><span id="index-20"></span><h3>MPN<a class="headerlink" href="#mpn" title="Permalink to this heading">¶</a></h3>
-<p>Manufacturer Part Number (MPN), definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>Manufacturer Part Number (MPN), definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324482">Google Merchant Center</a> guidelines.
 String identifier max 2-70 chars.</p>
 <table class="docutils align-default">
 <tbody>
@@ -912,7 +911,7 @@ String identifier max 2-70 chars.</p>
 </section>
 <section id="googleproductcategory">
 <span id="feed-googleproductcategory"></span><span id="index-21"></span><h3>googleProductCategory<a class="headerlink" href="#googleproductcategory" title="Permalink to this heading">¶</a></h3>
-<p>Product category from Google’s product taxonomy. See <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a></p>
+<p>Product category from Google’s product taxonomy. See <a class="reference external" href="https://support.google.com/merchants/answer/6324436">Google Merchant Center</a></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
@@ -923,12 +922,18 @@ String identifier max 2-70 chars.</p>
 </div>
 </td>
 </tr>
+<tr class="row-even"><td><p>Example</p></td>
+<td><div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ad:googleProductCategory</span><span class="p">&gt;</span>2271<span class="p">&lt;/</span><span class="nt">ad:googleProductCategory</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</td>
+</tr>
 </tbody>
 </table>
 </section>
 <section id="producttype">
 <span id="feed-producttype"></span><span id="index-22"></span><h3>productType<a class="headerlink" href="#producttype" title="Permalink to this heading">¶</a></h3>
-<p>Definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>Definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324406">Google Merchant Center</a> guidelines.
 String identifier max 750 chars.</p>
 <table class="docutils align-default">
 <tbody>
@@ -945,7 +950,7 @@ String identifier max 750 chars.</p>
 </section>
 <section id="brand">
 <span id="feed-brand"></span><span id="index-23"></span><h3>brand<a class="headerlink" href="#brand" title="Permalink to this heading">¶</a></h3>
-<p>Brand definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>Brand definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324351">Google Merchant Center</a> guidelines.
 String identifier max 70 chars.</p>
 <table class="docutils align-default">
 <tbody>
@@ -960,7 +965,7 @@ String identifier max 70 chars.</p>
 </section>
 <section id="gtin">
 <span id="feed-gtin"></span><span id="index-24"></span><h3>GTIN<a class="headerlink" href="#gtin" title="Permalink to this heading">¶</a></h3>
-<p>GTIN (Your product’s Global Trade Item Number), definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>GTIN (Your product’s Global Trade Item Number), definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324461">Google Merchant Center</a> guidelines.
 String identifier max 50 chars.</p>
 <table class="docutils align-default">
 <tbody>
@@ -975,7 +980,7 @@ String identifier max 50 chars.</p>
 </section>
 <section id="itemgroupid">
 <span id="feed-itemgroupid"></span><span id="index-25"></span><h3>itemGroupId<a class="headerlink" href="#itemgroupid" title="Permalink to this heading">¶</a></h3>
-<p>Item Group Id definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>Item Group Id definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324507">Google Merchant Center</a> guidelines.
 String identifier max 1-50 chars.</p>
 <table class="docutils align-default">
 <tbody>
@@ -990,7 +995,7 @@ String identifier max 1-50 chars.</p>
 </section>
 <section id="condition">
 <span id="feed-condition"></span><span id="index-26"></span><h3>condition<a class="headerlink" href="#condition" title="Permalink to this heading">¶</a></h3>
-<p>Condition definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>Condition definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324469">Google Merchant Center</a> guidelines.
 Accepted values: <em>new</em>, <em>refurbished</em>, <em>used</em></p>
 <table class="docutils align-default">
 <tbody>
@@ -1005,7 +1010,7 @@ Accepted values: <em>new</em>, <em>refurbished</em>, <em>used</em></p>
 </section>
 <section id="material">
 <span id="feed-material"></span><span id="index-27"></span><h3>material<a class="headerlink" href="#material" title="Permalink to this heading">¶</a></h3>
-<p>Material definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>Material definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324410">Google Merchant Center</a> guidelines.
 String identifier max 200 chars.</p>
 <table class="docutils align-default">
 <tbody>
@@ -1020,7 +1025,7 @@ String identifier max 200 chars.</p>
 </section>
 <section id="energyefficiencyclass">
 <span id="feed-energyefficiencyclass"></span><span id="index-28"></span><h3>energyEfficiencyClass<a class="headerlink" href="#energyefficiencyclass" title="Permalink to this heading">¶</a></h3>
-<p>Energy Efficiency Class See <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a></p>
+<p>Energy Efficiency Class See <a class="reference external" href="https://support.google.com/merchants/answer/7562785">Google Merchant Center</a></p>
 <p>Allowed values: <em>A+++</em>, <em>A++</em>, <em>A+</em>, <em>A++</em>, <em>B</em>, <em>C</em>, <em>B</em>, <em>E</em>, <em>F</em>, <em>G</em></p>
 <table class="docutils align-default">
 <tbody>
@@ -1035,7 +1040,9 @@ String identifier max 200 chars.</p>
 </section>
 <section id="minenergyefficiencyclass">
 <span id="feed-minenergyefficiencyclass"></span><span id="index-29"></span><h3>minEnergyEfficiencyClass<a class="headerlink" href="#minenergyefficiencyclass" title="Permalink to this heading">¶</a></h3>
-<p>Minimal energy efficiency class. Possible values defined in <a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energyEfficiencyClass</span></a></p>
+<p>Minimal energy efficiency class.
+Used in combination with <em>maxEnergyEfficiencyClass</em> to describe the product energy efficiency label.
+Possible values defined in <a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energyEfficiencyClass</span></a></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
@@ -1049,7 +1056,9 @@ String identifier max 200 chars.</p>
 </section>
 <section id="maxenergyefficiencyclass">
 <span id="feed-maxenergyefficiencyclass"></span><span id="index-30"></span><h3>maxEnergyEfficiencyClass<a class="headerlink" href="#maxenergyefficiencyclass" title="Permalink to this heading">¶</a></h3>
-<p>Maximal energy efficiency class. Possible values defined in <a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energyEfficiencyClass</span></a></p>
+<p>Maximal energy efficiency class.
+Used in combination with <em>minEnergyEfficiencyClass</em> to describe the product energy efficiency label.
+Possible values defined in <a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energyEfficiencyClass</span></a></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
@@ -1063,7 +1072,7 @@ String identifier max 200 chars.</p>
 </section>
 <section id="color">
 <span id="feed-color"></span><span id="index-31"></span><h3>color<a class="headerlink" href="#color" title="Permalink to this heading">¶</a></h3>
-<p>Color definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>Color definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324487">Google Merchant Center</a> guidelines.
 String identifier max 1-100 chars.</p>
 <table class="docutils align-default">
 <tbody>
@@ -1078,7 +1087,7 @@ String identifier max 1-100 chars.</p>
 </section>
 <section id="gender">
 <span id="feed-gender"></span><span id="index-32"></span><h3>gender<a class="headerlink" href="#gender" title="Permalink to this heading">¶</a></h3>
-<p>Gender definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.</p>
+<p>Gender definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324479">Google Merchant Center</a> guidelines.</p>
 <p>Allowed values: <em>male</em>, <em>female</em>, <em>unisex</em></p>
 <table class="docutils align-default">
 <tbody>
@@ -1093,7 +1102,7 @@ String identifier max 1-100 chars.</p>
 </section>
 <section id="agegroup">
 <span id="feed-agegroup"></span><span id="index-33"></span><h3>ageGroup<a class="headerlink" href="#agegroup" title="Permalink to this heading">¶</a></h3>
-<p>Age group definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.</p>
+<p>Age group definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324463">Google Merchant Center</a> guidelines.</p>
 <p>Allowed values: <em>newborn</em>, <em>infant</em>, <em>toddler</em>, <em>children</em>, <em>adult</em></p>
 <table class="docutils align-default">
 <tbody>
@@ -1108,7 +1117,7 @@ String identifier max 1-100 chars.</p>
 </section>
 <section id="size">
 <span id="feed-size"></span><span id="index-34"></span><h3>size<a class="headerlink" href="#size" title="Permalink to this heading">¶</a></h3>
-<p>Size definition follows <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> guidelines.
+<p>Size definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324497">Google Merchant Center</a> guidelines.
 String identifier max 1-100 chars.</p>
 <table class="docutils align-default">
 <tbody>
@@ -1123,7 +1132,7 @@ String identifier max 1-100 chars.</p>
 </section>
 <section id="unitpricingbasemeasure">
 <span id="feed-unitpricingbasemeasure"></span><span id="index-35"></span><h3>unitPricingBaseMeasure<a class="headerlink" href="#unitpricingbasemeasure" title="Permalink to this heading">¶</a></h3>
-<p>The denominator for product unit price. See <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a></p>
+<p>The denominator for product unit price. See <a class="reference external" href="https://support.google.com/merchants/answer/6324490">Google Merchant Center</a></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
@@ -1137,7 +1146,7 @@ String identifier max 1-100 chars.</p>
 </section>
 <section id="unitpricingmeasure">
 <span id="feed-unitpricingmeasure"></span><span id="index-36"></span><h3>unitPricingMeasure<a class="headerlink" href="#unitpricingmeasure" title="Permalink to this heading">¶</a></h3>
-<p>Defines the measure and dimension of the product. Example 125ml, 100g. See <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a></p>
+<p>Defines the measure and dimension of the product. Example 125ml, 100g. See <a class="reference external" href="https://support.google.com/merchants/answer/6324455">Google Merchant Center</a></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>

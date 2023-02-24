@@ -299,7 +299,7 @@ Complex type used currently for product images. **<media>** should contain from 
 
 Allowed image formats: JPEG, JPG, PNG, GIF\*, BMP.
 
-\* Please note that GIFs are not recommended format as thay are only 256 colors or less.
+\* Please note that GIFs are not recommended format as they are only 256 colors or less. Also animated gif are not supported.
 
 All images will be resized if necessary to a size of maximum 1024px height and 1024px width (preserving the aspect ratio)
 The system will download the images and, if they meet the requirements, store them on our servers in several sizes.
@@ -322,7 +322,6 @@ attributes
 """"""""""
 
 Optional collection of product :ref:`user_defined_attributes` (category-dependent), that can be used to influence the ad relevance. 
-Note that categories can have mandatory attributes, for which a default value will be filled in if not supplied.
 
 ======= =========================================================
 Example .. code-block:: html 
@@ -361,7 +360,7 @@ Section with budget details
 Name          Description                                Required
 ============= ========================================== ========
 autobid       use auto bidding option true/false         No
-cpc           CPC for the given ad in cents              Yes
+cpc           CPC for the given ad in cents              No
 totalBudget   total budget for the given ad in cents     No
 dailyBudget   daily budget for the given ad in cents     No
 ============= ========================================== ========
@@ -370,7 +369,7 @@ The minimum and maximum values for the total budget depend on the category.
 If the total budget is not returned with the ad, it means there is an unlimited total budget.
 
 When this value of the daily budget is reached the ad will be offline for the rest of the day, and re-activated at the beginning of the following day. 
-The minimum value depends on the category. Maximum value cannot be higher than the total budget.
+The minimum value depends on the category.
 
 The minimum and maximum values of the cost per click (CPC) depend on the category.
 
@@ -499,7 +498,7 @@ Example .. code-block:: html
 MPN
 """
 
-Manufacturer Part Number (MPN), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Manufacturer Part Number (MPN), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324482>`_ guidelines.
 String identifier max 2-70 chars.
 
 ======= ==================================
@@ -514,15 +513,20 @@ Example .. code-block:: html
 googleProductCategory
 """"""""""""""""""""""
 
-Product category from Google's product taxonomy. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
+Product category from Google's product taxonomy. See `Google Merchant Center <https://support.google.com/merchants/answer/6324436>`_
 
-======= ===========================================================
-Example .. code-block:: html
+========= ===========================================================
+Example   .. code-block:: html
         
-         <ad:googleProductCategory>
-            Apparel &amp; Accessories &gt; Clothing &gt; Dresses
-         </ad:googleProductCategory>
-======= ===========================================================
+           <ad:googleProductCategory>
+              Apparel &amp; Accessories &gt; Clothing &gt; Dresses
+           </ad:googleProductCategory>
+
+Example   .. code-block:: html
+
+           <ad:googleProductCategory>2271</ad:googleProductCategory>
+
+========= ===========================================================
 
 .. index:: productType
 .. _feed_productType: 
@@ -530,7 +534,7 @@ Example .. code-block:: html
 productType
 """"""""""""""""""""""
 
-Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324406>`_ guidelines.
 String identifier max 750 chars.
 
 ======= =====================================================
@@ -547,7 +551,7 @@ Example .. code-block:: html
 brand
 """"""""""""""""""""""
 
-Brand definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Brand definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324351>`_ guidelines.
 String identifier max 70 chars.
 
 ======= ============================================
@@ -562,7 +566,7 @@ Example .. code-block:: html
 GTIN
 """"""""""""""""""""""
 
-GTIN (Your product’s Global Trade Item Number), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+GTIN (Your product’s Global Trade Item Number), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324461>`_ guidelines.
 String identifier max 50 chars.
 
 ======= ==================================
@@ -577,7 +581,7 @@ Example .. code-block:: html
 itemGroupId
 """"""""""""""""""""""
 
-Item Group Id definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Item Group Id definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324507>`_ guidelines.
 String identifier max 1-50 chars.
 
 ======= ============================================
@@ -592,7 +596,7 @@ Example .. code-block:: html
 condition
 """"""""""""""""""""""
 
-Condition definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Condition definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324469>`_ guidelines.
 Accepted values: *new*, *refurbished*, *used*
 
 ======= ==================================
@@ -607,7 +611,7 @@ Example .. code-block:: html
 material
 """"""""""""""""""""""
 
-Material definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Material definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324410>`_ guidelines.
 String identifier max 200 chars.
   
 ======= ==================================
@@ -622,7 +626,7 @@ Example .. code-block:: html
 energyEfficiencyClass
 """"""""""""""""""""""
 
-Energy Efficiency Class See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
+Energy Efficiency Class See `Google Merchant Center <https://support.google.com/merchants/answer/7562785>`_
 
 Allowed values: *A+++*, *A++*, *A+*, *A++*, *B*, *C*, *B*, *E*, *F*, *G*
 
@@ -638,7 +642,9 @@ Example .. code-block:: html
 minEnergyEfficiencyClass
 """"""""""""""""""""""""
 
-Minimal energy efficiency class. Possible values defined in :ref:`feed_energyEfficiencyClass`
+Minimal energy efficiency class. 
+Used in combination with *maxEnergyEfficiencyClass* to describe the product energy efficiency label. 
+Possible values defined in :ref:`feed_energyEfficiencyClass`
 
 ======= ================================================================
 Example .. code-block:: html
@@ -652,7 +658,9 @@ Example .. code-block:: html
 maxEnergyEfficiencyClass
 """"""""""""""""""""""""
 
-Maximal energy efficiency class. Possible values defined in :ref:`feed_energyEfficiencyClass`
+Maximal energy efficiency class. 
+Used in combination with *minEnergyEfficiencyClass* to describe the product energy efficiency label. 
+Possible values defined in :ref:`feed_energyEfficiencyClass`
 
 ======= ================================================================
 Example .. code-block:: html
@@ -666,7 +674,7 @@ Example .. code-block:: html
 color
 """"""""""""""""""""""""
 
-Color definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Color definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324487>`_ guidelines.
 String identifier max 1-100 chars.
 
 ======= ==================================
@@ -681,7 +689,7 @@ Example .. code-block:: html
 gender
 """"""""""""""""""""""""
 
-Gender definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Gender definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324479>`_ guidelines.
 
 Allowed values: *male*, *female*, *unisex*
 
@@ -697,7 +705,7 @@ Example .. code-block:: html
 ageGroup
 """"""""""""""""""""""""
 
-Age group definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Age group definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324463>`_ guidelines.
 
 Allowed values: *newborn*, *infant*, *toddler*, *children*, *adult*
 
@@ -713,7 +721,7 @@ Example .. code-block:: html
 size
 """"""""""""""""""""""""
 
-Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_ guidelines.
+Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324497>`_ guidelines.
 String identifier max 1-100 chars.
 
 ======= =============================
@@ -728,7 +736,7 @@ Example .. code-block:: html
 unitPricingBaseMeasure
 """"""""""""""""""""""""
 
-The denominator for product unit price. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
+The denominator for product unit price. See `Google Merchant Center <https://support.google.com/merchants/answer/6324490>`_
 
 ======= ===========================================================
 Example .. code-block:: html
@@ -742,7 +750,7 @@ Example .. code-block:: html
 unitPricingMeasure
 """"""""""""""""""""""""
 
-Defines the measure and dimension of the product. Example 125ml, 100g. See `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`_
+Defines the measure and dimension of the product. Example 125ml, 100g. See `Google Merchant Center <https://support.google.com/merchants/answer/6324455>`_
 
 ======= ======================================================
 Example .. code-block:: html
