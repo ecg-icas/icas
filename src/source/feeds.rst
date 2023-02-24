@@ -201,7 +201,7 @@ Ad status. One of the following:
 ====== ====================================================
 Name   Description
 ====== ====================================================
-ACTIVE The will be active (as long as there is budget for it), it can be found on the marketplace.
+ACTIVE The ad will be active (as long as there is budget for it) and it can be found on the marketplace.
 PAUSED The ad will be paused, effectively not found on the marketplace.
 ====== ====================================================
 
