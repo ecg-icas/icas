@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Error Handling &mdash; iCAS Sellside API 0.124 documentation</title>
+  <title>Error Handling &mdash; iCAS Sellside API 0.125 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.125 documentation" href="index.html"/>
         <link rel="next" title="API Reference" href="api-reference.html"/>
         <link rel="prev" title="Reporting" href="reporting.html"/> 
 
@@ -179,6 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-empty.html">GET /feed/emtpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -249,18 +250,18 @@ Secondly, the Sellside API will check if the provided input parameters are meani
 within the context of the call. E.g. a category ID should be a positive integer.
 Only the context specific checks are mentioned in the Errors section of the documentation page of
 each call, as the type checks are considered generic.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="mf">400</span><span class="w"> </span><span class="nx">Bad</span><span class="w"> </span><span class="nx">Request</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="mf">400</span> <span class="nx">Bad</span> <span class="nx">Request</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="mf">2005</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="s2">&quot;too long&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;arg&quot;</span><span class="o">:</span><span class="mf">60</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;msg&quot;</span><span class="o">:</span><span class="s2">&quot;The field &#39;name&#39; must not be longer than 60 characters.&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="mf">2005</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="s2">&quot;too long&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arg&quot;</span><span class="o">:</span><span class="mf">60</span><span class="p">,</span>
+        <span class="s2">&quot;msg&quot;</span><span class="o">:</span><span class="s2">&quot;The field &#39;name&#39; must not be longer than 60 characters.&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -303,7 +304,7 @@ each call, as the type checks are considered generic.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.124',
+            VERSION:'0.125',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -314,7 +315,6 @@ each call, as the type checks are considered generic.</p>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 
   
 

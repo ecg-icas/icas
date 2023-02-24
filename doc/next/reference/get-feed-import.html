@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GET /feed/import &mdash; iCAS Sellside API 0.124 documentation</title>
+  <title>GET /feed/import &mdash; iCAS Sellside API 0.125 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.124 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.125 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="GET /feed/import/{id}/detail" href="get-feed-import-id-detail.html"/>
         <link rel="prev" title="POST /feed/config" href="post-feed-config.html"/> 
@@ -180,6 +180,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-empty.html">GET /feed/emtpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -238,8 +239,8 @@
 <span id="index-0"></span><span id="id1"></span><h1>GET /feed/import<a class="headerlink" href="#get-feed-import" title="Permalink to this heading">¶</a></h1>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 80.0%" />
+<col style="width: 20%" />
+<col style="width: 80%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -296,36 +297,36 @@ the erroneous ads in the XML document via <a class="reference internal" href="ge
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="k">import</span><span class="w"></span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimport</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">feed</span><span class="o">/</span><span class="k">import</span>
+<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimport</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"></span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimport</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span><span class="w"></span>
+<span class="mf">200</span> <span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">feedimport</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
 
-<span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w">           </span><span class="mf">5</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w">          </span><span class="s2">&quot;http://ourshop.com/feed.xml&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w">       </span><span class="s2">&quot;DONE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;2016-02-03T15:35:33Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w">        </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;totalCount&quot;</span><span class="o">:</span><span class="w">   </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;okCount&quot;</span><span class="o">:</span><span class="w">      </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;warningCount&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;errorCount&quot;</span><span class="o">:</span><span class="w">   </span><span class="mf">0</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w">           </span><span class="mf">4</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w">          </span><span class="s2">&quot;http://ourshop.com/notfound.xml&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w">       </span><span class="s2">&quot;REJECTED&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;2016-02-03T15:35:23Z&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w">        </span><span class="s2">&quot;HTTP 404 Not Found for: http://ourshop.com/notfound.xml&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;totalCount&quot;</span><span class="o">:</span><span class="w">   </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;okCount&quot;</span><span class="o">:</span><span class="w">      </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;warningCount&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;errorCount&quot;</span><span class="o">:</span><span class="w">   </span><span class="mf">0</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span>           <span class="mf">5</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span>          <span class="s2">&quot;http://ourshop.com/feed.xml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span>       <span class="s2">&quot;DONE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span>  <span class="s2">&quot;2016-02-03T15:35:33Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="o">:</span>        <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;totalCount&quot;</span><span class="o">:</span>   <span class="mf">2</span><span class="p">,</span>
+    <span class="s2">&quot;okCount&quot;</span><span class="o">:</span>      <span class="mf">1</span><span class="p">,</span>
+    <span class="s2">&quot;warningCount&quot;</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
+    <span class="s2">&quot;errorCount&quot;</span><span class="o">:</span>   <span class="mf">0</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span>           <span class="mf">4</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span>          <span class="s2">&quot;http://ourshop.com/notfound.xml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span>       <span class="s2">&quot;REJECTED&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span>  <span class="s2">&quot;2016-02-03T15:35:23Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="o">:</span>        <span class="s2">&quot;HTTP 404 Not Found for: http://ourshop.com/notfound.xml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;totalCount&quot;</span><span class="o">:</span>   <span class="o">-</span><span class="mf">1</span><span class="p">,</span>
+    <span class="s2">&quot;okCount&quot;</span><span class="o">:</span>      <span class="mf">0</span><span class="p">,</span>
+    <span class="s2">&quot;warningCount&quot;</span><span class="o">:</span> <span class="mf">0</span><span class="p">,</span>
+    <span class="s2">&quot;errorCount&quot;</span><span class="o">:</span>   <span class="mf">0</span>
+  <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -369,7 +370,7 @@ the erroneous ads in the XML document via <a class="reference internal" href="ge
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.124',
+            VERSION:'0.125',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -380,7 +381,6 @@ the erroneous ads in the XML document via <a class="reference internal" href="ge
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 
