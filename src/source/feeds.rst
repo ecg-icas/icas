@@ -367,7 +367,7 @@ dailyBudget   daily budget for the given ad in cents     No
 
 The minimum and maximum values for the total budget depend on the category. 
 
-When this value of the daily budget is reached the ad will be offline for the rest of the day, and re-activated at the beginning of the following day. 
+When this value of the daily budget is reached the ad will be offline for the rest of the day, and re-activated at the beginning of the following day, unless more money is added during the same day.
 The minimum value depends on the category.
 
 The minimum and maximum values of the cost per click (CPC) depend on the category.
