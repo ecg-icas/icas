@@ -201,7 +201,7 @@ Ad status. One of the following:
 ====== ====================================================
 Name   Description
 ====== ====================================================
-ACTIVE The will be active (as long as there is budget for it), it can be found on the marketplace.
+ACTIVE The ad will be active (as long as there is budget for it) and it can be found on the marketplace.
 PAUSED The ad will be paused, effectively not found on the marketplace.
 ====== ====================================================
 
@@ -304,7 +304,7 @@ Allowed image formats: JPEG, JPG, PNG, GIF\*, BMP.
 All images will be resized if necessary to a size of maximum 1024px height and 1024px width (preserving the aspect ratio)
 The system will download the images and, if they meet the requirements, store them on our servers in several sizes.
 
-The images will be presented in the order as provided. The first image is shown in search results and as the main image on the item page.
+The images will be presented in the order as provided. The first image is shown in search results and acts as the main image on the item page.
 
 ======= ========================================================================================================================
 Example .. code-block:: html 
@@ -366,9 +366,8 @@ dailyBudget   daily budget for the given ad in cents     No
 ============= ========================================== ========
 
 The minimum and maximum values for the total budget depend on the category. 
-If the total budget is not returned with the ad, it means there is an unlimited total budget.
 
-When this value of the daily budget is reached the ad will be paused for the rest of the day, and reset the following day. 
+When this value of the daily budget is reached the ad will be offline for the rest of the day, and re-activated at the beginning of the following day. 
 The minimum value depends on the category.
 
 The minimum and maximum values of the cost per click (CPC) depend on the category.
@@ -428,8 +427,7 @@ phoneNumber
 """""""""""
 
 The phone number of the seller as international phone number format, e.g.
-+31207894561 or as a local phone number, e.g. 06789456612. 0900 and 0800
-numbers are not allowed.
++31207894561 or as a local phone number, e.g. 06789456612.
 
 ======= =================================================
 Example .. code-block:: html
