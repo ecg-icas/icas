@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>XML Feeds &mdash; iCAS Sellside API 0.125 documentation</title>
+  <title>XML Feeds &mdash; iCAS Sellside API 0.126 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.125 documentation" href="index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.126 documentation" href="index.html"/>
         <link rel="next" title="Reporting" href="reporting.html"/>
         <link rel="prev" title="Regions" href="regions.html"/> 
 
@@ -178,7 +178,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-empty.html">GET /feed/emtpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-empty.html">GET /feed/empty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
@@ -584,7 +584,7 @@ non-zero parent id.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>ACTIVE</p></td>
-<td><p>The will be active (as long as there is budget for it), it can be found on the marketplace.</p></td>
+<td><p>The ad will be active (as long as there is budget for it) and it can be found on the marketplace.</p></td>
 </tr>
 <tr class="row-odd"><td><p>PAUSED</p></td>
 <td><p>The ad will be paused, effectively not found on the marketplace.</p></td>
@@ -685,7 +685,7 @@ The maximum allowed <strong>originalPrice</strong> value is <code class="docutil
 <p>* Please note that GIFs are not recommended format as they are only 256 colors or less. Also animated gif are not supported.</p>
 <p>All images will be resized if necessary to a size of maximum 1024px height and 1024px width (preserving the aspect ratio)
 The system will download the images and, if they meet the requirements, store them on our servers in several sizes.</p>
-<p>The images will be presented in the order as provided. The first image is shown in search results and as the main image on the item page.</p>
+<p>The images will be presented in the order as provided. The first image is shown in search results and acts as the main image on the item page.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
@@ -761,9 +761,8 @@ The system will download the images and, if they meet the requirements, store th
 </tr>
 </tbody>
 </table>
-<p>The minimum and maximum values for the total budget depend on the category.
-If the total budget is not returned with the ad, it means there is an unlimited total budget.</p>
-<p>When this value of the daily budget is reached the ad will be paused for the rest of the day, and reset the following day.
+<p>The minimum and maximum values for the total budget depend on the category.</p>
+<p>When this value of the daily budget is reached the ad will be offline for the rest of the day, and re-activated at the beginning of the following day.
 The minimum value depends on the category.</p>
 <p>The minimum and maximum values of the cost per click (CPC) depend on the category.</p>
 <table class="docutils align-default">
@@ -835,8 +834,7 @@ For shippingType ‘PICKUP’ provide ‘location’. Both ‘cost’ and ‘tim
 <section id="phonenumber">
 <span id="feed-phonenumber"></span><span id="index-16"></span><h3>phoneNumber<a class="headerlink" href="#phonenumber" title="Permalink to this heading">¶</a></h3>
 <p>The phone number of the seller as international phone number format, e.g.
-+31207894561 or as a local phone number, e.g. 06789456612. 0900 and 0800
-numbers are not allowed.</p>
++31207894561 or as a local phone number, e.g. 06789456612.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
@@ -1240,15 +1238,10 @@ defined in the feed) should be whitelisted. We also download the XML file itself
 <section id="scenario-s-questions">
 <h2>Scenario’s &amp; Questions<a class="headerlink" href="#scenario-s-questions" title="Permalink to this heading">¶</a></h2>
 <p>Below are some common asked-for scenarios and questions with their explanations/answers.</p>
-<section id="feed-file-cannot-be-fetched">
-<h3>Feed file cannot be fetched<a class="headerlink" href="#feed-file-cannot-be-fetched" title="Permalink to this heading">¶</a></h3>
 <p>When a feed file cannot be fetched, nothing will change on the user’s ads.
 It’s as if the import didn’t happen. Since the file represents the desired
 list of ads to be live, we won’t do anything if we can’t get the file -
 we cannot read a change in the desired situation.</p>
-</section>
-<section id="feed-file-is-empty">
-<h3>Feed file is empty<a class="headerlink" href="#feed-file-is-empty" title="Permalink to this heading">¶</a></h3>
 <p>When a feed file is empty, all ads of the user will be paused. An empty
 file means the desired list of ads to be live is empty, so all active ads
 are paused. Note that this also means that all ads which are in statuses
@@ -1259,15 +1252,9 @@ If you want to pause your entire ads inventory, you can download and use the fil
         <input type="submit" value="Download Empty File" />
     </form>
     <br><br>
-</embed></section>
-<section id="feed-file-contains-only-new-ads">
-<h3>Feed file contains only new ads<a class="headerlink" href="#feed-file-contains-only-new-ads" title="Permalink to this heading">¶</a></h3>
-<p>In the spirit of the feed file being the desired set of ads to be live for
+</embed><p>In the spirit of the feed file being the desired set of ads to be live for
 a user, all currently active ads (including ads in BUDGET_REACHED or DAILY_BUDGET_REACHED)
 will be paused and the supplied ads will be created (with status ACTIVE).</p>
-</section>
-<section id="editing-ads-through-frontend-api">
-<h3>Editing ads through frontend / API<a class="headerlink" href="#editing-ads-through-frontend-api" title="Permalink to this heading">¶</a></h3>
 <p>In the spirit of the feed file being the desired set of ads to be live for
 a user, all ads will be (re)set to their representing feed values. This means
 you can see changes made throuh API or frontend undone after a successful feed import.</p>
@@ -1276,9 +1263,6 @@ you can see changes made throuh API or frontend undone after a successful feed i
 </ul>
 <p>If the fetched XML filed does not validate against the XSD there will not be any changes
 to your ads. Existing ads will remain unchanged and no new ads will be created.</p>
-</section>
-<section id="how-to-validate-xml-against-xsd">
-<h3>How to validate XML against XSD<a class="headerlink" href="#how-to-validate-xml-against-xsd" title="Permalink to this heading">¶</a></h3>
 <p>Next to various online capabilities where you can provide both your XML and XSD files,
 a way to check quickly and locally is to use a tool called xmllint. With this tool
 you can use our XSD downloaded from <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> to test whether your feed is
@@ -1289,14 +1273,10 @@ working before you let our system fetch it using the following command:</p>
 <p>For small chunks of XML you can use online validators as well, such as <a class="reference external" href="http://www.utilities-online.info/xsdvalidation/">http://www.utilities-online.info/xsdvalidation/</a> or <a class="reference external" href="https://www.freeformatter.com/xml-validator-xsd.html">https://www.freeformatter.com/xml-validator-xsd.html</a>. Note that these have a
 limit on the size of the XML you can check, but it should be more than enough to be able
 to test correctness of your structure.</p>
-</section>
-<section id="image-updates-are-not-processed-after-successful-feed-import">
-<h3>Image updates are not processed after successful feed import<a class="headerlink" href="#image-updates-are-not-processed-after-successful-feed-import" title="Permalink to this heading">¶</a></h3>
 <p>If you’re changing the images without changing the URLs, the changes may not be picked up,
 in case the rest of the ad is also unchanged. We suggest adding a bogus parameter to the
 image URL to force a re-processing of the ad and its images. Make sure to not change this
 for every feed import, but only when you require images to be re-processed.</p>
-</section>
 </section>
 </section>
 
@@ -1338,7 +1318,7 @@ for every feed import, but only when you require images to be re-processed.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.125',
+            VERSION:'0.126',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
