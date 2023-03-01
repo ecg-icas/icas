@@ -50,6 +50,6 @@ cpc                     2001    invalid argument            the provided value i
 ====================    ====    =======================     ==============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-id-funnel-example.rst

@@ -66,6 +66,6 @@ categoryIds             2004    too short                   The value needs to b
 ====================    ====    =======================     ==============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-categories-statistics-example.rst

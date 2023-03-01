@@ -91,12 +91,10 @@
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
@@ -187,15 +185,22 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -238,9 +243,9 @@
 <li><p>At least one valid entry in the <a class="reference internal" href="reporting.html#id1"><span class="std std-ref">Metrics</span></a> field.</p></li>
 </ul>
 <p>Here is a sample request with all top-level query fields expanded:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -280,16 +285,16 @@
 <h2>Metrics Request<a class="headerlink" href="#metrics-request" title="Permalink to this heading">¶</a></h2>
 <p>The data model of the request has the following structure:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">timeRange</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...],</span>
-    <span class="s2">&quot;aggregate&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...],</span>
-    <span class="s2">&quot;sorts&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">sort</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">filter</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...],</span>
-    <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...],</span>
-    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;offset&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="s2">&quot;searchPhrase&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">timeRange</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;aggregate&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;sorts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">sort</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">filter</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;offset&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;searchPhrase&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -415,18 +420,18 @@
 <h2>Metrics Response<a class="headerlink" href="#metrics-response" title="Permalink to this heading">¶</a></h2>
 <p>The data model of the response has the following structure:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;rows&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...</span> <span class="p">],</span>
-                    <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...]</span>
-                    <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...]</span>
-                <span class="p">}</span>
-            <span class="p">,</span> <span class="p">...],</span>
-        <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">],</span>
+<span class="w">                    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span>
+<span class="w">                    </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -494,10 +499,8 @@
         };
     </script>
       <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 
   
 

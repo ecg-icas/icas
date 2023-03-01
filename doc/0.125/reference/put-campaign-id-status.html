@@ -40,7 +40,7 @@
     <link rel="top" title="iCAS Sellside API 0.125 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="PUT /campaign/{id}/budgets" href="put-campaign-id-budgets.html"/>
-        <link rel="prev" title="GET /campaign/{id}" href="get-campaign-id.html"/> 
+        <link rel="prev" title="PUT /campaign/{id}" href="put-campaign-id.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -190,15 +188,22 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -242,8 +247,8 @@
 <span id="put-campaign-id-status-v5"></span><h2>PUT /campaign/{id}/status/{status} v5<a class="headerlink" href="#put-campaign-id-status-status-v5" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -254,15 +259,15 @@
 </tr>
 </tbody>
 </table>
-</section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span> <span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">123</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">123</span><span class="o">/</span><span class="nx">status</span><span class="o">/</span><span class="nx">PAUSED</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span> <span class="nx">OK</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -275,7 +280,7 @@
         <a href="put-campaign-id-budgets.html" class="btn btn-neutral float-right" title="PUT /campaign/{id}/budgets"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="get-campaign-id.html" class="btn btn-neutral" title="GET /campaign/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="put-campaign-id.html" class="btn btn-neutral" title="PUT /campaign/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -311,10 +316,8 @@
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 

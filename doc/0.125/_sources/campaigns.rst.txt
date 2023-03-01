@@ -132,6 +132,6 @@ budgets.total.spentMicros
 The amount all the ads combined in this campaign have spent so far. This will never be reset.
 
 Example
--------
+"""""""
 
 .. include:: examples/get-campaign-id-v5-example.rst
