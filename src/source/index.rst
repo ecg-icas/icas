@@ -49,6 +49,10 @@ History
 
 ..  role:: strike
 
+* v 0.125 - 26 Feb 2023 - dr
+
+  * Added empty XML file generator API that guarantees a unique file name per download. This avoid the clash of previously pointing to a single hosted empty file. The download button has also been added in the :ref:`feeds` section.
+
 * v.0.124 - 3 Jan 2023 - tw
 
   * Added ad V5 related endpoints

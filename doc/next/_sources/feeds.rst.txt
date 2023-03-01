@@ -115,27 +115,46 @@ Scenario's & Questions
 
 Below are some common asked-for scenarios and questions with their explanations/answers.
 
-- Feed file cannot be fetched
+=============================
+ Feed file cannot be fetched
+=============================
 
 When a feed file cannot be fetched, nothing will change on the user's ads.
 It's as if the import didn't happen. Since the file represents the desired
 list of ads to be live, we won't do anything if we can't get the file -
 we cannot read a change in the desired situation.
 
-- Feed file is empty
+====================
+ Feed file is empty
+====================
 
 When a feed file is empty, all ads of the user will be paused. An empty
 file means the desired list of ads to be live is empty, so all active ads
 are paused. Note that this also means that all ads which are in statuses
 BUDGET_REACHED or DAILY_BUDGET_REACHED are also paused.
+If you want to pause your entire ads inventory, you can download and use the file below.
 
-- Feed file contains only new ads
+.. raw:: html
+
+        <embed>
+            <form action="https://admarkt.marktplaats.nl/api/sellside/feed/empty">
+                <input type="submit" value="Download Empty File" />
+            </form>
+            <br><br>
+        </embed>
+
+
+================================
+ Feed file contains only new ads
+================================
 
 In the spirit of the feed file being the desired set of ads to be live for
 a user, all currently active ads (including ads in BUDGET_REACHED or DAILY_BUDGET_REACHED)
 will be paused and the supplied ads will be created (with status ACTIVE).
 
-- Editing ads through frontend / API
+====================================
+ Editing ads through frontend / API
+====================================
 
 In the spirit of the feed file being the desired set of ads to be live for
 a user, all ads will be (re)set to their representing feed values. This means
@@ -146,7 +165,9 @@ you can see changes made throuh API or frontend undone after a successful feed i
 If the fetched XML filed does not validate against the XSD there will not be any changes
 to your ads. Existing ads will remain unchanged and no new ads will be created.
 
-- How to validate XML against XSD
+================================
+ How to validate XML against XSD
+================================
 
 Next to various online capabilities where you can provide both your XML and XSD files,
 a way to check quickly and locally is to use a tool called xmllint. With this tool
@@ -161,8 +182,10 @@ For small chunks of XML you can use online validators as well, such as `<http://
 limit on the size of the XML you can check, but it should be more than enough to be able
 to test correctness of your structure.
 
-- Image updates are not processed after successful feed import
 
+=============================================================
+ Image updates are not processed after successful feed import
+=============================================================
 If you're changing the images without changing the URLs, the changes may not be picked up,
 in case the rest of the ad is also unchanged. We suggest adding a bogus parameter to the
 image URL to force a re-processing of the ad and its images. Make sure to not change this

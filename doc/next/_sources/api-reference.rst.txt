@@ -30,6 +30,7 @@ API Reference
    reference/get-feed-import
    reference/get-feed-import-id-detail
    reference/get-feed-xsd
+   reference/get-feed-empty
    reference/get-report
    reference/get-report-detail
    reference/get-report-detail-id
