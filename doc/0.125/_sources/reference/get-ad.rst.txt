@@ -28,7 +28,7 @@ GET /ad v5
    - ``application/sellside.ad.list-v5+json, application/json``
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-v5-example.rst
 
@@ -58,7 +58,7 @@ GET /ad v4
     This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-v4-example.rst
 
@@ -154,7 +154,7 @@ time since this will not give you decent performance and also puts unnecessary
 load on the system.
 
 Parameters
-~~~~~~~~~~
+""""""""""
 
 ===============  ============     ============================================================================
 Name             Type             Description
@@ -178,7 +178,7 @@ _exclude         string           Comma-separated-list of fields to omit. Option
 .. _order_by:
 
 Order By
-~~~~~~~~
+""""""""
 
 ===================   =================================================
 Value                 Description
@@ -195,7 +195,7 @@ REMAINING_BUDGET      Will order ads by current remaining budget
 
 
 Errors
-~~~~~~
+""""""
 
 ====================    ====    =======================     ==============================================================================
 Field                   Code    Error message               Description
@@ -218,6 +218,6 @@ startDate/endDate       2002    out of range                endDate should be eq
 
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-v3-example.rst

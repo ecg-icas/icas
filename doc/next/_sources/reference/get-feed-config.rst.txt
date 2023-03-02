@@ -39,6 +39,6 @@ Field                   Code    Error message               Description
 ====================    ====    =======================     ==============================================================================
 
 Example
-~~~~~~~
+"""""""
 
 .. include:: ../examples/get-feed-config-example.rst

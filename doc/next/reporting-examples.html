@@ -91,12 +91,10 @@
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
@@ -187,15 +185,22 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -234,31 +239,31 @@
 <section id="example-1">
 <h1>Example 1:<a class="headerlink" href="#example-1" title="Permalink to this heading">¶</a></h1>
 <p>Get all clicks and impressions for category <code class="docutils literal notranslate"><span class="pre">1234</span></code> for the previous week:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 <span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="o">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="o">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="o">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1234</span><span class="p">]</span>
-    <span class="p">}]</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1483</span><span class="p">,</span> <span class="mf">36623</span><span class="p">]</span> <span class="c1">// 1483 clicks, 36623 impressions</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mf">1</span>
-    <span class="p">}]</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1483</span><span class="p">,</span><span class="w"> </span><span class="mf">36623</span><span class="p">]</span><span class="w"> </span><span class="c1">// 1483 clicks, 36623 impressions</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -278,35 +283,35 @@
 <section id="example-2">
 <h1>Example 2:<a class="headerlink" href="#example-2" title="Permalink to this heading">¶</a></h1>
 <p>Get all clicks and impressions for categories <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code> for the previous week, but split performance metrics per category:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 <span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="o">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="o">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="o">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1234</span><span class="p">,</span> <span class="mf">5678</span><span class="p">]</span>
-    <span class="p">}]</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">200</span><span class="p">,</span> <span class="mf">400</span><span class="p">]</span> <span class="c1">// 200 clicks, 400 impressions for category &quot;1234&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">300</span><span class="p">,</span> <span class="mf">400</span><span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mf">2</span>
-    <span class="p">}]</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">]</span><span class="w"> </span><span class="c1">// 200 clicks, 400 impressions for category &quot;1234&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -332,57 +337,57 @@
 <section id="example-3">
 <h1>Example 3:<a class="headerlink" href="#example-3" title="Permalink to this heading">¶</a></h1>
 <p>Get all clicks and impressions for categories <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 <span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="o">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;field&quot;</span><span class="o">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;operator&quot;</span><span class="o">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1234</span><span class="p">,</span> <span class="mf">5678</span><span class="p">]</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;sorts&quot;</span><span class="o">:</span><span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;direction&quot;</span><span class="o">:</span><span class="s2">&quot;asc&quot;</span>
-    <span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;sorts&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;direction&quot;</span><span class="o">:</span><span class="s2">&quot;asc&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">11</span><span class="p">,</span> <span class="mf">12</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">9</span><span class="p">,</span> <span class="mf">20</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">34</span><span class="p">,</span> <span class="mf">67</span><span class="p">]</span>
-        <span class="p">},</span>
-                    <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">19</span><span class="p">,</span> <span class="mf">20</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">...</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">12</span><span class="p">,</span> <span class="mf">90</span><span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5678&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">43</span><span class="p">,</span> <span class="mf">76</span><span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mf">54</span>
-    <span class="p">}]</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">34</span><span class="p">,</span><span class="w"> </span><span class="mf">67</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">19</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">90</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">43</span><span class="p">,</span><span class="w"> </span><span class="mf">76</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">54</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -436,53 +441,53 @@
 <section id="example-4">
 <h1>Example 4:<a class="headerlink" href="#example-4" title="Permalink to this heading">¶</a></h1>
 <p>Get all clicks, and average CPC for categories <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 <span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="o">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgCPC&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;field&quot;</span><span class="o">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;operator&quot;</span><span class="o">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1234</span><span class="p">,</span> <span class="mf">5678</span><span class="p">]</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span> <span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
-    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mf">3</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:avgCPC&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">11</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">],</span>
-            <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;vendor11111&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">9</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span>
-            <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;vendor33333&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">34</span><span class="p">,</span>  <span class="mf">2.3</span><span class="p">],</span>
-                <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;vendor33333&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mf">3</span>
-    <span class="p">}]</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor11111&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor33333&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">34</span><span class="p">,</span><span class="w">  </span><span class="mf">2.3</span><span class="p">],</span>
+<span class="w">                </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor33333&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -520,53 +525,53 @@
 <section id="example-5">
 <h1>Example 5:<a class="headerlink" href="#example-5" title="Permalink to this heading">¶</a></h1>
 <p>Get all clicks, and average spent micros for categories <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 <span class="p">{</span>
-    <span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;period&quot;</span><span class="o">:</span> <span class="s2">&quot;lastWeek&quot;</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:avgSpentMicros&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;filters&quot;</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;field&quot;</span><span class="o">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;operator&quot;</span><span class="o">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1234</span><span class="p">,</span> <span class="mf">5678</span><span class="p">]</span>
-    <span class="p">}],</span>
-    <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span> <span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
-    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mf">3</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:avgSpentMicros&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;rows&quot;</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">11</span><span class="p">,</span> <span class="mf">45000.0</span><span class="p">],</span>
-            <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;vendor11111&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">9</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span>
-            <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;vendor33333&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;metrics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">34</span><span class="p">,</span>  <span class="mf">2.3</span><span class="p">],</span>
-                <span class="s2">&quot;enrichment&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;vendor33333&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}],</span>
-    <span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="mf">3</span>
-    <span class="p">}]</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="mf">45000.0</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor11111&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor33333&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">34</span><span class="p">,</span><span class="w">  </span><span class="mf">2.3</span><span class="p">],</span>
+<span class="w">                </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor33333&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -648,10 +653,8 @@
         };
     </script>
       <script type="text/javascript" src="_static/documentation_options.js"></script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
 
   
 

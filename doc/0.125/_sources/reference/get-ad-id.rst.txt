@@ -39,7 +39,7 @@ GET /ad/{id} v5
 
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-id-v5-example.rst
 
@@ -62,7 +62,7 @@ This field is currently used to indicate the reason why a certain ad might be se
 This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-id-v3-example.rst
 
@@ -117,7 +117,7 @@ id                      1006    type mismatch               the provided value f
 ====================    ====    =======================     ==============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-id-v2-example.rst
 

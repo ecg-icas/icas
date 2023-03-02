@@ -70,7 +70,7 @@ averageCtr      double  Average ctr over all ads in the period, in percentages
 ==============  ======  =====================================================
 
 Example
-~~~~~~~
+"""""""
 
 .. include:: ../examples/get-report-summary-example-v2.rst
 
@@ -134,6 +134,6 @@ emails          int     Number of emails for all ads in the period
 ==============  ======  =====================================================
 
 Example
-~~~~~~~
+"""""""
 
 .. include:: ../examples/get-report-summary-example.rst

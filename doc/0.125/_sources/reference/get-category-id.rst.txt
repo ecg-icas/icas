@@ -34,7 +34,7 @@ GET /category/{id} v5
    - ``application/sellside.category-v5+json, application/json``
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-category-id-v5-example.rst
 
@@ -77,6 +77,6 @@ levels                  2002    out of range                negative number
 ====================    ====    =======================     ==============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-category-id-v2-example.rst

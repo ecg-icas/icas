@@ -132,7 +132,7 @@ The steps for getting an access token are as follows:
 If the user is not logged-in with the tenant:
 
 Step 1: Redirect to the authorization url
-`````````````````````````````````````````
+"""""""""""""""""""""""""""""""""""""""""
 
 Redirect the resource owner (user) to the authorization url with the following
 GET parameters
@@ -174,7 +174,7 @@ GET parameters
     Host: admarkt.demo.qa-mp.so
 
 Step 2: Redirect to the redirect_uri
-````````````````````````````````````
+""""""""""""""""""""""""""""""""""""
 
 After the resource owner logs in and confirms access request of the client, the
 authorization server redirects the resource owner to the ``redirect_uri``
@@ -204,7 +204,7 @@ specified in the request at step 1 with the following GET parameters
 This is how your client gets the short-lived authorization code to subsequently get a refresh & access token.
 
 Step 3: POST to the token endpoint
-``````````````````````````````````
+""""""""""""""""""""""""""""""""""
 
 After obtaining the authorization code at step 2 the client needs to make a
 *POST* request to the *token endpoint* with the following parameters:
@@ -246,7 +246,7 @@ After obtaining the authorization code at step 2 the client needs to make a
     grant_type=authorization_code&code=AUTH_CODE&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://yoursite.com/code
 
 Step 4: Receive token response
-``````````````````````````````
+""""""""""""""""""""""""""""""
 
 The authentication server returns the following token response in JSON
 format if the token request at step 3 is valid.

@@ -96,7 +96,7 @@ POST /ad/ v5
      * - several other fields are removed. See :ref:`ad-fields` for details.
 
 Example
--------
+"""""""
 
 .. include:: ../examples/post-ad-v5-example.rst
 
@@ -130,7 +130,7 @@ This could be due to, for example, an action (like new website domain approval) 
 
 
 Example
--------
+"""""""
 
 .. include:: ../examples/post-ad-v3-example.rst
 
@@ -174,7 +174,7 @@ Errors
 .. include:: post-ad-errors.rst
 
 Example
--------
+"""""""
 
 .. include:: ../examples/post-ad-v2-example.rst
 

@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -190,15 +188,22 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -258,8 +263,8 @@ Empty strings are not enclosed in quotes.</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Accept-Language</span></code> header advertises the preferred client locales (language and region) for the report column names. Both <code class="docutils literal notranslate"><span class="pre">language_REGION</span></code> and <code class="docutils literal notranslate"><span class="pre">language-REGION</span></code> are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -460,8 +465,8 @@ Empty strings are not enclosed in quotes.</strong></p>
 <h2>V1<a class="headerlink" href="#v1" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -639,10 +644,8 @@ Empty strings are not enclosed in quotes.</strong></p>
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 

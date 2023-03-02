@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -190,15 +188,22 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -254,8 +259,8 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 <p>V2 replaces the fields (<code class="docutils literal notranslate"><span class="pre">cpc</span></code>, <code class="docutils literal notranslate"><span class="pre">totalSpent</span></code>,  <code class="docutils literal notranslate"><span class="pre">dailyLimit</span></code>, <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code>, <code class="docutils literal notranslate"><span class="pre">eCPC</span></code>) with their corresponding <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">spentMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">dailyBudgetMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">totalBudgetMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">eSpentMicros</span></code> shown in micros unit.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -499,53 +504,53 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 </tbody>
 </table>
 </section>
+</section>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 
-<span class="mf">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
 
 <span class="p">{</span>
-  <span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-25&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">1262</span><span class="p">,</span>
-      <span class="s2">&quot;bidMicros&quot;</span><span class="o">:</span><span class="mf">10000</span><span class="p">,</span>
-      <span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">73</span><span class="p">,</span>
-      <span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
-      <span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span>
-      <span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
-      <span class="s2">&quot;engagement&quot;</span><span class="o">:</span> <span class="mf">22</span><span class="p">,</span>
-      <span class="s2">&quot;spentMicros&quot;</span><span class="o">:</span><span class="mf">430000</span><span class="p">,</span>
-      <span class="s2">&quot;ctr&quot;</span><span class="o">:</span> <span class="mf">0.589</span><span class="p">,</span>
-      <span class="s2">&quot;engagementCTR&quot;</span><span class="o">:</span> <span class="mf">0.511</span><span class="p">,</span>
-      <span class="s2">&quot;websiteCTR&quot;</span><span class="o">:</span> <span class="mf">0.43</span><span class="p">,</span>
-      <span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">573</span><span class="p">,</span>
-      <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;dailyBudgetMicros&quot;</span><span class="o">:</span><span class="mf">9990000</span><span class="p">,</span>
-      <span class="s2">&quot;totalBudgetMicros&quot;</span><span class="o">:</span><span class="mf">49000000</span><span class="p">,</span>
-      <span class="s2">&quot;relativePerformance&quot;</span><span class="o">:</span> <span class="mf">65</span><span class="p">,</span>
-      <span class="s2">&quot;eSpentMicros&quot;</span><span class="o">:</span> <span class="mf">4200</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
+<span class="w">  </span><span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-25&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">1262</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;bidMicros&quot;</span><span class="o">:</span><span class="mf">10000</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">73</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;engagement&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">22</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;spentMicros&quot;</span><span class="o">:</span><span class="mf">430000</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ctr&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.589</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;engagementCTR&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.511</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;websiteCTR&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">573</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;dailyBudgetMicros&quot;</span><span class="o">:</span><span class="mf">9990000</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;totalBudgetMicros&quot;</span><span class="o">:</span><span class="mf">49000000</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;relativePerformance&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">65</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;eSpentMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">4200</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
 </section>
 <section id="v1">
 <h2>V1<a class="headerlink" href="#v1" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -556,46 +561,46 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
 </tr>
 </tbody>
 </table>
+</section>
 <section id="id2">
-<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<h2>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">report</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">24</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">11</span><span class="o">-</span><span class="mf">25</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">ACTIVE</span><span class="p">,</span><span class="nx">PAUSED</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
 
-<span class="mf">200</span> <span class="nx">OK</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">hit</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
 
 <span class="p">{</span>
-  <span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-25&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">1262</span><span class="p">,</span>
-      <span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
-      <span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">73</span><span class="p">,</span>
-      <span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
-      <span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span>
-      <span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
-      <span class="s2">&quot;engagement&quot;</span><span class="o">:</span> <span class="mf">22</span><span class="p">,</span>
-      <span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
-      <span class="s2">&quot;ctr&quot;</span><span class="o">:</span> <span class="mf">0.589</span><span class="p">,</span>
-      <span class="s2">&quot;engagementCTR&quot;</span><span class="o">:</span> <span class="mf">0.511</span><span class="p">,</span>
-      <span class="s2">&quot;websiteCTR&quot;</span><span class="o">:</span> <span class="mf">0.43</span><span class="p">,</span>
-      <span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
-      <span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">573</span><span class="p">,</span>
-      <span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">999</span><span class="p">,</span>
-      <span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">4900</span><span class="p">,</span>
-      <span class="s2">&quot;relativePerformance&quot;</span><span class="o">:</span> <span class="mf">65</span><span class="p">,</span>
-      <span class="s2">&quot;eCPC&quot;</span><span class="o">:</span> <span class="mf">0.42</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
+<span class="w">  </span><span class="s2">&quot;createDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-12-05T14:47:04Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-24&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="s2">&quot;2014-11-25&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;adId&quot;</span><span class="o">:</span><span class="mf">1262</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;cpc&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;impressions&quot;</span><span class="o">:</span><span class="mf">73</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;clicks&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;urlClicks&quot;</span><span class="o">:</span><span class="mf">10</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;emails&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;engagement&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">22</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;totalSpent&quot;</span><span class="o">:</span><span class="mf">43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ctr&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.589</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;engagementCTR&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.511</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;websiteCTR&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.43</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;startDate&quot;</span><span class="o">:</span><span class="s2">&quot;1970-01-17T09:27:18Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;endDate&quot;</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="s2">&quot;Test Ad&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;categoryId&quot;</span><span class="o">:</span><span class="mf">573</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="s2">&quot;vndr&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;dailyLimit&quot;</span><span class="o">:</span><span class="mf">999</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;totalBudget&quot;</span><span class="o">:</span><span class="mf">4900</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;relativePerformance&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">65</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;eCPC&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.42</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 
@@ -644,10 +649,8 @@ whereas it counts the number of sessions with clicks when the scope is <cite>ses
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 

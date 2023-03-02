@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -190,15 +188,22 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -237,13 +242,75 @@
             
   <section id="get-user">
 <span id="index-0"></span><span id="id1"></span><h1>GET /user<a class="headerlink" href="#get-user" title="Permalink to this heading">¶</a></h1>
-<p><a class="reference internal" href="#get-user-v3"><span class="std std-ref">GET /user v3</span></a> | <a class="reference internal" href="#get-user-v1"><span class="std std-ref">GET /user v1</span></a></p>
-<section id="get-user-v3">
-<span id="id2"></span><h2>GET /user v3<a class="headerlink" href="#get-user-v3" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="#get-user-v4"><span class="std std-ref">GET /user v4</span></a> | <a class="reference internal" href="#get-user-v3"><span class="std std-ref">GET /user v3</span></a> | <a class="reference internal" href="#get-user-v2"><span class="std std-ref">GET /user v2</span></a> | <a class="reference internal" href="#get-user-v1"><span class="std std-ref">GET /user v1</span></a></p>
+<p>This URL returns information of the current user. The <code class="docutils literal notranslate"><span class="pre">id</span></code> field contains
+a unique user identifier. The <code class="docutils literal notranslate"><span class="pre">options.feed</span></code> field is <code class="docutils literal notranslate"><span class="pre">true</span></code> if the user
+is an XML feed customer. The <code class="docutils literal notranslate"><span class="pre">options.vanityUrl</span></code> field is <code class="docutils literal notranslate"><span class="pre">true</span></code> if the
+value of the <a class="reference internal" href="../ads.html#ad-links-displayurl"><span class="std std-ref">links.displayUrl</span></a> field in the advertisement is shown
+in the search results. The <code class="docutils literal notranslate"><span class="pre">hasAds</span></code> field is <code class="docutils literal notranslate"><span class="pre">false</span></code> if the user has no ads at all (not even deleted).
+The <code class="docutils literal notranslate"><span class="pre">locations</span></code> field contains the user (or webshop) locations.
+The <code class="docutils literal notranslate"><span class="pre">isAPIManaged</span></code> field is <code class="docutils literal notranslate"><span class="pre">true</span></code> when there is (at least one) API partner
+using <code class="docutils literal notranslate"><span class="pre">api-rw</span></code> scope for this customer. API partners using <code class="docutils literal notranslate"><span class="pre">api-ro</span></code> only will not
+count towards this value being <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<section id="get-user-v4">
+<span id="id2"></span><h2>GET /user v4<a class="headerlink" href="#get-user-v4" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.user-v4+json,</span> <span class="pre">application/json</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">user</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v4</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v4</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;someuser@ebay.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;sellerName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some User&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;options&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;feed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;vanityUrl&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;locations&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;houseNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;streetName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some street&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some city&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;country&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some country&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;postalCode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1432AB&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0612345678&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;hasAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;isAPIManaged&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-user-v3">
+<span id="id3"></span><h2>GET /user v3<a class="headerlink" href="#get-user-v3" title="Permalink to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-user-v4"><span class="std std-ref">GET /user v4</span></a> instead.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -254,54 +321,99 @@
 </tr>
 </tbody>
 </table>
-<p>This URL returns information of the current user. The <code class="docutils literal notranslate"><span class="pre">id</span></code> field contains
-a unique user identifier. The <code class="docutils literal notranslate"><span class="pre">options.feed</span></code> field is <code class="docutils literal notranslate"><span class="pre">true</span></code> if the user
-is an XML feed customer. The <code class="docutils literal notranslate"><span class="pre">options.vanityUrl</span></code> field is <code class="docutils literal notranslate"><span class="pre">true</span></code> if the
-value of the <a class="reference internal" href="../ads.html#ad-links-displayurl"><span class="std std-ref">links.displayUrl</span></a> field in the advertisement is shown
-in the search results. The <code class="docutils literal notranslate"><span class="pre">hasAds</span></code> field is <code class="docutils literal notranslate"><span class="pre">false</span></code> if the user has no ads at all (not even deleted).
-The <code class="docutils literal notranslate"><span class="pre">locations</span></code> field contains the user (or webshop) locations.</p>
-<section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">user</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<section id="id4">
+<h3>Example<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">user</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span> <span class="nx">OK</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
 <span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mf">123</span><span class="p">,</span>
-    <span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span> <span class="s2">&quot;someuser@ebay.com&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span> <span class="s2">&quot;Some User&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;feed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;vanityUrl&quot;</span><span class="o">:</span> <span class="kc">false</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;locations&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;houseNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;123&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;streetName&quot;</span><span class="o">:</span> <span class="s2">&quot;Some street&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;city&quot;</span><span class="o">:</span> <span class="s2">&quot;Some city&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;country&quot;</span><span class="o">:</span> <span class="s2">&quot;Some country&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;postalCode&quot;</span><span class="o">:</span> <span class="s2">&quot;1432AB&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span> <span class="s2">&quot;0612345678&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;hasAds&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;someuser@ebay.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;sellerName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some User&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;options&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;feed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;vanityUrl&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;locations&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;houseNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;streetName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some street&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some city&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;country&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some country&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;postalCode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1432AB&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0612345678&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;hasAds&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-user-v2">
+<span id="id5"></span><h2>GET /user v2<a class="headerlink" href="#get-user-v2" title="Permalink to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-user-v4"><span class="std std-ref">GET /user v4</span></a> instead.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">api_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">console_ro</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.user-v2+json,</span> <span class="pre">application/json</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<section id="id6">
+<h3>Example<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">user</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;someuser@ebay.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;sellerName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some User&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;options&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;feed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;vanityUrl&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;locations&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;houseNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;streetName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some street&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some city&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;country&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Some country&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;postalCode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1432AB&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0612345678&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="get-user-v1">
-<span id="id3"></span><h2>GET /user v1<a class="headerlink" href="#get-user-v1" title="Permalink to this heading">¶</a></h2>
+<span id="id7"></span><h2>GET /user v1<a class="headerlink" href="#get-user-v1" title="Permalink to this heading">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-user-v3"><span class="std std-ref">GET /user v3</span></a> instead.</p>
+<p>This call is scheduled to be deprecated. Please use <a class="reference internal" href="#get-user-v4"><span class="std std-ref">GET /user v4</span></a> instead.</p>
 </div>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 80%" />
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -317,23 +429,23 @@ a unique user identifier. The <code class="docutils literal notranslate"><span c
 is an XML feed customer. The <code class="docutils literal notranslate"><span class="pre">options.vanityUrl</span></code> field is <code class="docutils literal notranslate"><span class="pre">true</span></code> if the
 value of the <a class="reference internal" href="../ads.html#ad-links-displayurl"><span class="std std-ref">links.displayUrl</span></a> field in the advertisement is shown
 in the search results.</p>
-<section id="id4">
-<h3>Example<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span> <span class="o">/</span><span class="nx">user</span>
-<span class="nx">Accept</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span> <span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<section id="id8">
+<h3>Example<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">user</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
-<span class="mf">200</span> <span class="nx">OK</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">user</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
 
 <span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="o">:</span>           <span class="mf">123</span><span class="p">,</span>
-    <span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span> <span class="s2">&quot;someuser@ebay.com&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;sellerName&quot;</span><span class="o">:</span>   <span class="s2">&quot;Some User&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span>  <span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;options&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;feed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;vanityUrl&quot;</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w">           </span><span class="mf">123</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;someuser@ebay.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;sellerName&quot;</span><span class="o">:</span><span class="w">   </span><span class="s2">&quot;Some User&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;phoneNumber&quot;</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;options&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;feed&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;vanityUrl&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -386,10 +498,8 @@ in the search results.</p>
         };
     </script>
       <script type="text/javascript" src="../_static/documentation_options.js"></script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
 
   
 

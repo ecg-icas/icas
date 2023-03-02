@@ -40,8 +40,10 @@ API Reference
    reference/get-metrics-report
    reference/post-metrics-data
    reference/campaign-status
+   reference/post-campaign
    reference/get-campaign
    reference/get-campaign-id
+   reference/put-campaign-id
    reference/put-campaign-id-status
    reference/put-campaign-id-budgets
    reference/get-user

@@ -28,7 +28,7 @@ If the ad does not exist or does not belong to the user the server returns
 server returns **400 Bad Request**.
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-vendorid-v5-example.rst
 
@@ -51,7 +51,7 @@ This field is currently used to indicate the reason why a certain ad might be se
 This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-id-v3-by-vendor.rst
 
@@ -105,7 +105,7 @@ vendorId                2005    value too long              max. length is 64 ch
 ====================    ====    =======================     ==============================================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-ad-id-v2-by-vendor.rst
 

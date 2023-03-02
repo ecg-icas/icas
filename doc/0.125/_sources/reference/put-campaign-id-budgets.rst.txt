@@ -21,6 +21,6 @@ PUT /campaign{id}/budgets v5
    - ``application/sellside.campaign-v5+json, application/json``
 
 Example
-------- 
+""""""" 
 
 .. include:: ../examples/put-campaign-id-budgets-v5-example.rst
