@@ -1,0 +1,30 @@
+.. index:: POST /campaign
+.. _post_campaign:
+
+POST /campaign/
+===============
+
+This URL creates a campaign as defined in :ref:`campaigns`. At the moment, only one campaign is allowed per seller
+and this call will return an error if the seller already has one.
+
+.. _post_campaign_v5:
+
+POST /campaign/ V5
+------------------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_rw`` or ``console_rw``
+
+ * - Accept
+   - ``application/sellside.campaign-v5+json, application/json``
+
+ * - Content-Type
+   - ``application/sellside.campaign-v5+json; charset=utf-8``
+
+Example
+"""""""
+
+.. include:: ../examples/post-campaign-v5-example.rst

@@ -466,8 +466,7 @@ phoneNumber
 """""""""""
 
 The phone number of the advertiser as international phone number format, e.g.
-+31207894561 or as a local phone number, e.g. 06789456612. 0900 and 0800
-numbers are not allowed.
++31207894561 or as a local phone number, e.g. 06789456612.
 
 .. index:: allowContactByEmail
 .. _ad_allowContactByEmail:

@@ -1,7 +1,7 @@
 .. index:: GET /feed/empty
 .. _get_feed_empty:
 
-GET /feed/emtpy
+GET /feed/empty
 ================
 
 .. list-table::

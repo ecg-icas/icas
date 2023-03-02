@@ -49,6 +49,10 @@ History
 
 ..  role:: strike
 
+* v 0.126 - 2 Mar 2023 - pm
+
+  * Improved XML feed description. Added "Fields" section with currently supported, and newly introduced (industry-accepted) fields in :ref:`feeds` section.
+
 * v 0.125 - 26 Feb 2023 - dr
 
   * Added empty XML file generator API that guarantees a unique file name per download. This avoid the clash of previously pointing to a single hosted empty file. The download button has also been added in the :ref:`feeds` section.

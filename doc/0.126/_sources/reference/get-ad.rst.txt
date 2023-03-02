@@ -1,0 +1,223 @@
+.. index:: GET /ad
+.. _ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+.. _get_ad:
+
+GET /ad
+=======
+
+:ref:`get_ad_v5` | :ref:`get_ad_v4` | :ref:`get_ad_v3`
+
+.. warning::
+
+    :ref:`get_ad_v4` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_ad_v5`.
+
+    :ref:`get_ad_v3` is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use :ref:`get_ad_v5`.
+
+.. _get_ad_v5:
+
+GET /ad v5
+----------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad.list-v5+json, application/json``
+
+Example
+"""""""
+
+.. include:: ../examples/get-ad-v5-example.rst
+
+
+.. _get_ad_v4:
+
+GET /ad v4
+----------
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad.list-v4+json, application/json``
+
+
+.. note::
+
+    The only backwards-incompatible change from :ref:`get_ad_v3` is with respect to the usage of ``startDate`` and ``endDate`` parameters.
+    Namely, ads which were live during this selected period but did not receive a single click, impression, urlClick, etc (any visitors activity) will be filtered out.
+    **This does not include ads which received updates anymore.**
+
+    In addition, the response contains a field **statusReasons**. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
+    This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
+
+Example
+"""""""
+
+.. include:: ../examples/get-ad-v4-example.rst
+
+
+.. _get_ad_v3:
+
+GET /ad v3
+----------
+
+.. warning::
+
+    :ref:`get_ad_v3` is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use :ref:`get_ad_v4`. If you were not
+    using ``startDate`` or ``endDate`` parameters in your calls the output will be the same in :ref:`get_ad_v4`.
+
+.. list-table::
+ :widths: 20 80
+
+ * - Scope
+   - ``api_ro`` or ``console_ro``
+
+ * - Accept
+   - ``application/sellside.ad.list-v3+json, application/json``
+
+This URL returns a list of ads for the current user and the total size of the
+result set matching the filter criteria.
+
+The number of ads returned can be limited with the ``limit`` parameter.
+The ``offset`` parameter allows to skip some ads and together with ``limit``
+allows for pagination.
+
+The ``status`` parameter returns only ads with the given status. The default
+is to return only ads with status **ACTIVE**.
+
+The ``orderBy`` and ``direction`` parameters control the sort field and
+direction.
+
+The ``titleKeywords`` parameter is case-insensitive and will include only ads
+which contain the given keyword in their title.
+
+The ``changedSince`` parameter can be used to retrieve only ads that have
+:ref:`ad_dateLastUpdated` >= ``changedSince``. The ``changedSince`` value must be a
+valid `ISO 8601`_ UTC date which usually lies in the past but cannot lie in
+the future.
+
+The ``changedSince`` parameter should only be combined with ``limit`` and
+``offset``. Filtering by ``status`` and ``titleKeyword`` may be used but
+``orderBy`` and ``direction`` cannot be changed since this would break the
+pagination.
+
+The ``remainingBudget`` parameter can be used to retrieve only ads whose remaining
+budget (:ref:`ad_totalBudget` - :ref:`ad_spentBudget`) is below a given threshold.
+The ``remainingBudget`` value must be an absolute integer number (e.g. **123**) or a
+percentage (e.g. **10%**).
+
+The ``startDate`` and ``endDate`` parameters can be used to define a period. The
+values for both should be valid dates represented as 'yyyy-MM-dd', and the ``endDate``
+should represent a date equal or after the ``startDate``. The ads returned have had
+activity in this period. Note that ads which were live during this period but did
+not recieve a single click, impression or urlClick, and did not have any updates
+in this period, will be filtered out.
+
+.. note::
+
+    The fields :ref:`ad_pageNumber` and :ref:`ad_suggestedCpcForPageOne` are
+    currently expensive to compute. If you do not need their values consider
+    excluding them to speed up the response. To exclude the fields add the
+    following parameter to the request URL. ::
+
+        ?_exclude=pageNumber,suggestedCpcForPageOne
+
+Caching all ads for a user
+--------------------------
+
+If an application needs to keep a cache of the entire set of ads for a user
+then it should perform the following steps:
+
+1. Fetch all ads by using ``limit`` and ``offset`` until all
+ads have been retrieved. No filters should be used.
+
+2. Retrieve updates by using ``changedSince``, ``limit`` and ``offset``. No
+additional filters should be used. ``changedSince`` should be set to a value a
+somewhat before (e.g. 1 min) of ``dateLastUpdated`` of the last modified ad.
+
+Due to the nature of this system retrieving updates as described in step 2
+will always return at least the ad that was modified last. Also, the API can
+currently not guarantee that all updates are retrieved when ``changedSince``
+is set to ``dateLastUpdated`` of the last modified ad. That's why you should
+use ``dateLastUpdated`` - 1 minute. To determine whether an ad has changed
+compare the ``dateLastUpdated`` value.
+
+Unless you have a very small set of ads (< 10) do not retrieve all ads every
+time since this will not give you decent performance and also puts unnecessary
+load on the system.
+
+Parameters
+""""""""""
+
+===============  ============     ============================================================================
+Name             Type             Description
+===============  ============     ============================================================================
+limit            int              Limits the number of records returned. Default **and** maximum is 100.
+offset           int              Skips the first N records.
+titleKeywords    string           Case-insensitive filter for a keyword in the title.
+status           string           Filters the result set by the ad status. Should be a comma separated list of [ACTIVE, PAUSED, DELETED, DELETED_BY_CS, SUSPENDED_BY_CS, BUDGET_REACHED, DAILY_BUDGET_REACHED]. Default value is ACTIVE.
+orderBy          string           Orders the result set by the given field. Default value is DATE_CREATED. See :ref:`order_by`.
+direction        string           Determines the direction of the sort. Should be one of [ASCENDING, DESCENDING]. Default is ASCENDING.
+changedSince     date             Returns ads which have ``changedSince`` >= ``dateLastUpdated``.
+remainingBudget  string           Returns ads whose remaining budget is below a certain value (absolute number or a percentage).
+startDate        string           Determines the startDate of the period to select ads with activity for.
+endDate          string           Determines the endDate of the period to select ads with activity for.
+externalId       string           Only ads matching this externalId will be returned. Optional.
+categoryIds      list of ints     List of category id's to filter by. Only leaf category id's are useful, since ads can only be placed in leaf categories.
+_include         string           Comma-separated-list of fields to include. Optional, default is all fields.
+_exclude         string           Comma-separated-list of fields to omit. Optional, default empty.
+===============  ============     ============================================================================
+
+.. _order_by:
+
+Order By
+""""""""
+
+===================   =================================================
+Value                 Description
+===================   =================================================
+DATE_CREATED          Default. Will order ads by creation date.
+DATE_LAST_UPDATED     Will order ads by last modification date.
+STATUS                Will order ads by Status; This is an internally defined ordering intended to have ads requiring attention on top/bottom, depending on direction.
+CLICKS                Will order ads by lifetime number of clicks received.
+TITLE                 Will order ads alphabetically by title
+CPC                   Will order ads by current CPC
+SPENT                 Will order ads by lifetime spent amount
+REMAINING_BUDGET      Will order ads by current remaining budget
+===================   =================================================
+
+
+Errors
+""""""
+
+====================    ====    =======================     ==============================================================================
+Field                   Code    Error message               Description
+====================    ====    =======================     ==============================================================================
+limit                   2001    invalid argument            not a valid number
+limit                   2002    out of range                less than 1 or greater than 100.
+offset                  2001    invalid argument            not a valid number
+offset                  2002    out of range                less than 0.
+titleKeywords           2004    value too short             must be 3 characters or more.
+status                  2001    invalid argument            not a recognised status to filter on
+orderBy                 2001    invalid argument            not a recognised orderBy to filter on
+direction               2001    invalid argument            not a recognised direction to filter on
+changedSince            2001    invalid argument            not a valid date
+changedSince            2002    out of range                date is in the future
+remainingBudget         2001    invalid argument            remaining budget is not an integer or an integer percentage (e.g. **10%**)
+startDate               2001    invalid argument            startDate should be a valid date in form 'yyyy-MM-dd'
+endDate                 2001    invalid argument            endDate should be a valid date in form 'yyyy-MM-dd'
+startDate/endDate       2002    out of range                endDate should be equal or after startDate
+====================    ====    =======================     ==============================================================================
+
+
+Example
+"""""""
+
+.. include:: ../examples/get-ad-v3-example.rst
