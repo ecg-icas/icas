@@ -444,7 +444,7 @@ Example .. code-block:: html
 emailAdvertiser
 """""""""""""""
 
-Flag which enables emails, (or the other tenant defined forms of contact) to the seller.
+Flag which enables buyers to contact the seeler via email (or the other platform defined form of contact).
 The default value is false.
 
 ======= =================================================
@@ -486,6 +486,7 @@ microTip
 A short freeform text with a maximum length of 18 characters, excluding any characters in ``.,/@#<>``.
 It is a feature as part of a package that sellers can purchase (currently available only for Marktplaats tenant).
 It provides extra attention on the ad in the search results.
+If *microTip* feature is not enabled for the seler, the value will be ignored.
 
 ======= ===========================================
 Example .. code-block:: html
