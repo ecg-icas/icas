@@ -724,7 +724,7 @@ Example .. code-block:: html
 size
 """"""""""""""""""""""""
 
-Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324497>`__ guidelines.
+Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324492>`__ guidelines.
 String identifier max 1-100 chars.
 
 ======= =============================
