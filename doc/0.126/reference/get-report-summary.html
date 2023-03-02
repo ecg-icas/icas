@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -191,15 +189,22 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -345,9 +350,8 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
 </tr>
 </tbody>
 </table>
-</section>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">summary</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mf">12</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">21</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -363,6 +367,7 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 <section id="get-report-summary-v1">
@@ -474,9 +479,8 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
 </tr>
 </tbody>
 </table>
-</section>
 <section id="id7">
-<h3>Example<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
+<h4>Example<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">report</span><span class="o">/</span><span class="nx">summary</span><span class="o">?</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mf">12</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">21</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">report</span><span class="p">.</span><span class="nx">summary</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -494,6 +498,7 @@ Keep in mind that the new endpoint only returns data for <strong>ads which have 
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 </section>

@@ -23,7 +23,7 @@ PUT /ad/{id}/status/{status} v5:
 :ref:`put_ad_status_v5` introduces an accept header. See :ref:`ad_status_overview` for details on statuses.
 
 Example
--------
+"""""""
 
 .. include:: ../examples/put-ad-status-v5-example.rst
 
@@ -83,7 +83,7 @@ status                  2017    ad status change not allowed    changing the sta
 ====================    ====    ============================    ==============================================================================
 
 Example
--------
+"""""""
 
 .. code-block:: javascript
 

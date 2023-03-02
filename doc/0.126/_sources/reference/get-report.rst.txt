@@ -92,7 +92,7 @@ engagement                  5                           int         Engagement c
 =======================     ========================    ========    =============================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-report-v3-example.rst
 
@@ -177,7 +177,7 @@ vendorId                    "vndr"                      string      Vendor id of
 =======================     ========================    ========    =============================================================
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-report-v2-example.rst
 
@@ -204,7 +204,7 @@ url clicks, emails for all ads which received at least one event that day.
     Version 1 is deprecated and will be removed after September 2015.
 
 Parameters
-~~~~~~~~~~
+""""""""""
 
 =======================     ========================    ========    =============================================================
 Field                       Example                     Type        Info
@@ -215,7 +215,7 @@ _exclude                    "id,date,title"             string      Comma-separa
 =======================     ========================    ========    =============================================================
 
 Fields
-~~~~~~
+""""""
 
 =======================     ========================    ========    =============================================================
 Field                       Example                     Type        Info
@@ -240,6 +240,6 @@ vendorId                    "vndr"                      string      Vendor id of
 =======================     ========================    ========    =============================================================
 
 Example
-~~~~~~~
+"""""""
 
 .. include:: ../examples/get-report-v1-example.rst

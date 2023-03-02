@@ -21,6 +21,6 @@ GET /campaign/{id} v5
    - ``application/sellside.campaign-v5+json, application/json``
 
 Example
--------
+"""""""
 
 .. include:: ../examples/get-campaign-id-v5-example.rst

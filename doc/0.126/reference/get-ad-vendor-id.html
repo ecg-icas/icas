@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -191,15 +189,22 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -259,9 +264,8 @@
 <p>If the ad does not exist or does not belong to the user the server returns
 <strong>404 Not Found</strong>. If the <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> is bigger than 64 characters the
 server returns <strong>400 Bad Request</strong>.</p>
-</section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="nx">byVendor</span><span class="o">/</span><span class="nx">OURSHOP</span><span class="o">-</span><span class="mf">1423453</span><span class="o">-</span><span class="mf">34</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -370,6 +374,7 @@ server returns <strong>400 Bad Request</strong>.</p>
 </pre></div>
 </div>
 </section>
+</section>
 <section id="get-ad-byvendor-vendorid-v3">
 <span id="get-ad-vendor-id-v3"></span><h2>GET /ad/byVendor/{vendorId} v3<a class="headerlink" href="#get-ad-byvendor-vendorid-v3" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -389,9 +394,8 @@ server returns <strong>400 Bad Request</strong>.</p>
 <p>Version 3 works just like <a class="reference internal" href="#get-ad-vendor-id-v2"><span class="std std-ref">GET /ad/byVendor/{vendorId} v2</span></a>, except the response body contains an additional field <strong>statusReasons</strong>.
 This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
 This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.</p>
-</section>
 <section id="id1">
-<h2>Example<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="nx">byVendor</span><span class="o">/</span><span class="nx">OURSHOP</span><span class="o">-</span><span class="mf">1423453</span><span class="o">-</span><span class="mf">34</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -498,6 +502,7 @@ This could be due to, for example, an action (like new website domain approval) 
 </pre></div>
 </div>
 </section>
+</section>
 <section id="get-ad-byvendor-vendorid-v2">
 <span id="get-ad-vendor-id-v2"></span><h2>GET /ad/byVendor/{vendorId} v2<a class="headerlink" href="#get-ad-byvendor-vendorid-v2" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -568,9 +573,8 @@ following parameter to the request URL.</p>
 </tr>
 </tbody>
 </table>
-</section>
 <section id="id2">
-<h2>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="nx">byVendor</span><span class="o">/</span><span class="nx">OURSHOP</span><span class="o">-</span><span class="mf">1423453</span><span class="o">-</span><span class="mf">34</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -673,6 +677,7 @@ following parameter to the request URL.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 

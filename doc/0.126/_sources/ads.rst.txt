@@ -447,7 +447,8 @@ suggestedCpcForPageOne
 
 Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one.
 This value is very volatile and might change very quickly depending on the
-performance of the ad.
+performance of the ad. If the returned value is ``-1`` then there is no CPC within
+the allowed range of the category to put this ad on page 1.
 
 The fields :ref:`ad_pageNumber` and :ref:`ad_suggestedCpcForPageOne` are
 currently expensive to compute. If you do not need their values consider
@@ -708,6 +709,6 @@ shippingOptions example
 .. _ad_example:
 
 Ad Example
-----------
+""""""""""
 
 .. include:: examples/get-ad-id-v5-example.rst

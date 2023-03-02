@@ -93,12 +93,10 @@
 <li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Categories</a><ul>
@@ -190,15 +188,22 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -238,14 +243,25 @@
 <p>The category tree contains all the information about category definitions,
 attribute definitions and validation rules for placing ads.</p>
 <p>The category tree has the following properties:</p>
-<ul class="simple">
-<li><p>categories form a tree with a single root node</p></li>
-<li><p>each category has a unique id</p></li>
-<li><p>each category specifies the locales for which it is available</p></li>
-<li><p>each ad belongs to one and only one category</p></li>
-<li><p>ads can only be placed in leaf categories</p></li>
-<li><p>only leaf categories contain attributes</p></li>
-</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>categories form a tree with a single root node</p></td>
+</tr>
+<tr class="row-even"><td><p>each category has a unique id</p></td>
+</tr>
+<tr class="row-odd"><td><p>each category specifies the locales for which it is available</p></td>
+</tr>
+<tr class="row-even"><td><p>each ad belongs to one and only one category</p></td>
+</tr>
+<tr class="row-odd"><td><p>ads can only be placed in leaf categories</p></td>
+</tr>
+<tr class="row-even"><td><p>only leaf categories contain attributes</p></td>
+</tr>
+</tbody>
+</table>
 <p>The full tree (or a subtree) can be fetched using <a class="reference internal" href="reference/get-categories.html#get-categories"><span class="std std-ref">GET /categories</span></a>.</p>
 <section id="category-ids">
 <h2>Category Ids<a class="headerlink" href="#category-ids" title="Permalink to this heading">¶</a></h2>
@@ -320,43 +336,43 @@ found through a category search.</p></td>
 <td><p>interval</p></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(0,+∞)</span></code></p></td>
-<td><p>bid value in micros for ads in this category.</p></td>
+<td><p>Allowed bid value in micros for ads in this category.</p></td>
 </tr>
 <tr class="row-even"><td><p>totalBudgetMicros</p></td>
 <td><p>interval</p></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(0,+∞)</span></code></p></td>
-<td><p>Total budget for ads in this category in micros.</p></td>
+<td><p>Allowed range for total budget in micros for ads in this category.</p></td>
 </tr>
 <tr class="row-odd"><td><p>dailyBudgetMicros</p></td>
 <td><p>interval</p></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(0,+∞)</span></code></p></td>
-<td><p>Daily budget for ads in this category in micros.</p></td>
+<td><p>Allowed range for daily budget in micros for ads in this category.</p></td>
 </tr>
 <tr class="row-even"><td><p>activeAds</p></td>
 <td><p>interval</p></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[0,+∞)</span></code></p></td>
-<td><p>Max active ads per seller in this category.</p></td>
+<td><p>Allowed range of active ads per seller in this category.</p></td>
 </tr>
 <tr class="row-odd"><td><p>images</p></td>
 <td><p>interval</p></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(0,+∞)</span></code></p></td>
-<td><p>Max number of images for ads in this category.</p></td>
+<td><p>Allowed range of images count for ads in this category.</p></td>
 </tr>
 <tr class="row-even"><td><p>titleLength</p></td>
 <td><p>interval</p></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(0,120]</span></code></p></td>
-<td><p>Max length of the title for ads in this category.</p></td>
+<td><p>Allowed range of the title length for ads in this category.</p></td>
 </tr>
 <tr class="row-odd"><td><p>descriptionLength</p></td>
 <td><p>interval</p></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(0,65535]</span></code></p></td>
-<td><p>Max length of the description for ads in this category.</p></td>
+<td><p>Allowed range of the description length for ads in this category.</p></td>
 </tr>
 <tr class="row-even"><td><p>shippingOption</p></td>
 <td><p>string</p></td>

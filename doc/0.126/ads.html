@@ -93,12 +93,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
@@ -190,15 +188,22 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -839,7 +844,8 @@ following parameter to the request URL.</p>
 <span id="ad-suggestedcpcforpageone"></span><span id="index-36"></span><h3>suggestedCpcForPageOne<a class="headerlink" href="#suggestedcpcforpageone" title="Permalink to this heading">¶</a></h3>
 <p>Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one.
 This value is very volatile and might change very quickly depending on the
-performance of the ad.</p>
+performance of the ad. If the returned value is <code class="docutils literal notranslate"><span class="pre">-1</span></code> then there is no CPC within
+the allowed range of the category to put this ad on page 1.</p>
 <p>The fields <a class="reference internal" href="#ad-pagenumber"><span class="std std-ref">pageNumber</span></a> and <a class="reference internal" href="#ad-suggestedcpcforpageone"><span class="std std-ref">suggestedCpcForPageOne</span></a> are
 currently expensive to compute. If you do not need their values consider
 excluding them to speed up the response. To exclude the fields add the
@@ -1029,9 +1035,8 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 </pre></div>
 </div>
 </section>
-</section>
 <section id="ad-example">
-<span id="id2"></span><h2>Ad Example<a class="headerlink" href="#ad-example" title="Permalink to this heading">¶</a></h2>
+<span id="id2"></span><h3>Ad Example<a class="headerlink" href="#ad-example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="o">/</span><span class="mf">42</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -1140,6 +1145,7 @@ Whether shipping options are disabled/optional/mandatory for an ad is configured
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 

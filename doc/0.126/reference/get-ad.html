@@ -94,12 +94,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ads.html#ad-example">Ad Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
@@ -191,15 +189,22 @@
 <li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -260,9 +265,8 @@
 </tr>
 </tbody>
 </table>
-</section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">12</span><span class="o">-</span><span class="mo">04</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">13</span><span class="p">]</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -376,6 +380,7 @@
 </pre></div>
 </div>
 </section>
+</section>
 <section id="get-ad-v4">
 <span id="id3"></span><h2>GET /ad v4<a class="headerlink" href="#get-ad-v4" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -400,9 +405,8 @@ Namely, ads which were live during this selected period but did not receive a si
 <p>In addition, the response contains a field <strong>statusReasons</strong>. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
 This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.</p>
 </div>
-</section>
 <section id="id4">
-<h2>Example<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
+<h3>Example<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">12</span><span class="o">-</span><span class="mo">04</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">13</span><span class="p">]</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v4</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -485,6 +489,7 @@ This could be due to, for example, an action (like new website domain approval) 
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 </section>
 <section id="get-ad-v3">
 <span id="id5"></span><h2>GET /ad v3<a class="headerlink" href="#get-ad-v3" title="Permalink to this heading">¶</a></h2>
@@ -754,9 +759,8 @@ load on the system.</p>
 </tbody>
 </table>
 </section>
-</section>
 <section id="id7">
-<h2>Example<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h2>
+<h3>Example<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">ad</span><span class="p">[</span><span class="o">?</span><span class="nx">limit</span><span class="o">=</span><span class="nx">limit</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">offset</span><span class="o">=</span><span class="nx">offset</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">titleKeywords</span><span class="o">=</span><span class="nx">titleKeywords</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">status</span><span class="o">=</span><span class="nx">Status</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">orderBy</span><span class="o">=</span><span class="nx">orderBy</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">changedSince</span><span class="o">=</span><span class="nx">timestamp</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">remainingBudget</span><span class="o">=</span><span class="nx">number</span><span class="p">[</span><span class="o">%</span><span class="p">]][</span><span class="o">&amp;</span><span class="nx">_include</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">_exclude</span><span class="o">=</span><span class="nx">list</span><span class="p">,</span><span class="k">of</span><span class="p">,</span><span class="nx">fields</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">startDate</span><span class="o">=</span><span class="mf">2014</span><span class="o">-</span><span class="mf">12</span><span class="o">-</span><span class="mo">04</span><span class="p">][</span><span class="o">&amp;</span><span class="nx">endDate</span><span class="o">=</span><span class="mf">2015</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mf">13</span><span class="p">]</span>
 <span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">ad</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v3</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
 
@@ -838,6 +842,7 @@ load on the system.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 
