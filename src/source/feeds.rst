@@ -2,6 +2,7 @@
 
 XML Feeds
 =========
+
 XML feeds are the way for users to handle repetitive asynchronous bulk uploading of ads.
 When a user is eligible for feed usage the user can configure an HTTP(s) URL through
 :ref:`post_feed_config` or the frontend to make the system, once a day, attempt to download an
@@ -310,8 +311,8 @@ The images will be presented in the order as provided. The first image is shown 
 Example .. code-block:: html 
 
             <ad:media>
-                <ad:image url="https://images.pexels.com/photos/62289/yemen-chameleon-chamaeleo-calyptratus-chameleon-reptile-62289.jpeg"/>
-                <ad:image url="https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2"/>
+                <ad:image url="https://images.pexels.com/photos/62289/62289.jpeg"/>
+                <ad:image url="https://images.pexels.com/photos/47547/47547.jpeg"/>
             <ad:media/>
 ======= ========================================================================================================================
 
@@ -366,6 +367,8 @@ dailyBudget   daily budget for the given ad in cents     No
 ============= ========================================== ========
 
 The minimum and maximum values for the total budget depend on the category. 
+
+If the total budget provided in the ad is lower than the total amount already spent, the ad will automatically be paused.
 
 When this value of the daily budget is reached the ad will be offline for the rest of the day, and re-activated at the beginning of the following day, unless more money is added during the same day.
 The minimum value depends on the category.
@@ -496,7 +499,7 @@ Example .. code-block:: html
 MPN
 """
 
-Manufacturer Part Number (MPN), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324482>`_ guidelines.
+Manufacturer Part Number (MPN), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324482>`__ guidelines.
 String identifier max 2-70 chars.
 
 ======= ==================================
@@ -511,7 +514,7 @@ Example .. code-block:: html
 googleProductCategory
 """"""""""""""""""""""
 
-Product category from Google's product taxonomy. See `Google Merchant Center <https://support.google.com/merchants/answer/6324436>`_
+Product category from Google's product taxonomy. See `Google Merchant Center <https://support.google.com/merchants/answer/6324436>`__
 
 ========= ===========================================================
 Example   .. code-block:: html
@@ -532,7 +535,8 @@ Example   .. code-block:: html
 productType
 """"""""""""""""""""""
 
-Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324406>`_ guidelines.
+The attribute allows to include your own product categorization system in the data.
+Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324406>`__ guidelines.
 String identifier max 750 chars.
 
 ======= =====================================================
@@ -549,7 +553,7 @@ Example .. code-block:: html
 brand
 """"""""""""""""""""""
 
-Brand definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324351>`_ guidelines.
+Brand definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324351>`__ guidelines.
 String identifier max 70 chars.
 
 ======= ============================================
@@ -564,7 +568,7 @@ Example .. code-block:: html
 GTIN
 """"""""""""""""""""""
 
-GTIN (Your product’s Global Trade Item Number), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324461>`_ guidelines.
+GTIN (Your product’s Global Trade Item Number), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324461>`__ guidelines.
 String identifier max 50 chars.
 
 ======= ==================================
@@ -579,7 +583,7 @@ Example .. code-block:: html
 itemGroupId
 """"""""""""""""""""""
 
-Item Group Id definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324507>`_ guidelines.
+Item Group Id definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324507>`__ guidelines.
 String identifier max 1-50 chars.
 
 ======= ============================================
@@ -594,7 +598,7 @@ Example .. code-block:: html
 condition
 """"""""""""""""""""""
 
-Condition definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324469>`_ guidelines.
+Condition definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324469>`__ guidelines.
 Accepted values: *new*, *refurbished*, *used*
 
 ======= ==================================
@@ -609,7 +613,7 @@ Example .. code-block:: html
 material
 """"""""""""""""""""""
 
-Material definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324410>`_ guidelines.
+Material definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324410>`__ guidelines.
 String identifier max 200 chars.
   
 ======= ==================================
@@ -624,7 +628,7 @@ Example .. code-block:: html
 energyEfficiencyClass
 """"""""""""""""""""""
 
-Energy Efficiency Class See `Google Merchant Center <https://support.google.com/merchants/answer/7562785>`_
+Energy Efficiency Class See `Google Merchant Center <https://support.google.com/merchants/answer/7562785>`__
 
 Allowed values: *A+++*, *A++*, *A+*, *A++*, *B*, *C*, *B*, *E*, *F*, *G*
 
@@ -672,7 +676,7 @@ Example .. code-block:: html
 color
 """"""""""""""""""""""""
 
-Color definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324487>`_ guidelines.
+Color definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324487>`__ guidelines.
 String identifier max 1-100 chars.
 
 ======= ==================================
@@ -687,7 +691,7 @@ Example .. code-block:: html
 gender
 """"""""""""""""""""""""
 
-Gender definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324479>`_ guidelines.
+Gender definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324479>`__ guidelines.
 
 Allowed values: *male*, *female*, *unisex*
 
@@ -703,7 +707,7 @@ Example .. code-block:: html
 ageGroup
 """"""""""""""""""""""""
 
-Age group definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324463>`_ guidelines.
+Age group definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324463>`__ guidelines.
 
 Allowed values: *newborn*, *infant*, *toddler*, *children*, *adult*
 
@@ -719,7 +723,7 @@ Example .. code-block:: html
 size
 """"""""""""""""""""""""
 
-Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324497>`_ guidelines.
+Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324497>`__ guidelines.
 String identifier max 1-100 chars.
 
 ======= =============================
@@ -734,7 +738,7 @@ Example .. code-block:: html
 unitPricingBaseMeasure
 """"""""""""""""""""""""
 
-The denominator for product unit price. See `Google Merchant Center <https://support.google.com/merchants/answer/6324490>`_
+The denominator for product unit price. See `Google Merchant Center <https://support.google.com/merchants/answer/6324490>`__
 
 ======= ===========================================================
 Example .. code-block:: html
@@ -748,7 +752,7 @@ Example .. code-block:: html
 unitPricingMeasure
 """"""""""""""""""""""""
 
-Defines the measure and dimension of the product. Example 125ml, 100g. See `Google Merchant Center <https://support.google.com/merchants/answer/6324455>`_
+Defines the measure and dimension of the product. Example 125ml, 100g. See `Google Merchant Center <https://support.google.com/merchants/answer/6324455>`__
 
 ======= ======================================================
 Example .. code-block:: html
@@ -839,18 +843,17 @@ Scenario's & Questions
 
 Below are some common asked-for scenarios and questions with their explanations/answers.
 
-=============================
- Feed file cannot be fetched
-=============================
+Feed file cannot be fetched
+"""""""""""""""""""""""""""
 
 When a feed file cannot be fetched, nothing will change on the user's ads.
 It's as if the import didn't happen. Since the file represents the desired
 list of ads to be live, we won't do anything if we can't get the file -
 we cannot read a change in the desired situation.
 
-====================
- Feed file is empty
-====================
+
+Feed file is empty
+""""""""""""""""""
 
 When a feed file is empty, all ads of the user will be paused. An empty
 file means the desired list of ads to be live is empty, so all active ads
@@ -868,17 +871,15 @@ If you want to pause your entire ads inventory, you can download and use the fil
         </embed>
 
 
-================================
- Feed file contains only new ads
-================================
+Feed file contains only new ads
+"""""""""""""""""""""""""""""""
 
 In the spirit of the feed file being the desired set of ads to be live for
 a user, all currently active ads (including ads in BUDGET_REACHED or DAILY_BUDGET_REACHED)
 will be paused and the supplied ads will be created (with status ACTIVE).
 
-====================================
- Editing ads through frontend / API
-====================================
+Editing ads through frontend / API
+""""""""""""""""""""""""""""""""""
 
 In the spirit of the feed file being the desired set of ads to be live for
 a user, all ads will be (re)set to their representing feed values. This means
@@ -889,9 +890,8 @@ you can see changes made throuh API or frontend undone after a successful feed i
 If the fetched XML filed does not validate against the XSD there will not be any changes
 to your ads. Existing ads will remain unchanged and no new ads will be created.
 
-================================
- How to validate XML against XSD
-================================
+How to validate XML against XSD
+"""""""""""""""""""""""""""""""
 
 Next to various online capabilities where you can provide both your XML and XSD files,
 a way to check quickly and locally is to use a tool called xmllint. With this tool
@@ -906,10 +906,9 @@ For small chunks of XML you can use online validators as well, such as `<http://
 limit on the size of the XML you can check, but it should be more than enough to be able
 to test correctness of your structure.
 
+Image updates are not processed after successful feed import
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-=============================================================
- Image updates are not processed after successful feed import
-=============================================================
 If you're changing the images without changing the URLs, the changes may not be picked up,
 in case the rest of the ad is also unchanged. We suggest adding a bogus parameter to the
 image URL to force a re-processing of the ad and its images. Make sure to not change this
