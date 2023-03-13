@@ -559,6 +559,11 @@ parameters allow to render the attribute in a certain way depending on the
    -
    - If ``true``, this attribute can be set during creation.
 
+ * - identifying
+   - bool 
+   - 
+   - Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with :ref:`post-ad-prefill`, where you can potentially get a sample title, description and additional attributes based on 3rd party databases.
+
  * - precision
    - int
    - ``>= 0``
@@ -644,7 +649,7 @@ The list of rendering hints still needs to be provided.
    - Boolean input field. ``values`` contains the options.
 
 
-Below is a complete example of a non-leaf category:
+Below is a complete example of a leaf category:
 
 .. literalinclude:: examples/category-leaf-v5.json
    :tab-width: 2

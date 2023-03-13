@@ -877,33 +877,38 @@ must not exceed 512 bytes.</p></td>
 <td></td>
 <td><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, this attribute can be set during creation.</p></td>
 </tr>
-<tr class="row-even"><td><p>precision</p></td>
+<tr class="row-even"><td><p>identifying</p></td>
+<td><p>bool</p></td>
+<td></td>
+<td><p>Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with <span class="xref std std-ref">post-ad-prefill</span>, where you can potentially get a sample title, description and additional attributes based on 3rd party databases.</p></td>
+</tr>
+<tr class="row-odd"><td><p>precision</p></td>
 <td><p>int</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">0</span></code></p></td>
 <td><p>Precision for <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code> fields. <code class="docutils literal notranslate"><span class="pre">0</span></code> means value is an <code class="docutils literal notranslate"><span class="pre">int</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.
 Note that floats with large precision values are difficult to compare.</p></td>
 </tr>
-<tr class="row-odd"><td><p>range</p></td>
+<tr class="row-even"><td><p>range</p></td>
 <td><p>interval</p></td>
 <td></td>
 <td><p>Range for <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code> attributes.</p></td>
 </tr>
-<tr class="row-even"><td><p>length</p></td>
+<tr class="row-odd"><td><p>length</p></td>
 <td><p>interval</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[0,512]</span></code></p></td>
 <td><p>Length range for <code class="docutils literal notranslate"><span class="pre">STRING</span></code> attributes without values.</p></td>
 </tr>
-<tr class="row-odd"><td><p>prefix</p></td>
+<tr class="row-even"><td><p>prefix</p></td>
 <td><p>map&lt;locale,string&gt;</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[0,16]</span></code></p></td>
 <td><p>Optional localized prefix for rendering. Default is empty.</p></td>
 </tr>
-<tr class="row-even"><td><p>postfix</p></td>
+<tr class="row-odd"><td><p>postfix</p></td>
 <td><p>map&lt;locale,string&gt;</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[0,16]</span></code></p></td>
 <td><p>Optional localized postfix for rendering. Default is empty.</p></td>
 </tr>
-<tr class="row-odd"><td><p>hints</p></td>
+<tr class="row-even"><td><p>hints</p></td>
 <td><p>list&lt;string&gt;</p></td>
 <td></td>
 <td><p>Optional list of rendering hints.</p></td>
@@ -969,7 +974,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 </tr>
 </tbody>
 </table>
-<p>Below is a complete example of a non-leaf category:</p>
+<p>Below is a complete example of a leaf category:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="s2">&quot;links&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="s2">&quot;parent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/sellside/category/856&quot;</span><span class="p">,</span>
@@ -1053,6 +1058,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 <span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;identifying&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -1081,6 +1087,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 <span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;identifying&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -1109,6 +1116,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 <span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;identifying&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -1137,6 +1145,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 <span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;identifying&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -1165,6 +1174,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 <span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;identifying&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -1190,6 +1200,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 <span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;identifying&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -1226,6 +1237,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 <span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;identifying&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -1246,6 +1258,7 @@ Result type is <code class="docutils literal notranslate"><span class="pre">int<
 <span class="w">                    </span><span class="s2">&quot;searchable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;identifying&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;precision&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;range&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;[1,99]&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;length&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
