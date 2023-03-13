@@ -49,7 +49,7 @@ Field                                    Type       Deprecated in Constraints   
 :ref:`ad_links_category`                 string     --            max. 2048 chars      no          no
 :ref:`ad_links_url`                      string     --            max. 2048 chars      no          yes
 :ref:`ad_links_displayUrl`               string     --            max. 256 chars       no          yes
-:ref:`ad_images`                         array      --            max. 8 items         no          yes
+:ref:`ad_images`                         array      --            see below            no          yes
 :ref:`ad_attributes`                     array      --            --                   no          yes
 :ref:`ad_shippingOptions`                array      --            see below            yes         yes
 :ref:`ad_vendorId`                       string     --            max. 64 chars        no          yes (if not set already)
