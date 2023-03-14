@@ -269,16 +269,18 @@ other price types <strong>price</strong> must be omitted.</p>
 <p>A new ad must have a <strong>status</strong> which can be either <em>ACTIVE</em> or <em>PAUSED</em>. An
 active ad is shown on the site whereas a paused ad is not. See
 <a class="reference internal" href="ad-status.html"><span class="doc">Ad Status</span></a> for the list of valid ad status values.</p>
-<p>The <strong>bidMicros</strong> is a mandatory field whose value depends on
-the category, or can be set to <strong>AUTOMATIC</strong> to allow the system to optimize the bid.
-The <strong>budgets.total</strong> and <strong>budgets.daily</strong> are mandatory fields whose value
+<p>The <strong>budgets.total</strong> and <strong>budgets.daily</strong> are mandatory fields whose value
 depend on the category, or they can be set to <strong>UNLIMITED</strong>.
 The category configuration which can be retrieved
-through the category URL <a class="reference internal" href="get-category-id.html#get-category-id"><span class="std std-ref">GET /category/{id}</span></a> contains the valid bounds for these fields once filled in.</p>
+through the category URL <a class="reference internal" href="get-category-id.html#get-category-id"><span class="std std-ref">GET /category/{id}</span></a> contains the valid bounds for these fields once filled in.
+The <strong>bidMicros</strong> is a mandatory field whose value depends on
+the category, or can be set to <strong>AUTOMATIC</strong> to allow the system to optimize the bid.
+Note that when selecting <strong>AUTOMATIC</strong> the seller is required to either have a <strong>budgets.daily</strong> set to
+a value, not being <strong>UNLIMITED</strong> OR have a campaign daily budget (see <a class="reference internal" href="../campaigns.html#campaign-budgetsobj-daily"><span class="std std-ref">budgets.daily</span></a>) that is not <strong>UNLIMITED</strong></p>
 <p>All monetary units (from V5 onward) are named such that it is clear whether the integer value
 is in cents or in micros. For example, a price.amountCents of <em>10,50 EUR</em> must be
 specified as <em>1050</em>, whereas a bidMicros of <em>0,02 EUR</em> must be defined as 20000.</p>
-<p>The <strong>price.originalAmountCEnts</strong> field is optional, and will only be usable by enabled sellers.
+<p>The <strong>price.originalAmountCents</strong> field is optional, and will only be usable by enabled sellers.
 If a seller is not enabled, but will use this field, an error will be thrown.</p>
 <p>The <strong>postCode</strong> is optional. In case it is not specified, its value is set to
 a value representing the entire country.</p>

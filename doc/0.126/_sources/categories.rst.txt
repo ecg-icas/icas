@@ -562,7 +562,7 @@ parameters allow to render the attribute in a certain way depending on the
  * - identifying
    - bool 
    - 
-   - Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with :ref:`post-ad-prefill`, where you can potentially get a sample title, description and additional attributes based on 3rd party databases.
+   - Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with :ref:`post_ad_prefill`, where you can potentially get a sample title, description and additional attributes based on 3rd party databases.
 
  * - precision
    - int

@@ -38,18 +38,20 @@ A new ad must have a **status** which can be either *ACTIVE* or *PAUSED*. An
 active ad is shown on the site whereas a paused ad is not. See
 :doc:`ad-status` for the list of valid ad status values.
 
-The **bidMicros** is a mandatory field whose value depends on
-the category, or can be set to **AUTOMATIC** to allow the system to optimize the bid. 
 The **budgets.total** and **budgets.daily** are mandatory fields whose value
 depend on the category, or they can be set to **UNLIMITED**.
 The category configuration which can be retrieved
 through the category URL :ref:`get_category_id` contains the valid bounds for these fields once filled in.
+The **bidMicros** is a mandatory field whose value depends on
+the category, or can be set to **AUTOMATIC** to allow the system to optimize the bid. 
+Note that when selecting **AUTOMATIC** the seller is required to either have a **budgets.daily** set to
+a value, not being **UNLIMITED** OR have a campaign daily budget (see :ref:`campaign_budgetsobj_daily`) that is not **UNLIMITED**
 
 All monetary units (from V5 onward) are named such that it is clear whether the integer value
 is in cents or in micros. For example, a price.amountCents of *10,50 EUR* must be
 specified as *1050*, whereas a bidMicros of *0,02 EUR* must be defined as 20000.
 
-The **price.originalAmountCEnts** field is optional, and will only be usable by enabled sellers.
+The **price.originalAmountCents** field is optional, and will only be usable by enabled sellers.
 If a seller is not enabled, but will use this field, an error will be thrown.
 
 The **postCode** is optional. In case it is not specified, its value is set to
