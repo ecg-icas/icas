@@ -1,10 +1,10 @@
 .. code-block:: javascript
 
-    GET /campaign
-    Accept: application/sellside.campaign-list-v5+json, application/json
+    GET /campaigns
+    Accept: application/sellside.campaign.list-v5+json, application/json
 
     200 OK HTTP/1.1
-    Content-Type: application/sellside.campaign-list-v5+json; charset=UTF-8
+    Content-Type: application/sellside.campaign.list-v5+json; charset=UTF-8
 
     [
         {

@@ -189,7 +189,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign/</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
@@ -247,7 +247,7 @@ be compatible with the times when campaigns did not exist yet.</p>
 <p>For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign.
 To make transitions to use campaigns easier, we will ensure that each (new or existing) seller already has a campaign, and if the
 seller has ads, these will be part of the campaign.</p>
-<p>You can get your campaign by calling <a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaign</span></a> or <a class="reference internal" href="reference/get-campaign-id.html#get-campaign-id"><span class="std std-ref">GET /campaign/{id}</span></a>. Campaign budgets can be modified by using
+<p>You can get your campaign by calling <a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaigns</span></a> or <a class="reference internal" href="reference/get-campaign-id.html#get-campaign-id"><span class="std std-ref">GET /campaign/{id}</span></a>. Campaign budgets can be modified by using
 <a class="reference internal" href="reference/put-campaign-id-budgets.html#put-campaign-id-budgets"><span class="std std-ref">PUT /campaign/{id}/budgets</span></a>, and controlling campaign status can be done by <a class="reference internal" href="reference/put-campaign-id-status.html#put-campaign-id-status"><span class="std std-ref">PUT /campaign/{id}/status/{status}</span></a>. We expect to
 add more campaign functionality in the future.</p>
 <section id="fields">
