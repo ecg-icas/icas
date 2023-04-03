@@ -41,7 +41,7 @@ API Reference
    reference/post-metrics-data
    reference/campaign-status
    reference/post-campaign
-   reference/get-campaign
+   reference/get-campaigns
    reference/get-campaign-id
    reference/put-campaign-id
    reference/put-campaign-id-status

@@ -29,7 +29,7 @@ Parameters
 ====================    ========    ================================================================================
 Name                    Type        Description
 ====================    ========    ================================================================================
-levels                  int         The number of sub region levels to return. The default is 0.
+levels                  int         The number of sub region levels to return. Use -1 for all. The default is 0.
 _include                string      Comma-separated-list of fields to include. Optional, default is all fields.
 _exclude                string      Comma-separated-list of fields to omit. Optional, default empty.
 ====================    ========    ================================================================================
