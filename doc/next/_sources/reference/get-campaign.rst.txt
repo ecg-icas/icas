@@ -4,9 +4,9 @@
 GET /campaigns
 =============
 
-:ref:`get_campaigns_v5`
+:ref:`get_campaign_v5`
 
-.. _get_campaigns_v5:
+.. _get_campaign_v5:
 
 GET /campaigns v5
 ----------------

@@ -1,12 +1,12 @@
-.. index:: GET /campaigns
-.. _get_campaigns:
+.. index:: GET /campaign
+.. _get_campaign:
 
 GET /campaigns
 =============
 
-:ref:`get_campaigns_v5`
+:ref:`get_campaign_v5`
 
-.. _get_campaigns_v5:
+.. _get_campaign_v5:
 
 GET /campaigns v5
 ----------------
@@ -23,4 +23,4 @@ GET /campaigns v5
 Example
 """""""
 
-.. include:: ../examples/get-campaigns-v5-example.rst
+.. include:: ../examples/get-campaign-v5-example.rst
