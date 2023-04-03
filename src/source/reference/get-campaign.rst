@@ -2,14 +2,14 @@
 .. _get_campaign:
 
 GET /campaigns
-=============
+==============
 
 :ref:`get_campaign_v5`
 
 .. _get_campaign_v5:
 
 GET /campaigns v5
-----------------
+-----------------
 
 .. list-table::
  :widths: 20 80
@@ -23,4 +23,4 @@ GET /campaigns v5
 Example
 """""""
 
-.. include:: ../examples/get-campaign-v5-example.rst
+.. include:: ../examples/get-campaigns-v5-example.rst
