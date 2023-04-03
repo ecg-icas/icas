@@ -1,14 +1,14 @@
-.. index:: GET /campaign
-.. _get_campaign:
+.. index:: GET /campaigns
+.. _get_campaigns:
 
-GET /campaign
+GET /campaigns
 =============
 
-:ref:`get_campaign_v5`
+:ref:`get_campaigns_v5`
 
-.. _get_campaign_v5:
+.. _get_campaigns_v5:
 
-GET /campaign v5
+GET /campaigns v5
 ----------------
 
 .. list-table::
