@@ -8,6 +8,10 @@ GET /ad/mapping/externalids
 
 :ref:`get_ad_mapping_externalids_v1`
 
+.. warning::
+
+    :ref:`get_ad_mapping_externalids_v2` and :ref:`get_ad_mapping_externalids_v1` are now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use vendorId instead.
+
 
 .. _get_ad_mapping_externalids_v2:
 

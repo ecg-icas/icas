@@ -7,6 +7,13 @@ GET /ad/{id}
 
 :ref:`get_ad_id_v5` | :ref:`get_ad_id_v3` | :ref:`get_ad_id_v2`
 
+.. warning::
+
+    :ref:`get_ad_id_v3` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_ad_id_v5`.
+    
+    :ref:`get_ad_id_v2` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_ad_id_v5`.
+
+
 .. _get_ad_id_v5:
 
 GET /ad/{id} v5

@@ -6,6 +6,10 @@ GET /category/{id}
 
 :ref:`get_category_id_v5` | :ref:`get_category_id_v2`
 
+.. warning::
+
+    :ref:`get_category_id_v2` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_category_id_v5`.
+
 This URL returns the category tree or parts of it in the format described in
 :ref:`categories` starting from the category with the given category
 ``id``. To return the category tree starting from the root node use id ``0``.

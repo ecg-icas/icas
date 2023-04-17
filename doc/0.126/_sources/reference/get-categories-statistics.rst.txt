@@ -6,7 +6,7 @@ GET /categories/statistics
 
 .. warning::
 
-	This call is scheduled to be deprecated. Please
+	This call is deprecated. Please
 	use the faster and more flexible generic endpoint :ref:`post_metrics_data` instead, with the following payload to get the equivalent data:
 
     .. include:: ../examples/get-categories-statistics-replacement.rst
