@@ -7,7 +7,7 @@
     Content-Type: application/sellside.user-v2+json; charset=UTF-8
     {
         "id": 123,
-        "emailAddress": "someuser@ebay.com",
+        "emailAddress": "someuser@somewhere.org",
         "sellerName": "Some User",
         "phoneNumber": "0612345678",
         "options": {
