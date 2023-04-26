@@ -49,6 +49,12 @@ History
 
 ..  role:: strike
 
+* v.0.126 - 26 Apr 2023 - tw
+
+  * improved :ref:`get_ad_v5` docs
+  * added explanation about nextPageToken
+  * added information about small difference in workings of ``_include`` and ``_exclude``
+
 * v 0.126 - 2 Mar 2023 - pm
 
   * Improved XML feed description. Added "Fields" section with currently supported, and newly introduced (industry-accepted) fields in :ref:`feeds` section.
