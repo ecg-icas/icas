@@ -359,6 +359,15 @@ headers using a <code class="docutils literal notranslate"><span class="pre">HEA
 to include in or exclude from the response body. When both <code class="docutils literal notranslate"><span class="pre">_include</span></code> and
 <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> have a value, the <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> value will be ignored. By default,
 <code class="docutils literal notranslate"><span class="pre">_include</span></code> is set to all fields and <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> is empty.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a small difference in handling of <code class="docutils literal notranslate"><span class="pre">_include</span></code> and <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> in the new
+V5 endpoints. The new V5 endpoints are stricter and will require you to specify each key
+in the path of the data that you wish. For example, if you’re calling <a class="reference internal" href="reference/get-ad.html#get-ad-v5"><span class="std std-ref">GET /ad v5</span></a> and you
+only want ad ID and title, you’ll have to provide <code class="docutils literal notranslate"><span class="pre">_include=ads,id,title</span></code>. The older versions
+would have automatically included the ads array and would have allowed you to provide <code class="docutils literal notranslate"><span class="pre">_include=id,title</span></code>
+to achieve the same result.</p>
+</div>
 <p>Furthermore, some calls allow for a <code class="docutils literal notranslate"><span class="pre">_body</span></code> parameter, defining whether
 there should be any data in the response body at all. Default of <code class="docutils literal notranslate"><span class="pre">_body</span></code> is
 true (returning data). When <code class="docutils literal notranslate"><span class="pre">_body</span></code> is false, <code class="docutils literal notranslate"><span class="pre">_include</span></code> and <code class="docutils literal notranslate"><span class="pre">_exclude</span></code>

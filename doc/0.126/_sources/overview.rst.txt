@@ -138,6 +138,14 @@ to include in or exclude from the response body. When both ``_include`` and
 ``_exclude`` have a value, the ``_exclude`` value will be ignored. By default,
 ``_include`` is set to all fields and ``_exclude`` is empty.
 
+.. note::
+   There is a small difference in handling of ``_include`` and ``_exclude`` in the new
+   V5 endpoints. The new V5 endpoints are stricter and will require you to specify each key
+   in the path of the data that you wish. For example, if you're calling :ref:`get_ad_v5` and you
+   only want ad ID and title, you'll have to provide ``_include=ads,id,title``. The older versions
+   would have automatically included the ads array and would have allowed you to provide ``_include=id,title``
+   to achieve the same result.
+
 Furthermore, some calls allow for a ``_body`` parameter, defining whether
 there should be any data in the response body at all. Default of ``_body`` is
 true (returning data). When ``_body`` is false, ``_include`` and ``_exclude``
