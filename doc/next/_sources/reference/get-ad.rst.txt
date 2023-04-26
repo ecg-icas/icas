@@ -30,11 +30,14 @@ GET /ad v5
  * - Accept
    - ``application/sellside.ad.list-v5+json, application/json``
 
-:ref:`get_ad_v5` is quite similar to :ref:`get_ad_v3` and :ref:`get_ad_v4`, except for some changes in the :ref:`ads` and an addition of a `nextPageToken` field in the response struct.
-This `nextPageToken` replaces the usage of the 'offset' parameter and allows the caller to paginate through a large list of ads more efficiently.
+:ref:`get_ad_v5` is quite similar to :ref:`get_ad_v3` and :ref:`get_ad_v4`, except for some changes in the :ref:`ads` and an addition of a ``nextPageToken`` field in the response struct.
+This ``nextPageToken`` replaces the usage of the 'offset' parameter and allows the caller to paginate through a large list of ads more efficiently.
 In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making
 that call more efficient. For the very first page, a pageToken should not be provided. For any following page, callers should use the exact same request with an added `pageToken` parameter.
-The value for the ``pageToken`` parameter for page N+1 is the ``nextPageToken`` field in the response of your call to fetch page N. Note the difference in naming between response field `nextpageToken` and request parameter `pageToken`.
+The value for the ``pageToken`` parameter for page N+1 is the ``nextPageToken`` field in the response of your call to fetch page N. 
+When a response does not contain a ``nextPageToken`` you have reached the last page of results and there are no more to fetch.
+
+Note the difference in naming between response field `nextpageToken` and request parameter `pageToken`.
 
 :ref:`get_ad_v5` will return the ads in the response in version V5, similar to :ref:`get_ad_id_v5`. See :ref:`ad-fields` for the documentation on the fields.
 
