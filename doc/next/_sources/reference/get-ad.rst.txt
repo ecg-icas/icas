@@ -13,6 +13,9 @@ GET /ad
 
     :ref:`get_ad_v3` is now officially deprecated and scheduled for removal on July 15th 2020. Please move to use :ref:`get_ad_v5`.
 
+This URL returns a list of ads for the current user and the total size of the
+result set matching the filter criteria.
+
 .. _get_ad_v5:
 
 GET /ad v5
@@ -26,6 +29,37 @@ GET /ad v5
 
  * - Accept
    - ``application/sellside.ad.list-v5+json, application/json``
+
+:ref:`get_ad_v5` is quite similar to :ref:`get_ad_v3` and :ref:`get_ad_v4`, except for some changes in the :ref:`ads` and an addition of a `nextPageToken` field in the response struct.
+This `nextPageToken` replaces the usage of the 'offset' parameter and allows the caller to paginate through a large list of ads more efficiently.
+In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making
+that call more efficient. For the very first page, a pageToken should not be provided. For any following page, callers should use the exact same request with an added `pageToken` parameter.
+The value for the ``pageToken`` parameter for page N+1 is the ``nextPageToken`` field in the response of your call to fetch page N. Note the difference in naming between response field `nextpageToken` and request parameter `pageToken`.
+
+:ref:`get_ad_v5` will return the ads in the response in version V5, similar to :ref:`get_ad_id_v5`. See :ref:`ad-fields` for the documentation on the fields.
+
+Parameters
+""""""""""
+
+===============  ============     ============================================================================
+Name             Type             Description
+===============  ============     ============================================================================
+limit            int              Limits the number of records returned. Default **and** maximum is 100.
+pageToken        string           Encoded information on where the previous page ended, send this along with the same request to get the next page of results. Scales better than offset.
+adIds            list of ints     List of ad IDs.
+titleKeywords    string           Case-insensitive filter for a keyword in the title.
+status           string           Filters the result set by the ad status. Should be a comma separated list of [ACTIVE, PAUSED, DELETED, DELETED_BY_CS, SUSPENDED_BY_CS, BUDGET_REACHED, DAILY_BUDGET_REACHED,DOMAIN_PENDING]. Default value is ACTIVE.
+orderBy          string           Orders the result set by the given field. Default value is DATE_CREATED. See :ref:`order_by`.
+direction        string           Determines the direction of the sort. Should be one of [ASCENDING, DESCENDING]. Default is ASCENDING.
+changedSince     date             Returns ads which have ``changedSince`` >= ``dateLastUpdated``.
+remainingBudget  string           Returns ads whose remaining budget is below a certain value (absolute number or a percentage).
+startDate        string           Determines the startDate of the period to select ads with activity for.
+endDate          string           Determines the endDate of the period to select ads with activity for.
+categoryIds      list of ints     List of category id's to filter by. Only leaf category id's are useful, since ads can only be placed in leaf categories.
+_include         string           Comma-separated-list of fields to include. Optional, default is all fields.
+_exclude         string           Comma-separated-list of fields to omit. Optional, default empty.
+===============  ============     ============================================================================
+
 
 Example
 """""""
@@ -81,9 +115,6 @@ GET /ad v3
 
  * - Accept
    - ``application/sellside.ad.list-v3+json, application/json``
-
-This URL returns a list of ads for the current user and the total size of the
-result set matching the filter criteria.
 
 The number of ads returned can be limited with the ``limit`` parameter.
 The ``offset`` parameter allows to skip some ads and together with ``limit``
@@ -191,6 +222,7 @@ TITLE                 Will order ads alphabetically by title
 CPC                   Will order ads by current CPC
 SPENT                 Will order ads by lifetime spent amount
 REMAINING_BUDGET      Will order ads by current remaining budget
+AD_ID                 Will order ads by their ID
 ===================   =================================================
 
 
