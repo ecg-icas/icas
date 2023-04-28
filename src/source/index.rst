@@ -36,6 +36,7 @@ Contents
    attributes
    regions
    feeds
+   feed-details
    reporting
    error-handling
    api-reference
