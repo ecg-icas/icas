@@ -16,7 +16,17 @@ In order to let us download your feed and all the relevant linked content, the a
 File Format
 -----------
 
-We support feed files in either an XML or TSV format. Feeds are expected to be in UTF-8 encoding. Information on the most actual set of supported data is described on the :ref:`details <feed-details>` page.
+We support feed files in either an XML or TSV format.
+Feeds are expected to be in UTF-8 encoding.
+Information on the most actual set of supported data is described on the :ref:`details <feed-details>` page.
+
+.. note::
+    Currently, we have introduced a number of new fields for describing the feed ad. 
+    It contains a larger subset of what is considered a 'widely adopted market standard'. 
+    The new fieds follow specification stated in manual for `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`__ customers.
+    This is a part of our general strategy, to minimize the overhead needed to integrate your feed with ICAS versus the other advertising channels.
+    We will gradually decrease the reliance of the ad categorisation algorithms from the tenant specific categories, and attributes, 
+    toward the standard fields. For more information see quesions. 
 
 For instructions on how to create your feed in specific formats, please expand the relevant sections.
 
@@ -215,3 +225,10 @@ Below are some common asked-for scenarios and questions with their explanations/
     2. Multiline fields need to be escaped with double quotes, or all the line breakes, and tabulators changed to \\n, \\t.
     3. Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
 
+.. collapse:: What are the newly added fields?
+    :class: larger-collapse
+
+    Those fields are considered a 'widely adopted market standard', required, or recommended for advertising on many other channels:
+    :ref:`feed_mpn`, :ref:`feed_googleProductCategory`, :ref:`feed_productType`, :ref:`feed_brand`, :ref:`feed_gtin`, 
+    :ref:`feed_itemGroupId`, :ref:`feed_condition`, :ref:`feed_material`, :ref:`feed_energyEfficiencyClass`, :ref:`feed_minEnergyEfficiencyClass`,
+    :ref:`feed_maxEnergyEfficiencyClass`, :ref:`feed_color`, :ref:`feed_gender`, :ref:`feed_ageGroup`, :ref:`feed_size`, :ref:`feed_unitPricingBaseMeasure`, :ref:`feed_unitPricingMeasure`.
