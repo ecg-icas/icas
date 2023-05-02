@@ -3,7 +3,7 @@
 Feed Fields
 ===========
 
-A set of required and optional fields defined by feed is listed below.
+A set of required and optional fields defined by a feed file are listed below.
 
 ====================================== ==================================== ===================  =========== 
 Field                                  Description                          Restrictions         Mandatory 
