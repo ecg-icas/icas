@@ -98,7 +98,7 @@ Restrictions:  Any non-empty string with a maximum length of 64 characters.
 externalId
 """"""""""
 
-Deprecated by vendorId
+Deprecated, replaced by vendorId
 
 .. collapse:: XML
 
