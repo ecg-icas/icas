@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<admarkt:ads xmlns:admarkt="http://admarkt.marktplaats.nl/schemas/1.0">
+    <admarkt:ad>
+        <admarkt:vendorId>jh2fi82wqjckw</admarkt:vendorId>
+        <admarkt:title>New white leather sofa</admarkt:title>
+        <admarkt:description>This leather sofa is very well suited to sell online. Has happened 12 times
+        already, profit guaranteed! The charming white color and stylish design makes it irresistable
+        for buyers, whether they need it or not.
+        </admarkt:description>
+        <admarkt:categoryId>1234</admarkt:categoryId>
+        <admarkt:url>http://irresistiblecouch.com/charming-white.html?source=marktplaats</admarkt:url>
+        <admarkt:vanityUrl>http://irresistiblecouch.com</admarkt:vanityUrl>
+        <admarkt:price>129900</admarkt:price>
+        <admarkt:priceType>FIXED_PRICE</admarkt:priceType>
+        <admarkt:media>
+            <admarkt:image url="http://irresistiblecouch.com/ProductPhotos/Large/jh2fi82wqjckw.jpg"/>
+        </admarkt:media>
+        <admarkt:budget>
+            <admarkt:totalBudget>1000000</admarkt:totalBudget>
+            <admarkt:dailyBudget>2500</admarkt:dailyBudget>
+            <admarkt:cpc>3</admarkt:cpc>
+        </admarkt:budget>
+        <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
+                <admarkt:gtin>44320194113475</admarkt:gtin>
+        <admarkt:mpn>SF0345W1224</admarkt:mpn>
+        <admarkt:productType>Home &gt; Livingroom &gt; Sofas</admarkt:productType>
+        <admarkt:googleProductCategory>460</admarkt:googleProductCategory>
+        <admarkt:brand>Soho Home</admarkt:brand>
+        <admarkt:unitPricingMeasure>75kg</admarkt:unitPricingMeasure>
+        <admarkt:condition>new</admarkt:condition>
+        <admarkt:material>Leather/Metal</admarkt:material>
+        <admarkt:color>White/Silver</admarkt:color>
+    </admarkt:ad>
+</admarkt:ads>
