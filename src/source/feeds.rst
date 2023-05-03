@@ -24,9 +24,9 @@ Information on the most actual set of supported data is described on the :ref:`d
     Currently, we have introduced a number of new fields for describing the feed ad. 
     It contains a larger subset of what is considered a 'widely adopted market standard'. 
     The new fieds follow specification stated in manual for `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`__ customers.
-    This is a part of our general strategy, to minimize the overhead needed to integrate your feed with ICAS versus the other advertising channels.
+    This is a part of our general strategy, to minimize the overhead needed to integrate your feed with iCAS versus the other advertising channels.
     We will gradually decrease the reliance of the ad categorisation algorithms from the tenant specific categories, and attributes, 
-    toward the standard fields. For more information see quesions. 
+    toward the standard fields. For more information see *Scenario's and Questions* section. 
 
 For instructions on how to create your feed in specific formats, please expand the relevant sections.
 
@@ -38,21 +38,10 @@ For instructions on how to create your feed in specific formats, please expand t
     For the more complex data (that contains, for example HTML tags) we recommend using `character data (CDATA) <https://en.wikipedia.org/wiki/CDATA>`_.
     XML escape characters are also supported.
     
-    Currently versions 1.0, and 1.1 of the XML are accepted. You can find more information on XML, and versions in :ref:`feeds_qna` section.
+    .. literalinclude:: examples/feed-example.xml
+        :language: xml
 
-    .. collapse:: Example v.1.0
-
-        .. literalinclude:: examples/feed-xml-v-1-0-example.xml
-            :language: xml
-
-        :download:`download example<examples/feed-xml-v-1-0-example.xml>`
-
-    .. collapse:: Example v.1.1
-
-        .. literalinclude:: examples/feed-xml-v-1-1-example.xml
-            :language: xml
-
-        :download:`download example<examples/feed-xml-v-1-1-example.xml>`
+    :download:`download example<examples/feed-example.xml>`
 
     |
 
@@ -62,7 +51,7 @@ For instructions on how to create your feed in specific formats, please expand t
     Column names used in TSV feed must superset :ref:`column names <feed-details>` specified.
     Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
 
-    :download:`download example<examples/feed-tsv-example.tsv>`
+    :download:`download example<examples/feed-example.tsv>`
 
 |
 
@@ -148,32 +137,6 @@ Below are some common asked-for scenarios and questions with their explanations/
     limit on the size of the XML you can check, but it should be more than enough to be able
     to test correctness of your structure.
 
-.. collapse:: What ist the difference between version 1.0, and 1.1 of the XML format?
-    :class: larger-collapse
-
-    Version 1.1 introduces a number of new fields, that can be used to describe your add more preciesly, and improve display relevancy.
-    The new fields follow commonly adopted market standards for product description.
-
-    Version 1.1 of the schema is backward compatible with 1.0. 
-    So the only thing you need to do to start using it, is to change the namespace (see next question)
-    at the beginning of your file, and start using the new fields. 
-
-.. _feeds_migrate:
-.. collapse:: How to migrate from version 1.0, to 1.1 of the XML format?
-    :class: larger-collapse
-
-    Change `http://admarkt.marktplaats.nl/schemas/1.0`  
-    to  `http://admarkt.marktplaats.nl/schemas/1.1`
-    At the very top of your XML feed file.
-
-    .. code-block:: xml
-        :emphasize-lines: 2
-        
-        <?xml version="1.0" encoding="UTF-8"?>
-        <admarkt:ads xmlns:admarkt="http://admarkt.marktplaats.nl/schemas/1.1">
-            <admarkt:ad>
-        ...
-
 .. collapse:: When I create an XML feed, do I need to use 'admarkt' prefix for all the tags, as shown in the examples?
     :class: larger-collapse
 
@@ -185,7 +148,7 @@ Below are some common asked-for scenarios and questions with their explanations/
         :emphasize-lines: 2
         
         <?xml version="1.0" encoding="UTF-8"?>
-        <admarkt:ads xmlns:admarkt="http://admarkt.marktplaats.nl/schemas/1.1">
+        <admarkt:ads xmlns:admarkt="http://admarkt.marktplaats.nl/schemas/1.0">
             <admarkt:ad>
         ...
 
@@ -195,7 +158,7 @@ Below are some common asked-for scenarios and questions with their explanations/
         :emphasize-lines: 2
         
         <?xml version="1.0" encoding="UTF-8"?>
-        <xyz:ads xmlns:xyz="http://admarkt.marktplaats.nl/schemas/1.1">
+        <xyz:ads xmlns:xyz="http://admarkt.marktplaats.nl/schemas/1.0">
             <xyz:ad>
         ...
 
@@ -205,12 +168,14 @@ Below are some common asked-for scenarios and questions with their explanations/
         :emphasize-lines: 2
         
         <?xml version="1.0" encoding="UTF-8"?>
-        <ads xmlns="http://admarkt.marktplaats.nl/schemas/1.1">
+        <ads xmlns="http://admarkt.marktplaats.nl/schemas/1.0">
             <ad>
         ...
 
     It is up to you! The only thing that matters to us is the text "http://admarkt.marktplaats.nl/schemas/1.1",
     which determines which schema version, we should use processing your file. 
+
+.. _feed_new_fields:
 
 .. collapse:: How to use TSV format?
     :class: larger-collapse
@@ -232,3 +197,15 @@ Below are some common asked-for scenarios and questions with their explanations/
     :ref:`feed_mpn`, :ref:`feed_googleProductCategory`, :ref:`feed_productType`, :ref:`feed_brand`, :ref:`feed_gtin`, 
     :ref:`feed_itemGroupId`, :ref:`feed_condition`, :ref:`feed_material`, :ref:`feed_energyEfficiencyClass`, :ref:`feed_minEnergyEfficiencyClass`,
     :ref:`feed_maxEnergyEfficiencyClass`, :ref:`feed_color`, :ref:`feed_gender`, :ref:`feed_ageGroup`, :ref:`feed_size`, :ref:`feed_unitPricingBaseMeasure`, :ref:`feed_unitPricingMeasure`.
+
+.. collapse:: I have a google feed, how do I modify it properly for iCAS?
+    :class: larger-collapse
+
+    At the moment, we are still in transition to the desired scenario, 
+    where iCAS feed is a standard feed used for many other channels, 
+    enriched only with a minimal set of the fields prominent to our solution.
+
+    Meanwhile we reccomend to contact us for the most actual "TSV feed creation guide".   
+
+
+
