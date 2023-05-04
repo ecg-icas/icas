@@ -3,49 +3,102 @@
 Feed Fields
 ===========
 
-A set of required and optional fields defined by a feed file are listed below.
+A set of required and optional fields defined by a feed for XML and TSV file formats are listed below.
 
-====================================== ==================================== ===================  =========== 
-Field                                  Description                          Restrictions         Mandatory 
-====================================== ==================================== ===================  =========== 
-:ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
-:ref:`feed_externalId`                 **deprecated**                       --                   --
-:ref:`feed_sellerName`                 your company name                          max. 60 chars        no
-:ref:`feed_t`                          product title                        see :ref:`feed_t`    yes
-:ref:`feed_descr`                      product description                  :ref:`feed_descr`    yes       
-:ref:`feed_categoryId`                 category identifier                  numeric, positive    yes       
-:ref:`feed_status`                     desired status (default ACTIVE)      ACTIVE,PAUSED        no       
-:ref:`feed_url`                        product URL                          max. 2048 chars      no        
-:ref:`feed_vanityUrl`                  displayed URL                        max. 256 chars       no        
-:ref:`feed_priceType`                  sales model for product              enum                 yes       
-:ref:`feed_price`                      product price in cents if applicable positive integer     yes/no       
-:ref:`feed_originalPrice`              original price before discount       positive integer     no        
-\* :ref:`feed_media`                   product images                       :ref:`feed_media`    no
-\* :ref:`feed_attr`                    collection of product attributes     :ref:`feed_attr`     no        
-\* :ref:`feed_budget`                  budget details                       :ref:`feed_budget`   no        
-\* :ref:`feed_ship`                    shipping options                     :ref:`feed_ship`     no
-:ref:`feed_phoneNumber`                phone number                         max. 32 chars        no        
-:ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
-:ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no        
-:ref:`feed_microTip`                   tiny product hightlight              max. 18 chars        no
-:ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no   
-:ref:`feed_googleProductCategory`      google category for your product     string               no
-:ref:`feed_productType`                customer product type                max. 750 chars       no    
-:ref:`feed_brand`                      product brand name                   max. 70 chars        no
-:ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no  
-:ref:`feed_itemGroupId`                groups product variants in your      max. 50 chars        no
-:ref:`feed_condition`                  condition of product                 enum                 no
-:ref:`feed_material`                   main product fabrics or materials    max. 200 chars       no
-:ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
-:ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
-:ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
-:ref:`feed_color`                      product colors                       max. 100 chars       no
-:ref:`feed_gender`                     gender product is designed for       enum                 no
-:ref:`feed_ageGroup`                   age group product is intended for    enum                 no
-:ref:`feed_size`                       size information                     enum                 no
-:ref:`feed_unitPricingBaseMeasure`     denominator for product unit price   string               no
-:ref:`feed_unitPricingMeasure`         measure and dimension of product     string               no
-====================================== ==================================== ===================  =========== 
+.. collapse:: XML
+
+    ====================================== ==================================== ===================  =========== 
+    Field                                  Description                          Restrictions         Mandatory 
+    ====================================== ==================================== ===================  =========== 
+    :ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
+    :ref:`feed_externalId`                 **deprecated**                       --                   --
+    :ref:`feed_sellerName`                 your company name                          max. 60 chars  no
+    :ref:`feed_t`                          product title                        see :ref:`feed_t`    yes
+    :ref:`feed_descr`                      product description                  :ref:`feed_descr`    yes       
+    :ref:`feed_categoryId`                 category identifier                  numeric, positive    yes       
+    :ref:`feed_status`                     desired status (default ACTIVE)      ACTIVE,PAUSED        no       
+    :ref:`feed_url`                        product URL                          max. 2048 chars      no        
+    :ref:`feed_vanityUrl`                  displayed URL                        max. 256 chars       no        
+    :ref:`feed_priceType`                  sales model for product              enum                 yes       
+    :ref:`feed_price`                      product price in cents if applicable positive integer     yes/no       
+    :ref:`feed_originalPrice`              original price before discount       positive integer     no        
+    :ref:`media <feed_media>`              product images                       :ref:`feed_media`    no
+    :ref:`feed_attr`                       collection of product attributes     :ref:`feed_attr`     no        
+    :ref:`budget <feed_budget>`            budget details                       :ref:`feed_budget`   no        
+    :ref:`shipping options <feed_ship>`    shipping options                     :ref:`feed_ship`     no
+    :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no        
+    :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
+    :ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no        
+    :ref:`feed_microTip`                   tiny product hightlight              max. 18 chars        no
+    :ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no   
+    :ref:`feed_googleProductCategory`      google category for your product     string               no
+    :ref:`feed_productType`                customer product type                max. 750 chars       no    
+    :ref:`feed_brand`                      product brand name                   max. 70 chars        no
+    :ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no  
+    :ref:`feed_itemGroupId`                groups product variants in your      max. 50 chars        no
+    :ref:`feed_condition`                  condition of product                 enum                 no
+    :ref:`feed_material`                   main product fabrics or materials    max. 200 chars       no
+    :ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
+    :ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
+    :ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
+    :ref:`feed_color`                      product colors                       max. 100 chars       no
+    :ref:`feed_gender`                     gender product is designed for       enum                 no
+    :ref:`feed_ageGroup`                   age group product is intended for    enum                 no
+    :ref:`feed_size`                       size information                     enum                 no
+    :ref:`feed_unitPricingBaseMeasure`     denominator for product unit price   string               no
+    :ref:`feed_unitPricingMeasure`         measure and dimension of product     string               no
+    ====================================== ==================================== ===================  =========== 
+
+.. collapse:: TSV
+
+    ========================================= ==================================== ===================  =========== 
+    Field                                     Description                          Restrictions         Mandatory 
+    ========================================= ==================================== ===================  =========== 
+    :ref:`feed_vendorId`                      **unique** ad identifier             max. 64 chars        yes
+    :ref:`feed_sellerName`                    your company name                          max. 60 chars        no
+    :ref:`feed_t`                             product title                        see :ref:`feed_t`    yes
+    :ref:`feed_descr`                         product description                  :ref:`feed_descr`    yes       
+    :ref:`feed_categoryId`                    category identifier                  numeric, positive    yes       
+    :ref:`feed_status`                        desired status (default ACTIVE)      ACTIVE,PAUSED        no       
+    :ref:`feed_url`                           product URL                          max. 2048 chars      no        
+    :ref:`feed_vanityUrl`                     displayed URL                        max. 256 chars       no        
+    :ref:`feed_priceType`                     sales model for product              enum                 yes       
+    :ref:`feed_price`                         product price in cents if applicable positive integer     yes/no       
+    :ref:`feed_originalPrice`                 original price before discount       positive integer     no        
+    :ref:`image link <feed_media>`            primary image                        :ref:`feed_media`    no
+    :ref:`additional image link <feed_media>` additional images                    :ref:`feed_media`    no
+    :ref:`feed_attr`                          collection of product attributes     :ref:`feed_attr`     no        
+    :ref:`autobid <feed_budget>`              budget details                       :ref:`feed_budget`   no        
+    :ref:`cpc <feed_budget>`                  budget details                       :ref:`feed_budget`   no        
+    :ref:`total budget <feed_budget>`         budget details                       :ref:`feed_budget`   no        
+    :ref:`daily budget <feed_budget>`         budget details                       :ref:`feed_budget`   no        
+    :ref:`shipping <feed_ship>`               shipping options                     :ref:`feed_ship`     no
+    :ref:`pickup locations <feed_ship>`       pickup locations                     :ref:`feed_ship`     no
+    :ref:`feed_phoneNumber`                   phone number                         max. 32 chars        no        
+    :ref:`feed_emailAdvertiser`               allow emails to the seller           true,false           no
+    :ref:`feed_regionId`                      only applicable for Kijiji Canada    numeric              no        
+    :ref:`feed_microTip`                      tiny product hightlight              max. 18 chars        no
+    :ref:`feed_mpn`                           Manufacturer Part Number (MPN)       2-70 chars           no   
+    :ref:`feed_googleProductCategory`         google category for your product     string               no
+    :ref:`feed_productType`                   customer product type                max. 750 chars       no    
+    :ref:`feed_brand`                         product brand name                   max. 70 chars        no
+    :ref:`feed_gtin`                          Global Trade Identification Number   max. 50 chars        no  
+    :ref:`feed_itemGroupId`                   groups product variants in your      max. 50 chars        no
+    :ref:`feed_condition`                     condition of product                 enum                 no
+    :ref:`feed_material`                      main product fabrics or materials    max. 200 chars       no
+    :ref:`feed_energyEfficiencyClass`         energy efficiency class              enum                 no
+    :ref:`feed_minEnergyEfficiencyClass`      minimal energy efficiency class      enum                 no
+    :ref:`feed_maxEnergyEfficiencyClass`      maximal energy efficiency class      enum                 no
+    :ref:`feed_color`                         product colors                       max. 100 chars       no
+    :ref:`feed_gender`                        gender product is designed for       enum                 no
+    :ref:`feed_ageGroup`                      age group product is intended for    enum                 no
+    :ref:`feed_size`                          size information                     enum                 no
+    :ref:`feed_unitPricingBaseMeasure`        denominator for product unit price   string               no
+    :ref:`feed_unitPricingMeasure`            measure and dimension of product     string               no
+    ========================================= ==================================== ===================  =========== 
+
+|
+
 
 .. index:: vendorId
 .. _feed_vendorId:
@@ -108,10 +161,6 @@ Deprecated, replaced by vendorId
         Please update your XML to reflect this change. This makes naming consistent between feeds and sellside API.
         The **vendorId** field in the feeds has the same meaning and constraints as the **vendorId** field in the
         sellside API.
-
-.. collapse:: TSV
-
-    Not supported
 
 |
 
