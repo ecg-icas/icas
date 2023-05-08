@@ -6,6 +6,10 @@ GET /categories
 
 :ref:`get_categories_v5` | :ref:`get_categories_v1`
 
+.. warning::
+
+    :ref:`get_categories_v1` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_categories_v5`.
+
 This URL returns the a map of id to categories in the format described in
 :ref:`categories` for the id's requested in parameter ``categoryIds``.
 This parameter is a comma separated list of integers.

@@ -128,7 +128,7 @@ Start using V4. There are 2 new fields in comparison with V2:
 Deprecation list
 """"""""""""""""
 
-The following calls are deprecated and scheduled to be removed on July 1st, 2023:
+The following calls are deprecated and scheduled to be removed on May 1st, 2023:
 
 .. list-table::
  :widths: 80 80
@@ -195,5 +195,5 @@ The following calls are deprecated and scheduled to be removed after 1st of Marc
 * :ref:`get_report_summary_v2`
 * :ref:`get_report_summary_v1`
 * :ref:`post_report_detail`
-* :ref:`get_user_v1`
+* GET /user V1
 * :ref:`get_categories_statistics`

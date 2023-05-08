@@ -190,7 +190,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
@@ -244,6 +244,10 @@
   <section id="get-categories">
 <span id="index-0"></span><span id="id1"></span><h1>GET /categories<a class="headerlink" href="#get-categories" title="Permalink to this heading">¶</a></h1>
 <p><a class="reference internal" href="#get-categories-v5"><span class="std std-ref">GET /categories V5</span></a> | <a class="reference internal" href="#get-categories-v1"><span class="std std-ref">GET /categories V1</span></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a class="reference internal" href="#get-categories-v1"><span class="std std-ref">GET /categories V1</span></a> is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use <a class="reference internal" href="#get-categories-v5"><span class="std std-ref">GET /categories V5</span></a>.</p>
+</div>
 <p>This URL returns the a map of id to categories in the format described in
 <a class="reference internal" href="../categories.html#categories"><span class="std std-ref">Categories</span></a> for the id’s requested in parameter <code class="docutils literal notranslate"><span class="pre">categoryIds</span></code>.
 This parameter is a comma separated list of integers.

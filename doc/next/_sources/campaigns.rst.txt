@@ -7,8 +7,8 @@ Campaigns
 
 A Campaign is a group of ads, sharing a campaign budget. With campaigns, it is possible to control spending for this entire list of ads and,
 in one go, start/stop advertising with the entire list of (active) ads.
-Campaigns can have their own budgets, both daily and total. If these are not set, they will automatically be set to "UNLIMITED" to
-be compatible with the times when campaigns did not exist yet.
+Campaigns can have their own budgets, both daily and total. If these are not set, the total budget will automatically be set to "UNLIMITED" and the
+daily budget will be set to a default value.
 
 For the time being, we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign. 
 To make transitions to use campaigns easier, we will ensure that each (new or existing) seller already has a campaign, and if the

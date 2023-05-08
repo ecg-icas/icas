@@ -1,6 +1,6 @@
 .. code-block:: javascript
 
-    GET /ad[?limit=limit][&offset=offset][&titleKeywords=titleKeywords][&status=Status][&orderBy=orderBy][&changedSince=timestamp][&remainingBudget=number[%]][&_include=list,of,fields][&_exclude=list,of,fields][&startDate=2014-12-04][&endDate=2015-06-13]
+    GET /ad[?limit=limit][&pageToken=eyJpZCI6MTAwMT....][&orderBy=orderBy][&titleKeywords=titleKeywords][&status=Status][&changedSince=timestamp][&remainingBudget=number[%]][&_include=list,of,fields][&_exclude=list,of,fields][&adIds=123,456,457][&campaignId=6531][&startDate=2014-12-04][&endDate=2015-06-13]
     Accept: application/sellside.ad.list-v5+json, application/json
 
     200 OK
@@ -108,5 +108,6 @@
           ]
         }
       ],
-      "count": 1
+      "count": 4,
+      "nextPageToken": "eyJpZCI6MTAwMTgzMTc1MCwic3RyaW5nX3ZhbHVlIjpudWxsLCJpbnQ2NF92YWx1ZSI6MTM0MDIxNzg1OTc5MH0"
     }

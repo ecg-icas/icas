@@ -188,7 +188,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign/</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
@@ -371,7 +371,7 @@
 <h3>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h3>
 <p>Added first campaign support. See <a class="reference internal" href="campaigns.html#campaigns"><span class="std std-ref">Campaigns</span></a> for full details.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaign</span></a> to get list of campaigns for a user. Expected 0 or 1 result.</p></li>
+<li><p><a class="reference internal" href="reference/get-campaign.html#get-campaign"><span class="std std-ref">GET /campaigns</span></a> to get list of campaigns for a user. Expected 0 or 1 result.</p></li>
 <li><p><a class="reference internal" href="reference/get-campaign-id.html#get-campaign-id"><span class="std std-ref">GET /campaign/{id}</span></a> to fetch the individual campaign.</p></li>
 <li><p><a class="reference internal" href="reference/post-campaign.html#post-campaign"><span class="std std-ref">POST /campaign/</span></a> to create a campaign. Currently only 1 allowed per seller.</p></li>
 <li><p><a class="reference internal" href="reference/put-campaign-id.html#put-campaign-id"><span class="std std-ref">PUT /campaign/{id}</span></a> to update the campaign. Currently only status &amp; budgets can be updated.</p></li>
@@ -394,7 +394,7 @@ Deleting a campaign is currently not allowed.</p>
 </section>
 <section id="deprecation-list">
 <h3>Deprecation list<a class="headerlink" href="#deprecation-list" title="Permalink to this heading">¶</a></h3>
-<p>The following calls are deprecated and scheduled to be removed on July 1st, 2023:</p>
+<p>The following calls are deprecated and scheduled to be removed on May 1st, 2023:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50.0%" />
@@ -484,7 +484,7 @@ Deleting a campaign is currently not allowed.</p>
 <li><p><a class="reference internal" href="reference/get-report-summary.html#get-report-summary-v2"><span class="std std-ref">GET /report/summary V2</span></a></p></li>
 <li><p><a class="reference internal" href="reference/get-report-summary.html#get-report-summary-v1"><span class="std std-ref">GET /report/summary V1</span></a></p></li>
 <li><p><a class="reference internal" href="reference/post-report-detail.html#post-report-detail"><span class="std std-ref">POST /report/detail</span></a></p></li>
-<li><p><a class="reference internal" href="reference/get-user.html#get-user-v1"><span class="std std-ref">GET /user v1</span></a></p></li>
+<li><p>GET /user V1</p></li>
 <li><p><a class="reference internal" href="reference/get-categories-statistics.html#get-categories-statistics"><span class="std std-ref">GET /categories/statistics</span></a></p></li>
 </ul>
 </section>

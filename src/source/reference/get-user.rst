@@ -3,7 +3,13 @@
 
 GET /user
 =========
-:ref:`get_user_v4` | :ref:`get_user_v3` | :ref:`get_user_v2` | :ref:`get_user_v1`
+:ref:`get_user_v4` | :ref:`get_user_v3` | :ref:`get_user_v2`
+
+.. warning::
+
+    :ref:`get_user_v2` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_user_v4`.
+
+    :ref:`get_user_v3` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_user_v4`.
 
 This URL returns information of the current user. The ``id`` field contains
 a unique user identifier. The ``options.feed`` field is ``true`` if the user
@@ -81,33 +87,3 @@ Example
 """""""
 
 .. include:: ../examples/get-user-v2.rst
-
-.. _get_user_v1:
-
-GET /user v1
-------------
-
-.. warning::
-
-	This call is scheduled to be deprecated. Please use :ref:`get_user_v4` instead.
-
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_ro`` or ``console_ro``
-
- * - Accept
-   - ``application/sellside.user-v1+json, application/json``
-
-This URL returns information of the current user. The ``id`` field contains
-a unique user identifier. The ``options.feed`` field is ``true`` if the user
-is an XML feed customer. The ``options.vanityUrl`` field is ``true`` if the
-value of the :ref:`ad_links_displayUrl` field in the advertisement is shown
-in the search results.
-
-Example
-"""""""
-
-.. include:: ../examples/get-user-v1.rst

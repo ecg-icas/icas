@@ -190,7 +190,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
@@ -244,6 +244,11 @@
   <section id="post-an-ad">
 <span id="post-ad"></span><span id="index-0"></span><h1>POST  /ad<a class="headerlink" href="#post-an-ad" title="Permalink to this heading">¶</a></h1>
 <p><a class="reference internal" href="#post-ad-v5"><span class="std std-ref">POST /ad/ v5</span></a> | <a class="reference internal" href="#post-ad-v3"><span class="std std-ref">POST /ad v3</span></a> | <a class="reference internal" href="#post-ad-v2"><span class="std std-ref">POST /ad v2</span></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a class="reference internal" href="#post-ad-v3"><span class="std std-ref">POST /ad v3</span></a> is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use <a class="reference internal" href="#post-ad-v5"><span class="std std-ref">POST /ad/ v5</span></a>.</p>
+<p><a class="reference internal" href="#post-ad-v2"><span class="std std-ref">POST /ad v2</span></a> is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use <a class="reference internal" href="#post-ad-v5"><span class="std std-ref">POST /ad/ v5</span></a>.</p>
+</div>
 <p>This URL creates a new ad for the current user.</p>
 <p>If the ad was successfully
 created then a <strong>201 Created</strong> is returned and the <strong>Location</strong> header

@@ -7,6 +7,12 @@ POST |an|/ad
 
 :ref:`post_ad_v5` | :ref:`post_ad_v3` | :ref:`post_ad_v2`
 
+.. warning::
+
+    :ref:`post_ad_v3` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`post_ad_v5`.
+    
+    :ref:`post_ad_v2` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`post_ad_v5`.
+
 This URL creates a new ad for the current user.
 
 If the ad was successfully
