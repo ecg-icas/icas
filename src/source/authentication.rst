@@ -115,6 +115,22 @@ The endpoint URLs per tenant and environment are as follows:
    -
    - https://admarkt.2dehands.be/accounts/oauth/token
 
+ * - Kleinanzeigen
+   - Sandbox
+   - https://internet.ebayk.qa.icas.io/accounts/oauth/authorize
+
+ * -
+   -
+   - https://internet.ebayk.qa.icas.io/accounts/oauth/token
+
+ * -
+   - Production
+   - https://admarkt.kleinanzeigen.de/accounts/oauth/authorize
+
+ * -
+   -
+   - https://admarkt.kleinanzeigen.de/accounts/oauth/token
+
 
 .. note::
 
