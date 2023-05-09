@@ -2,3 +2,5 @@ _build
 .idea/
 src/build/
 *.iml
+/.vscode/
+/src/.vscode/
