@@ -1,34 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <admarkt:ads xmlns:admarkt="http://admarkt.marktplaats.nl/schemas/1.0">
     <admarkt:ad>
-        <admarkt:vendorId>jh2fi82wqjckw</admarkt:vendorId>
-        <admarkt:title>New white leather sofa</admarkt:title>
-        <admarkt:description>This leather sofa is very well suited to sell online. Has happened 12 times
-        already, profit guaranteed! The charming white color and stylish design makes it irresistable
-        for buyers, whether they need it or not.
-        </admarkt:description>
-        <admarkt:categoryId>1234</admarkt:categoryId>
-        <admarkt:url>http://irresistiblecouch.com/charming-white.html?source=marktplaats</admarkt:url>
-        <admarkt:vanityUrl>http://irresistiblecouch.com</admarkt:vanityUrl>
-        <admarkt:price>129900</admarkt:price>
+        <admarkt:vendorId>42</admarkt:vendorId>
+        <admarkt:title>Bally 1992 Adams Family</admarkt:title>
+        <admarkt:description>Best pinball machine ever made</admarkt:description>
+        <admarkt:categoryId>999</admarkt:categoryId>
+        <admarkt:url>https://pinball.com/game/bally-adams-family/</admarkt:url>
+        <admarkt:vanityUrl>https://pinball.com</admarkt:vanityUrl>
+        <admarkt:price>875000</admarkt:price>
+        <admarkt:originalPrice>875000</admarkt:originalPrice>
         <admarkt:priceType>FIXED_PRICE</admarkt:priceType>
+        <admarkt:phoneNumber>16123456789</admarkt:phoneNumber>
+        <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
+        <admarkt:sellerName>Pinball King</admarkt:sellerName>
+        <admarkt:status>ACTIVE</admarkt:status>
         <admarkt:media>
-            <admarkt:image url="http://irresistiblecouch.com/ProductPhotos/Large/jh2fi82wqjckw.jpg"/>
+            <admarkt:image url="https://pinball.com/game/bally-adams-family/1.jpg"/>
+            <admarkt:image url="https://pinball.com/game/bally-adams-family/2.jpg"/>
+            <admarkt:image url="https://pinball.com/game/bally-adams-family/3.jpg"/>
         </admarkt:media>
         <admarkt:budget>
-            <admarkt:totalBudget>1000000</admarkt:totalBudget>
-            <admarkt:dailyBudget>2500</admarkt:dailyBudget>
-            <admarkt:cpc>3</admarkt:cpc>
+            <admarkt:totalBudget>10000</admarkt:totalBudget>
+            <admarkt:dailyBudget>1000</admarkt:dailyBudget>
+            <admarkt:cpc>10</admarkt:cpc>
+            <admarkt:autobid>true</admarkt:autobid>
         </admarkt:budget>
-        <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
-                <admarkt:gtin>44320194113475</admarkt:gtin>
-        <admarkt:mpn>SF0345W1224</admarkt:mpn>
-        <admarkt:productType>Home &gt; Livingroom &gt; Sofas</admarkt:productType>
-        <admarkt:googleProductCategory>460</admarkt:googleProductCategory>
-        <admarkt:brand>Soho Home</admarkt:brand>
-        <admarkt:unitPricingMeasure>75kg</admarkt:unitPricingMeasure>
-        <admarkt:condition>new</admarkt:condition>
-        <admarkt:material>Leather/Metal</admarkt:material>
-        <admarkt:color>White/Silver</admarkt:color>
+        <admarkt:shippingOptions>
+            <admarkt:shippingOption>
+                <admarkt:shippingType>PICKUP</admarkt:shippingType>
+                <admarkt:location>1097DN</admarkt:location>
+            </admarkt:shippingOption>
+            <admarkt:shippingOption>
+                <admarkt:shippingType>PICKUP</admarkt:shippingType>
+                <admarkt:location>1055AB</admarkt:location>
+            </admarkt:shippingOption>
+            <admarkt:shippingOption>
+                <admarkt:shippingType>SHIP</admarkt:shippingType>
+                <admarkt:cost>695</admarkt:cost>
+                <admarkt:time>2d-5d;</admarkt:time>
+            </admarkt:shippingOption>
+            <admarkt:shippingOption>
+                <admarkt:shippingType>SHIP</admarkt:shippingType>
+                <admarkt:cost>1195</admarkt:cost>
+                <admarkt:time>1d-2d</admarkt:time>
+            </admarkt:shippingOption>
+        </admarkt:shippingOptions>
+        <admarkt:attributes>
+            <admarkt:attribute>
+                <admarkt:attributeName>model</admarkt:attributeName>
+                <admarkt:attributeValue>Adams Family</admarkt:attributeValue>
+            </admarkt:attribute>
+            <admarkt:attribute>
+                <admarkt:attributeName>multiball</admarkt:attributeName>
+                <admarkt:attributeValue>TRUE</admarkt:attributeValue>
+            </admarkt:attribute>
+            <admarkt:attribute>
+                <admarkt:attributeName>screen size</admarkt:attributeName>
+                <admarkt:attributeValue>32"</admarkt:attributeValue>
+            </admarkt:attribute>
+            <admarkt:attribute>
+                <admarkt:attributeName>resolutions</admarkt:attributeName>
+                <admarkt:attributeValue>1024x768:24dpi</admarkt:attributeValue>
+                <admarkt:attributeValue>800x600:18dpi</admarkt:attributeValue>
+            </admarkt:attribute>
+        </admarkt:attributes>
+        <admarkt:gtin>93845278905</admarkt:gtin>
+        <admarkt:productType>Hobby &amp; Games &gt; Arcade Games &gt; Pinball Machines</admarkt:productType>
+        <admarkt:googleProductCategory>Electronics &gt; Arcade Equipment &gt; Pinball Machines</admarkt:googleProductCategory>
+        <admarkt:brand>Bally</admarkt:brand>
+        <admarkt:condition>refurbished</admarkt:condition>
+        <admarkt:energyEfficiencyClass>E</admarkt:energyEfficiencyClass>
+        <admarkt:minEnergyEfficiencyClass>F</admarkt:minEnergyEfficiencyClass>
+        <admarkt:maxEnergyEfficiencyClass>D</admarkt:maxEnergyEfficiencyClass>
+        <admarkt:color>black/white/green</admarkt:color>
+        <admarkt:gender>unisex</admarkt:gender>
+        <admarkt:ageGroup>adult</admarkt:ageGroup>
     </admarkt:ad>
 </admarkt:ads>

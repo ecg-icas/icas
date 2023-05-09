@@ -1353,7 +1353,7 @@ Allowed values: *male*, *female*, *unisex*
 .. index:: ageGroup
 .. _feed_ageGroup: 
 
-age aroup
+age group
 """"""""""""""""""""""""
 
 Use **age group** field to describe the age group your product is trageted at. 
