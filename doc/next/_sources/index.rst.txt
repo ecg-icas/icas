@@ -36,6 +36,7 @@ Contents
    attributes
    regions
    feeds
+   feed-details
    reporting
    error-handling
    api-reference
@@ -48,6 +49,12 @@ History
 =======
 
 ..  role:: strike
+
+* v.0.127 - 9 May 2023 - pm
+
+  * improved :ref:`feeds` docs
+  * added separate :ref:`feed-details` page
+  * added collapse feature to docs engine
 
 * v.0.126 - 26 Apr 2023 - tw
 

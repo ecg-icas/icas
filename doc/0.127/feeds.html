@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Feeds &mdash; iCAS Sellside API 0.126 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iCAS Sellside API 0.126 documentation" href="index.html"/>
+        <link rel="next" title="Feed Fields" href="feed-details.html"/>
+        <link rel="prev" title="Regions" href="regions.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> iCAS Sellside API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#http-response-codes-and-error-handling">HTTP Response Codes and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-an-access-token">Getting an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-rendering">Attribute Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#category-attributes">Category Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-ids">Region Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-levels">Region Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-label">Region label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-center">Region center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#file-format">File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#errors">Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-s-questions">Scenario’s &amp; Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="feed-details.html">Feed Fields</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#feed-vendorid">Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#externalid">externalId</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#seller-name">seller name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#title">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#description">description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#category-id">category id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#status">status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#url">url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#vanity-url">vanity url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#price-type">price type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#price">price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#original-price">original price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#product-images">product images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#attributes">attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#budget-details">budget details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#shipping-pick-up">shipping &amp; pick up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#phone-number">phone number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#email-advertiser">email advertiser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#region-id">region id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#micro-tip">micro tip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#mpn">MPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#google-product-category">google product category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#product-type">product type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#brand">brand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#gtin">GTIN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#item-group-id">item group id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#condition">condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#material">material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#energy-efficiency-class">energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#min-energy-efficiency-class">min energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#max-energy-efficiency-class">max energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#color">color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#gender">gender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#age-group">age group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#size">size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#unit-pricing-base-measure">unit pricing base measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#unit-pricing-measure">unit pricing measure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#dimensions-and-metrics">Dimensions and Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#time-ranges">Time Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#time-aggregation">Time Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#filters">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#sorting">Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#pagination-with-offset-and-limit">Pagination with offset and limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#enrichment">Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#query-and-response">Query and Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad.html">GET /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id.html">GET /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-ad.html">POST  /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-ad-prefill.html">POST /ad/prefill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id.html">PUT /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-ad-id-status.html">PUT /ad/{id}/status/{status}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-categories.html">GET /categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-categories-statistics.html">GET /categories/statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id.html">GET /category/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-region-id.html">GET /region/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-config.html">GET /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-feed-config.html">POST /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import.html">GET /feed/import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-xsd.html">GET /feed/xsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-feed-empty.html">GET /feed/empty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report.html">GET /report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail.html">GET /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-detail-id.html">GET /report/detail/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-report-detail.html">POST /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-metrics-report.html">GET /metrics/report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/post-campaign.html">POST /campaign/</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign.html">GET /campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id.html">PUT /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">iCAS Sellside API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Feeds</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/feeds.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="feeds">
+<span id="id1"></span><h1>Feeds<a class="headerlink" href="#feeds" title="Permalink to this heading">¶</a></h1>
+<p>A feed is a file that contains a list of ads you want to advertise, and is a way to handle repetitive asynchronous bulk uploading of ads.</p>
+<p>Once a feed is created you can link your HTTP(s) URL through <a class="reference internal" href="reference/post-feed-config.html#post-feed-config"><span class="std std-ref">POST /feed/config</span></a> or the seller console frontend to make our system fetch your file and import your ads. After that, scheduled fetches happen once per day synchronising the system with any updates you may want to introduce to the ads list.  You can stop the feed advertising process using <a class="reference internal" href="reference/post-feed-config.html#post-feed-config"><span class="std std-ref">POST /feed/config</span></a>, or the console.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have a dedicated account manager, they can also support with ensuring the URL of your feed is properly connected to your account.</p>
+</div>
+<p>In order to let us download your feed and all the relevant linked content, the access to our outgoing IPs should be whitelisted as described in <a class="reference internal" href="overview.html#overview-image-downloads"><span class="std std-ref">section of the Sellside API</span></a>.</p>
+<section id="file-format">
+<h2>File Format<a class="headerlink" href="#file-format" title="Permalink to this heading">¶</a></h2>
+<p>We support feed files in either an XML or TSV format.
+Feeds are expected to be in UTF-8 encoding.
+Information on the most actual set of supported data is described on the <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">details</span></a> page.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, we have introduced a number of new fields for describing the feed ad.
+It contains a larger subset of what is considered a ‘widely adopted market standard’.
+The new fieds follow specification stated in manual for <a class="reference external" href="https://support.google.com/merchants/answer/7052112">Google Merchant Center</a> customers.
+This is a part of our general strategy, to minimize the overhead needed to integrate your feed with iCAS versus the other advertising channels.
+We will gradually decrease the reliance of the ad categorisation algorithms from the tenant specific categories, and attributes,
+toward the standard fields. For more information see <em>Scenario’s and Questions</em> section.</p>
+</div>
+<p>For instructions on how to create your feed in specific formats, please expand the relevant sections.</p>
+<details class="summary-xml">
+<summary>XML</summary><p>The contents of this XML file need to adhere to the XSD available for sellers
+at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a>.
+All the values provided should conform to the rules specified for the valid XML document.
+For the more complex data (that contains, for example HTML tags) we recommend using <a class="reference external" href="https://en.wikipedia.org/wiki/CDATA">character data (CDATA)</a>.
+XML escape characters are also supported.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;admarkt:ads</span><span class="w"> </span><span class="na">xmlns:admarkt=</span><span class="s">&quot;http://admarkt.marktplaats.nl/schemas/1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;admarkt:ad&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:vendorId&gt;</span>42<span class="nt">&lt;/admarkt:vendorId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:title&gt;</span>Bally<span class="w"> </span>1992<span class="w"> </span>Adams<span class="w"> </span>Family<span class="nt">&lt;/admarkt:title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:description&gt;</span>Best<span class="w"> </span>pinball<span class="w"> </span>machine<span class="w"> </span>ever<span class="w"> </span>made<span class="nt">&lt;/admarkt:description&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:categoryId&gt;</span>999<span class="nt">&lt;/admarkt:categoryId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:url&gt;</span>https://pinball.com/game/bally-adams-family/<span class="nt">&lt;/admarkt:url&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:vanityUrl&gt;</span>https://pinball.com<span class="nt">&lt;/admarkt:vanityUrl&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:price&gt;</span>875000<span class="nt">&lt;/admarkt:price&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:originalPrice&gt;</span>875000<span class="nt">&lt;/admarkt:originalPrice&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:priceType&gt;</span>FIXED_PRICE<span class="nt">&lt;/admarkt:priceType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:phoneNumber&gt;</span>16123456789<span class="nt">&lt;/admarkt:phoneNumber&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:emailAdvertiser&gt;</span>true<span class="nt">&lt;/admarkt:emailAdvertiser&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:sellerName&gt;</span>Pinball<span class="w"> </span>King<span class="nt">&lt;/admarkt:sellerName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:status&gt;</span>ACTIVE<span class="nt">&lt;/admarkt:status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:media&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:image</span><span class="w"> </span><span class="na">url=</span><span class="s">&quot;https://pinball.com/game/bally-adams-family/1.jpg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:image</span><span class="w"> </span><span class="na">url=</span><span class="s">&quot;https://pinball.com/game/bally-adams-family/2.jpg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:image</span><span class="w"> </span><span class="na">url=</span><span class="s">&quot;https://pinball.com/game/bally-adams-family/3.jpg&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/admarkt:media&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:budget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:totalBudget&gt;</span>10000<span class="nt">&lt;/admarkt:totalBudget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:dailyBudget&gt;</span>1000<span class="nt">&lt;/admarkt:dailyBudget&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:cpc&gt;</span>10<span class="nt">&lt;/admarkt:cpc&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:autobid&gt;</span>true<span class="nt">&lt;/admarkt:autobid&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/admarkt:budget&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:shippingOptions&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:shippingOption&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:shippingType&gt;</span>PICKUP<span class="nt">&lt;/admarkt:shippingType&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:location&gt;</span>1097DN<span class="nt">&lt;/admarkt:location&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/admarkt:shippingOption&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:shippingOption&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:shippingType&gt;</span>PICKUP<span class="nt">&lt;/admarkt:shippingType&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:location&gt;</span>1055AB<span class="nt">&lt;/admarkt:location&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/admarkt:shippingOption&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:shippingOption&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:shippingType&gt;</span>SHIP<span class="nt">&lt;/admarkt:shippingType&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:cost&gt;</span>695<span class="nt">&lt;/admarkt:cost&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:time&gt;</span>2d-5d;<span class="nt">&lt;/admarkt:time&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/admarkt:shippingOption&gt;</span>
+<span class="w">            </span><span class="nt">&lt;admarkt:shippingOption&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:shippingType&gt;</span>SHIP<span class="nt">&lt;/admarkt:shippingType&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:cost&gt;</span>1195<span class="nt">&lt;/admarkt:cost&gt;</span>
+<span class="w">                </span><span class="nt">&lt;admarkt:time&gt;</span>1d-2d<span class="nt">&lt;/admarkt:time&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/admarkt:shippingOption&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/admarkt:shippingOptions&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:gtin&gt;</span>93845278905<span class="nt">&lt;/admarkt:gtin&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:productType&gt;</span>Hobby<span class="w"> </span><span class="ni">&amp;amp;</span><span class="w"> </span>Games<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>Arcade<span class="w"> </span>Games<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>Pinball<span class="w"> </span>Machines<span class="nt">&lt;/admarkt:productType&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:googleProductCategory&gt;</span>Electronics<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>Arcade<span class="w"> </span>Equipment<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>Pinball<span class="w"> </span>Machines<span class="nt">&lt;/admarkt:googleProductCategory&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:brand&gt;</span>Bally<span class="nt">&lt;/admarkt:brand&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:condition&gt;</span>refurbished<span class="nt">&lt;/admarkt:condition&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:energyEfficiencyClass&gt;</span>E<span class="nt">&lt;/admarkt:energyEfficiencyClass&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:minEnergyEfficiencyClass&gt;</span>F<span class="nt">&lt;/admarkt:minEnergyEfficiencyClass&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:maxEnergyEfficiencyClass&gt;</span>D<span class="nt">&lt;/admarkt:maxEnergyEfficiencyClass&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:color&gt;</span>black/white/green<span class="nt">&lt;/admarkt:color&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:gender&gt;</span>unisex<span class="nt">&lt;/admarkt:gender&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admarkt:ageGroup&gt;</span>adult<span class="nt">&lt;/admarkt:ageGroup&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/admarkt:ad&gt;</span>
+<span class="nt">&lt;/admarkt:ads&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="_downloads/1312638521f7eca7e2eee84762c31f9c/feed-example.xml"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">example</span></code></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</details><details class="summary-tsv">
+<summary>TSV</summary><p>TSV format follows specification described on <a class="reference external" href="https://en.wikipedia.org/wiki/Tab-separated_values">wiki</a>.
+Column names used in TSV feed must superset <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a> specified.
+Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p>
+<p><a class="reference download internal" download="" href="_downloads/93dbf90792498ee82059295c17c481bd/feed-example.tsv"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">example</span></code></a></p>
+</details><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a> shows the overview of imported feeds of the user, and
+<a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail</span></a> can be a good source of information on possible errors
+or warnings on ads, such as missing mandatory attributes or too low CPC etc.</p>
+</section>
+<section id="scenario-s-questions">
+<span id="feeds-qna"></span><h2>Scenario’s &amp; Questions<a class="headerlink" href="#scenario-s-questions" title="Permalink to this heading">¶</a></h2>
+<p>Below are some common asked-for scenarios and questions with their explanations/answers.</p>
+<details class="larger-collapse summary-what-happens-if-my-feed-file-cannot-be-fetched">
+<summary>What happens if my feed file cannot be fetched?</summary><p>When a feed file cannot be fetched, nothing will change on the user’s ads.
+It’s as if the import didn’t happen.
+Since the file represents the desired list of ads to be live, we won’t do anything if we can’t get the file - we cannot read a change in the desired situation.</p>
+</details><details class="larger-collapse summary-what-happens-when-my-feed-file-is-empty">
+<summary>What happens when my feed file is empty?</summary><p>When a feed file is empty, all ads of the user will be paused.
+An empty file means the desired list of ads to be live is empty, so all active ads are paused.
+Note that this also means that all ads which are in statuses BUDGET_REACHED or DAILY_BUDGET_REACHED are also paused.
+If you want to pause your entire ads inventory, you can download and use the file below.</p>
+<embed>
+    <form action="https://admarkt.marktplaats.nl/api/sellside/feed/empty">
+        <input type="submit" value="Download Empty File" />
+    </form>
+    <br><br>
+</embed></details><details class="larger-collapse summary-my-feed-file-contains-only-new-ads-what-happens-to-those-i-have-previously-created-via-frontend-api">
+<summary>My feed file contains only new ads. What happens to those I have previously created via frontend / API?</summary><p>In the spirit of the feed file being the desired set of ads to be live for a user, all currently active ads (including ads in BUDGET_REACHED or DAILY_BUDGET_REACHED)
+will be paused and the supplied ads will be created (with status ACTIVE).</p>
+</details><details class="larger-collapse summary-can-i-modify-my-feed-ads-via-frontend-api">
+<summary>Can I modify my feed ads via frontend / API?</summary><p>The feed file considered “the desired set of ads to be live for a user”.
+With every daily import, all the ads will be (re)set to their representing feed values.
+This means you can see changes made throuh API or frontend undone after a successful feed import.</p>
+</details><details class="larger-collapse summary-i-have-updated-my-feed-images-and-after-the-successful-import-there-is-no-change">
+<summary>I have updated my feed images, and after the successful import there is no change.</summary><p>If you’re changing the images without changing the URLs, the changes may not be picked up,
+in case the rest of the ad is also unchanged. We suggest adding a bogus parameter to the
+image URL to force a re-processing of the ad and its images. Make sure to not change this
+for every feed import, but only when you require images to be re-processed.</p>
+</details><details class="larger-collapse summary-what-does-happens-when-my-xml-does-not-validate-against-xsd">
+<summary>What does happens when my XML does not validate against XSD?</summary><p>If the fetched XML filed does not validate against the XSD there will not be any changes
+to your ads. Existing ads will remain unchanged and no new ads will be created.</p>
+</details><details class="larger-collapse summary-how-to-validate-xml-against-xsd">
+<summary>How to validate XML against XSD?</summary><p>Next to various online capabilities where you can provide both your XML and XSD files,
+a way to check quickly and locally is to use a tool called xmllint. With this tool
+you can use our XSD downloaded from <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> to test whether your feed is
+working before you let our system fetch it using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmllint<span class="w"> </span>--debug<span class="w"> </span>--noout<span class="w"> </span>--schema<span class="w"> </span>/path/to/admarkt1.0.xsd<span class="w"> </span>/path/to/yourfeed.xml
+</pre></div>
+</div>
+<p>For small chunks of XML you can use online validators as well, such as <a class="reference external" href="http://www.utilities-online.info/xsdvalidation/">http://www.utilities-online.info/xsdvalidation/</a> or <a class="reference external" href="https://www.freeformatter.com/xml-validator-xsd.html">https://www.freeformatter.com/xml-validator-xsd.html</a>. Note that these have a
+limit on the size of the XML you can check, but it should be more than enough to be able
+to test correctness of your structure.</p>
+</details><details class="larger-collapse summary-when-i-create-an-xml-feed-do-i-need-to-use-admarkt-prefix-for-all-the-tags-as-shown-in-the-examples">
+<summary>When I create an XML feed, do I need to use 'admarkt' prefix for all the tags, as shown in the examples?</summary><p>The prefix (or more preciesly the namespace) is something invented by XML creators, with some intention of differentating domain concepts, that can have the same name, but a different meaning.</p>
+<p>Look at the very first lines of yours (or example) xml:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hll"><span class="nt">&lt;admarkt:ads</span><span class="w"> </span><span class="na">xmlns:admarkt=</span><span class="s">&quot;http://admarkt.marktplaats.nl/schemas/1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class="w">    </span><span class="nt">&lt;admarkt:ad&gt;</span>
+...
+</pre></div>
+</div>
+<p>xmlns:<strong>admarkt</strong> there can be changed to any word:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hll"><span class="nt">&lt;xyz:ads</span><span class="w"> </span><span class="na">xmlns:xyz=</span><span class="s">&quot;http://admarkt.marktplaats.nl/schemas/1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class="w">    </span><span class="nt">&lt;xyz:ad&gt;</span>
+...
+</pre></div>
+</div>
+<p>or event skipped:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hll"><span class="nt">&lt;ads</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://admarkt.marktplaats.nl/schemas/1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class="w">    </span><span class="nt">&lt;ad&gt;</span>
+...
+</pre></div>
+</div>
+<p>It is up to you! The only thing that matters to us is the text “<a class="reference external" href="http://admarkt.marktplaats.nl/schemas/1.1">http://admarkt.marktplaats.nl/schemas/1.1</a>”,
+which determines which schema version, we should use processing your file.</p>
+</details><details name="feed_new_fields" class="larger-collapse summary-how-to-use-tsv-format">
+<summary>How to use TSV format?</summary><p>We introduced TSV format in our system, to simplify the integration path.
+Our customers commonly use spreadsheets to store and manipulate the data,
+and “TSV export” is a standard option for the majority of the spreadsheet programs.</p>
+<p>The three important things to remember for successful integration:</p>
+<ol class="arabic simple">
+<li><p>There are some <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a>, that we will look for, and expect to find in your TSV feed.</p></li>
+<li><p>Multiline fields need to be escaped with double quotes, or all the line breakes, and tabulators changed to \n, \t.</p></li>
+<li><p>Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p></li>
+</ol>
+</details><details class="larger-collapse summary-what-are-the-newly-added-fields">
+<summary>What are the newly added fields?</summary><p>Those fields are considered a ‘widely adopted market standard’, required, or recommended for advertising on many other channels:
+<a class="reference internal" href="feed-details.html#feed-mpn"><span class="std std-ref">MPN</span></a>, <a class="reference internal" href="feed-details.html#feed-googleproductcategory"><span class="std std-ref">google product category</span></a>, <a class="reference internal" href="feed-details.html#feed-producttype"><span class="std std-ref">product type</span></a>, <a class="reference internal" href="feed-details.html#feed-brand"><span class="std std-ref">brand</span></a>, <a class="reference internal" href="feed-details.html#feed-gtin"><span class="std std-ref">GTIN</span></a>,
+<a class="reference internal" href="feed-details.html#feed-itemgroupid"><span class="std std-ref">item group id</span></a>, <a class="reference internal" href="feed-details.html#feed-condition"><span class="std std-ref">condition</span></a>, <a class="reference internal" href="feed-details.html#feed-material"><span class="std std-ref">material</span></a>, <a class="reference internal" href="feed-details.html#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a>, <a class="reference internal" href="feed-details.html#feed-minenergyefficiencyclass"><span class="std std-ref">min energy efficiency class</span></a>,
+<a class="reference internal" href="feed-details.html#feed-maxenergyefficiencyclass"><span class="std std-ref">max energy efficiency class</span></a>, <a class="reference internal" href="feed-details.html#feed-color"><span class="std std-ref">color</span></a>, <a class="reference internal" href="feed-details.html#feed-gender"><span class="std std-ref">gender</span></a>, <a class="reference internal" href="feed-details.html#feed-agegroup"><span class="std std-ref">age group</span></a>, <a class="reference internal" href="feed-details.html#feed-size"><span class="std std-ref">size</span></a>, <a class="reference internal" href="feed-details.html#feed-unitpricingbasemeasure"><span class="std std-ref">unit pricing base measure</span></a>, <a class="reference internal" href="feed-details.html#feed-unitpricingmeasure"><span class="std std-ref">unit pricing measure</span></a>.</p>
+</details><details class="larger-collapse summary-i-have-a-google-feed-how-do-i-modify-it-properly-for-icas">
+<summary>I have a google feed, how do I modify it properly for iCAS?</summary><p>At the moment, we are still in transition to the desired scenario,
+where iCAS feed is a standard feed used for many other channels,
+enriched only with a minimal set of the fields prominent to our solution.</p>
+<p>Meanwhile we reccomend to contact us for the most actual “TSV feed creation guide”.</p>
+</details></section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="feed-details.html" class="btn btn-neutral float-right" title="Feed Fields"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="regions.html" class="btn btn-neutral" title="Regions"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The iCAS Team.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.126',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

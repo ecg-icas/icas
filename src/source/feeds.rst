@@ -3,14 +3,15 @@
 Feeds
 =====
 
-A feed is a file that contains a list of ads you want to advertise, and is a way to handle repetitive asynchronous bulk uploading of ads.
+A feed is a file that contains a list of ads you want to advertise and is a way to handle repetitive asynchronous bulk uploading of ads.
 
-Once a feed is created you can link your HTTP(s) URL through :ref:`post_feed_config` or the seller console frontend to make our system fetch your file and import your ads. After that, scheduled fetches happen once per day synchronising the system with any updates you may want to introduce to the ads list.  You can stop the feed advertising process using :ref:`post_feed_config`, or the console.
+Once a feed is created you can link your HTTP(s) URL through :ref:`post_feed_config` or the seller console frontend to make our system fetch your file and import your ads. 
+After that, scheduled fetches happen once per day synchronizing the system with any updates you may want to introduce to the ads list.  You can stop the feed advertising process using :ref:`post_feed_config`, or the console.
 
 .. note::
-    If you have a dedicated account manager, they can also support with ensuring the URL of your feed is properly connected to your account. 
+    If you have a dedicated account manager, they can also support you by ensuring the URL of your feed is properly connected to your account. 
 
-In order to let us download your feed and all the relevant linked content, the access to our outgoing IPs should be whitelisted as described in :ref:`section of the Sellside API<overview_image_downloads>`.
+In order to let us download your feed and all the relevant linked content, access to our outgoing IPs should be whitelisted as described in :ref:`section of the Sellside API<overview_image_downloads>`.
 
 
 File Format
@@ -23,10 +24,8 @@ Information on the most actual set of supported data is described on the :ref:`d
 .. note::
     Currently, we have introduced a number of new fields for describing the feed ad. 
     It contains a larger subset of what is considered a 'widely adopted market standard'. 
-    The new fieds follow specification stated in manual for `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`__ customers.
-    This is a part of our general strategy, to minimize the overhead needed to integrate your feed with iCAS versus the other advertising channels.
-    We will gradually decrease the reliance of the ad categorisation algorithms from the tenant specific categories, and attributes, 
-    toward the standard fields. For more information see *Scenario's and Questions* section. 
+    The new fields follow specifications stated in manual for `Google Merchant Center <https://support.google.com/merchants/answer/7052112>`__ customers.
+    For more information see *FAQ* section. 
 
 For instructions on how to create your feed in specific formats, please expand the relevant sections.
 
@@ -64,10 +63,10 @@ or warnings on ads, such as missing mandatory attributes or too low CPC etc.
 
 .. _feeds_qna:
 
-Scenario's & Questions
-----------------------
+Frequently Asked Questions
+--------------------------
 
-Below are some common asked-for scenarios and questions with their explanations/answers.
+Below are some common scenarios and questions with their explanations/answers.
 
 .. collapse:: What happens if my feed file cannot be fetched?
     :class: larger-collapse
@@ -82,7 +81,7 @@ Below are some common asked-for scenarios and questions with their explanations/
     When a feed file is empty, all ads of the user will be paused. 
     An empty file means the desired list of ads to be live is empty, so all active ads are paused. 
     Note that this also means that all ads which are in statuses BUDGET_REACHED or DAILY_BUDGET_REACHED are also paused.
-    If you want to pause your entire ads inventory, you can download and use the file below.
+    If you want to pause your entire ad inventory, you can download and use the file below.
 
     .. raw:: html
 
@@ -103,9 +102,9 @@ Below are some common asked-for scenarios and questions with their explanations/
 .. collapse:: Can I modify my feed ads via frontend / API?
     :class: larger-collapse
 
-    The feed file considered "the desired set of ads to be live for a user". 
+    The feed file is considered "the desired set of ads to be live for a user". 
     With every daily import, all the ads will be (re)set to their representing feed values. 
-    This means you can see changes made throuh API or frontend undone after a successful feed import.
+    This means you can see changes made through API or web interface undone after a successful feed import.
 
 .. collapse:: I have updated my feed images, and after the successful import there is no change.
     :class: larger-collapse
@@ -115,10 +114,10 @@ Below are some common asked-for scenarios and questions with their explanations/
     image URL to force a re-processing of the ad and its images. Make sure to not change this
     for every feed import, but only when you require images to be re-processed.
 
-.. collapse:: What does happens when my XML does not validate against XSD?
+.. collapse:: What happens when my XML does not validate against XSD?
     :class: larger-collapse
 
-    If the fetched XML filed does not validate against the XSD there will not be any changes
+    If the fetched XML file does not validate against the XSD there will be no changes
     to your ads. Existing ads will remain unchanged and no new ads will be created.
 
 .. collapse:: How to validate XML against XSD?
@@ -135,12 +134,12 @@ Below are some common asked-for scenarios and questions with their explanations/
 
     For small chunks of XML you can use online validators as well, such as `<http://www.utilities-online.info/xsdvalidation/>`_ or `<https://www.freeformatter.com/xml-validator-xsd.html>`_. Note that these have a
     limit on the size of the XML you can check, but it should be more than enough to be able
-    to test correctness of your structure.
+    to test the correctness of your structure.
 
 .. collapse:: When I create an XML feed, do I need to use 'admarkt' prefix for all the tags, as shown in the examples?
     :class: larger-collapse
 
-    The prefix (or more preciesly the namespace) is something invented by XML creators, with some intention of differentating domain concepts, that can have the same name, but a different meaning.
+    The prefix (or more precisely the namespace) is something invented by XML creators, with some intention to differentiate domain concepts, that can have the same name, but a different meaning.
 
     Look at the very first lines of yours (or example) xml:
 
@@ -162,7 +161,7 @@ Below are some common asked-for scenarios and questions with their explanations/
             <xyz:ad>
         ...
 
-    or event skipped:
+    or even skipped:
 
     .. code-block:: xml
         :emphasize-lines: 2
@@ -172,22 +171,21 @@ Below are some common asked-for scenarios and questions with their explanations/
             <ad>
         ...
 
-    It is up to you! The only thing that matters to us is the text "http://admarkt.marktplaats.nl/schemas/1.1",
-    which determines which schema version, we should use processing your file. 
+    It is up to you!
 
 .. _feed_new_fields:
 
 .. collapse:: How to use TSV format?
     :class: larger-collapse
 
-    We introduced TSV format in our system, to simplify the integration path. 
+    We introduced the TSV format in our system, to simplify the integration path. 
     Our customers commonly use spreadsheets to store and manipulate the data, 
-    and "TSV export" is a standard option for the majority of the spreadsheet programs.
+    and "TSV export" is a standard option for the majority of spreadsheet programs.
 
     The three important things to remember for successful integration:
 
     1. There are some :ref:`column names <feed-details>`, that we will look for, and expect to find in your TSV feed.
-    2. Multiline fields need to be escaped with double quotes, or all the line breakes, and tabulators changed to \\n, \\t.
+    2. Multiline fields need to be escaped with double quotes, or all the line breaks changed to \\n.
     3. Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
 
 .. collapse:: What are the newly added fields?
@@ -197,15 +195,4 @@ Below are some common asked-for scenarios and questions with their explanations/
     :ref:`feed_mpn`, :ref:`feed_googleProductCategory`, :ref:`feed_productType`, :ref:`feed_brand`, :ref:`feed_gtin`, 
     :ref:`feed_itemGroupId`, :ref:`feed_condition`, :ref:`feed_material`, :ref:`feed_energyEfficiencyClass`, :ref:`feed_minEnergyEfficiencyClass`,
     :ref:`feed_maxEnergyEfficiencyClass`, :ref:`feed_color`, :ref:`feed_gender`, :ref:`feed_ageGroup`, :ref:`feed_size`, :ref:`feed_unitPricingBaseMeasure`, :ref:`feed_unitPricingMeasure`.
-
-.. collapse:: I have a google feed, how do I modify it properly for iCAS?
-    :class: larger-collapse
-
-    At the moment, we are still in transition to the desired scenario, 
-    where iCAS feed is a standard feed used for many other channels, 
-    enriched only with a minimal set of the fields prominent to our solution.
-
-    Meanwhile we reccomend to contact us for the most actual "TSV feed creation guide".   
-
-
 

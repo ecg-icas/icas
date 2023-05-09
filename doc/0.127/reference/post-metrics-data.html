@@ -1,0 +1,1053 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>POST /metrics/data &mdash; iCAS Sellside API 0.126 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="iCAS Sellside API 0.126 documentation" href="../index.html"/>
+        <link rel="up" title="API Reference" href="../api-reference.html"/>
+        <link rel="next" title="Campaign Status" href="campaign-status.html"/>
+        <link rel="prev" title="GET /metrics/report" href="get-metrics-report.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> iCAS Sellside API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#media-types">Media Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#customize-response-body">Customize response body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#dates-and-times">Dates and Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#prices-and-currencies">Prices and Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#http-response-codes-and-error-handling">HTTP Response Codes and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-an-access-token">Getting an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#using-an-access-token">Using an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#scopes">Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-rendering">Attribute Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html#category-attributes">Category Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../regions.html">Regions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-ids">Region Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-levels">Region Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-label">Region label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-center">Region center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#leaf-regions">Leaf Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feeds.html">Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#file-format">File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#errors">Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feed-details.html">Feed Fields</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#feed-vendorid">Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#externalid">externalId</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#seller-name">seller name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#title">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#description">description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#category-id">category id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#status">status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#url">url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#vanity-url">vanity url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#price-type">price type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#price">price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#original-price">original price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#product-images">product images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#attributes">attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#budget-details">budget details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#shipping-pick-up">shipping &amp; pick up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#phone-number">phone number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#email-advertiser">email advertiser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#region-id">region id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#micro-tip">micro tip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#mpn">MPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#google-product-category">google product category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#product-type">product type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#brand">brand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#gtin">GTIN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#item-group-id">item group id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#condition">condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#material">material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#energy-efficiency-class">energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#min-energy-efficiency-class">min energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#max-energy-efficiency-class">max energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#color">color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#gender">gender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#age-group">age group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#size">size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#unit-pricing-base-measure">unit pricing base measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#unit-pricing-measure">unit pricing measure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#dimensions-and-metrics">Dimensions and Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#time-ranges">Time Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#time-aggregation">Time Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#filters">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#sorting">Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#pagination-with-offset-and-limit">Pagination with offset and limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#enrichment">Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#query-and-response">Query and Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../error-handling.html">Error Handling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api-reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-ad.html">GET /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status/{status}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-image.html">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-empty.html">GET /feed/empty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">iCAS Sellside API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
+      
+    <li>POST /metrics/data</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/reference/post-metrics-data.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="post-metrics-data">
+<span id="index-0"></span><span id="id1"></span><h1>POST /metrics/data<a class="headerlink" href="#post-metrics-data" title="Permalink to this heading">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We introduce a new monetary unit of micros across our product, where <strong>one cent equals 10000 micros</strong>. <strong>One micro is 1-millionth of the local tenant currency</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
+<p>We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
+<p>This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.</p>
+</div>
+<section id="v2">
+<h2>V2<a class="headerlink" href="#v2" title="Permalink to this heading">¶</a></h2>
+<p>V2 removes <code class="docutils literal notranslate"><span class="pre">am:cpc</span></code> from dimensions. It replaces <code class="docutils literal notranslate"><span class="pre">am:spent</span></code>, <code class="docutils literal notranslate"><span class="pre">am:avgCPC</span></code>, <code class="docutils literal notranslate"><span class="pre">am:eCPC</span></code>, <code class="docutils literal notranslate"><span class="pre">am:sessionECPC</span></code> metrics with their corresponding <code class="docutils literal notranslate"><span class="pre">am:spentMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">am:avgBidMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">am:eSpentMicros</span></code>, <code class="docutils literal notranslate"><span class="pre">am:sessionESpentMicros</span></code>. It replaces <code class="docutils literal notranslate"><span class="pre">am:currentAdCPC</span></code> enrichment with <code class="docutils literal notranslate"><span class="pre">am:currentAdBidMicros</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/json</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Content-Type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.metrics.data-v2+json</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>This URL returns the requested reporting metrics in a format described in the new <a class="reference internal" href="../reporting.html#metrics-reporting"><span class="std std-ref">Reporting</span></a> API.</p>
+</section>
+<section id="v1">
+<h2>V1<a class="headerlink" href="#v1" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console_ro</span></code> or <code class="docutils literal notranslate"><span class="pre">api_ro</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/json</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Content-Type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.metrics.data-v1+json</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="query-and-response">
+<h2>Query and Response<a class="headerlink" href="#query-and-response" title="Permalink to this heading">¶</a></h2>
+<section id="query">
+<h3>Query<a class="headerlink" href="#query" title="Permalink to this heading">¶</a></h3>
+<p>The metrics query should be provided as a JSON object of type <a class="reference internal" href="#metrics-request">Metrics Request</a>, which has these minimum requirements:</p>
+<ul class="simple">
+<li><p>At least one valid entry in the  <a class="reference internal" href="../reporting.html#id2"><span class="std std-ref">Time Ranges</span></a> field.</p></li>
+<li><p>At least one valid entry in the <a class="reference internal" href="../reporting.html#id1"><span class="std std-ref">Metrics</span></a> field.</p></li>
+</ul>
+<p>Here is a sample request with all top-level query fields expanded:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;timeRanges&quot;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;lastWeek&quot;</span>
+  <span class="p">}],</span>
+  <span class="s2">&quot;aggregate&quot;</span><span class="p">:</span> <span class="s2">&quot;daily&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span> <span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span> <span class="s2">&quot;am:impressions&quot;</span><span class="p">,</span> <span class="s2">&quot;am:engagementCTR&quot;</span><span class="p">],</span>
+  <span class="s2">&quot;sorts&quot;</span><span class="p">:[{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="s2">&quot;direction&quot;</span><span class="p">:</span><span class="s2">&quot;asc&quot;</span><span class="p">}],</span>
+  <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1235</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;am:regionID&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;am:currentAdCategoryL1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;am:currentAdStartDate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;am:currentAdEndDate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;am:currentAdRegion&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;am:currentAdImage&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="metrics-request">
+<h4>Metrics Request<a class="headerlink" href="#metrics-request" title="Permalink to this heading">¶</a></h4>
+<p>The data model of the request has the following structure:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">timeRange</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;aggregate&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;sorts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">sort</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">filter</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;offset&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;searchPhrase&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timeRanges</span></code></p></td>
+<td><p>Array of <a class="reference internal" href="../reporting.html#id2"><span class="std std-ref">Time Ranges</span></a> objects, separated by commas</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">aggregate</span></code></p></td>
+<td><p>One of <a class="reference internal" href="../reporting.html#id3"><span class="std std-ref">Time Aggregation</span></a> string values</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code></p></td>
+<td><p>Array of dimensions, separated by commas</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">metrics</span></code></p></td>
+<td><p>Array of metrics, separated by commas. At least one element is mandatory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sorts</span></code></p></td>
+<td><p>Array of <a class="reference internal" href="../reporting.html#sorts"><span class="std std-ref">Sort</span></a>  objects, separated by commas</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filters</span></code></p></td>
+<td><p>Array of <a class="reference internal" href="../reporting.html#id4"><span class="std std-ref">Filters</span></a> objects, separated by commas</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enrichment</span></code></p></td>
+<td><p>Array of ad enrichment fields, separated by commas</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">limit</span></code></p></td>
+<td><p>Number of elements in the response, per time range. By default there is no limit</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">offset</span></code></p></td>
+<td><p>Index of first row of the requested data (per time range), beginning with 0</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">searchPhrase</span></code></p></td>
+<td><p>String to match against an ad title</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="response">
+<h3>Response<a class="headerlink" href="#response" title="Permalink to this heading">¶</a></h3>
+<p>The response body of the API request is a JSON object of <a class="reference internal" href="#metrics-response">Metrics Response</a> type. Here is a sample response for the sample request above.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-10 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;4444&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mf">0.634</span><span class="p">],</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #4444&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-02-10 10:15:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;fsd23432&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;City of Toronto&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://mp.images.icas.io/api/v1/a6519ad0/images/cd/cd41d66f-ff99-4abc-8ea8-ef2131c92b8e?rule=r-726x726&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-11 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.244</span><span class="p">],</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://mp.images.icas.io/api/v1/a6519ad0/images/66/6628f902-6c59-4c71-bf37-8d127a53e277?rule=r-726x726&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-12 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;4444&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mf">0.252</span><span class="p">],</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #4444&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-02-10 10:15:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;fsd23432&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;City of Toronto&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://mp.images.icas.io/api/v1/a6519ad0/images/fb/fba866a4-ff7b-4134-bb58-c12cfa02649e?rule=r-726x726&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-13 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mf">0.312</span><span class="p">],</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://mp.images.icas.io/api/v1/a6519ad0/images/d7/d7d25c7b-4494-491c-980a-7f6cdde14c21?rule=r-726x726&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2018-01-14 00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mf">0.543</span><span class="p">]</span>
+        <span class="s2">&quot;enrichment&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Some title of ad #5555&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Category L1 description&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-05-11 09:10:15&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2016-07-11 06:10:10&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;123425d&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Canada&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;https://mp.images.icas.io/api/v1/a6519ad0/images/f1/f16052a4-c08a-480a-855e-cbc4cd3a8e59?rule=r-726x726&quot;</span><span class="p">,</span>
+
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<section id="metrics-response">
+<h4>Metrics Response<a class="headerlink" href="#metrics-response" title="Permalink to this heading">¶</a></h4>
+<p>The data model of the response has the following structure:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">],</span>
+<span class="w">                    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span>
+<span class="w">                    </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">,</span><span class="w"> </span><span class="p">...],</span>
+<span class="w">        </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">integer</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rows</span></code></p></td>
+<td><p>Array of <code class="docutils literal notranslate"><span class="pre">dimensions</span></code>, <code class="docutils literal notranslate"><span class="pre">metrics</span></code> and <code class="docutils literal notranslate"><span class="pre">enrichment</span></code> values. Each element is one row of a response</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code></p></td>
+<td><p>Array of dimension values for this row, in string format</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metrics</span></code></p></td>
+<td><p>Array of metric values for this row, in number format</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enrichment</span></code></p></td>
+<td><p>Array of enrichment values for this row, in string format. Valid only if <code class="docutils literal notranslate"><span class="pre">am:adID</span></code> is in the requested dimensions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">count</span></code></p></td>
+<td><p>Actual number of rows returned</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> field contains an array of objects, one for each of the requested <a class="reference internal" href="../reporting.html#id2"><span class="std std-ref">Time Ranges</span></a>. It is <strong>important to remember</strong> that the order in which the <code class="docutils literal notranslate"><span class="pre">metrics</span></code>, <code class="docutils literal notranslate"><span class="pre">dimensions</span></code>, and <code class="docutils literal notranslate"><span class="pre">enrichment</span></code> fields are requested is the same order in which they are listed in the response. The order of the objects in the <cite>rows</cite> array is not guaranteed to be deterministic unless explicit <cite>Sorting &lt;Sorts&gt;</cite> is used.</p>
+</section>
+</section>
+</section>
+<section id="examples">
+<span id="examples-post-metrics-data"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<p>To understand the concept of dimensions and metrics, some examples of request and response are provided below, gradually increasing in complexity. In addition, a “tabular” view of the response is provided; in our experience it makes it easier to grasp these concepts.</p>
+<section id="example-1">
+<h3>Example 1:<a class="headerlink" href="#example-1" title="Permalink to this heading">¶</a></h3>
+<p>Get all clicks and impressions for category <code class="docutils literal notranslate"><span class="pre">1234</span></code> for the previous week:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1483</span><span class="p">,</span><span class="w"> </span><span class="mf">36623</span><span class="p">]</span><span class="w"> </span><span class="c1">// 1483 clicks, 36623 impressions</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>am:clicks</p></th>
+<th class="head"><p>am:impressions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1483</p></td>
+<td><p>36623</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-2">
+<h3>Example 2:<a class="headerlink" href="#example-2" title="Permalink to this heading">¶</a></h3>
+<p>Get all clicks and impressions for categories <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code> for the previous week, but split performance metrics per category:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">]</span><span class="w"> </span><span class="c1">// 200 clicks, 400 impressions for category &quot;1234&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>am:categoryID</p></th>
+<th class="head"><p>am:clicks</p></th>
+<th class="head"><p>am:impressions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1234</p></td>
+<td><p>200</p></td>
+<td><p>400</p></td>
+</tr>
+<tr class="row-odd"><td><p>5678</p></td>
+<td><p>300</p></td>
+<td><p>400</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-3">
+<h3>Example 3:<a class="headerlink" href="#example-3" title="Permalink to this heading">¶</a></h3>
+<p>Get all clicks and impressions for categories <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code> for the previous week, but split performance metrics per day and category. In addition, sort by date in ascending direction:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:impressions&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;sorts&quot;</span><span class="o">:</span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="s2">&quot;am:date&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;direction&quot;</span><span class="o">:</span><span class="s2">&quot;asc&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-08 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">34</span><span class="p">,</span><span class="w"> </span><span class="mf">67</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-09 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">19</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">90</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;2018-12-14 00:00:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;5678&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">43</span><span class="p">,</span><span class="w"> </span><span class="mf">76</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">54</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>am:date</p></th>
+<th class="head"><p>am:categoryID</p></th>
+<th class="head"><p>am:clicks</p></th>
+<th class="head"><p>am:impressions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2018-12-08 00:00:00</p></td>
+<td><p>1234</p></td>
+<td><p>11</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p>2018-12-08 00:00:00</p></td>
+<td><p>5678</p></td>
+<td><p>9</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>2018-12-09 00:00:00</p></td>
+<td><p>1234</p></td>
+<td><p>34</p></td>
+<td><p>67</p></td>
+</tr>
+<tr class="row-odd"><td><p>2018-12-09 00:00:00</p></td>
+<td><p>5678</p></td>
+<td><p>19</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2018-12-14 00:00:00</p></td>
+<td><p>1234</p></td>
+<td><p>12</p></td>
+<td><p>90</p></td>
+</tr>
+<tr class="row-even"><td><p>2018-12-14 00:00:00</p></td>
+<td><p>5678</p></td>
+<td><p>43</p></td>
+<td><p>76</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-4">
+<h3>Example 4:<a class="headerlink" href="#example-4" title="Permalink to this heading">¶</a></h3>
+<p>Get all clicks, and average CPC for categories <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:avgCPC&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor11111&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor33333&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">34</span><span class="p">,</span><span class="w">  </span><span class="mf">2.3</span><span class="p">],</span>
+<span class="w">                </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor33333&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>am:adID</p></th>
+<th class="head"><p>am:clicks</p></th>
+<th class="head"><p>am:avgCPC</p></th>
+<th class="head"><p>am:currentAdTitle</p></th>
+<th class="head"><p>am:currentAdVendorID</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>11111</p></td>
+<td><p>11</p></td>
+<td><p>4.5</p></td>
+<td><p>Ad title #11111</p></td>
+<td><p>vendor11111</p></td>
+</tr>
+<tr class="row-odd"><td><p>33333</p></td>
+<td><p>9</p></td>
+<td><p>3.0</p></td>
+<td><p>Ad title #33333</p></td>
+<td><p>vendor33333</p></td>
+</tr>
+<tr class="row-even"><td><p>22222</p></td>
+<td><p>34</p></td>
+<td><p>2.3</p></td>
+<td><p>Ad title #22222</p></td>
+<td><p>vendor22222</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-5">
+<h3>Example 5:<a class="headerlink" href="#example-5" title="Permalink to this heading">¶</a></h3>
+<p>Get all clicks, and average spent micros for categories <code class="docutils literal notranslate"><span class="pre">1234</span></code> and <code class="docutils literal notranslate"><span class="pre">5678</span></code> for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">sellside</span><span class="o">/</span><span class="nx">metrics</span><span class="o">/</span><span class="nx">data</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">data</span><span class="o">-</span><span class="nx">v2</span><span class="o">+</span><span class="nx">json</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;timeRanges&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;period&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lastWeek&quot;</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:adID&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;am:clicks&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:avgSpentMicros&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;filters&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;field&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;am:categoryID&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;operator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;in&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1234</span><span class="p">,</span><span class="w"> </span><span class="mf">5678</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;am:currentAdTitle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;am:currentAdVendorID&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="s2">&quot;limit&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="s2">&quot;rows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;11111&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="mf">45000.0</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #11111&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor11111&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;33333&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor33333&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;dimensions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;22222&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;metrics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">34</span><span class="p">,</span><span class="w">  </span><span class="mf">2.3</span><span class="p">],</span>
+<span class="w">                </span><span class="s2">&quot;enrichment&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Ad title #33333&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;vendor33333&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">    </span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>am:adID</p></th>
+<th class="head"><p>am:clicks</p></th>
+<th class="head"><p>am:avgSpentMicros</p></th>
+<th class="head"><p>am:currentAdTitle</p></th>
+<th class="head"><p>am:currentAdVendorID</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>11111</p></td>
+<td><p>11</p></td>
+<td><p>45000.0</p></td>
+<td><p>Ad title #11111</p></td>
+<td><p>vendor11111</p></td>
+</tr>
+<tr class="row-odd"><td><p>33333</p></td>
+<td><p>9</p></td>
+<td><p>30000.0</p></td>
+<td><p>Ad title #33333</p></td>
+<td><p>vendor33333</p></td>
+</tr>
+<tr class="row-even"><td><p>22222</p></td>
+<td><p>34</p></td>
+<td><p>23000.0</p></td>
+<td><p>Ad title #22222</p></td>
+<td><p>vendor22222</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="final-remarks">
+<h3>Final remarks:<a class="headerlink" href="#final-remarks" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>In the <a class="reference internal" href="../reporting.html#sql-note"><span class="std std-ref">SQL note</span></a>, the enrichment fields can be seen as a left outer join operation.</p></li>
+<li><p>The reporting numbers may slightly differ (±0.005%) from the final billing values, due to the nature of the system where we store the reporting data.</p></li>
+<li><p>The API <strong>does not allow to filter on the current status of ads</strong>, which means the reporting numbers apply for <strong>all</strong> ads, including those that have been deleted in the meantime. Depending on API clients feedback, we might revisit the API and add support for such filtering in the future.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
+<p>Each error contains a <code class="docutils literal notranslate"><span class="pre">code</span></code> and <code class="docutils literal notranslate"><span class="pre">text</span></code> attributes providing a numeric error code and a simple English error message. An error may contain a <code class="docutils literal notranslate"><span class="pre">field</span></code> attribute describing the field where the error occurred and an additonal <code class="docutils literal notranslate"><span class="pre">arg</span></code> attribute further specifying the error.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Code</p></th>
+<th class="head"><p>Message</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>entire response object</p></td>
+<td><p>1000</p></td>
+<td><p>internal error</p></td>
+<td><p>Failed to execute query</p></td>
+</tr>
+<tr class="row-odd"><td><p>entire request object</p></td>
+<td><p>1005</p></td>
+<td><p>invalid json</p></td>
+<td><p>Could not parse request data</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">am:date</span></code></p></td>
+<td><p>2000</p></td>
+<td><p>missing argument</p></td>
+<td><p>The field ‘aggregate’ was missing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">am:metrics</span></code></p></td>
+<td><p>2000</p></td>
+<td><p>missing argument</p></td>
+<td><p>The field ‘metrics’ was missing</p></td>
+</tr>
+<tr class="row-even"><td><p>any non-allowed field</p></td>
+<td><p>2001</p></td>
+<td><p>invalid argument</p></td>
+<td><p>The value of field ‘dimensions:[am:wrongDimension]’ was invalid</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="campaign-status.html" class="btn btn-neutral float-right" title="Campaign Status"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="get-metrics-report.html" class="btn btn-neutral" title="GET /metrics/report"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The iCAS Team.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.126',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

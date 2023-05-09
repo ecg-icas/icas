@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.126 documentation</title>
+  <title>PUT /ad/{id} &mdash; iCAS Sellside API 0.127 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="iCAS Sellside API 0.126 documentation" href="../index.html"/>
+    <link rel="top" title="iCAS Sellside API 0.127 documentation" href="../index.html"/>
         <link rel="up" title="API Reference" href="../api-reference.html"/>
         <link rel="next" title="PUT /ad/{id}/status/{status}" href="put-ad-id-status.html"/>
         <link rel="prev" title="POST /ad/prefill" href="post-ad-prefill.html"/> 
@@ -131,13 +131,50 @@
 <li class="toctree-l2"><a class="reference internal" href="../regions.html#leaf-regions">Leaf Regions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../feeds.html">XML Feeds</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#fields">Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feeds.html">Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#file-format">File Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feeds.html#errors">Errors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#character-encoding-line-terminators">Character encoding &amp; Line terminators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#whitelisting">Whitelisting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#example-xml">Example XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#frequently-asked-questions">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feed-details.html">Feed Fields</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#vendor-id">vendor id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#external-id">external id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#seller-name">seller name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#title">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#description">description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#category-id">category id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#status">status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#url">url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#vanity-url">vanity url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#price-type">price type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#price">price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#original-price">original price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#product-images">product images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#attributes">attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#budget-details">budget details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#shipping-pick-up">shipping &amp; pick-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#phone-number">phone number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#email-advertiser">email advertiser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#region-id">region id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#micro-tip">micro tip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#mpn">MPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#google-product-category">google product category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#product-type">product type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#brand">brand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#gtin">GTIN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#item-group-id">item group id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#condition">condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#material">material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#energy-efficiency-class">energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#min-energy-efficiency-class">min energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#max-energy-efficiency-class">max energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#color">color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#gender">gender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#age-group">age group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#size">size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#unit-pricing-base-measure">unit pricing base measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#unit-pricing-measure">unit pricing measure</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
@@ -253,8 +290,8 @@
 <span id="id2"></span><h2>PUT /ad/{id} v5<a class="headerlink" href="#put-ad-id-v5" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 80.0%" />
+<col style="width: 20%" />
+<col style="width: 80%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -274,7 +311,7 @@
 It is correct that V4 is skipped.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 100.0%" />
+<col style="width: 100%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>The fields related to <cite>price</cite> are consolidated into one mandatory <a class="reference internal" href="../ads.html#ad-priceobj"><span class="std std-ref">price</span></a> object.</p></td>
@@ -487,8 +524,8 @@ It is correct that V4 is skipped.</p>
 <span id="id3"></span><h2>PUT /ad/{id} v3<a class="headerlink" href="#put-ad-id-v3" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 80.0%" />
+<col style="width: 20%" />
+<col style="width: 80%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -686,8 +723,8 @@ This could be due to, for example, an action (like new website domain approval) 
 <span id="id5"></span><h2>PUT /ad/{id} v2<a class="headerlink" href="#put-ad-id-v2" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 80.0%" />
+<col style="width: 20%" />
+<col style="width: 80%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Scope</p></td>
@@ -1225,7 +1262,7 @@ following parameter to the request URL.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.126',
+            VERSION:'0.127',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

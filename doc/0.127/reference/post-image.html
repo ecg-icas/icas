@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>POST /image &mdash; iCAS Sellside API 0.126 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="iCAS Sellside API 0.126 documentation" href="../index.html"/>
+        <link rel="up" title="API Reference" href="../api-reference.html"/>
+        <link rel="next" title="GET /categories" href="get-categories.html"/>
+        <link rel="prev" title="GET /image/{id}" href="get-image.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> iCAS Sellside API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#media-types">Media Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#customize-response-body">Customize response body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#dates-and-times">Dates and Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#prices-and-currencies">Prices and Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#http-response-codes-and-error-handling">HTTP Response Codes and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-an-access-token">Getting an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#using-an-access-token">Using an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#scopes">Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-rendering">Attribute Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html#category-attributes">Category Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../regions.html">Regions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-ids">Region Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-levels">Region Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-label">Region label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-center">Region center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#leaf-regions">Leaf Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feeds.html">Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#file-format">File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#errors">Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#scenario-s-questions">Scenario’s &amp; Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feed-details.html">Feed Fields</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#feed-vendorid">Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#externalid">externalId</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#seller-name">seller name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#title">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#description">description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#category-id">category id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#status">status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#url">url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#vanity-url">vanity url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#price-type">price type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#price">price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#original-price">original price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#product-images">product images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#attributes">attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#budget-details">budget details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#shipping-pick-up">shipping &amp; pick up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#phone-number">phone number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#email-advertiser">email advertiser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#region-id">region id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#micro-tip">micro tip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#mpn">MPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#google-product-category">google product category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#product-type">product type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#brand">brand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#gtin">GTIN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#item-group-id">item group id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#condition">condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#material">material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#energy-efficiency-class">energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#min-energy-efficiency-class">min energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#max-energy-efficiency-class">max energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#color">color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#gender">gender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#age-group">age group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#size">size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#unit-pricing-base-measure">unit pricing base measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#unit-pricing-measure">unit pricing measure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#dimensions-and-metrics">Dimensions and Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#time-ranges">Time Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#time-aggregation">Time Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#filters">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#sorting">Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#pagination-with-offset-and-limit">Pagination with offset and limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#enrichment">Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#query-and-response">Query and Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../error-handling.html">Error Handling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api-reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="get-ad.html">GET /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ad-id.html">GET /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ad-vendor-id.html">GET /ad/byVendor/{vendorId}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ad-id-funnel.html">GET /ad/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ad-externalid-mapping.html">GET /ad/mapping/externalids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-ad.html">POST  /ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-ad-prefill.html">POST /ad/prefill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-ad-id.html">PUT /ad/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-ad-id-status.html">PUT /ad/{id}/status/{status}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="price-types.html">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-image.html">GET /image/{id}</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">POST /image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-categories.html">GET /categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-categories-statistics.html">GET /categories/statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-category-id.html">GET /category/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-category-id-funnel.html">GET /category/{id}/funnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-regions.html">GET /regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-region-id.html">GET /region/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-config.html">GET /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-feed-config.html">POST /feed/config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-import.html">GET /feed/import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-import-id-detail.html">GET /feed/import/{id}/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-xsd.html">GET /feed/xsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-feed-empty.html">GET /feed/empty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-report.html">GET /report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-report-detail.html">GET /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-report-detail-id.html">GET /report/detail/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-report-detail.html">POST /report/detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-report-summary.html">GET /report/summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-ads.html">GET /metrics/ads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-metrics-report.html">GET /metrics/report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-metrics-data.html">POST /metrics/data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-campaign.html">POST /campaign/</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign.html">GET /campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-campaign-id.html">GET /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id.html">PUT /campaign/{id}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-status.html">PUT /campaign/{id}/status/{status}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="put-campaign-id-budgets.html">PUT /campaign/{id}/budgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-user.html">GET /user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-codes.html">Error Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2020">Feb 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#dec-2019-reporting-v2">Dec 2019: ‘Reporting V2’</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">iCAS Sellside API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api-reference.html">API Reference</a> &raquo;</li>
+      
+    <li>POST /image</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/reference/post-image.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="post-image">
+<span id="id1"></span><h1>POST /image<a class="headerlink" href="#post-image" title="Permalink to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">console_rw</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Accept</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/sellside.image.list-v1+json,</span> <span class="pre">application/json</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Content-Type</p></td>
+<td><p>see example</p></td>
+</tr>
+</tbody>
+</table>
+<p>This URL allows uploading of images.
+An image upload request must be a multipart form-data request as specified in <a class="reference external" href="http://www.ietf.org/rfc/rfc2388.txt">RFC 2388</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The maximum image size is <strong>8MB</strong> and the supported image formats are: <strong>PNG</strong>, <strong>GIF</strong>, <strong>BMP</strong> and <strong>JPG</strong>.</p>
+</div>
+<p>All images are converted to <strong>JPG</strong> with maximum dimensions of <strong>1024x1024</strong> while the aspect ratio is maintained.</p>
+<p>On success the server returns map with the name and a unique identifier for that image. The name is taken from the
+<code class="docutils literal notranslate"><span class="pre">name</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">Content-Disposition</span></code> header.</p>
+<p>The unique identifier is then used to either fetch the image via <a class="reference internal" href="get-image.html#get-image"><span class="std std-ref">GET /image/{id}</span></a> or save it with a <a class="reference internal" href="post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a> or
+a <a class="reference internal" href="put-ad-id.html#put-ad-id"><span class="std std-ref">PUT /ad/{id}</span></a> request.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Images which are not saved are removed after <strong>30 minutes</strong>.</p>
+</div>
+<p>If the request contains invalid images, the server returns <strong>400 Bad Request</strong> with a list of errors.</p>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Error message</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2001</p></td>
+<td><p>invalid argument</p></td>
+<td><p>the uploaded image is empty</p></td>
+</tr>
+<tr class="row-odd"><td><p>2008</p></td>
+<td><p>file too large</p></td>
+<td><p>file size exceeds the allowed maximum</p></td>
+</tr>
+<tr class="row-even"><td><p>2018</p></td>
+<td><p>invalid image format</p></td>
+<td><p>the image format is not <strong>PNG</strong>, <strong>GIF</strong> or <strong>JPG</strong></p></td>
+</tr>
+</tbody>
+</table>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">image</span>
+<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">multipart</span><span class="o">/</span><span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span><span class="w"> </span><span class="nx">boundary</span><span class="o">=</span><span class="nx">a1b8</span>
+
+<span class="o">--</span><span class="nx">a1b8</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Disposition</span><span class="o">:</span><span class="w"> </span><span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;image1&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">filename</span><span class="o">=</span><span class="s2">&quot;logo.png&quot;</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">octet</span><span class="o">-</span><span class="nx">stream</span>
+
+<span class="p">...</span><span class="nx">image</span><span class="w"> </span><span class="nx">bytes</span><span class="p">...</span>
+<span class="o">--</span><span class="nx">a1b8</span>
+
+<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">list</span><span class="o">-</span><span class="nx">v1</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mf">8</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;image1&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://localhost/api/sellside/image/9beac3db90c27aa8476cb880a362ceba/b2c11184b33bdd3e12a1f46152d37a89.jpg&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="get-categories.html" class="btn btn-neutral float-right" title="GET /categories"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="get-image.html" class="btn btn-neutral" title="GET /image/{id}"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The iCAS Team.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.126',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
