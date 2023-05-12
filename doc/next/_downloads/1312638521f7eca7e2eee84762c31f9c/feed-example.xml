@@ -22,7 +22,6 @@
         <admarkt:budget>
             <admarkt:totalBudget>10000</admarkt:totalBudget>
             <admarkt:dailyBudget>1000</admarkt:dailyBudget>
-            <admarkt:cpc>10</admarkt:cpc>
             <admarkt:autobid>true</admarkt:autobid>
         </admarkt:budget>
         <admarkt:shippingOptions>
@@ -75,5 +74,6 @@
         <admarkt:color>black/white/green</admarkt:color>
         <admarkt:gender>unisex</admarkt:gender>
         <admarkt:ageGroup>adult</admarkt:ageGroup>
+        <admarkt:itemGroupId>BC23456</admarkt:itemGroupId>
     </admarkt:ad>
 </admarkt:ads>
