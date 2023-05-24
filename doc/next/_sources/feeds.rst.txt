@@ -136,6 +136,16 @@ Below are some common scenarios and questions with their explanations/answers.
     limit on the size of the XML you can check, but it should be more than enough to be able
     to test the correctness of your structure.
 
+    .. raw:: html
+
+            <embed>
+                <form action="https://admarkt.marktplaats.nl/api/sellside/feed/xsd">
+                    <input type="submit" value="Download XSD" />
+                </form>
+                <br><br>
+            </embed>
+
+
 .. collapse:: When I create an XML feed, do I need to use 'admarkt' prefix for all the tags, as shown in the examples?
     :class: larger-collapse
 
