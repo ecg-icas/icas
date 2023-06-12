@@ -39,6 +39,7 @@ Field                   Code    Error message               Description
 regionIds               2000    missing argument            The parameter needs to be present
 regionIds               2001    invalid argument            The comma-separated-list contains one or more non-integer values
 regionIds               2004    too short                   The value needs to be non-empty
+regionIds               2005    too long                    The length of comma-separated-list needs to not be greater than 100
 ====================    ====    =======================     ==============================================================================
 
 Example
