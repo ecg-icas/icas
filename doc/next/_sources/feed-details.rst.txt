@@ -1381,7 +1381,7 @@ Definition follows `Google Merchant Center <https://support.google.com/merchants
 
 |
 
-Allowed values: *newborn*, *infant*, *toddler*, *children*, *adult*
+Allowed values: *newborn*, *infant*, *toddler*, *kids*, *adult*
 
 .. index:: size
 .. _feed_size: 
