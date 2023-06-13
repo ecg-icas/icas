@@ -6,6 +6,10 @@ PUT /ad/{id}/status/{status}
 
 :ref:`put_ad_status_v5` | :ref:`put_ad_status`
 
+.. warning::
+
+    :ref:`put_ad_status` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`put_ad_status_v5`.
+
 .. _put_ad_status_v5:
 
 PUT /ad/{id}/status/{status} v5:

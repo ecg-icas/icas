@@ -1,4 +1,4 @@
-.. code-block:: javascript
+.. code-block:: none
 
     GET /api/sellside/feed/import/123/detail
     Accept: application/sellside.feedimportdetail-v2+json, application/json

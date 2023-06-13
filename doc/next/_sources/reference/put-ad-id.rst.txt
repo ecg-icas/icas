@@ -6,6 +6,12 @@ PUT /ad/{id}
 
 :ref:`put_ad_id_v5` | :ref:`put_ad_id_v3` | :ref:`put_ad_id_v2`
 
+.. warning::
+
+    :ref:`put_ad_id_v2` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`put_ad_id_v5`.
+
+    :ref:`put_ad_id_v3` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`put_ad_id_v5`.
+
 .. _put_ad_id_v5:
 
 PUT /ad/{id} v5
