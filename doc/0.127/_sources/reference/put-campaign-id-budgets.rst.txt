@@ -18,7 +18,7 @@ PUT /campaign{id}/budgets v5
    - ``api_rw`` or ``console_rw``
 
  * - Accept
-   - ``application/sellside.campaign-v5+json, application/json``
+   - ``application/sellside.campaign.budgets-v5+json``
 
 Example
 """"""" 
