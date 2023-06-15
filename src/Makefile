@@ -66,6 +66,12 @@ check-version:
     $(error release versioning parameter not set in conf.py)
     endif
 
+.PHONY: check-poetry
+check-poetry:
+	if ! command -v poetry &> /dev/null; then \
+		echo 'Error: poetry is not installed. Please run "brew install poetry"'; \
+		exit 1; \
+	fi
 
 clean:
 	-rm -rf $(BUILDDIR)/*
@@ -76,7 +82,7 @@ install: html
 	@echo
 	@echo "Install finished. The HTML pages are in $(WEBAPPDIR)."
 
-html:
+html: check-poetry
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
