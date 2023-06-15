@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "icas"
+version = "1.0.0"
+readme = "README.md"
+description = "iCAS documentation"
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+sphinx = "^6"
+sphinx-toolbox = "^3.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
