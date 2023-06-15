@@ -68,10 +68,14 @@ check-version:
 
 .PHONY: check-poetry
 check-poetry:
-	if ! command -v poetry &> /dev/null; then \
+	@if ! command -v poetry &> /dev/null; then \
 		echo 'Error: poetry is not installed. Please run "brew install poetry"'; \
 		exit 1; \
 	fi
+
+.PHONE: poetry-install
+poetry-install: check-poetry
+	poetry install	
 
 clean:
 	-rm -rf $(BUILDDIR)/*
@@ -82,7 +86,7 @@ install: html
 	@echo
 	@echo "Install finished. The HTML pages are in $(WEBAPPDIR)."
 
-html: check-poetry
+html: poetry-install
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
