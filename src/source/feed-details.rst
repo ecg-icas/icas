@@ -5,50 +5,6 @@ Feed Fields
 
 A set of required and optional fields defined by a feed for XML and TSV file formats are listed below.
 
-.. collapse:: XML
-
-    ====================================== ==================================== ===================  =========== 
-    Field                                  Description                          Restrictions         Mandatory 
-    ====================================== ==================================== ===================  =========== 
-    :ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
-    :ref:`feed_externalId`                 **deprecated**                       --                   --
-    :ref:`feed_sellerName`                 your company name                          max. 60 chars  no
-    :ref:`feed_t`                          product title                        see :ref:`feed_t`    yes
-    :ref:`feed_descr`                      product description                  :ref:`feed_descr`    yes       
-    :ref:`feed_categoryId`                 category identifier                  numeric, positive    yes       
-    :ref:`feed_status`                     desired status (default ACTIVE)      ACTIVE,PAUSED        no       
-    :ref:`feed_url`                        product URL                          max. 2048 chars      no        
-    :ref:`feed_vanityUrl`                  displayed URL                        max. 256 chars       no        
-    :ref:`feed_priceType`                  sales model for product              enum                 yes       
-    :ref:`feed_price`                      product price in cents if applicable positive integer     yes/no       
-    :ref:`feed_originalPrice`              original price before discount       positive integer     no        
-    :ref:`media <feed_media>`              product images                       :ref:`feed_media`    no
-    :ref:`feed_attr`                       collection of product attributes     :ref:`feed_attr`     no        
-    :ref:`budget <feed_budget>`            budget details                       :ref:`feed_budget`   no        
-    :ref:`shipping options <feed_ship>`    shipping options                     :ref:`feed_ship`     no
-    :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no        
-    :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
-    :ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no        
-    :ref:`feed_microTip`                   tiny product highlight               max. 18 chars        no
-    :ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no   
-    :ref:`feed_googleProductCategory`      google category for your product     string               no
-    :ref:`feed_productType`                customer product type                max. 750 chars       no    
-    :ref:`feed_brand`                      product brand name                   max. 70 chars        no
-    :ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no  
-    :ref:`feed_itemGroupId`                groups product variants in your      max. 50 chars        no
-    :ref:`feed_condition`                  condition of product                 enum                 no
-    :ref:`feed_material`                   main product fabrics or materials    max. 200 chars       no
-    :ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
-    :ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
-    :ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
-    :ref:`feed_color`                      product colors                       max. 100 chars       no
-    :ref:`feed_gender`                     gender product is designed for       enum                 no
-    :ref:`feed_ageGroup`                   age group product is intended for    enum                 no
-    :ref:`feed_size`                       size information                     enum                 no
-    :ref:`feed_unitPricingBaseMeasure`     denominator for product unit price   string               no
-    :ref:`feed_unitPricingMeasure`         measure and dimension of product     string               no
-    ====================================== ==================================== ===================  =========== 
-
 .. collapse:: TSV
 
     ========================================= ==================================== ===================  =========== 
@@ -97,6 +53,50 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     :ref:`feed_unitPricingMeasure`            measure and dimension of product     string               no
     ========================================= ==================================== ===================  =========== 
 
+.. collapse:: XML
+
+    ====================================== ==================================== ===================  =========== 
+    Field                                  Description                          Restrictions         Mandatory 
+    ====================================== ==================================== ===================  =========== 
+    :ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
+    :ref:`feed_externalId`                 **deprecated**                       --                   --
+    :ref:`feed_sellerName`                 your company name                          max. 60 chars  no
+    :ref:`feed_t`                          product title                        see :ref:`feed_t`    yes
+    :ref:`feed_descr`                      product description                  :ref:`feed_descr`    yes       
+    :ref:`feed_categoryId`                 category identifier                  numeric, positive    yes       
+    :ref:`feed_status`                     desired status (default ACTIVE)      ACTIVE,PAUSED        no       
+    :ref:`feed_url`                        product URL                          max. 2048 chars      no        
+    :ref:`feed_vanityUrl`                  displayed URL                        max. 256 chars       no        
+    :ref:`feed_priceType`                  sales model for product              enum                 yes       
+    :ref:`feed_price`                      product price in cents if applicable positive integer     yes/no       
+    :ref:`feed_originalPrice`              original price before discount       positive integer     no        
+    :ref:`media <feed_media>`              product images                       :ref:`feed_media`    no
+    :ref:`feed_attr`                       collection of product attributes     :ref:`feed_attr`     no        
+    :ref:`budget <feed_budget>`            budget details                       :ref:`feed_budget`   no        
+    :ref:`shipping options <feed_ship>`    shipping options                     :ref:`feed_ship`     no
+    :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no        
+    :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
+    :ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no        
+    :ref:`feed_microTip`                   tiny product highlight               max. 18 chars        no
+    :ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no   
+    :ref:`feed_googleProductCategory`      google category for your product     string               no
+    :ref:`feed_productType`                customer product type                max. 750 chars       no    
+    :ref:`feed_brand`                      product brand name                   max. 70 chars        no
+    :ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no  
+    :ref:`feed_itemGroupId`                groups product variants in your      max. 50 chars        no
+    :ref:`feed_condition`                  condition of product                 enum                 no
+    :ref:`feed_material`                   main product fabrics or materials    max. 200 chars       no
+    :ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
+    :ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
+    :ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
+    :ref:`feed_color`                      product colors                       max. 100 chars       no
+    :ref:`feed_gender`                     gender product is designed for       enum                 no
+    :ref:`feed_ageGroup`                   age group product is intended for    enum                 no
+    :ref:`feed_size`                       size information                     enum                 no
+    :ref:`feed_unitPricingBaseMeasure`     denominator for product unit price   string               no
+    :ref:`feed_unitPricingMeasure`         measure and dimension of product     string               no
+    ====================================== ==================================== ===================  =========== 
+
 |
 
 
@@ -117,18 +117,6 @@ of creating a new ad. **vendor id** is mandatory and, unique for each ad in the 
    Any change in the ad (including it re-appearing in the feed if it wasn't present the previous time) will update the
    ad and trigger image re-processing.
 
-.. collapse:: XML
-
-    Use **vendorId** tag name to encapsulate **vendor id**. 
-    
-    ========= ================================================
-    Example:	
-                
-                .. code-block:: html
-                        
-                    <admarkt:vendorId>15839942</admarkt:vendorId>
-    ========= ================================================
-
 .. collapse:: TSV
 
     Stored in **vendor id** column.
@@ -139,6 +127,18 @@ of creating a new ad. **vendor id** is mandatory and, unique for each ad in the 
                 .. code-block:: text
             
                     15839942
+    ========= ================================================
+
+.. collapse:: XML
+
+    Use **vendorId** tag name to encapsulate **vendor id**. 
+    
+    ========= ================================================
+    Example:	
+                
+                .. code-block:: html
+                        
+                    <admarkt:vendorId>15839942</admarkt:vendorId>
     ========= ================================================
 
 | 
@@ -172,15 +172,6 @@ seller name
 
 Use the **seller name** field to communicate your company name to be displayed.
 
-.. collapse:: XML
-
-    ======= ======================================================
-    Example	
-            .. code-block:: html
-            
-                <admarkt:sellerName>Cups, Caps &amp; Craps</admarkt:sellerName>
-    ======= ======================================================
-
 .. collapse:: TSV
 
     Stored in **seller name** column.
@@ -190,6 +181,15 @@ Use the **seller name** field to communicate your company name to be displayed.
             
                     Cups, Caps & Craps
     ========= ================================================
+
+.. collapse:: XML
+
+    ======= ======================================================
+    Example	
+            .. code-block:: html
+            
+                <admarkt:sellerName>Cups, Caps &amp; Craps</admarkt:sellerName>
+    ======= ======================================================
 
 | 
 
@@ -205,15 +205,6 @@ Use the title **title** field to clearly identify the product you are selling.
 The title is one of the most prominent parts of your ad or free listing. 
 A specific and accurate title will help us show your product to the right customers.
 
-.. collapse:: XML
-
-    ======= ====================================================
-    Example	
-            .. code-block:: html
-            
-                <admarkt:title>Goedkope A-merk herenfietsen</admarkt:title>
-    ======= ====================================================
-
 .. collapse:: TSV
 
     Stored in **title** column.
@@ -223,6 +214,15 @@ A specific and accurate title will help us show your product to the right custom
             .. code-block:: text
             
                 Goedkope A-merk herenfietsen
+    ======= ====================================================
+
+.. collapse:: XML
+
+    ======= ====================================================
+    Example	
+            .. code-block:: html
+            
+                <admarkt:title>Goedkope A-merk herenfietsen</admarkt:title>
     ======= ====================================================
 
 |
@@ -236,37 +236,6 @@ description
 """""""""""
 
 Use the **description** field to tell customers about the details of the product you are selling.
-
-.. collapse:: XML
-
-    ======= =================================================================================
-    Example .. code-block:: html 
-        
-                <admarkt:description><![CDATA[
-                    <p><strong><u>De goedkoopste webshop</u></strong> 
-                        <strong>voor tweedehands fietsen met garantie! 
-                        Gratis en rijklaar thuisbezorgd!</strong>
-                    </p>
-                    <p><strong><br></strong>
-                    </p>
-                    <ul>
-                        <li><strong>Laagste prijsgarantie</strong></li>
-                        <li>Fietsen <strong>100% rijklaar</strong>
-                        gratis thuisbezorgd</li>
-                        <li><strong>Ruime voorraad</strong>, voor ieder wat wils</li>
-                        <li>Snelle <strong>customer service</strong>
-                        via Whatsapp, bellen en e-mail</li>
-                        <li>1 <strong>maand garantie</strong></li>
-                        <li>Aangesloten bij <strong>Webwinkelkeur</strong></li>
-                    </ul>
-                    <strong><br></strong>
-                    <p>Check dus snel onze website en vind de fiets die bij je past!<br>
-                    </p>
-                    <strong><br></strong>
-                    <p>WhatsApp, bel of mail ons voor verdere vragen.
-                    </p>]]>
-                <admarkt:description/>
-    ======= =================================================================================
 
 .. collapse:: TSV
 
@@ -301,6 +270,37 @@ Use the **description** field to tell customers about the details of the product
                     </p>"
     ======= ====================================================
 
+.. collapse:: XML
+
+    ======= =================================================================================
+    Example .. code-block:: html 
+        
+                <admarkt:description><![CDATA[
+                    <p><strong><u>De goedkoopste webshop</u></strong> 
+                        <strong>voor tweedehands fietsen met garantie! 
+                        Gratis en rijklaar thuisbezorgd!</strong>
+                    </p>
+                    <p><strong><br></strong>
+                    </p>
+                    <ul>
+                        <li><strong>Laagste prijsgarantie</strong></li>
+                        <li>Fietsen <strong>100% rijklaar</strong>
+                        gratis thuisbezorgd</li>
+                        <li><strong>Ruime voorraad</strong>, voor ieder wat wils</li>
+                        <li>Snelle <strong>customer service</strong>
+                        via Whatsapp, bellen en e-mail</li>
+                        <li>1 <strong>maand garantie</strong></li>
+                        <li>Aangesloten bij <strong>Webwinkelkeur</strong></li>
+                    </ul>
+                    <strong><br></strong>
+                    <p>Check dus snel onze website en vind de fiets die bij je past!<br>
+                    </p>
+                    <strong><br></strong>
+                    <p>WhatsApp, bel of mail ons voor verdere vragen.
+                    </p>]]>
+                <admarkt:description/>
+    ======= =================================================================================
+
 |
 
 Restrictions: Any string, with minimum and maximum length determined by the category. See :ref:`categories`. URLs are not allowed as part of the description.
@@ -321,14 +321,6 @@ Use **category id** to place your product in the :ref:`categories` tree.
 
 Each product belongs to one and only one category.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:categoryId>945</admarkt:categoryId>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **category id** column.
@@ -338,6 +330,14 @@ Each product belongs to one and only one category.
             
                     PAUSED
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:categoryId>945</admarkt:categoryId>
+    ======= ===========================================================
 
 |
 
@@ -364,14 +364,6 @@ PAUSED The ad will be paused, effectively not found on the marketplace.
 The provided (desired) **status** may differ from the resulting one, depending on the other conditions.
 For instance, budget may be depleted, or you may have too many active ads already in the category.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:status>PAUSED</admarkt:status>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **status** column.
@@ -381,6 +373,14 @@ For instance, budget may be depleted, or you may have too many active ads alread
             
                     PAUSED
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:status>PAUSED</admarkt:status>
+    ======= ===========================================================
 
 |
 
@@ -395,14 +395,6 @@ url
 Utilize the **url** to establish a connection to your product page from the advertisement.
 This represents an external URL, which will be displayed on the ad detail page or search result page.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:url>https://www.bmw.de</admarkt:url>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **url** column.
@@ -412,6 +404,14 @@ This represents an external URL, which will be displayed on the ad detail page o
             
                     https://www.bmw.de
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:url>https://www.bmw.de</admarkt:url>
+    ======= ===========================================================
 
 |
 
@@ -425,14 +425,6 @@ vanity url
 
 Use **vanity url** to provide the text for the :ref:`feed_url` link.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:vanityUrl>BMW</admarkt:vanityUrl>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **vanity url** column.
@@ -442,6 +434,14 @@ Use **vanity url** to provide the text for the :ref:`feed_url` link.
             
                     BMW
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:vanityUrl>BMW</admarkt:vanityUrl>
+    ======= ===========================================================
 
 |
 
@@ -453,14 +453,6 @@ price type
 
 Use **price type** to define :ref:`pricing model<price_types>` for your product.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:priceType>FIXED_PRICE</admarkt:priceType>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **price type** column.
@@ -470,6 +462,14 @@ Use **price type** to define :ref:`pricing model<price_types>` for your product.
             
                     FIXED_PRICE
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:priceType>FIXED_PRICE</admarkt:priceType>
+    ======= ===========================================================
 
 |
 
@@ -486,14 +486,6 @@ The meaning of the value depends on the :ref:`feed_priceType`.
 
 If it is `FIXED_PRICE` or `BIDDING_FROM` then **price** is mandatory and needs to be greater than 0.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:price>1500</admarkt:price>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **price** column.
@@ -503,6 +495,14 @@ If it is `FIXED_PRICE` or `BIDDING_FROM` then **price** is mandatory and needs t
             
                     1500
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:price>1500</admarkt:price>
+    ======= ===========================================================
 
 |
 
@@ -517,14 +517,6 @@ original price
 Use **original price** to tell your product price before discount.
 Ignored if a seller does not have a discount feature enabled. 
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:originalPrice>1500</admarkt:originalPrice>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **original price** column.
@@ -534,6 +526,14 @@ Ignored if a seller does not have a discount feature enabled.
             
                     1500
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:originalPrice>1500</admarkt:originalPrice>
+    ======= ===========================================================
 
 |
 
@@ -550,23 +550,6 @@ You can provide multiple images for your product.
 
 All images will be resized if necessary to a size of maximum 1024px height and 1024px width (preserving the aspect ratio)
 The system will download the images and, if they meet the requirements, store them on our servers in several sizes.
-
-.. collapse:: XML
-
-    Use **<media>** tag for grouping your product images. 
-    **<media>** should contain from 0 to N **<image>** ordered elements, where the exact limit depends on the category in taxonomy. 
-    **<image>** elements must contain a complete URL link pointing to an image on a publicly available web server.
-    
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:media>
-                    <admarkt:image url="https://images.pexels.com/photos/62289/62289.jpeg"/>
-                    <admarkt:image url="https://images.pexels.com/photos/47547/47547.jpeg"/>
-                <admarkt:media/>
-    ======= ===========================================================
-
-    The images will be presented in the provided order. The first image is shown in search results and acts as the main image on the item page.
 
 .. collapse:: TSV
 
@@ -589,6 +572,23 @@ The system will download the images and, if they meet the requirements, store th
 
     All URLs must be complete links pointing to an image on a publicly available web server.
 
+.. collapse:: XML
+
+    Use **<media>** tag for grouping your product images. 
+    **<media>** should contain from 0 to N **<image>** ordered elements, where the exact limit depends on the category in taxonomy. 
+    **<image>** elements must contain a complete URL link pointing to an image on a publicly available web server.
+    
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:media>
+                    <admarkt:image url="https://images.pexels.com/photos/62289/62289.jpeg"/>
+                    <admarkt:image url="https://images.pexels.com/photos/47547/47547.jpeg"/>
+                <admarkt:media/>
+    ======= ===========================================================
+
+    The images will be presented in the provided order. The first image is shown in search results and acts as the main image on the item page.
+
 |
 
 Allowed image formats: JPEG, JPG, PNG, GIF\*, BMP.
@@ -603,6 +603,32 @@ attributes
 """"""""""
 
 Use **attributes** field to provide additional information on your product in a structured way.
+
+.. collapse:: TSV
+
+    Define your attribute as *name*:*value* pair in the **attributes** column.
+
+    ========= ========================
+     Example	 .. code-block:: text
+            
+                    model:Adams Family
+    ========= ========================
+
+    You can provide multiple attributes in a comma- separated list.
+
+    ========= ========================
+     Example	 .. code-block:: text
+            
+                    model:Adams Family,multiball:TRUE,screen size:32"
+    ========= ========================
+
+    If the name, or the value of your attribute contains commas, use quotes to escape it.
+
+    ========= ========================
+     Example	 .. code-block:: text
+            
+                    resolutions:"1024x768:24dpi,800x600:18dpi"
+    ========= ========================
 
 .. collapse:: XML
 
@@ -632,32 +658,6 @@ Use **attributes** field to provide additional information on your product in a 
                 </admarkt:attributes>
     ======= ===========================================================
 
-.. collapse:: TSV
-
-    Define your attribute as *name*:*value* pair in the **attributes** column.
-
-    ========= ========================
-     Example	 .. code-block:: text
-            
-                    model:Adams Family
-    ========= ========================
-
-    You can provide multiple attributes in a comma- separated list.
-
-    ========= ========================
-     Example	 .. code-block:: text
-            
-                    model:Adams Family,multiball:TRUE,screen size:32"
-    ========= ========================
-
-    If the name, or the value of your attribute contains commas, use quotes to escape it.
-
-    ========= ========================
-     Example	 .. code-block:: text
-            
-                    resolutions:"1024x768:24dpi,800x600:18dpi"
-    ========= ========================
-
 |
 
 .. index:: budgetDetails
@@ -678,18 +678,6 @@ total budget  total budget for the given ad in cents     No
 daily budget  daily budget for the given ad in cents     No
 ============= ========================================== ========
 
-
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:budget>
-                    <admarkt:totalBudget>5000</admarkt:totalBudget>
-                    <admarkt:dailyBudget>1000</admarkt:dailyBudget>
-                    <admarkt:cpc>2</admarkt:cpc>
-                </admarkt:budget>
-    ======= ===========================================================
 
 .. collapse:: TSV
 
@@ -725,6 +713,18 @@ daily budget  daily budget for the given ad in cents     No
                     1000
     ========= ========================
 
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:budget>
+                    <admarkt:totalBudget>5000</admarkt:totalBudget>
+                    <admarkt:dailyBudget>1000</admarkt:dailyBudget>
+                    <admarkt:cpc>2</admarkt:cpc>
+                </admarkt:budget>
+    ======= ===========================================================
+
 |
 
 Restrictions: The minimum and maximum values for the total budget depend on the category. 
@@ -743,6 +743,32 @@ shipping & pick-up
 """"""""""""""""""
 
 Provide the information on how your product can be delivered to customers.
+
+.. collapse:: TSV
+
+    Use **shipping** field to tell customers about the different cost vs. time options for your product delivery.
+    Each option should be formatted as follows:
+
+    [*cost in cents*]:[*minimum transit time in days*]-[*maximum transit time in days*]
+
+    You can provide multiple shipping options in a comma-separated list.
+    
+    ========= ========================
+     Example	 .. code-block:: text
+            
+                    695:2d-5d;1195:1d-2d
+    ========= ========================
+
+
+    Use **pickup locations** field to tell customers `location(s)` your product can be picked up at.
+    Location is given as a postal code.
+    You can provide multiple locations in a comma-separated list.
+    
+    ========= ========================
+     Example	 .. code-block:: text
+            
+                    1097DN,1055AB
+    ========= ========================
 
 .. collapse:: XML
 
@@ -775,32 +801,6 @@ Provide the information on how your product can be delivered to customers.
                 </admarkt:shippingOptions>
     ======= ===========================================================
 
-.. collapse:: TSV
-
-    Use **shipping** field to tell customers about the different cost vs. time options for your product delivery.
-    Each option should be formatted as follows:
-
-    [*cost in cents*]:[*minimum transit time in days*]-[*maximum transit time in days*]
-
-    You can provide multiple shipping options in a comma-separated list.
-    
-    ========= ========================
-     Example	 .. code-block:: text
-            
-                    695:2d-5d;1195:1d-2d
-    ========= ========================
-
-
-    Use **pickup locations** field to tell customers `location(s)` your product can be picked up at.
-    Location is given as a postal code.
-    You can provide multiple locations in a comma-separated list.
-    
-    ========= ========================
-     Example	 .. code-block:: text
-            
-                    1097DN,1055AB
-    ========= ========================
-
 |
 
 Restrictions: Shipping options can be disabled/optional/mandatory for an ad. 
@@ -814,14 +814,6 @@ phone number
 
 Use the **phone number** field to allow customers call you and ask about the product.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:phoneNumber>+31207894561</admarkt:phoneNumber>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **phone number** column.
@@ -831,6 +823,14 @@ Use the **phone number** field to allow customers call you and ask about the pro
             
                     +31207894561
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:phoneNumber>+31207894561</admarkt:phoneNumber>
+    ======= ===========================================================
 
 |
 
@@ -845,14 +845,6 @@ email advertiser
 Use the **email advertiser** flag to allow customers to contact you via email (or the other platform defined form of contact), and ask about the product.
 The default value is false.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **email advertiser** column.
@@ -862,6 +854,14 @@ The default value is false.
             
                     true
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
+    ======= ===========================================================
 
 |
 
@@ -878,14 +878,6 @@ The region in which the ad is placed. (only applicable for Kijiji Canada)
 Each ad belongs to one and only one region and region of an ad cannot be updated.
 This field can only be set once during creation of an ad.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:regionId>1700274</admarkt:regionId>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **region id** column.
@@ -895,6 +887,14 @@ This field can only be set once during creation of an ad.
             
                     1700274
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:regionId>1700274</admarkt:regionId>
+    ======= ===========================================================
 
 |
 
@@ -918,14 +918,6 @@ It provides extra attention on the ad in the search results.
 
 If *micro tip* feature is not enabled for the seller, the field will be ignored.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:microTip>TODAY 15% SALE</admarkt:microTip>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **micro tip** column.
@@ -935,6 +927,14 @@ If *micro tip* feature is not enabled for the seller, the field will be ignored.
             
                     TODAY 15% SALE
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:microTip>TODAY 15% SALE</admarkt:microTip>
+    ======= ===========================================================
 
 |
 
@@ -949,14 +949,6 @@ MPN
 
 Manufacturer Part Number (MPN), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324482>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:mpn>AB12345R89TN6E</admarkt:mpn>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **mpn** column.
@@ -966,6 +958,14 @@ Manufacturer Part Number (MPN), definition follows `Google Merchant Center <http
             
                     AB12345R89TN6E
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:mpn>AB12345R89TN6E</admarkt:mpn>
+    ======= ===========================================================
 
 |
 
@@ -981,19 +981,6 @@ Use this field to describe your product category in Google's product taxonomy.
 See `Google Merchant Center <https://support.google.com/merchants/answer/6324436>`__
 
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:googleProductCategory>
-                    Apparel &amp; Accessories &gt; Clothing &gt; Dresses
-                </admarkt:googleProductCategory>
-    Example .. code-block:: html
-            
-                 <admarkt:googleProductCategory>2271</admarkt:googleProductCategory>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **google product category** column.
@@ -1006,6 +993,19 @@ See `Google Merchant Center <https://support.google.com/merchants/answer/6324436
             
                     2271
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:googleProductCategory>
+                    Apparel &amp; Accessories &gt; Clothing &gt; Dresses
+                </admarkt:googleProductCategory>
+    Example .. code-block:: html
+            
+                 <admarkt:googleProductCategory>2271</admarkt:googleProductCategory>
+    ======= ===========================================================
 
 |
 
@@ -1020,16 +1020,6 @@ product type
 The **product type** field provides an opportunity for you to incorporate your unique product classification system into the dataset.
 Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324406>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:productType>
-                    Home &gt; Women &gt; Dresses &gt; Maxi Dresses
-                </admarkt:productType>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **product type** column.
@@ -1039,6 +1029,16 @@ Definition follows `Google Merchant Center <https://support.google.com/merchants
             
                     Home > Women > Dresses > Maxi Dresses
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:productType>
+                    Home &gt; Women &gt; Dresses &gt; Maxi Dresses
+                </admarkt:productType>
+    ======= ===========================================================
 
 |
 
@@ -1053,14 +1053,6 @@ brand
 Use the **brand** field to help customers identify your product. 
 Brand definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324351>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:brand>iPhone</admarkt:brand>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **brand** column.
@@ -1070,6 +1062,14 @@ Brand definition follows `Google Merchant Center <https://support.google.com/mer
             
                     iPhone
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:brand>iPhone</admarkt:brand>
+    ======= ===========================================================
 
 |
 
@@ -1083,14 +1083,6 @@ GTIN
 
 GTIN (Your product’s Global Trade Item Number), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324461>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                 <admarkt:gtin>44320194113475</admarkt:gtin>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **gtin** column.
@@ -1100,6 +1092,14 @@ GTIN (Your product’s Global Trade Item Number), definition follows `Google Mer
             
                     44320194113475
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                 <admarkt:gtin>44320194113475</admarkt:gtin>
+    ======= ===========================================================
 
 |
 
@@ -1114,14 +1114,6 @@ item group id
 Use this field to group product variants in your product data.
 Item group id definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324507>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:itemGroupId>BC23456</admarkt:itemGroupId>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **conditionitem group id** column.
@@ -1131,6 +1123,14 @@ Item group id definition follows `Google Merchant Center <https://support.google
             
                     BC23456
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:itemGroupId>BC23456</admarkt:itemGroupId>
+    ======= ===========================================================
 
 |
 
@@ -1144,14 +1144,6 @@ condition
 
 Use this field to inform customers about the condition of your product. Condition definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324469>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:condition>used</admarkt:condition>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **condition** column.
@@ -1161,6 +1153,14 @@ Use this field to inform customers about the condition of your product. Conditio
             
                     used
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:condition>used</admarkt:condition>
+    ======= ===========================================================
 
 |
 
@@ -1175,14 +1175,6 @@ material
 **Material** field describes the main fabric or material that your product is made of.
 Material definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324410>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:material>Cotton/Silk</admarkt:material>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **material** column.
@@ -1192,6 +1184,14 @@ Material definition follows `Google Merchant Center <https://support.google.com/
             
                     Cotton/Silk
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:material>Cotton/Silk</admarkt:material>
+    ======= ===========================================================
 
 |
 
@@ -1208,14 +1208,6 @@ energy efficiency class
 Use this field to tell customers how your product rates on a given energy efficiency range.
 See `Google Merchant Center <https://support.google.com/merchants/answer/7562785>`__
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:energyEfficiencyClass>A+</admarkt:energyEfficiencyClass>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **energy efficiency class** column.
@@ -1225,6 +1217,14 @@ See `Google Merchant Center <https://support.google.com/merchants/answer/7562785
             
                     A+
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:energyEfficiencyClass>A+</admarkt:energyEfficiencyClass>
+    ======= ===========================================================
 
 |
 
@@ -1239,14 +1239,6 @@ min energy efficiency class
 Used in combination with **max energy efficiency class** to describe the product energy efficiency label. 
 Possible values defined in :ref:`feed_energyEfficiencyClass`
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:minEnergyEfficiencyClass>G</admarkt:minEnergyEfficiencyClass>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **min energy efficiency class** column.
@@ -1256,6 +1248,14 @@ Possible values defined in :ref:`feed_energyEfficiencyClass`
             
                     G
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:minEnergyEfficiencyClass>G</admarkt:minEnergyEfficiencyClass>
+    ======= ===========================================================
 
 |
 
@@ -1268,14 +1268,6 @@ max energy efficiency class
 Used in combination with **min energy efficiency class** to describe the product energy efficiency label. 
 Possible values defined in :ref:`feed_energyEfficiencyClass`
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:maxEnergyEfficiencyClass>B</admarkt:maxEnergyEfficiencyClass>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **max energy efficiency class** column.
@@ -1285,6 +1277,14 @@ Possible values defined in :ref:`feed_energyEfficiencyClass`
             
                     B
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:maxEnergyEfficiencyClass>B</admarkt:maxEnergyEfficiencyClass>
+    ======= ===========================================================
 
 |
 
@@ -1297,14 +1297,6 @@ color
 Use **color** field to tell customers about the dominant colors of your product. 
 Color definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324487>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:color>Black/Grey</admarkt:color>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **color** column.
@@ -1314,6 +1306,14 @@ Color definition follows `Google Merchant Center <https://support.google.com/mer
             
                     Black/Grey
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:color>Black/Grey</admarkt:color>
+    ======= ===========================================================
 
 |
 
@@ -1330,14 +1330,6 @@ gender
 Use **gender** field to describe the gender your product is designed for.
 Gender definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324479>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:gender>unisex</admarkt:gender>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **gender** column.
@@ -1347,6 +1339,14 @@ Gender definition follows `Google Merchant Center <https://support.google.com/me
             
                     unisex
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:gender>unisex</admarkt:gender>
+    ======= ===========================================================
 
 |
 
@@ -1361,14 +1361,6 @@ age group
 Use **age group** field to describe the age group your product is targeted at. 
 Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324463>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:ageGroup>adult</admarkt:ageGroup>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **age group** column.
@@ -1378,6 +1370,14 @@ Definition follows `Google Merchant Center <https://support.google.com/merchants
             
                     adult
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:ageGroup>adult</admarkt:ageGroup>
+    ======= ===========================================================
 
 |
 
@@ -1392,14 +1392,6 @@ size
 Use **size** field to describe standardized size of your product.
 Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324492>`__ guidelines.
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:size>S</admarkt:size>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **size** column.
@@ -1409,6 +1401,14 @@ Size definition follows `Google Merchant Center <https://support.google.com/merc
             
                     XXL
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:size>S</admarkt:size>
+    ======= ===========================================================
 
 |
 
@@ -1424,14 +1424,6 @@ The denominator for product unit price.
 See `Google Merchant Center <https://support.google.com/merchants/answer/6324490>`__.
 This field attribute tells the customer how the price of your product translates per unit. 
 
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-            
-                <admarkt:unitPricingBaseMeasure>1kg</admarkt:unitPricingBaseMeasure>
-    ======= ===========================================================
-
 .. collapse:: TSV
 
     Stored in **unit pricing base measure** column.
@@ -1441,6 +1433,14 @@ This field attribute tells the customer how the price of your product translates
             
                     1kg
     ========= ========================
+
+.. collapse:: XML
+
+    ======= ===========================================================
+    Example .. code-block:: html
+            
+                <admarkt:unitPricingBaseMeasure>1kg</admarkt:unitPricingBaseMeasure>
+    ======= ===========================================================
 
 |
 
@@ -1463,14 +1463,6 @@ Defines the measure and dimension of the product. That value helps the customers
 Example 125ml, 100g. 
 See `Google Merchant Center <https://support.google.com/merchants/answer/6324455>`__.
 
-.. collapse:: XML
-
-    ======= =================================================================
-    Example .. code-block:: html
-            
-                <admarkt:unitPricingMeasure>15kg</admarkt:unitPricingMeasure>
-    ======= =================================================================
-
 .. collapse:: TSV
 
     Stored in **unit pricing measure** column.
@@ -1480,6 +1472,14 @@ See `Google Merchant Center <https://support.google.com/merchants/answer/6324455
             
                     15kg
     ========= ========================
+
+.. collapse:: XML
+
+    ======= =================================================================
+    Example .. code-block:: html
+            
+                <admarkt:unitPricingMeasure>15kg</admarkt:unitPricingMeasure>
+    ======= =================================================================
 
 |
 

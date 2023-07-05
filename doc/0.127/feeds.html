@@ -287,7 +287,7 @@ After that, scheduled fetches happen once per day synchronizing the system with 
 <p>In order to let us download your feed and all the relevant linked content, access to our outgoing IPs should be whitelisted as described in <a class="reference internal" href="overview.html#overview-image-downloads"><span class="std std-ref">section of the Sellside API</span></a>.</p>
 <section id="file-format">
 <h2>File Format<a class="headerlink" href="#file-format" title="Permalink to this heading">¶</a></h2>
-<p>We support feed files in either an XML or TSV format.
+<p>We support feed files in either an TSV or XML format.
 Feeds are expected to be in UTF-8 encoding.
 Information on the most actual set of supported data is described on the <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">details</span></a> page.</p>
 <div class="admonition note">
@@ -298,7 +298,12 @@ The new fields follow specifications stated in manual for <a class="reference ex
 For more information see <em>FAQ</em> section.</p>
 </div>
 <p>For instructions on how to create your feed in specific formats, please expand the relevant sections.</p>
-<details class="summary-xml">
+<details class="summary-tsv">
+<summary>TSV</summary><p>TSV format follows specification described on <a class="reference external" href="https://en.wikipedia.org/wiki/Tab-separated_values">wiki</a>.
+Column names used in TSV feed must superset <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a> specified.
+Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p>
+<p><a class="reference download internal" download="" href="_downloads/93dbf90792498ee82059295c17c481bd/feed-example.tsv"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">example</span></code></a></p>
+</details><details class="summary-xml">
 <summary>XML</summary><p>The contents of this XML file need to adhere to the XSD available for sellers
 at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a>.
 All the values provided should conform to the rules specified for the valid XML document.
@@ -389,11 +394,6 @@ XML escape characters are also supported.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</details><details class="summary-tsv">
-<summary>TSV</summary><p>TSV format follows specification described on <a class="reference external" href="https://en.wikipedia.org/wiki/Tab-separated_values">wiki</a>.
-Column names used in TSV feed must superset <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a> specified.
-Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p>
-<p><a class="reference download internal" download="" href="_downloads/93dbf90792498ee82059295c17c481bd/feed-example.tsv"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">example</span></code></a></p>
 </details><div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -407,7 +407,22 @@ or warnings on ads, such as missing mandatory attributes or too low CPC etc.</p>
 <section id="frequently-asked-questions">
 <span id="feeds-qna"></span><h2>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this heading">¶</a></h2>
 <p>Below are some common scenarios and questions with their explanations/answers.</p>
-<details class="larger-collapse summary-what-happens-if-my-feed-file-cannot-be-fetched">
+<details name="feed_new_fields" class="larger-collapse summary-how-to-use-tsv-format">
+<summary>How to use TSV format?</summary><p>We introduced the TSV format in our system, to simplify the integration path.
+Our customers commonly use spreadsheets to store and manipulate the data,
+and “TSV export” is a standard option for the majority of spreadsheet programs.</p>
+<p>The three important things to remember for successful integration:</p>
+<ol class="arabic simple">
+<li><p>There are some <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a>, that we will look for, and expect to find in your TSV feed.</p></li>
+<li><p>Multiline fields need to be escaped with double quotes, or all the line breaks changed to \n.</p></li>
+<li><p>Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p></li>
+</ol>
+</details><details class="larger-collapse summary-what-are-the-newly-added-fields">
+<summary>What are the newly added fields?</summary><p>Those fields are considered a ‘widely adopted market standard’, required, or recommended for advertising on many other channels:
+<a class="reference internal" href="feed-details.html#feed-mpn"><span class="std std-ref">MPN</span></a>, <a class="reference internal" href="feed-details.html#feed-googleproductcategory"><span class="std std-ref">google product category</span></a>, <a class="reference internal" href="feed-details.html#feed-producttype"><span class="std std-ref">product type</span></a>, <a class="reference internal" href="feed-details.html#feed-brand"><span class="std std-ref">brand</span></a>, <a class="reference internal" href="feed-details.html#feed-gtin"><span class="std std-ref">GTIN</span></a>,
+<a class="reference internal" href="feed-details.html#feed-itemgroupid"><span class="std std-ref">item group id</span></a>, <a class="reference internal" href="feed-details.html#feed-condition"><span class="std std-ref">condition</span></a>, <a class="reference internal" href="feed-details.html#feed-material"><span class="std std-ref">material</span></a>, <a class="reference internal" href="feed-details.html#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a>, <a class="reference internal" href="feed-details.html#feed-minenergyefficiencyclass"><span class="std std-ref">min energy efficiency class</span></a>,
+<a class="reference internal" href="feed-details.html#feed-maxenergyefficiencyclass"><span class="std std-ref">max energy efficiency class</span></a>, <a class="reference internal" href="feed-details.html#feed-color"><span class="std std-ref">color</span></a>, <a class="reference internal" href="feed-details.html#feed-gender"><span class="std std-ref">gender</span></a>, <a class="reference internal" href="feed-details.html#feed-agegroup"><span class="std std-ref">age group</span></a>, <a class="reference internal" href="feed-details.html#feed-size"><span class="std std-ref">size</span></a>, <a class="reference internal" href="feed-details.html#feed-unitpricingbasemeasure"><span class="std std-ref">unit pricing base measure</span></a>, <a class="reference internal" href="feed-details.html#feed-unitpricingmeasure"><span class="std std-ref">unit pricing measure</span></a>.</p>
+</details><details class="larger-collapse summary-what-happens-if-my-feed-file-cannot-be-fetched">
 <summary>What happens if my feed file cannot be fetched?</summary><p>When a feed file cannot be fetched, nothing will change on the user’s ads.
 It’s as if the import didn’t happen.
 Since the file represents the desired list of ads to be live, we won’t do anything if we can’t get the file - we cannot read a change in the desired situation.</p>
@@ -476,21 +491,6 @@ to test the correctness of your structure.</p>
 </pre></div>
 </div>
 <p>It is up to you!</p>
-</details><details name="feed_new_fields" class="larger-collapse summary-how-to-use-tsv-format">
-<summary>How to use TSV format?</summary><p>We introduced the TSV format in our system, to simplify the integration path.
-Our customers commonly use spreadsheets to store and manipulate the data,
-and “TSV export” is a standard option for the majority of spreadsheet programs.</p>
-<p>The three important things to remember for successful integration:</p>
-<ol class="arabic simple">
-<li><p>There are some <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a>, that we will look for, and expect to find in your TSV feed.</p></li>
-<li><p>Multiline fields need to be escaped with double quotes, or all the line breaks changed to \n.</p></li>
-<li><p>Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p></li>
-</ol>
-</details><details class="larger-collapse summary-what-are-the-newly-added-fields">
-<summary>What are the newly added fields?</summary><p>Those fields are considered a ‘widely adopted market standard’, required, or recommended for advertising on many other channels:
-<a class="reference internal" href="feed-details.html#feed-mpn"><span class="std std-ref">MPN</span></a>, <a class="reference internal" href="feed-details.html#feed-googleproductcategory"><span class="std std-ref">google product category</span></a>, <a class="reference internal" href="feed-details.html#feed-producttype"><span class="std std-ref">product type</span></a>, <a class="reference internal" href="feed-details.html#feed-brand"><span class="std std-ref">brand</span></a>, <a class="reference internal" href="feed-details.html#feed-gtin"><span class="std std-ref">GTIN</span></a>,
-<a class="reference internal" href="feed-details.html#feed-itemgroupid"><span class="std std-ref">item group id</span></a>, <a class="reference internal" href="feed-details.html#feed-condition"><span class="std std-ref">condition</span></a>, <a class="reference internal" href="feed-details.html#feed-material"><span class="std std-ref">material</span></a>, <a class="reference internal" href="feed-details.html#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a>, <a class="reference internal" href="feed-details.html#feed-minenergyefficiencyclass"><span class="std std-ref">min energy efficiency class</span></a>,
-<a class="reference internal" href="feed-details.html#feed-maxenergyefficiencyclass"><span class="std std-ref">max energy efficiency class</span></a>, <a class="reference internal" href="feed-details.html#feed-color"><span class="std std-ref">color</span></a>, <a class="reference internal" href="feed-details.html#feed-gender"><span class="std std-ref">gender</span></a>, <a class="reference internal" href="feed-details.html#feed-agegroup"><span class="std std-ref">age group</span></a>, <a class="reference internal" href="feed-details.html#feed-size"><span class="std std-ref">size</span></a>, <a class="reference internal" href="feed-details.html#feed-unitpricingbasemeasure"><span class="std std-ref">unit pricing base measure</span></a>, <a class="reference internal" href="feed-details.html#feed-unitpricingmeasure"><span class="std std-ref">unit pricing measure</span></a>.</p>
 </details></section>
 </section>
 
