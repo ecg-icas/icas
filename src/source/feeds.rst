@@ -17,7 +17,7 @@ In order to let us download your feed and all the relevant linked content, acces
 File Format
 -----------
 
-We support feed files in either an XML or TSV format.
+We support feed files in either an TSV or XML format.
 Feeds are expected to be in UTF-8 encoding.
 Information on the most actual set of supported data is described on the :ref:`details <feed-details>` page.
 
@@ -28,6 +28,14 @@ Information on the most actual set of supported data is described on the :ref:`d
     For more information see *FAQ* section. 
 
 For instructions on how to create your feed in specific formats, please expand the relevant sections.
+
+.. collapse:: TSV
+
+    TSV format follows specification described on `wiki <https://en.wikipedia.org/wiki/Tab-separated_values>`__.
+    Column names used in TSV feed must superset :ref:`column names <feed-details>` specified.
+    Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
+
+    :download:`download example<examples/feed-example.tsv>`
 
 .. collapse:: XML
 
@@ -44,14 +52,6 @@ For instructions on how to create your feed in specific formats, please expand t
 
     |
 
-.. collapse:: TSV
-
-    TSV format follows specification described on `wiki <https://en.wikipedia.org/wiki/Tab-separated_values>`__.
-    Column names used in TSV feed must superset :ref:`column names <feed-details>` specified.
-    Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
-
-    :download:`download example<examples/feed-example.tsv>`
-
 |
 
 Errors
@@ -67,6 +67,30 @@ Frequently Asked Questions
 --------------------------
 
 Below are some common scenarios and questions with their explanations/answers.
+
+
+.. _feed_new_fields:
+
+.. collapse:: How to use TSV format?
+    :class: larger-collapse
+
+    We introduced the TSV format in our system, to simplify the integration path. 
+    Our customers commonly use spreadsheets to store and manipulate the data, 
+    and "TSV export" is a standard option for the majority of spreadsheet programs.
+
+    The three important things to remember for successful integration:
+
+    1. There are some :ref:`column names <feed-details>`, that we will look for, and expect to find in your TSV feed.
+    2. Multiline fields need to be escaped with double quotes, or all the line breaks changed to \\n.
+    3. Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
+
+.. collapse:: What are the newly added fields?
+    :class: larger-collapse
+
+    Those fields are considered a 'widely adopted market standard', required, or recommended for advertising on many other channels:
+    :ref:`feed_mpn`, :ref:`feed_googleProductCategory`, :ref:`feed_productType`, :ref:`feed_brand`, :ref:`feed_gtin`, 
+    :ref:`feed_itemGroupId`, :ref:`feed_condition`, :ref:`feed_material`, :ref:`feed_energyEfficiencyClass`, :ref:`feed_minEnergyEfficiencyClass`,
+    :ref:`feed_maxEnergyEfficiencyClass`, :ref:`feed_color`, :ref:`feed_gender`, :ref:`feed_ageGroup`, :ref:`feed_size`, :ref:`feed_unitPricingBaseMeasure`, :ref:`feed_unitPricingMeasure`.
 
 .. collapse:: What happens if my feed file cannot be fetched?
     :class: larger-collapse
@@ -182,27 +206,4 @@ Below are some common scenarios and questions with their explanations/answers.
         ...
 
     It is up to you!
-
-.. _feed_new_fields:
-
-.. collapse:: How to use TSV format?
-    :class: larger-collapse
-
-    We introduced the TSV format in our system, to simplify the integration path. 
-    Our customers commonly use spreadsheets to store and manipulate the data, 
-    and "TSV export" is a standard option for the majority of spreadsheet programs.
-
-    The three important things to remember for successful integration:
-
-    1. There are some :ref:`column names <feed-details>`, that we will look for, and expect to find in your TSV feed.
-    2. Multiline fields need to be escaped with double quotes, or all the line breaks changed to \\n.
-    3. Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
-
-.. collapse:: What are the newly added fields?
-    :class: larger-collapse
-
-    Those fields are considered a 'widely adopted market standard', required, or recommended for advertising on many other channels:
-    :ref:`feed_mpn`, :ref:`feed_googleProductCategory`, :ref:`feed_productType`, :ref:`feed_brand`, :ref:`feed_gtin`, 
-    :ref:`feed_itemGroupId`, :ref:`feed_condition`, :ref:`feed_material`, :ref:`feed_energyEfficiencyClass`, :ref:`feed_minEnergyEfficiencyClass`,
-    :ref:`feed_maxEnergyEfficiencyClass`, :ref:`feed_color`, :ref:`feed_gender`, :ref:`feed_ageGroup`, :ref:`feed_size`, :ref:`feed_unitPricingBaseMeasure`, :ref:`feed_unitPricingMeasure`.
 
