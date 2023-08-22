@@ -55,6 +55,7 @@ History
   * improved :ref:`feeds` docs
   * added separate :ref:`feed-details` page
   * added collapse feature to docs engine
+  * added campaignID to supported dimension in reporting :ref:`metrics_reporting`
 
 * v.0.126 - 26 Apr 2023 - tw
 
