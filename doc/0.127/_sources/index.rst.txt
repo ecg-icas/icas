@@ -56,6 +56,7 @@ History
   * added separate :ref:`feed-details` page
   * added collapse feature to docs engine
   * added campaignID to supported dimension in reporting :ref:`metrics_reporting`
+  * added error too many ads in the category to PUT /ad/{id}  :ref:`put_ad_id_v5`
 
 * v.0.126 - 26 Apr 2023 - tw
 
@@ -692,4 +693,3 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
