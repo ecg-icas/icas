@@ -80,6 +80,7 @@ Name               Type          Description
 :strike:`am:CPC`   deprecated    --
 ``am:categoryID``  Long          The category ID of the ad(s)
 ``am:regionID``    Long          The region ID of the ad(s)
+``am:campaignID``  String        The campaign ID of the ad(s)
 =================  ============  =============================
 
 .. note:: *Date* is a special dimension, in that you can specify the granularity of the timeseries breakdown. In other words, data is aggregated over units of time (such as days, weeks, months or years) when calculating metrics over it. See `Time Aggregation`_ for options on granularity.
