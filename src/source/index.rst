@@ -40,6 +40,7 @@ Contents
    reporting
    error-handling
    api-reference
+   `OpenAPI reference ./dist/index.html>`_
    release-notes
 
 
