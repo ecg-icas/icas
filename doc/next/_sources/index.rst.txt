@@ -40,7 +40,6 @@ Contents
    reporting
    error-handling
    api-reference
-   OpenAPI reference<https://raw.githubusercontent.com/ecg-icas/icas/gh-pages/src/source/openapi.html>
    release-notes
 
 
