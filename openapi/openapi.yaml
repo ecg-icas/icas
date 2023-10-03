@@ -2559,7 +2559,7 @@ paths:
                 type: string
                 example: 'get_campaign'
           content:
-            application/sellside.campaign-v5+json:
+            application/sellside.campaign.list-v5+json:
               schema:
                 type: object
                 properties:
@@ -2579,7 +2579,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/CampaignResponseV5'
-            application/sellside.campaign-v2+json:
+            application/sellside.campaign.list-v2+json:
               schema:
                 $ref: '#/components/schemas/CampaignV2'
         '401':
