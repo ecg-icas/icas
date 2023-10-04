@@ -39,8 +39,7 @@ Contents
    feed-details
    reporting
    error-handling
-   api-reference
-   OpenAPI reference <http://ecg-icas.github.io/icas/openapi/index.html>
+   OpenAPI reference <https://ecg-icas.github.io/icas/openapi/index.html>
    release-notes
 
 
