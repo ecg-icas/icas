@@ -1786,10 +1786,20 @@ paths:
                           items:
                             type: string
                           description: 'Subset (max 100) of vendorIDs that were affected by this error'
+                        rowNumbersSample:
+                          type: array
+                          items:
+                            type: string
+                          description: 'Subset (max 100) of row numbers that were affected by this error. This applies only to rows where the vendorId was not found due to a validation error'
                     example:
                       'price should be lower than originalPrice':
                         count: 4
                         'vendorIdsSample': [ "566", "abc-788","990232","000mcakjn" ]
+                        'rowNumbersSample': [ ]
+                      'invalid number of columns':
+                        count: 2
+                        'vendorIdsSample': [ ]
+                        'rowNumbersSample': [ "4", "42" ]
                   warnings:
                     type: object
                     additionalProperties:
