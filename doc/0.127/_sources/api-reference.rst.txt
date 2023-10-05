@@ -1,3 +1,5 @@
+.. DEPRECATED! update the openapi/openapi.yaml file directly instead!
+
 .. _api_reference:
 
 API Reference
