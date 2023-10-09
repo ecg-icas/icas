@@ -1796,7 +1796,7 @@ paths:
                         count: 4
                         'vendorIdsSample': [ "566", "abc-788","990232","000mcakjn" ]
                         'rowNumbersSample': [ ]
-                      'invalid number of columns':
+                      'field ''autobid'' has invalid boolean value, allowed values ''[TRUE FALSE]''':
                         count: 2
                         'vendorIdsSample': [ ]
                         'rowNumbersSample': [ "4", "42" ]
@@ -1841,6 +1841,13 @@ paths:
                           - 'abc-788'
                           - '990232'
                           - '000mcakjn'
+                        rowNumbersSample: []
+                      field 'autobid' has invalid boolean value, allowed values '[TRUE FALSE]':
+                        count: 2
+                        vendorIdsSample: []
+                        rowNumbersSample:
+                          - '4'
+                          - '42'
                     warnings:
                       externalId is deprecated (use only vendorId):
                         count: 2
