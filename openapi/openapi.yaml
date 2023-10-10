@@ -80,7 +80,7 @@ paths:
                 type: string
                 example: 'get_ad'
           content:
-            application.sellside.ad-v5+json:
+            application/sellside.ad-v5+json:
               schema:
                 $ref: '#/components/schemas/AdV5Response'
             application/sellside.ad-v3+json:
@@ -1146,7 +1146,7 @@ paths:
                 type: string
                 example: 'get_ad'
           content:
-            application.sellside.ad-v5+json:
+            application/sellside.ad-v5+json:
               schema:
                 $ref: '#/components/schemas/AdV5Response'
             application/sellside.ad-v3+json:
@@ -1977,7 +1977,7 @@ paths:
       requestBody:
         required: true
         content:
-          application.sellside.feedconfig-v1+json:
+          application/sellside.feedconfig-v1+json:
             schema:
               $ref: '#/components/schemas/FeedConfigV1Request'
       responses:
