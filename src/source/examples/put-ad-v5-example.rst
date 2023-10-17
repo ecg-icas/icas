@@ -32,6 +32,7 @@
         "phoneNumber": "0207894561",
         "allowContactByEmail": true,
         "vendorId": "OURSHOP-1423453-34",
+        "campaignId": 294012,
         "links": {
             "displayUrl": "www.ourshop.com/Faxes",
             "url": "http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3"
@@ -118,6 +119,7 @@
         "dateCreated": "2012-08-31T16:12:53Z",
         "dateLastUpdated": "2012-09-05T04:03:42Z",
         "vendorId": "OURSHOP-1423453-34",
+        "campaignId": 294012,
         "links": {
             "self": "/ad/42",
             "category": "/category/826",

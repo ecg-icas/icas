@@ -50,6 +50,16 @@ History
 
 ..  role:: strike
 
+* v.0.128 - 17 Oct 2023 - tw
+
+  * added multi-campaign documentation, only available for Kleinanzeigen now though.
+  * extra explanation on the 'vendorId' concept
+  * extra explanation on `_include` and `_exclude`
+  * fixes on some examples
+  * added vendorId, title and isDefault to campaign V5 struct
+  * more explanation on usage of pageToken
+  * added some error codes
+
 * v.0.127 - 9 May 2023 - pm
 
   * improved :ref:`feeds` docs

@@ -24,7 +24,7 @@ Code    HTTP    Error message                   Description
 2005    400     value too long                  A provided string value was too long
 2006    400     invalid url                     A provided string value does not represent a valid URL
 2007    400     unsupported format              A link to an file is in an unsupported format
-2008    400     file too large                  A link to a file points to a file that is too large
+2008    400     ad body too large               provided (ad) body content is too large
 2010    400     invalid phone number            A provided string value does not represent a valid phone number
 2011    400     too many active ads             The maximum number of active ads per seller in this category has been reached
 2012    400     category change not allowed     Changing the category of an ad is not allowed
@@ -35,10 +35,16 @@ Code    HTTP    Error message                   Description
 2021    400     duplicate feed url              The feed URL is already in use
 2022    400     category not active             The category is not active and will not allow creation of ads
 2023    400     category deleted                The category is deleted and will not allow creation/updating of ads
-2024    400     vendorId change not allowed     The vendorId of an ad can only be set once
-2025    400     duplicate vendorId              The vendorId is already in use by another ad
+2024    400     vendorId change not allowed     The vendorId can only be set once
+2025    400     duplicate vendorId              The vendorId is already in use by another entity of the same tyope
 2026    400     too many active ads in cat      The user has reached the maximum number of active ads in the category, cannot activate ad.
 2027    400     cannot change seller budget     The provided amount cannot be added/subtracted from current seller level budget
 2028    400     regionId change not allowed     Changing the regionId of an ad is not allowed
-2035    400     Attribute is not writable       The attribute cannot be set by the user
+2030    400     missing identifying attribute   The call requires an identifying attribute, but it is missing
+2034    400     campaign already exists         The campaign already exists
+2035    400     attribute is not writable       The attribute cannot be set by the user
+2036    400     max datapoint exceeded          Too many data points to return
+2037    400     unknown field name              An unrecognised field was provided
+2039    400     max #campaigns reached          Seller has reached the maximum amount of campaigns
+2040    400     status change not allowed       The requested status change is not allowed
 ====    ====    ============================    ==========================================================================================

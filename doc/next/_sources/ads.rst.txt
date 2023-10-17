@@ -37,7 +37,7 @@ Field                                    Type       Deprecated in Constraints   
 :ref:`ad_priceobj_originalamountcents`   int        --            >= 0, >amountCents   no          yes (if user is allowed)
 :ref:`ad_salutation`                     string     --            enum                 yes         yes
 :ref:`ad_sellerName`                     string     --            max. 60 chars        yes         yes
-:ref:`ad_postcode`                       string     --            max. 6 chars         yes         yes
+:ref:`ad_postcode`                       string     --            max. 6 chars         no          yes
 :ref:`ad_regionId`                       long       --            positive             no          yes (only during create)
 :ref:`ad_phoneNumber`                    string     --            max. 32 chars        no          yes
 :ref:`ad_allowContactByEmail`            bool       --            --                   no          yes
@@ -63,12 +63,12 @@ Field                                    Type       Deprecated in Constraints   
 :ref:`ad_budgetsobj_daily_spentMicros`   string     --            see below            no          no
 :ref:`ad_budgetsobj_total_limitMicros`   string     --            see below            yes         yes
 :ref:`ad_budgetsobj_total_spentMicros`   string     --            see below            no          no
-:ref:`ad_externalId`                     string     V5            max. 64 chars        no          yes
+:ref:`ad_externalId`                     string     --            max. 64 chars        no          yes
 :ref:`ad_currency`                       string     V5            cat.Currency         yes         no
 :ref:`ad_priceType`                      string     V5            enum                 yes         yes
 :ref:`ad_priceUnit`                      string     V5            see below            no          yes
 :ref:`ad_price`                          long       V5            see below            see below   yes
-:ref:`ad_cpc`                            long       V5            positive             yes	        yes
+:ref:`ad_cpc`                            long       V5            positive             yes	       yes
 :ref:`ad_status_reasons`                 string     V5            --                   --          no
 :ref:`ad_totalBudget`                    long       V5            positive             no          yes
 :ref:`ad_dailyBudget`                    long       V5            positive             no          yes
@@ -119,8 +119,7 @@ categoryId
 
 The category in which the ad is placed.
 
-Each ad belongs to one and only one region and region of an ad cannot be updated.
-This field can only set once during creation of an ad.
+Each ad belongs to one and only one category; this can be updated.
 
 An integer value from the category list. Must be an id of a category with a
 non-zero parent id.
@@ -137,7 +136,8 @@ externalId
 
 Any non-empty string with a maximum length of 64 characters. When fetching
 an existing ad which does not have an **externalId**, the field is empty or
-omitted.
+omitted. There is no unique constraint when it comes to externalId, so multiple
+ads are allowed to have the same externalId.
 
 .. index:: status
 .. _ad_status:
@@ -254,9 +254,8 @@ campaignId
 """"""""""
 
 identifier of the campaign this ad belongs to. See :ref:`campaigns` for more info.
-For the time being this is not mandatory, and we will add the ad to the one-and-only campaign the seller has.
-Once we will start allowing multiple campaigns for a seller, we will change this to become mandatory.
-For the time being, we will also create the campaign underwater if the seller has no campaign created yet, to ensure
+This is not mandatory, and we will add the ad to the `default campaign` if not provided.
+For the time being, we will also create the (default) campaign underwater if the seller has no campaign created yet, to ensure
 there is one for the seller.
 
 .. index:: bidMicros
@@ -410,7 +409,7 @@ regionId
 """"""""
 
 The region in which the ad is placed.
-A long value from the region tree. Must be the id of a leaf region.
+A long value from the region tree. Can be the ID from any node.
 
 Each ad belongs to one and only one region and region of an ad cannot be updated.
 This field can only set once during creation of an ad.
@@ -561,6 +560,9 @@ Any non-empty string with a maximum length of 64 characters. Should be unique
 per customer. Can either be set when creating an ad or when updating an
 existing ad. However, once set, it can no longer be modified. When fetching an
 existing ad which does not have a **vendorId**, the field is omitted.
+When an ad gets set to status ``DELETED``, this does **not** remove the vendorId.
+This means that inserting a new ad with the same vendorId will still fail if you
+already have an ad with that vendorId, regardless of its status. See :ref:`vendor_ids` for more explanation.
 
 .. index:: microTip
 .. _ad_microTip:
