@@ -505,6 +505,14 @@ paths:
               type: integer
               format: int64
           example: [55500, 1280000]
+        - name: campaignId
+          in: query
+          required: false
+          description: 'Campaign ID to filter ads by.'
+          schema:
+            type: integer
+            format: int64
+          example: 531412
         - name: _include
           in: query
           required: false
@@ -1721,6 +1729,8 @@ paths:
             - 'console_ro'
             - 'api_ro'
         # FEEDS
+
+  # FEED
   /feed/import/{id}/detail:
     get:
       tags:
@@ -2190,7 +2200,7 @@ paths:
             - 'console_ro'
             - 'api_ro'
   # CAMPAIGNS
-  /campaign/:
+  /campaign:
     post:
       tags:
         - Campaigns
@@ -4881,7 +4891,7 @@ components:
       description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
       example: 'FIXED_PRICE'
     AdCampaignIdResponse:
-      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
+      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a default campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to when no campaignId is provided during create/update of an ad.'
       readOnly: true
       type: integer
       example: 54212
@@ -5850,6 +5860,12 @@ components:
           $ref: '#/components/schemas/CampaignStatusResponseV5'
         budgets:
           $ref: '#/components/schemas/CampaignBudgetsResponseV5'
+        campaignId:
+           $ref: '#/components/schemas/AdCampaignIdResponse'
+        isDefault:
+          type: boolean
+          readOnly: true
+          description: 'Whether this campaign is the default one or not; Ads created without campaignId will be assigned to the default campaign. A seller can have only 1 default campaign.'
     CampaignV2:
       type: object
       deprecated: true
