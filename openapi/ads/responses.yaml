@@ -1,0 +1,1984 @@
+# ads/responses.yaml
+openapi: 3.0.0
+components:
+  schemas:
+    AdV2Response:
+      deprecated: true
+      readOnly: true
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+          example: 1235
+          minimum: 0
+          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST or PUT action.'
+        title:
+          type: string
+          description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          required: true
+          example: 'Buy the new iPhone here'
+        description:
+          type: string
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          required: true
+          example: 'Extra sale, buy the new iPhone today and save!'
+        categoryId:
+          description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
+          type: integer
+          format: int64
+          required: true
+          example: 2353465
+          minimum: 0
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageResponse'
+        externalId:
+          type: string
+          maxLength: 64
+          description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
+          example: 'OURSHOP-1423453-34'
+          deprecated: true
+        status:
+          $ref: '#/components/schemas/AdStatusV2Response'
+        priceType:
+          type: string
+          required: true
+          enum:
+            - 'BIDDING'
+            - 'BIDDING_FROM'
+            - 'FIXED_PRICE'
+            - 'FREE'
+            - 'NEGOTIABLE'
+            - 'SEE_DESCRIPTION'
+            - 'SWAP'
+            - 'CREDIBLE_BID'
+            - 'ON_DEMAND'
+          description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
+          example: 'FIXED_PRICE'
+        currency:
+          type: string
+          description: 'The 3 letter ISO-4217 currency code.'
+          example: 'EUR'
+          readOnly: true
+          format: iso-4217
+        priceUnit:
+          $ref: '#/components/schemas/AdPriceUnitResponse'
+        price:
+          type: integer
+          format: int64
+          description: 'The meaning of the value depends on priceType. If it is FIXED_PRICE or BIDDING_FROM then price has to be greater than 0. '
+          maximum: 100000000
+        cpc:
+          type: integer
+          format: int64
+          description: 'The cost per click as defined by the seller. The minimum and maximum values depend on the category.'
+          required: true
+          example: 15
+          minimum: 1
+        totalBudget:
+          type: integer
+          format: int64
+          description: 'The total budget for the ad, in cents. The minimum and maximum values depend on the category. When an ad is updated this value cannot be lower than the spentBudget. If the total budget is not returned with the ad, it means there is an unlimited total budget.'
+          example: 5000
+        dailyBudget:
+          type: integer
+          format: int64
+          nullable: true
+          description: 'The daily budget for the ad. When this value is reached the ad will be paused for the rest of the day. The minimum value depends on the category. Maximum value cannot be higher than the totalBudget'
+          example: 50000
+        spentBudget:
+          type: integer
+          format: int64
+          readOnly: true
+          description: 'The total amount of the budget that has been used so far, in cents.'
+        dailySpent:
+          type: integer
+          format: int64
+          readOnly: true
+          description: 'The budget spent for the ad since midnight, in cents. Only provided when the dailyBudget is set and larger than 0.'
+        salutation:
+          type: string
+          enum:
+            - 'COMPANY'
+            - 'MALE'
+            - 'FEMALE'
+            - 'FAMILY'
+            - 'UNKNOWN'
+          description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
+          example: 'COMPANY'
+          required: true
+        sellerName:
+          type: string
+          maxLength: 60
+          required: true
+          example: 'Mr. Smith'
+          description: 'Display name of the seller.'
+        phoneNumber:
+          maxLength: 32
+          description: 'The phone number of the advertiser as international phone number format, or as a local phone number. 0900 and 0800 numbers are not allowed.'
+          example: '+31207894561'
+        allowContactByEmail:
+          type: boolean
+          example: true
+          description: 'Flag for allowing emails to be sent to the advertiser.'
+        allowPayPal:
+          deprecated: true
+          description: 'Flag for allowing PayPal as a payment option.'
+          example: false
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was created.'
+          readOnly: true
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was last updated.'
+          readOnly: true
+          example: '2020-08-05T07:49:14Z'
+        dateDeleted:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
+          readOnly: true
+          example: '2020-08-05T07:49:14Z'
+        postcode:
+          type: string
+          description: 'Must be an non empty string.'
+          example: '1703 GB'
+          maxLength: 6
+          required: true
+        regionId:
+          type: integer
+          format: int64
+          description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
+          example: 10034535
+        pageNumber:
+          type: integer
+          format: int
+          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
+          readOnly: true
+          example: 2
+        suggestedCpcForPageOne:
+          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
+          type: integer
+          format: int64
+          example: 15
+          readOnly: true
+        links:
+          type: object
+          description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
+          properties:
+            self:
+              type: string
+              format: url
+              example: '/api/sellside/ad/1235'
+              description: 'A self link which points to the current resource.'
+              maxLength: 2048
+              readOnly: true
+            category:
+              type: integer
+              format: int64
+              description: 'The resource location for the category that this ad belongs to.'
+              example: '/api/sellside/category/2353465'
+              readOnly: true
+              maxLength: 2048
+            url:
+              type: string
+              format: url
+              maxLength: 2048
+              description: 'An external URL that is shown on the ad page. This must be a valid http(s) url.'
+              example: 'http://wwww.company.com/product'
+            displayUrl:
+              description: 'The text/url that will be displayed instead of the url in links.url.'
+              type: string
+              maxLength: 256
+              example: 'Click here to buy this product'
+        vendorId:
+          type: string
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          example: 'OURSHOP-1423453-34'
+        attributes:
+          type: array
+          description: 'An optional list of user-defined attributes'
+          items:
+            schema:
+              $ref: 'requests.yaml#/components/schemas/UserAttribute'
+        shippingOptions:
+          example:
+            - type: 'SHIP'
+              cost: 0
+              time: '2d-5d'
+            - type: 'PICKUP'
+              pickupLocation: '1097DN'
+          type: array
+          items:
+            $ref: 'requests.yaml#/components/schemas/ShippingOption'
+          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+    AdV3Response:
+      type: object
+      deprecated: true
+      readOnly: true
+      properties:
+        id:
+          type: integer
+          format: int64
+          required: true
+          example: 1235
+          minimum: 0
+          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST action.'
+        title:
+          type: string
+          description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          required: true
+          example: 'Buy the new iPhone here'
+        description:
+          type: string
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          required: true
+          example: 'Extra sale, buy the new iPhone today and save!'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageResponse'
+        categoryId:
+          description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
+          type: integer
+          format: int64
+          required: true
+          example: 2353465
+          minimum: 0
+        externalId:
+          type: string
+          maxLength: 64
+          description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
+          example: 'OURSHOP-1423453-34'
+          deprecated: true
+        status:
+          $ref: '#/components/schemas/AdStatusV2Response'
+        statusReasons:
+          type: array
+          description: 'Currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
+          items:
+            type: string
+          minItems: 0
+          example:
+            - 'DOMAIN_PENDING'
+        priceType:
+          $ref: '#/components/schemas/AdPriceTypeResponse'
+        currency:
+          type: string
+          description: 'The 3 letter ISO-4217 currency code.'
+          example: 'EUR'
+          readOnly: true
+          format: iso-4217
+        priceUnit:
+          $ref: '#/components/schemas/AdPriceUnitResponse'
+        price:
+          type: integer
+          format: int64
+          description: 'The meaning of the value depends on priceType. If it is FIXED_PRICE or BIDDING_FROM then price has to be greater than 0. '
+          maximum: 100000000
+        cpc:
+          type: integer
+          format: int64
+          description: 'The cost per click as defined by the seller. The minimum and maximum values depend on the category.'
+          required: true
+          example: 15
+          minimum: 1
+        totalBudget:
+          type: integer
+          format: int64
+          description: 'The total budget for the ad, in cents. The minimum and maximum values depend on the category. When an ad is updated this value cannot be lower than the spentBudget. If the total budget is not returned with the ad, it means there is an unlimited total budget.'
+          example: 5000
+        dailyBudget:
+          type: integer
+          format: int64
+          nullable: true
+          description: 'The daily budget for the ad,in cents. When this value is reached the ad will be paused for the rest of the day. The minimum value depends on the category. Maximum value cannot be higher than the totalBudget'
+          example: 50000
+        spentBudget:
+          type: integer
+          format: int64
+          readOnly: true
+          description: 'The total amount of the budget that has been used so far, in cents.'
+        dailySpent:
+          type: integer
+          format: int64
+          readOnly: true
+          description: 'The budget spent for the ad since midnight, in cents. Only provided when the dailyBudget is set and larger than 0.'
+        salutation:
+          type: string
+          enum:
+            - 'COMPANY'
+            - 'MALE'
+            - 'FEMALE'
+            - 'FAMILY'
+            - 'UNKNOWN'
+          description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
+          example: 'COMPANY'
+          required: true
+        sellerName:
+          type: string
+          maxLength: 60
+          required: true
+          example: 'Mr. Smith'
+          description: 'Display name of the seller.'
+        phoneNumber:
+          maxLength: 32
+          description: 'The phone number of the advertiser as international phone number format, or as a local phone number. 0900 and 0800 numbers are not allowed.'
+          example: '+31207894561'
+        allowContactByEmail:
+          type: boolean
+          example: true
+          description: 'Flag for allowing emails to be sent to the advertiser.'
+        allowPayPal:
+          deprecated: true
+          description: 'Flag for allowing PayPal as a payment option.'
+          example: false
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was created.'
+          readOnly: true
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was last updated.'
+          readOnly: true
+          example: '2020-08-05T07:49:14Z'
+        dateDeleted:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
+          readOnly: true
+          example: '2020-08-05T07:49:14Z'
+        postcode:
+          type: string
+          description: 'Must be an non empty string.'
+          example: '1703 GB'
+          maxLength: 6
+          required: true
+        regionId:
+          type: integer
+          format: int64
+          description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. 
+              This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.
+              The region tree can be retrieved with [the regions endpoint](#/paths/regions/get).'
+          example: 10034535
+        pageNumber:
+          type: integer
+          format: int
+          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
+          readOnly: true
+          example: 2
+        suggestedCpcForPageOne:
+          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
+          type: integer
+          format: int64
+          example: 15
+          readOnly: true
+        links:
+          type: object
+          description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
+          properties:
+            self:
+              type: string
+              format: url
+              example: '/api/sellside/ad/1235'
+              description: 'A self link which points to the current resource.'
+              maxLength: 2048
+              readOnly: true
+            category:
+              type: integer
+              format: int64
+              description: 'The resource location for the category that this ad belongs to.'
+              example: '/api/sellside/category/2353465'
+              readOnly: true
+              maxLength: 2048
+            url:
+              type: string
+              format: url
+              maxLength: 2048
+              description: 'An external URL that is shown on the ad page. This must be a valid http(s) url.'
+              example: 'http://wwww.company.com/product'
+            displayUrl:
+              description: 'The text/url that will be displayed instead of the url in links.url.'
+              type: string
+              maxLength: 256
+              example: 'Click here to buy this product'
+        vendorId:
+          type: string
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          example: 'OURSHOP-1423453-34'
+        attributes:
+          type: array
+          description: 'An optional list of user-defined attributes'
+          items:
+            $ref: 'requests.yaml#/components/schemas/UserAttribute'
+        shippingOptions:
+          example:
+            - type: 'SHIP'
+              cost: 0
+              time: '2d-5d'
+            - type: 'PICKUP'
+              pickupLocation: '1097DN'
+          type: array
+          items:
+            $ref: 'requests.yaml#/components/schemas/ShippingOption'
+          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+    AdV5Response:
+      readOnly: true
+      properties:
+        id:
+          type: integer
+          format: int64
+          required: true
+          example: 1235
+          minimum: 0
+          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST action.'
+        title:
+          type: string
+          description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          required: true
+          example: 'Buy the new iPhone here'
+        description:
+          type: string
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          required: true
+          example: 'Extra sale, buy the new iPhone today and save!'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImageResponse'
+        categoryId:
+          description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
+          type: integer
+          format: int64
+          required: true
+          example: 2353465
+          minimum: 0
+        status:
+          $ref: '#/components/schemas/AdStatusV5Response'
+        price:
+          $ref: '#/components/schemas/AdPriceResponse'
+        campaignId:
+          $ref: '#/components/schemas/AdCampaignIdResponse'
+        salutation:
+          type: string
+          enum:
+            - 'COMPANY'
+            - 'MALE'
+            - 'FEMALE'
+            - 'FAMILY'
+            - 'UNKNOWN'
+          description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
+          example: 'COMPANY'
+          required: true
+        sellerName:
+          type: string
+          maxLength: 60
+          required: true
+          example: 'Mr. Smith'
+          description: 'Display name of the seller.'
+        phoneNumber:
+          maxLength: 32
+          description: 'The phone number of the advertiser as international phone number format, or as a local phone number. 0900 and 0800 numbers are not allowed.'
+          example: '+31207894561'
+        allowContactByEmail:
+          type: boolean
+          example: true
+          description: 'Flag for allowing emails to be sent to the advertiser.'
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was created.'
+          readOnly: true
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was last updated.'
+          readOnly: true
+          example: '2020-08-05T07:49:14Z'
+        dateDeleted:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
+          readOnly: true
+          example: '2020-08-05T07:49:14Z'
+        postcode:
+          type: string
+          description: 'Must be an non empty string.'
+          example: '1703 GB'
+          maxLength: 6
+          required: true
+        regionId:
+          type: integer
+          format: int64
+          description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
+          example: 10034535
+        bidMicros:
+          type: string
+          description: 'The cost per click (bid) in micro-euros/micro-dollars as defined by the seller (10000 micro-euros == 1 cent). The minimum and maximum values depend on the category. The values can be retrieved from [the categories endpoint](#/paths/categories/get).
+              <br>
+              The type is string, allowing the seller to specify “AUTOMATIC”, to let our system take care of the bid and try to optimise costs vs clicks.'
+          required: true
+          example: '10000'
+          minimum: 1
+        budgets:
+          $ref: '#/components/schemas/AdBudgetsResponse'
+        links:
+          type: object
+          description: 'Provides various hypermedia URLs to access linked resources.'
+          properties:
+            self:
+              type: string
+              format: url
+              example: '/api/sellside/ad/1235'
+              description: 'A self link which points to the current resource.'
+              maxLength: 2048
+              readOnly: true
+            category:
+              type: integer
+              format: int64
+              description: 'The resource location for the category that this ad belongs to.'
+              example: '/api/sellside/category/2353465'
+              readOnly: true
+              maxLength: 2048
+            url:
+              type: string
+              format: url
+              maxLength: 2048
+              description: 'An external URL that is shown on the ad page. This must be a valid http(s) url.'
+              example: 'http://wwww.company.com/product'
+            displayUrl:
+              description: 'The text/url that will be displayed instead of the url in links.url.'
+              type: string
+              maxLength: 256
+              example: 'Click here to buy this product'
+        vendorId:
+          type: string
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          example: 'OURSHOP-1423453-34'
+        attributes:
+          type: array
+          description: 'An optional list of user-defined attributes'
+          items:
+            $ref: 'requests.yaml#/components/schemas/UserAttribute'
+        shippingOptions:
+          example:
+            - type: 'SHIP'
+              cost: 0
+              time: '2d-5d'
+            - type: 'PICKUP'
+              pickupLocation: '1097DN'
+          type: array
+          items:
+            $ref: 'requests.yaml#/components/schemas/ShippingOption'
+          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+      type: object
+    AdPriceResponse:
+      readOnly: true
+      description: 'Price is an object containing all the information about the cost of the item for sale.'
+      type: object
+      properties:
+        amountCents:
+          description: 'The cost of the item (without shipping costs) in cents. The meaning of the value depends on `priceType`. <br>
+              The value is a positive number only when the `priceType` is ``FIXED_PRICE`` or ``BIDDING_FROM``.'
+          type: integer
+          maximum: 10000000000
+          example: 5600
+        priceType:
+          $ref: '#/components/schemas/AdPriceTypeResponse'
+        priceUnit:
+          $ref: '#/components/schemas/AdPriceUnitResponse'
+        originalAmountCents:
+          description: 'The cost of the item (without shipping costs) in cents, before discount was applied. Not available to all users. Needs to be larger than `amountCents`.'
+          type: integer
+          example: 6500
+    AdPriceUnitResponse:
+      type: string
+      readOnly: true
+      description: 'Must be a valid price unit identifier from the list of available price units of the category'
+      example: 'per_sqm'
+    AdPriceTypeResponse:
+      type: string
+      readOnly: true
+      enum:
+        - 'BIDDING'
+        - 'BIDDING_FROM'
+        - 'FIXED_PRICE'
+        - 'FREE'
+        - 'NEGOTIABLE'
+        - 'SEE_DESCRIPTION'
+        - 'SWAP'
+        - 'CREDIBLE_BID'
+        - 'ON_DEMAND'
+      description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
+      example: 'FIXED_PRICE'
+    AdCampaignIdResponse:
+      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
+      readOnly: true
+      type: integer
+      example: 54212
+    ImageResponse: # only rename with Version when multiple versions of this field exist
+      description: 'When an ad is created or updated the caller provides the images as a list of image objects which contain only the source url.
+        The images are then downloaded by iCAS and the server adds additional fields which describe the status of the download.
+        The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
+      properties:
+        src:
+          type: string
+          description: 'The source URL of the ImageResponse, where it will be downloaded from'
+          format: base64url
+          example: 'https://example.nl/8228771/wit-met-stiksel.jpg'
+          readOnly: true
+        status:
+          type: string
+          enum:
+            - 'OK'
+            - 'PENDING'
+            - 'ERROR'
+          readOnly: true
+          example: 'OK'
+          description: 'The server adds a status field indicating the status of the download. The status is either OK (ImageResponse was successfully downloaded), PENDING (ImageResponse is scheduled to be downloaded) or ERROR if the ImageResponse was not found or invalid.'
+        dateLastUpdated:
+          type: string
+          format: dateTime
+          example: '2018-07-26T14:56:51Z'
+          description: 'The ISO 8601 UTC date and time the ad was last updated.'
+          readOnly: true
+        links:
+          type: object
+          readOnly: true
+          description: 'A map of ImageResponse URLs for different dimensions of the same ImageResponse.'
+          additionalProperties:
+            type: string
+          example:
+            50x70: '//i.ebay.com/ImageResponse23434_abc.jpg'
+            120x180: '//i.marktplaats.nl/ImageResponse23434_def.jpg' # only rename
+    AdStatusV2Response:
+      type: string
+      readOnly: true
+      description: 'The current ad status. Each ad can be in one of the listed states.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'BUDGET_REACHED'
+        - 'DAILY_BUDGET_REACHED'
+        - 'DELETED'
+        - 'DELETED_BY_CS'
+        - 'SUSPENDED_BY_CS'
+      example: 'PAUSED'
+    AdStatusV5Response:
+      type: string
+      readOnly: true
+      description: 'The current ad status. Each ad can be in one of the listed states. <br> The ad will be put from ``DOMAIN_PENDING`` to ``ACTIVE`` after the seller confirms the domain the links.url is pointing to. The first time a seller uses a new domain, they will receive an email to confirm they want to create an ad directing people to that domain (for security reasons).'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'BUDGET_REACHED'
+        - 'DAILY_BUDGET_REACHED'
+        - 'DELETED'
+        - 'DELETED_BY_CS'
+        - 'SUSPENDED_BY_CS'
+        - 'DOMAIN_PENDING'
+      example: 'ACTIVE'
+    AdBudgetsResponse:
+      type: object
+      readOnly: true
+      description: 'A struct encapsulating both the daily and the total ad budget spending and limits.'
+      properties:
+        daily:
+          type: object
+          description: 'A struct encapsulating the daily ad budget spending and limit.'
+          properties:
+            limitMicros:
+              type: string
+              description: 'The maximum amount this ad can spend today in micros, after which it will be taken offline for the remainder of the day. Can also be UNLIMITED.'
+              example: 'UNLIMITED'
+            spentMicros:
+              description: 'The amount spent in micros on this ad in its lifetime. Will be ever increasing and cannot be reset.'
+              type: string
+              readOnly: true
+              example: '1255000'
+        total:
+          type: object
+          description: 'A struct encapsulating the total ad budget spending and limit.'
+          properties:
+            limitMicros:
+              type: string
+              description: 'the maximum amount this ad can spend in micros, after which it will be taken offline until the seller increases the limit.'
+              example: '350000000'
+            spentMicros:
+              type: string
+              readOnly: true
+              description: 'the amount spent in micros on this ad in its lifetime. Will be ever increasing and cannot be reset.'
+              example: '24370000'
+    AdListV3Response:
+      type: object
+      readOnly: true
+      properties:
+        ads:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdV3Response'
+        count:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+          example: 1
+    AdListV5Response:
+      type: object
+      readOnly: true
+      properties:
+        ads:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdV5Response'
+        count:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+          example: 1
+        nextPageToken:
+          description: 'Replaces the usage of the ‘offset’ parameter and allows the caller to paginate through a large list of ads more efficiently. In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making that call more efficient.
+          When a response does not contain a nextPageToken you have reached the last page of results and there are no more to fetch.
+          '
+          type: string
+          example: 'eyJpZCI6MTAwMTgz'
+    AdFunnelV1Response:
+      type: object
+      readOnly: true
+      description: 'A struct encapsulating the ad performance prediction (funnel).'
+      properties:
+        cpc:
+          type: number
+          format: int64
+          description: 'The provided CPC value in euro cents for which the prediction is made.'
+          example: 50
+        pageNumber:
+          type: number
+          format: int64
+          description: 'The page on which the ad is displayed for the corresponding CPC value.'
+          example: 3
+        averageClicks:
+          type: number
+          format: int64
+          description: 'The number of ad clicks predicted for the corresponding CPC value.'
+          example: 100
+        averageCpc:
+          type: number
+          format: int64
+          description: 'The required cpc value which would place the ad on the first (browse) page.'
+          example: 70
+        averageImpressions:
+          description: 'The number of ad impressions predicted for the corresponding CPC value.'
+          type: number
+          format: int64
+          example: 3000
+        averageUrlClicks:
+          description: 'The number of ad URL clicks predicted for the corresponding CPC value.'
+          type: number
+          format: int64
+          example: 400
+        ctr:
+          description: 'The CTR (click-through rate) predicted for the corresponding CPC value.'
+          type: integer
+          format: double
+          example: 0.345
+        urlCtr:
+          description: 'The URL CTR predicted for the corresponding CPC value.'
+          type: integer
+          format: double
+          example: 0.112
+        maxCpc:
+          description: 'The maximum cpc value that the ad can have. If ``cpc`` is greater than ``maxCpc`` then this ad does not perform well enough to be placed on page one.'
+          type: number
+          format: int64
+          example: 600
+    AdMappingExternalIdsV2Response:
+      type: object
+      readOnly: true
+      description: 'A map of adIds for the current user to the externalId the ad has.'
+      additionalProperties: # https://swagger.io/docs/specification/data-models/dictionaries/
+        type: string
+      example:
+        "1000212125": "82800ef2-0c0c-4b12-a2f3-c5d4b860a00c"
+        "1100885981": "123123-123123-123123"
+        "1102986711": "82800ef2-0c0c-4b12-a2f3-c5d4b860a00c"
+        "1104051271": "aaef367c-0206-440a-8acf-b0b4194b3558"
+        "1001831750": "a797e372-498e-449b-9fd9-088e3ccfdb08"
+        "1100886309": "123123-123123-123123"
+        "1100886818": "123123-123123-123123"
+        "1100887074": "123123-123123-123123"
+    AdPrefillTemplateResponse:
+      type: object
+      readOnly: true
+      description: 'A response of an ad prefill template.'
+      properties:
+        title:
+          type: string
+          description: 'Prefilled template title based on the requested category and attributes.'
+          example: 'Citroen C5 2.0 HDI 81KW Break 2004 Grijs'
+        categoryId:
+          type: integer
+          description: 'The category ID for the prefill template.'
+          example: 85
+        attributes:
+          type: array
+          items:
+            $ref: 'requests.yaml#/components/schemas/UserAttribute' # TODO: change
+          description: 'An identifying attribute for the supplied category, for which prefill information is available.'
+          example:
+            - key: 'color'
+              label: 'Kleur'
+              locale: 'nl'
+              type: 'STRING'
+              value: 'Zilver of Grijs'
+              recognized: true
+            - key: 'body'
+              label: 'Carrosserie'
+              locale: 'nl'
+              type: 'STRING'
+              value: 'Stationwagon'
+              recognized: true
+    CampaignStatusResponseV5:
+      type: string
+      description: 'Each campaign can be set in one of a predefined set of states.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'BUDGET_REACHED'
+        - 'DAILY_BUDGET_REACHED'
+      example: 'ACTIVE'
+    CampaignResponseV5:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1235
+          minimum: 0
+          readOnly: true
+          description: 'Unique reference to the iCAS campaign.'
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the campaign was created.'
+          readOnly: true
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: dateTime
+          example: '2018-07-26T14:56:51Z'
+          readOnly: true
+          description: 'The ISO 8601 UTC date and time the campaign was last updated.'
+        status:
+          $ref: '#/components/schemas/CampaignStatusResponseV5'
+        budgets:
+          $ref: '#/components/schemas/CampaignBudgetsResponseV5'
+
+    MetricsReportV2:
+      readOnly: true
+      type: object
+      properties:
+        createDate:
+          type: string
+          format: time
+          example: '2014-12-05T14:47:04Z'
+          description: 'The date/time this report call got requested (in UTC ISO8601 format)'
+        startDate:
+          type: string
+          format: date
+          example: '2014-11-24'
+          description: 'The start of the period this report covers. Tenant time zone is assumed.'
+        endDate:
+          type: string
+          format: date
+          example: '2014-11-25'
+          description: 'The end of the period this report covers. Tenant time zone is assumed.'
+        data:
+          type: array
+          description: 'The report data; each element in this array represents the data for an ad.'
+          items:
+            type: object
+            properties:
+              adId:
+                type: integer
+                format: int64
+                description: 'Id of the ad to which the report row belongs to.'
+                example: 1262
+              bidMicros:
+                type: integer
+                format: int64
+                description: 'Current bid value of the ad (in micros).'
+                example: 10000
+              cpc:
+                type: integer
+                format: int64
+                deprecated: true
+                description: 'CPC of the ad (in cents).'
+                example: 5
+              impressions:
+                type: integer
+                format: int64
+                description: 'Number of impressions this ad received.'
+                example: 73
+              clicks:
+                description: 'Number of clicks this ad received.'
+                type: integer
+                format: int64
+                example: 43
+              urlClicks:
+                description: 'Number of url clicks this ad received.'
+                type: integer
+                format: int64
+                example: 3
+              emails:
+                description: 'Number of email requests this ad received.'
+                type: integer
+                format: int64
+                example: 1
+              engagement:
+                description: 'Number of engagements this ad received. Depending on the tenant, this could be the same as ``urlClicks``, or a summation of several metrics.'
+                type: integer
+                format: int64
+                example: 22
+              spentMicros:
+                description: 'Total amount spent for this ad (in micros).'
+                type: integer
+                format: int64
+                example: 430000
+              totalSpent:
+                deprecated: true
+                description: 'Total amount spent for this ad (in cents).'
+                type: integer
+                format: int64
+                example: 2000
+              ctr:
+                description: 'Click-through rate of the ad.'
+                type: number
+                format: double
+                example: 0.589
+              engagementCTR:
+                description: 'Number of engagements leads from clicks this ad received.'
+                type: number
+                format: double
+                example: 0.511
+              websiteCTR:
+                description: 'Number of website leads from clicks this ad received.'
+                type: number
+                format: double
+                example: 0.43
+              startDate:
+                description: 'Creation date of the ad.'
+                type: string
+                format: time
+                example: '1970-01-17T09:27:18Z'
+              endDate:
+                description: 'Deletion date of the ad if the ad is deleted, null otherwise.'
+                type: string
+                format: time
+                example: null
+              title:
+                description: 'Title of the ad.'
+                format: string
+                example: 'Test Ad'
+              categoryId:
+                description: 'Category id of the ad.'
+                type: number
+                example: 573
+              vendorId:
+                description: 'Vendor id of the ad.'
+                type: string
+                example: 'vndr'
+              dailyBudgetMicros:
+                description: 'Daily limit of the ad (in micros).'
+                type: integer
+                format: int64
+                example: 9990000
+              dailyLimit:
+                deprecated: true
+                description: 'Daily limit of the ad (in cents).'
+                type: integer
+                format: int64
+                example: 2000
+              totalBudgetMicros:
+                description: 'Total budget of the ad (in micros).'
+                type: integer
+                format: int64
+              totalBudget:
+                deprecated: true
+                description: 'Total budget of the ad (in cents).'
+                type: integer
+                format: int64
+                example: 5000
+              relativePerformance:
+                description: 'Returns the relative performance of the ad (on a scale of [1-100]) compared to competition within the ad’s category. Higher score means better performance. A score of 0 could indicate there is not enough data to infer the value at the moment.'
+                type: integer
+                example: 65
+              eSpentMicros:
+                description: 'Returns the effective cost per website click in micros'
+                type: number
+                format: double
+                example: 4200
+              eCPC:
+                deprecated: true
+                description: 'Returns the eCPC (effective cost per website click) in cents'
+                type: number
+                format: double
+                example: 0.42
+    MetricsReportV1:
+      readOnly: true
+      type: object
+      properties:
+        createDate:
+          type: string
+          format: time
+          example: '2014-12-05T14:47:04Z'
+          description: 'The date/time this report call got requested (in UTC ISO8601 format)'
+        startDate:
+          type: string
+          format: date
+          example: '2014-11-24'
+          description: 'The start of the period this report covers. Tenant time zone is assumed.'
+        endDate:
+          type: string
+          format: date
+          example: '2014-11-25'
+          description: 'The end of the period this report covers. Tenant time zone is assumed.'
+        data:
+          type: array
+          description: 'The report data; each element in this array represents the data for an ad.'
+          items:
+            type: object
+            properties:
+              adId:
+                type: integer
+                format: int64
+                description: 'Id of the ad to which the report row belongs to.'
+                example: 1262
+              cpc:
+                type: integer
+                format: int64
+                description: 'CPC of the ad (in cents).'
+                example: 5
+              impressions:
+                type: integer
+                format: int64
+                description: 'Number of impressions this ad received.'
+                example: 73
+              clicks:
+                description: 'Number of clicks this ad received.'
+                type: integer
+                format: int64
+                example: 43
+              urlClicks:
+                description: 'Number of url clicks this ad received.'
+                type: integer
+                format: int64
+                example: 3
+              emails:
+                description: 'Number of email requests this ad received.'
+                type: integer
+                format: int64
+                example: 1
+              engagement:
+                description: 'Number of engagements this ad received. Depending on the tenant, this could be the same as ``urlClicks``, or a summation of several metrics.'
+                type: integer
+                format: int64
+                example: 22
+              totalSpent:
+                description: 'Total amount spent for this ad (in cents).'
+                type: integer
+                format: int64
+                example: 2000
+              ctr:
+                description: 'Click-through rate of the ad.'
+                type: number
+                format: double
+                example: 0.589
+              engagementCTR:
+                description: 'Number of engagements leads from clicks this ad received.'
+                type: number
+                format: double
+                example: 0.511
+              websiteCTR:
+                description: 'Number of website leads from clicks this ad received.'
+                type: number
+                format: double
+                example: 0.43
+              startDate:
+                description: 'Creation date of the ad.'
+                type: string
+                format: time
+                example: '1970-01-17T09:27:18Z'
+              endDate:
+                description: 'Deletion date of the ad if the ad is deleted, null otherwise.'
+                type: string
+                format: time
+                example: null
+              title:
+                description: 'Title of the ad.'
+                format: string
+                example: 'Test Ad'
+              categoryId:
+                description: 'Category id of the ad.'
+                type: number
+                example: 573
+              vendorId:
+                description: 'Vendor id of the ad.'
+                type: string
+                example: 'vndr'
+              dailyLimit:
+                description: 'Daily limit of the ad (in cents).'
+                type: integer
+                format: int64
+                example: 2000
+              totalBudget:
+                description: 'Total budget of the ad (in cents).'
+                type: integer
+                format: int64
+                example: 5000
+              relativePerformance:
+                description: 'Returns the relative performance of the ad (on a scale of [1-100]) compared to competition within the ad’s category. Higher score means better performance. A score of 0 could indicate there is not enough data to infer the value at the moment.'
+                type: integer
+                example: 65
+              eCPC:
+                description: 'Returns the eCPC (effective cost per website click) in cents'
+                type: number
+                format: double
+                example: 0.42
+    MetricsAdsV2:
+      type: object
+      readOnly: true
+      properties:
+        date:
+          description: 'Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is ``YYYY-MM-DD``, for monthly aggregation - ``YYYY-MM``, and for yearly - ``YYYY``. All dates are in tenant timezone.'
+          type: string
+          format: date
+        adID:
+          description: 'ID of the ad'
+          type: integer
+          format: int64
+        L1Category:
+          description: 'Level 1 category name'
+          type: integer
+          format: int64
+        L2Category:
+          description: 'Level 2 category name'
+          type: integer
+          format: int64
+        L3Category:
+          description: 'Level 3 category name, if applicable'
+          type: integer
+          format: int64
+        title:
+          description: 'Title of the ad'
+          type: string
+        startDate:
+          description: 'Creation date of the ad'
+          type: string
+          format: date
+        endDate:
+          description: 'If the ad is deleted, deletion date of the ad'
+          type: string
+          format: date
+        bidMicros:
+          description: 'Bid of the ad for which performance metrics are calculated, in micros unit'
+          type: integer
+          format: int64
+        spentMicros:
+          description: 'Total amount spent for this ad, in micros unit'
+          type: integer
+          format: int64
+        cpc:
+          description: 'CPC of the ad for which performance metrics are calculated, in local currency'
+          type: integer
+          deprecated: true
+        spent:
+          description: 'Total amount spent for this ad, in Local Currency'
+          type: integer
+          deprecated: true
+        clicks:
+          description: 'Number of clicks that the ad received'
+          type: integer
+          format: int64
+        impressions:
+          description: 'Number of impressions that the ad received'
+          type: integer
+          format: int64
+        viewCTR:
+          description: 'Click-through rate in %'
+          type: number
+        websiteClicks:
+          description: 'Number of URL clicks that the ad received'
+          type: integer
+          format: int64
+        emails:
+          description: 'Number of email events that the ad received'
+          type: integer
+          format: int64
+        engagementCTR:
+          description: 'Engagement conversion rate in %. Calculation: ``(URL clicks + Emails) / Clicks``'
+          type: number
+        region:
+          description: 'Region name, of the ad'
+          type: integer
+          format: int64
+        vendorID:
+          description: 'Vendor ID of the ad'
+          type: string
+        externalURL:
+          description: 'The external website URL of the ad, if provided'
+          type: string
+    CampaignDailyBudgetResponseV5:
+      type: object
+      description: 'The daily budget for the campaign, including the limit and the current spent.'
+      properties:
+        limitMicros:
+          description: 'The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
+          type: string
+          example: '10000000'
+        spentMicros:
+          description: 'The amount all the ads combined in this campaign have spent so far, today. This will be reset every day around midnight.'
+          type: string
+          example: '9520000'
+    CampaignTotalBudgetResponseV5:
+      type: object
+      description: 'The total budget for the campaign, including the limit and the current spent.'
+      properties:
+        limitMicros:
+          description: 'The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
+          type: string
+          example: 'UNLIMITED'
+        spentMicros:
+          description: 'The amount all the ads combined in this campaign have spent so far. This will never be reset.'
+          type: string
+          example: '124520000'
+    CampaignBudgetsResponseV5:
+      description: 'An object containing the current budget limits and spent for this campaign. The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited). If the campaign is DELETED, no budgets are shown.'
+      properties:
+        daily:
+          $ref: '#/components/schemas/CampaignDailyBudgetResponseV5'
+        total:
+          $ref: '#/components/schemas/CampaignTotalBudgetResponseV5'
+
+    FeedConfigV1Response:
+      readOnly: true
+      type: object
+      description: 'Feed configuration of the current user.'
+      properties:
+        enabled:
+          type: boolean
+          description: 'Indicates whether the feed for the current user is enabled.'
+          default: false
+          example: true
+        feedUrl:
+          type: string
+          description: 'Contains the configured feed URL for the current user.'
+          example: 'http://www.ourshop.com/feed.xml'
+          maxLength: 512
+    MetricsDataResponseV2:
+      readOnly: true
+      type: object
+      properties:
+        data:
+          type: array
+          description: 'Contains an array of objects, one for each of the requested Time Ranges.
+          It is important to remember that the order in which the ``metrics``, ``dimensions``, and ``enrichment`` fields are requested is the same order in which they are listed in the response.
+          The order of the objects in the rows array is not guaranteed to be deterministic unless explicit sorting is used.'
+          items:
+            type: object
+            properties:
+              rows:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    dimensions:
+                      description: 'Array of dimension values for this row, in string format.'
+                      type: array
+                      items:
+                        type: string
+                    metrics:
+                      description: 'Array of metric values for this row, in number format.'
+                      type: array
+                      items:
+                        type: number
+                        format: double
+                    enrichment:
+                      description: 'Array of enrichment values for this row, in string format. Valid only if ``am:adID`` is in the requested dimensions.'
+                      type: array
+                      items:
+                        type: string
+              count:
+                description: 'Actual number of rows returned.'
+                type: number
+    CampaignStatus:
+      type: string
+      required: true
+      description: 'The current campaign status. The user can set only one of the user controlled states ACTIVE, PAUSED or DELETED.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'BUDGET_REACHED'
+        - 'DELETED'
+      example: 'ACTIVE'
+    DailyBudget:
+      type: object
+      description: 'The maximum amount (in cents) that a campaign can spend per day (limit), and the current-day spent. The spent amount value will be reset at midnight every day. If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The daily budget limit, in cents.'
+          required: true
+        spent:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The current spent, in cents.'
+          readOnly: true
+      example:
+        limit: 120
+        spent: 20
+    MonthlyBudget:
+      type: object
+      description: 'The maximum amount (in cents) that a campaign can spend per calendar month (limit), and the current-month spent. The spent amount value will be reset at midnight every 1st of the month. If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The monthly budget limit, in cents.'
+          required: true
+        spent:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The current spent, in cents.'
+          readOnly: true
+      example:
+        limit: 1000
+        spent: 30
+    TotalBudget:
+      type: object
+      description: 'The maximum amount (in cents) that a campaign can spend in its lifetime, and the current total spent. The spent value will never be reset. If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The total budget limit, in cents.'
+          required: true
+        spent:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The total spent, in cents.'
+          readOnly: true
+      example:
+        limit: -1
+        spent: 30
+    CampaignBudgets:
+      type: object
+      description: 'An object containing the current budget limits and spent for this campaign. The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited). If the campaign is DELETED, no budgets are shown.'
+      properties:
+        daily:
+          $ref: '#/components/schemas/DailyBudget'
+        monthly:
+          $ref: '#/components/schemas/MonthlyBudget'
+        total:
+          $ref: '#/components/schemas/TotalBudget'
+      example:
+        daily:
+          limit: 120
+          spent: 20
+        monthly:
+          limit: 1000
+          spent: 30
+        total:
+          limit: -1
+          spent: 30
+    NonLeafCategoryV5:
+      type: object
+      readOnly: true
+      description: 'Non-leaf categories only serve as parent nodes for lower level categories. Ads cannot be placed within them and therefore they have no configuration related to ad placement.'
+      properties:
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: '/api/sellside/category/856'
+          description: 'A link to the current category and if level > 1 a link to the parent category.'
+        id:
+          description: 'Unique category id.'
+          type: integer
+          format: int64
+          minimum: 1
+          example: 856
+        parentId:
+          description: 'Id of the parent category.'
+          type: integer
+          format: int64
+          minimum: 0
+          example: 0
+        level:
+          description: 'Level at which the category is defined.'
+          type: number
+          minimum: 0
+          example: 1
+        path:
+          description: 'Ids of all ancestors (except the root) and the current category separated by ``_``'
+          type: string
+          example: '856'
+        locales:
+          description: 'Locales for which the category is available.'
+          type: array
+          items:
+            type: string
+          example: [ 'en_US', 'nl_BE', 'fr_BE' ]
+        label:
+          description: 'Display name of the category, one entry per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            label:
+              type: string
+          example:
+            'nl_NL': 'Vakantiehuizen'
+        breadcrumbs:
+          description: 'Labels of all of the ancestors (except the root) and the current category, one list per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            breadcrumbs:
+              type: array
+              items:
+                type: string
+          example:
+            'nl_NL': [ 'Vakantie', 'Vakantiehuizen' ]
+        status:
+          description: 'The status of the category. Can be one of: ``ACTIVE``, ``CLOSED``, ``DELETED``. <br>
+          A ``CLOSED`` category is visible but no ads can be placed.  This status should be used for leaf categories where no new ads are accepted and which are in transition to ``DELETED``.<br>
+          A ``DELETED`` category is no longer visible and no ads can be placed in it. It is still possible for ads to be in this category but they can no longer be found through a category search.'
+          type: string
+          enum:
+            - ACTIVE
+            - CLOSED
+            - DELETED
+        children:
+          type: array
+          description: 'Ordered list of child categories.'
+          items:
+            $ref: '#/components/schemas/LeafCategoryV5'
+    LeafCategoryV5:
+      readOnly: true
+      description: 'Leaf categories are the categories where ads can be placed. They have by definition no children. Leaf categories contain the full configuration for ads placed in this category.'
+      properties:
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: '/api/sellside/category/863'
+            parent:
+              type: string
+              example: '/api/sellside/category/856'
+          description: 'A link to the current category and if level > 1 a link to the parent category.'
+        id:
+          description: 'Unique category id.'
+          type: integer
+          format: int64
+          minimum: 1
+          example: 863
+        parentId:
+          description: 'Id of the parent category.'
+          type: integer
+          format: int64
+          minimum: 0
+          example: 856
+        level:
+          description: 'Level at which the category is defined.'
+          type: number
+          minimum: 0
+          example: 2
+        path:
+          description: 'Ids of all ancestors (except the root) and the current category separated by ``_``'
+          type: string
+          example: '856_863'
+        locales:
+          description: 'Locales for which the category is available.'
+          type: array
+          items:
+            type: string
+          example: [ 'en_US', 'nl_BE', 'fr_BE' ]
+        label:
+          description: 'Display name of the category, one entry per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            label:
+              type: string
+          example:
+            'nl_NL': 'Vakantiehuizen | Duitsland'
+        breadcrumbs:
+          description: 'Labels of all of the ancestors (except the root) and the current category, one list per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            breadcrumbs:
+              type: array
+              items:
+                type: string
+          example:
+            'nl_NL': [ 'Vakantie', 'Vakantiehuizen | Duitsland' ]
+        status:
+          description: 'The status of the category. Can be one of: ``ACTIVE``, ``CLOSED``, ``DELETED``. <br>
+          A ``CLOSED`` category is visible but no ads can be placed.  This status should be used for leaf categories where no new ads are accepted and which are in transition to ``DELETED``.<br>
+          A ``DELETED`` category is no longer visible and no ads can be placed in it. It is still possible for ads to be in this category but they can no longer be found through a category search.'
+          type: string
+          enum:
+            - ACTIVE
+            - CLOSED
+            - DELETED
+        suggestedCpcForPageOne:
+          type: integer
+          format: int64
+          description: 'The estimated CPC (in cents) the current user needs to set on a new ad in this category to be placed on page 1 for a browse action in the leaf category.'
+          example: 5
+          deprecated: true
+        config:
+          type: object
+          description: 'The category configuration, only available for leaf categories.'
+          properties:
+            priceType:
+              type: array
+              items:
+                type: string
+              example: [
+                'BIDDING',
+                'BIDDING_FROM',
+                'FIXED_PRICE',
+                'FREE',
+                'NEGOTIABLE',
+                'SEE_DESCRIPTION',
+                'SWAP',
+                'CREDIBLE_BID',
+                'ON_DEMAND',
+                'RESERVED'
+              ]
+            bidMicros:
+              description: 'Allowed bid value in micros for ads in this category.'
+              type: string
+              example: '[10000,2500000]'
+            totalBudgetMicros:
+              description: 'Allowed range for total budget in micros for ads in this category.'
+              type: string
+              example: '[1000000,2000000000000]'
+            dailyBudgetMicros:
+              description: 'Allowed range for daily budget in micros for ads in this category.'
+              type: string
+              example: '[10000000,2000000000000]'
+            activeAds:
+              description: 'Allowed range of active ads per seller in this category.'
+              type: string
+              example: '[1,100000]'
+            images:
+              description: 'Allowed range of images count for ads in this category.'
+              type: string
+              example: '[0,24]'
+            titleLength:
+              description: 'Allowed range of the title length for ads in this category.'
+              type: string
+              example: '[1,60]'
+            descriptionLength:
+              description: 'Allowed range of the description length for ads in this category.'
+              type: string
+              example: '[1,20000]'
+            shippingOption:
+              description: 'If ``DISABLED`` ads in this category cannot have shipping options, if ``OPTIONAL`` ads can have shipping options and if ``MANDATORY`` ads must have shipping options.'
+              type: string
+              enum:
+                - 'DISABLED'
+                - 'OPTIONAL'
+                - 'MANDATORY'
+              example: 'OPTIONAL'
+            tags:
+              description: 'Optional localized set of additional keywords that are indexed with ads in this category.'
+              type: object
+              properties:
+                locale:
+                  type: string
+                keywords:
+                  type: array
+                  items:
+                    type: string
+              example:
+                - 'nl_NL': [ 'Ring' ]
+            verticals:
+              description: 'Optional set of verticals (groups) this category belongs to.'
+              type: array
+              items:
+                type: string
+                enum:
+                  - 'CARS'
+                  - 'CONTACTS'
+                  - 'JOBS'
+                  - 'HOUSES'
+                  - 'SERVICES'
+                  - 'VACATIONS'
+              example: [ 'HOUSES', 'VACATIONS' ]
+            region:
+              description: 'If ``DISABLED`` ads in this category cannot have regions, if ``OPTIONAL`` ads can have regions and if ``MANDATORY`` ads must have regions.'
+              type: string
+              example: 'DISABLED'
+            relatedPaths:
+              description: 'Optional set of paths from related existing categories used for search strategies and/or fallback scenarios to expand the search parameters when too few results are returned.'
+              type: array
+              items:
+                type: string
+              example: [ '1826_1827', '1826_18', '1826_13', '1826_19', '621_625' ]
+            priceUnits:
+              description: 'Optional set of localized price units like per m², per hour, etc. Maps an unique key to a set localized values.'
+              type: object
+              example:
+                - 'per_night':
+                    - 'nl_NL': 'per nacht'
+        attributeGroups:
+          description: 'Ordered list of attribute groups. Attribute groups combine a list of attributes with a label and an optional tooltip.<br>
+           Multiple attribute groups allow the user interface to render multiple groups in separate blocks. Expect that attributes are rendered in the order given therefore the order in the attributes field matters. The same applies to the order of the attribute groups themselves.'
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: object
+                description: 'Localized label of the attribute. One entry per locale'
+                properties:
+                  locale:
+                    type: string
+                  labels:
+                    type: object
+              tooltip:
+                description: 'Optional tooltip/help text for the label. One entry per locale.'
+                type: object
+                properties:
+                  locale:
+                    type: string
+                  labels:
+                    type: object
+              attributes:
+                type: array
+                description: 'Attributes define additional fields for ads in this category. The configuration parameters allow to render the attribute in a certain way depending on the ``type`` and the content of the ``values`` field.'
+                items:
+                  type: object
+                  properties:
+                    key:
+                      description: 'Non-empty attribute key, unique in category.'
+                      type: string
+                      example: 'region'
+                    label:
+                      description: 'Localized label of the attribute. One entry per locale'
+                      type: object
+                      example:
+                        'label':
+                          'nl_NL': 'Regio'
+                    tooltip:
+                      description: 'Optional tooltip/help text for the label.'
+                      type: object
+                    type:
+                      description: 'The attribute type. One of ``STRING``, ``NUMBER``, ``LIST`` or ``BOOL``.'
+                      type: string
+                      enum:
+                        - 'STRING'
+                        - 'NUMBER'
+                        - 'LIST'
+                        - 'BOOL'
+                      example: 'STRING'
+                    values:
+                      type: object
+                      description: 'Localized values for the attribute. The length of the JSON representation of all values for one locale must not exceed 512 bytes.'
+                      properties:
+                        locale:
+                          type: string
+                        localizedValueS:
+                          type: array
+                          items:
+                            type: string
+                          maxLength: 512
+                    defaults:
+                      description: 'Localized default value for required attributes.'
+                      type: object
+                      properties:
+                        locale:
+                          type: string
+                        defaultValue:
+                          type: string
+                    mandatory:
+                      type: boolean
+                      description: 'Whether the attribute is mandatory.'
+                      example: false
+                    searchable:
+                      type: boolean
+                      description: 'Whether the attribute is indexed for search.'
+                      example: true
+                    updatable:
+                      type: boolean
+                      description: 'Whether the attribute can be changed after creation.'
+                      example: true
+                    writable:
+                      type: boolean
+                      description: 'Whether the attribute can be set during creation.'
+                      example: true
+                    identifying:
+                      type: boolean
+                      description: 'Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with [POST /ad/prefill](#paths./ad.post.prefill), where you can potentially get a sample title, description and additional attributes based on 3rd party databases.'
+                      example: false
+                    precision:
+                      type: number
+                      minimum: 0
+                      description: 'Precision for ``NUMBER`` fields. 0 means value is an int. Default is 0. Note that floats with large precision values are difficult to compare.'
+                      example: 0
+                    range:
+                      description: 'Range for ``NUMBER`` attributes.'
+                      type: string
+                    length:
+                      description: 'Length range for ``STRING`` attributes without values.'
+                      type: string
+                    prefix:
+                      type: object
+                      description: 'Optional localized prefix for rendering.'
+                    postfix:
+                      type: object
+                      description: 'Optional localized postfix for rendering.'
+                    hints:
+                      description: 'Optional list of rendering hints.'
+                      type: array
+                      items:
+                        type: string
+            example:
+              - 'label':
+                  'nl_NL': 'Kenmerken'
+                'tooltip':
+                  'nl_NL': 'Geef hier welk type advertentie u gaat maken en wat de conditie van uw product is'
+                'attributes':
+                  'key': 'region'
+                  'label':
+                    'nl_NL': 'Regio'
+                  'tooltip': { }
+                  'type': 'STRING'
+                  'values':
+                    'nl_NL': [ 'Nieuw', 'Zo goed als nieuw', 'Gebruikt' ]
+                  'default':
+                    'nl_NL': 'Nieuw'
+                  'mandatory': false
+                  'searchable': true
+                  'updatable': true
+                  'writable': true
+                  'identifying': false
+                  'precision': 0
+                  'range': { }
+                  'length': { }
+                  'prefix': { }
+                  'postfix': { }
+                  'hints': [ ]
+    NonLeafRegion:
+      type: object
+      readOnly: true
+      description: 'Non-leaf regions serve as parent nodes for lower level regions. Ads cannot be placed within them and therefore they have no center point.'
+      properties:
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: '/api/sellside/region/1700194'
+            parent:
+              type: string
+              example: '/api/sellside/region/9009'
+          description: 'A link to the current region and if level > 1 a link to the parent region.'
+        id:
+          description: 'Unique region id.'
+          type: integer
+          format: int64
+          minimum: 1
+          example: 1700194
+        parentId:
+          description: 'Id of the parent region.'
+          type: integer
+          format: int64
+          minimum: 0
+          example: 9009
+        level:
+          description: 'Level at which the region is defined.'
+          type: number
+          minimum: 0
+          example: 2
+        path:
+          description: 'Ids of all ancestors (except the root) and the current region separated by ``_``'
+          type: string
+          example: '9009_1700194'
+        label:
+          description: 'Display name of the region, one entry per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            label:
+              type: string
+          example:
+            'en_CA': 'Regina Area'
+            'fr_CA': 'Regina Area'
+        children:
+          type: array
+          description: 'Ordered list of child regions.'
+          items:
+            $ref: '#/components/schemas/LeafRegion'
+    LeafRegion:
+      readOnly: true
+      description: 'Leaf regions are the regions where ads can be placed. They have by definition no children. Leaf regions have coordinates of the center point.'
+      properties:
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: '/api/sellside/region/1700196'
+            parent:
+              type: string
+              example: '/api/sellside/region/1700194'
+          description: 'A link to the current region and if level > 1 a link to the parent region.'
+        id:
+          description: 'Unique region id.'
+          type: integer
+          format: int64
+          minimum: 1
+          example: 1700196
+        parentId:
+          description: 'Id of the parent region.'
+          type: integer
+          format: int64
+          minimum: 0
+          example: 1700194
+        level:
+          description: 'Level at which the region is defined.'
+          type: number
+          minimum: 0
+          example: 2
+        path:
+          description: 'Ids of all ancestors (except the root) and the current region separated by ``_``'
+          type: string
+          example: '9009_1700194_1700196'
+        center:
+          description: 'Coordinates of the center of the region.'
+          type: object
+          properties:
+            latitude:
+              type: number
+              format: double
+              example: 50.448009
+            longitude:
+              type: number
+              format: double
+              example: -104.595177
+        label:
+          description: 'Display name of the region, one entry per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            label:
+              type: string
+          example:
+            'en_CA': 'Regina Area'
+            'fr_CA': 'Regina Area'
+    CampaignV2:
+      type: object
+      deprecated: true
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1235
+          minimum: 0
+          description: 'Unique reference to the iCAS campaign, needs to be omitted in a POST action.'
+        title:
+          type: string
+          example: 'My awesome campaign'
+          description: 'A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.'
+          maxLength: 255
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the campaign was created.'
+          readOnly: true
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: dateTime
+          example: '2018-07-26T14:56:51Z'
+          readOnly: true
+          description: 'The ISO 8601 UTC date and time the campaign was last updated.'
+        status:
+          $ref: '#/components/schemas/CampaignStatus'
+        vendorId:
+          type: string
+          description: 'Any non-empty string, unique per customer. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified. When fetching an existing campaign which does not have a vendorId, the field is omitted.'
+          example: 'OURSHOP-1423453-34'
+        budgets:
+          $ref: '#/components/schemas/CampaignBudgets'
+        targeting:
+          description: 'A Campaign Targeting Object, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations). Geo-circles and regions cannot and should not be used in combination on the same campaign. This is currently not supported.'
+          oneOf:
+            - $ref: '#/components/schemas/GeoTargeting'
+            - $ref: '#/components/schemas/RegionTargeting'
+    GeoTargeting:
+      description: 'Geo targeting allows you to specify one or more (circular) areas in the targeting criteria of a campaign to have the ads of that campaign only be shown to buyers located in any of the geographical areas specified.'
+      type: array
+      items:
+        type: object
+        properties:
+          lat:
+            type: number
+            format: double
+            example: 1.2345
+            description: 'Latitude of the center-point of the circular area for geo-targeting'
+            minimum: -90
+            maximum: 90
+          lon:
+            type: number
+            format: double
+            example: 123.456
+            description: 'Longitude of the center-point of the circular area for geo-targeting'
+            minimum: -180
+            maximum: 180
+          radius:
+            description: 'Radius (in km) of the circular area for geo-targeting'
+            type: integer
+            format: int64
+            example: 10
+    RegionTargeting:
+      type: array
+      items:
+        type: integer
+        format: int64
+      description: 'A list of valid regionIds from the Regions taxonomy. Default is empty array or [0], either of which implies nationwide targeting (no targeting restrictions).'
+      example:
+        - 12300
+        - 1000134
