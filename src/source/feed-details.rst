@@ -1228,7 +1228,7 @@ See `Google Merchant Center <https://support.google.com/merchants/answer/7562785
 
 |
 
-Allowed values: *A+++*, *A++*, *A+*, *A++*, *B*, *C*, *B*, *E*, *F*, *G*
+Allowed values: *A+++*, *A++*, *A+*, *A*, *B*, *C*, *B*, *E*, *F*, *G*
 
 .. index:: minEnergyEfficiencyClass
 .. _feed_minEnergyEfficiencyClass: 
