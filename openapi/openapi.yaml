@@ -1728,9 +1728,8 @@ paths:
           oAuth2ClientCredentials:
             - 'console_ro'
             - 'api_ro'
-        # FEEDS
 
-  # FEED
+  # FEEDS
   /feed/import/{id}/detail:
     get:
       tags:
@@ -2599,7 +2598,7 @@ paths:
                   nextPageToken:
                     description: 'Replaces the usage of the ‘offset’ parameter and allows the caller to paginate through a large list of ads more efficiently. In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making that call more efficient.
                     When a response does not contain a nextPageToken you have reached the last page of results and there are no more to fetch.
-                      '
+                    The value of this `nextPageToken` should be used as ADDITIONAL parameter `pageToken` to your regular call.'
                     type: string
                     example: 'eyJpZCI6MTAwMTgz'
                   campaigns:
@@ -3861,12 +3860,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ImageRequest'
-        externalId:
-          type: string
-          maxLength: 64
-          description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
-          example: 'OURSHOP-1423453-34'
-          deprecated: true
         status:
           $ref: '#/components/schemas/AdStatusV2Request'
         priceType:
@@ -4026,8 +4019,13 @@ components:
               example: 'Click here to buy this product'
         vendorId:
           type: string
-          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          description: 'Any non-empty string using simple latin-1 characters. Please use simple latin-1 characters only. Should be unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted. When an ad gets set to status DELETED, this does NOT remove the vendorId. This means that inserting a new ad with the same vendorId will still fail if you already have an ad with that vendorId, regardless of its status.'
           example: 'OURSHOP-1423453-34'
+        externalId:
+          deprecated: true
+          maxLength: 64
+          type: string
+          description: 'Any non-empty string using simple latin-1 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted. There is no unique constraint when it comes to externalId, so multiple ads are allowed to have the same externalId.'
         attributes:
           type: array
           description: 'An optional list of user-defined attributes'
@@ -4185,8 +4183,13 @@ components:
               example: 'Click here to buy this product'
         vendorId:
           type: string
-          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          description: 'Any non-empty string using simple latin-1 characters. Should be unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted. When an ad gets set to status DELETED, this does NOT remove the vendorId. This means that inserting a new ad with the same vendorId will still fail if you already have an ad with that vendorId, regardless of its status.'
           example: 'OURSHOP-1423453-34'
+        externalId:
+          deprecated: true
+          maxLength: 64
+          type: string
+          description: 'Any non-empty string using simple latin-1 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted. There is no unique constraint when it comes to externalId, so multiple ads are allowed to have the same externalId.'
         attributes:
           type: array
           description: 'An optional list of user-defined attributes'
@@ -4977,7 +4980,7 @@ components:
         nextPageToken:
           description: 'Replaces the usage of the ‘offset’ parameter and allows the caller to paginate through a large list of ads more efficiently. In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making that call more efficient.
           When a response does not contain a nextPageToken you have reached the last page of results and there are no more to fetch.
-          '
+          The value of this `nextPageToken` should be used as ADDITIONAL parameter `pageToken` to your regular call and replaces the usage of the offset parameter.'
           type: string
           example: 'eyJpZCI6MTAwMTgz'
     AdFunnelV1Response:
@@ -5829,11 +5832,22 @@ components:
         - 1000134
     CampaignRequestV5:
       type: object
+      required:
+        - status
+        - budgets
       properties:
         status:
           $ref: '#/components/schemas/CampaignStatusRequestV5'
         budgets:
           $ref: '#/components/schemas/CampaignBudgetsRequestV5'
+        title:
+          type: string
+          maxLength: 64
+          description: 'A name of the campaign. This will not be shown anywhere to customers, this is purely for the seller to quickly recognise the campaign.'
+        vendorId:
+          type: string
+          maxLength: 64
+          description: 'Any non-empty string with a maximum length of 64 characters. Please use simple latin-1 characters only. Should be unique per customer. Can either be set when creating a campaign or when updating an existing campaign. However, once set, it can no longer be modified. When fetching an existing campaign which does not have a vendorId, the field is omitted. When a campaign gets set to status DELETED, this does NOT remove the vendorId. This means that inserting a new campaign with the same vendorId will still fail if you already have a campaign with that vendorId, regardless of its status.'
     CampaignResponseV5:
       type: object
       properties:

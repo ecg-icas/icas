@@ -901,8 +901,8 @@ url.</p>
 </section>
 <section id="vendorid">
 <span id="ad-vendorid"></span><span id="index-47"></span><h3>vendorId<a class="headerlink" href="#vendorid" title="Permalink to this heading">¶</a></h3>
-<p>Any non-empty string with a maximum length of 64 characters. Should be unique
-per customer. Can either be set when creating an ad or when updating an
+<p>Any non-empty string with a maximum length of 64 characters. Please use simple latin-1 characters only.
+Should be unique per customer. Can either be set when creating an ad or when updating an
 existing ad. However, once set, it can no longer be modified. When fetching an
 existing ad which does not have a <strong>vendorId</strong>, the field is omitted.
 When an ad gets set to status <code class="docutils literal notranslate"><span class="pre">DELETED</span></code>, this does <strong>not</strong> remove the vendorId.

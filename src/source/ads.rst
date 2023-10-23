@@ -556,8 +556,8 @@ The text/url that will be displayed instead of the url in :ref:`ad_links_url`.
 vendorId
 """"""""
 
-Any non-empty string with a maximum length of 64 characters. Should be unique
-per customer. Can either be set when creating an ad or when updating an
+Any non-empty string with a maximum length of 64 characters. Please use simple latin-1 characters only.
+Should be unique per customer. Can either be set when creating an ad or when updating an
 existing ad. However, once set, it can no longer be modified. When fetching an
 existing ad which does not have a **vendorId**, the field is omitted.
 When an ad gets set to status ``DELETED``, this does **not** remove the vendorId.
