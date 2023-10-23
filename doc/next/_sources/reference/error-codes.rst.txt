@@ -12,7 +12,6 @@ Code    HTTP    Error message                    Description
 1003    403     access denied                    Authorization failed
 1004    404     not found                        The resource was not found or does not belong to the authenticated user
 1005    400     invalid json                     The input is not valid JSON
-1006    400     type mismatch                    A value of a field was provided as wrong type
 1007    401     access denied                    The access token is invalid
 1008    401     access denied                    The user connected to this access token is invalid
 1009    401     missing token                    The Authorization header is missing or in the wrong format
@@ -37,13 +36,11 @@ Code    HTTP    Error message                    Description
 2023    400     category deleted                 The category is deleted and will not allow creation/updating of ads
 2024    400     vendorId change not allowed      The vendorId can only be set once
 2025    400     duplicate vendorId               The vendorId is already in use by another entity of the same tyope
-2026    400     too many active ads in cat       The user has reached the maximum number of active ads in the category, cannot activate ad.
 2027    400     cannot change seller budget      The provided amount cannot be added/subtracted from current seller level budget
 2028    400     regionId change not allowed      Changing the regionId of an ad is not allowed
 2030    400     missing identifying attribute    The call requires an identifying attribute, but it is missing
 2034    400     campaign already exists          The campaign already exists
 2035    400     attribute is not writable        The attribute cannot be set by the user
-2036    400     max datapoint exceeded           Too many data points to return
 2037    400     unknown field name               An unrecognised field was provided
 2039    400     max #campaigns reached           Seller has reached the maximum amount of campaigns
 2040    400     status change not allowed        The requested status change is not allowed
