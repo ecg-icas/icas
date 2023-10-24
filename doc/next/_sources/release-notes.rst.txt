@@ -103,7 +103,7 @@ Campaigns
 """""""""
 Added first campaign support. See :ref:`campaigns` for full details.
 
-* :ref:`get_campaign` to get list of campaigns for a user. Expected 0 or 1 result.
+* :ref:`get_campaigns` to get list of campaigns for a user. Expected 0 or 1 result.
 * :ref:`get_campaign_id` to fetch the individual campaign.
 * :ref:`post_campaign` to create a campaign. Currently only 1 allowed per seller.
 * :ref:`put_campaign_id` to update the campaign. Currently only status & budgets can be updated.
