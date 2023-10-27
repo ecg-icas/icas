@@ -1,34 +1,39 @@
 # ads/params.yaml
 openapi: 3.0.0
-parameters:
-  OrderByGetAdsParam:
-    type: string
-    required: false
-    description: 'Orders the result set by the given field. Default value is DATE_CREATED. (v5)'
-    enum:
-      - 'DATE_CREATED'
-      - 'DATE_LAST_UPDATED'
-      - 'STATUS'
-      - 'CLICKS'
-      - 'TITLE'
-      - 'CPC'
-      - 'SPENT'
-      - 'REMAINING_BUDGET'
-      - 'AD_ID'
-    example: 'DATE_CREATED'
-    default: 'DATE_CREATED'
-  DirectionGetAdsRequest:
-    type: string
-    description: 'Determines the direction of the sort.'
-    enum:
-      - 'ASCENDING'
-      - 'DESCENDING'
-    example: 'DESCENDING'
-    default: 'ASCENDING'
-  ChangedSinceGetAdsRequest:
-    type: string
-    format: date-time
-    description: 'Retrieve only ads whose date of last update is newer, or equal to, this ISO 8601 UTC timestamp, that is in the past.
-  <br><br>
-  Filtering by ``status`` and ``titleKeyword`` may be used but ``orderBy`` and ``direction`` cannot be changed since this would break the pagination.'
-    example: '2019-04-18T13:55:10Z'
+info:
+  title: Ad request parameters
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    OrderByGetAdsParam:
+      type: string
+      required: false
+      description: 'Orders the result set by the given field. Default value is DATE_CREATED. (v5)'
+      enum:
+        - 'DATE_CREATED'
+        - 'DATE_LAST_UPDATED'
+        - 'STATUS'
+        - 'CLICKS'
+        - 'TITLE'
+        - 'CPC'
+        - 'SPENT'
+        - 'REMAINING_BUDGET'
+        - 'AD_ID'
+      example: 'DATE_CREATED'
+      default: 'DATE_CREATED'
+    DirectionGetAdsRequest:
+      type: string
+      description: 'Determines the direction of the sort.'
+      enum:
+        - 'ASCENDING'
+        - 'DESCENDING'
+      example: 'DESCENDING'
+      default: 'ASCENDING'
+    ChangedSinceGetAdsRequest:
+      type: string
+      format: date-time
+      description: 'Retrieve only ads whose date of last update is newer, or equal to, this ISO 8601 UTC timestamp, that is in the past.
+    <br><br>
+    Filtering by ``status`` and ``titleKeyword`` may be used but ``orderBy`` and ``direction`` cannot be changed since this would break the pagination.'
+      example: '2019-04-18T13:55:10Z'

@@ -1,5 +1,9 @@
 # ads/requests.yaml
 openapi: 3.0.0
+info:
+  title: Ad request component schemas
+  version: 1.0.0
+paths: {}
 components:
   schemas:
     AdV2Request:
@@ -47,7 +51,7 @@ components:
         images:
           type: array
           items:
-            $ref: '#ImageRequest'
+            $ref: '#/components/schemas/ImageRequest'
         externalId:
           type: string
           maxLength: 64
@@ -55,7 +59,7 @@ components:
           example: 'OURSHOP-1423453-34'
           deprecated: true
         status:
-          $ref: '#AdStatusV2Request'
+          $ref: '#/components/schemas/AdStatusV2Request'
         priceType:
           type: string
           required: true
@@ -78,7 +82,7 @@ components:
           readOnly: true
           format: iso-4217
         priceUnit:
-          $ref: 'responses.yaml#/components/schemas/AdPriceUnitResponse' # TODO: change this!
+          $ref: '#/components/schemas/AdPriceUnitRequest'
         price:
           type: integer
           format: int64
@@ -219,7 +223,7 @@ components:
           type: array
           description: 'An optional list of user-defined attributes'
           items:
-            $ref: '#UserAttribute'
+            $ref: '#/components/schemas/UserAttribute'
         shippingOptions:
           example:
             - type: 'SHIP'
@@ -273,9 +277,9 @@ components:
         status:
           $ref: '#/components/schemas/AdStatusV2Request'
         price:
-          $ref: 'responses.yaml#/components/schemas/AdPriceResponse' # TODO: change!
+          $ref: '#/components/schemas/AdPriceRequest'
         campaignId:
-          $ref: 'responses.yaml#/components/schemas/AdCampaignIdResponse' #TODO: change!
+          $ref: '#/components/schemas/AdCampaignIdRequest'
         salutation:
           type: string
           enum:
@@ -390,6 +394,117 @@ components:
           items:
             $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+      examples:
+        manualBidding:
+          value:
+            title: 'Brother Fax voor 99,99'
+            description: '<b>NU extra voordelig op ourshop.com.</b> Fax nu voor slechts <b>99,99!</b>'
+            categoryId: 826
+            status: 'ACTIVE'
+            price:
+              priceType: 'FIXED_PRICE'
+              priceUnit: 'per_sqm'
+              amountCents: 5600
+              originalAmountCents: 6500
+            bidMicros: '10000'
+            budgets:
+              daily:
+                limitMicros: 'UNLIMITED'
+              total:
+                limitMicros: '350000000'
+            campaignId: 54212
+            salutation: 'COMPANY'
+            sellerName: 'My Shop'
+            postcode: '1097DN'
+            regionId: 1700195
+            phoneNumber: '0207894561'
+            allowContactByEmail: true
+            vendorId: 'OURSHOP-1423453-34'
+            links:
+              displayUrl: 'www.ourshop.com/Faxes'
+              url: 'http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3'
+            images:
+              - src: 'http://www.ourshop.com/img/brother_fax_big.jpg'
+              - src: 'http://www.ourshop.com/img/brother_fax_side.jpg'
+            attributes:
+              - key: 'color'
+                label: 'Kleur'
+                locale: 'nl'
+                type: 'STRING'
+                value: 'Zwart'
+              - key: 'size'
+                label: 'Maat'
+                locale: 'nl'
+                type: 'NUMBER'
+                value: 6
+              - key: 'software'
+                label: 'Software'
+                locale: 'nl'
+                type: 'LIST'
+                value:
+                  - 'Apple OSX'
+                  - 'Microsoft Windows 7'
+            shippingOptions:
+              - type: 'SHIP'
+                costCents: 495
+                time: '2d-5d'
+              - type: 'PICKUP'
+                pickupLocation: '1097DN'
+        autoBidding:
+          value:
+            title: 'Brother Fax voor 99,99'
+            description: '<b>NU extra voordelig op ourshop.com.</b> Fax nu voor slechts <b>99,99!</b>'
+            categoryId: 826
+            status: 'ACTIVE'
+            price:
+              priceType: 'FIXED_PRICE'
+              priceUnit: 'per_sqm'
+              amountCents: 5600
+              originalAmountCents: 6500
+            bidMicros: 'AUTOMATIC'
+            budgets:
+              daily:
+                limitMicros: '30000000'
+              total:
+                limitMicros: 'UNLIMITED'
+            campaignId: 54212
+            salutation: 'COMPANY'
+            sellerName: 'My Shop'
+            postcode: '1097DN'
+            regionId: 1700195
+            phoneNumber: '0207894561'
+            allowContactByEmail: true
+            vendorId: 'OURSHOP-1423453-34'
+            links:
+              displayUrl: 'www.ourshop.com/Faxes'
+              url: 'http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3'
+            images:
+              - src: 'http://www.ourshop.com/img/brother_fax_big.jpg'
+              - src: 'http://www.ourshop.com/img/brother_fax_side.jpg'
+            attributes:
+              - key: 'color'
+                label: 'Kleur'
+                locale: 'nl'
+                type: 'STRING'
+                value: 'Zwart'
+              - key: 'size'
+                label: 'Maat'
+                locale: 'nl'
+                type: 'NUMBER'
+                value: 6
+              - key: 'software'
+                label: 'Software'
+                locale: 'nl'
+                type: 'LIST'
+                value:
+                  - 'Apple OSX'
+                  - 'Microsoft Windows 7'
+            shippingOptions:
+              - type: 'SHIP'
+                costCents: 495
+                time: '2d-5d'
+              - type: 'PICKUP'
+                pickupLocation: '1097DN'
       type: object
     ImageRequest:
       readOnly: true
@@ -404,14 +519,14 @@ components:
           format: base64url
           example: 'https://example.nl/8228771/wit-met-stiksel.jpg'
     AdStatusV2Request:
-        type: string
-        required: true
-        description: 'The ad status as desired and controlled by the user.'
-        enum:
-          - 'ACTIVE'
-          - 'PAUSED'
-          - 'DELETED'
-        example: 'ACTIVE'
+      type: string
+      required: true
+      description: 'The ad status as desired and controlled by the user.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'DELETED'
+      example: 'ACTIVE'
     AdBudgetsRequest:
       type: object
       description: 'A struct encapsulating both the daily and the total ad budget limits.'
@@ -699,32 +814,6 @@ components:
           description: 'String to match against an ad title.'
           type: string
           example: 'bike'
-    AttributeValue:
-      properties:
-        schema:
-          oneOf:
-            - type: string
-              example: 'zwart'
-              maxLength: 512
-              description: 'A single string value.'
-            - type: number
-              example: 6
-              description: 'A single number value.'
-            - type: array
-              items:
-                oneOf:
-                  - type: string
-                    example: 'zwart'
-                    maxLength: 512
-                    description: 'A single string value.'
-                  - type: number
-                    example: 6
-                    description: 'A single number value.'
-              description: 'A list of string or number values. The JSON representation of the value of a list attribute must not exceed 512 characters.'
-              maxLength: 512
-              example:
-                - 'zwart'
-                - 'groen'
     UserAttribute:
       externalDocs:
         url: 'http://ecg-icas.github.io/icas/doc/next/attributes.html#user-defined-attributes'
@@ -760,7 +849,33 @@ components:
           example: 'LIST'
           required: true
         value:
-          $ref: '#AttributeValue'
+          $ref: '#/components/schemas/AttributeValue'
+    AttributeValue:
+      properties:
+        schema:
+          oneOf:
+            - type: string
+              example: 'zwart'
+              maxLength: 512
+              description: 'A single string value.'
+            - type: number
+              example: 6
+              description: 'A single number value.'
+            - type: array
+              items:
+                oneOf:
+                  - type: string
+                    example: 'zwart'
+                    maxLength: 512
+                    description: 'A single string value.'
+                  - type: number
+                    example: 6
+                    description: 'A single number value.'
+              description: 'A list of string or number values. The JSON representation of the value of a list attribute must not exceed 512 characters.'
+              maxLength: 512
+              example:
+                - 'zwart'
+                - 'groen'
     ShippingOption:
       type: object
       example:
@@ -794,3 +909,41 @@ components:
           type: string
           description: 'Pick up location of the item. Mandatory when the type is PICKUP.'
           example: '3541CB'
+    AdPriceUnitRequest:
+      type: string
+      description: 'Must be a valid price unit identifier from the list of available price units of the category'
+      example: 'per_sqm'
+    AdPriceRequest:
+      description: 'Price is an object containing all the information about the cost of the item for sale.'
+      type: object
+      properties:
+        amountCents:
+          description: 'The cost of the item (without shipping costs) in cents. The meaning of the value depends on `priceType`. <br>
+              The value is a positive number only when the `priceType` is ``FIXED_PRICE`` or ``BIDDING_FROM``.'
+          type: integer
+          maximum: 10000000000
+          example: 5600
+        priceType:
+          $ref: '#/components/schemas/AdPriceTypeRequest'
+        priceUnit:
+          $ref: '#/components/schemas/AdPriceUnitRequest'
+        originalAmountCents:
+          description: 'The cost of the item (without shipping costs) in cents, before discount was applied. Not available to all users. Needs to be larger than `amountCents`.'
+          type: integer
+          example: 6500
+    AdCampaignIdRequest:
+      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
+      type: integer
+      example: 54212
+    AdPriceTypeRequest:
+      type: string
+      enum:
+        - 'BIDDING'
+        - 'BIDDING_FROM'
+        - 'FIXED_PRICE'
+        - 'FREE'
+        - 'NEGOTIABLE'
+        - 'SEE_DESCRIPTION'
+        - 'SWAP'
+        - 'CREDIBLE_BID'
+        - 'ON_DEMAND'

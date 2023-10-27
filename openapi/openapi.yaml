@@ -47,7 +47,7 @@ tags:
   - name: Regions
   - name: Reporting
 paths:
-  # ADS
+   # ADS
   '/ad/{adId}':
     get:
       tags:
@@ -82,13 +82,13 @@ paths:
           content:
             application/sellside.ad-v5+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV5Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV5Response'
             application/sellside.ad-v3+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV3Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV3Response'
             application/sellside.ad-v2+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV2Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV2Response'
         '401':
           description: 'Unauthorized'
           content:
@@ -96,7 +96,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1009
                   text: 'missing token'
@@ -108,7 +108,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1004
                   text: 'not found'
@@ -126,7 +126,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1000
                   text: 'internal error'
@@ -152,16 +152,17 @@ paths:
             format: int64
             example: 1235
       requestBody:
+        required: true
         content:
           application/sellside.ad-v5+json:
             schema:
-              $ref: 'ads/requests.yaml#/components/schemas/AdV5Request'
+              $ref: './ads/requests.yaml#/components/schemas/AdV5Request'
           application/sellside.ad-v3+json:
             schema:
-              $ref: 'ads/requests.yaml#/components/schemas/AdV3Request'
+              $ref: './ads/requests.yaml#/components/schemas/AdV3Request'
           application/sellside.ad-v2+json:
             schema:
-              $ref: 'ads/requests.yaml#/components/schemas/AdV2Request'
+              $ref: './ads/requests.yaml#/components/schemas/AdV2Request'
       responses:
         '200':
           description: 'Success'
@@ -179,13 +180,13 @@ paths:
           content:
             application/sellside.ad-v5+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV5Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV5Response'
             application/sellside.ad-v3+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV3Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV3Response'
             application/sellside.ad-v2+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV2Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV2Response'
         '400':
           description: 'Bad Request'
           content:
@@ -193,7 +194,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               examples:
                 example1:
                   value:
@@ -250,7 +251,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1009
                   text: 'missing token'
@@ -262,7 +263,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1004
                   text: 'not found'
@@ -280,7 +281,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1000
                   text: 'internal error'
@@ -296,10 +297,10 @@ paths:
         - Ads
       summary: 'Updates the status of the ad with the given '
       description: 'To set the new status append it to the base url. <br>
-        Changing the status to ACTIVE also changes the number of active ads in this category for this user. 
-        If the current number of active ads for this user in this category exceeds ``maxNumberOfActiveAds`` as defined in the category then an error is returned. 
+        Changing the status to ACTIVE also changes the number of active ads in this category for this user.
+        If the current number of active ads for this user in this category exceeds ``maxNumberOfActiveAds`` as defined in the category then an error is returned.
         Setting a different status than ``ACTIVE`` is always allowed.
-        If an ad has is in status ``PAUSED`` and also has no daily budget or total budget remaining, this call will succeed. The resulting status of the ad will be either ``BUDGET_REACHED`` or ``DAILY_BUDGET_REACHED``, depending on which budget has run out. 
+        If an ad has is in status ``PAUSED`` and also has no daily budget or total budget remaining, this call will succeed. The resulting status of the ad will be either ``BUDGET_REACHED`` or ``DAILY_BUDGET_REACHED``, depending on which budget has run out.
         In this case the ad will go live as soon as budget is added.
         '
       operationId: postAdStatus
@@ -317,7 +318,7 @@ paths:
           required: true
           description: 'The desired ad status from a user perspective.'
           schema:
-            $ref: 'ads/requests.yaml#/components/schemas/AdStatusV2Request' # same as v2
+            $ref: './ads/requests.yaml#/components/schemas/AdStatusV2Request' # same as v2
             example: 'PAUSED'
       responses:
         '200':
@@ -345,7 +346,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               examples:
                 invalidArgument:
                   value:
@@ -370,7 +371,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1004
                   text: 'not found'
@@ -391,10 +392,10 @@ paths:
               Version 5 is similar to version 3, except for some changes in the Ads data structure and the addition of the ``nextPageToken`` field in the response.
               <br>
               This replaces the usage of the ``offset`` parameter and allows the caller to paginate through a large list of ads more efficiently.
-              In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for 
-              the next result set, making that call more efficient. For the very first page, a ``PageToken`` should not be provided. 
-              For any following page, callers should use the exact same request with an added ``pageToken`` parameter. 
-              The value for the ``pageToken`` parameter for page N+1 is the ``nextPageToken`` field in the response of your call to fetch page N. 
+              In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for
+              the next result set, making that call more efficient. For the very first page, a ``PageToken`` should not be provided.
+              For any following page, callers should use the exact same request with an added ``pageToken`` parameter.
+              The value for the ``pageToken`` parameter for page N+1 is the ``nextPageToken`` field in the response of your call to fetch page N.
               When a response does not contain a ``nextPageToken``, you have reached the last page of results and there are no more to fetch.
               <br><br>
               Note the difference in naming between response field nextPageToken and request parameter pageToken.
@@ -458,16 +459,16 @@ paths:
           in: query
           required: false
           schema:
-            $ref: 'ads/params.yaml#OrderByGetAdsParam'
+            $ref: './ads/params.yaml#/components/schemas/OrderByGetAdsParam'
         - name: direction
           in: query
           schema:
-            $ref: 'ads/params.yaml#/parameters/DirectionGetAdsRequest'
+            $ref: './ads/params.yaml#/components/schemas/DirectionGetAdsRequest'
         - name: changedSince
           in: query
           required: false
           schema:
-            $ref: 'ads/params.yaml#/parameters/ChangedSinceGetAdsRequest'
+            $ref: './ads/params.yaml#/components/schemas/ChangedSinceGetAdsRequest'
         - name: remainingBudget
           in: query
           required: false
@@ -591,10 +592,10 @@ paths:
           content:
             application/sellside.ad.list-v5+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdListV5Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdListV5Response'
             application/sellside.ad.list-v3+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdListV3Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdListV3Response'
         '401':
           description: 'Unauthorized'
           content:
@@ -602,7 +603,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1009
                   text: 'missing token'
@@ -620,7 +621,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1000
                   text: 'internal error'
@@ -643,124 +644,13 @@ paths:
         content:
           application/sellside.ad-v5+json:
             schema:
-              $ref: 'ads/requests.yaml#/components/schemas/AdV5Request'
-            examples:
-              manualBidding:
-                value:
-                  title: 'Brother Fax voor 99,99'
-                  description: '<b>NU extra voordelig op ourshop.com.</b> Fax nu voor slechts <b>99,99!</b>'
-                  categoryId: 826
-                  status: 'ACTIVE'
-                  price:
-                    priceType: 'FIXED_PRICE'
-                    priceUnit: 'per_sqm'
-                    amountCents: 5600
-                    originalAmountCents: 6500
-                  bidMicros: '10000'
-                  budgets:
-                    daily:
-                      limitMicros: 'UNLIMITED'
-                    total:
-                      limitMicros: '350000000'
-                  campaignId: 54212
-                  salutation: 'COMPANY'
-                  sellerName: 'My Shop'
-                  postcode: '1097DN'
-                  regionId: 1700195
-                  phoneNumber: '0207894561'
-                  allowContactByEmail: true
-                  vendorId: 'OURSHOP-1423453-34'
-                  links:
-                    displayUrl: 'www.ourshop.com/Faxes'
-                    url: 'http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3'
-                  images:
-                    - src: 'http://www.ourshop.com/img/brother_fax_big.jpg'
-                    - src: 'http://www.ourshop.com/img/brother_fax_side.jpg'
-                  attributes:
-                    - key: 'color'
-                      label: 'Kleur'
-                      locale: 'nl'
-                      type: 'STRING'
-                      value: 'Zwart'
-                    - key: 'size'
-                      label: 'Maat'
-                      locale: 'nl'
-                      type: 'NUMBER'
-                      value: 6
-                    - key: 'software'
-                      label: 'Software'
-                      locale: 'nl'
-                      type: 'LIST'
-                      value:
-                        - 'Apple OSX'
-                        - 'Microsoft Windows 7'
-                  shippingOptions:
-                    - type: 'SHIP'
-                      costCents: 495
-                      time: '2d-5d'
-                    - type: 'PICKUP'
-                      pickupLocation: '1097DN'
-              autoBidding:
-                value:
-                  title: 'Brother Fax voor 99,99'
-                  description: '<b>NU extra voordelig op ourshop.com.</b> Fax nu voor slechts <b>99,99!</b>'
-                  categoryId: 826
-                  status: 'ACTIVE'
-                  price:
-                    priceType: 'FIXED_PRICE'
-                    priceUnit: 'per_sqm'
-                    amountCents: 5600
-                    originalAmountCents: 6500
-                  bidMicros: 'AUTOMATIC'
-                  budgets:
-                    daily:
-                      limitMicros: '30000000'
-                    total:
-                      limitMicros: 'UNLIMITED'
-                  campaignId: 54212
-                  salutation: 'COMPANY'
-                  sellerName: 'My Shop'
-                  postcode: '1097DN'
-                  regionId: 1700195
-                  phoneNumber: '0207894561'
-                  allowContactByEmail: true
-                  vendorId: 'OURSHOP-1423453-34'
-                  links:
-                    displayUrl: 'www.ourshop.com/Faxes'
-                    url: 'http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3'
-                  images:
-                    - src: 'http://www.ourshop.com/img/brother_fax_big.jpg'
-                    - src: 'http://www.ourshop.com/img/brother_fax_side.jpg'
-                  attributes:
-                    - key: 'color'
-                      label: 'Kleur'
-                      locale: 'nl'
-                      type: 'STRING'
-                      value: 'Zwart'
-                    - key: 'size'
-                      label: 'Maat'
-                      locale: 'nl'
-                      type: 'NUMBER'
-                      value: 6
-                    - key: 'software'
-                      label: 'Software'
-                      locale: 'nl'
-                      type: 'LIST'
-                      value:
-                        - 'Apple OSX'
-                        - 'Microsoft Windows 7'
-                  shippingOptions:
-                    - type: 'SHIP'
-                      costCents: 495
-                      time: '2d-5d'
-                    - type: 'PICKUP'
-                      pickupLocation: '1097DN'
+              $ref: './ads/requests.yaml#/components/schemas/AdV5Request'
           application/sellside.ad-v3+json:
             schema:
-              $ref: 'ads/requests.yaml#/components/schemas/AdV3Request'
+              $ref: './ads/requests.yaml#/components/schemas/AdV3Request'
           application/sellside.ad-v2+json:
             schema:
-              $ref: 'ads/requests.yaml#/components/schemas/AdV2Request'
+              $ref: './ads/requests.yaml#/components/schemas/AdV2Request'
       responses:
         '201':
           description: 'Created'
@@ -771,7 +661,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1009
                   text: 'missing token'
@@ -783,7 +673,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1009
                   text: 'missing token'
@@ -795,7 +685,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1000
                   text: 'internal error'
@@ -814,9 +704,9 @@ paths:
       operationId: postAdPrefil
       requestBody:
         content:
-          aapplication/sellside.ad.template-v1+json:
+          application/sellside.ad.template-v1+json:
             schema:
-              $ref: 'ads/requests.yaml#/components/schemas/AdPrefillTemplateRequest'
+              $ref: './ads/requests.yaml#/components/schemas/AdPrefillTemplateRequest'
       responses:
         '200':
           description: 'Success'
@@ -839,7 +729,7 @@ paths:
           content:
             application/sellside.ad.template-v1+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdPrefillTemplateResponse'
+                $ref: './ads/responses.yaml#/components/schemas/AdPrefillTemplateResponse'
         '401':
           description: 'Unauthorized'
           content:
@@ -847,7 +737,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1009
                   text: 'missing token'
@@ -859,7 +749,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1009
                   text: 'missing token'
@@ -869,7 +759,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'errors.yaml#NotSupportedError'
+                $ref: 'errors.yaml#/components/schemas/NotSupportedError'
               examples:
                 typeMismatch:
                   value:
@@ -908,7 +798,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1000
                   text: 'internal error'
@@ -1007,7 +897,7 @@ paths:
           content:
             application/sellside.funnel-v1+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdFunnelV1Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdFunnelV1Response'
         '204':
           description: 'No Content'
           headers:
@@ -1039,7 +929,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 2001
                   text: 'invalid argument'
@@ -1054,7 +944,7 @@ paths:
       tags:
         - Ads
       summary: 'Get a map of ad IDs for the user to the externalId the ad has'
-      description: 'Returns a map of adIds for the current user to the externalId the ad has. 
+      description: 'Returns a map of adIds for the current user to the externalId the ad has.
         <br>
         This utility call is intended for uncommon usecases, such as when a client on-boards an already existing admarkt user and needs to do a one-time sync of adIds vs externalIds, or other cases where data got lost at the client.
         <br>
@@ -1108,7 +998,7 @@ paths:
           content:
             application/sellside.ad.external.id.mapping-v2+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdMappingExternalIdsV2Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdMappingExternalIdsV2Response'
       security:
         - bearerAuth: [ ]
           oAuth2ClientCredentials:
@@ -1148,13 +1038,13 @@ paths:
           content:
             application/sellside.ad-v5+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV5Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV5Response'
             application/sellside.ad-v3+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV3Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV3Response'
             application/sellside.ad-v2+json:
               schema:
-                $ref: 'ads/responses.yaml#/components/schemas/AdV2Response'
+                $ref: './ads/responses.yaml#/components/schemas/AdV2Response'
         '400':
           description: 'Bad Request'
           content:
@@ -1162,7 +1052,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 2005
                   text: 'value too long'
@@ -1174,7 +1064,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1009
                   text: 'missing token'
@@ -1186,7 +1076,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1004
                   text: 'not found'
@@ -1204,7 +1094,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1000
                   text: 'internal error'
@@ -1260,7 +1150,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: 'errors.yaml#ApiResponseError'
+                  $ref: 'errors.yaml#/components/schemas/ApiResponseError'
               example:
                 - code: 1004
                   text: 'not found'
@@ -1335,251 +1225,213 @@ paths:
             - 'api_rw'
 
   # CATEGORIES
-#  /categories:
-#    get:
-#      tags:
-#        - Categories
-#      summary: 'Returns the a map of id to categories in the format described in the category taxonomy.'
-#      description: 'The category tree contains all the information about category definitions, attribute definitions and validation rules for placing ads.'
-#      parameters:
-#        - name: Accept
-#          in: header
-#          schema:
-#            type: string
-#            example: 'application/sellside.category.list-v5+json'
-#          required: true
-#        - name: categoryIds
-#          in: path
-#          description: 'Comma-separated list of IDs for the requested categories from the category taxonomy tree.'
-#          required: true
-#          schema:
-#            type: array
-#            items:
-#              type: integer
-#              format: int64
-#            example: [ 863,431 ]
-#        - name: _include
-#          in: path
-#          description: 'Comma-separated-list of fields to include. Optional, default is all fields.'
-#          required: false
-#          schema:
-#            type: array
-#            items:
-#              type: string
-#        - name: _exclude
-#          in: path
-#          description: 'Comma-separated-list of fields to omit. Optional, default empty.'
-#          required: false
-#          schema:
-#            type: array
-#            items:
-#              type: string
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro api_rw console_ro console_rw'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_category'
-#          content:
-#            application/sellside.category.list-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/NonLeafCategoryV5'
-#        '400':
-#          description: 'Bad Request'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 2000
-#                  text: 'missing argument'
-#                  msg: 'The field ''categoryIds'' was missing'
-#                  field: 'categoryIds'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#  /category/{id}:
-#    get:
-#      tags:
-#        - Categories
-#      summary: 'Returns the category tree or parts of it in the category taxonomy format, starting from the category with the given category id.'
-#      description: 'To return the category tree starting from the root node use id 0. To retrieve all sub levels specify a sufficiently large number, e.g. 9999.'
-#      parameters:
-#        - name: id
-#          in: path
-#          description: 'The starting category ID of the taxonomy (sub) tree.'
-#          required: true
-#          schema:
-#            type: integer
-#            example: 856
-#        - name: levels
-#          in: path
-#          description: 'Specifies how many levels starting from the current one you want to retrieve.'
-#          required: false
-#          example: 1
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_category'
-#          content:
-#            application/sellside.category.list-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/NonLeafCategoryV5'
-#        '400':
-#          description: 'Bad Request'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 2000
-#                  text: 'missing argument'
-#                  msg: 'The field ''id'' was missing'
-#                  field: 'id'
-#                - code: 2001
-#                  text: 'invalid argument'
-#                  msg: 'The value of field ''levels'' was invalid'
-#                  field: 'levels'
-#                  value: -1
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#  /category/{id}/funnel:
-#    get:
-#      tags:
-#        - Categories
-#      summary: 'Returns performance predictions such as number of impressions, clicks and url clicks for a given category and cpc value.'
-#      description: 'The endpoint also returns information regarding the page on which a new ad will be displayed if placed in the given category and with the given ``cpc`` value (``pageNumber``).
-#      The response also contains a suggested cpc value to place an ad on page one in this category (``averageCpc``). If cpc is greater than ``maxCpc`` then the ads of this seller generally do not perform well enough to place new ads on the first page.'
-#      parameters:
-#        - name: id
-#          in: path
-#          required: true
-#          description: 'The starting category ID of the taxonomy (sub) tree.'
-#          schema:
-#            type: integer
-#            example: 856
-#        - name: regionId
-#          in: query
-#          description: 'The region ID for which to make the prediction. MP & TWH users should omit this field.'
-#          schema:
-#            type: integer
-#        - name: cpc
-#          in: query
-#          description: 'The cpc value in euro cents for which to make the prediction.'
-#          required: true
-#          schema:
-#            type: integer
-#            format: int64
-#            minimum: 2
-#          example: 50
-#        - name: _include
-#          in: query
-#          required: false
-#          description: 'Comma-separated-list of ad fields to include.'
-#          schema:
-#            type: array
-#            items:
-#              uniqueItems: true
-#              anyOf:
-#                - enum:
-#                    - 'cpc'
-#                    - 'pageNumber'
-#                    - 'averageClicks'
-#                    - 'averageCpc'
-#                    - 'averageImpressions'
-#                    - 'averageUrlClicks'
-#                    - 'ctr'
-#                    - 'urlCtr'
-#                    - 'maxCpc'
-#              example:
-#                - 'cpc'
-#                - 'averageClicks'
-#        - name: _exclude
-#          in: query
-#          required: false
-#          description: 'Comma-separated-list of ad fields to omit.'
-#          schema:
-#            type: array
-#            items:
-#              uniqueItems: true
-#              anyOf:
-#                - enum:
-#                    - 'cpc'
-#                    - 'pageNumber'
-#                    - 'averageClicks'
-#                    - 'averageCpc'
-#                    - 'averageImpressions'
-#                    - 'averageUrlClicks'
-#                    - 'ctr'
-#                    - 'urlCtr'
-#                    - 'maxCpc'
-#              example:
-#                - 'averageImpressions'
-#                - 'urlCtr'
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_funnel'
-#          content:
-#            application/sellside.funnel-v1+json:
-#              schema:
-#                $ref: '#/components/schemas/AdFunnelV1Response'
-#        '400':
-#          description: 'Bad Request'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 2001
-#                  text: 'invalid argument'
-#                  msg: 'The value of field ''cpc'' was invalid'
-#                  field: 'cpc'
-#                  value: -1
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
+  /categories:
+    get:
+      tags:
+        - Categories
+      summary: 'Returns the a map of id to categories in the format described in the category taxonomy.'
+      description: 'The category tree contains all the information about category definitions, attribute definitions and validation rules for placing ads.'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+            example: 'application/sellside.category.list-v5+json'
+          required: true
+        - name: categoryIds
+          in: path
+          description: 'Comma-separated list of IDs for the requested categories from the category taxonomy tree.'
+          required: true
+          schema:
+            $ref: './categories/params.yaml#/components/schemas/CategoryIDs'
+        - name: _include
+          in: path
+          description: 'Comma-separated-list of fields to include. Optional, default is all fields.'
+          required: false
+          schema:
+            $ref: './categories/params.yaml/#/components/schemas/IncludeExcludeCategoryFields'
+        - name: _exclude
+          in: path
+          description: 'Comma-separated-list of fields to omit. Optional, default empty.'
+          required: false
+          schema:
+            $ref: './categories/params.yaml/#/components/schemas/IncludeExcludeCategoryFields'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw console_ro console_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_category'
+          content:
+            application/sellside.category.list-v5+json:
+              schema:
+                $ref: './categories/responses.yaml/#/components/schemas/NonLeafCategoryV5'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 2000
+                  text: 'missing argument'
+                  msg: 'The field ''categoryIds'' was missing'
+                  field: 'categoryIds'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /category/{id}:
+    get:
+      tags:
+        - Categories
+      summary: 'Returns the category tree or parts of it in the category taxonomy format, starting from the category with the given category id.'
+      description: 'To return the category tree starting from the root node use id 0. To retrieve all sub levels specify a sufficiently large number, e.g. 9999.'
+      parameters:
+        - name: id
+          in: path
+          description: 'The starting category ID of the taxonomy (sub) tree.'
+          required: true
+          schema:
+            type: integer
+            example: 856
+        - name: levels
+          in: path
+          schema:
+            type: integer
+            example: 1
+          description: 'Specifies how many levels starting from the current one you want to retrieve.'
+          required: false
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_category'
+          content:
+            application/sellside.category.list-v5+json:
+              schema:
+                $ref: './categories/responses.yaml/#/components/schemas/NonLeafCategoryV5'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 2000
+                  text: 'missing argument'
+                  msg: 'The field ''id'' was missing'
+                  field: 'id'
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'The value of field ''levels'' was invalid'
+                  field: 'levels'
+                  value: -1
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /category/{id}/funnel:
+    get:
+      tags:
+        - Categories
+      summary: 'Returns performance predictions such as number of impressions, clicks and url clicks for a given category and cpc value.'
+      description: 'The endpoint also returns information regarding the page on which a new ad will be displayed if placed in the given category and with the given ``cpc`` value (``pageNumber``).
+      The response also contains a suggested cpc value to place an ad on page one in this category (``averageCpc``). If cpc is greater than ``maxCpc`` then the ads of this seller generally do not perform well enough to place new ads on the first page.'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 'The starting category ID of the taxonomy (sub) tree.'
+          schema:
+            type: integer
+            example: 856
+        - name: regionId
+          in: query
+          description: 'The region ID for which to make the prediction. MP & TWH users should omit this field.'
+          schema:
+            type: integer
+        - name: cpc
+          in: query
+          description: 'The cpc value in euro cents for which to make the prediction.'
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 2
+          example: 50
+        - name: _include
+          in: query
+          required: false
+          description: 'Comma-separated-list of ad fields to include.'
+          schema:
+            $ref: './categories/params.yaml/#/components/schemas/IncludeExcludeCategoryFunnelFields'
+        - name: _exclude
+          in: query
+          required: false
+          description: 'Comma-separated-list of ad fields to omit.'
+          schema:
+            $ref: './categories/params.yaml/#/components/schemas/IncludeExcludeCategoryFunnelFields'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_funnel'
+          content:
+            application/sellside.funnel-v1+json:
+              schema:
+                $ref: './categories/responses.yaml/#/components/schemas/CategoryFunnelResponse'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'The value of field ''cpc'' was invalid'
+                  field: 'cpc'
+                  value: -1
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
 
 #  # REGIONS
 #  /regions:
@@ -2211,7 +2063,7 @@ paths:
 #              $ref: '#/components/schemas/CampaignRequestV5'
 #          application/sellside.campaign-v2+json:
 #            schema:
-#              $ref: 'ads/responses.yaml#/components/schemas/CampaignV2'
+#              $ref: './ads/responses.yaml#/components/schemas/CampaignV2'
 #      responses:
 #        '201':
 #          description: 'Campaign created'
