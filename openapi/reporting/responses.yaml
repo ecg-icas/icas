@@ -1,0 +1,398 @@
+# reporting/responses.yaml
+openapi: 3.0.0
+info:
+  title: Reporting response component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    MetricsReportV2:
+      readOnly: true
+      type: object
+      properties:
+        createDate:
+          type: string
+          format: time
+          example: '2014-12-05T14:47:04Z'
+          description: 'The date/time this report call got requested (in UTC ISO8601 format)'
+        startDate:
+          type: string
+          format: date
+          example: '2014-11-24'
+          description: 'The start of the period this report covers. Tenant time zone is assumed.'
+        endDate:
+          type: string
+          format: date
+          example: '2014-11-25'
+          description: 'The end of the period this report covers. Tenant time zone is assumed.'
+        data:
+          type: array
+          description: 'The report data; each element in this array represents the data for an ad.'
+          items:
+            type: object
+            properties:
+              adId:
+                type: integer
+                format: int64
+                description: 'Id of the ad to which the report row belongs to.'
+                example: 1262
+              bidMicros:
+                type: integer
+                format: int64
+                description: 'Current bid value of the ad (in micros).'
+                example: 10000
+              cpc:
+                type: integer
+                format: int64
+                deprecated: true
+                description: 'CPC of the ad (in cents).'
+                example: 5
+              impressions:
+                type: integer
+                format: int64
+                description: 'Number of impressions this ad received.'
+                example: 73
+              clicks:
+                description: 'Number of clicks this ad received.'
+                type: integer
+                format: int64
+                example: 43
+              urlClicks:
+                description: 'Number of url clicks this ad received.'
+                type: integer
+                format: int64
+                example: 3
+              emails:
+                description: 'Number of email requests this ad received.'
+                type: integer
+                format: int64
+                example: 1
+              engagement:
+                description: 'Number of engagements this ad received. Depending on the tenant, this could be the same as ``urlClicks``, or a summation of several metrics.'
+                type: integer
+                format: int64
+                example: 22
+              spentMicros:
+                description: 'Total amount spent for this ad (in micros).'
+                type: integer
+                format: int64
+                example: 430000
+              totalSpent:
+                deprecated: true
+                description: 'Total amount spent for this ad (in cents).'
+                type: integer
+                format: int64
+                example: 2000
+              ctr:
+                description: 'Click-through rate of the ad.'
+                type: number
+                format: double
+                example: 0.589
+              engagementCTR:
+                description: 'Number of engagements leads from clicks this ad received.'
+                type: number
+                format: double
+                example: 0.511
+              websiteCTR:
+                description: 'Number of website leads from clicks this ad received.'
+                type: number
+                format: double
+                example: 0.43
+              startDate:
+                description: 'Creation date of the ad.'
+                type: string
+                format: time
+                example: '1970-01-17T09:27:18Z'
+              endDate:
+                description: 'Deletion date of the ad if the ad is deleted, null otherwise.'
+                type: string
+                format: time
+                example: null
+              title:
+                description: 'Title of the ad.'
+                format: string
+                example: 'Test Ad'
+              categoryId:
+                description: 'Category id of the ad.'
+                type: number
+                example: 573
+              vendorId:
+                description: 'Vendor id of the ad.'
+                type: string
+                example: 'vndr'
+              dailyBudgetMicros:
+                description: 'Daily limit of the ad (in micros).'
+                type: integer
+                format: int64
+                example: 9990000
+              dailyLimit:
+                deprecated: true
+                description: 'Daily limit of the ad (in cents).'
+                type: integer
+                format: int64
+                example: 2000
+              totalBudgetMicros:
+                description: 'Total budget of the ad (in micros).'
+                type: integer
+                format: int64
+              totalBudget:
+                deprecated: true
+                description: 'Total budget of the ad (in cents).'
+                type: integer
+                format: int64
+                example: 5000
+              relativePerformance:
+                description: 'Returns the relative performance of the ad (on a scale of [1-100]) compared to competition within the ad’s category. Higher score means better performance. A score of 0 could indicate there is not enough data to infer the value at the moment.'
+                type: integer
+                example: 65
+              eSpentMicros:
+                description: 'Returns the effective cost per website click in micros'
+                type: number
+                format: double
+                example: 4200
+              eCPC:
+                deprecated: true
+                description: 'Returns the eCPC (effective cost per website click) in cents'
+                type: number
+                format: double
+                example: 0.42
+    MetricsReportV1:
+      readOnly: true
+      type: object
+      properties:
+        createDate:
+          type: string
+          format: time
+          example: '2014-12-05T14:47:04Z'
+          description: 'The date/time this report call got requested (in UTC ISO8601 format)'
+        startDate:
+          type: string
+          format: date
+          example: '2014-11-24'
+          description: 'The start of the period this report covers. Tenant time zone is assumed.'
+        endDate:
+          type: string
+          format: date
+          example: '2014-11-25'
+          description: 'The end of the period this report covers. Tenant time zone is assumed.'
+        data:
+          type: array
+          description: 'The report data; each element in this array represents the data for an ad.'
+          items:
+            type: object
+            properties:
+              adId:
+                type: integer
+                format: int64
+                description: 'Id of the ad to which the report row belongs to.'
+                example: 1262
+              cpc:
+                type: integer
+                format: int64
+                description: 'CPC of the ad (in cents).'
+                example: 5
+              impressions:
+                type: integer
+                format: int64
+                description: 'Number of impressions this ad received.'
+                example: 73
+              clicks:
+                description: 'Number of clicks this ad received.'
+                type: integer
+                format: int64
+                example: 43
+              urlClicks:
+                description: 'Number of url clicks this ad received.'
+                type: integer
+                format: int64
+                example: 3
+              emails:
+                description: 'Number of email requests this ad received.'
+                type: integer
+                format: int64
+                example: 1
+              engagement:
+                description: 'Number of engagements this ad received. Depending on the tenant, this could be the same as ``urlClicks``, or a summation of several metrics.'
+                type: integer
+                format: int64
+                example: 22
+              totalSpent:
+                description: 'Total amount spent for this ad (in cents).'
+                type: integer
+                format: int64
+                example: 2000
+              ctr:
+                description: 'Click-through rate of the ad.'
+                type: number
+                format: double
+                example: 0.589
+              engagementCTR:
+                description: 'Number of engagements leads from clicks this ad received.'
+                type: number
+                format: double
+                example: 0.511
+              websiteCTR:
+                description: 'Number of website leads from clicks this ad received.'
+                type: number
+                format: double
+                example: 0.43
+              startDate:
+                description: 'Creation date of the ad.'
+                type: string
+                format: time
+                example: '1970-01-17T09:27:18Z'
+              endDate:
+                description: 'Deletion date of the ad if the ad is deleted, null otherwise.'
+                type: string
+                format: time
+                example: null
+              title:
+                description: 'Title of the ad.'
+                format: string
+                example: 'Test Ad'
+              categoryId:
+                description: 'Category id of the ad.'
+                type: number
+                example: 573
+              vendorId:
+                description: 'Vendor id of the ad.'
+                type: string
+                example: 'vndr'
+              dailyLimit:
+                description: 'Daily limit of the ad (in cents).'
+                type: integer
+                format: int64
+                example: 2000
+              totalBudget:
+                description: 'Total budget of the ad (in cents).'
+                type: integer
+                format: int64
+                example: 5000
+              relativePerformance:
+                description: 'Returns the relative performance of the ad (on a scale of [1-100]) compared to competition within the ad’s category. Higher score means better performance. A score of 0 could indicate there is not enough data to infer the value at the moment.'
+                type: integer
+                example: 65
+              eCPC:
+                description: 'Returns the eCPC (effective cost per website click) in cents'
+                type: number
+                format: double
+                example: 0.42
+    MetricsAdsV2:
+      type: object
+      readOnly: true
+      properties:
+        date:
+          description: 'Date of the report row, grouped daily, weekly, monthly, or yearly. For daily and weekly aggregation the format is ``YYYY-MM-DD``, for monthly aggregation - ``YYYY-MM``, and for yearly - ``YYYY``. All dates are in tenant timezone.'
+          type: string
+          format: date
+        adID:
+          description: 'ID of the ad'
+          type: integer
+          format: int64
+        L1Category:
+          description: 'Level 1 category name'
+          type: integer
+          format: int64
+        L2Category:
+          description: 'Level 2 category name'
+          type: integer
+          format: int64
+        L3Category:
+          description: 'Level 3 category name, if applicable'
+          type: integer
+          format: int64
+        title:
+          description: 'Title of the ad'
+          type: string
+        startDate:
+          description: 'Creation date of the ad'
+          type: string
+          format: date
+        endDate:
+          description: 'If the ad is deleted, deletion date of the ad'
+          type: string
+          format: date
+        bidMicros:
+          description: 'Bid of the ad for which performance metrics are calculated, in micros unit'
+          type: integer
+          format: int64
+        spentMicros:
+          description: 'Total amount spent for this ad, in micros unit'
+          type: integer
+          format: int64
+        cpc:
+          description: 'CPC of the ad for which performance metrics are calculated, in local currency'
+          type: integer
+          deprecated: true
+        spent:
+          description: 'Total amount spent for this ad, in Local Currency'
+          type: integer
+          deprecated: true
+        clicks:
+          description: 'Number of clicks that the ad received'
+          type: integer
+          format: int64
+        impressions:
+          description: 'Number of impressions that the ad received'
+          type: integer
+          format: int64
+        viewCTR:
+          description: 'Click-through rate in %'
+          type: number
+        websiteClicks:
+          description: 'Number of URL clicks that the ad received'
+          type: integer
+          format: int64
+        emails:
+          description: 'Number of email events that the ad received'
+          type: integer
+          format: int64
+        engagementCTR:
+          description: 'Engagement conversion rate in %. Calculation: ``(URL clicks + Emails) / Clicks``'
+          type: number
+        region:
+          description: 'Region name, of the ad'
+          type: integer
+          format: int64
+        vendorID:
+          description: 'Vendor ID of the ad'
+          type: string
+        externalURL:
+          description: 'The external website URL of the ad, if provided'
+          type: string
+    MetricsDataResponseV2:
+      readOnly: true
+      type: object
+      properties:
+        data:
+          type: array
+          description: 'Contains an array of objects, one for each of the requested Time Ranges.
+          It is important to remember that the order in which the ``metrics``, ``dimensions``, and ``enrichment`` fields are requested is the same order in which they are listed in the response.
+          The order of the objects in the rows array is not guaranteed to be deterministic unless explicit sorting is used.'
+          items:
+            type: object
+            properties:
+              rows:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    dimensions:
+                      description: 'Array of dimension values for this row, in string format.'
+                      type: array
+                      items:
+                        type: string
+                    metrics:
+                      description: 'Array of metric values for this row, in number format.'
+                      type: array
+                      items:
+                        type: number
+                        format: double
+                    enrichment:
+                      description: 'Array of enrichment values for this row, in string format. Valid only if ``am:adID`` is in the requested dimensions.'
+                      type: array
+                      items:
+                        type: string
+              count:
+                description: 'Actual number of rows returned.'
+                type: number

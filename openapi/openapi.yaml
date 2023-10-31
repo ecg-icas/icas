@@ -2503,690 +2503,690 @@ paths:
             - 'console_rw'
             - 'api_rw'
 
-#  # REPORTING
-#  /metrics/report:
-#    get:
-#      tags:
-#        - Reporting
-#      summary: 'Returns a performance report for a selected date period, per ad. '
-#      description: 'The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads which have had performance-related activity.<br>
-#      <span>&#9888;</span><br>
-#      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
-#      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
-#
-#      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
-#      parameters:
-#        - name: Accept
-#          in: header
-#          description: 'This header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
-#          Conceptually, user is the highest level scope and hit is the lowest level scope.
-#          For example, ``clicks`` counts the number of clicks that ad received when the scope is _hit_, whereas it counts the number of sessions with clicks when the scope is _session_.
-#          We plan to extend support for user-level scoped metrics if there is demand for it.'
-#          schema:
-#            type: string
-#            example: 'application/sellside.metrics.ad-hit-v2+json'
-#          required: true
-#        - name: startDate
-#          in: query
-#          description: 'Report start date'
-#          required: true
-#          schema:
-#            type: string
-#            format: date
-#            example: '2014-11-24'
-#        - name: endDate
-#          in: query
-#          description: 'Report end date (inclusive)'
-#          required: true
-#          schema:
-#            type: string
-#            format: date
-#            example: '2014-11-24'
-#        - name: adIds
-#          in: query
-#          description: 'Comma-separated-list of ad id’s which to filter the result set on. Optional, default empty to include data for all ads.'
-#          schema:
-#            type: array
-#            items:
-#              type: integer
-#              format: int64
-#            example: [1,2,3]
-#          required: false
-#        - name: status
-#          in: query
-#          description: 'Comma-separated-list of ad statuses which to filter the result set on.'
-#          required: false
-#          schema:
-#            type: array
-#            items:
-#              type: string
-#              enum:
-#                - 'ACTIVE'
-#                - 'PAUSED'
-#                - 'BUDGET_REACHED'
-#                - 'DAILY_BUDGET_REACHED'
-#                - 'DELETED'
-#                - 'DELETED_BY_CS'
-#                - 'SUSPENDED_BY_CS'
-#                - 'DOMAIN_PENDING'
-#            default: ['ACTIVE']
-#            example: ['ACTIVE', 'PAUSED']
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_report'
-#          content:
-#            application/sellside.metrics.ad-hit-v2+json:
-#              schema:
-#                $ref: '#/components/schemas/MetricsReportV2'
-#            application/sellside.metrics.ad-session-v2+json:
-#              schema:
-#                $ref: '#/components/schemas/MetricsReportV2'
-#            application/sellside.metrics.ad-hit-v1+json:
-#              schema:
-#                $ref: '#/components/schemas/MetricsReportV1'
-#            application/sellside.metrics.ad-session-v1+json:
-#              schema:
-#                $ref: '#/components/schemas/MetricsReportV1'
-#        '400':
-#          description: 'Bad Request'
-#          content:
-#            'content-type: application/json; charset=utf-8':
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                  - code: 2000
-#                    text: 'missing argument'
-#                    msg: 'The field ''startDate'' was missing'
-#                    field: 'startDate'
-#                  - code: 2000
-#                    text: 'missing argument'
-#                    msg: 'The field ''endDate'' was missing'
-#                    field: 'endDate'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#  /metrics/ads:
-#    get:
-#      tags:
-#        - Reporting
-#      summary: 'Returns an ads performance report either in Excel or in CSV format.'
-#      description: 'The report represents a timeseries breakdown of the performance of each ad **which has had performance-related activity in the requested period.**
-#      <span>&#9888;</span><br>
-#      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
-#      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
-#
-#      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
-#      parameters:
-#        - name: accept
-#          in: header
-#          description: 'If the Accept header is ``application/vnd.ms-excel;v=2`` an Excel document is created, in ``.xlsx`` format.
-#          If the Accept header is ``text/csv;v=2`` a CSV document is created, in the standard ``RFC-4180`` format. Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes. Empty strings are not enclosed in quotes.'
-#          required: true
-#          schema:
-#            type: string
-#            example: 'text/csv;v=2'
-#        - name: accept-language
-#          in: header
-#          description: 'advertises the preferred client locales (
-#          language and region) for the report column names. Both ``language_REGION`` and ``language-REGION`` are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:'
-#          schema:
-#            type: string
-#            example: 'nl-NL'
-#        - name: aggregate
-#          description: 'Granularity of the timeseries breakdown.'
-#          in: path
-#          required: true
-#          schema:
-#            type: string
-#            enum:
-#              - 'daily'
-#              - 'weekly'
-#              - 'monthly'
-#              - 'yearly'
-#            default: 'daily'
-#        - name: startDate
-#          description: 'Start date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.'
-#          in: path
-#          required: true
-#          schema:
-#            type: string
-#            format: date
-#            example: '018-01-01'
-#        - name: endDate
-#          description: 'End date of the report in YYYY-MM-DD (inclusive). Tenant timezone is assumed.'
-#          in: path
-#          required: true
-#          schema:
-#            type: string
-#            format: date
-#            example: '2018-05-01'
-#        - name: includeDeleted
-#          in: path
-#          required: false
-#          description: 'Deleted ads are included/excluded.'
-#          schema:
-#            type: boolean
-#            default: false
-#        - name: query
-#          required: false
-#          in: path
-#          description: 'Search phrase to filter on ad titles.'
-#          schema:
-#            type: string
-#            example: 'Interesting'
-#        - name: fields
-#          in: path
-#          required: false
-#          description: 'Comma-separated list of column fields to include in the report. Possible values are the response model fields. By default all fields are included, and this may affect the speed of data generation.'
-#          schema:
-#            type: array
-#            enum:
-#              - 'date'
-#              - 'adID'
-#              - 'L1Category'
-#              - 'L2Category'
-#              - 'L3Category'
-#              - 'title'
-#              - 'startDate'
-#              - 'endDate'
-#              - 'bidMicros'
-#              - 'spentMicros'
-#              - 'clicks'
-#              - 'impressions'
-#              - 'viewCTR'
-#              - 'websiteClicks'
-#              - 'emails'
-#              - 'engagementCTR'
-#              - 'region'
-#              - 'vendorID'
-#              - 'externalURL'
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_report'
-#            Content-Type:
-#              schema:
-#                type: string
-#                example: 'text/csv;v=2'
-#            Content-Language:
-#              schema:
-#                description: ''
-#                type: string
-#                example: 'nl-NL'
-#            Content-Disposition:
-#              schema:
-#                type: string
-#                example: 'attachment; filename=mp-report-1-20180202-144340.csv'
-#          content:
-#            text/csv;v=2:
-#              schema:
-#                $ref: '#/components/schemas/MetricsAdsV2'
-#              examples:
-#                example1:
-#                  value: |
-#                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=yearly&fields=date,adID,clicks,spentMicros
-#                    Accept: text/csv;v=2
-#
-#                    HTTP/1.1 200 OK
-#                    Content-Type: text/csv;v=2
-#                    Content-Language: nl-NL
-#                    Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv
-#                    Datum (geaggregeerde),Advertentie nummer,Totaal besteed (Micros),Clicks
-#
-#                    2018,7,0.3000000000,200000
-#                    2018,8,0.1500000000,3000000
-#                example2:
-#                  value: |
-#                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting
-#                    Accept: text/csv
-#                    Accept-Language: nl_NL, fr_NL;q=0.5
-#
-#                    HTTP/1.1 200 OK
-#                    Content-Type: text/csv
-#                    Content-Language: nl-NL
-#                    Content-Disposition: attachment; filename=mp-report-1-20180202-144320.csv
-#                    Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region
-#                    2018-02-02,7,Cd's en Dvd's,Cd's | Country en Western,,"Interesting title, what about ""quotes""",2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht
-#                    2018-02-03,8,Cd's en Dvd's,Cd's | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam
-#                example3:
-#                  value: |
-#                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=monthly
-#                    Accept: text/csv
-#
-#                    HTTP/1.1 200 OK
-#                    Content-Type: text/csv
-#                    Content-Language: nl-NL
-#                    Content-Disposition: attachment; filename=mp-report-1-20180202-144330.csv
-#                    Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region
-#                    2018-02,7,Cd's en Dvd's,Cd's | Country en Western,,"Interesting title, what about ""quotes""",2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht
-#                    2018-02,8,Cd's en Dvd's,Cd's | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam
-#                example4:
-#                  value: |
-#                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=yearly&fields=date,adID,clicks,spent
-#                    Accept: text/csv
-#
-#                    HTTP/1.1 200 OK
-#                    Content-Type: text/csv
-#                    Content-Language: nl-NL
-#                    Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv
-#                    Datum (geaggregeerde),Advertentie nummer,Totaal besteed (EUR),Clicks
-#                    2018,7,0.3000000000,20
-#                    2018,8,0.1500000000,0.3000000000
-#            application/vnd.ms-excel;v=2:
-#              schema:
-#                type: object
-#                $ref: '#/components/schemas/MetricsAdsV2'
-#        '400':
-#          description: 'Bad Request'
-#          content:
-#            'content-type: application/json; charset=utf-8':
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              examples:
-#                missingArgument:
-#                  value:
-#                    - code: 2000
-#                      text: 'missing argument'
-#                      msg: 'The field ''endDate'' was missing'
-#                      field: 'endDate'
-#                outOfRange:
-#                  value:
-#                    - code: 2002
-#                      text: 'out of range'
-#                      msg: 'The value of the field ''endDate'' was out of range (< startDate)'
-#                      field: 'endDate'
-#                invalidArgument:
-#                  value:
-#                    - code: 2001
-#                      text: 'invalid argument'
-#                      msg: 'The value of field ''fields'' was invalid: unknown column ''spent'''
-#                      field: 'endDate'
-#        '415':
-#          description: 'Unsupported Media Type'
-#          content:
-#            'content-type: application/json; charset=utf-8':
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#                example:
-#                  - code: 2007
-#                    text: 'unsupported format'
-#                    msg: 'unsupported media type'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#  /metrics/data:
-#    post:
-#      tags:
-#        - Reporting
-#      summary: 'Returns the requested reporting metrics in a json format described in the new Reporting documentation.'
-#      description: '
-#      V2 removes ``am:cpc`` from dimensions. It replaces ``am:spent``, ``am:avgCPC``, ``am:eCPC``, ``am:sessionECPC`` metrics with their corresponding ``am:spentMicros``, ``am:avgBidMicros``, ``am:eSpentMicros``, ``am:sessionESpentMicros``. It replaces ``am:currentAdCPC`` enrichment with ``am:currentAdBidMicros``.
-#      <span>&#9888;</span><br>
-#      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
-#      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
-#
-#      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
-#      requestBody:
-#        content:
-#          application/sellside.metrics.data-v2+json:
-#            schema:
-#              $ref: '#/components/schemas/MetricsDataRequestV2'
-#            examples:
-#              example1:
-#                description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week.'
-#                value:
-#                  timeRanges:
-#                    - period: lastWeek
-#                  dimensions: [ ]
-#                  metrics:
-#                    - am:clicks
-#                    - am:impressions
-#                  filters:
-#                    - field: am:categoryID
-#                      operator: in
-#                      value:
-#                        - 1234
-#                        - 5678
-#              example2:
-#                description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week,
-#                but split performance metrics per day and category. In addition, sort by date in ascending direction.'
-#                value:
-#                  timeRanges:
-#                    - period: lastWeek
-#                  dimensions:
-#                    - am:date
-#                    - am:categoryID
-#                  metrics:
-#                    - am:clicks
-#                    - am:impressions
-#                  filters:
-#                    - field: am:categoryID
-#                      operator: in
-#                      value:
-#                        - 1234
-#                        - 5678
-#                  sorts:
-#                    - field: am:date
-#                      direction: asc
-#              example3:
-#                description: 'Get all clicks, and average spent micros for categories 1234 and 5678 for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results.'
-#                value:
-#                  timeRanges:
-#                    - period: lastWeek
-#                  dimensions:
-#                    - am:adID
-#                  metrics:
-#                    - am:clicks
-#                    - am:avgSpentMicros
-#                  filters:
-#                    - field: am:categoryID
-#                      operator: in
-#                      value:
-#                        - 1234
-#                        - 5678
-#                  enrichment:
-#                    - am:currentAdTitle
-#                    - am:currentAdVendorID
-#                  limit: 3
-#              example4:
-#                description: 'A sample request with all top-level query fields expanded.'
-#                value:
-#                  timeRanges:
-#                    - period: lastWeek
-#                  aggregate: daily
-#                  dimensions:
-#                    - am:date
-#                    - am:adID
-#                  metrics:
-#                    - am:clicks
-#                    - am:impressions
-#                    - am:engagementCTR
-#                  sorts:
-#                    - field: date
-#                      direction: asc
-#                  filters:
-#                    - field: am:categoryID
-#                      operator: in
-#                      value:
-#                        - 1235
-#                    - field: am:regionID
-#                      operator: in
-#                      value:
-#                        - 1
-#                        - 2
-#                        - 3
-#                        - 4
-#                  enrichment:
-#                    - am:currentAdTitle
-#                    - am:currentAdCategoryL1
-#                    - am:currentAdStartDate
-#                    - am:currentAdEndDate
-#                    - am:currentAdVendorID
-#                    - am:currentAdRegion
-#                    - am:currentAdImage
-#                  limit: 5
-#                  offset: 2
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_report'
-#            Content-Type:
-#              schema:
-#                type: string
-#                example: 'application/sellside.metrics.data-v2+json'
-#          content:
-#            application/sellside.metrics.data-v2+json:
-#              schema:
-#                $ref: '#/components/schemas/MetricsDataResponseV2'
-#              examples:
-#                example1:
-#                  description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week.'
-#                  value:
-#                    data:
-#                      - rows:
-#                        - dimensions: [ ]
-#                          metrics:
-#                            - 1483
-#                            - 36623
-#                        count: 1
-#                example2:
-#                  description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week,
-#                  but split performance metrics per day and category. In addition, sort by date in ascending direction.'
-#                  value:
-#                    data:
-#                      - rows:
-#                        - dimensions:
-#                            - '2018-12-08 00:00:00'
-#                            - '1234'
-#                          metrics:
-#                            - 11
-#                            - 12
-#                        - dimensions:
-#                            - '2018-12-08 00:00:00'
-#                            - '5678'
-#                          metrics:
-#                            - 9
-#                            - 20
-#                        - dimensions:
-#                            - '2018-12-09 00:00:00'
-#                            - '1234'
-#                          metrics:
-#                            - 34
-#                            - 67
-#                        - dimensions:
-#                            - '2018-12-09 00:00:00'
-#                            - '5678'
-#                          metrics:
-#                            - 19
-#                            - 20
-#                        - dimensions:
-#                            - '2018-12-14 00:00:00'
-#                            - '1234'
-#                          metrics:
-#                            - 12
-#                            - 90
-#                        - dimensions:
-#                            - '2018-12-14 00:00:00'
-#                            - '5678'
-#                          metrics:
-#                            - 43
-#                            - 76
-#                        count: 54
-#                example3:
-#                  description: 'Get all clicks, and average spent micros for categories 1234 and 5678 for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results.'
-#                  value:
-#                    data:
-#                      - rows:
-#                        - dimensions:
-#                            - '11111'
-#                          metrics:
-#                            - 11
-#                            - 45000
-#                          enrichment:
-#                            - 'Ad title #11111'
-#                            - vendor11111
-#                        - dimensions:
-#                            - '33333'
-#                          metrics:
-#                            - 9
-#                            - 3
-#                          enrichment:
-#                            - 'Ad title #33333'
-#                            - vendor33333
-#                        - dimensions:
-#                            - '22222'
-#                          metrics:
-#                            - 34
-#                            - 2.3
-#                          enrichment:
-#                            - 'Ad title #33333'
-#                            - vendor33333
-#                        count: 3
-#                example4:
-#                  description: 'A sample response with all top-level query fields expanded.'
-#                  value:
-#                    data:
-#                      - rows:
-#                        - dimensions:
-#                            - '2018-01-10 00:00:00'
-#                            - '4444'
-#                          metrics:
-#                            - 11
-#                            - 22
-#                            - 0.634
-#                          enrichment:
-#                            - 'Some title of ad #4444'
-#                            - 'Category L1 description'
-#                            - '2016-02-10 10:15:15'
-#                            - ''
-#                            - 'fsd23432'
-#                            - 'City of Toronto'
-#                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/cd/cd41d66f-ff99-4abc-8ea8-ef2131c92b8e?rule=r-726x726'
-#                        - dimensions:
-#                            - '2018-01-11 00:00:00'
-#                            - '5555'
-#                          metrics:
-#                            - 9
-#                            - 20
-#                            - 0.244
-#                          enrichment:
-#                            - 'Some title of ad #5555'
-#                            - 'Category L1 description'
-#                            - '2016-05-11 09:10:15'
-#                            - '2016-07-11 06:10:10'
-#                            - '123425d'
-#                            - 'Canada'
-#                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/66/6628f902-6c59-4c71-bf37-8d127a53e277?rule=r-726x726'
-#                        - dimensions:
-#                            - '2018-01-12 00:00:00'
-#                            - '4444'
-#                          metrics:
-#                            - 34
-#                            - 67
-#                            - 0.252
-#                          enrichment:
-#                            - 'Some title of ad #4444'
-#                            - 'Category L1 description'
-#                            - '2016-02-10 10:15:15'
-#                            - ''
-#                            - 'fsd23432'
-#                            - City of Toronto
-#                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/fb/fba866a4-ff7b-4134-bb58-c12cfa02649e?rule=r-726x726'
-#                        - dimensions:
-#                            - '2018-01-13 00:00:00'
-#                            - '5555'
-#                          metrics:
-#                            - 55
-#                            - 61
-#                            - 0.312
-#                          enrichment:
-#                            - 'Some title of ad #5555'
-#                            - 'Category L1 description'
-#                            - '2016-05-11 09:10:15'
-#                            - '2016-07-11 06:10:10'
-#                            - '123425d'
-#                            - 'Canada'
-#                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/d7/d7d25c7b-4494-491c-980a-7f6cdde14c21?rule=r-726x726'
-#                        - dimensions:
-#                            - '2018-01-14 00:00:00'
-#                            - '5555'
-#                          metrics:
-#                            - 43
-#                            - 76
-#                            - 0.543
-#                          enrichment:
-#                            - 'Some title of ad #5555'
-#                            - 'Category L1 description'
-#                            - '2016-05-11 09:10:15'
-#                            - '2016-07-11 06:10:10'
-#                            - '123425d'
-#                            - 'Canada'
-#                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/f1/f16052a4-c08a-480a-855e-cbc4cd3a8e59?rule=r-726x726'
-#                        count: 5
-#        '400':
-#          description: 'Bad Request'
-#          content:
-#            'content-type: application/json; charset=utf-8':
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              examples:
-#                missingArgument1:
-#                  value:
-#                    - code: 2000
-#                      text: 'missing argument'
-#                      msg: 'The field ''aggregate'' was missing'
-#                      field: 'endDate'
-#                missingArgument2:
-#                  value:
-#                    - code: 2000
-#                      text: 'missing argument'
-#                      msg: 'The field ''metrics'' was missing'
-#                      field: 'metrics'
-#                invalidArgument:
-#                  value:
-#                    - code: 2001
-#                      text: 'invalid argument'
-#                      msg: 'The value of field ''dimensions:[am:wrongDimension]'' was invalid'
-#        '500':
-#          description: 'internal error'
-#          content:
-#            'content-type: application/json; charset=utf-8':
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                  - code: 1000
-#                    text: 'internal error'
-#                    msg: 'Failed to execute query'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
+  # REPORTING
+  /metrics/report:
+    get:
+      tags:
+        - Reporting
+      summary: 'Returns a performance report for a selected date period, per ad. '
+      description: 'The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads which have had performance-related activity.<br>
+      <span>&#9888;</span><br>
+      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
+      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
+
+      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
+      parameters:
+        - name: Accept
+          in: header
+          description: 'This header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
+          Conceptually, user is the highest level scope and hit is the lowest level scope.
+          For example, ``clicks`` counts the number of clicks that ad received when the scope is _hit_, whereas it counts the number of sessions with clicks when the scope is _session_.
+          We plan to extend support for user-level scoped metrics if there is demand for it.'
+          schema:
+            type: string
+            example: 'application/sellside.metrics.ad-hit-v2+json'
+          required: true
+        - name: startDate
+          in: query
+          description: 'Report start date'
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2014-11-24'
+        - name: endDate
+          in: query
+          description: 'Report end date (inclusive)'
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2014-11-24'
+        - name: adIds
+          in: query
+          description: 'Comma-separated-list of ad id’s which to filter the result set on. Optional, default empty to include data for all ads.'
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+            example: [1,2,3]
+          required: false
+        - name: status
+          in: query
+          description: 'Comma-separated-list of ad statuses which to filter the result set on.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - 'ACTIVE'
+                - 'PAUSED'
+                - 'BUDGET_REACHED'
+                - 'DAILY_BUDGET_REACHED'
+                - 'DELETED'
+                - 'DELETED_BY_CS'
+                - 'SUSPENDED_BY_CS'
+                - 'DOMAIN_PENDING'
+            default: ['ACTIVE']
+            example: ['ACTIVE', 'PAUSED']
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_report'
+          content:
+            application/sellside.metrics.ad-hit-v2+json:
+              schema:
+                $ref: './reporting/responses.yaml/#/components/schemas/MetricsReportV2'
+            application/sellside.metrics.ad-session-v2+json:
+              schema:
+                $ref: './reporting/responses.yaml/#/components/schemas/MetricsReportV2'
+            application/sellside.metrics.ad-hit-v1+json:
+              schema:
+                $ref: './reporting/responses.yaml/#/components/schemas/MetricsReportV1'
+            application/sellside.metrics.ad-session-v1+json:
+              schema:
+                $ref: './reporting/responses.yaml/#/components/schemas/MetricsReportV1'
+        '400':
+          description: 'Bad Request'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                  - code: 2000
+                    text: 'missing argument'
+                    msg: 'The field ''startDate'' was missing'
+                    field: 'startDate'
+                  - code: 2000
+                    text: 'missing argument'
+                    msg: 'The field ''endDate'' was missing'
+                    field: 'endDate'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /metrics/ads:
+    get:
+      tags:
+        - Reporting
+      summary: 'Returns an ads performance report either in Excel or in CSV format.'
+      description: 'The report represents a timeseries breakdown of the performance of each ad **which has had performance-related activity in the requested period.**
+      <span>&#9888;</span><br>
+      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
+      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
+
+      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
+      parameters:
+        - name: accept
+          in: header
+          description: 'If the Accept header is ``application/vnd.ms-excel;v=2`` an Excel document is created, in ``.xlsx`` format.
+          If the Accept header is ``text/csv;v=2`` a CSV document is created, in the standard ``RFC-4180`` format. Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes. Empty strings are not enclosed in quotes.'
+          required: true
+          schema:
+            type: string
+            example: 'text/csv;v=2'
+        - name: accept-language
+          in: header
+          description: 'advertises the preferred client locales (
+          language and region) for the report column names. Both ``language_REGION`` and ``language-REGION`` are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:'
+          schema:
+            type: string
+            example: 'nl-NL'
+        - name: aggregate
+          description: 'Granularity of the timeseries breakdown.'
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - 'daily'
+              - 'weekly'
+              - 'monthly'
+              - 'yearly'
+            default: 'daily'
+        - name: startDate
+          description: 'Start date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.'
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '018-01-01'
+        - name: endDate
+          description: 'End date of the report in YYYY-MM-DD (inclusive). Tenant timezone is assumed.'
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2018-05-01'
+        - name: includeDeleted
+          in: path
+          required: false
+          description: 'Deleted ads are included/excluded.'
+          schema:
+            type: boolean
+            default: false
+        - name: query
+          required: false
+          in: path
+          description: 'Search phrase to filter on ad titles.'
+          schema:
+            type: string
+            example: 'Interesting'
+        - name: fields
+          in: path
+          required: false
+          description: 'Comma-separated list of column fields to include in the report. Possible values are the response model fields. By default all fields are included, and this may affect the speed of data generation.'
+          schema:
+            type: array
+            enum:
+              - 'date'
+              - 'adID'
+              - 'L1Category'
+              - 'L2Category'
+              - 'L3Category'
+              - 'title'
+              - 'startDate'
+              - 'endDate'
+              - 'bidMicros'
+              - 'spentMicros'
+              - 'clicks'
+              - 'impressions'
+              - 'viewCTR'
+              - 'websiteClicks'
+              - 'emails'
+              - 'engagementCTR'
+              - 'region'
+              - 'vendorID'
+              - 'externalURL'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_report'
+            Content-Type:
+              schema:
+                type: string
+                example: 'text/csv;v=2'
+            Content-Language:
+              schema:
+                description: ''
+                type: string
+                example: 'nl-NL'
+            Content-Disposition:
+              schema:
+                type: string
+                example: 'attachment; filename=mp-report-1-20180202-144340.csv'
+          content:
+            text/csv;v=2:
+              schema:
+                $ref: './reporting/responses.yaml/#/components/schemas/MetricsAdsV2'
+              examples:
+                example1:
+                  value: |
+                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=yearly&fields=date,adID,clicks,spentMicros
+                    Accept: text/csv;v=2
+
+                    HTTP/1.1 200 OK
+                    Content-Type: text/csv;v=2
+                    Content-Language: nl-NL
+                    Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv
+                    Datum (geaggregeerde),Advertentie nummer,Totaal besteed (Micros),Clicks
+
+                    2018,7,0.3000000000,200000
+                    2018,8,0.1500000000,3000000
+                example2:
+                  value: |
+                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting
+                    Accept: text/csv
+                    Accept-Language: nl_NL, fr_NL;q=0.5
+
+                    HTTP/1.1 200 OK
+                    Content-Type: text/csv
+                    Content-Language: nl-NL
+                    Content-Disposition: attachment; filename=mp-report-1-20180202-144320.csv
+                    Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region
+                    2018-02-02,7,Cd's en Dvd's,Cd's | Country en Western,,"Interesting title, what about ""quotes""",2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht
+                    2018-02-03,8,Cd's en Dvd's,Cd's | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam
+                example3:
+                  value: |
+                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=monthly
+                    Accept: text/csv
+
+                    HTTP/1.1 200 OK
+                    Content-Type: text/csv
+                    Content-Language: nl-NL
+                    Content-Disposition: attachment; filename=mp-report-1-20180202-144330.csv
+                    Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region
+                    2018-02,7,Cd's en Dvd's,Cd's | Country en Western,,"Interesting title, what about ""quotes""",2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht
+                    2018-02,8,Cd's en Dvd's,Cd's | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam
+                example4:
+                  value: |
+                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=yearly&fields=date,adID,clicks,spent
+                    Accept: text/csv
+
+                    HTTP/1.1 200 OK
+                    Content-Type: text/csv
+                    Content-Language: nl-NL
+                    Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv
+                    Datum (geaggregeerde),Advertentie nummer,Totaal besteed (EUR),Clicks
+                    2018,7,0.3000000000,20
+                    2018,8,0.1500000000,0.3000000000
+            application/vnd.ms-excel;v=2:
+              schema:
+                type: object
+                $ref: './reporting/responses.yaml/#/components/schemas/MetricsAdsV2'
+        '400':
+          description: 'Bad Request'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              examples:
+                missingArgument:
+                  value:
+                    - code: 2000
+                      text: 'missing argument'
+                      msg: 'The field ''endDate'' was missing'
+                      field: 'endDate'
+                outOfRange:
+                  value:
+                    - code: 2002
+                      text: 'out of range'
+                      msg: 'The value of the field ''endDate'' was out of range (< startDate)'
+                      field: 'endDate'
+                invalidArgument:
+                  value:
+                    - code: 2001
+                      text: 'invalid argument'
+                      msg: 'The value of field ''fields'' was invalid: unknown column ''spent'''
+                      field: 'endDate'
+        '415':
+          description: 'Unsupported Media Type'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+                example:
+                  - code: 2007
+                    text: 'unsupported format'
+                    msg: 'unsupported media type'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /metrics/data:
+    post:
+      tags:
+        - Reporting
+      summary: 'Returns the requested reporting metrics in a json format described in the new Reporting documentation.'
+      description: '
+      V2 removes ``am:cpc`` from dimensions. It replaces ``am:spent``, ``am:avgCPC``, ``am:eCPC``, ``am:sessionECPC`` metrics with their corresponding ``am:spentMicros``, ``am:avgBidMicros``, ``am:eSpentMicros``, ``am:sessionESpentMicros``. It replaces ``am:currentAdCPC`` enrichment with ``am:currentAdBidMicros``.
+      <span>&#9888;</span><br>
+      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
+      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
+
+      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
+      requestBody:
+        content:
+          application/sellside.metrics.data-v2+json:
+            schema:
+              $ref: './reporting//requests.yaml/#/components/schemas/MetricsDataRequestV2'
+            examples:
+              example1:
+                description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week.'
+                value:
+                  timeRanges:
+                    - period: lastWeek
+                  dimensions: [ ]
+                  metrics:
+                    - am:clicks
+                    - am:impressions
+                  filters:
+                    - field: am:categoryID
+                      operator: in
+                      value:
+                        - 1234
+                        - 5678
+              example2:
+                description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week,
+                but split performance metrics per day and category. In addition, sort by date in ascending direction.'
+                value:
+                  timeRanges:
+                    - period: lastWeek
+                  dimensions:
+                    - am:date
+                    - am:categoryID
+                  metrics:
+                    - am:clicks
+                    - am:impressions
+                  filters:
+                    - field: am:categoryID
+                      operator: in
+                      value:
+                        - 1234
+                        - 5678
+                  sorts:
+                    - field: am:date
+                      direction: asc
+              example3:
+                description: 'Get all clicks, and average spent micros for categories 1234 and 5678 for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results.'
+                value:
+                  timeRanges:
+                    - period: lastWeek
+                  dimensions:
+                    - am:adID
+                  metrics:
+                    - am:clicks
+                    - am:avgSpentMicros
+                  filters:
+                    - field: am:categoryID
+                      operator: in
+                      value:
+                        - 1234
+                        - 5678
+                  enrichment:
+                    - am:currentAdTitle
+                    - am:currentAdVendorID
+                  limit: 3
+              example4:
+                description: 'A sample request with all top-level query fields expanded.'
+                value:
+                  timeRanges:
+                    - period: lastWeek
+                  aggregate: daily
+                  dimensions:
+                    - am:date
+                    - am:adID
+                  metrics:
+                    - am:clicks
+                    - am:impressions
+                    - am:engagementCTR
+                  sorts:
+                    - field: date
+                      direction: asc
+                  filters:
+                    - field: am:categoryID
+                      operator: in
+                      value:
+                        - 1235
+                    - field: am:regionID
+                      operator: in
+                      value:
+                        - 1
+                        - 2
+                        - 3
+                        - 4
+                  enrichment:
+                    - am:currentAdTitle
+                    - am:currentAdCategoryL1
+                    - am:currentAdStartDate
+                    - am:currentAdEndDate
+                    - am:currentAdVendorID
+                    - am:currentAdRegion
+                    - am:currentAdImage
+                  limit: 5
+                  offset: 2
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_report'
+            Content-Type:
+              schema:
+                type: string
+                example: 'application/sellside.metrics.data-v2+json'
+          content:
+            application/sellside.metrics.data-v2+json:
+              schema:
+                $ref: './reporting/responses.yaml/#/components/schemas/MetricsDataResponseV2'
+              examples:
+                example1:
+                  description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week.'
+                  value:
+                    data:
+                      - rows:
+                        - dimensions: [ ]
+                          metrics:
+                            - 1483
+                            - 36623
+                        count: 1
+                example2:
+                  description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week,
+                  but split performance metrics per day and category. In addition, sort by date in ascending direction.'
+                  value:
+                    data:
+                      - rows:
+                        - dimensions:
+                            - '2018-12-08 00:00:00'
+                            - '1234'
+                          metrics:
+                            - 11
+                            - 12
+                        - dimensions:
+                            - '2018-12-08 00:00:00'
+                            - '5678'
+                          metrics:
+                            - 9
+                            - 20
+                        - dimensions:
+                            - '2018-12-09 00:00:00'
+                            - '1234'
+                          metrics:
+                            - 34
+                            - 67
+                        - dimensions:
+                            - '2018-12-09 00:00:00'
+                            - '5678'
+                          metrics:
+                            - 19
+                            - 20
+                        - dimensions:
+                            - '2018-12-14 00:00:00'
+                            - '1234'
+                          metrics:
+                            - 12
+                            - 90
+                        - dimensions:
+                            - '2018-12-14 00:00:00'
+                            - '5678'
+                          metrics:
+                            - 43
+                            - 76
+                        count: 54
+                example3:
+                  description: 'Get all clicks, and average spent micros for categories 1234 and 5678 for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results.'
+                  value:
+                    data:
+                      - rows:
+                        - dimensions:
+                            - '11111'
+                          metrics:
+                            - 11
+                            - 45000
+                          enrichment:
+                            - 'Ad title #11111'
+                            - vendor11111
+                        - dimensions:
+                            - '33333'
+                          metrics:
+                            - 9
+                            - 3
+                          enrichment:
+                            - 'Ad title #33333'
+                            - vendor33333
+                        - dimensions:
+                            - '22222'
+                          metrics:
+                            - 34
+                            - 2.3
+                          enrichment:
+                            - 'Ad title #33333'
+                            - vendor33333
+                        count: 3
+                example4:
+                  description: 'A sample response with all top-level query fields expanded.'
+                  value:
+                    data:
+                      - rows:
+                        - dimensions:
+                            - '2018-01-10 00:00:00'
+                            - '4444'
+                          metrics:
+                            - 11
+                            - 22
+                            - 0.634
+                          enrichment:
+                            - 'Some title of ad #4444'
+                            - 'Category L1 description'
+                            - '2016-02-10 10:15:15'
+                            - ''
+                            - 'fsd23432'
+                            - 'City of Toronto'
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/cd/cd41d66f-ff99-4abc-8ea8-ef2131c92b8e?rule=r-726x726'
+                        - dimensions:
+                            - '2018-01-11 00:00:00'
+                            - '5555'
+                          metrics:
+                            - 9
+                            - 20
+                            - 0.244
+                          enrichment:
+                            - 'Some title of ad #5555'
+                            - 'Category L1 description'
+                            - '2016-05-11 09:10:15'
+                            - '2016-07-11 06:10:10'
+                            - '123425d'
+                            - 'Canada'
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/66/6628f902-6c59-4c71-bf37-8d127a53e277?rule=r-726x726'
+                        - dimensions:
+                            - '2018-01-12 00:00:00'
+                            - '4444'
+                          metrics:
+                            - 34
+                            - 67
+                            - 0.252
+                          enrichment:
+                            - 'Some title of ad #4444'
+                            - 'Category L1 description'
+                            - '2016-02-10 10:15:15'
+                            - ''
+                            - 'fsd23432'
+                            - City of Toronto
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/fb/fba866a4-ff7b-4134-bb58-c12cfa02649e?rule=r-726x726'
+                        - dimensions:
+                            - '2018-01-13 00:00:00'
+                            - '5555'
+                          metrics:
+                            - 55
+                            - 61
+                            - 0.312
+                          enrichment:
+                            - 'Some title of ad #5555'
+                            - 'Category L1 description'
+                            - '2016-05-11 09:10:15'
+                            - '2016-07-11 06:10:10'
+                            - '123425d'
+                            - 'Canada'
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/d7/d7d25c7b-4494-491c-980a-7f6cdde14c21?rule=r-726x726'
+                        - dimensions:
+                            - '2018-01-14 00:00:00'
+                            - '5555'
+                          metrics:
+                            - 43
+                            - 76
+                            - 0.543
+                          enrichment:
+                            - 'Some title of ad #5555'
+                            - 'Category L1 description'
+                            - '2016-05-11 09:10:15'
+                            - '2016-07-11 06:10:10'
+                            - '123425d'
+                            - 'Canada'
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/f1/f16052a4-c08a-480a-855e-cbc4cd3a8e59?rule=r-726x726'
+                        count: 5
+        '400':
+          description: 'Bad Request'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              examples:
+                missingArgument1:
+                  value:
+                    - code: 2000
+                      text: 'missing argument'
+                      msg: 'The field ''aggregate'' was missing'
+                      field: 'endDate'
+                missingArgument2:
+                  value:
+                    - code: 2000
+                      text: 'missing argument'
+                      msg: 'The field ''metrics'' was missing'
+                      field: 'metrics'
+                invalidArgument:
+                  value:
+                    - code: 2001
+                      text: 'invalid argument'
+                      msg: 'The value of field ''dimensions:[am:wrongDimension]'' was invalid'
+        '500':
+          description: 'internal error'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                  - code: 1000
+                    text: 'internal error'
+                    msg: 'Failed to execute query'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
 #
 #  /user:
 #    get:
