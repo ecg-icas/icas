@@ -1,0 +1,18 @@
+# feeds/params.yaml
+openapi: 3.0.0
+info:
+  title: Feed request parameters
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    ImportID:
+      type: number
+      example: 123
+    FeedFormat:
+      type: string
+      enum:
+        - tsv
+        - xml
+      example: tsv
+      default: xml

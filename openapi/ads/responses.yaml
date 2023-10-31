@@ -1369,22 +1369,6 @@ components:
           $ref: '#/components/schemas/CampaignDailyBudgetResponseV5'
         total:
           $ref: '#/components/schemas/CampaignTotalBudgetResponseV5'
-
-    FeedConfigV1Response:
-      readOnly: true
-      type: object
-      description: 'Feed configuration of the current user.'
-      properties:
-        enabled:
-          type: boolean
-          description: 'Indicates whether the feed for the current user is enabled.'
-          default: false
-          example: true
-        feedUrl:
-          type: string
-          description: 'Contains the configured feed URL for the current user.'
-          example: 'http://www.ourshop.com/feed.xml'
-          maxLength: 512
     MetricsDataResponseV2:
       readOnly: true
       type: object
