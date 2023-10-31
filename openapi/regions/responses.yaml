@@ -1,0 +1,118 @@
+# categories/responses.yaml
+openapi: 3.0.0
+info:
+  title: Region response component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    NonLeafRegion:
+      type: object
+      readOnly: true
+      description: 'Non-leaf regions serve as parent nodes for lower level regions. Ads cannot be placed within them and therefore they have no center point.'
+      properties:
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: '/api/sellside/region/1700194'
+            parent:
+              type: string
+              example: '/api/sellside/region/9009'
+          description: 'A link to the current region and if level > 1 a link to the parent region.'
+        id:
+          description: 'Unique region id.'
+          type: integer
+          format: int64
+          minimum: 1
+          example: 1700194
+        parentId:
+          description: 'Id of the parent region.'
+          type: integer
+          format: int64
+          minimum: 0
+          example: 9009
+        level:
+          description: 'Level at which the region is defined.'
+          type: number
+          minimum: 0
+          example: 2
+        path:
+          description: 'Ids of all ancestors (except the root) and the current region separated by ``_``'
+          type: string
+          example: '9009_1700194'
+        label:
+          description: 'Display name of the region, one entry per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            label:
+              type: string
+          example:
+            'en_CA': 'Regina Area'
+            'fr_CA': 'Regina Area'
+        children:
+          type: array
+          description: 'Ordered list of child regions.'
+          items:
+            $ref: '#/components/schemas/LeafRegion'
+    LeafRegion:
+      readOnly: true
+      description: 'Leaf regions are the regions where ads can be placed. They have by definition no children. Leaf regions have coordinates of the center point.'
+      properties:
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: '/api/sellside/region/1700196'
+            parent:
+              type: string
+              example: '/api/sellside/region/1700194'
+          description: 'A link to the current region and if level > 1 a link to the parent region.'
+        id:
+          description: 'Unique region id.'
+          type: integer
+          format: int64
+          minimum: 1
+          example: 1700196
+        parentId:
+          description: 'Id of the parent region.'
+          type: integer
+          format: int64
+          minimum: 0
+          example: 1700194
+        level:
+          description: 'Level at which the region is defined.'
+          type: number
+          minimum: 0
+          example: 2
+        path:
+          description: 'Ids of all ancestors (except the root) and the current region separated by ``_``'
+          type: string
+          example: '9009_1700194_1700196'
+        center:
+          description: 'Coordinates of the center of the region.'
+          type: object
+          properties:
+            latitude:
+              type: number
+              format: double
+              example: 50.448009
+            longitude:
+              type: number
+              format: double
+              example: -104.595177
+        label:
+          description: 'Display name of the region, one entry per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            label:
+              type: string
+          example:
+            'en_CA': 'Regina Area'
+            'fr_CA': 'Regina Area'

@@ -1,0 +1,44 @@
+# categories/params.yaml
+openapi: 3.0.0
+info:
+  title: Category request parameters
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    CategoryIDs:
+      type: array
+      items:
+        type: integer
+        format: int64
+      example: [ 863,431 ]
+    IncludeExcludeCategoryFields:
+      type: array
+      items:
+        type: string
+    IncludeExcludeCategoryFunnelFields:
+      type: array
+      items:
+        uniqueItems: true
+        anyOf:
+          - enum:
+              - 'cpc'
+              - 'pageNumber'
+              - 'averageClicks'
+              - 'averageCpc'
+              - 'averageImpressions'
+              - 'averageUrlClicks'
+              - 'ctr'
+              - 'urlCtr'
+              - 'maxCpc'
+        example:
+          - 'cpc'
+          - 'averageClicks'
+    CategoryLevels:
+      type: integer
+      example: 1
+      minimum: 0
+    CategoryID:
+      type: integer
+      example: 856
+      minimum: 0

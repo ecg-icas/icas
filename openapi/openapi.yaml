@@ -1304,15 +1304,12 @@ paths:
           description: 'The starting category ID of the taxonomy (sub) tree.'
           required: true
           schema:
-            type: integer
-            example: 856
+            $ref: './categories/params.yaml/#/components/schemas/CategoryID'
         - name: levels
           in: path
-          schema:
-            type: integer
-            example: 1
           description: 'Specifies how many levels starting from the current one you want to retrieve.'
-          required: false
+          schema:
+            $ref: './categories/params.yaml/#/components/schemas/CategoryLevels'
       responses:
         '200':
           description: 'Success'
@@ -1433,145 +1430,136 @@ paths:
             - 'console_ro'
             - 'api_ro'
 
-#  # REGIONS
-#  /regions:
-#    get:
-#      tags:
-#        - Regions
-#      summary: 'Returns the a map of id to regions in the format described in the regions taxonomy.'
-#      description: 'The region tree contains all the information about region definitions for placing ads.'
-#      parameters:
-#        - name: Accept
-#          in: header
-#          schema:
-#            type: string
-#            example: 'application/sellside.region.list-v1+json'
-#          required: true
-#        - name: regionIds
-#          in: path
-#          description: 'Comma-separated list of IDs for the requested regions from the regions taxonomy tree.'
-#          required: true
-#          schema:
-#            type: array
-#            items:
-#              type: integer
-#              format: int64
-#            example: [ 1700093,1700195,1700196 ]
-#            maxItems: 100
-#        - name: _include
-#          in: path
-#          description: 'Comma-separated-list of fields to include. Optional, default is all fields.'
-#          required: false
-#          schema:
-#            type: array
-#            items:
-#              type: string
-#        - name: _exclude
-#          in: path
-#          description: 'Comma-separated-list of fields to omit. Optional, default empty.'
-#          required: false
-#          schema:
-#            type: array
-#            items:
-#              type: string
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro api_rw'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_region'
-#          content:
-#            application/sellside.category.list-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/NonLeafRegion'
-#        '400':
-#          description: 'Bad Request'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 2000
-#                  text: 'missing argument'
-#                  msg: 'The field ''regionIds'' was missing'
-#                  field: 'regionIds'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#  /region/{id}:
-#    get:
-#      tags:
-#        - Regions
-#      summary: 'Returns the region tree or parts of it starting from the node with the given region id.'
-#      description: 'To return the region tree starting from the root node use id 0. To retrieve all sub levels specify a sufficiently large number, e.g. 9999.'
-#      parameters:
-#        - name: id
-#          in: path
-#          description: 'The starting region ID of the taxonomy (sub) tree.'
-#          required: true
-#          schema:
-#            type: integer
-#            example: 1700194
-#        - name: levels
-#          in: path
-#          description: 'Specifies how many levels starting from the current one you want to retrieve.'
-#          required: false
-#          default: 0
-#          example: 1
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_category'
-#          content:
-#            application/sellside.region.list-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/NonLeafRegion'
-#        '400':
-#          description: 'Bad Request'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 2000
-#                  text: 'missing argument'
-#                  msg: 'The field ''id'' was missing'
-#                  field: 'id'
-#                - code: 2001
-#                  text: 'invalid argument'
-#                  msg: 'The value of field ''levels'' was invalid'
-#                  field: 'levels'
-#                  value: -1
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#        # FEEDS
+  # REGIONS
+  /regions:
+    get:
+      tags:
+        - Regions
+      summary: 'Returns the a map of id to regions in the format described in the regions taxonomy.'
+      description: 'The region tree contains all the information about region definitions for placing ads.'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+            example: 'application/sellside.region.list-v1+json'
+          required: true
+        - name: regionIds
+          in: path
+          description: 'Comma-separated list of IDs for the requested regions from the regions taxonomy tree.'
+          required: true
+          schema:
+            $ref: './regions/params.yaml/#/components/schemas/RegionIDs'
+        - name: _include
+          in: path
+          description: 'Comma-separated-list of fields to include. Optional, default is all fields.'
+          required: false
+          schema:
+            $ref: './regions/params.yaml/#/components/schemas/IncludeExcludeRegionFields'
+        - name: _exclude
+          in: path
+          description: 'Comma-separated-list of fields to omit. Optional, default empty.'
+          required: false
+          schema:
+            $ref: './regions/params.yaml/#/components/schemas/IncludeExcludeRegionFields'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_region'
+          content:
+            application/sellside.category.list-v5+json:
+              schema:
+                $ref: './regions/responses.yaml/#/components/schemas/NonLeafRegion'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 2000
+                  text: 'missing argument'
+                  msg: 'The field ''regionIds'' was missing'
+                  field: 'regionIds'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /region/{id}:
+    get:
+      tags:
+        - Regions
+      summary: 'Returns the region tree or parts of it starting from the node with the given region id.'
+      description: 'To return the region tree starting from the root node use id 0. To retrieve all sub levels specify a sufficiently large number, e.g. 9999.'
+      parameters:
+        - name: id
+          in: path
+          description: 'The starting region ID of the taxonomy (sub) tree.'
+          required: true
+          schema:
+            $ref: './regions/params.yaml/#/components/schemas/RegionID'
+        - name: levels
+          in: path
+          description: 'Specifies how many levels starting from the current one you want to retrieve.'
+          required: false
+          schema:
+            $ref: './regions/params.yaml/#/components/schemas/RegionLevels'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_category'
+          content:
+            application/sellside.region.list-v5+json:
+              schema:
+                $ref: './regions/responses.yaml/#/components/schemas/NonLeafRegion'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 2000
+                  text: 'missing argument'
+                  msg: 'The field ''id'' was missing'
+                  field: 'id'
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'The value of field ''levels'' was invalid'
+                  field: 'levels'
+                  value: -1
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+
+# FEEDS
 #  /feed/import/{id}/detail:
 #    get:
 #      tags:

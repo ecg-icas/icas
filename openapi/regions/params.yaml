@@ -1,0 +1,28 @@
+# regions/params.yaml
+openapi: 3.0.0
+info:
+  title: Region request parameters
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    RegionIDs:
+      type: array
+      items:
+        type: integer
+        format: int64
+      example: [ 1700093,1700195,1700196 ]
+      maxItems: 100
+    IncludeExcludeRegionFields:
+      type: array
+      items:
+        type: string
+    RegionLevels:
+      type: integer
+      default: 0
+      example: 1
+      minimum: 0
+    RegionID:
+      type: integer
+      example: 1700194
+      minimum: 0
