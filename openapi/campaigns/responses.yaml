@@ -1,0 +1,235 @@
+# campaigns/responses.yaml
+openapi: 3.0.0
+info:
+  title: Campaigns response component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    CampaignStatusResponseV5:
+      type: string
+      description: 'Each campaign can be set in one of a predefined set of states.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'BUDGET_REACHED'
+        - 'DAILY_BUDGET_REACHED'
+      example: 'ACTIVE'
+    CampaignResponseV5:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1235
+          minimum: 0
+          readOnly: true
+          description: 'Unique reference to the iCAS campaign.'
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the campaign was created.'
+          readOnly: true
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: dateTime
+          example: '2018-07-26T14:56:51Z'
+          readOnly: true
+          description: 'The ISO 8601 UTC date and time the campaign was last updated.'
+        status:
+          $ref: '#/components/schemas/CampaignStatusResponseV5'
+        budgets:
+          $ref: '#/components/schemas/CampaignBudgetsResponseV5'
+    CampaignV2:
+      type: object
+      deprecated: true
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1235
+          minimum: 0
+          description: 'Unique reference to the iCAS campaign, needs to be omitted in a POST action.'
+        title:
+          type: string
+          example: 'My awesome campaign'
+          description: 'A description of your campaign. Only visible on your dashboard, it will never be shown to buyers.'
+          maxLength: 255
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the campaign was created.'
+          readOnly: true
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: dateTime
+          example: '2018-07-26T14:56:51Z'
+          readOnly: true
+          description: 'The ISO 8601 UTC date and time the campaign was last updated.'
+        status:
+          $ref: '#/components/schemas/CampaignStatus'
+        vendorId:
+          type: string
+          description: 'Any non-empty string, unique per customer. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified. When fetching an existing campaign which does not have a vendorId, the field is omitted.'
+          example: 'OURSHOP-1423453-34'
+        budgets:
+          $ref: '#/components/schemas/CampaignBudgets'
+        targeting:
+          description: 'A Campaign Targeting Object, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations). Geo-circles and regions cannot and should not be used in combination on the same campaign. This is currently not supported.'
+          oneOf:
+            - $ref: '#/components/schemas/GeoTargeting'
+            - $ref: '#/components/schemas/RegionTargeting'
+    GeoTargeting:
+      description: 'Geo targeting allows you to specify one or more (circular) areas in the targeting criteria of a campaign to have the ads of that campaign only be shown to buyers located in any of the geographical areas specified.'
+      type: array
+      items:
+        type: object
+        properties:
+          lat:
+            type: number
+            format: double
+            example: 1.2345
+            description: 'Latitude of the center-point of the circular area for geo-targeting'
+            minimum: -90
+            maximum: 90
+          lon:
+            type: number
+            format: double
+            example: 123.456
+            description: 'Longitude of the center-point of the circular area for geo-targeting'
+            minimum: -180
+            maximum: 180
+          radius:
+            description: 'Radius (in km) of the circular area for geo-targeting'
+            type: integer
+            format: int64
+            example: 10
+    RegionTargeting:
+      type: array
+      items:
+        type: integer
+        format: int64
+      description: 'A list of valid regionIds from the Regions taxonomy. Default is empty array or [0], either of which implies nationwide targeting (no targeting restrictions).'
+      example:
+        - 12300
+        - 1000134
+    CampaignDailyBudgetResponseV5:
+      type: object
+      description: 'The daily budget for the campaign, including the limit and the current spent.'
+      properties:
+        limitMicros:
+          description: 'The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
+          type: string
+          example: '10000000'
+        spentMicros:
+          description: 'The amount all the ads combined in this campaign have spent so far, today. This will be reset every day around midnight.'
+          type: string
+          example: '9520000'
+    CampaignTotalBudgetResponseV5:
+      type: object
+      description: 'The total budget for the campaign, including the limit and the current spent.'
+      properties:
+        limitMicros:
+          description: 'The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
+          type: string
+          example: 'UNLIMITED'
+        spentMicros:
+          description: 'The amount all the ads combined in this campaign have spent so far. This will never be reset.'
+          type: string
+          example: '124520000'
+    CampaignBudgetsResponseV5:
+      description: 'An object containing the current budget limits and spent for this campaign. The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited). If the campaign is DELETED, no budgets are shown.'
+      properties:
+        daily:
+          $ref: '#/components/schemas/CampaignDailyBudgetResponseV5'
+        total:
+          $ref: '#/components/schemas/CampaignTotalBudgetResponseV5'
+    CampaignStatus:
+      type: string
+      required: true
+      description: 'The current campaign status. The user can set only one of the user controlled states ACTIVE, PAUSED or DELETED.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'BUDGET_REACHED'
+        - 'DELETED'
+      example: 'ACTIVE'
+    DailyBudget:
+      type: object
+      description: 'The maximum amount (in cents) that a campaign can spend per day (limit), and the current-day spent. The spent amount value will be reset at midnight every day. If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The daily budget limit, in cents.'
+          required: true
+        spent:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The current spent, in cents.'
+          readOnly: true
+      example:
+        limit: 120
+        spent: 20
+    MonthlyBudget:
+      type: object
+      description: 'The maximum amount (in cents) that a campaign can spend per calendar month (limit), and the current-month spent. The spent amount value will be reset at midnight every 1st of the month. If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The monthly budget limit, in cents.'
+          required: true
+        spent:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The current spent, in cents.'
+          readOnly: true
+      example:
+        limit: 1000
+        spent: 30
+    TotalBudget:
+      type: object
+      description: 'The maximum amount (in cents) that a campaign can spend in its lifetime, and the current total spent. The spent value will never be reset. If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The total budget limit, in cents.'
+          required: true
+        spent:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The total spent, in cents.'
+          readOnly: true
+      example:
+        limit: -1
+        spent: 30
+    CampaignBudgets:
+      type: object
+      description: 'An object containing the current budget limits and spent for this campaign. The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited). If the campaign is DELETED, no budgets are shown.'
+      properties:
+        daily:
+          $ref: '#/components/schemas/DailyBudget'
+        monthly:
+          $ref: '#/components/schemas/MonthlyBudget'
+        total:
+          $ref: '#/components/schemas/TotalBudget'
+      example:
+        daily:
+          limit: 120
+          spent: 20
+        monthly:
+          limit: 1000
+          spent: 30
+        total:
+          limit: -1
+          spent: 30

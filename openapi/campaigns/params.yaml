@@ -1,0 +1,16 @@
+# campaigns/params.yaml
+openapi: 3.0.0
+info:
+  title: Campaign request parameters
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    CampaignStatusRequestV5:
+      type: string
+      required: true
+      description: 'Each campaign can be set in one of a predefined set of user-controlled states.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+      example: 'PAUSED'

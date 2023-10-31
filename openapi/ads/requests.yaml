@@ -569,53 +569,6 @@ components:
               locale: 'nl'
               type: 'STRING'
               value: '1CAS23'
-    CampaignStatusRequestV5:
-      type: string
-      required: true
-      description: 'Each campaign can be set in one of a predefined set of user-controlled states.'
-      enum:
-        - 'ACTIVE'
-        - 'PAUSED'
-      example: 'ACTIVE'
-    CampaignRequestV5:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/CampaignStatusRequestV5'
-        budgets:
-          $ref: '#/components/schemas/CampaignBudgetsRequestV5'
-      required:
-        - enabled
-        - feedUrl
-    CampaignBudgetsRequestV5:
-      type: object
-      description: 'An object containing the current budget limits for this campaign. If either of these run out, ads from this campaign will no longer be visible on site.
-       The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited).
-       '
-      properties:
-        daily:
-          $ref: '#/components/schemas/CampaignDailyBudgetRequestV5'
-        total:
-          $ref: '#/components/schemas/CampaignTotalBudgetRequestV5'
-    CampaignDailyBudgetRequestV5:
-      type: object
-      required:
-        - limitMicros
-      description: 'The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
-      properties:
-        limitMicros:
-          type: string
-          example: '10000000'
-    CampaignTotalBudgetRequestV5:
-      type: object
-      required:
-        - limitMicros
-      description: 'The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
-      properties:
-        limitMicros:
-          type: string
-          example: 'UNLIMITED'
-          default: 'UNLIMITED'
     MetricsDataRequestV2:
       required:
         - timeRanges

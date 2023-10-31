@@ -1870,638 +1870,639 @@ paths:
           oAuth2ClientCredentials:
             - 'console_ro'
             - 'api_ro'
-#  # CAMPAIGNS
-#  /campaign/:
-#    post:
-#      tags:
-#        - Campaigns
-#      summary: 'Creates a new campaign for the user'
-#      description: 'Creates a new campaign for the user. If successful, it returns an object representing the campaign, with default values on certain fields, if not provided. A minimum payload is an empty JSON, as none of the fields are mandatory.'
-#      operationId: postCampaignV2
-#      parameters:
-#        - name: Accept
-#          in: header
-#          description: 'This header represents the version of the response acceptable by the client.'
-#          schema:
-#            type: string
-#            example: 'application/sellside.campaign-v5+json'
-#          required: true
-#      requestBody:
-#        content:
-#          application/sellside.campaign-v5+json:
-#            schema:
-#              $ref: '#/components/schemas/CampaignRequestV5'
-#          application/sellside.campaign-v2+json:
-#            schema:
-#              $ref: './ads/responses.yaml#/components/schemas/CampaignV2'
-#      responses:
-#        '201':
-#          description: 'Campaign created'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro api_rw'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'post_campaign'
-#          content:
-#            application/sellside.campaign-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignResponseV5'
-#            application/sellside.campaign-v2+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignV2'
-#          links:
-#            vendorIdLink:
-#              operationId: getCampaignByVendorId
-#              parameters:
-#                vendorId: '$response.body#/vendorId'
-#        '400':
-#          description: 'Validation error'
-#          content:
-#            'content-type: application/json; charset=utf-8':
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#                example:
-#                  - code: 2034
-#                    text: 'campaign already exists'
-#                    msg: 'Campaign can only be created once for the same user'
-#                    field: 'campaign'
-#                    arg: ''
-#        '401':
-#          description: 'Unauthorized'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1009
-#                  text: 'missing token'
-#                  msg: 'Authorization header is missing or in the wrong format'
-#        '406':
-#          description: 'Not Acceptable'
-#          content:
-#            'content-type: application/json; charset=utf-8':
-#              schema:
-#                $ref: '#/components/schemas/NotSupportedError'
-#        '500':
-#          description: 'Server Error'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1000
-#                  text: 'internal error'
-#                  msg: 'The server encountered an error'
-#      security:
-#        - bearerAuth: []
-#          oAuth2ClientCredentials:
-#            - 'console_rw'
-#            - 'api_rw'
-#  '/campaign/byVendor/{vendorId}':
-#    get:
-#      tags:
-#        - Campaigns
-#      summary: 'Returns a single campaign with the given vendorId.'
-#      description: 'If the campaign does not exist or does not belong to the user the server returns 404 Not Found. If the vendorId is bigger than 64 characters the server returns 400 Bad Request. The vendorId is unique for a user; It is not possible for a single user to create multiple campaigns with the same vendorId (even if other campaigns are in status DELETED)'
-#      operationId: getCampaignByVendorId
-#      parameters:
-#        - name: vendorId
-#          in: path
-#          description: 'Case-insensitive filter for a keyword in the title; will include only ads which contain the given keyword in their title.'
-#          schema:
-#            type: string
-#            example: 'my-christmas-campaign-2020'
-#          required: true
-#        - name: Accept
-#          in: header
-#          description: 'This header represents the version of the response acceptable by the client.'
-#          schema:
-#            type: string
-#            example: 'application/sellside.campaign-v5+json'
-#          required: true
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_campaign'
-#          content:
-#            application/sellside.campaign-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignResponseV5'
-#            application/sellside.campaign-v2+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignV2'
-#        '401':
-#          description: 'Unauthorized'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1009
-#                  text: 'missing token'
-#                  msg: 'Authorization header is missing or in the wrong format'
-#        '406':
-#          description: 'Not Acceptable'
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/NotSupportedError'
-#        '500':
-#          description: 'Server Error'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1000
-#                  text: 'internal error'
-#                  msg: 'The server encountered an error'
-#      security:
-#        - bearerAuth: []
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#  /campaign/{id}:
-#    get:
-#      tags:
-#        - Campaigns
-#      summary: 'Returns a single existing campaign with the given id.'
-#      parameters:
-#        - name: id
-#          in: path
-#          description: 'A unique identifier of requested campaign.'
-#          schema:
-#            type: integer
-#            format: int64
-#            minimum: 1
-#            example: 123
-#          required: true
-#        - name: Accept
-#          in: header
-#          description: 'This header represents the version of the response acceptable by the client.'
-#          schema:
-#            type: string
-#            example: 'application/sellside.campaign-v5+json'
-#          required: true
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_campaign'
-#          content:
-#            application/sellside.campaign-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignResponseV5'
-#            application/sellside.campaign-v2+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignV2'
-#        '401':
-#          description: 'Unauthorized'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1009
-#                  text: 'missing token'
-#                  msg: 'Authorization header is missing or in the wrong format'
-#        '406':
-#          description: 'Not Acceptable'
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/NotSupportedError'
-#        '500':
-#          description: 'Server Error'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1000
-#                  text: 'internal error'
-#                  msg: 'The server encountered an error'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#    put:
-#      tags:
-#        - Campaigns
-#      summary: 'Updates an existing campaign identified by a campaign id.'
-#      parameters:
-#        - name: id
-#          in: path
-#          description: 'A unique identifier of requested campaign.'
-#          schema:
-#            type: integer
-#            format: int64
-#            minimum: 1
-#            example: 123
-#          required: true
-#        - name: Accept
-#          in: header
-#          description: 'This header represents the version of the response acceptable by the client.'
-#          schema:
-#            type: string
-#            example: 'application/sellside.campaign-v5+json'
-#          required: true
-#      requestBody:
-#        content:
-#          application/sellside.campaign-v5+json:
-#            schema:
-#              $ref: '#/components/schemas/CampaignRequestV5'
-#          application/sellside.campaign-v2+json:
-#            schema:
-#              deprecated: true
-#              $ref: '#/components/schemas/CampaignV2'
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_rw console_rw'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'put_campaign'
-#          content:
-#            application/sellside.campaign-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignResponseV5'
-#            application/sellside.campaign-v2+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignV2'
-#        '401':
-#          description: 'Unauthorized'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1009
-#                  text: 'missing token'
-#                  msg: 'Authorization header is missing or in the wrong format'
-#        '406':
-#          description: 'Not Acceptable'
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/NotSupportedError'
-#        '500':
-#          description: 'Server Error'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1000
-#                  text: 'internal error'
-#                  msg: 'The server encountered an error'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_rw'
-#            - 'api_rw'
-#  /campaigns:
-#    get:
-#      tags:
-#        - Campaigns
-#      summary: 'Get all campaigns for the authenticated user.'
-#      parameters:
-#        - name: Accept
-#          in: header
-#          description: 'This header represents the version of the response acceptable by the client.'
-#          schema:
-#            type: string
-#            example: 'application/sellside.campaign.list-v5+json'
-#          required: true
-#        - name: limit
-#          in: query
-#          required: false
-#          description: 'Limits the number of campaigns returned.'
-#          schema:
-#            type: integer
-#            maximum: 100
-#            default: 100
-#          example: 50
-#        - name: pageToken
-#          in: query
-#          required: false
-#          description: 'Encoded information on where the previous page ended, send this along with the same request to get the next page of results.'
-#          schema:
-#            type: string
-#            format: byte
-#          example: 'eyJpZCI6MTAwMT'
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_campaign'
-#          content:
-#            application/sellside.campaign.list-v5+json:
-#              schema:
-#                type: object
-#                properties:
-#                  total:
-#                    description: 'The total number of campaigns for the authenticated user.'
-#                    type: integer
-#                    format: int64
-#                    example: 1
-#                    minimum: 0
-#                  nextPageToken:
-#                    description: 'Replaces the usage of the ‘offset’ parameter and allows the caller to paginate through a large list of ads more efficiently. In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making that call more efficient.
-#                    When a response does not contain a nextPageToken you have reached the last page of results and there are no more to fetch.
-#                      '
-#                    type: string
-#                    example: 'eyJpZCI6MTAwMTgz'
-#                  campaigns:
-#                    type: array
-#                    items:
-#                      $ref: '#/components/schemas/CampaignResponseV5'
-#            application/sellside.campaign.list-v2+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignV2'
-#        '401':
-#          description: 'Unauthorized'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1009
-#                  text: 'missing token'
-#                  msg: 'Authorization header is missing or in the wrong format'
-#        '406':
-#          description: 'Not Acceptable'
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/NotSupportedError'
-#        '500':
-#          description: 'Server Error'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1000
-#                  text: 'internal error'
-#                  msg: 'The server encountered an error'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
-#  /campaign/{id}/status/{status}:
-#    put:
-#      tags:
-#        - Campaigns
-#      summary: 'Updates the status of the campaign.'
-#      parameters:
-#        - name: id
-#          in: path
-#          description: 'A unique identifier of requested campaign.'
-#          schema:
-#            type: integer
-#            format: int64
-#            minimum: 1
-#            example: 123
-#          required: true
-#        - name: status
-#          in: path
-#          description: 'The desired status of the campaign'
-#          required: true
-#          schema:
-#            $ref: '#/components/schemas/CampaignStatusRequestV5'
-#            example: 'PAUSED'
-#        - name: Accept
-#          in: header
-#          description: 'This header represents the version of the response acceptable by the client.'
-#          schema:
-#            type: string
-#            example: 'application/sellside.campaign-v5+json'
-#          required: true
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_rw console_rw'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'put_campaign'
-#          content:
-#            application/sellside.campaign-v5+json:
-#              schema:
-#                type: object # empty
-#        '404':
-#          description: 'Not Found'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1004
-#                  text: 'not found'
-#                  msg: 'The entity was not found'
-#        '401':
-#          description: 'Unauthorized'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1009
-#                  text: 'missing token'
-#                  msg: 'Authorization header is missing or in the wrong format'
-#        '406':
-#          description: 'Not Acceptable'
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/NotSupportedError'
-#        '500':
-#          description: 'Server Error'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1000
-#                  text: 'internal error'
-#                  msg: 'The server encountered an error'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_rw'
-#            - 'api_rw'
-#  /campaign/{id}/budgets:
-#    put:
-#      tags:
-#        - Campaigns
-#      summary: 'Updates the budget limits of a campaign.'
-#      parameters:
-#        - name: id
-#          in: path
-#          description: 'A unique identifier of requested campaign.'
-#          schema:
-#            type: integer
-#            format: int64
-#            minimum: 1
-#            example: 123
-#          required: true
-#        - name: Accept
-#          in: header
-#          description: 'This header represents the version of the response acceptable by the client.'
-#          schema:
-#            type: string
-#            example: 'application/sellside.campaign-v5+json'
-#          required: true
-#      requestBody:
-#        required: true
-#        content:
-#          application/sellside.campaign-v5+json:
-#            schema:
-#              $ref: '#/components/schemas/CampaignBudgetsRequestV5'
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_rw console_rw'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'put_campaign'
-#          content:
-#            application/sellside.campaign-v5+json:
-#              schema:
-#                $ref: '#/components/schemas/CampaignBudgetsResponseV5'
-#        '404':
-#          description: 'Not Found'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1004
-#                  text: 'not found'
-#                  msg: 'The entity was not found'
-#        '401':
-#          description: 'Unauthorized'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1009
-#                  text: 'missing token'
-#                  msg: 'Authorization header is missing or in the wrong format'
-#        '406':
-#          description: 'Not Acceptable'
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/NotSupportedError'
-#        '500':
-#          description: 'Server Error'
-#          content:
-#            application/sellside.error-v1+json; charset=UTF-8:
-#              schema:
-#                type: array
-#                items:
-#                  $ref: '#/components/schemas/ApiResponseError'
-#              example:
-#                - code: 1000
-#                  text: 'internal error'
-#                  msg: 'The server encountered an error'
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_rw'
-#            - 'api_rw'
-#
+
+  # CAMPAIGNS
+  /campaign/:
+    post:
+      tags:
+        - Campaigns
+      summary: 'Creates a new campaign for the user'
+      description: 'Creates a new campaign for the user. If successful, it returns an object representing the campaign, with default values on certain fields, if not provided. A minimum payload is an empty JSON, as none of the fields are mandatory.'
+      operationId: postCampaignV2
+      parameters:
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      requestBody:
+        content:
+          application/sellside.campaign-v5+json:
+            schema:
+              $ref: './campaigns/requests.yaml/#/components/schemas/CampaignRequestV5'
+          application/sellside.campaign-v2+json:
+            schema:
+              $ref: './campaigns/requests.yaml/#/components/schemas/CampaignV2'
+      responses:
+        '201':
+          description: 'Campaign created'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'post_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns/responses.yaml/#/components/schemas/CampaignResponseV5'
+            application/sellside.campaign-v2+json:
+              schema:
+                $ref: './campaigns/responses.yaml/#/components/schemas/CampaignV2'
+          links:
+            vendorIdLink:
+              operationId: getCampaignByVendorId
+              parameters:
+                vendorId: '$response.body#/vendorId'
+        '400':
+          description: 'Validation error'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+                example:
+                  - code: 2034
+                    text: 'campaign already exists'
+                    msg: 'Campaign can only be created once for the same user'
+                    field: 'campaign'
+                    arg: ''
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                $ref: './errors.yaml/#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  '/campaign/byVendor/{vendorId}':
+    get:
+      tags:
+        - Campaigns
+      summary: 'Returns a single campaign with the given vendorId.'
+      description: 'If the campaign does not exist or does not belong to the user the server returns 404 Not Found. If the vendorId is bigger than 64 characters the server returns 400 Bad Request. The vendorId is unique for a user; It is not possible for a single user to create multiple campaigns with the same vendorId (even if other campaigns are in status DELETED)'
+      operationId: getCampaignByVendorId
+      parameters:
+        - name: vendorId
+          in: path
+          description: 'Case-insensitive filter for a keyword in the title; will include only ads which contain the given keyword in their title.'
+          schema:
+            type: string
+            example: 'my-christmas-campaign-2020'
+          required: true
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns/responses.yaml/#/components/schemas/CampaignResponseV5'
+            application/sellside.campaign-v2+json:
+              schema:
+                $ref: './campaigns/requests.yaml/#/components/schemas/CampaignV2'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml/#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /campaign/{id}:
+    get:
+      tags:
+        - Campaigns
+      summary: 'Returns a single existing campaign with the given id.'
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of requested campaign.'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            example: 123
+          required: true
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns/responses.yaml/#/components/schemas/CampaignResponseV5'
+            application/sellside.campaign-v2+json:
+              schema:
+                $ref: './campaigns/responses.yaml/#/components/schemas/CampaignV2'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml/#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+    put:
+      tags:
+        - Campaigns
+      summary: 'Updates an existing campaign identified by a campaign id.'
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of requested campaign.'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            example: 123
+          required: true
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      requestBody:
+        content:
+          application/sellside.campaign-v5+json:
+            schema:
+              $ref: './campaigns/requests.yaml/#/components/schemas/CampaignRequestV5'
+          application/sellside.campaign-v2+json:
+            schema:
+              deprecated: true
+              $ref: './campaigns/requests.yaml/#/components/schemas/CampaignV2'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_rw console_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'put_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns/responses.yaml/#/components/schemas/CampaignResponseV5'
+            application/sellside.campaign-v2+json:
+              schema:
+                $ref: './campaigns/responses.yaml/#/components/schemas/CampaignV2'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml/#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /campaigns:
+    get:
+      tags:
+        - Campaigns
+      summary: 'Get all campaigns for the authenticated user.'
+      parameters:
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign.list-v5+json'
+          required: true
+        - name: limit
+          in: query
+          required: false
+          description: 'Limits the number of campaigns returned.'
+          schema:
+            type: integer
+            maximum: 100
+            default: 100
+          example: 50
+        - name: pageToken
+          in: query
+          required: false
+          description: 'Encoded information on where the previous page ended, send this along with the same request to get the next page of results.'
+          schema:
+            type: string
+            format: byte
+          example: 'eyJpZCI6MTAwMT'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_campaign'
+          content:
+            application/sellside.campaign.list-v5+json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    description: 'The total number of campaigns for the authenticated user.'
+                    type: integer
+                    format: int64
+                    example: 1
+                    minimum: 0
+                  nextPageToken:
+                    description: 'Replaces the usage of the ‘offset’ parameter and allows the caller to paginate through a large list of ads more efficiently. In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making that call more efficient.
+                    When a response does not contain a nextPageToken you have reached the last page of results and there are no more to fetch.
+                      '
+                    type: string
+                    example: 'eyJpZCI6MTAwMTgz'
+                  campaigns:
+                    type: array
+                    items:
+                      $ref: './campaigns//responses.yaml/#/components/schemas/CampaignResponseV5'
+            application/sellside.campaign.list-v2+json:
+              schema:
+                $ref: './campaigns/responses.yaml/#/components/schemas/CampaignV2' # TODO: campaign list! this is wrong
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml/#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /campaign/{id}/status/{status}:
+    put:
+      tags:
+        - Campaigns
+      summary: 'Updates the status of the campaign.'
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of requested campaign.'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            example: 123
+          required: true
+        - name: status
+          in: path
+          description: 'The desired status of the campaign'
+          required: true
+          schema:
+            $ref: './campaigns/params.yaml/#/components/schemas/CampaignStatusRequestV5'
+            example: 'PAUSED'
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_rw console_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'put_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                type: object # empty
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml/#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /campaign/{id}/budgets:
+    put:
+      tags:
+        - Campaigns
+      summary: 'Updates the budget limits of a campaign.'
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of requested campaign.'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            example: 123
+          required: true
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/sellside.campaign-v5+json:
+            schema:
+              $ref: './campaigns/requests.yaml/#/components/schemas/CampaignBudgetsRequestV5'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_rw console_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'put_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns//responses.yaml/#/components/schemas/CampaignBudgetsResponseV5'
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml/#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml/#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+
 #  # REPORTING
 #  /metrics/report:
 #    get:
