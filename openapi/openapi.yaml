@@ -3133,170 +3133,79 @@ paths:
           oAuth2ClientCredentials:
             - 'console_ro'
             - 'api_ro'
-#
-#  /user:
-#    get:
-#      summary: 'Returns information of the current authenticated user.'
-#      parameters:
-#        - name: Accept
-#          in: header
-#          description: 'The version of the response data model.'
-#          type: string
-#          example: 'application/sellside.user-v4+json'
-#          required: true
-#      responses:
-#        '200':
-#          description: 'Success'
-#          headers:
-#            Oauth-Scope:
-#              description: 'Oauth scopes that are available with the supplied token'
-#              schema:
-#                type: string
-#                example: 'api_ro console_ro'
-#            Oauth-Scope-Required:
-#              description: 'The required permission for this particular call'
-#              schema:
-#                type: string
-#                example: 'get_user'
-#            Content-Type:
-#              schema:
-#                type: string
-#                example: 'application/sellside.user-v4+json'
-#          content:
-#            application/sellside.user-v4+json:
-#              schema:
-#                type: object
-#                properties:
-#                  id:
-#                    description: 'Contains a unique user identifier.'
-#                    type: integer
-#                    format: int64
-#                  emailAddress:
-#                    description: 'The email address of the current authenticated user.'
-#                    type: string
-#                    format: email
-#                  sellerName:
-#                    description: 'The name provided by the authenticated user.'
-#                    type: string
-#                  phoneNumber:
-#                    description: 'The phone number provided by the authenticated user.'
-#                    type: string
-#                  options:
-#                    type: object
-#                    properties:
-#                      feed:
-#                        description: 'Indicates whether the authenticated user is a feed user.'
-#                        type: boolean
-#                      vanityUrl:
-#                        description: 'Indicates whether the ads of the authenticated user show the display URL in search results.'
-#                        type: boolean
-#                      locations:
-#                        description: 'Contains the user (or webshop) locations.'
-#                        type: array
-#                        items:
-#                          type: object
-#                          items:
-#                            houseNumber:
-#                              type: string
-#                            streetName:
-#                              type: string
-#                            city:
-#                              type: string
-#                            postalCode:
-#                              type: string
-#                            phoneNumber:
-#                              type: string
-#                      hasAds:
-#                        description: 'Indicates whether the authenticated user has any ads (including deleted).'
-#                        type: boolean
-#                      isAPIManaged:
-#                        description: 'Indicates whether the user has at least one API partner using `api-rw` scope, in other words an API partner manipulating the ads.'
-#                        type: boolean
-#              example:
-#                id: 123
-#                emailAddress: someuser@somewhere.org
-#                sellerName: Some User
-#                phoneNumber: '0612345678'
-#                options:
-#                  feed: true
-#                  vanityUrl: false
-#                locations:
-#                  - houseNumber: '123'
-#                    streetName: Some street
-#                    city: Some city
-#                    country: Some country
-#                    postalCode: 1432AB
-#                    phoneNumber: '0612345678'
-#                hasAds: true
-#                isAPIManaged: true
-#            application/sellside.user-v3+json:
-#              schema:
-#                type: object
-#                deprecated: true
-#                properties:
-#                  id:
-#                    description: 'Contains a unique user identifier.'
-#                    type: integer
-#                    format: int64
-#                  emailAddress:
-#                    description: 'The email address of the current authenticated user.'
-#                    type: string
-#                    format: email
-#                  sellerName:
-#                    description: 'The name provided by the authenticated user.'
-#                    type: string
-#                  phoneNumber:
-#                    description: 'The phone number provided by the authenticated user.'
-#                    type: string
-#                  options:
-#                    type: object
-#                    properties:
-#                      feed:
-#                        description: 'Indicates whether the authenticated user is a feed user.'
-#                        type: boolean
-#                      vanityUrl:
-#                        description: 'Indicates whether the ads of the authenticated user show the display URL in search results.'
-#                        type: boolean
-#                      locations:
-#                        description: 'Contains the user (or webshop) locations.'
-#                        type: array
-#                        items:
-#                          type: object
-#                          items:
-#                            houseNumber:
-#                              type: string
-#                            streetName:
-#                              type: string
-#                            city:
-#                              type: string
-#                            postalCode:
-#                              type: string
-#                            phoneNumber:
-#                              type: string
-#                      hasAds:
-#                        description: 'Indicates whether the authenticated user has any ads (including deleted).'
-#                        type: boolean
-#              example:
-#                id: 123
-#                emailAddress: someuser@somewhere.org
-#                sellerName: Some User
-#                phoneNumber: '0612345678'
-#                options:
-#                  feed: true
-#                  vanityUrl: false
-#                locations:
-#                  - houseNumber: '123'
-#                    streetName: Some street
-#                    city: Some city
-#                    country: Some country
-#                    postalCode: 1432AB
-#                    phoneNumber: '0612345678'
-#                hasAds: true
-#      security:
-#        - bearerAuth: [ ]
-#          oAuth2ClientCredentials:
-#            - 'console_ro'
-#            - 'api_ro'
+  /user:
+    get:
+      summary: 'Returns information of the current authenticated user.'
+      parameters:
+        - name: Accept
+          in: header
+          description: 'The version of the response data model.'
+          type: string
+          example: 'application/sellside.user-v4+json'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_user'
+            Content-Type:
+              schema:
+                type: string
+                example: 'application/sellside.user-v4+json'
+          content:
+            application/sellside.user-v4+json:
+              schema:
+                $ref: './user/responses.yaml/#/components/schemas/UserResponseV4'
+              example:
+                id: 123
+                emailAddress: someuser@somewhere.org
+                sellerName: Some User
+                phoneNumber: '0612345678'
+                options:
+                  feed: true
+                  vanityUrl: false
+                locations:
+                  - houseNumber: '123'
+                    streetName: Some street
+                    city: Some city
+                    country: Some country
+                    postalCode: 1432AB
+                    phoneNumber: '0612345678'
+                hasAds: true
+                isAPIManaged: true
+            application/sellside.user-v3+json:
+              schema:
+                $ref: './user/responses.yaml/#/components/schemas/UserResponseV3'
+              example:
+                id: 123
+                emailAddress: someuser@somewhere.org
+                sellerName: Some User
+                phoneNumber: '0612345678'
+                options:
+                  feed: true
+                  vanityUrl: false
+                locations:
+                  - houseNumber: '123'
+                    streetName: Some street
+                    city: Some city
+                    country: Some country
+                    postalCode: 1432AB
+                    phoneNumber: '0612345678'
+                hasAds: true
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
 #-------------------------------
 # Reusable schemas (data models)
 #-------------------------------
