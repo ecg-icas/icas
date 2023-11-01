@@ -2531,46 +2531,25 @@ paths:
           description: 'Report start date'
           required: true
           schema:
-            type: string
-            format: date
-            example: '2014-11-24'
+            $ref: './reporting/params.yaml/#/components/schemas/ReportDate'
         - name: endDate
           in: query
           description: 'Report end date (inclusive)'
           required: true
           schema:
-            type: string
-            format: date
-            example: '2014-11-24'
+            $ref: './reporting/params.yaml/#/components/schemas/ReportDate'
         - name: adIds
           in: query
           description: 'Comma-separated-list of ad id’s which to filter the result set on. Optional, default empty to include data for all ads.'
           schema:
-            type: array
-            items:
-              type: integer
-              format: int64
-            example: [1,2,3]
+            $ref: './reporting/params.yaml/#/components/schemas/AdIDs'
           required: false
         - name: status
           in: query
           description: 'Comma-separated-list of ad statuses which to filter the result set on.'
           required: false
           schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - 'ACTIVE'
-                - 'PAUSED'
-                - 'BUDGET_REACHED'
-                - 'DAILY_BUDGET_REACHED'
-                - 'DELETED'
-                - 'DELETED_BY_CS'
-                - 'SUSPENDED_BY_CS'
-                - 'DOMAIN_PENDING'
-            default: ['ACTIVE']
-            example: ['ACTIVE', 'PAUSED']
+            $ref: './reporting//params.yaml/#/components/schemas/ReportStatus'
       responses:
         '200':
           description: 'Success'
@@ -2648,33 +2627,22 @@ paths:
             type: string
             example: 'nl-NL'
         - name: aggregate
-          description: 'Granularity of the timeseries breakdown.'
           in: path
           required: true
           schema:
-            type: string
-            enum:
-              - 'daily'
-              - 'weekly'
-              - 'monthly'
-              - 'yearly'
-            default: 'daily'
+            $ref: './reporting/params.yaml/#/components/schemas/ReportTimeAggregation'
         - name: startDate
           description: 'Start date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.'
           in: path
           required: true
           schema:
-            type: string
-            format: date
-            example: '018-01-01'
+            $ref: './reporting//params.yaml/#/components/schemas/ReportDate'
         - name: endDate
           description: 'End date of the report in YYYY-MM-DD (inclusive). Tenant timezone is assumed.'
           in: path
           required: true
           schema:
-            type: string
-            format: date
-            example: '2018-05-01'
+            $ref: './reporting//params.yaml/#/components/schemas/ReportDate'
         - name: includeDeleted
           in: path
           required: false
@@ -2692,29 +2660,7 @@ paths:
         - name: fields
           in: path
           required: false
-          description: 'Comma-separated list of column fields to include in the report. Possible values are the response model fields. By default all fields are included, and this may affect the speed of data generation.'
-          schema:
-            type: array
-            enum:
-              - 'date'
-              - 'adID'
-              - 'L1Category'
-              - 'L2Category'
-              - 'L3Category'
-              - 'title'
-              - 'startDate'
-              - 'endDate'
-              - 'bidMicros'
-              - 'spentMicros'
-              - 'clicks'
-              - 'impressions'
-              - 'viewCTR'
-              - 'websiteClicks'
-              - 'emails'
-              - 'engagementCTR'
-              - 'region'
-              - 'vendorID'
-              - 'externalURL'
+          $ref: './reporting//params.yaml/#/components/schemas/ReportAdsFields'
       responses:
         '200':
           description: 'Success'
