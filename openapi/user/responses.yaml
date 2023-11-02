@@ -6,7 +6,7 @@ info:
 paths: {}
 components:
   schemas:
-    UserResponseV3:
+    V3:
       description: 'Information about the authenticated user'
       type: object
       deprecated: true
@@ -53,7 +53,7 @@ components:
             hasAds:
               description: 'Indicates whether the authenticated user has any ads (including deleted).'
               type: boolean
-    UserResponseV4:
+    V4:
       description: 'Information about the authenticated user'
       type: object
       properties:

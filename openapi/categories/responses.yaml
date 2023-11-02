@@ -6,7 +6,7 @@ info:
 paths: {}
 components:
   schemas:
-    NonLeafCategoryV5:
+    NonLeafV5:
       type: object
       readOnly: true
       description: 'Non-leaf categories only serve as parent nodes for lower level categories. Ads cannot be placed within them and therefore they have no configuration related to ad placement.'
@@ -80,8 +80,8 @@ components:
           type: array
           description: 'Ordered list of child categories.'
           items:
-            $ref: '#/components/schemas/LeafCategoryV5'
-    LeafCategoryV5:
+            $ref: '#/components/schemas/LeafV5'
+    LeafV5:
       readOnly: true
       description: 'Leaf categories are the categories where ads can be placed. They have by definition no children. Leaf categories contain the full configuration for ads placed in this category.'
       properties:
@@ -394,7 +394,7 @@ components:
                   'prefix': { }
                   'postfix': { }
                   'hints': [ ]
-    CategoryFunnelResponse:
+    FunnelResponse:
       type: object
       readOnly: true
       description: 'A struct encapsulating the category performance prediction (funnel).'

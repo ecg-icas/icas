@@ -6,7 +6,7 @@ info:
 paths: {}
 components:
   schemas:
-    FeedConfigV1Response:
+    ConfigV1:
       readOnly: true
       type: object
       description: 'Feed configuration of the current user.'
@@ -21,7 +21,7 @@ components:
           description: 'Contains the configured feed URL for the current user.'
           example: 'http://www.ourshop.com/feed.xml'
           maxLength: 512
-    FeedImportDetailV2Response:
+    ImportDetailV2:
       type: object
       readOnly: true
       properties:
@@ -117,7 +117,7 @@ components:
             'mandatory attribute 240 absent':
               count: 8
               "vendorIdsSample": [ "vendorid124","vendorid224" ]
-    FeedImportListV1Response:
+    ImportListV1:
       type: array
       readOnly: true
       description: 'Feed imports of the current user in descending chronological order.'

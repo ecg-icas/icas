@@ -5,40 +5,59 @@ info:
   version: 1.0.0
 paths: {}
 components:
-  schemas:
-    CategoryIDs:
-      type: array
-      items:
+  parameters:
+    ID:
+      in: path
+      required: true
+      name: id
+      schema:
         type: integer
-        format: int64
-      example: [ 863,431 ]
-    IncludeExcludeCategoryFields:
-      type: array
-      items:
-        type: string
-    IncludeExcludeCategoryFunnelFields:
-      type: array
-      items:
-        uniqueItems: true
-        anyOf:
-          - enum:
-              - 'cpc'
-              - 'pageNumber'
-              - 'averageClicks'
-              - 'averageCpc'
-              - 'averageImpressions'
-              - 'averageUrlClicks'
-              - 'ctr'
-              - 'urlCtr'
-              - 'maxCpc'
-        example:
-          - 'cpc'
-          - 'averageClicks'
-    CategoryLevels:
-      type: integer
-      example: 1
-      minimum: 0
-    CategoryID:
-      type: integer
-      example: 856
-      minimum: 0
+        example: 856
+        minimum: 0
+    IDs:
+      name: categoryIds
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+        example: [ 863,431 ]
+    IncludeExcludeFields:
+      name: _include
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    IncludeExcludeFunnelFields:
+      name: _include
+      in: query
+      schema:
+        type: array
+        items:
+          uniqueItems: true
+          anyOf:
+            - enum:
+                - 'cpc'
+                - 'pageNumber'
+                - 'averageClicks'
+                - 'averageCpc'
+                - 'averageImpressions'
+                - 'averageUrlClicks'
+                - 'ctr'
+                - 'urlCtr'
+                - 'maxCpc'
+          example:
+            - 'cpc'
+            - 'averageClicks'
+    Levels:
+      in: query
+      name: levels
+      required: false
+      schema:
+        type: integer
+        example: 1
+        minimum: 0

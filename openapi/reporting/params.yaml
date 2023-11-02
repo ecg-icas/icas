@@ -5,62 +5,83 @@ info:
   version: 1.0.0
 paths: {}
 components:
-  schemas:
-    ReportDate:
-      type: string
-      format: date
-      example: '2014-11-24'
-    ReportStatus:
-      type: array
-      items:
+  parameters:
+    Date:
+      description: 'Date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.'
+      schema:
         type: string
-        enum:
-          - 'ACTIVE'
-          - 'PAUSED'
-          - 'BUDGET_REACHED'
-          - 'DAILY_BUDGET_REACHED'
-          - 'DELETED'
-          - 'DELETED_BY_CS'
-          - 'SUSPENDED_BY_CS'
-          - 'DOMAIN_PENDING'
-      default: [ 'ACTIVE' ]
-      example: [ 'ACTIVE', 'PAUSED' ]
-    AdIDs:
-      type: array
-      items:
-        type: integer
-        format: int64
-      example: [ 1,2,3 ]
-    ReportTimeAggregation:
-      type: string
+        format: date
+        example: '2014-11-24'
+      in: path
+      name: reportDate
+      required: true
+    TimeAggregation:
+      name: aggregate
+      in: path
       required: false
-      description: 'Granularity of the timeseries breakdown.'
-      enum:
-        - 'daily'
-        - 'weekly'
-        - 'monthly'
-        - 'yearly'
-      default: 'daily'
-    ReportAdsFields:
+      schema:
+        type: string
+        description: 'Granularity of the timeseries breakdown.'
+        enum:
+          - 'daily'
+          - 'weekly'
+          - 'monthly'
+          - 'yearly'
+        default: 'daily'
+    AdStatus:
+      name: status
+      in: query
+      required: false
+      description: 'Comma-separated-list of ad statuses which to filter the result set on.'
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - 'ACTIVE'
+            - 'PAUSED'
+            - 'BUDGET_REACHED'
+            - 'DAILY_BUDGET_REACHED'
+            - 'DELETED'
+            - 'DELETED_BY_CS'
+            - 'SUSPENDED_BY_CS'
+            - 'DOMAIN_PENDING'
+        default: [ 'ACTIVE' ]
+        example: [ 'ACTIVE', 'PAUSED' ]
+    AdIDs:
+      in: query
+      name: adIds
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+        example: [ 1,2,3 ]
+    AdsFields:
+      name: fields
+      in: path
+      required: false
       description: 'Comma-separated list of column fields to include in the report. Possible values are the response model fields. By default all fields are included, and this may affect the speed of data generation.'
-      type: array
-      enum:
-        - 'date'
-        - 'adID'
-        - 'L1Category'
-        - 'L2Category'
-        - 'L3Category'
-        - 'title'
-        - 'startDate'
-        - 'endDate'
-        - 'bidMicros'
-        - 'spentMicros'
-        - 'clicks'
-        - 'impressions'
-        - 'viewCTR'
-        - 'websiteClicks'
-        - 'emails'
-        - 'engagementCTR'
-        - 'region'
-        - 'vendorID'
-        - 'externalURL'
+      schema:
+        type: array
+        items:
+          enum:
+            - 'date'
+            - 'adID'
+            - 'L1Category'
+            - 'L2Category'
+            - 'L3Category'
+            - 'title'
+            - 'startDate'
+            - 'endDate'
+            - 'bidMicros'
+            - 'spentMicros'
+            - 'clicks'
+            - 'impressions'
+            - 'viewCTR'
+            - 'websiteClicks'
+            - 'emails'
+            - 'engagementCTR'
+            - 'region'
+            - 'vendorID'
+            - 'externalURL'

@@ -6,7 +6,7 @@ info:
 paths: {}
 components:
   schemas:
-    NonLeafRegion:
+    NonLeaf:
       type: object
       readOnly: true
       description: 'Non-leaf regions serve as parent nodes for lower level regions. Ads cannot be placed within them and therefore they have no center point.'
@@ -57,8 +57,8 @@ components:
           type: array
           description: 'Ordered list of child regions.'
           items:
-            $ref: '#/components/schemas/LeafRegion'
-    LeafRegion:
+            $ref: '#/components/schemas/Leaf'
+    Leaf:
       readOnly: true
       description: 'Leaf regions are the regions where ads can be placed. They have by definition no children. Leaf regions have coordinates of the center point.'
       properties:

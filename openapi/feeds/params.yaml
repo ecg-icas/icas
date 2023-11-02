@@ -5,14 +5,20 @@ info:
   version: 1.0.0
 paths: {}
 components:
-  schemas:
+  parameters:
     ImportID:
-      type: number
-      example: 123
-    FeedFormat:
-      type: string
-      enum:
-        - tsv
-        - xml
-      example: tsv
-      default: xml
+      name: id
+      in: path
+      required: true
+      schema:
+        type: number
+        example: 123
+    Format:
+      name: format
+      in: query
+      schema:
+        enum:
+          - tsv
+          - xml
+        example: tsv
+        default: xml

@@ -5,12 +5,14 @@ info:
   version: 1.0.0
 paths: {}
 components:
-  schemas:
-    CampaignStatusRequestV5:
-      type: string
+  parameters:
+    StatusV5:
+      name: status
+      in: path
       required: true
       description: 'Each campaign can be set in one of a predefined set of user-controlled states.'
-      enum:
-        - 'ACTIVE'
-        - 'PAUSED'
-      example: 'PAUSED'
+      schema:
+        enum:
+          - 'ACTIVE'
+          - 'PAUSED'
+        example: 'PAUSED'

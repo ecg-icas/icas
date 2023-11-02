@@ -6,7 +6,7 @@ info:
 paths: {}
 components:
   schemas:
-    MetricsReportV2:
+    ReportV2:
       readOnly: true
       type: object
       properties:
@@ -156,7 +156,7 @@ components:
                 type: number
                 format: double
                 example: 0.42
-    MetricsReportV1:
+    ReportV1:
       readOnly: true
       type: object
       properties:
@@ -277,7 +277,7 @@ components:
                 type: number
                 format: double
                 example: 0.42
-    MetricsAdsV2:
+    AdsV2:
       type: object
       readOnly: true
       properties:
@@ -360,7 +360,7 @@ components:
         externalURL:
           description: 'The external website URL of the ad, if provided'
           type: string
-    MetricsDataResponseV2:
+    DataV2:
       readOnly: true
       type: object
       properties:

@@ -7,17 +7,56 @@ info:
 paths: {}
 components:
   schemas:
-    CampaignStatusRequestV5:
-      type: string
-      required: true
+    V5:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/StatusV5'
+        budgets:
+          $ref: '#/components/schemas/BudgetsV5'
+      required:
+        - status
+        - budgets
+    StatusV5:
       description: 'Each campaign can be set in one of a predefined set of user-controlled states.'
       enum:
         - 'ACTIVE'
         - 'PAUSED'
       example: 'ACTIVE'
-    CampaignV2:
+    BudgetsV5:
+      type: object
+      description: 'An object containing the current budget limits for this campaign. If either of these run out, ads from this campaign will no longer be visible on site.
+           The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited).
+           '
+      properties:
+        daily:
+          $ref: '#/components/schemas/DailyBudgetV5'
+        total:
+          $ref: '#/components/schemas/TotalBudgetV5'
+    DailyBudgetV5:
+      type: object
+      required:
+        - limitMicros
+      description: 'The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
+      properties:
+        limitMicros:
+          type: string
+          example: '10000000'
+    TotalBudgetV5:
+      type: object
+      required:
+        - limitMicros
+      description: 'The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
+      properties:
+        limitMicros:
+          type: string
+          example: 'UNLIMITED'
+          default: 'UNLIMITED'
+    V2:
       type: object
       deprecated: true
+      required:
+        - status
       properties:
         id:
           type: integer
@@ -43,31 +82,20 @@ components:
           readOnly: true
           description: 'The ISO 8601 UTC date and time the campaign was last updated.'
         status:
-          $ref: '#/components/schemas/CampaignStatus'
+          $ref: '#/components/schemas/StatusV2'
         vendorId:
           type: string
           description: 'Any non-empty string, unique per customer. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified. When fetching an existing campaign which does not have a vendorId, the field is omitted.'
           example: 'OURSHOP-1423453-34'
         budgets:
-          $ref: '#/components/schemas/CampaignBudgets'
+          $ref: '#/components/schemas/BudgetsV2'
         targeting:
           description: 'A Campaign Targeting Object, containing the targeting settings for this campaign. The default value is an empty targeting, indicating that the targeting is nationwide (no limitations). Geo-circles and regions cannot and should not be used in combination on the same campaign. This is currently not supported.'
           oneOf:
             - $ref: '#/components/schemas/GeoTargeting'
             - $ref: '#/components/schemas/RegionTargeting'
-    CampaignRequestV5:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/CampaignStatusRequestV5'
-        budgets:
-          $ref: '#/components/schemas/CampaignBudgetsRequestV5'
-      required:
-        - enabled
-        - feedUrl
-    CampaignStatus:
+    StatusV2:
       type: string
-      required: true
       description: 'The current campaign status. The user can set only one of the user controlled states ACTIVE, PAUSED or DELETED.'
       enum:
         - 'ACTIVE'
@@ -75,75 +103,16 @@ components:
         - 'BUDGET_REACHED'
         - 'DELETED'
       example: 'ACTIVE'
-    CampaignBudgetsRequestV5:
-      type: object
-      description: 'An object containing the current budget limits for this campaign. If either of these run out, ads from this campaign will no longer be visible on site.
-           The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited).
-           '
-      properties:
-        daily:
-          $ref: '#/components/schemas/CampaignDailyBudgetRequestV5'
-        total:
-          $ref: '#/components/schemas/CampaignTotalBudgetRequestV5'
-    CampaignDailyBudgetRequestV5:
-      type: object
-      required:
-        - limitMicros
-      description: 'The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
-      properties:
-        limitMicros:
-          type: string
-          example: '10000000'
-    CampaignTotalBudgetRequestV5:
-      type: object
-      required:
-        - limitMicros
-      description: 'The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
-      properties:
-        limitMicros:
-          type: string
-          example: 'UNLIMITED'
-          default: 'UNLIMITED'
-    DailyBudget:
-      type: object
-      description: 'The maximum amount (in cents) that a campaign can spend per day (limit). If not set, the limit will be shown as -1 (Unlimited).'
-      properties:
-        limit:
-          type: integer
-          format: int64
-          example: 120
-          description: 'The daily budget limit, in cents.'
-          required: true
-    MonthlyBudget:
-      type: object
-      description: 'The maximum amount (in cents) that a campaign can spend per calendar month (limit). If not set, the limit will be shown as -1 (Unlimited).'
-      properties:
-        limit:
-          type: integer
-          format: int64
-          example: 1000
-          description: 'The monthly budget limit, in cents.'
-          required: true
-    TotalBudget:
-      type: object
-      description: 'The maximum amount (in cents) that a campaign can spend in its lifetime. If not set, the limit will be shown as -1 (Unlimited).'
-      properties:
-        limit:
-          type: integer
-          format: int64
-          example: -1
-          description: 'The total budget limit, in cents.'
-          required: true
-    CampaignBudgets:
+    BudgetsV2:
       type: object
       description: 'An object containing the current budget limits and spent for this campaign. The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited). If the campaign is DELETED, no budgets are shown.'
       properties:
         daily:
-          $ref: '#/components/schemas/DailyBudget'
+          $ref: '#/components/schemas/DailyBudgetV2'
         monthly:
-          $ref: '#/components/schemas/MonthlyBudget'
+          $ref: '#/components/schemas/MonthlyBudgetV2'
         total:
-          $ref: '#/components/schemas/TotalBudget'
+          $ref: '#/components/schemas/TotalBudgetV2'
       example:
         daily:
           limit: 120
@@ -154,6 +123,39 @@ components:
         total:
           limit: -1
           spent: 30
+    DailyBudgetV2:
+      type: object
+      required:
+        - limit
+      description: 'The maximum amount (in cents) that a campaign can spend per day (limit). If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 120
+          description: 'The daily budget limit, in cents.'
+    MonthlyBudgetV2:
+      type: object
+      required:
+        - limit
+      description: 'The maximum amount (in cents) that a campaign can spend per calendar month (limit). If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: 1000
+          description: 'The monthly budget limit, in cents.'
+    TotalBudgetV2:
+      type: object
+      required:
+        - limit
+      description: 'The maximum amount (in cents) that a campaign can spend in its lifetime. If not set, the limit will be shown as -1 (Unlimited).'
+      properties:
+        limit:
+          type: integer
+          format: int64
+          example: -1
+          description: 'The total budget limit, in cents.'
     GeoTargeting:
       description: 'Geo targeting allows you to specify one or more (circular) areas in the targeting criteria of a campaign to have the ads of that campaign only be shown to buyers located in any of the geographical areas specified.'
       type: array
