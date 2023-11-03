@@ -1,0 +1,178 @@
+# feeds/responses.yaml
+openapi: 3.0.0
+info:
+  title: Feed response component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    ConfigV1:
+      readOnly: true
+      type: object
+      description: 'Feed configuration of the current user.'
+      properties:
+        enabled:
+          type: boolean
+          description: 'Indicates whether the feed for the current user is enabled.'
+          default: false
+          example: true
+        feedUrl:
+          type: string
+          description: 'Contains the configured feed URL for the current user.'
+          example: 'http://www.ourshop.com/feed.xml'
+          maxLength: 512
+    ImportDetailV2:
+      type: object
+      readOnly: true
+      properties:
+        id:
+          type: number
+          description: 'A unique identifier of the import ID, same as provided in the call'
+          example: 123
+        url:
+          type: string
+          description: 'The URL where the feed was downloaded from.'
+          example: 'http://feed.com/id/5324'
+        status:
+          type: string
+          description: 'The status of the requested feed import. If the feed is currently processing, it will return ``PENDING``.
+                    If it has completed successfully, the status will be ``DONE``. Individual ads could still have failed updating, but the process completed.
+                    If the feed import failed, either because the file could not be downloaded or the feed did not pass validation, the status will be ``REJECTED``, which means NO ads have been processed.'
+          enum:
+            - 'PENDING'
+            - 'DONE'
+            - 'REJECTED'
+          example: 'DONE'
+        dateCreated:
+          type: string
+          format: time
+          description: 'ISO 8601 date of when the feed import was started.'
+          example: '2021-08-31T16:12:53Z'
+        error:
+          type: string
+          description: 'The error affecting the whole feed import, as opposed to ``errors`` containing errors affecting individual ads. If your feed is in status ``REJECTED`` this should have the reason.'
+          example: ""
+        totalRecordsRead:
+          type: number
+          description: 'The total number of ads found in the feed file.'
+          example: 110
+        recordsSucceeded:
+          type: number
+          description: 'The number of ads processed without errors.'
+          example: 106
+        recordsFailed:
+          type: number
+          description: 'The number of ads rejected due to errors.'
+          example: 4
+        recordsWithWarnings:
+          type: number
+          description: 'The number of ads processed with warnings.'
+          example: 10
+        errors:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              count:
+                type: number
+                description: 'Total number of ads affected by this error/warning message'
+                example: 4
+              vendorIdsSample:
+                type: array
+                items:
+                  type: string
+                description: 'Subset (max 100) of vendorIDs that were affected by this error'
+              rowNumbersSample:
+                type: array
+                items:
+                  type: string
+                description: 'Subset (max 100) of row numbers that were affected by this error. This applies only to rows where the vendorId was not found due to a validation error'
+          example:
+            'price should be lower than originalPrice':
+              count: 4
+              'vendorIdsSample': [ "566", "abc-788","990232","000mcakjn" ]
+              'rowNumbersSample': [ ]
+            'field ''autobid'' has invalid boolean value, allowed values ''[TRUE FALSE]''':
+              count: 2
+              'vendorIdsSample': [ ]
+              'rowNumbersSample': [ "4", "42" ]
+        warnings:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              count:
+                type: number
+                description: 'Total number of ads affected by this error/warning message'
+                example: 2
+              vendorIdsSample:
+                type: array
+                items:
+                  type: string
+                description: 'Subset (max 100) of vendorIDs that were affected by this error'
+          example:
+            'price should be lower than originalPrice':
+              count: 4
+              'vendorIdsSample': [ "vid6778787", "vendorid124" ]
+            'mandatory attribute 240 absent':
+              count: 8
+              "vendorIdsSample": [ "vendorid124","vendorid224" ]
+    ImportListV1:
+      type: array
+      readOnly: true
+      description: 'Feed imports of the current user in descending chronological order.'
+      items:
+        properties:
+          id:
+            type: number
+            description: 'A unique identifier which can be used to query for more information regarding errorneous ads in the feed.'
+          url:
+            type: string
+            description: 'The configured feed URL for the current user.'
+            maxLength: 512
+          status:
+            type: string
+            enum:
+              - DONE
+              - PENDING
+              - REJECTED
+            description: 'The status of the feed import. The status field contains **DONE** when the document was processed correctly, **PENDING** - when it is currently being processed or **REJECTED** - when it was either not accessible or syntactically incorrect. <br>
+    In the latter case, the field ``error`` contains a descriptive error message.'
+          dateCreated:
+            type: string
+            format: datetime
+            description: 'The time when the feed import started.'
+          error:
+            type: string
+            description: 'Contains a descriptive message o fthe error in case a feed was rejected.'
+          totalCount:
+            type: number
+            description: 'The total number of ads specified in the feed.'
+          okCount:
+            type: number
+            description: 'The number of ads whihc were processed without errors.'
+          warningCount:
+            type: number
+            description: 'The number of ads which were processed with warnings.'
+          errorCount:
+            type: number
+            description: 'The number of ads which were rejected (not imported) due to errors.'
+      example:
+        - id: 5
+          url: 'http://www.ourshop.com/feed.xml'
+          status: 'DONE'
+          dateCreated: '2016-02-03T15:35:33Z'
+          error: ''
+          totalCount: 2
+          okCount: 1
+          warningCount: 1
+          errorCount: 0
+        - id: 4
+          url: 'http://ourshop.com/notfound.xml'
+          status: 'REJECTED'
+          dateCreated: '2016-02-03T15:35:23Z'
+          error: 'HTTP 404 Not Found for: http://ourshop.com/notfound.xm'
+          totalCount: -1
+          okCount: 0
+          warningCount: 0
+          errorCount: 0

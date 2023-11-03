@@ -1,0 +1,104 @@
+# user/responses.yaml
+openapi: 3.0.0
+info:
+  title: User response component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    V3:
+      description: 'Information about the authenticated user'
+      type: object
+      deprecated: true
+      properties:
+        id:
+          description: 'Contains a unique user identifier.'
+          type: integer
+          format: int64
+        emailAddress:
+          description: 'The email address of the current authenticated user.'
+          type: string
+          format: email
+        sellerName:
+          description: 'The name provided by the authenticated user.'
+          type: string
+        phoneNumber:
+          description: 'The phone number provided by the authenticated user.'
+          type: string
+        options:
+          type: object
+          properties:
+            feed:
+              description: 'Indicates whether the authenticated user is a feed user.'
+              type: boolean
+            vanityUrl:
+              description: 'Indicates whether the ads of the authenticated user show the display URL in search results.'
+              type: boolean
+            locations:
+              description: 'Contains the user (or webshop) locations.'
+              type: array
+              items:
+                type: object
+                items:
+                  houseNumber:
+                    type: string
+                  streetName:
+                    type: string
+                  city:
+                    type: string
+                  postalCode:
+                    type: string
+                  phoneNumber:
+                    type: string
+            hasAds:
+              description: 'Indicates whether the authenticated user has any ads (including deleted).'
+              type: boolean
+    V4:
+      description: 'Information about the authenticated user'
+      type: object
+      properties:
+        id:
+          description: 'Contains a unique user identifier.'
+          type: integer
+          format: int64
+        emailAddress:
+          description: 'The email address of the current authenticated user.'
+          type: string
+          format: email
+        sellerName:
+          description: 'The name provided by the authenticated user.'
+          type: string
+        phoneNumber:
+          description: 'The phone number provided by the authenticated user.'
+          type: string
+        options:
+          type: object
+          properties:
+            feed:
+              description: 'Indicates whether the authenticated user is a feed user.'
+              type: boolean
+            vanityUrl:
+              description: 'Indicates whether the ads of the authenticated user show the display URL in search results.'
+              type: boolean
+            locations:
+              description: 'Contains the user (or webshop) locations.'
+              type: array
+              items:
+                type: object
+                items:
+                  houseNumber:
+                    type: string
+                  streetName:
+                    type: string
+                  city:
+                    type: string
+                  postalCode:
+                    type: string
+                  phoneNumber:
+                    type: string
+            hasAds:
+              description: 'Indicates whether the authenticated user has any ads (including deleted).'
+              type: boolean
+            isAPIManaged:
+              description: 'Indicates whether the user has at least one API partner using `api-rw` scope, in other words an API partner manipulating the ads.'
+              type: boolean

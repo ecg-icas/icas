@@ -1,0 +1,22 @@
+# feeds/requests.yaml
+openapi: 3.0.0
+info:
+  title: Ad request component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    ConfigV1:
+      type: object
+      description: 'Feed configuration of the current user.'
+      properties:
+        enabled:
+          type: boolean
+          description: 'Indicates whether the feed for the current user is enabled.'
+          default: false
+          example: true
+        feedUrl:
+          type: string
+          description: 'Contains the configured feed URL for the current user.'
+          example: 'http://www.ourshop.com/feed.xml'
+          maxLength: 512

@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  title: Error component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    NotSupportedError:
+      type: string
+      example: 'Response type text/xml is not supported'
+    ApiResponseError:
+      type: object
+      readOnly: true
+      properties:
+        code:
+          type: integer
+          format: int32
+          example: 1009
+        text:
+          type: string
+          example: 'internal error'
+        msg:
+          type: string
+          example: 'The server encountered an error'
+      example:
+        code: '1000'
+        text: 'internal error'
+        msg: 'The server encountered an error'

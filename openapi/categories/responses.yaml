@@ -1,0 +1,446 @@
+# categories/responses.yaml
+openapi: 3.0.0
+info:
+  title: Category response component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    NonLeafV5:
+      type: object
+      readOnly: true
+      description: 'Non-leaf categories only serve as parent nodes for lower level categories. Ads cannot be placed within them and therefore they have no configuration related to ad placement.'
+      properties:
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: '/api/sellside/category/856'
+          description: 'A link to the current category and if level > 1 a link to the parent category.'
+        id:
+          description: 'Unique category id.'
+          type: integer
+          format: int64
+          minimum: 1
+          example: 856
+        parentId:
+          description: 'Id of the parent category.'
+          type: integer
+          format: int64
+          minimum: 0
+          example: 0
+        level:
+          description: 'Level at which the category is defined.'
+          type: number
+          minimum: 0
+          example: 1
+        path:
+          description: 'Ids of all ancestors (except the root) and the current category separated by ``_``'
+          type: string
+          example: '856'
+        locales:
+          description: 'Locales for which the category is available.'
+          type: array
+          items:
+            type: string
+          example: [ 'en_US', 'nl_BE', 'fr_BE' ]
+        label:
+          description: 'Display name of the category, one entry per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            label:
+              type: string
+          example:
+            'nl_NL': 'Vakantiehuizen'
+        breadcrumbs:
+          description: 'Labels of all of the ancestors (except the root) and the current category, one list per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            breadcrumbs:
+              type: array
+              items:
+                type: string
+          example:
+            'nl_NL': [ 'Vakantie', 'Vakantiehuizen' ]
+        status:
+          description: 'The status of the category. Can be one of: ``ACTIVE``, ``CLOSED``, ``DELETED``. <br>
+          A ``CLOSED`` category is visible but no ads can be placed.  This status should be used for leaf categories where no new ads are accepted and which are in transition to ``DELETED``.<br>
+          A ``DELETED`` category is no longer visible and no ads can be placed in it. It is still possible for ads to be in this category but they can no longer be found through a category search.'
+          type: string
+          enum:
+            - ACTIVE
+            - CLOSED
+            - DELETED
+        children:
+          type: array
+          description: 'Ordered list of child categories.'
+          items:
+            $ref: '#/components/schemas/LeafV5'
+    LeafV5:
+      readOnly: true
+      description: 'Leaf categories are the categories where ads can be placed. They have by definition no children. Leaf categories contain the full configuration for ads placed in this category.'
+      properties:
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: '/api/sellside/category/863'
+            parent:
+              type: string
+              example: '/api/sellside/category/856'
+          description: 'A link to the current category and if level > 1 a link to the parent category.'
+        id:
+          description: 'Unique category id.'
+          type: integer
+          format: int64
+          minimum: 1
+          example: 863
+        parentId:
+          description: 'Id of the parent category.'
+          type: integer
+          format: int64
+          minimum: 0
+          example: 856
+        level:
+          description: 'Level at which the category is defined.'
+          type: number
+          minimum: 0
+          example: 2
+        path:
+          description: 'Ids of all ancestors (except the root) and the current category separated by ``_``'
+          type: string
+          example: '856_863'
+        locales:
+          description: 'Locales for which the category is available.'
+          type: array
+          items:
+            type: string
+          example: [ 'en_US', 'nl_BE', 'fr_BE' ]
+        label:
+          description: 'Display name of the category, one entry per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            label:
+              type: string
+          example:
+            'nl_NL': 'Vakantiehuizen | Duitsland'
+        breadcrumbs:
+          description: 'Labels of all of the ancestors (except the root) and the current category, one list per locale.'
+          type: object
+          properties:
+            locale:
+              type: string
+            breadcrumbs:
+              type: array
+              items:
+                type: string
+          example:
+            'nl_NL': [ 'Vakantie', 'Vakantiehuizen | Duitsland' ]
+        status:
+          description: 'The status of the category. Can be one of: ``ACTIVE``, ``CLOSED``, ``DELETED``. <br>
+          A ``CLOSED`` category is visible but no ads can be placed.  This status should be used for leaf categories where no new ads are accepted and which are in transition to ``DELETED``.<br>
+          A ``DELETED`` category is no longer visible and no ads can be placed in it. It is still possible for ads to be in this category but they can no longer be found through a category search.'
+          type: string
+          enum:
+            - ACTIVE
+            - CLOSED
+            - DELETED
+        suggestedCpcForPageOne:
+          type: integer
+          format: int64
+          description: 'The estimated CPC (in cents) the current user needs to set on a new ad in this category to be placed on page 1 for a browse action in the leaf category.'
+          example: 5
+          deprecated: true
+        config:
+          type: object
+          description: 'The category configuration, only available for leaf categories.'
+          properties:
+            priceType:
+              type: array
+              items:
+                type: string
+              example: [
+                'BIDDING',
+                'BIDDING_FROM',
+                'FIXED_PRICE',
+                'FREE',
+                'NEGOTIABLE',
+                'SEE_DESCRIPTION',
+                'SWAP',
+                'CREDIBLE_BID',
+                'ON_DEMAND',
+                'RESERVED'
+              ]
+            bidMicros:
+              description: 'Allowed bid value in micros for ads in this category.'
+              type: string
+              example: '[10000,2500000]'
+            totalBudgetMicros:
+              description: 'Allowed range for total budget in micros for ads in this category.'
+              type: string
+              example: '[1000000,2000000000000]'
+            dailyBudgetMicros:
+              description: 'Allowed range for daily budget in micros for ads in this category.'
+              type: string
+              example: '[10000000,2000000000000]'
+            activeAds:
+              description: 'Allowed range of active ads per seller in this category.'
+              type: string
+              example: '[1,100000]'
+            images:
+              description: 'Allowed range of images count for ads in this category.'
+              type: string
+              example: '[0,24]'
+            titleLength:
+              description: 'Allowed range of the title length for ads in this category.'
+              type: string
+              example: '[1,60]'
+            descriptionLength:
+              description: 'Allowed range of the description length for ads in this category.'
+              type: string
+              example: '[1,20000]'
+            shippingOption:
+              description: 'If ``DISABLED`` ads in this category cannot have shipping options, if ``OPTIONAL`` ads can have shipping options and if ``MANDATORY`` ads must have shipping options.'
+              type: string
+              enum:
+                - 'DISABLED'
+                - 'OPTIONAL'
+                - 'MANDATORY'
+              example: 'OPTIONAL'
+            tags:
+              description: 'Optional localized set of additional keywords that are indexed with ads in this category.'
+              type: object
+              properties:
+                locale:
+                  type: string
+                keywords:
+                  type: array
+                  items:
+                    type: string
+              example:
+                - 'nl_NL': [ 'Ring' ]
+            verticals:
+              description: 'Optional set of verticals (groups) this category belongs to.'
+              type: array
+              items:
+                type: string
+                enum:
+                  - 'CARS'
+                  - 'CONTACTS'
+                  - 'JOBS'
+                  - 'HOUSES'
+                  - 'SERVICES'
+                  - 'VACATIONS'
+              example: [ 'HOUSES', 'VACATIONS' ]
+            region:
+              description: 'If ``DISABLED`` ads in this category cannot have regions, if ``OPTIONAL`` ads can have regions and if ``MANDATORY`` ads must have regions.'
+              type: string
+              example: 'DISABLED'
+            relatedPaths:
+              description: 'Optional set of paths from related existing categories used for search strategies and/or fallback scenarios to expand the search parameters when too few results are returned.'
+              type: array
+              items:
+                type: string
+              example: [ '1826_1827', '1826_18', '1826_13', '1826_19', '621_625' ]
+            priceUnits:
+              description: 'Optional set of localized price units like per m², per hour, etc. Maps an unique key to a set localized values.'
+              type: object
+              example:
+                - 'per_night':
+                    - 'nl_NL': 'per nacht'
+        attributeGroups:
+          description: 'Ordered list of attribute groups. Attribute groups combine a list of attributes with a label and an optional tooltip.<br>
+           Multiple attribute groups allow the user interface to render multiple groups in separate blocks. Expect that attributes are rendered in the order given therefore the order in the attributes field matters. The same applies to the order of the attribute groups themselves.'
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: object
+                description: 'Localized label of the attribute. One entry per locale'
+                properties:
+                  locale:
+                    type: string
+                  labels:
+                    type: object
+              tooltip:
+                description: 'Optional tooltip/help text for the label. One entry per locale.'
+                type: object
+                properties:
+                  locale:
+                    type: string
+                  labels:
+                    type: object
+              attributes:
+                type: array
+                description: 'Attributes define additional fields for ads in this category. The configuration parameters allow to render the attribute in a certain way depending on the ``type`` and the content of the ``values`` field.'
+                items:
+                  type: object
+                  properties:
+                    key:
+                      description: 'Non-empty attribute key, unique in category.'
+                      type: string
+                      example: 'region'
+                    label:
+                      description: 'Localized label of the attribute. One entry per locale'
+                      type: object
+                      example:
+                        'label':
+                          'nl_NL': 'Regio'
+                    tooltip:
+                      description: 'Optional tooltip/help text for the label.'
+                      type: object
+                    type:
+                      description: 'The attribute type. One of ``STRING``, ``NUMBER``, ``LIST`` or ``BOOL``.'
+                      type: string
+                      enum:
+                        - 'STRING'
+                        - 'NUMBER'
+                        - 'LIST'
+                        - 'BOOL'
+                      example: 'STRING'
+                    values:
+                      type: object
+                      description: 'Localized values for the attribute. The length of the JSON representation of all values for one locale must not exceed 512 bytes.'
+                      properties:
+                        locale:
+                          type: string
+                        localizedValueS:
+                          type: array
+                          items:
+                            type: string
+                          maxLength: 512
+                    defaults:
+                      description: 'Localized default value for required attributes.'
+                      type: object
+                      properties:
+                        locale:
+                          type: string
+                        defaultValue:
+                          type: string
+                    mandatory:
+                      type: boolean
+                      description: 'Whether the attribute is mandatory.'
+                      example: false
+                    searchable:
+                      type: boolean
+                      description: 'Whether the attribute is indexed for search.'
+                      example: true
+                    updatable:
+                      type: boolean
+                      description: 'Whether the attribute can be changed after creation.'
+                      example: true
+                    writable:
+                      type: boolean
+                      description: 'Whether the attribute can be set during creation.'
+                      example: true
+                    identifying:
+                      type: boolean
+                      description: 'Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with [POST /ad/prefill](#paths./ad.post.prefill), where you can potentially get a sample title, description and additional attributes based on 3rd party databases.'
+                      example: false
+                    precision:
+                      type: number
+                      minimum: 0
+                      description: 'Precision for ``NUMBER`` fields. 0 means value is an int. Default is 0. Note that floats with large precision values are difficult to compare.'
+                      example: 0
+                    range:
+                      description: 'Range for ``NUMBER`` attributes.'
+                      type: string
+                    length:
+                      description: 'Length range for ``STRING`` attributes without values.'
+                      type: string
+                    prefix:
+                      type: object
+                      description: 'Optional localized prefix for rendering.'
+                    postfix:
+                      type: object
+                      description: 'Optional localized postfix for rendering.'
+                    hints:
+                      description: 'Optional list of rendering hints.'
+                      type: array
+                      items:
+                        type: string
+            example:
+              - 'label':
+                  'nl_NL': 'Kenmerken'
+                'tooltip':
+                  'nl_NL': 'Geef hier welk type advertentie u gaat maken en wat de conditie van uw product is'
+                'attributes':
+                  'key': 'region'
+                  'label':
+                    'nl_NL': 'Regio'
+                  'tooltip': { }
+                  'type': 'STRING'
+                  'values':
+                    'nl_NL': [ 'Nieuw', 'Zo goed als nieuw', 'Gebruikt' ]
+                  'default':
+                    'nl_NL': 'Nieuw'
+                  'mandatory': false
+                  'searchable': true
+                  'updatable': true
+                  'writable': true
+                  'identifying': false
+                  'precision': 0
+                  'range': { }
+                  'length': { }
+                  'prefix': { }
+                  'postfix': { }
+                  'hints': [ ]
+    FunnelResponse:
+      type: object
+      readOnly: true
+      description: 'A struct encapsulating the category performance prediction (funnel).'
+      properties:
+        cpc:
+          type: number
+          format: int64
+          description: 'The provided CPC value in euro cents for which the prediction is made.'
+          example: 50
+        pageNumber:
+          type: number
+          format: int64
+          description: 'The page on which the ad is displayed for the corresponding CPC value.'
+          example: 3
+        averageClicks:
+          type: number
+          format: int64
+          description: 'The number of ad clicks predicted for the corresponding CPC value.'
+          example: 100
+        averageCpc:
+          type: number
+          format: int64
+          description: 'The required cpc value which would place the ad on the first (browse) page.'
+          example: 70
+        averageImpressions:
+          description: 'The number of ad impressions predicted for the corresponding CPC value.'
+          type: number
+          format: int64
+          example: 3000
+        averageUrlClicks:
+          description: 'The number of ad URL clicks predicted for the corresponding CPC value.'
+          type: number
+          format: int64
+          example: 400
+        ctr:
+          description: 'The CTR (click-through rate) predicted for the corresponding CPC value.'
+          type: integer
+          format: double
+          example: 0.345
+        urlCtr:
+          description: 'The URL CTR predicted for the corresponding CPC value.'
+          type: integer
+          format: double
+          example: 0.112
+        maxCpc:
+          description: 'The maximum cpc value that the ad can have. If ``cpc`` is greater than ``maxCpc`` then this ad does not perform well enough to be placed on page one.'
+          type: number
+          format: int64
+          example: 600
