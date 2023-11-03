@@ -1,5 +1,8 @@
 openapi: 3.0.0
-# errors.yaml
+info:
+  title: Error component schemas
+  version: 1.0.0
+paths: {}
 components:
   schemas:
     NotSupportedError:

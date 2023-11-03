@@ -6,103 +6,73 @@ info:
 paths: {}
 components:
   schemas:
-    AdV2Response:
-      deprecated: true
-      readOnly: true
+    ListV5:
       type: object
+      readOnly: true
+      properties:
+        ads:
+          type: array
+          items:
+            $ref: '#/components/schemas/V5'
+        count:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+          example: 1
+        nextPageToken:
+          description: 'Replaces the usage of the ‘offset’ parameter and allows the caller to paginate through a large list of ads more efficiently. In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making that call more efficient.
+          When a response does not contain a nextPageToken you have reached the last page of results and there are no more to fetch.
+          '
+          type: string
+          example: 'eyJpZCI6MTAwMTgz'
+    ListV3:
+      type: object
+      readOnly: true
+      properties:
+        ads:
+          type: array
+          items:
+            $ref: '#/components/schemas/V3'
+        count:
+          type: integer
+          format: int64
+          minimum: 0
+          readOnly: true
+          example: 1
+    V5:
+      readOnly: true
       properties:
         id:
           type: integer
           format: int64
-          readOnly: true
           example: 1235
           minimum: 0
-          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST or PUT action.'
+          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST action.'
         title:
           type: string
           description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
           example: 'Buy the new iPhone here'
         description:
           type: string
           description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
           example: 'Extra sale, buy the new iPhone today and save!'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
         categoryId:
           description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
           type: integer
           format: int64
-          required: true
           example: 2353465
           minimum: 0
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageResponse'
-        externalId:
-          type: string
-          maxLength: 64
-          description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
-          example: 'OURSHOP-1423453-34'
-          deprecated: true
         status:
-          $ref: '#/components/schemas/AdStatusV2Response'
-        priceType:
-          type: string
-          required: true
-          enum:
-            - 'BIDDING'
-            - 'BIDDING_FROM'
-            - 'FIXED_PRICE'
-            - 'FREE'
-            - 'NEGOTIABLE'
-            - 'SEE_DESCRIPTION'
-            - 'SWAP'
-            - 'CREDIBLE_BID'
-            - 'ON_DEMAND'
-          description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
-          example: 'FIXED_PRICE'
-        currency:
-          type: string
-          description: 'The 3 letter ISO-4217 currency code.'
-          example: 'EUR'
-          readOnly: true
-          format: iso-4217
-        priceUnit:
-          $ref: '#/components/schemas/AdPriceUnitResponse'
+          $ref: '#/components/schemas/StatusV5'
         price:
-          type: integer
-          format: int64
-          description: 'The meaning of the value depends on priceType. If it is FIXED_PRICE or BIDDING_FROM then price has to be greater than 0. '
-          maximum: 100000000
-        cpc:
-          type: integer
-          format: int64
-          description: 'The cost per click as defined by the seller. The minimum and maximum values depend on the category.'
-          required: true
-          example: 15
-          minimum: 1
-        totalBudget:
-          type: integer
-          format: int64
-          description: 'The total budget for the ad, in cents. The minimum and maximum values depend on the category. When an ad is updated this value cannot be lower than the spentBudget. If the total budget is not returned with the ad, it means there is an unlimited total budget.'
-          example: 5000
-        dailyBudget:
-          type: integer
-          format: int64
-          nullable: true
-          description: 'The daily budget for the ad. When this value is reached the ad will be paused for the rest of the day. The minimum value depends on the category. Maximum value cannot be higher than the totalBudget'
-          example: 50000
-        spentBudget:
-          type: integer
-          format: int64
-          readOnly: true
-          description: 'The total amount of the budget that has been used so far, in cents.'
-        dailySpent:
-          type: integer
-          format: int64
-          readOnly: true
-          description: 'The budget spent for the ad since midnight, in cents. Only provided when the dailyBudget is set and larger than 0.'
+          $ref: '#/components/schemas/Price'
+        campaignId:
+          $ref: '#/components/schemas/CampaignId'
         salutation:
           type: string
           enum:
@@ -113,11 +83,9 @@ components:
             - 'UNKNOWN'
           description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
           example: 'COMPANY'
-          required: true
         sellerName:
           type: string
           maxLength: 60
-          required: true
           example: 'Mr. Smith'
           description: 'Display name of the seller.'
         phoneNumber:
@@ -128,54 +96,43 @@ components:
           type: boolean
           example: true
           description: 'Flag for allowing emails to be sent to the advertiser.'
-        allowPayPal:
-          deprecated: true
-          description: 'Flag for allowing PayPal as a payment option.'
-          example: false
         dateCreated:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was created.'
-          readOnly: true
           example: '2019-04-18T13:55:10Z'
         dateLastUpdated:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was last updated.'
-          readOnly: true
           example: '2020-08-05T07:49:14Z'
         dateDeleted:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
-          readOnly: true
           example: '2020-08-05T07:49:14Z'
         postcode:
           type: string
           description: 'Must be an non empty string.'
           example: '1703 GB'
           maxLength: 6
-          required: true
         regionId:
           type: integer
           format: int64
           description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
           example: 10034535
-        pageNumber:
-          type: integer
-          format: int
-          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
-          readOnly: true
-          example: 2
-        suggestedCpcForPageOne:
-          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
-          type: integer
-          format: int64
-          example: 15
-          readOnly: true
+        bidMicros:
+          type: string
+          description: 'The cost per click (bid) in micro-euros/micro-dollars as defined by the seller (10000 micro-euros == 1 cent). The minimum and maximum values depend on the category. The values can be retrieved from [the categories endpoint](#/paths/categories/get).
+              <br>
+              The type is string, allowing the seller to specify “AUTOMATIC”, to let our system take care of the bid and try to optimise costs vs clicks.'
+          example: '10000'
+          minimum: 1
+        budgets:
+          $ref: '#/components/schemas/Budgets'
         links:
           type: object
-          description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
+          description: 'Provides various hypermedia URLs to access linked resources.'
           properties:
             self:
               type: string
@@ -183,13 +140,11 @@ components:
               example: '/api/sellside/ad/1235'
               description: 'A self link which points to the current resource.'
               maxLength: 2048
-              readOnly: true
             category:
               type: integer
               format: int64
               description: 'The resource location for the category that this ad belongs to.'
               example: '/api/sellside/category/2353465'
-              readOnly: true
               maxLength: 2048
             url:
               type: string
@@ -210,7 +165,7 @@ components:
           type: array
           description: 'An optional list of user-defined attributes'
           items:
-            $ref: '#/components/schemas/UserAttributeResponse'
+            $ref: '#/components/schemas/UserAttribute'
         shippingOptions:
           example:
             - type: 'SHIP'
@@ -220,9 +175,45 @@ components:
               pickupLocation: '1097DN'
           type: array
           items:
-            $ref: '#/components/schemas/ShippingOptionResponse'
+            $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
-    AdV3Response:
+      type: object
+    Budgets:
+      type: object
+      description: 'A struct encapsulating both the daily and the total ad budget spending and limits.'
+      properties:
+        daily:
+          type: object
+          description: 'A struct encapsulating the daily ad budget spending and limit.'
+          properties:
+            limitMicros:
+              type: string
+              description: 'The maximum amount this ad can spend today in micros, after which it will be taken offline for the remainder of the day. Can also be UNLIMITED.'
+              example: 'UNLIMITED'
+            spentMicros:
+              description: 'The amount spent in micros on this ad in its lifetime. Will be ever increasing and cannot be reset.'
+              type: string
+              readOnly: true
+              example: '1255000'
+        total:
+          type: object
+          description: 'A struct encapsulating the total ad budget spending and limit.'
+          properties:
+            limitMicros:
+              type: string
+              description: 'the maximum amount this ad can spend in micros, after which it will be taken offline until the seller increases the limit.'
+              example: '350000000'
+            spentMicros:
+              type: string
+              readOnly: true
+              description: 'the amount spent in micros on this ad in its lifetime. Will be ever increasing and cannot be reset.'
+              example: '24370000'
+    CampaignId:
+      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
+      readOnly: true
+      type: integer
+      example: 54212
+    V3:
       type: object
       deprecated: true
       readOnly: true
@@ -230,29 +221,25 @@ components:
         id:
           type: integer
           format: int64
-          required: true
           example: 1235
           minimum: 0
           description: 'Unique reference to the iCAS ad, needs to be omitted in a POST action.'
         title:
           type: string
           description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
           example: 'Buy the new iPhone here'
         description:
           type: string
           description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
           example: 'Extra sale, buy the new iPhone today and save!'
         images:
           type: array
           items:
-            $ref: '#/components/schemas/ImageResponse'
+            $ref: '#/components/schemas/Image'
         categoryId:
           description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
           type: integer
           format: int64
-          required: true
           example: 2353465
           minimum: 0
         externalId:
@@ -262,7 +249,7 @@ components:
           example: 'OURSHOP-1423453-34'
           deprecated: true
         status:
-          $ref: '#/components/schemas/AdStatusV2Response'
+          $ref: '#/components/schemas/StatusV2'
         statusReasons:
           type: array
           description: 'Currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
@@ -272,15 +259,14 @@ components:
           example:
             - 'DOMAIN_PENDING'
         priceType:
-          $ref: '#/components/schemas/AdPriceTypeResponse'
+          $ref: '#/components/schemas/PriceType'
         currency:
           type: string
           description: 'The 3 letter ISO-4217 currency code.'
           example: 'EUR'
-          readOnly: true
           format: iso-4217
         priceUnit:
-          $ref: '#/components/schemas/AdPriceUnitResponse'
+          $ref: '#/components/schemas/PriceUnit'
         price:
           type: integer
           format: int64
@@ -290,7 +276,6 @@ components:
           type: integer
           format: int64
           description: 'The cost per click as defined by the seller. The minimum and maximum values depend on the category.'
-          required: true
           example: 15
           minimum: 1
         totalBudget:
@@ -307,12 +292,10 @@ components:
         spentBudget:
           type: integer
           format: int64
-          readOnly: true
           description: 'The total amount of the budget that has been used so far, in cents.'
         dailySpent:
           type: integer
           format: int64
-          readOnly: true
           description: 'The budget spent for the ad since midnight, in cents. Only provided when the dailyBudget is set and larger than 0.'
         salutation:
           type: string
@@ -324,11 +307,9 @@ components:
             - 'UNKNOWN'
           description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
           example: 'COMPANY'
-          required: true
         sellerName:
           type: string
           maxLength: 60
-          required: true
           example: 'Mr. Smith'
           description: 'Display name of the seller.'
         phoneNumber:
@@ -347,26 +328,22 @@ components:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was created.'
-          readOnly: true
           example: '2019-04-18T13:55:10Z'
         dateLastUpdated:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was last updated.'
-          readOnly: true
           example: '2020-08-05T07:49:14Z'
         dateDeleted:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
-          readOnly: true
           example: '2020-08-05T07:49:14Z'
         postcode:
           type: string
           description: 'Must be an non empty string.'
           example: '1703 GB'
           maxLength: 6
-          required: true
         regionId:
           type: integer
           format: int64
@@ -378,14 +355,12 @@ components:
           type: integer
           format: int
           description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
-          readOnly: true
           example: 2
         suggestedCpcForPageOne:
           description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
           type: integer
           format: int64
           example: 15
-          readOnly: true
         links:
           type: object
           description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
@@ -396,13 +371,11 @@ components:
               example: '/api/sellside/ad/1235'
               description: 'A self link which points to the current resource.'
               maxLength: 2048
-              readOnly: true
             category:
               type: integer
               format: int64
               description: 'The resource location for the category that this ad belongs to.'
               example: '/api/sellside/category/2353465'
-              readOnly: true
               maxLength: 2048
             url:
               type: string
@@ -423,7 +396,7 @@ components:
           type: array
           description: 'An optional list of user-defined attributes'
           items:
-            $ref: '#/components/schemas/UserAttributeResponse'
+            $ref: '#/components/schemas/UserAttribute'
         shippingOptions:
           example:
             - type: 'SHIP'
@@ -433,45 +406,96 @@ components:
               pickupLocation: '1097DN'
           type: array
           items:
-            $ref: '#/components/schemas/ShippingOptionResponse'
+            $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
-    AdV5Response:
+    V2:
+      deprecated: true
       readOnly: true
+      type: object
       properties:
         id:
           type: integer
           format: int64
-          required: true
           example: 1235
           minimum: 0
-          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST action.'
+          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST or PUT action.'
         title:
           type: string
           description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
           example: 'Buy the new iPhone here'
         description:
           type: string
           description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
           example: 'Extra sale, buy the new iPhone today and save!'
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageResponse'
         categoryId:
           description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
           type: integer
           format: int64
-          required: true
           example: 2353465
           minimum: 0
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        externalId:
+          type: string
+          maxLength: 64
+          description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
+          example: 'OURSHOP-1423453-34'
+          deprecated: true
         status:
-          $ref: '#/components/schemas/AdStatusV5Response'
+          $ref: '#/components/schemas/StatusV2'
+        priceType:
+          type: string
+          enum:
+            - 'BIDDING'
+            - 'BIDDING_FROM'
+            - 'FIXED_PRICE'
+            - 'FREE'
+            - 'NEGOTIABLE'
+            - 'SEE_DESCRIPTION'
+            - 'SWAP'
+            - 'CREDIBLE_BID'
+            - 'ON_DEMAND'
+          description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
+          example: 'FIXED_PRICE'
+        currency:
+          type: string
+          description: 'The 3 letter ISO-4217 currency code.'
+          example: 'EUR'
+          format: iso-4217
+        priceUnit:
+          $ref: '#/components/schemas/PriceUnit'
         price:
-          $ref: '#/components/schemas/AdPriceResponse'
-        campaignId:
-          $ref: '#/components/schemas/AdCampaignIdResponse'
+          type: integer
+          format: int64
+          description: 'The meaning of the value depends on priceType. If it is FIXED_PRICE or BIDDING_FROM then price has to be greater than 0. '
+          maximum: 100000000
+        cpc:
+          type: integer
+          format: int64
+          description: 'The cost per click as defined by the seller. The minimum and maximum values depend on the category.'
+          example: 15
+          minimum: 1
+        totalBudget:
+          type: integer
+          format: int64
+          description: 'The total budget for the ad, in cents. The minimum and maximum values depend on the category. When an ad is updated this value cannot be lower than the spentBudget. If the total budget is not returned with the ad, it means there is an unlimited total budget.'
+          example: 5000
+        dailyBudget:
+          type: integer
+          format: int64
+          nullable: true
+          description: 'The daily budget for the ad. When this value is reached the ad will be paused for the rest of the day. The minimum value depends on the category. Maximum value cannot be higher than the totalBudget'
+          example: 50000
+        spentBudget:
+          type: integer
+          format: int64
+          description: 'The total amount of the budget that has been used so far, in cents.'
+        dailySpent:
+          type: integer
+          format: int64
+          description: 'The budget spent for the ad since midnight, in cents. Only provided when the dailyBudget is set and larger than 0.'
         salutation:
           type: string
           enum:
@@ -482,11 +506,9 @@ components:
             - 'UNKNOWN'
           description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
           example: 'COMPANY'
-          required: true
         sellerName:
           type: string
           maxLength: 60
-          required: true
           example: 'Mr. Smith'
           description: 'Display name of the seller.'
         phoneNumber:
@@ -497,48 +519,48 @@ components:
           type: boolean
           example: true
           description: 'Flag for allowing emails to be sent to the advertiser.'
+        allowPayPal:
+          deprecated: true
+          description: 'Flag for allowing PayPal as a payment option.'
+          example: false
         dateCreated:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was created.'
-          readOnly: true
           example: '2019-04-18T13:55:10Z'
         dateLastUpdated:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was last updated.'
-          readOnly: true
           example: '2020-08-05T07:49:14Z'
         dateDeleted:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
-          readOnly: true
           example: '2020-08-05T07:49:14Z'
         postcode:
           type: string
           description: 'Must be an non empty string.'
           example: '1703 GB'
           maxLength: 6
-          required: true
         regionId:
           type: integer
           format: int64
           description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
           example: 10034535
-        bidMicros:
-          type: string
-          description: 'The cost per click (bid) in micro-euros/micro-dollars as defined by the seller (10000 micro-euros == 1 cent). The minimum and maximum values depend on the category. The values can be retrieved from [the categories endpoint](#/paths/categories/get).
-              <br>
-              The type is string, allowing the seller to specify “AUTOMATIC”, to let our system take care of the bid and try to optimise costs vs clicks.'
-          required: true
-          example: '10000'
-          minimum: 1
-        budgets:
-          $ref: '#/components/schemas/AdBudgetsResponse'
+        pageNumber:
+          type: integer
+          format: int
+          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
+          example: 2
+        suggestedCpcForPageOne:
+          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
+          type: integer
+          format: int64
+          example: 15
         links:
           type: object
-          description: 'Provides various hypermedia URLs to access linked resources.'
+          description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
           properties:
             self:
               type: string
@@ -546,13 +568,11 @@ components:
               example: '/api/sellside/ad/1235'
               description: 'A self link which points to the current resource.'
               maxLength: 2048
-              readOnly: true
             category:
               type: integer
               format: int64
               description: 'The resource location for the category that this ad belongs to.'
               example: '/api/sellside/category/2353465'
-              readOnly: true
               maxLength: 2048
             url:
               type: string
@@ -573,7 +593,7 @@ components:
           type: array
           description: 'An optional list of user-defined attributes'
           items:
-            $ref: '#/components/schemas/UserAttributeResponse'
+            $ref: '#/components/schemas/UserAttribute'
         shippingOptions:
           example:
             - type: 'SHIP'
@@ -583,10 +603,9 @@ components:
               pickupLocation: '1097DN'
           type: array
           items:
-            $ref: '#/components/schemas/ShippingOptionResponse'
+            $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
-      type: object
-    AdPriceResponse:
+    Price:
       readOnly: true
       description: 'Price is an object containing all the information about the cost of the item for sale.'
       type: object
@@ -598,19 +617,19 @@ components:
           maximum: 10000000000
           example: 5600
         priceType:
-          $ref: '#/components/schemas/AdPriceTypeResponse'
+          $ref: '#/components/schemas/PriceType'
         priceUnit:
-          $ref: '#/components/schemas/AdPriceUnitResponse'
+          $ref: '#/components/schemas/PriceUnit'
         originalAmountCents:
           description: 'The cost of the item (without shipping costs) in cents, before discount was applied. Not available to all users. Needs to be larger than `amountCents`.'
           type: integer
           example: 6500
-    AdPriceUnitResponse:
+    PriceUnit:
       type: string
       readOnly: true
       description: 'Must be a valid price unit identifier from the list of available price units of the category'
       example: 'per_sqm'
-    AdPriceTypeResponse:
+    PriceType:
       type: string
       readOnly: true
       enum:
@@ -625,12 +644,7 @@ components:
         - 'ON_DEMAND'
       description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
       example: 'FIXED_PRICE'
-    AdCampaignIdResponse:
-      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
-      readOnly: true
-      type: integer
-      example: 54212
-    ImageResponse: # only rename with Version when multiple versions of this field exist
+    Image: # only rename with Version when multiple versions of this field exist
       description: 'When an ad is created or updated the caller provides the images as a list of image objects which contain only the source url.
         The images are then downloaded by iCAS and the server adds additional fields which describe the status of the download.
         The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
@@ -665,7 +679,7 @@ components:
           example:
             50x70: '//i.ebay.com/ImageResponse23434_abc.jpg'
             120x180: '//i.marktplaats.nl/ImageResponse23434_def.jpg' # only rename
-    AdStatusV2Response:
+    StatusV2:
       type: string
       readOnly: true
       description: 'The current ad status. Each ad can be in one of the listed states.'
@@ -678,7 +692,7 @@ components:
         - 'DELETED_BY_CS'
         - 'SUSPENDED_BY_CS'
       example: 'PAUSED'
-    AdStatusV5Response:
+    StatusV5:
       type: string
       readOnly: true
       description: 'The current ad status. Each ad can be in one of the listed states. <br> The ad will be put from ``DOMAIN_PENDING`` to ``ACTIVE`` after the seller confirms the domain the links.url is pointing to. The first time a seller uses a new domain, they will receive an email to confirm they want to create an ad directing people to that domain (for security reasons).'
@@ -692,38 +706,7 @@ components:
         - 'SUSPENDED_BY_CS'
         - 'DOMAIN_PENDING'
       example: 'ACTIVE'
-    AdBudgetsResponse:
-      type: object
-      readOnly: true
-      description: 'A struct encapsulating both the daily and the total ad budget spending and limits.'
-      properties:
-        daily:
-          type: object
-          description: 'A struct encapsulating the daily ad budget spending and limit.'
-          properties:
-            limitMicros:
-              type: string
-              description: 'The maximum amount this ad can spend today in micros, after which it will be taken offline for the remainder of the day. Can also be UNLIMITED.'
-              example: 'UNLIMITED'
-            spentMicros:
-              description: 'The amount spent in micros on this ad in its lifetime. Will be ever increasing and cannot be reset.'
-              type: string
-              readOnly: true
-              example: '1255000'
-        total:
-          type: object
-          description: 'A struct encapsulating the total ad budget spending and limit.'
-          properties:
-            limitMicros:
-              type: string
-              description: 'the maximum amount this ad can spend in micros, after which it will be taken offline until the seller increases the limit.'
-              example: '350000000'
-            spentMicros:
-              type: string
-              readOnly: true
-              description: 'the amount spent in micros on this ad in its lifetime. Will be ever increasing and cannot be reset.'
-              example: '24370000'
-    AttributeValueResponse:
+    AttributeValue:
       properties:
         schema:
           oneOf:
@@ -749,7 +732,7 @@ components:
               example:
                 - 'zwart'
                 - 'groen'
-    UserAttributeResponse:
+    UserAttribute:
       externalDocs:
         url: 'http://ecg-icas.github.io/icas/doc/next/attributes.html#user-defined-attributes'
       type: object
@@ -761,19 +744,16 @@ components:
           type: string
           maxLength: 32
           example: 'color'
-          required: true
         label:
           type: string
           maxLength: 32
           example: 'kleur'
-          required: true
           description: 'The label can contain the same value as the key.'
         locale:
           type: string
           format: locale
           description: 'Specifies the language for the label and the value. Must be a valid locale string.'
           example: 'en_US'
-          required: true
         type:
           description: 'The type of the attribute. Can be one of STRING - a single string value, NUMBER - a single number value, or LIST - a list of string or number values'
           type: string
@@ -782,17 +762,15 @@ components:
             - 'NUMBER'
             - 'LIST'
           example: 'LIST'
-          required: true
         value:
-          $ref: '#/components/schemas/AttributeValueResponse'
-    ShippingOptionResponse:
+          $ref: '#/components/schemas/AttributeValue'
+    ShippingOption:
       type: object
       example:
         type: 'PICKUP'
         pickupLocation: '1097DN'
       properties:
         type:
-          required: true
           type: string
           enum:
             - 'SHIP'
@@ -818,41 +796,7 @@ components:
           type: string
           description: 'Pick up location of the item. Mandatory when the type is PICKUP.'
           example: '3541CB'
-    AdListV3Response:
-      type: object
-      readOnly: true
-      properties:
-        ads:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdV3Response'
-        count:
-          type: integer
-          format: int64
-          minimum: 0
-          readOnly: true
-          example: 1
-    AdListV5Response:
-      type: object
-      readOnly: true
-      properties:
-        ads:
-          type: array
-          items:
-            $ref: '#/components/schemas/AdV5Response'
-        count:
-          type: integer
-          format: int64
-          minimum: 0
-          readOnly: true
-          example: 1
-        nextPageToken:
-          description: 'Replaces the usage of the ‘offset’ parameter and allows the caller to paginate through a large list of ads more efficiently. In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making that call more efficient.
-          When a response does not contain a nextPageToken you have reached the last page of results and there are no more to fetch.
-          '
-          type: string
-          example: 'eyJpZCI6MTAwMTgz'
-    AdFunnelV1Response:
+    FunnelV1:
       type: object
       readOnly: true
       description: 'A struct encapsulating the ad performance prediction (funnel).'
@@ -902,7 +846,7 @@ components:
           type: number
           format: int64
           example: 600
-    AdMappingExternalIdsV2Response:
+    MappingExternalIdsV2:
       type: object
       readOnly: true
       description: 'A map of adIds for the current user to the externalId the ad has.'
@@ -917,7 +861,7 @@ components:
         "1100886309": "123123-123123-123123"
         "1100886818": "123123-123123-123123"
         "1100887074": "123123-123123-123123"
-    AdPrefillTemplateResponse:
+    PrefillTemplate:
       type: object
       readOnly: true
       description: 'A response of an ad prefill template.'
@@ -933,7 +877,7 @@ components:
         attributes:
           type: array
           items:
-            $ref: '#/components/schemas/UserAttributeResponse'
+            $ref: '#/components/schemas/UserAttribute'
           description: 'An identifying attribute for the supplied category, for which prefill information is available.'
           example:
             - key: 'color'

@@ -5,34 +5,41 @@ info:
   version: 1.0.0
 paths: {}
 components:
-  schemas:
-    OrderByGetAdsParam:
-      type: string
+  parameters:
+    OrderBy:
+      name: orderBy
+      in: query
       required: false
       description: 'Orders the result set by the given field. Default value is DATE_CREATED. (v5)'
-      enum:
-        - 'DATE_CREATED'
-        - 'DATE_LAST_UPDATED'
-        - 'STATUS'
-        - 'CLICKS'
-        - 'TITLE'
-        - 'CPC'
-        - 'SPENT'
-        - 'REMAINING_BUDGET'
-        - 'AD_ID'
-      example: 'DATE_CREATED'
-      default: 'DATE_CREATED'
-    DirectionGetAdsRequest:
-      type: string
+      schema:
+        enum:
+          - 'DATE_CREATED'
+          - 'DATE_LAST_UPDATED'
+          - 'STATUS'
+          - 'CLICKS'
+          - 'TITLE'
+          - 'CPC'
+          - 'SPENT'
+          - 'REMAINING_BUDGET'
+          - 'AD_ID'
+        example: 'DATE_CREATED'
+        default: 'DATE_CREATED'
+    Direction:
+      name: direction
+      in: query
       description: 'Determines the direction of the sort.'
-      enum:
-        - 'ASCENDING'
-        - 'DESCENDING'
-      example: 'DESCENDING'
-      default: 'ASCENDING'
-    ChangedSinceGetAdsRequest:
-      type: string
-      format: date-time
+      schema:
+        enum:
+          - 'ASCENDING'
+          - 'DESCENDING'
+        example: 'DESCENDING'
+        default: 'ASCENDING'
+    ChangedSince:
+      name: changedSince
+      in: query
+      schema:
+        type: string
+        format: date-time
       description: 'Retrieve only ads whose date of last update is newer, or equal to, this ISO 8601 UTC timestamp, that is in the past.
     <br><br>
     Filtering by ``status`` and ``titleKeyword`` may be used but ``orderBy`` and ``direction`` cannot be changed since this would break the pagination.'

@@ -6,238 +6,7 @@ info:
 paths: {}
 components:
   schemas:
-    AdV2Request:
-      deprecated: true
-      required:
-        - title
-        - description
-        - categoryId
-        - status
-        - price
-        - priceType
-        - salutation
-        - sellerName
-        - postcode
-        - shippingOptions
-        - bidMicros
-        - currency
-        - cpc
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          readOnly: true
-          example: 1235
-          minimum: 0
-          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST or PUT action.'
-        title:
-          type: string
-          description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
-          example: 'Buy the new iPhone here'
-        description:
-          type: string
-          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
-          example: 'Extra sale, buy the new iPhone today and save!'
-        categoryId:
-          description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
-          type: integer
-          format: int64
-          required: true
-          example: 2353465
-          minimum: 0
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ImageRequest'
-        externalId:
-          type: string
-          maxLength: 64
-          description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
-          example: 'OURSHOP-1423453-34'
-          deprecated: true
-        status:
-          $ref: '#/components/schemas/AdStatusV2Request'
-        priceType:
-          type: string
-          required: true
-          enum:
-            - 'BIDDING'
-            - 'BIDDING_FROM'
-            - 'FIXED_PRICE'
-            - 'FREE'
-            - 'NEGOTIABLE'
-            - 'SEE_DESCRIPTION'
-            - 'SWAP'
-            - 'CREDIBLE_BID'
-            - 'ON_DEMAND'
-          description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
-          example: 'FIXED_PRICE'
-        currency:
-          type: string
-          description: 'The 3 letter ISO-4217 currency code.'
-          example: 'EUR'
-          readOnly: true
-          format: iso-4217
-        priceUnit:
-          $ref: '#/components/schemas/AdPriceUnitRequest'
-        price:
-          type: integer
-          format: int64
-          description: 'The cost of the item, in cents. The meaning of the value depends on priceType. If it is FIXED_PRICE or BIDDING_FROM then price has to be greater than 0.'
-          maximum: 100000000
-        cpc:
-          type: integer
-          format: int64
-          description: 'The cost per click (in cents) as defined by the seller. The minimum and maximum values depend on the category. The values can be retrieved from [the categories endpoint](#/paths/categories/get).'
-          required: true
-          example: 15
-          minimum: 1
-        totalBudget:
-          type: integer
-          format: int64
-          description: 'The total budget for the ad, in cents. The minimum and maximum values depend on the category. When an ad is updated this value cannot be lower than the spentBudget. If the total budget is not returned with the ad, it means there is an unlimited total budget.'
-          example: 5000
-        dailyBudget:
-          type: integer
-          format: int64
-          nullable: true
-          description: 'The daily budget for the ad. When this value is reached the ad will be paused for the rest of the day. The minimum value depends on the category. Maximum value cannot be higher than the totalBudget'
-          example: 50000
-        spentBudget:
-          type: integer
-          format: int64
-          readOnly: true
-          description: 'The total amount of the budget that has been used so far, in cents.'
-        dailySpent:
-          type: integer
-          format: int64
-          readOnly: true
-          description: 'The budget spent for the ad since midnight, in cents. Only provided when the dailyBudget is set and larger than 0.'
-        salutation:
-          type: string
-          enum:
-            - 'COMPANY'
-            - 'MALE'
-            - 'FEMALE'
-            - 'FAMILY'
-            - 'UNKNOWN'
-          description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
-          example: 'COMPANY'
-          required: true
-        sellerName:
-          type: string
-          maxLength: 60
-          required: true
-          example: 'Mr. Smith'
-          description: 'Display name of the seller.'
-        phoneNumber:
-          maxLength: 32
-          description: 'The phone number of the advertiser as international phone number format, or as a local phone number. 0900 and 0800 numbers are not allowed.'
-          example: '+31207894561'
-        allowContactByEmail:
-          type: boolean
-          example: true
-          description: 'Flag for allowing emails to be sent to the advertiser.'
-        allowPayPal:
-          deprecated: true
-          description: 'Flag for allowing PayPal as a payment option.'
-          example: false
-        dateCreated:
-          type: string
-          format: date-time
-          description: 'The ISO 8601 UTC date and time the ad was created.'
-          readOnly: true
-          example: '2019-04-18T13:55:10Z'
-        dateLastUpdated:
-          type: string
-          format: date-time
-          description: 'The ISO 8601 UTC date and time the ad was last updated.'
-          readOnly: true
-          example: '2020-08-05T07:49:14Z'
-        dateDeleted:
-          type: string
-          format: date-time
-          description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
-          readOnly: true
-          example: '2020-08-05T07:49:14Z'
-        postcode:
-          type: string
-          description: 'Must be an non empty string.'
-          example: '1703 GB'
-          maxLength: 6
-          required: true
-        regionId:
-          type: integer
-          format: int64
-          description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
-          example: 10034535
-        pageNumber:
-          type: integer
-          format: int
-          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
-          readOnly: true
-          example: 2
-        suggestedCpcForPageOne:
-          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
-          type: integer
-          format: int64
-          example: 15
-          readOnly: true
-        links:
-          type: object
-          description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
-          properties:
-            self:
-              type: string
-              format: url
-              example: '/api/sellside/ad/1235'
-              description: 'A self link which points to the current resource.'
-              maxLength: 2048
-              readOnly: true
-            category:
-              type: integer
-              format: int64
-              description: 'The resource location for the category that this ad belongs to.'
-              example: '/api/sellside/category/2353465'
-              readOnly: true
-              maxLength: 2048
-            url:
-              type: string
-              format: url
-              maxLength: 2048
-              description: 'An external URL that is shown on the ad page. This must be a valid http(s) url.'
-              example: 'http://wwww.company.com/product'
-            displayUrl:
-              description: 'The text/url that will be displayed instead of the url in links.url.'
-              type: string
-              maxLength: 256
-              example: 'Click here to buy this product'
-        vendorId:
-          type: string
-          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
-          example: 'OURSHOP-1423453-34'
-        attributes:
-          type: array
-          description: 'An optional list of user-defined attributes'
-          items:
-            $ref: '#/components/schemas/UserAttribute'
-        shippingOptions:
-          example:
-            - type: 'SHIP'
-              cost: 0
-              time: 2d-5d
-            - type: 'PICKUP'
-              pickupLocation: '1097DN'
-          type: array
-          items:
-            $ref: '#/components/schemas/ShippingOption'
-          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
-    AdV3Request:
-      $ref: '#/components/schemas/AdV2Request' # they are the same
-    AdV5Request:
+    V5:
       required:
         - title
         - description
@@ -256,30 +25,27 @@ components:
         title:
           type: string
           description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
           example: 'Buy the new iPhone here'
         description:
           type: string
           description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
-          required: true
           example: 'Extra sale, buy the new iPhone today and save!'
         images:
           type: array
           items:
-            $ref: '#/components/schemas/ImageRequest'
+            $ref: '#/components/schemas/Image'
         categoryId:
           description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
           type: integer
           format: int64
-          required: true
           example: 2353465
           minimum: 0
         status:
-          $ref: '#/components/schemas/AdStatusV2Request'
+          $ref: '#/components/schemas/Status'
         price:
-          $ref: '#/components/schemas/AdPriceRequest'
+          $ref: '#/components/schemas/Price'
         campaignId:
-          $ref: '#/components/schemas/AdCampaignIdRequest'
+          $ref: '#/components/schemas/CampaignId'
         salutation:
           type: string
           enum:
@@ -290,11 +56,9 @@ components:
             - 'UNKNOWN'
           description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
           example: 'COMPANY'
-          required: true
         sellerName:
           type: string
           maxLength: 60
-          required: true
           example: 'Mr. Smith'
           description: 'Display name of the seller.'
         phoneNumber:
@@ -309,30 +73,25 @@ components:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was created.'
-          readOnly: true
           example: '2019-04-18T13:55:10Z'
         dateLastUpdated:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was last updated.'
-          readOnly: true
           example: '2020-08-05T07:49:14Z'
         dateDeleted:
           type: string
           format: date-time
           description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
-          readOnly: true
           example: '2020-08-05T07:49:14Z'
         postcode:
           type: string
           description: 'Must be an non empty string.'
           example: '1703 GB'
           maxLength: 6
-          required: true
         regionId:
           type: integer
           format: int64
-          writeOnly: true
           description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
           example: 10034535
         bidMicros:
@@ -340,11 +99,10 @@ components:
           description: 'The cost per click (bid) in micro-euros/micro-dollars as defined by the seller (10000 micro-euros == 1 cent). The minimum and maximum values depend on the category. The values can be retrieved from [the categories endpoint](#/paths/categories/get).
             <br>
             The type is string, allowing the seller to specify “AUTOMATIC”, to let our system take care of the bid and try to optimise costs vs clicks.'
-          required: true
           example: '10000'
           minimum: 1
         budgets:
-          $ref: '#/components/schemas/AdBudgetsRequest'
+          $ref: '#/components/schemas/Budgets'
         links:
           type: object
           description: 'Provides various hypermedia URLs to access linked resources.'
@@ -355,13 +113,11 @@ components:
               example: '/api/sellside/ad/1235'
               description: 'A self link which points to the current resource.'
               maxLength: 2048
-              readOnly: true
             category:
               type: integer
               format: int64
               description: 'The resource location for the category that this ad belongs to.'
               example: '/api/sellside/category/2353465'
-              readOnly: true
               maxLength: 2048
             url:
               type: string
@@ -394,140 +150,12 @@ components:
           items:
             $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
-      examples:
-        manualBidding:
-          value:
-            title: 'Brother Fax voor 99,99'
-            description: '<b>NU extra voordelig op ourshop.com.</b> Fax nu voor slechts <b>99,99!</b>'
-            categoryId: 826
-            status: 'ACTIVE'
-            price:
-              priceType: 'FIXED_PRICE'
-              priceUnit: 'per_sqm'
-              amountCents: 5600
-              originalAmountCents: 6500
-            bidMicros: '10000'
-            budgets:
-              daily:
-                limitMicros: 'UNLIMITED'
-              total:
-                limitMicros: '350000000'
-            campaignId: 54212
-            salutation: 'COMPANY'
-            sellerName: 'My Shop'
-            postcode: '1097DN'
-            regionId: 1700195
-            phoneNumber: '0207894561'
-            allowContactByEmail: true
-            vendorId: 'OURSHOP-1423453-34'
-            links:
-              displayUrl: 'www.ourshop.com/Faxes'
-              url: 'http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3'
-            images:
-              - src: 'http://www.ourshop.com/img/brother_fax_big.jpg'
-              - src: 'http://www.ourshop.com/img/brother_fax_side.jpg'
-            attributes:
-              - key: 'color'
-                label: 'Kleur'
-                locale: 'nl'
-                type: 'STRING'
-                value: 'Zwart'
-              - key: 'size'
-                label: 'Maat'
-                locale: 'nl'
-                type: 'NUMBER'
-                value: 6
-              - key: 'software'
-                label: 'Software'
-                locale: 'nl'
-                type: 'LIST'
-                value:
-                  - 'Apple OSX'
-                  - 'Microsoft Windows 7'
-            shippingOptions:
-              - type: 'SHIP'
-                costCents: 495
-                time: '2d-5d'
-              - type: 'PICKUP'
-                pickupLocation: '1097DN'
-        autoBidding:
-          value:
-            title: 'Brother Fax voor 99,99'
-            description: '<b>NU extra voordelig op ourshop.com.</b> Fax nu voor slechts <b>99,99!</b>'
-            categoryId: 826
-            status: 'ACTIVE'
-            price:
-              priceType: 'FIXED_PRICE'
-              priceUnit: 'per_sqm'
-              amountCents: 5600
-              originalAmountCents: 6500
-            bidMicros: 'AUTOMATIC'
-            budgets:
-              daily:
-                limitMicros: '30000000'
-              total:
-                limitMicros: 'UNLIMITED'
-            campaignId: 54212
-            salutation: 'COMPANY'
-            sellerName: 'My Shop'
-            postcode: '1097DN'
-            regionId: 1700195
-            phoneNumber: '0207894561'
-            allowContactByEmail: true
-            vendorId: 'OURSHOP-1423453-34'
-            links:
-              displayUrl: 'www.ourshop.com/Faxes'
-              url: 'http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3'
-            images:
-              - src: 'http://www.ourshop.com/img/brother_fax_big.jpg'
-              - src: 'http://www.ourshop.com/img/brother_fax_side.jpg'
-            attributes:
-              - key: 'color'
-                label: 'Kleur'
-                locale: 'nl'
-                type: 'STRING'
-                value: 'Zwart'
-              - key: 'size'
-                label: 'Maat'
-                locale: 'nl'
-                type: 'NUMBER'
-                value: 6
-              - key: 'software'
-                label: 'Software'
-                locale: 'nl'
-                type: 'LIST'
-                value:
-                  - 'Apple OSX'
-                  - 'Microsoft Windows 7'
-            shippingOptions:
-              - type: 'SHIP'
-                costCents: 495
-                time: '2d-5d'
-              - type: 'PICKUP'
-                pickupLocation: '1097DN'
       type: object
-    ImageRequest:
-      readOnly: true
-      description: 'When an ad is created or updated the caller provides the images as a list of image objects which contain only the source url. 
-                   The images are then downloaded by iCAS and the server adds additional fields which describe the status of the download. 
-                   The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
-      properties:
-        src:
-          type: string
-          description: 'The source URL of the ImageResponse, where it will be downloaded from'
-          minItems: 1
-          format: base64url
-          example: 'https://example.nl/8228771/wit-met-stiksel.jpg'
-    AdStatusV2Request:
-      type: string
-      required: true
-      description: 'The ad status as desired and controlled by the user.'
-      enum:
-        - 'ACTIVE'
-        - 'PAUSED'
-        - 'DELETED'
-      example: 'ACTIVE'
-    AdBudgetsRequest:
+    CampaignId:
+      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
+      type: integer
+      example: 54212
+    Budgets:
       type: object
       description: 'A struct encapsulating both the daily and the total ad budget limits.'
       properties:
@@ -547,7 +175,240 @@ components:
               type: string
               description: 'the maximum amount this ad can spend in micros, after which it will be taken offline until the seller increases the limit.'
               example: '350000000'
-    AdPrefillTemplateRequest:
+    V3:
+      $ref: '#/components/schemas/V2' # they are the same
+    V2:
+      deprecated: true
+      required:
+        - title
+        - description
+        - categoryId
+        - status
+        - price
+        - priceType
+        - salutation
+        - sellerName
+        - postcode
+        - shippingOptions
+        - bidMicros
+        - currency
+        - cpc
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+          example: 1235
+          minimum: 0
+          description: 'Unique reference to the iCAS ad, needs to be omitted in a POST or PUT action.'
+        title:
+          type: string
+          description: 'Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          example: 'Buy the new iPhone here'
+        description:
+          type: string
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          example: 'Extra sale, buy the new iPhone today and save!'
+        categoryId:
+          description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
+          type: integer
+          format: int64
+          example: 2353465
+          minimum: 0
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        externalId:
+          type: string
+          maxLength: 64
+          description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
+          example: 'OURSHOP-1423453-34'
+          deprecated: true
+        status:
+          $ref: '#/components/schemas/Status'
+        priceType:
+          type: string
+          enum:
+            - 'BIDDING'
+            - 'BIDDING_FROM'
+            - 'FIXED_PRICE'
+            - 'FREE'
+            - 'NEGOTIABLE'
+            - 'SEE_DESCRIPTION'
+            - 'SWAP'
+            - 'CREDIBLE_BID'
+            - 'ON_DEMAND'
+          description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
+          example: 'FIXED_PRICE'
+        currency:
+          type: string
+          description: 'The 3 letter ISO-4217 currency code.'
+          example: 'EUR'
+          format: iso-4217
+        priceUnit:
+          $ref: '#/components/schemas/PriceUnit'
+        price:
+          type: integer
+          format: int64
+          description: 'The cost of the item, in cents. The meaning of the value depends on priceType. If it is FIXED_PRICE or BIDDING_FROM then price has to be greater than 0.'
+          maximum: 100000000
+        cpc:
+          type: integer
+          format: int64
+          description: 'The cost per click (in cents) as defined by the seller. The minimum and maximum values depend on the category. The values can be retrieved from [the categories endpoint](#/paths/categories/get).'
+          example: 15
+          minimum: 1
+        totalBudget:
+          type: integer
+          format: int64
+          description: 'The total budget for the ad, in cents. The minimum and maximum values depend on the category. When an ad is updated this value cannot be lower than the spentBudget. If the total budget is not returned with the ad, it means there is an unlimited total budget.'
+          example: 5000
+        dailyBudget:
+          type: integer
+          format: int64
+          nullable: true
+          description: 'The daily budget for the ad. When this value is reached the ad will be paused for the rest of the day. The minimum value depends on the category. Maximum value cannot be higher than the totalBudget'
+          example: 50000
+        spentBudget:
+          type: integer
+          format: int64
+          description: 'The total amount of the budget that has been used so far, in cents.'
+        dailySpent:
+          type: integer
+          format: int64
+          description: 'The budget spent for the ad since midnight, in cents. Only provided when the dailyBudget is set and larger than 0.'
+        salutation:
+          type: string
+          enum:
+            - 'COMPANY'
+            - 'MALE'
+            - 'FEMALE'
+            - 'FAMILY'
+            - 'UNKNOWN'
+          description: 'The salutation as used in emails. Must be a valid salutation identifier from MALE, FEMALE, COMPANY or FAMILY'
+          example: 'COMPANY'
+        sellerName:
+          type: string
+          maxLength: 60
+          example: 'Mr. Smith'
+          description: 'Display name of the seller.'
+        phoneNumber:
+          maxLength: 32
+          description: 'The phone number of the advertiser as international phone number format, or as a local phone number. 0900 and 0800 numbers are not allowed.'
+          example: '+31207894561'
+        allowContactByEmail:
+          type: boolean
+          example: true
+          description: 'Flag for allowing emails to be sent to the advertiser.'
+        allowPayPal:
+          deprecated: true
+          description: 'Flag for allowing PayPal as a payment option.'
+          example: false
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was created.'
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was last updated.'
+          example: '2020-08-05T07:49:14Z'
+        dateDeleted:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the ad was deleted. Omitted if the ad is not deleted.'
+          example: '2020-08-05T07:49:14Z'
+        postcode:
+          type: string
+          description: 'Must be an non empty string.'
+          example: '1703 GB'
+          maxLength: 6
+        regionId:
+          type: integer
+          format: int64
+          description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
+          example: 10034535
+        pageNumber:
+          type: integer
+          format: int
+          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
+          example: 2
+        suggestedCpcForPageOne:
+          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
+          type: integer
+          format: int64
+          example: 15
+        links:
+          type: object
+          description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
+          properties:
+            self:
+              type: string
+              format: url
+              example: '/api/sellside/ad/1235'
+              description: 'A self link which points to the current resource.'
+              maxLength: 2048
+            category:
+              type: integer
+              format: int64
+              description: 'The resource location for the category that this ad belongs to.'
+              example: '/api/sellside/category/2353465'
+              maxLength: 2048
+            url:
+              type: string
+              format: url
+              maxLength: 2048
+              description: 'An external URL that is shown on the ad page. This must be a valid http(s) url.'
+              example: 'http://wwww.company.com/product'
+            displayUrl:
+              description: 'The text/url that will be displayed instead of the url in links.url.'
+              type: string
+              maxLength: 256
+              example: 'Click here to buy this product'
+        vendorId:
+          type: string
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          example: 'OURSHOP-1423453-34'
+        attributes:
+          type: array
+          description: 'An optional list of user-defined attributes'
+          items:
+            $ref: '#/components/schemas/UserAttribute'
+        shippingOptions:
+          example:
+            - type: 'SHIP'
+              cost: 0
+              time: 2d-5d
+            - type: 'PICKUP'
+              pickupLocation: '1097DN'
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingOption'
+          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+    Image:
+      readOnly: true
+      description: 'When an ad is created or updated the caller provides the images as a list of image objects which contain only the source url. 
+                   The images are then downloaded by iCAS and the server adds additional fields which describe the status of the download. 
+                   The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
+      properties:
+        src:
+          type: string
+          description: 'The source URL of the ImageResponse, where it will be downloaded from'
+          minItems: 1
+          format: base64url
+          example: 'https://example.nl/8228771/wit-met-stiksel.jpg'
+    Status:
+      type: string
+      description: 'The ad status as desired and controlled by the user.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'DELETED'
+      example: 'ACTIVE'
+    PrefillTemplate:
       type: object
       required:
         - categoryId
@@ -581,19 +442,16 @@ components:
           type: string
           maxLength: 32
           example: 'color'
-          required: true
         label:
           type: string
           maxLength: 32
           example: 'kleur'
-          required: true
           description: 'The label can contain the same value as the key.'
         locale:
           type: string
           format: locale
           description: 'Specifies the language for the label and the value. Must be a valid locale string.'
           example: 'en_US'
-          required: true
         type:
           description: 'The type of the attribute. Can be one of STRING - a single string value, NUMBER - a single number value, or LIST - a list of string or number values'
           type: string
@@ -602,7 +460,6 @@ components:
             - 'NUMBER'
             - 'LIST'
           example: 'LIST'
-          required: true
         value:
           $ref: '#/components/schemas/AttributeValue'
     AttributeValue:
@@ -638,7 +495,6 @@ components:
         pickupLocation: '1097DN'
       properties:
         type:
-          required: true
           type: string
           enum:
             - 'SHIP'
@@ -664,11 +520,11 @@ components:
           type: string
           description: 'Pick up location of the item. Mandatory when the type is PICKUP.'
           example: '3541CB'
-    AdPriceUnitRequest:
+    PriceUnit:
       type: string
       description: 'Must be a valid price unit identifier from the list of available price units of the category'
       example: 'per_sqm'
-    AdPriceRequest:
+    Price:
       description: 'Price is an object containing all the information about the cost of the item for sale.'
       type: object
       properties:
@@ -679,18 +535,14 @@ components:
           maximum: 10000000000
           example: 5600
         priceType:
-          $ref: '#/components/schemas/AdPriceTypeRequest'
+          $ref: '#/components/schemas/PriceType'
         priceUnit:
-          $ref: '#/components/schemas/AdPriceUnitRequest'
+          $ref: '#/components/schemas/PriceUnit'
         originalAmountCents:
           description: 'The cost of the item (without shipping costs) in cents, before discount was applied. Not available to all users. Needs to be larger than `amountCents`.'
           type: integer
           example: 6500
-    AdCampaignIdRequest:
-      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
-      type: integer
-      example: 54212
-    AdPriceTypeRequest:
+    PriceType:
       type: string
       enum:
         - 'BIDDING'
@@ -702,3 +554,116 @@ components:
         - 'SWAP'
         - 'CREDIBLE_BID'
         - 'ON_DEMAND'
+  examples:
+    ManualBiddingV5:
+      summary: 'Ad with manual bidding'
+      value:
+        title: 'Brother Fax voor 99,99'
+        description: '<b>NU extra voordelig op ourshop.com.</b> Fax nu voor slechts <b>99,99!</b>'
+        categoryId: 826
+        status: 'ACTIVE'
+        price:
+          priceType: 'FIXED_PRICE'
+          priceUnit: 'per_sqm'
+          amountCents: 5600
+          originalAmountCents: 6500
+        bidMicros: '10000'
+        budgets:
+          daily:
+            limitMicros: 'UNLIMITED'
+          total:
+            limitMicros: '350000000'
+        campaignId: 54212
+        salutation: 'COMPANY'
+        sellerName: 'My Shop'
+        postcode: '1097DN'
+        regionId: 1700195
+        phoneNumber: '0207894561'
+        allowContactByEmail: true
+        vendorId: 'OURSHOP-1423453-34'
+        links:
+          displayUrl: 'www.ourshop.com/Faxes'
+          url: 'http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3'
+        images:
+          - src: 'http://www.ourshop.com/img/brother_fax_big.jpg'
+          - src: 'http://www.ourshop.com/img/brother_fax_side.jpg'
+        attributes:
+          - key: 'color'
+            label: 'Kleur'
+            locale: 'nl'
+            type: 'STRING'
+            value: 'Zwart'
+          - key: 'size'
+            label: 'Maat'
+            locale: 'nl'
+            type: 'NUMBER'
+            value: 6
+          - key: 'software'
+            label: 'Software'
+            locale: 'nl'
+            type: 'LIST'
+            value:
+              - 'Apple OSX'
+              - 'Microsoft Windows 7'
+        shippingOptions:
+          - type: 'SHIP'
+            costCents: 495
+            time: '2d-5d'
+          - type: 'PICKUP'
+        pickupLocation: '1097DN'
+    AutoBiddingV5:
+      summary: 'Ad with automatic bidding'
+      value:
+          title: 'Brother Fax voor 99,99'
+          description: '<b>NU extra voordelig op ourshop.com.</b> Fax nu voor slechts <b>99,99!</b>'
+          categoryId: 826
+          status: 'ACTIVE'
+          price:
+            priceType: 'FIXED_PRICE'
+            priceUnit: 'per_sqm'
+            amountCents: 5600
+            originalAmountCents: 6500
+          bidMicros: 'AUTOMATIC'
+          budgets:
+            daily:
+              limitMicros: '30000000'
+            total:
+              limitMicros: 'UNLIMITED'
+          campaignId: 54212
+          salutation: 'COMPANY'
+          sellerName: 'My Shop'
+          postcode: '1097DN'
+          regionId: 1700195
+          phoneNumber: '0207894561'
+          allowContactByEmail: true
+          vendorId: 'OURSHOP-1423453-34'
+          links:
+            displayUrl: 'www.ourshop.com/Faxes'
+            url: 'http://www.ourshop.com/index.php?param1=value1&amp;param2=value2&amp;param3=value3'
+          images:
+            - src: 'http://www.ourshop.com/img/brother_fax_big.jpg'
+            - src: 'http://www.ourshop.com/img/brother_fax_side.jpg'
+          attributes:
+            - key: 'color'
+              label: 'Kleur'
+              locale: 'nl'
+              type: 'STRING'
+              value: 'Zwart'
+            - key: 'size'
+              label: 'Maat'
+              locale: 'nl'
+              type: 'NUMBER'
+              value: 6
+            - key: 'software'
+              label: 'Software'
+              locale: 'nl'
+              type: 'LIST'
+              value:
+                - 'Apple OSX'
+                - 'Microsoft Windows 7'
+          shippingOptions:
+            - type: 'SHIP'
+              costCents: 495
+              time: '2d-5d'
+            - type: 'PICKUP'
+              pickupLocation: '1097DN'
