@@ -11,6 +11,9 @@
         "dateCreated": "2022-12-25T10:04:23Z",
         "dateLastUpdated": "2022-12-28T22:40:15Z",
         "status": "ACTIVE",
+        "vendorId": "123-abc-vjlkna-124",
+        "title": "christmas stuff",
+        "isDefault": true,
         "budgets": {
             "daily": {
                 "limitMicros": "10000000",

@@ -103,7 +103,7 @@ Campaigns
 """""""""
 Added first campaign support. See :ref:`campaigns` for full details.
 
-* :ref:`get_campaign` to get list of campaigns for a user. Expected 0 or 1 result.
+* :ref:`get_campaigns` to get list of campaigns for a user. Expected 0 or 1 result.
 * :ref:`get_campaign_id` to fetch the individual campaign.
 * :ref:`post_campaign` to create a campaign. Currently only 1 allowed per seller.
 * :ref:`put_campaign_id` to update the campaign. Currently only status & budgets can be updated.
@@ -162,38 +162,3 @@ The following calls are deprecated and scheduled to be removed on May 1st, 2023:
    * :ref:`get_category_id_v5`
  - * :ref:`get_categories_v1`
    * :ref:`get_categories_v5`
-
-Feb 2020
---------
-
-Deprecation list
-""""""""""""""""
-
-The following calls are deprecated and scheduled to be removed on the 15th of July 2020:
-
-.. list-table::
- :widths: 80 80
- :header-rows: 1
-
- - * deprecated endpoint
-   * replaced by
-
- - * :ref:`get_ad_v3`
-   * :ref:`get_ad_v4`
-
-Dec 2019: 'Reporting V2'
-------------------------
-
-Deprecation list
-""""""""""""""""
-
-The following calls are deprecated and scheduled to be removed after 1st of March 2020:
-
-* :ref:`get_report`
-* :ref:`get_report_detail`
-* :ref:`get_report_detail_id`
-* :ref:`get_report_summary_v2`
-* :ref:`get_report_summary_v1`
-* :ref:`post_report_detail`
-* GET /user V1
-* :ref:`get_categories_statistics`
