@@ -50,6 +50,10 @@ History
 
 ..  role:: strike
 
+* v.0.129 - 6 Nov 2023 - tw
+
+  * added GET /ad/count and GET /ad/histogram to openApi docs
+
 * v.0.128 - 17 Oct 2023 - tw
 
   * added multi-campaign documentation, only available for Kleinanzeigen now though.

@@ -847,6 +847,7 @@ components:
           format: int64
           example: 600
     MappingExternalIdsV2:
+      deprecated: true
       type: object
       readOnly: true
       description: 'A map of adIds for the current user to the externalId the ad has.'
@@ -892,3 +893,14 @@ components:
               type: 'STRING'
               value: 'Stationwagon'
               recognized: true
+    HistogramV1:
+      type: object
+      readOnly: true
+      description: 'A map of histogram key to count of ads.'
+      additionalProperties: # https://swagger.io/docs/specification/data-models/dictionaries/
+        type: string
+      example:
+        "1241": 122
+        "1242": 21
+        "753": 34
+        "2": 2345
