@@ -1312,6 +1312,14 @@ paths:
               type: integer
               format: int64
           example: [ 55500, 1280000 ]
+        - name: campaignId
+          in: query
+          required: false
+          description: 'Campaign to filter ads by.'
+          schema:
+            type: integer
+            format: int64
+          example: 124422
       responses:
         '200':
           description: 'Success'
@@ -1456,6 +1464,14 @@ paths:
               type: integer
               format: int64
           example: [ 55500, 1280000 ]
+        - name: campaignId
+          in: query
+          required: false
+          description: 'Campaign to filter ads by.'
+          schema:
+            type: integer
+            format: int64
+          example: 124422
       responses:
         '200':
           description: 'Success'
@@ -1475,7 +1491,10 @@ paths:
               schema:
                 type: object
                 example:
-                  $ref: './ads/responses.yaml#/components/schemas/HistogramV1'
+                  "1241": 122
+                  "1242": 21
+                  "753": 34
+                  "2": 2345
         '401':
           description: 'Unauthorized'
           content:
