@@ -847,6 +847,7 @@ components:
           format: int64
           example: 600
     MappingExternalIdsV2:
+      deprecated: true
       type: object
       readOnly: true
       description: 'A map of adIds for the current user to the externalId the ad has.'

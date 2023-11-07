@@ -1233,6 +1233,308 @@ paths:
           oAuth2ClientCredentials:
             - 'console_rw'
             - 'api_rw'
+  /ad/count:
+    get:
+      tags:
+        - Ads
+      summary: 'Get a count of ads with filter criteria'
+      description: 'Returns a count of ads for the current user matching the filter criteria. <br>
+              <br><br>
+              This call supports all the filters in use by GET /ad, except things that do not make sense for a count call, like orderBy, direction, limit and pageToken.
+              Similar to GET /ad, if startDate and/or endDate are provided, only ads that have received traffic will be part of the result set. 
+              '
+      operationId: getCountOfAdsWithFilters
+      parameters:
+        - name: adIds
+          in: query
+          required: false
+          description: 'List of ad IDs'
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+          example: [ 11232, 2231, 32453 ]
+        - name: titleKeywords
+          in: query
+          required: false
+          description: 'Case-insensitive filter for a keyword in the title; will include only ads which contain the given keyword in their title.'
+          schema:
+            type: string
+            example: 'fiets'
+        - name: status
+          in: query
+          required: false
+          description: 'Filters the result set by the ad status. Should be a comma separated list of possible statuses'
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - 'ACTIVE'
+                - 'PAUSED'
+                - 'DELETED'
+                - 'DELETED_BY_CS'
+                - 'SUSPENDED_BY_CS'
+                - 'BUDGET_REACHED'
+                - 'DAILY_BUDGET_REACHED'
+            uniqueItems: true
+          example:
+            - 'ACTIVE'
+            - 'PAUSED'
+        - name: changedSince
+          in: query
+          required: false
+          schema:
+            $ref: './ads/params.yaml#/components/parameters/ChangedSince'
+        - name: startDate
+          in: query
+          required: false
+          description: 'Determines the start date of the period to select ads with activity for.'
+          schema:
+            type: string
+            format: date
+          example: '2022-12-04'
+        - name: endDate
+          in: query
+          required: false
+          description: 'Determines the end date of the period to select ads with activity for. Should represent a date equal to or after the ``startDate``.'
+          schema:
+            type: string
+            format: date
+          example: '2023-06-13'
+        - name: categoryIds
+          in: query
+          required: false
+          description: 'List of category IDs to filter by. Only leaf category id’s are useful, since ads can only be placed in leaf categories.'
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+          example: [ 55500, 1280000 ]
+        - name: campaignId
+          in: query
+          required: false
+          description: 'Campaign to filter ads by.'
+          schema:
+            type: integer
+            format: int64
+          example: 124422
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ads'
+          content:
+            application/sellside.ad.count-v1+json:
+              schema:
+                type: integer
+                example: 124
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /ad/histogram:
+    get:
+      tags:
+        - Ads
+      summary: 'Get a histogram of ads with filter criteria, grouped by a given field'
+      description: 'Returns a histogram of ads for the current user matching the filter criteria, grouped by the groupBy field. <br>
+              <br><br>
+              This call supports all the filters in use by GET /ad, except things that do not make sense for a histogram call, like orderBy, direction, limit and pageToken.
+              Similar to GET /ad, if startDate and/or endDate are provided, only ads that have received traffic will be part of the result set.
+              '
+      operationId: getHistogramOfAdsWithFilters
+      parameters:
+        - name: groupBy
+          in: query
+          description: 'field to group counts of ads by'
+          schema:
+            type: string
+            enum:
+              - 'CAMPAIGN'
+              - 'STATUS'
+              - 'CATEGORY'
+              - 'REGION'
+            example: 'CATEGORY'
+        - name: adIds
+          in: query
+          required: false
+          description: 'List of ad IDs'
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+          example: [ 11232, 2231, 32453 ]
+        - name: titleKeywords
+          in: query
+          required: false
+          description: 'Case-insensitive filter for a keyword in the title; will include only ads which contain the given keyword in their title.'
+          schema:
+            type: string
+            example: 'fiets'
+        - name: status
+          in: query
+          required: false
+          description: 'Filters the result set by the ad status. Should be a comma separated list of possible statuses'
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - 'ACTIVE'
+                - 'PAUSED'
+                - 'DELETED'
+                - 'DELETED_BY_CS'
+                - 'SUSPENDED_BY_CS'
+                - 'BUDGET_REACHED'
+                - 'DAILY_BUDGET_REACHED'
+            uniqueItems: true
+          example:
+            - 'ACTIVE'
+            - 'PAUSED'
+        - name: changedSince
+          in: query
+          required: false
+          schema:
+            $ref: './ads/params.yaml#/components/parameters/ChangedSince'
+        - name: startDate
+          in: query
+          required: false
+          description: 'Determines the start date of the period to select ads with activity for.'
+          schema:
+            type: string
+            format: date
+          example: '2022-12-04'
+        - name: endDate
+          in: query
+          required: false
+          description: 'Determines the end date of the period to select ads with activity for. Should represent a date equal to or after the ``startDate``.'
+          schema:
+            type: string
+            format: date
+          example: '2023-06-13'
+        - name: categoryIds
+          in: query
+          required: false
+          description: 'List of category IDs to filter by. Only leaf category id’s are useful, since ads can only be placed in leaf categories.'
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+          example: [ 55500, 1280000 ]
+        - name: campaignId
+          in: query
+          required: false
+          description: 'Campaign to filter ads by.'
+          schema:
+            type: integer
+            format: int64
+          example: 124422
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ads'
+          content:
+            application/sellside.ad.histogram-v1+json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+                example:
+                  "1241": 122
+                  "1242": 21
+                  "753": 34
+                  "2": 2345
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
 
   # CATEGORIES
   /categories:
