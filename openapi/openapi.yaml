@@ -1238,9 +1238,10 @@ paths:
       tags:
         - Ads
       summary: 'Get a count of ads with filter criteria'
-      description: 'Returns a count of ads for the current user and the total size of the result set matching the filter criteria. <br>
+      description: 'Returns a count of ads for the current user matching the filter criteria. <br>
               <br><br>
-              This call supports all the filters in use by GET /ad, except things that do not make sense for a count call, like orderBy, direction, limit and pageToken. 
+              This call supports all the filters in use by GET /ad, except things that do not make sense for a count call, like orderBy, direction, limit and pageToken.
+              Similar to GET /ad, if startDate and/or endDate are provided, only ads that have received traffic will be part of the result set. 
               '
       operationId: getCountOfAdsWithFilters
       parameters:
@@ -1379,9 +1380,10 @@ paths:
       tags:
         - Ads
       summary: 'Get a histogram of ads with filter criteria, grouped by a given field'
-      description: 'Returns a histogram of ads for the current user and the size of the result set matching the filter criteria, grouped by the groupBy field. <br>
+      description: 'Returns a histogram of ads for the current user matching the filter criteria, grouped by the groupBy field. <br>
               <br><br>
               This call supports all the filters in use by GET /ad, except things that do not make sense for a histogram call, like orderBy, direction, limit and pageToken.
+              Similar to GET /ad, if startDate and/or endDate are provided, only ads that have received traffic will be part of the result set.
               '
       operationId: getHistogramOfAdsWithFilters
       parameters:
@@ -1490,6 +1492,9 @@ paths:
             application/sellside.ad.histogram-v1+json:
               schema:
                 type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
                 example:
                   "1241": 122
                   "1242": 21
