@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: 'This document describes the iCAS Sellside API to place ads on iCAS.
-    For more information, see the `Documentation` tab.'
+    For more information, see the <a href="../doc/prod/overview.html">Documentation</a>.'
   version: '0.119'
   title: 'iCAS Sellside API'
 servers:
