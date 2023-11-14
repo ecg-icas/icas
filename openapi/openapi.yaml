@@ -1559,19 +1559,19 @@ paths:
           in: query
           description: 'Comma-separated-list of fields to include. Optional, default is all fields.'
           required: false
-          $ref: './categories/params.yaml/#/components/parameters/IncludeExcludeFields'
+          $ref: './categories/params.yaml#/components/parameters/IncludeExcludeFields'
         - name: _exclude
           in: query
           description: 'Comma-separated-list of fields to omit. Optional, default empty.'
           required: false
-          $ref: './categories/params.yaml/#/components/parameters/IncludeExcludeFields'
+          $ref: './categories/params.yaml#/components/parameters/IncludeExcludeFields'
       responses:
         '200':
           description: 'Success'
           content:
             application/sellside.category.list-v5+json:
               schema:
-                $ref: './categories/responses.yaml/#/components/schemas/NonLeafV5'
+                $ref: './categories/responses.yaml#/components/schemas/NonLeafV5'
         '400':
           description: 'Bad Request'
           content:
@@ -1597,18 +1597,18 @@ paths:
           description: 'The starting category ID of the taxonomy (sub) tree.'
           required: true
           schema:
-            $ref: './categories/params.yaml/#/components/parameters/ID'
+            $ref: './categories/params.yaml#/components/parameters/ID'
         - name: levels
           in: query
           description: 'Specifies how many levels starting from the current one you want to retrieve.'
-          $ref: './categories/params.yaml/#/components/parameters/Levels'
+          $ref: './categories/params.yaml#/components/parameters/Levels'
       responses:
         '200':
           description: 'Success'
           content:
             application/sellside.category-v5+json:
               schema:
-                $ref: './categories/responses.yaml/#/components/schemas/NonLeafV5'
+                $ref: './categories/responses.yaml#/components/schemas/NonLeafV5'
         '400':
           description: 'Bad Request'
           content:
@@ -1660,12 +1660,12 @@ paths:
           in: query
           required: false
           description: 'Comma-separated-list of ad fields to include.'
-          $ref: './categories/params.yaml/#/components/parameters/IncludeExcludeFunnelFields'
+          $ref: './categories/params.yaml#/components/parameters/IncludeExcludeFunnelFields'
         - name: _exclude
           in: query
           required: false
           description: 'Comma-separated-list of ad fields to omit.'
-          $ref: './categories/params.yaml/#/components/parameters/IncludeExcludeFunnelFields'
+          $ref: './categories/params.yaml#/components/parameters/IncludeExcludeFunnelFields'
       responses:
         '200':
           description: 'Success'
@@ -1683,7 +1683,7 @@ paths:
           content:
             application/sellside.funnel-v1+json:
               schema:
-                $ref: './categories/responses.yaml/#/components/schemas/FunnelResponse'
+                $ref: './categories/responses.yaml#/components/schemas/FunnelResponse'
         '400':
           description: 'Bad Request'
           content:
@@ -1719,17 +1719,17 @@ paths:
             example: 'application/sellside.region.list-v1+json'
           required: true
         - name: regionIds
-          $ref: './regions/params.yaml/#/components/parameters/IDs'
+          $ref: './regions/params.yaml#/components/parameters/IDs'
           in: query
           description: 'Comma-separated list of IDs for the requested regions from the regions taxonomy tree.'
           required: true
         - name: _include
-          $ref: './regions/params.yaml/#/components/parameters/IncludeExcludeRegionFields'
+          $ref: './regions/params.yaml#/components/parameters/IncludeExcludeRegionFields'
           in: query
           description: 'Comma-separated-list of fields to include. Optional, default is all fields.'
           required: false
         - name: _exclude
-          $ref: './regions/params.yaml/#/components/parameters/IncludeExcludeRegionFields'
+          $ref: './regions/params.yaml#/components/parameters/IncludeExcludeRegionFields'
           in: query
           description: 'Comma-separated-list of fields to omit. Optional, default empty.'
           required: false
@@ -1739,7 +1739,7 @@ paths:
           content:
             application/sellside.category.list-v5+json:
               schema:
-                $ref: './regions/responses.yaml/#/components/schemas/NonLeaf'
+                $ref: './regions/responses.yaml#/components/schemas/NonLeaf'
         '400':
           description: 'Bad Request'
           content:
@@ -1764,19 +1764,19 @@ paths:
           in: path
           description: 'The starting region ID of the taxonomy (sub) tree.'
           required: true
-          $ref: './regions/params.yaml/#/components/parameters/ID'
+          $ref: './regions/params.yaml#/components/parameters/ID'
         - name: levels
           in: query
           description: 'Specifies how many levels starting from the current one you want to retrieve.'
           required: false
-          $ref: './regions/params.yaml/#/components/parameters/Levels'
+          $ref: './regions/params.yaml#/components/parameters/Levels'
       responses:
         '200':
           description: 'Success'
           content:
             application/sellside.region.list-v5+json:
               schema:
-                $ref: './regions/responses.yaml/#/components/schemas/NonLeaf'
+                $ref: './regions/responses.yaml#/components/schemas/NonLeaf'
         '400':
           description: 'Bad Request'
           content:
@@ -1808,7 +1808,7 @@ paths:
         - name: id
           in: path
           description: 'the import ID for which details are requested'
-          $ref: './feeds/params.yaml/#/components/parameters/ImportID'
+          $ref: './feeds/params.yaml#/components/parameters/ImportID'
           required: true
       responses:
         '200':
@@ -1827,7 +1827,7 @@ paths:
           content:
             application/sellside.feedimportdetail-v2+json:
               schema:
-                $ref: './feeds/responses.yaml/#/components/schemas/ImportDetailV2'
+                $ref: './feeds/responses.yaml#/components/schemas/ImportDetailV2'
               examples:
                 successWarningsErrors:
                   value:
@@ -1928,7 +1928,7 @@ paths:
           content:
             application/sellside.feedconfig-v1+json:
               schema:
-                $ref: './feeds/responses.yaml/#/components/schemas/ConfigV1'
+                $ref: './feeds/responses.yaml#/components/schemas/ConfigV1'
         '401':
           description: 'Unauthorized'
           content:
@@ -1959,7 +1959,7 @@ paths:
         content:
           application/sellside.feedconfig-v1+json:
             schema:
-              $ref: './feeds/requests.yaml/#/components/schemas/ConfigV1'
+              $ref: './feeds/requests.yaml#/components/schemas/ConfigV1'
       responses:
         '200':
           description: 'Success'
@@ -2017,7 +2017,7 @@ paths:
           in: query
           description: 'Provide the format of the file.'
           required: false
-          $ref: './feeds/params.yaml/#/components/parameters/Format'
+          $ref: './feeds/params.yaml#/components/parameters/Format'
       responses:
         '200':
           description: 'Success'
@@ -2077,7 +2077,7 @@ paths:
           content:
             application/sellside.feedimport.list-v1+json:
               schema:
-                $ref: './feeds/responses.yaml/#/components/schemas/ImportListV1'
+                $ref: './feeds/responses.yaml#/components/schemas/ImportListV1'
         '400':
           description: 'Bad Request'
           content:
@@ -2116,10 +2116,10 @@ paths:
         content:
           application/sellside.campaign-v5+json:
             schema:
-              $ref: './campaigns/requests.yaml/#/components/schemas/V5'
+              $ref: './campaigns/requests.yaml#/components/schemas/V5'
           application/sellside.campaign-v2+json:
             schema:
-              $ref: './campaigns/requests.yaml/#/components/schemas/V2'
+              $ref: './campaigns/requests.yaml#/components/schemas/V2'
       responses:
         '201':
           description: 'Campaign created'
@@ -2137,10 +2137,10 @@ paths:
           content:
             application/sellside.campaign-v5+json:
               schema:
-                $ref: './campaigns/responses.yaml/#/components/schemas/V5'
+                $ref: './campaigns/responses.yaml#/components/schemas/V5'
             application/sellside.campaign-v2+json:
               schema:
-                $ref: './campaigns/responses.yaml/#/components/schemas/V2'
+                $ref: './campaigns/responses.yaml#/components/schemas/V2'
           links:
             vendorIdLink:
               operationId: getCampaignByVendorId
@@ -2234,10 +2234,10 @@ paths:
           content:
             application/sellside.campaign-v5+json:
               schema:
-                $ref: './campaigns/responses.yaml/#/components/schemas/V5'
+                $ref: './campaigns/responses.yaml#/components/schemas/V5'
             application/sellside.campaign-v2+json:
               schema:
-                $ref: './campaigns/requests.yaml/#/components/schemas/V2'
+                $ref: './campaigns/requests.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2312,10 +2312,10 @@ paths:
           content:
             application/sellside.campaign-v5+json:
               schema:
-                $ref: './campaigns/responses.yaml/#/components/schemas/V5'
+                $ref: './campaigns/responses.yaml#/components/schemas/V5'
             application/sellside.campaign-v2+json:
               schema:
-                $ref: './campaigns/responses.yaml/#/components/schemas/V2'
+                $ref: './campaigns/responses.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2376,11 +2376,11 @@ paths:
         content:
           application/sellside.campaign-v5+json:
             schema:
-              $ref: './campaigns/requests.yaml/#/components/schemas/V5'
+              $ref: './campaigns/requests.yaml#/components/schemas/V5'
           application/sellside.campaign-v2+json:
             schema:
               deprecated: true
-              $ref: './campaigns/requests.yaml/#/components/schemas/V2'
+              $ref: './campaigns/requests.yaml#/components/schemas/V2'
       responses:
         '200':
           description: 'Success'
@@ -2398,10 +2398,10 @@ paths:
           content:
             application/sellside.campaign-v5+json:
               schema:
-                $ref: './campaigns/responses.yaml/#/components/schemas/V5'
+                $ref: './campaigns/responses.yaml#/components/schemas/V5'
             application/sellside.campaign-v2+json:
               schema:
-                $ref: './campaigns/responses.yaml/#/components/schemas/V2'
+                $ref: './campaigns/responses.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2501,12 +2501,12 @@ paths:
                   campaigns:
                     type: array
                     items:
-                      $ref: './campaigns//responses.yaml/#/components/schemas/V5'
+                      $ref: './campaigns//responses.yaml#/components/schemas/V5'
             application/sellside.campaign.list-v2+json:
               schema:
                 type: array
                 items:
-                  $ref: './campaigns/responses.yaml/#/components/schemas/V2'
+                  $ref: './campaigns/responses.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2562,7 +2562,7 @@ paths:
           description: 'The desired status of the campaign'
           required: true
           schema:
-            $ref: './campaigns/params.yaml/#/components/parameters/StatusV5'
+            $ref: './campaigns/params.yaml#/components/parameters/StatusV5'
             example: 'PAUSED'
         - name: Accept
           in: header
@@ -2663,7 +2663,7 @@ paths:
         content:
           application/sellside.campaign-v5+json:
             schema:
-              $ref: './campaigns/requests.yaml/#/components/schemas/BudgetsV5'
+              $ref: './campaigns/requests.yaml#/components/schemas/BudgetsV5'
       responses:
         '200':
           description: 'Success'
@@ -2681,7 +2681,7 @@ paths:
           content:
             application/sellside.campaign-v5+json:
               schema:
-                $ref: './campaigns//responses.yaml/#/components/schemas/BudgetsV5'
+                $ref: './campaigns//responses.yaml#/components/schemas/BudgetsV5'
         '404':
           description: 'Not Found'
           content:
@@ -2757,24 +2757,24 @@ paths:
           in: query
           description: 'Report start date'
           schema:
-            $ref: './reporting/params.yaml/#/components/parameters/Date'
+            $ref: './reporting/params.yaml#/components/parameters/Date'
         - name: endDate
           in: query
           description: 'Report end date (inclusive)'
           schema:
-            $ref: './reporting/params.yaml/#/components/parameters/Date'
+            $ref: './reporting/params.yaml#/components/parameters/Date'
         - name: adIds
           in: query
           description: 'Comma-separated-list of ad id’s which to filter the result set on. Optional, default empty to include data for all ads.'
           schema:
-            $ref: './reporting/params.yaml/#/components/parameters/AdIDs'
+            $ref: './reporting/params.yaml#/components/parameters/AdIDs'
           required: false
         - name: status
           in: query
           description: 'Comma-separated-list of ad statuses which to filter the result set on.'
           required: false
           schema:
-            $ref: './reporting/params.yaml/#/components/parameters/AdStatus'
+            $ref: './reporting/params.yaml#/components/parameters/AdStatus'
       responses:
         '200':
           description: 'Success'
@@ -2792,16 +2792,16 @@ paths:
           content:
             application/sellside.metrics.ad-hit-v2+json:
               schema:
-                $ref: './reporting/responses.yaml/#/components/schemas/ReportV2'
+                $ref: './reporting/responses.yaml#/components/schemas/ReportV2'
             application/sellside.metrics.ad-session-v2+json:
               schema:
-                $ref: './reporting/responses.yaml/#/components/schemas/ReportV2'
+                $ref: './reporting/responses.yaml#/components/schemas/ReportV2'
             application/sellside.metrics.ad-hit-v1+json:
               schema:
-                $ref: './reporting/responses.yaml/#/components/schemas/ReportV1'
+                $ref: './reporting/responses.yaml#/components/schemas/ReportV1'
             application/sellside.metrics.ad-session-v1+json:
               schema:
-                $ref: './reporting/responses.yaml/#/components/schemas/ReportV1'
+                $ref: './reporting/responses.yaml#/components/schemas/ReportV1'
         '400':
           description: 'Bad Request'
           content:
@@ -2855,17 +2855,17 @@ paths:
           in: query
           required: false
           description: 'Granularity of the timeseries breakdown.'
-          $ref: './reporting/params.yaml/#/components/parameters/TimeAggregation'
+          $ref: './reporting/params.yaml#/components/parameters/TimeAggregation'
         - name: startDate
           in: query
           required: true
           description: 'Start date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.'
-          $ref: './reporting/params.yaml/#/components/parameters/Date'
+          $ref: './reporting/params.yaml#/components/parameters/Date'
         - name: endDate
           required: true
           description: 'End date of the report in ```YYYY-MM-DD``` (inclusive). Tenant timezone is assumed.'
           in: query
-          $ref: './reporting/params.yaml/#/components/parameters/Date'
+          $ref: './reporting/params.yaml#/components/parameters/Date'
         - name: includeDeleted
           in: query
           required: false
@@ -2884,7 +2884,7 @@ paths:
           in: query
           required: false
           description: 'Comma-separated list of column fields to include in the report. Possible values are the response model fields. By default all fields are included, and this may affect the speed of data generation.'
-          $ref: './reporting/params.yaml/#/components/parameters/AdsFields'
+          $ref: './reporting/params.yaml#/components/parameters/AdsFields'
       responses:
         '200':
           description: 'Success'
@@ -2915,7 +2915,7 @@ paths:
           content:
             text/csv;v=2:
               schema:
-                $ref: './reporting/responses.yaml/#/components/schemas/AdsV2'
+                $ref: './reporting/responses.yaml#/components/schemas/AdsV2'
               examples:
                 example1:
                   value: |
@@ -2970,7 +2970,7 @@ paths:
             application/vnd.ms-excel;v=2:
               schema:
                 type: object
-                $ref: './reporting/responses.yaml/#/components/schemas/AdsV2'
+                $ref: './reporting/responses.yaml#/components/schemas/AdsV2'
         '400':
           description: 'Bad Request'
           content:
@@ -3031,7 +3031,7 @@ paths:
         content:
           application/sellside.metrics.data-v2+json:
             schema:
-              $ref: './reporting/requests.yaml/#/components/schemas/DataV2'
+              $ref: './reporting/requests.yaml#/components/schemas/DataV2'
             examples:
               example1:
                 description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week.'
@@ -3148,7 +3148,7 @@ paths:
           content:
             application/sellside.metrics.data-v2+json:
               schema:
-                $ref: './reporting/responses.yaml/#/components/schemas/DataV2'
+                $ref: './reporting/responses.yaml#/components/schemas/DataV2'
               examples:
                 example1:
                   description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week.'
@@ -3389,7 +3389,7 @@ paths:
           content:
             application/sellside.user-v4+json:
               schema:
-                $ref: './user/responses.yaml/#/components/schemas/V4'
+                $ref: './user/responses.yaml#/components/schemas/V4'
               example:
                 id: 123
                 emailAddress: someuser@somewhere.org
@@ -3409,7 +3409,7 @@ paths:
                 isAPIManaged: true
             application/sellside.user-v3+json:
               schema:
-                $ref: './user/responses.yaml/#/components/schemas/V3'
+                $ref: './user/responses.yaml#/components/schemas/V3'
               example:
                 id: 123
                 emailAddress: someuser@somewhere.org
