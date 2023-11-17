@@ -240,6 +240,7 @@ components:
             - 'SWAP'
             - 'CREDIBLE_BID'
             - 'ON_DEMAND'
+            - 'NOT_APPLICABLE'
           description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
           example: 'FIXED_PRICE'
         currency:
@@ -554,6 +555,7 @@ components:
         - 'SWAP'
         - 'CREDIBLE_BID'
         - 'ON_DEMAND'
+        - 'NOT_APPLICABLE'
   examples:
     ManualBiddingV5:
       summary: 'Ad with manual bidding'
