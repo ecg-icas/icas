@@ -1,6 +1,7 @@
 .. _Authorization Code Grant: http://tools.ietf.org/html/rfc6749#section-4.1
 .. _ISO 4217: http://en.wikipedia.org/wiki/ISO_4217
 .. _ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+.. _windows-1252: https://en.wikipedia.org/wiki/Windows-1252
 .. _Discord: http://https://discordapp.com
 .. _overview:
 
@@ -238,9 +239,12 @@ The API partner can also fetch the ad or campaign _by_ `vendorId` - see :ref:`ge
 for details - to  get the necessary primary key to perform other operations through the API.
 This means the API partner does not need to keep an explicit mapping between their own primary key and the one generated
 by our system, making integration simpler.
+
 Such a vendorId cannot, once set, be changed or removed. It has become as strong as the primary key, in combination with the seller account
 that's being used. This also means that within all ads of a seller, the vendorIds must be unique. Similarly, within all campaigns
 of a seller, the vendorIds must be unique.
+
+Keep in mind that vendorId is case-insensitive and only allows `windows-1252`_ (also known as Latin-1) characters.
 
 .. _page_tokens:
 
