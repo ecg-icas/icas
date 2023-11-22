@@ -10,7 +10,7 @@ The component schemas are organized in separate folders per logical domain, with
 
 To help you understand the OpenAPI specification, you can [interactively explore it](https://openapi-map.apihandyman.io/?version=3.0).
 Version `3.0.0` of the OpenAPI specification is currently used.
-The most popular IDEs for development have an OpenAPI plugin, which helps with validation issues and visual inspecftion of the API.
+The most popular IDEs for development have an OpenAPI plugin, which helps with validation issues and visual inspection of the API.
 [Here](https://plugins.jetbrains.com/plugin/14837-openapi-swagger-editor) is one for IntellJ IDEA.
 Alternatively, the web [Swagger editor](https://editor.swagger.io/) can help to surface any errors quickly, but is limited to a single file.
 
