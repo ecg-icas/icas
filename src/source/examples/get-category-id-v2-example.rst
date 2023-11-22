@@ -51,6 +51,7 @@
                 "SWAP",
                 "CREDIBLE_BID",
                 "ON_DEMAND",
+                "NOT_APPLICABLE",
                 "RESERVED"
             ],
             "priceUnits": {},
