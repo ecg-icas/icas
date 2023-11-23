@@ -243,12 +243,6 @@ paths:
                       text: 'category deleted'
                       msg: 'The category has been deleted and will not allow creation/updating of ads'
                       field: 'categoryId'
-                example8:
-                  value:
-                    - code: 2026
-                      text: 'too many ads in category'
-                      msg: 'Cannot put more ads in this category'
-                      field: 'categoryId'
         '401':
           description: 'Unauthorized'
           content:
