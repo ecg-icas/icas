@@ -4,9 +4,16 @@ Please head over to our [documentation](https://ecg-icas.github.io/icas/doc/prod
 
 ### Making changes to the API documentation
 For changes to the **freeform part** of the documentation, `sphinx-build` version 6.1.3 is required. 
+
+Run
+```
+make version
+```
+to make sure the necessary html files are generated properly.
  
 For changes to the **API reference endpoints**, change the `.yaml` file(s) directly under the `/openapi` folder.
 The component schemas are organized in separate folders per logical domain, with the request and responses models decoupled.
+**There is no need to run anything** to have the changes properly rendered in this case.
 
 To help you understand the OpenAPI specification, you can [interactively explore it](https://openapi-map.apihandyman.io/?version=3.0).
 Version `3.0.0` of the OpenAPI specification is currently used.
