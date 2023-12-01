@@ -284,6 +284,10 @@ options the seller wants to offer. The valid list of price types is:
    - no
    - Price is communicated on request.
 
+ * - NOT_APPLICABLE
+   - no
+   - Price is not applicable for this ad.
+
  * - RESERVED
    - no
    - Flag for transaction in progress.
