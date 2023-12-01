@@ -165,7 +165,6 @@ status                  2017    ad status change not allowed    Changing the sta
 totalBudget             2019    insufficient budget             Budget for ad is insufficient
 dailyBudget             2020    insufficient daily budget       Daily budget for ad is insufficient
 categoryId              2023    category deleted                The category has been deleted and will not allow creation/updating of ads
-categoryId              2026    too many ads in category        Cannot put more ads in this category
 ====================    ====    ============================    ==========================================================================================
 
 .. note::

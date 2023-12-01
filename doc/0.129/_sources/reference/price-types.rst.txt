@@ -9,6 +9,7 @@
     pair: Price Types; SWAP
     pair: Price Types; CREDIBLE_BID
     pair: Price Types; ON_DEMAND
+    pair: Price Types; NOT_APPLICABLE
     pair: Price Types; RESERVED
 
 .. _price_types:
@@ -31,6 +32,7 @@ SEE_DESCRIPTION     no                  Additional information is in the descrip
 SWAP                no                  Request an exchange of one item for another.
 CREDIBLE_BID        no                  Request for any reasonable offer.
 ON_DEMAND           no                  Price is communicated on request.
+NOT_APPLICABLE      no                  Price is not applicable for this ad (e.g. a Jobs ad).
 RESERVED                                Flag for transaction in progress.
 ================    ================    ===================================================================================================================
 
