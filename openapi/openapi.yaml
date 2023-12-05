@@ -5,7 +5,7 @@ info:
   version: '0.119'
   title: 'iCAS Sellside API'
 servers:
-  - url: 'http://www.mp.dev/api/sellside'
+  - url: 'http://www.mp.test/api/sellside'
     description: 'Local environment [marktplaats.nl]'
 
   - url: 'https://internet.mp.qa.icas.io/api/sellside'
