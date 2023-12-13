@@ -504,10 +504,14 @@ The intention of this <cite>vendorId</cite> is to allow the API partner to use t
 The API partner can also fetch the ad or campaign _by_ <cite>vendorId</cite> - see <a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id"><span class="std std-ref">GET /ad/byVendor/{vendorId}</span></a> and <a class="reference internal" href="reference/get-campaign-vendor-id.html#get-campaign-vendor-id"><span class="std std-ref">GET /campaign/byVendor/{vendorId}</span></a>
 for details - to  get the necessary primary key to perform other operations through the API.
 This means the API partner does not need to keep an explicit mapping between their own primary key and the one generated
-by our system, making integration simpler.
-Such a vendorId cannot, once set, be changed or removed. It has become as strong as the primary key, in combination with the seller account
+by our system, making integration simpler.</p>
+<p>Such a vendorId cannot, once set, be changed or removed. It has become as strong as the primary key, in combination with the seller account
 that’s being used. This also means that within all ads of a seller, the vendorIds must be unique. Similarly, within all campaigns
 of a seller, the vendorIds must be unique.</p>
+<p>Keep in mind that vendorId is case-insensitive and only allows <a class="reference external" href="https://en.wikipedia.org/wiki/Windows-1252">windows-1252</a> (also known as Latin-1) characters. For example, an ad is created with vendorId “abc123”,
+and this ad can be retrieved by vendorId “Abc123”. If you want to create another ad with vendorId “aBc123”, the creation will fail. Because “abc123”, “Abc123” and “aBc123”
+are identical. The retrieval will have the same capitalization used on insertion. For example: an ad is created with vendorID “Abc123”, the ad can be retrieved by
+vendorID “abc123” (lower case A) but the payload will returned with vendorID “Abc123”, same case as insertion.</p>
 </section>
 <section id="page-tokens">
 <span id="id3"></span><h2>Page tokens<a class="headerlink" href="#page-tokens" title="Permalink to this heading">¶</a></h2>
