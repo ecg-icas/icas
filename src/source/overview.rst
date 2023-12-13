@@ -119,9 +119,21 @@ Image Downloads
 Images & feeds are downloaded from the following ip addresses. Ensure that all image
 URLs are accessible by these ip addresses and that there is no rate limit.
 
- * 5.255.156.110 (production)
- * 5.255.156.126 (production)
- * 91.211.74.6   (sandbox)
+ * 5.255.156.110  (Production)
+ * 5.255.156.126  (Production)
+ * 3.64.37.25     (Production)
+ * 18.194.96.182  (Production)
+ * 3.72.155.39    (Production)
+ * 34.253.123.82  (Production)
+ * 34.246.217.218 (Production)
+ * 52.214.29.214  (Production)
+ * 3.98.109.128   (Production - Canada IP for Clients with Geo-blocking)
+ * 3.99.27.64     (Production - Canada IP for Clients with Geo-blocking)
+ * 3.97.250.121   (Production - Canada IP for Clients with Geo-blocking)
+ * 3.68.139.10    (Sandbox)
+ * 3.77.63.23     (Sandbox)
+ * 3.77.131.63    (Sandbox)
+ * 91.211.74.6    (Sandbox)
 
 To reduce the latency when updating an ad we suggest that the response
 contains either an ``ETag`` and/or ``Last-Modified`` header which only changes
@@ -139,9 +151,21 @@ Feed Downloads
 Feeds & images are downloaded following ip addresses. Ensure that all feed
 URLs are accessible by these ip addresses and that there is no rate limit.
 
-* 5.255.156.110 (production)
-* 5.255.156.126 (production)
-* 91.211.74.6   (sandbox)
+ * 5.255.156.110  (Production)
+ * 5.255.156.126  (Production)
+ * 3.64.37.25     (Production)
+ * 18.194.96.182  (Production)
+ * 3.72.155.39    (Production)
+ * 34.253.123.82  (Production)
+ * 34.246.217.218 (Production)
+ * 52.214.29.214  (Production)
+ * 3.98.109.128   (Production - Canada IP for Clients with Geo-blocking)
+ * 3.99.27.64     (Production - Canada IP for Clients with Geo-blocking)
+ * 3.97.250.121   (Production - Canada IP for Clients with Geo-blocking)
+ * 3.68.139.10    (Sandbox)
+ * 3.77.63.23     (Sandbox)
+ * 3.77.131.63    (Sandbox)
+ * 91.211.74.6    (Sandbox)
 
 We typically run our feed import at 07:00 in the morning (local time), but we can trigger
 additional import runs at any time if we deem it necessary (due to maintenance, tests, whutnot). 
@@ -244,7 +268,10 @@ Such a vendorId cannot, once set, be changed or removed. It has become as strong
 that's being used. This also means that within all ads of a seller, the vendorIds must be unique. Similarly, within all campaigns
 of a seller, the vendorIds must be unique.
 
-Keep in mind that vendorId is case-insensitive and only allows `windows-1252`_ (also known as Latin-1) characters.
+Keep in mind that vendorId is case-insensitive and only allows `windows-1252`_ (also known as Latin-1) characters. For example, an ad is created with vendorId "abc123", 
+and this ad can be retrieved by vendorId "Abc123". If you want to create another ad with vendorId "aBc123", the creation will fail. Because "abc123", "Abc123" and "aBc123" 
+are identical. The retrieval will have the same capitalization used on insertion. For example: an ad is created with vendorID "Abc123", the ad can be retrieved by 
+vendorID "abc123" (lower case A) but the payload will returned with vendorID "Abc123", same case as insertion.
 
 .. _page_tokens:
 

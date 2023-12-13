@@ -5,7 +5,7 @@ info:
   version: '0.119'
   title: 'iCAS Sellside API'
 servers:
-  - url: 'http://www.mp.dev/api/sellside'
+  - url: 'https://www.mp.test/api/sellside'
     description: 'Local environment [marktplaats.nl]'
 
   - url: 'https://internet.mp.qa.icas.io/api/sellside'
@@ -14,16 +14,16 @@ servers:
     description: 'QA environment [2dehands.be] NL'
   - url: 'https://internet.twhbe-fr.qa.icas.io/api/sellside'
     description: 'QA environment [2ememain.be] FR'
-  - url: ' https://internet.ebayk.qa.icas.io/api/sellside'
+  - url: 'https://internet.ebayk.qa.icas.io/api/sellside'
     description: 'QA environment [kleinanzeigen.de]'
-  - url: ' https://internet.kjca.qa.icas.io/api/sellside'
+  - url: 'https://internet.kjca.qa.icas.io/api/sellside'
     description: 'QA environment [kijiji.ca]'
 
   - url: 'https://admarkt.demo.qa-mp.so/api/sellside'
     description: 'Pre-prod (demo/sandbox) environment [marktplaats.nl]'
   - url: 'https://admarkt.demo-2dehands.qa-mp.so/api/sellside'
     description: 'Pre-prod (demo/sandbox) environment [2dehands.be] NL'
-  - url:  'http://admarkt.demo-2ememain.qa-mp.so//api/sellside'
+  - url: 'https://admarkt.demo-2ememain.qa-mp.so//api/sellside'
     description: 'QA environment [2ememain.be] FR'
   - url: 'https://internet.ka.pre-prod.icas.io/api/sellside'
     description: 'Pre-prod (demo/sandbox) environment [kleinanzeigen.de]'
@@ -242,12 +242,6 @@ paths:
                     - code: 2023
                       text: 'category deleted'
                       msg: 'The category has been deleted and will not allow creation/updating of ads'
-                      field: 'categoryId'
-                example8:
-                  value:
-                    - code: 2026
-                      text: 'too many ads in category'
-                      msg: 'Cannot put more ads in this category'
                       field: 'categoryId'
         '401':
           description: 'Unauthorized'
@@ -1832,7 +1826,7 @@ paths:
                 successWarningsErrors:
                   value:
                     id: 123
-                    url: 'http://feed.com/id/5324'
+                    url: 'https://feed.com/id/5324'
                     dateCreated: '2021-08-31T16:12:53Z'
                     status: 'DONE'
                     error: ''
@@ -1869,7 +1863,7 @@ paths:
                 successXMLValidationRejected:
                   value:
                     id: 123
-                    url: 'http://feed.com/id/5324'
+                    url: 'https://feed.com/id/5324'
                     dateCreated: '2021-08-31T16:12:53Z'
                     status: 'REJECTED'
                     error: 'feed validation failure: invalid feed: parsing xml feed: XML syntax error on line 34: invalid character entity &raquo;'
@@ -1882,10 +1876,10 @@ paths:
                 successURLFetchFailure:
                   value:
                     id: 123
-                    url: 'http://feed.com/id/5324.xml'
+                    url: 'https://feed.com/id/5324.xml'
                     dateCreated: '2021-08-31T16:12:53Z'
                     status: 'REJECTED'
-                    error: 'HTTP 404 Not Found for: http://feed.com/id/5324.xml: fetch url failure'
+                    error: 'HTTP 404 Not Found for: https://feed.com/id/5324.xml: fetch url failure'
                     totalCount: 0
                     okCount: 0
                     errorCount: 0
