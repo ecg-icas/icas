@@ -47,6 +47,8 @@ help:
 	@echo "  doctest       to run all doctests embedded in the documentation (if enabled)"
 	@echo "  version       to set the version of the API release to the one in conf.py"
 
+install-version: install version
+
 version: check-version
 	@echo "Will set version to $(v)"
 	mkdir -p ../doc/$(v)

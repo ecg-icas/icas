@@ -7,7 +7,7 @@ For changes to the **freeform part** of the documentation, `sphinx-build` versio
 
 Run
 ```
-make version
+make install-version
 ```
 to make sure the necessary html files are generated properly.
  
