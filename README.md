@@ -3,7 +3,7 @@
 Please head over to our [documentation](https://ecg-icas.github.io/icas/doc/prod/).
 
 ### Making changes to the API documentation
-For changes to the **freeform part** of the documentation, `sphinx-build` version 6.1.3 is required. 
+For changes to the **freeform part** of the documentation (**anything under src/**), `sphinx-build` version 6.1.3 is required. 
 
 Run
 ```
