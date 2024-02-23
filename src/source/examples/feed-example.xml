@@ -30,18 +30,9 @@
                 <admarkt:location>1097DN</admarkt:location>
             </admarkt:shippingOption>
             <admarkt:shippingOption>
-                <admarkt:shippingType>PICKUP</admarkt:shippingType>
-                <admarkt:location>1055AB</admarkt:location>
-            </admarkt:shippingOption>
-            <admarkt:shippingOption>
                 <admarkt:shippingType>SHIP</admarkt:shippingType>
                 <admarkt:cost>695</admarkt:cost>
-                <admarkt:time>2d-5d;</admarkt:time>
-            </admarkt:shippingOption>
-            <admarkt:shippingOption>
-                <admarkt:shippingType>SHIP</admarkt:shippingType>
-                <admarkt:cost>1195</admarkt:cost>
-                <admarkt:time>1d-2d</admarkt:time>
+                <admarkt:time>2d-5d</admarkt:time>
             </admarkt:shippingOption>
         </admarkt:shippingOptions>
         <admarkt:attributes>
