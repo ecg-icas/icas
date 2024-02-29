@@ -802,7 +802,7 @@ Provide the information on how your product can be delivered to customers.
 |
 
 Restrictions: Shipping options can be disabled/optional/mandatory for an ad.
-Ads can contain maximum one shipping option per shipping option type (SHIP/PICKUP).'
+Ads can contain maximum one shipping option per shipping option type (SHIP/PICKUP).
 It is configured per category, see :ref:`category_config_v2`.
 
 .. index:: phoneNumber
