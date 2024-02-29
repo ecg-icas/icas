@@ -340,8 +340,8 @@
 <td><p><a class="reference internal" href="#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a></p></td>
 <td><p>no</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#feed-ship"><span class="std std-ref">pickup locations</span></a></p></td>
-<td><p>pickup locations</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-ship"><span class="std std-ref">pickup location</span></a></p></td>
+<td><p>pickup location</p></td>
 <td><p><a class="reference internal" href="#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a></p></td>
 <td><p>no</p></td>
 </tr>
@@ -1326,24 +1326,22 @@ The minimum value depends on the category.</p>
 <summary>TSV</summary><p>Use <strong>shipping</strong> field to tell customers about the different cost vs. time options for your product delivery.
 Each option should be formatted as follows:</p>
 <p>[<em>cost in cents</em>]:[<em>minimum transit time in days</em>]-[<em>maximum transit time in days</em>]</p>
-<p>You can provide multiple shipping options in a comma-separated list.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
-<td><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>695:2d-5d;1195:1d-2d
+<td><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>695:2d-5d
 </pre></div>
 </div>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Use <strong>pickup locations</strong> field to tell customers <cite>location(s)</cite> your product can be picked up at.
-Location is given as a postal code.
-You can provide multiple locations in a comma-separated list.</p>
+<p>Use <strong>pickup location</strong> field to tell customers <cite>location</cite> your product can be picked up at.
+Location is given as a postal code.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
-<td><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1097DN,1055AB
+<td><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1097DN
 </pre></div>
 </div>
 </td>
@@ -1351,7 +1349,7 @@ You can provide multiple locations in a comma-separated list.</p>
 </tbody>
 </table>
 </details><details class="summary-xml">
-<summary>XML</summary><p>You can provide multiple shipping/ pick-up options for each product.
+<summary>XML</summary><p>You can provide shipping/ pick-up options for each ad.
 Each option can be described with the following information:</p>
 <table class="docutils align-default">
 <thead>
@@ -1402,6 +1400,7 @@ For shippingType ‘PICKUP’ provide ‘location’. Both ‘cost’ and ‘tim
 <div class="line"><br /></div>
 </div>
 <p>Restrictions: Shipping options can be disabled/optional/mandatory for an ad.
+Ads can contain maximum one shipping option per shipping option type (<em>SHIP</em>/<em>PICKUP</em>).’
 It is configured per category, see <a class="reference internal" href="categories.html#category-config-v2"><span class="std std-ref">Category Configuration</span></a>.</p>
 </section>
 <section id="phone-number">

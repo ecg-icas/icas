@@ -21,6 +21,8 @@ The most popular IDEs for development have an OpenAPI plugin, which helps with v
 [Here](https://plugins.jetbrains.com/plugin/14837-openapi-swagger-editor) is one for IntellJ IDEA.
 Alternatively, the web [Swagger editor](https://editor.swagger.io/) can help to surface any errors quickly, but is limited to a single file.
 
-Please **make sure to resolve any linter errors and warnings** before committing changes to the main `gh-pages` branch.
+Release follows standard procedure: add changes to new branch, create a PR and get required approvals, finally merge to `gh-pages`.
+
+Please **make sure to resolve any linter errors and warnings** before merging changes to the main `gh-pages` branch.
 
 (c) 2015 - The iCAS Team
