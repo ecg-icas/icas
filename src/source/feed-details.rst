@@ -749,13 +749,20 @@ Provide the information on how your product can be delivered to customers.
     Use **shipping** field to tell customers about the different cost vs. time options for your product delivery.
     Each option should be formatted as follows:
 
-    [*cost in cents*]:[*minimum transit time in days*]-[*maximum transit time in days*]
+       [*cost in cents*]:[*<time formatted string>*], where *<time formatted string>* allows the following values/formats:
 
+
+           - literal values: **2d-5d** and **6d-10d**. These default values represent [*minimum transit time in days*]-[*maximum transit time in days*] options.
+           - format: **<number (not starting with 0)>d**. The format represents [*transit time in days*] only (without minimum/maximum components).
 
     ========= ========================
      Example	 .. code-block:: text
 
                     695:2d-5d
+                    695:6d-10d
+                    695:1d
+                    695:12d
+                    695:123d
     ========= ========================
 
 
@@ -784,6 +791,13 @@ Provide the information on how your product can be delivered to customers.
 
     *SHIP* means the item can be delivered to the buyer in the provided `time` and for the provided `cost`.
     For shippingType 'SHIP' provide 'cost' in cents and 'time' in days. 'location' is ignored.
+    Each option should be formatted as follows:
+
+       [*cost in cents*]:[*<time formatted string>*], where *<time formatted string>* allows the following values/formats:
+
+
+           - literal values: **2d-5d** and **6d-10d**. These default values represent [*minimum transit time in days*]-[*maximum transit time in days*] options.
+           - format: **<number (not starting with 0)>d**. The format represents [*transit time in days*] only (without minimum/maximum components).
 
     *PICKUP* means the item can be picked up at the provided `location`
     For shippingType 'PICKUP' provide 'location'. Both 'cost' and 'time' are ignored.

@@ -1325,11 +1325,23 @@ The minimum value depends on the category.</p>
 <details class="summary-tsv">
 <summary>TSV</summary><p>Use <strong>shipping</strong> field to tell customers about the different cost vs. time options for your product delivery.
 Each option should be formatted as follows:</p>
-<p>[<em>cost in cents</em>]:[<em>minimum transit time in days</em>]-[<em>maximum transit time in days</em>]</p>
+<blockquote>
+<div><p>[<em>cost in cents</em>]:[<em>&lt;time formatted string&gt;</em>], where <em>&lt;time formatted string&gt;</em> allows the following values/formats:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>literal values: <strong>2d-5d</strong> and <strong>6d-10d</strong>. These default values represent [<em>minimum transit time in days</em>]-[<em>maximum transit time in days</em>] options.</p></li>
+<li><p>format: <strong>&lt;number (not starting with 0)&gt;d</strong>. The format represents [<em>transit time in days</em>] only (without minimum/maximum components).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
 <td><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>695:2d-5d
+695:6d-10d
+695:1d
+695:12d
+695:123d
 </pre></div>
 </div>
 </td>
@@ -1378,7 +1390,17 @@ Each option can be described with the following information:</p>
 </tbody>
 </table>
 <p><em>SHIP</em> means the item can be delivered to the buyer in the provided <cite>time</cite> and for the provided <cite>cost</cite>.
-For shippingType ‘SHIP’ provide ‘cost’ in cents and ‘time’ in days. ‘location’ is ignored.</p>
+For shippingType ‘SHIP’ provide ‘cost’ in cents and ‘time’ in days. ‘location’ is ignored.
+Each option should be formatted as follows:</p>
+<blockquote>
+<div><p>[<em>cost in cents</em>]:[<em>&lt;time formatted string&gt;</em>], where <em>&lt;time formatted string&gt;</em> allows the following values/formats:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>literal values: <strong>2d-5d</strong> and <strong>6d-10d</strong>. These default values represent [<em>minimum transit time in days</em>]-[<em>maximum transit time in days</em>] options.</p></li>
+<li><p>format: <strong>&lt;number (not starting with 0)&gt;d</strong>. The format represents [<em>transit time in days</em>] only (without minimum/maximum components).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
 <p><em>PICKUP</em> means the item can be picked up at the provided <cite>location</cite>
 For shippingType ‘PICKUP’ provide ‘location’. Both ‘cost’ and ‘time’ are ignored.</p>
 <table class="docutils align-default">
@@ -1400,7 +1422,7 @@ For shippingType ‘PICKUP’ provide ‘location’. Both ‘cost’ and ‘tim
 <div class="line"><br /></div>
 </div>
 <p>Restrictions: Shipping options can be disabled/optional/mandatory for an ad.
-Ads can contain maximum one shipping option per shipping option type (<em>SHIP</em>/<em>PICKUP</em>).’
+Ads can contain maximum one shipping option per shipping option type (SHIP/PICKUP).’
 It is configured per category, see <a class="reference internal" href="categories.html#category-config-v2"><span class="std std-ref">Category Configuration</span></a>.</p>
 </section>
 <section id="phone-number">
