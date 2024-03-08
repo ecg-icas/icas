@@ -7,7 +7,7 @@
         <admarkt:categoryId>999</admarkt:categoryId>
         <admarkt:url>https://pinball.com/game/bally-adams-family/</admarkt:url>
         <admarkt:vanityUrl>https://pinball.com</admarkt:vanityUrl>
-        <admarkt:price>875000</admarkt:price>
+        <admarkt:price>870000</admarkt:price>
         <admarkt:originalPrice>875000</admarkt:originalPrice>
         <admarkt:priceType>FIXED_PRICE</admarkt:priceType>
         <admarkt:phoneNumber>16123456789</admarkt:phoneNumber>
@@ -20,9 +20,10 @@
             <admarkt:image url="https://pinball.com/game/bally-adams-family/3.jpg"/>
         </admarkt:media>
         <admarkt:budget>
+            <admarkt:cpc/>
+            <admarkt:autobid>false</admarkt:autobid>
             <admarkt:totalBudget>10000</admarkt:totalBudget>
             <admarkt:dailyBudget>1000</admarkt:dailyBudget>
-            <admarkt:autobid>true</admarkt:autobid>
         </admarkt:budget>
         <admarkt:shippingOptions>
             <admarkt:shippingOption>
@@ -54,7 +55,7 @@
                 <admarkt:attributeValue>800x600:18dpi</admarkt:attributeValue>
             </admarkt:attribute>
         </admarkt:attributes>
-        <admarkt:gtin>93845278905</admarkt:gtin>
+        <admarkt:gtin>840639124391</admarkt:gtin>
         <admarkt:productType>Hobby &amp; Games &gt; Arcade Games &gt; Pinball Machines</admarkt:productType>
         <admarkt:googleProductCategory>Electronics &gt; Arcade Equipment &gt; Pinball Machines</admarkt:googleProductCategory>
         <admarkt:brand>Bally</admarkt:brand>
