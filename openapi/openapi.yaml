@@ -2650,12 +2650,12 @@ paths:
           description: 'This header represents the version of the response acceptable by the client.'
           schema:
             type: string
-            example: 'application/sellside.campaign-v5+json'
+            example: 'application/sellside.campaign.budgets-v5+json'
           required: true
       requestBody:
         required: true
         content:
-          application/sellside.campaign-v5+json:
+          application/sellside.campaign.budgets-v5+json:
             schema:
               $ref: './campaigns/requests.yaml#/components/schemas/BudgetsV5'
       responses:
@@ -2673,7 +2673,7 @@ paths:
                 type: string
                 example: 'put_campaign'
           content:
-            application/sellside.campaign-v5+json:
+            application/sellside.campaign.budgets-v5+json:
               schema:
                 $ref: './campaigns//responses.yaml#/components/schemas/BudgetsV5'
         '404':
