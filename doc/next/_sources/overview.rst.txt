@@ -224,7 +224,7 @@ HTTP Response Codes and Error Handling
 --------------------------------------
 
 To retrieve, update and delete resources with the Sellside API you use the
-standard HTTP verbs ``GET``, ``PUT`` and ``DELETE``. If the resource exists
+standard HTTP verbs ``GET`` and ``PUT``. If the resource exists
 and the request was successful the server responds with ``200 OK``. If the
 resource does not exist the server responds with ``404 Not Found``.
 
