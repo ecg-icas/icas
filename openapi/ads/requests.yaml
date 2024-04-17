@@ -612,7 +612,7 @@ components:
             costCents: 495
             time: '2d-5d'
           - type: 'PICKUP'
-        pickupLocation: '1097DN'
+            pickupLocation: '1097DN'
     AutoBiddingV5:
       summary: 'Ad with automatic bidding'
       value:
