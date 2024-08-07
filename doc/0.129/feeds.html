@@ -256,7 +256,14 @@ For more information see <em>FAQ</em> section.</p>
 </div>
 <p>For instructions on how to create your feed in specific formats, please expand the relevant sections.</p>
 <details class="summary-tsv">
-<summary>TSV</summary><p>TSV format follows specification described on <a class="reference external" href="https://en.wikipedia.org/wiki/Tab-separated_values">wiki</a>.
+<summary>TSV</summary><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Beware that double quotes are accepted within a field.
+However, a leading quote in a field indicates that the field is quoted.
+In that situation, the parser must look for a terminating quote before the next separator (tab).
+This means that “First” second third will not be accepted as a single field, whereas First “second” third is a valid single field.</p>
+</div>
+<p>TSV format follows specification described on <a class="reference external" href="https://en.wikipedia.org/wiki/Tab-separated_values">wiki</a>.
 Column names used in TSV feed must superset <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a> specified.
 Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p>
 <p><a class="reference download internal" download="" href="_downloads/93dbf90792498ee82059295c17c481bd/feed-example.tsv"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">example</span></code></a></p>
