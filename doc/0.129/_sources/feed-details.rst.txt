@@ -11,19 +11,19 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     Field                                     Description                          Restrictions         Mandatory
     ========================================= ==================================== ===================  ===========
     :ref:`feed_vendorId`                      **unique** ad identifier             max. 64 chars        yes
-    :ref:`feed_sellerName`                    your company name                          max. 60 chars        no
-    :ref:`feed_t`                             product title                        see :ref:`feed_t`    yes
-    :ref:`feed_descr`                         product description                  :ref:`feed_descr`    yes
+    :ref:`feed_sellerName`                    your company name                    max. 60 chars        no
+    :ref:`feed_t`                             item title                           :ref:`feed_t`        yes
+    :ref:`feed_descr`                         item description                     :ref:`feed_descr`    yes
     :ref:`feed_categoryId`                    category identifier                  numeric, positive    yes
     :ref:`feed_status`                        desired status (default ACTIVE)      ACTIVE,PAUSED        no
-    :ref:`feed_url`                           product URL                          max. 2048 chars      no
+    :ref:`feed_url`                           item URL                             max. 2048 chars      no
     :ref:`feed_vanityUrl`                     displayed URL                        max. 256 chars       no
-    :ref:`feed_priceType`                     sales model for product              enum                 yes
-    :ref:`feed_price`                         product price in cents if applicable positive integer     yes/no
+    :ref:`feed_priceType`                     sales model for item                 enum                 yes
+    :ref:`feed_price`                         item price in cents if applicable    positive integer     yes/no
     :ref:`feed_originalPrice`                 original price before discount       positive integer     no
     :ref:`image link <feed_media>`            primary image                        :ref:`feed_media`    no
     :ref:`additional image link <feed_media>` additional images                    :ref:`feed_media`    no
-    :ref:`feed_attr`                          collection of product attributes     :ref:`feed_attr`     no
+    :ref:`feed_attr`                          collection of item attributes        :ref:`feed_attr`     no
     :ref:`autobid <feed_budget>`              budget details                       :ref:`feed_budget`   no
     :ref:`cpc <feed_budget>`                  budget details                       :ref:`feed_budget`   no
     :ref:`total budget <feed_budget>`         budget details                       :ref:`feed_budget`   no
@@ -33,24 +33,24 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     :ref:`feed_phoneNumber`                   phone number                         max. 32 chars        no
     :ref:`feed_emailAdvertiser`               allow emails to the seller           true,false           no
     :ref:`feed_regionId`                      only applicable for Kijiji Canada    numeric              no
-    :ref:`feed_microTip`                      tiny product highlight               max. 18 chars        no
+    :ref:`feed_microTip`                      tiny item highlight                  max. 18 chars        no
     :ref:`feed_mpn`                           Manufacturer Part Number (MPN)       2-70 chars           no
-    :ref:`feed_googleProductCategory`         google category for your product     string               no
-    :ref:`feed_productType`                   customer product type                max. 750 chars       no
-    :ref:`feed_brand`                         product brand name                   max. 70 chars        no
+    :ref:`feed_googleProductCategory`         google category for your item        string               no
+    :ref:`feed_productType`                   item product type                    max. 750 chars       no
+    :ref:`feed_brand`                         item brand name                      max. 70 chars        no
     :ref:`feed_gtin`                          Global Trade Identification Number   max. 50 chars        no
-    :ref:`feed_itemGroupId`                   groups product variants in your      max. 50 chars        no
-    :ref:`feed_condition`                     condition of product                 enum                 no
-    :ref:`feed_material`                      main product fabrics or materials    max. 200 chars       no
+    :ref:`feed_itemGroupId`                   groups item variants                 max. 50 chars        no
+    :ref:`feed_condition`                     condition of item                    enum                 no
+    :ref:`feed_material`                      main item fabrics or materials       max. 200 chars       no
     :ref:`feed_energyEfficiencyClass`         energy efficiency class              enum                 no
     :ref:`feed_minEnergyEfficiencyClass`      minimal energy efficiency class      enum                 no
     :ref:`feed_maxEnergyEfficiencyClass`      maximal energy efficiency class      enum                 no
-    :ref:`feed_color`                         product colors                       max. 100 chars       no
-    :ref:`feed_gender`                        gender product is designed for       enum                 no
-    :ref:`feed_ageGroup`                      age group product is intended for    enum                 no
+    :ref:`feed_color`                         item colors                          max. 100 chars       no
+    :ref:`feed_gender`                        gender item is designed for          enum                 no
+    :ref:`feed_ageGroup`                      age group item is intended for       enum                 no
     :ref:`feed_size`                          size information                     enum                 no
-    :ref:`feed_unitPricingBaseMeasure`        denominator for product unit price   string               no
-    :ref:`feed_unitPricingMeasure`            measure and dimension of product     string               no
+    :ref:`feed_unitPricingBaseMeasure`        denominator for item unit price      string               no
+    :ref:`feed_unitPricingMeasure`            measure and dimension of item        string               no
     ========================================= ==================================== ===================  ===========
 
 .. collapse:: XML
@@ -60,41 +60,41 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     ====================================== ==================================== ===================  ===========
     :ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
     :ref:`feed_externalId`                 **deprecated**                       --                   --
-    :ref:`feed_sellerName`                 your company name                          max. 60 chars  no
-    :ref:`feed_t`                          product title                        see :ref:`feed_t`    yes
-    :ref:`feed_descr`                      product description                  :ref:`feed_descr`    yes
+    :ref:`feed_sellerName`                 your company name                    max. 60 chars        no
+    :ref:`feed_t`                          item title                           :ref:`feed_t`        yes
+    :ref:`feed_descr`                      item description                     :ref:`feed_descr`    yes
     :ref:`feed_categoryId`                 category identifier                  numeric, positive    yes
     :ref:`feed_status`                     desired status (default ACTIVE)      ACTIVE,PAUSED        no
-    :ref:`feed_url`                        product URL                          max. 2048 chars      no
+    :ref:`feed_url`                        item URL                             max. 2048 chars      no
     :ref:`feed_vanityUrl`                  displayed URL                        max. 256 chars       no
-    :ref:`feed_priceType`                  sales model for product              enum                 yes
-    :ref:`feed_price`                      product price in cents if applicable positive integer     yes/no
+    :ref:`feed_priceType`                  sales model for item                 enum                 yes
+    :ref:`feed_price`                      item price in cents if applicable    positive integer     yes/no
     :ref:`feed_originalPrice`              original price before discount       positive integer     no
-    :ref:`media <feed_media>`              product images                       :ref:`feed_media`    no
-    :ref:`feed_attr`                       collection of product attributes     :ref:`feed_attr`     no
+    :ref:`media <feed_media>`              item images                          :ref:`feed_media`    no
+    :ref:`feed_attr`                       collection of item attributes        :ref:`feed_attr`     no
     :ref:`budget <feed_budget>`            budget details                       :ref:`feed_budget`   no
     :ref:`shipping options <feed_ship>`    shipping options                     :ref:`feed_ship`     no
     :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no
     :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
     :ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no
-    :ref:`feed_microTip`                   tiny product highlight               max. 18 chars        no
+    :ref:`feed_microTip`                   tiny item highlight                  max. 18 chars        no
     :ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no
-    :ref:`feed_googleProductCategory`      google category for your product     string               no
-    :ref:`feed_productType`                customer product type                max. 750 chars       no
-    :ref:`feed_brand`                      product brand name                   max. 70 chars        no
+    :ref:`feed_googleProductCategory`      google category for your item        string               no
+    :ref:`feed_productType`                item product type                    max. 750 chars       no
+    :ref:`feed_brand`                      item brand name                      max. 70 chars        no
     :ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no
-    :ref:`feed_itemGroupId`                groups product variants in your      max. 50 chars        no
-    :ref:`feed_condition`                  condition of product                 enum                 no
-    :ref:`feed_material`                   main product fabrics or materials    max. 200 chars       no
+    :ref:`feed_itemGroupId`                groups item variants                 max. 50 chars        no
+    :ref:`feed_condition`                  condition of item                    enum                 no
+    :ref:`feed_material`                   main item fabrics or materials       max. 200 chars       no
     :ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
     :ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
     :ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
-    :ref:`feed_color`                      product colors                       max. 100 chars       no
-    :ref:`feed_gender`                     gender product is designed for       enum                 no
-    :ref:`feed_ageGroup`                   age group product is intended for    enum                 no
+    :ref:`feed_color`                      item colors                          max. 100 chars       no
+    :ref:`feed_gender`                     gender item is designed for          enum                 no
+    :ref:`feed_ageGroup`                   age group item is intended for       enum                 no
     :ref:`feed_size`                       size information                     enum                 no
-    :ref:`feed_unitPricingBaseMeasure`     denominator for product unit price   string               no
-    :ref:`feed_unitPricingMeasure`         measure and dimension of product     string               no
+    :ref:`feed_unitPricingBaseMeasure`     denominator for item unit price      string               no
+    :ref:`feed_unitPricingMeasure`         measure and dimension of item        string               no
     ====================================== ==================================== ===================  ===========
 
 |
@@ -131,8 +131,6 @@ of creating a new ad. **vendor id** is mandatory and, unique for each ad in the 
 
 .. collapse:: XML
 
-    Use **vendorId** tag name to encapsulate **vendor id**.
-
     ========= ================================================
     Example:
 
@@ -143,7 +141,7 @@ of creating a new ad. **vendor id** is mandatory and, unique for each ad in the 
 
 |
 
-Restrictions:  Any non-empty string with a maximum length of 64 characters.
+Restrictions: Non-empty string with a maximum of 64 characters.
 
 .. index:: externalId
 .. _feed_externalId:
@@ -193,7 +191,7 @@ Use the **seller name** field to communicate your company name to be displayed.
 
 |
 
-Restrictions: max. 60 characters
+Restrictions: Maximum of 60 characters.
 
 .. index:: title
 .. _feed_t:
@@ -201,9 +199,9 @@ Restrictions: max. 60 characters
 title
 """""
 
-Use the title **title** field to clearly identify the product you are selling.
+Use the title **title** field to clearly identify the item you are selling.
 The title is one of the most prominent parts of your ad or free listing.
-A specific and accurate title will help us show your product to the right customers.
+A specific and accurate title will help us show your item to the right buyers.
 
 .. collapse:: TSV
 
@@ -227,7 +225,8 @@ A specific and accurate title will help us show your product to the right custom
 
 |
 
-Restrictions: Any string, with minimum and maximum length determined by the category, with a maximum cap of 1024 characters. See :ref:`categories`. URLs are not allowed as part of the title.
+Restrictions: Minimum and maximum length determined by category ()with a maximum cap of 1024 characters). See :ref:`categories`.
+URLs are not allowed as part of the title.
 
 .. index:: description
 .. _feed_descr:
@@ -235,7 +234,7 @@ Restrictions: Any string, with minimum and maximum length determined by the cate
 description
 """""""""""
 
-Use the **description** field to tell customers about the details of the product you are selling.
+Use the **description** field to tell buyers about the details of the item you are selling.
 
 .. collapse:: TSV
 
@@ -303,7 +302,8 @@ Use the **description** field to tell customers about the details of the product
 
 |
 
-Restrictions: Any string, with minimum and maximum length determined by the category. See :ref:`categories`. URLs are not allowed as part of the description.
+Restrictions: Minimum and maximum length determined by the category. See :ref:`categories`.
+URLs are not allowed as part of the description.
 All HTML elements except for the ones below will be removed:
 
 .. code-block:: html
@@ -317,9 +317,9 @@ All HTML elements except for the ones below will be removed:
 category id
 """""""""""
 
-Use **category id** to place your product in the :ref:`categories` tree.
+Use **category id** to place your item in the :ref:`categories` tree.
 
-Each product belongs to one and only one category.
+Each item belongs to one and only one category.
 
 .. collapse:: TSV
 
@@ -384,7 +384,7 @@ For instance, budget may be depleted, or you may have too many active ads alread
 
 |
 
-Allowed values: *ACTIVE*, *PAUSED*
+Restrictions: Allowed values are *ACTIVE*, *PAUSED*
 
 .. index:: url
 .. _feed_url:
@@ -392,7 +392,7 @@ Allowed values: *ACTIVE*, *PAUSED*
 url
 """
 
-Utilize the **url** to establish a connection to your product page from the advertisement.
+Utilize the **url** to establish a connection to your item page from the advertisement.
 This represents an external URL, which will be displayed on the ad detail page or search result page.
 
 .. collapse:: TSV
@@ -451,7 +451,7 @@ Use **vanity url** to provide the text for the :ref:`feed_url` link.
 price type
 """"""""""
 
-Use **price type** to define :ref:`pricing model<price_types>` for your product.
+Use **price type** to define :ref:`pricing model<price_types>` for your item.
 
 .. collapse:: TSV
 
@@ -473,7 +473,7 @@ Use **price type** to define :ref:`pricing model<price_types>` for your product.
 
 |
 
-Allowed Values: BIDDING, BIDDING_FROM, FIXED_PRICE, FREE, NEGOTIABLE, SEE_DESCRIPTION, SWAP, CREDIBLE_BID, ON_DEMAND, NOT_APPLICABLE, RESERVED
+Restrictions: Allowed Values are *BIDDING*, *BIDDING_FROM*, *FIXED_PRICE*, *FREE*, *NEGOTIABLE*, *SEE_DESCRIPTION*, *SWAP*, *CREDIBLE_BID*, *ON_DEMAND*, *NOT_APPLICABLE*, *RESERVED*
 
 .. index:: price
 .. _feed_price:
@@ -481,10 +481,10 @@ Allowed Values: BIDDING, BIDDING_FROM, FIXED_PRICE, FREE, NEGOTIABLE, SEE_DESCRI
 price
 """""
 
-Use **price** to tell customers the price of the product you are selling.
+Use **price** to tell buyers the price of the item you are selling.
 The meaning of the value depends on the :ref:`feed_priceType`.
 
-If it is `FIXED_PRICE` or `BIDDING_FROM` then **price** is mandatory and needs to be greater than 0.
+If **price type** is `FIXED_PRICE` or `BIDDING_FROM` then **price** is mandatory and needs to be greater than 0.
 
 .. collapse:: TSV
 
@@ -514,7 +514,7 @@ Restrictions: The maximum allowed **price** value is ``10000000000`` given in ``
 original price
 """"""""""""""
 
-Use **original price** to tell your product price before discount.
+Use **original price** to tell your item price before discount.
 Ignored if a seller does not have a discount feature enabled.
 
 .. collapse:: TSV
@@ -538,22 +538,26 @@ Ignored if a seller does not have a discount feature enabled.
 |
 
 Restrictions: Must be greater than :ref:`feed_price`.
-The maximum allowed **product price** value is ``10000000000`` given in ``cents`` of the local market currency (100.000.000,00 EUR / CAD / ... ).
+The maximum allowed **item price** value is ``10000000000`` given in ``cents`` of the local market currency (100.000.000,00 EUR / CAD / ... ).
 
 .. index:: media
 .. _feed_media:
 
-product images
+item images
 """"""""""""""
 
-You can provide multiple images for your product.
+You can provide multiple images for your item.
 
 All images will be resized if necessary to a size of maximum 1024px height and 1024px width (preserving the aspect ratio)
 The system will download the images and, if they meet the requirements, store them on our servers in several sizes.
 
+The **main image** is shown in search results and acts as the first image on the item page.
+Additional images will be presented in the provided order in the item page.
+
+
 .. collapse:: TSV
 
-    Use **image link** column to give us a link to the best picture of your product.
+    Use **image link** column to provide the link to the **main image** of your item.
 
     ========= ========================
      Example	 .. code-block:: text
@@ -561,8 +565,7 @@ The system will download the images and, if they meet the requirements, store th
                     https://images.pexels.com/photos/62289.jpeg
     ========= ========================
 
-    Use **additional image link** for even more pictures of your product.
-    If there are more than one, separate them with commas.
+    Use **additional image link** for more images of your item. Multiple values should be separate with commas.
 
     ========= ========================
      Example	 .. code-block:: text
@@ -570,13 +573,13 @@ The system will download the images and, if they meet the requirements, store th
                     https://images.pexels.com/photos/62290.jpeg,https://images.pexels.com/photos/62291.jpeg
     ========= ========================
 
-    All URLs must be complete links pointing to an image on a publicly available web server.
 
 .. collapse:: XML
 
-    Use **<media>** tag for grouping your product images.
-    **<media>** should contain from 0 to N **<image>** ordered elements, where the exact limit depends on the category in taxonomy.
-    **<image>** elements must contain a complete URL link pointing to an image on a publicly available web server.
+    Use **<media>** tag for grouping your item images.
+    **<media>** should contain from 0 to N **<image>** ordered elements.
+
+    The first element is considered the **main image**
 
     ======= ===========================================================
     Example .. code-block:: html
@@ -587,9 +590,11 @@ The system will download the images and, if they meet the requirements, store th
                 <admarkt:media/>
     ======= ===========================================================
 
-    The images will be presented in the provided order. The first image is shown in search results and acts as the main image on the item page.
-
 |
+
+Restrictions: Image number limit depends on the category in taxonomy
+
+All URLs links must be complete, and pointing to an image on a publicly available web server.
 
 Allowed image formats: JPEG, JPG, PNG, GIF\*, BMP.
 
@@ -602,11 +607,14 @@ Also, animated GIFs and PNGs are not supported.
 attributes
 """"""""""
 
-Use **attributes** field to provide additional information on your product in a structured way.
+Use **attributes** field to provide additional information on your item in a structured way,
+by providing a list of item :ref:`user_defined_attributes` that can be used to influence the ad relevance.
+**attributes** are category dependent.
+
 
 .. collapse:: TSV
 
-    Define your attribute as *name*:*value* pair in the **attributes** column.
+    Use **attributes** column to provide a list of item attributes using the the format: *name*:*value*.
 
     ========= ========================
      Example	 .. code-block:: text
@@ -622,7 +630,7 @@ Use **attributes** field to provide additional information on your product in a 
                     model:Adams Family,multiball:TRUE,screen size:32"
     ========= ========================
 
-    If the name, or the value of your attribute contains commas, use quotes to escape it.
+    If the name or the value of your attribute contains commas, it needs to be enclosed in quotes.
 
     ========= ========================
      Example	 .. code-block:: text
@@ -632,7 +640,6 @@ Use **attributes** field to provide additional information on your product in a 
 
 .. collapse:: XML
 
-    **attributes** tag contains collection of product :ref:`user_defined_attributes` (category-dependent), that can be used to influence the ad relevance.
 
     ======= ===========================================================
     Example .. code-block:: html
@@ -742,11 +749,27 @@ The minimum and maximum values of the cost per click (CPC) depend on the categor
 shipping & pick-up
 """"""""""""""""""
 
-Provide the information on how your product can be delivered to customers.
+Use **shipping options** to inform buyers about item delivery details
+Each option can be described with the following information:
+
+============= ========================================== ========
+Name          Description                                Required
+============= ========================================== ========
+shippingType  SHIP, PICKUP                               Yes
+cost          cost of shipping in cents                  No
+time          time it takes to deliver the item          No
+location      pick up location of the item               No
+============= ========================================== ========
+
+*SHIP* means the item can be delivered to the buyer in the provided `time` and for the provided `cost`.
+*PICKUP* means the item can be picked up by the buyer in the provided `location`.
+For *SHIP* provide 'cost' in cents and 'time' in days, 'location' is ignored.
+For *PICKUP* provide 'location', 'cost' and 'time' are ignored.
 
 .. collapse:: TSV
 
-    Use **shipping** field to tell customers about the different cost vs. time options for your product delivery.
+    Use **shipping** field to tell buyers about the different cost vs. time options for your item delivery.
+
     Each option should be formatted as follows:
 
        [*cost in cents*]:[*<time formatted string>*], where *<time formatted string>* allows the following values/formats:
@@ -766,7 +789,7 @@ Provide the information on how your product can be delivered to customers.
     ========= ========================
 
 
-    Use **pickup location** field to tell customers `location` your product can be picked up at.
+    Use **pickup location** field to tell buyers the `location` your item can be picked up at.
     Location is given as a postal code.
 
     ========= ========================
@@ -777,30 +800,6 @@ Provide the information on how your product can be delivered to customers.
 
 .. collapse:: XML
 
-    You can provide shipping/ pick-up options for each ad.
-    Each option can be described with the following information:
-
-    ============= ========================================== ========
-    Name          Description                                Required
-    ============= ========================================== ========
-    shippingType  SHIP, PICKUP                               Yes
-    cost          cost of shipping in cents                  No
-    time          time it takes to deliver the product       No
-    location      pick up location of the product            No
-    ============= ========================================== ========
-
-    *SHIP* means the item can be delivered to the buyer in the provided `time` and for the provided `cost`.
-    For shippingType 'SHIP' provide 'cost' in cents and 'time' in days. 'location' is ignored.
-    Each option should be formatted as follows:
-
-       [*cost in cents*]:[*<time formatted string>*], where *<time formatted string>* allows the following values/formats:
-
-
-           - literal values: **2d-5d** and **6d-10d**. These default values represent [*minimum transit time in days*]-[*maximum transit time in days*] options.
-           - format: **<number (not starting with 0)>d**. The format represents [*transit time in days*] only (without minimum/maximum components).
-
-    *PICKUP* means the item can be picked up at the provided `location`
-    For shippingType 'PICKUP' provide 'location'. Both 'cost' and 'time' are ignored.
 
     ======= ===========================================================
     Example .. code-block:: html
@@ -817,7 +816,7 @@ Provide the information on how your product can be delivered to customers.
 
 Restrictions: Shipping options can be disabled/optional/mandatory for an ad.
 Ads can contain maximum one shipping option per shipping option type (SHIP/PICKUP).
-It is configured per category, see :ref:`category_config_v2`.
+Shipping options are configured per category, see :ref:`category_config_v2`.
 
 .. index:: phoneNumber
 .. _feed_phoneNumber:
@@ -825,7 +824,7 @@ It is configured per category, see :ref:`category_config_v2`.
 phone number
 """"""""""""
 
-Use the **phone number** field to allow customers call you and ask about the product.
+Use the **phone number** field to allow buyers to call you and ask about the item.
 
 .. collapse:: TSV
 
@@ -855,7 +854,7 @@ Restrictions: The number should be given as an international phone number format
 email advertiser
 """"""""""""""""
 
-Use the **email advertiser** flag to allow customers to contact you via email (or the other platform defined form of contact), and ask about the product.
+Use the **email advertiser** flag to allow buyers to contact you via email (or the other platform defined form of contact), and ask about the item.
 The default value is false.
 
 .. collapse:: TSV
@@ -878,7 +877,7 @@ The default value is false.
 
 |
 
-Allowed values: *true*, *false*
+Restrictions: Allowed values *true* and *false*
 
 .. index:: regionId
 .. _feed_regionId:
@@ -951,8 +950,8 @@ If *micro tip* feature is not enabled for the seller, the field will be ignored.
 
 |
 
-Restrictions: Limit your text to a maximum length of 18 characters.
-The following characters ``.,/@#<>`` are not allowed.
+Restrictions: Maximum of 18 characters.
+The characters ``.,/@#<>`` are not allowed.
 
 .. index:: mpn
 .. _feed_mpn:
@@ -982,7 +981,7 @@ Manufacturer Part Number (MPN), definition follows `Google Merchant Center <http
 
 |
 
-Restrictions: String identifier max 70 characters long.
+Restrictions: Maximum of 70 characters.
 
 .. index:: googleProductCategory
 .. _feed_googleProductCategory:
@@ -990,7 +989,7 @@ Restrictions: String identifier max 70 characters long.
 google product category
 """""""""""""""""""""""
 
-Use this field to describe your product category in Google's product taxonomy.
+Use this field to describe your item category in Google's product taxonomy.
 See `Google Merchant Center <https://support.google.com/merchants/answer/6324436>`__
 
 
@@ -1022,7 +1021,7 @@ See `Google Merchant Center <https://support.google.com/merchants/answer/6324436
 
 |
 
-Restrictions: Should be a valid category. You can provide it, either with identifier, or giving full category path.
+Restrictions: Should be a valid category. You can provide it using the identifier, or the full category path.
 
 .. index:: productType
 .. _feed_productType:
@@ -1030,7 +1029,7 @@ Restrictions: Should be a valid category. You can provide it, either with identi
 product type
 """"""""""""""""""""""
 
-The **product type** field provides an opportunity for you to incorporate your unique product classification system into the dataset.
+The **product type** field allows you to incorporate your item unique product type classification system into the dataset.
 Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324406>`__ guidelines.
 
 .. collapse:: TSV
@@ -1055,7 +1054,7 @@ Definition follows `Google Merchant Center <https://support.google.com/merchants
 
 |
 
-Restrictions: Do not exceed 750 characters limit for your text.
+Restrictions: Maximum of 750 characters.
 
 .. index:: brand
 .. _feed_brand:
@@ -1063,7 +1062,7 @@ Restrictions: Do not exceed 750 characters limit for your text.
 brand
 """"""""""""""""""""""
 
-Use the **brand** field to help customers identify your product.
+Use the **brand** field to help buyers identify your item.
 Brand definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324351>`__ guidelines.
 
 .. collapse:: TSV
@@ -1086,7 +1085,7 @@ Brand definition follows `Google Merchant Center <https://support.google.com/mer
 
 |
 
-Restrictions: Do not exceed 70 characters limit for your text.
+Restrictions: Maximum of 70 characters.
 
 .. index:: gtin
 .. _feed_gtin:
@@ -1094,7 +1093,7 @@ Restrictions: Do not exceed 70 characters limit for your text.
 GTIN
 """"""""""""""""""""""
 
-GTIN (Your product’s Global Trade Item Number), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324461>`__ guidelines.
+GTIN (Your item’s Global Trade Item Number), definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324461>`__ guidelines.
 
 .. collapse:: TSV
 
@@ -1116,7 +1115,7 @@ GTIN (Your product’s Global Trade Item Number), definition follows `Google Mer
 
 |
 
-Restrictions: String identifier max 50 chars.
+Restrictions: Maximum of 50 characters.
 
 .. index:: itemGroupId
 .. _feed_itemGroupId:
@@ -1124,7 +1123,7 @@ Restrictions: String identifier max 50 chars.
 item group id
 """"""""""""""""""""""
 
-Use this field to group product variants in your product data.
+Use this field to group item variants in your item data.
 Item group id definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324507>`__ guidelines.
 
 .. collapse:: TSV
@@ -1147,7 +1146,7 @@ Item group id definition follows `Google Merchant Center <https://support.google
 
 |
 
-Restrictions: Text max. length 50 characters.
+Restrictions: Maximum of 50 characters.
 
 .. index:: condition
 .. _feed_condition:
@@ -1155,7 +1154,7 @@ Restrictions: Text max. length 50 characters.
 condition
 """"""""""""""""""""""
 
-Use this field to inform customers about the condition of your product. Condition definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324469>`__ guidelines.
+Use this field to inform buyers about the condition of your item. Condition definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324469>`__ guidelines.
 
 .. collapse:: TSV
 
@@ -1177,7 +1176,7 @@ Use this field to inform customers about the condition of your product. Conditio
 
 |
 
-Accepted values: *new*, *refurbished*, *used*
+Restrictions: Accepted values are *new*, *refurbished*, *used*
 
 .. index:: material
 .. _feed_material:
@@ -1185,7 +1184,7 @@ Accepted values: *new*, *refurbished*, *used*
 material
 """"""""""""""""""""""
 
-**Material** field describes the main fabric or material that your product is made of.
+**Material** field describes the main fabric or material that your item is made of.
 Material definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324410>`__ guidelines.
 
 .. collapse:: TSV
@@ -1209,8 +1208,9 @@ Material definition follows `Google Merchant Center <https://support.google.com/
 |
 
 Restrictions: Use human readable material names. Provide up to 3 materials.
-Separate materials with a slash (“/”) character when there are multiple.
-Do not exceed 200 characters limit for your text.
+When providing multiple materials separate each entry with a slash (“/”).
+Maximum of 70 characters.
+
 
 .. index:: energyEfficiencyClass
 .. _feed_energyEfficiencyClass:
@@ -1218,7 +1218,7 @@ Do not exceed 200 characters limit for your text.
 energy efficiency class
 """""""""""""""""""""""
 
-Use this field to tell customers how your product rates on a given energy efficiency range.
+Use this field to tell buyers how your item rates on a given energy efficiency range.
 See `Google Merchant Center <https://support.google.com/merchants/answer/7562785>`__
 
 .. collapse:: TSV
@@ -1249,7 +1249,7 @@ Allowed values: *A+++*, *A++*, *A+*, *A*, *B*, *C*, *B*, *E*, *F*, *G*
 min energy efficiency class
 """""""""""""""""""""""""""
 
-Used in combination with **max energy efficiency class** to describe the product energy efficiency label.
+Used in combination with **max energy efficiency class** to describe the item energy efficiency label.
 Possible values defined in :ref:`feed_energyEfficiencyClass`
 
 .. collapse:: TSV
@@ -1278,7 +1278,7 @@ Possible values defined in :ref:`feed_energyEfficiencyClass`
 max energy efficiency class
 """"""""""""""""""""""""""""
 
-Used in combination with **min energy efficiency class** to describe the product energy efficiency label.
+Used in combination with **min energy efficiency class** to describe the item energy efficiency label.
 Possible values defined in :ref:`feed_energyEfficiencyClass`
 
 .. collapse:: TSV
@@ -1307,7 +1307,7 @@ Possible values defined in :ref:`feed_energyEfficiencyClass`
 color
 """"""""""""""""""""""""
 
-Use **color** field to tell customers about the dominant colors of your product.
+Use **color** field to tell buyers about the dominant colors of your item.
 Color definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324487>`__ guidelines.
 
 .. collapse:: TSV
@@ -1331,8 +1331,8 @@ Color definition follows `Google Merchant Center <https://support.google.com/mer
 |
 
 Restrictions: Use human readable color names. Provide up to 3 colors.
-Separate colors with / if more than one.
-Do not exceed 100 characters limit for your text.
+When providing multiple colors separate each entry with a slash (“/”).
+Maximum of 100 characters.
 
 .. index:: gender
 .. _feed_gender:
@@ -1340,7 +1340,7 @@ Do not exceed 100 characters limit for your text.
 gender
 """"""""""""""""""""""""
 
-Use **gender** field to describe the gender your product is designed for.
+Use **gender** field to describe the gender your item is designed for.
 Gender definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324479>`__ guidelines.
 
 .. collapse:: TSV
@@ -1363,7 +1363,7 @@ Gender definition follows `Google Merchant Center <https://support.google.com/me
 
 |
 
-Allowed values: *male*, *female*, *unisex*
+Restrictions: Allowed values are *male*, *female*, *unisex*
 
 .. index:: ageGroup
 .. _feed_ageGroup:
@@ -1371,7 +1371,7 @@ Allowed values: *male*, *female*, *unisex*
 age group
 """"""""""""""""""""""""
 
-Use **age group** field to describe the age group your product is targeted at.
+Use **age group** field to describe the age group your item is targeted at.
 Definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324463>`__ guidelines.
 
 .. collapse:: TSV
@@ -1402,7 +1402,7 @@ Allowed values: *newborn*, *infant*, *toddler*, *kids*, *adult*
 size
 """"""""""""""""""""""""
 
-Use **size** field to describe standardized size of your product.
+Use **size** field to describe standardized size of your item.
 Size definition follows `Google Merchant Center <https://support.google.com/merchants/answer/6324492>`__ guidelines.
 
 .. collapse:: TSV
@@ -1425,7 +1425,7 @@ Size definition follows `Google Merchant Center <https://support.google.com/merc
 
 |
 
-Restrictions: String identifier max 1-100 chars.
+Restrictions: Non-empty string with a maximum of 100 characters.
 
 .. index:: unitPricingBaseMeasure
 .. _feed_unitPricingBaseMeasure:
@@ -1433,9 +1433,9 @@ Restrictions: String identifier max 1-100 chars.
 unit pricing base measure
 """""""""""""""""""""""""
 
-The denominator for product unit price.
+The denominator for item unit price.
 See `Google Merchant Center <https://support.google.com/merchants/answer/6324490>`__.
-This field attribute tells the customer how the price of your product translates per unit.
+This field attribute tells the buyers how the price of your item translates per unit.
 
 .. collapse:: TSV
 
@@ -1472,7 +1472,7 @@ Supported unit values:
 unit pricing measure
 """"""""""""""""""""
 
-Defines the measure and dimension of the product. That value helps the customers to understand the exact price per unit for your product.
+Defines the measure and dimension of the item. That value helps buyers to understand the exact price per unit for your item.
 Example 125ml, 100g.
 See `Google Merchant Center <https://support.google.com/merchants/answer/6324455>`__.
 
