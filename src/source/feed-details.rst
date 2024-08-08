@@ -225,7 +225,7 @@ A specific and accurate title will help us show your item to the right buyers.
 
 |
 
-Restrictions: Minimum and maximum length determined by category ()with a maximum cap of 1024 characters). See :ref:`categories`.
+Restrictions: Minimum and maximum length determined by category, with a maximum of 1024 characters. See :ref:`categories`.
 URLs are not allowed as part of the title.
 
 .. index:: description
@@ -592,7 +592,7 @@ Additional images will be presented in the provided order in the item page.
 
 |
 
-Restrictions: Image number limit depends on the category in taxonomy
+Restrictions: Image number limit depends on the category in the tenant taxonomy
 
 All URLs links must be complete, and pointing to an image on a publicly available web server.
 
@@ -609,17 +609,25 @@ attributes
 
 Use **attributes** field to provide additional information on your item in a structured way,
 by providing a list of item :ref:`user_defined_attributes` that can be used to influence the ad relevance.
-**attributes** are category dependent.
-
+You can provide an arbitrary number of **attributes** sharing the same structure.
+When **attributes** are processed we check if there are is a match to any **attribute** defined at category level.
+User-defined attributes that match a category's predefined key and value are automatically recognized as :ref:`category_attributes`.
+For more information on **category attributes**, see :ref:`category_attributes_v2`.
 
 .. collapse:: TSV
+
+    .. note::
+        In TSV format there is no way to directly specify the **attribute locale**.
+        If the **attribute** is a  :ref:`category_attributes` (attributes that match category defined attributes),
+        then the **attribute locale** defined at category level will be used.
+
 
     Use **attributes** column to provide a list of item attributes using the the format: *name*:*value*.
 
     ========= ========================
      Example	 .. code-block:: text
 
-                    model:Adams Family
+                    model:GXS32
     ========= ========================
 
     You can provide multiple attributes in a comma- separated list.
@@ -627,15 +635,15 @@ by providing a list of item :ref:`user_defined_attributes` that can be used to i
     ========= ========================
      Example	 .. code-block:: text
 
-                    model:Adams Family,multiball:TRUE,screen size:32"
+                    model:GXS32,screen size:32"
     ========= ========================
 
-    If the name or the value of your attribute contains commas, it needs to be enclosed in quotes.
+    If the value represents a list, each list entry should be split by a comma, and the value needs to be enclosed in quotes.
 
     ========= ========================
      Example	 .. code-block:: text
 
-                    resolutions:"1024x768:24dpi,800x600:18dpi"
+                    model:GXS32,screen size:32",resolutions:"1024x768:24dpi,800x600:18dpi",type:"Slim,Pro"
     ========= ========================
 
 .. collapse:: XML
@@ -646,19 +654,25 @@ by providing a list of item :ref:`user_defined_attributes` that can be used to i
 
                 <admarkt:attributes>
                     <admarkt:attribute>
-                        <admarkt:attributeName>color</admarkt:attributeName>
+                        <admarkt:attributeName>model</admarkt:attributeName>
                         <admarkt:attributeLocale>nl</admarkt:attributeLocale>
-                        <admarkt:attributeLabel>Kleur</admarkt:attributeLabel>
-                        <admarkt:attributeValue>Rood</admarkt:attributeValue>
+                        <admarkt:attributeLabel>model</admarkt:attributeLabel>
+                        <admarkt:attributeValue>GXS32</admarkt:attributeValue>
                     </admarkt:attribute>
                     <admarkt:attribute>
-                        <admarkt:attributeName>color</admarkt:attributeName>
-                        <admarkt:attributeLocale>en</admarkt:attributeLocale>
-                        <admarkt:attributeLabel>Color</admarkt:attributeLabel>
-                        <admarkt:attributeValue>Red</admarkt:attributeValue>
+                        <admarkt:attributeName>screen size</admarkt:attributeName>
+                        <admarkt:attributeLocale>nl</admarkt:attributeLocale>
+                        <admarkt:attributeLabel>screen size</admarkt:attributeLabel>
+                        <admarkt:attributeValue>32"</admarkt:attributeValue>
                     </admarkt:attribute>
                     <admarkt:attribute>
-                        <admarkt:attributeName>Model</admarkt:attributeName>
+                        <admarkt:attributeName>resolutions</admarkt:attributeName>
+                        <admarkt:attributeLabel>resolutions</admarkt:attributeLabel>
+                        <admarkt:attributeValue>1024x768:24dpi</admarkt:attributeValue>
+                        <admarkt:attributeValue>800x600:18dpi</admarkt:attributeValue>
+                    </admarkt:attribute>
+                    <admarkt:attribute>
+                        <admarkt:attributeName>type</admarkt:attributeName>
                         <admarkt:attributeValue>Slim</admarkt:attributeValue>
                         <admarkt:attributeValue>Pro</admarkt:attributeValue>
                     </admarkt:attribute>
@@ -677,7 +691,7 @@ Use *budget details* to tell us what is your preferred model for budgeting your 
 Use the following values to describe your model:
 
 ============= ========================================== ========
-Name          Description                                Required
+Name          Description                                Mandatory
 ============= ========================================== ========
 autobid       use auto bidding option true/false         No
 cpc           CPC for the given ad in cents              No
@@ -753,12 +767,12 @@ Use **shipping options** to inform buyers about item delivery details
 Each option can be described with the following information:
 
 ============= ========================================== ========
-Name          Description                                Required
+Name          Description                                Mandatory
 ============= ========================================== ========
 shippingType  SHIP, PICKUP                               Yes
 cost          cost of shipping in cents                  No
 time          time it takes to deliver the item          No
-location      pick up location of the item               No
+location      pick up location of the item               Yes if PICKUP
 ============= ========================================== ========
 
 *SHIP* means the item can be delivered to the buyer in the provided `time` and for the provided `cost`.
@@ -815,7 +829,7 @@ For *PICKUP* provide 'location', 'cost' and 'time' are ignored.
 |
 
 Restrictions: Shipping options can be disabled/optional/mandatory for an ad.
-Ads can contain maximum one shipping option per shipping option type (SHIP/PICKUP).
+An ad can contain a maximum one shipping option per shipping option type (SHIP/PICKUP).
 Shipping options are configured per category, see :ref:`category_config_v2`.
 
 .. index:: phoneNumber
@@ -1504,4 +1518,3 @@ Supported unit values:
     * **Length**: *in, ft, yd, cm, m*
     * **Area**: *sqft, sqm*
     * **Per unit**: *ct*
-
