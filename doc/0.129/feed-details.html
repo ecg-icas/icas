@@ -1371,17 +1371,18 @@ Each option can be described with the following information:</p>
 <em>PICKUP</em> means the item can be picked up by the buyer in the provided <cite>location</cite>.
 For <em>SHIP</em> provide ‘cost’ in cents and ‘time’ in days, ‘location’ is ignored.
 For <em>PICKUP</em> provide ‘location’, ‘cost’ and ‘time’ are ignored.</p>
-<details class="summary-tsv">
-<summary>TSV</summary><p>Use <strong>shipping</strong> field to tell buyers about the different cost vs. time options for your item delivery.</p>
-<p>Each option should be formatted as follows:</p>
-<blockquote>
-<div><p>[<em>cost in cents</em>]:[<em>&lt;time formatted string&gt;</em>], where <em>&lt;time formatted string&gt;</em> allows the following values/formats:</p>
+<p><strong>‘time’</strong> field must be represented through the following formats, applicable for both TSV and XML:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>literal values: <strong>2d-5d</strong> and <strong>6d-10d</strong>. These default values represent [<em>minimum transit time in days</em>]-[<em>maximum transit time in days</em>] options.</p></li>
 <li><p>format: <strong>&lt;number (not starting with 0)&gt;d</strong>. The format represents [<em>transit time in days</em>] only (without minimum/maximum components).</p></li>
 </ul>
 </div></blockquote>
+<details class="summary-tsv">
+<summary>TSV</summary><p>Use <strong>shipping</strong> field to tell buyers about the different cost vs. time options for your item delivery.</p>
+<p>Each option should be formatted as follows:</p>
+<blockquote>
+<div><p>[<em>cost in cents</em>]:[<em>&lt;time&gt;</em>]</p>
 </div></blockquote>
 <table class="docutils align-default">
 <tbody>
@@ -1415,6 +1416,14 @@ Location is given as a postal code.</p>
 <tr class="row-odd"><td><p>Example</p></td>
 <td><div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">admarkt:shippingOptions</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">admarkt:shippingOption</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">admarkt:shippingType</span><span class="p">&gt;</span>SHIP<span class="p">&lt;/</span><span class="nt">admarkt:shippingType</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">admarkt:cost</span><span class="p">&gt;</span>695<span class="p">&lt;/</span><span class="nt">admarkt:cost</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">admarkt:time</span><span class="p">&gt;</span>6d-10d<span class="p">&lt;/</span><span class="nt">admarkt:time</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">admarkt:shippingOption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">admarkt:shippingOptions</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">admarkt:shippingOptions</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">admarkt:shippingOption</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">admarkt:shippingType</span><span class="p">&gt;</span>PICKUP<span class="p">&lt;/</span><span class="nt">admarkt:shippingType</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">admarkt:location</span><span class="p">&gt;</span>1097DN<span class="p">&lt;/</span><span class="nt">admarkt:location</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">admarkt:shippingOption</span><span class="p">&gt;</span>
@@ -1428,8 +1437,8 @@ Location is given as a postal code.</p>
 </details><div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Restrictions: Shipping options can be disabled/optional/mandatory for an ad.
-An ad can contain a maximum one shipping option per shipping option type (SHIP/PICKUP).
+<p>Restrictions: Shipping options can be disabled/optional/mandatory for an item.
+An item can contain a maximum one shipping option per shipping option type (SHIP/PICKUP).
 Shipping options are configured per category, see <a class="reference internal" href="categories.html#category-config-v2"><span class="std std-ref">Category Configuration</span></a>.</p>
 </section>
 <section id="phone-number">

@@ -780,17 +780,20 @@ location      pick up location of the item               Yes if PICKUP
 For *SHIP* provide 'cost' in cents and 'time' in days, 'location' is ignored.
 For *PICKUP* provide 'location', 'cost' and 'time' are ignored.
 
+**'time'** field must be represented through the following formats, applicable for both TSV and XML:
+
+   - literal values: **2d-5d** and **6d-10d**. These default values represent [*minimum transit time in days*]-[*maximum transit time in days*] options.
+   - format: **<number (not starting with 0)>d**. The format represents [*transit time in days*] only (without minimum/maximum components).
+
+
 .. collapse:: TSV
 
     Use **shipping** field to tell buyers about the different cost vs. time options for your item delivery.
 
     Each option should be formatted as follows:
 
-       [*cost in cents*]:[*<time formatted string>*], where *<time formatted string>* allows the following values/formats:
+       [*cost in cents*]:[*<time>*]
 
-
-           - literal values: **2d-5d** and **6d-10d**. These default values represent [*minimum transit time in days*]-[*maximum transit time in days*] options.
-           - format: **<number (not starting with 0)>d**. The format represents [*transit time in days*] only (without minimum/maximum components).
 
     ========= ========================
      Example	 .. code-block:: text
@@ -820,6 +823,14 @@ For *PICKUP* provide 'location', 'cost' and 'time' are ignored.
 
                 <admarkt:shippingOptions>
                     <admarkt:shippingOption>
+                        <admarkt:shippingType>SHIP</admarkt:shippingType>
+                        <admarkt:cost>695</admarkt:cost>
+                        <admarkt:time>6d-10d</admarkt:time>
+                    </admarkt:shippingOption>
+                </admarkt:shippingOptions>
+
+                <admarkt:shippingOptions>
+                    <admarkt:shippingOption>
                         <admarkt:shippingType>PICKUP</admarkt:shippingType>
                         <admarkt:location>1097DN</admarkt:location>
                     </admarkt:shippingOption>
@@ -828,8 +839,8 @@ For *PICKUP* provide 'location', 'cost' and 'time' are ignored.
 
 |
 
-Restrictions: Shipping options can be disabled/optional/mandatory for an ad.
-An ad can contain a maximum one shipping option per shipping option type (SHIP/PICKUP).
+Restrictions: Shipping options can be disabled/optional/mandatory for an item.
+An item can contain a maximum one shipping option per shipping option type (SHIP/PICKUP).
 Shipping options are configured per category, see :ref:`category_config_v2`.
 
 .. index:: phoneNumber
