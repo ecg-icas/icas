@@ -780,7 +780,7 @@ location      pick up location of the item               Yes if PICKUP
 For *SHIP* provide 'cost' in cents and 'time' in days, 'location' is ignored.
 For *PICKUP* provide 'location', 'cost' and 'time' are ignored.
 
-**'time'** field must be represented through the following formats, applicable for both TSV and XML:
+The **'time'** field must be represented through the following formats, applicable for both TSV and XML:
 
    - literal values: **2d-5d** and **6d-10d**. These default values represent [*minimum transit time in days*]-[*maximum transit time in days*] options.
    - format: **<number (not starting with 0)>d**. The format represents [*transit time in days*] only (without minimum/maximum components).
