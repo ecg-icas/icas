@@ -635,7 +635,7 @@ For more information on **category attributes**, see :ref:`category_attributes_v
     ========= ========================
      Example	 .. code-block:: text
 
-                    model:GXS32,screen size:32"
+                    model:GXS32,screen size:32",touch:FALSE
     ========= ========================
 
     If the value represents a list, each list entry should be split by a comma, and the value needs to be enclosed in quotes.
@@ -643,7 +643,7 @@ For more information on **category attributes**, see :ref:`category_attributes_v
     ========= ========================
      Example	 .. code-block:: text
 
-                    model:GXS32,screen size:32",resolutions:"1024x768:24dpi,800x600:18dpi",type:"Slim,Pro"
+                    model:GXS32,touch:FALSE,screen size:32",resolutions:"1024x768:24dpi,800x600:18dpi",type:"Slim,Pro"
     ========= ========================
 
 .. collapse:: XML
@@ -664,6 +664,12 @@ For more information on **category attributes**, see :ref:`category_attributes_v
                         <admarkt:attributeLocale>nl</admarkt:attributeLocale>
                         <admarkt:attributeLabel>screen size</admarkt:attributeLabel>
                         <admarkt:attributeValue>32"</admarkt:attributeValue>
+                    </admarkt:attribute>
+                    <admarkt:attribute>
+                        <admarkt:attributeName>touch screen</admarkt:attributeName>
+                        <admarkt:attributeLocale>nl</admarkt:attributeLocale>
+                        <admarkt:attributeLabel>touch screen</admarkt:attributeLabel>
+                        <admarkt:attributeValue>FALSE"</admarkt:attributeValue>
                     </admarkt:attribute>
                     <admarkt:attribute>
                         <admarkt:attributeName>resolutions</admarkt:attributeName>
