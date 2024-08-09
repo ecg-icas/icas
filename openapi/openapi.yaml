@@ -1796,7 +1796,7 @@ paths:
       tags:
         - Feeds
       summary: 'Returns a summary of the particular feed import'
-      description: 'Provides information on whether there were any errors or warnings associated with a specific imports.'
+      description: 'Provides information on whether there were any errors or warnings associated with a specific import.'
       operationId: getFeedImportDetail
       parameters:
         - name: id
