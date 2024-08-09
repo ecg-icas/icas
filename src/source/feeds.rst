@@ -33,10 +33,17 @@ For instructions on how to create your feed in specific formats, please expand t
 
 
     .. note::
-        Beware that double quotes are accepted within a field.
-        However, a leading quote in a field indicates that the field is quoted.
+        Beware that although double quotes are accepted within a field, a leading quote indicates that the complete field is quoted.
         In that situation, the parser must look for a terminating quote before the next separator (tab).
-        This means that "First" second third will not be accepted as a single field, whereas First "second" third is a valid single field.
+
+          - ``"First" second third`` will not be interpreted as a single field
+          - ``First "second" third`` is a valid single field
+
+        If you need to start a field with quotes then the complete field needs to be enclosed in quotes as well
+
+          - ``""First" second third"`` is a valid single field (notice the complete field is enclosed in quotes)
+          - ``"\"First\" second third"`` is a valid single field (you can escape inner quotes, but field also needs to be enclosed in quotes)
+
 
     TSV format follows specification described on `wiki <https://en.wikipedia.org/wiki/Tab-separated_values>`__.
     Column names used in TSV feed must superset :ref:`column names <feed-details>` specified.
