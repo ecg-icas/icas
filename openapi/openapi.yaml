@@ -1796,7 +1796,7 @@ paths:
       tags:
         - Feeds
       summary: 'Returns a summary of the particular feed import'
-      description: 'Provides information on whether there were any errors or warnings associated with a specific imports. <b>Note: </b>there is a limit of 1000 distinct error types for presented errors, same applies to warnings.'
+      description: 'Provides information on whether there were any errors or warnings associated with a specific imports.'
       operationId: getFeedImportDetail
       parameters:
         - name: id

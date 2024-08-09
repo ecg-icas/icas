@@ -70,6 +70,7 @@ components:
           example: 10
         errors:
           type: object
+          description: Sample errors found in feed. Limited to 1000 distinct error types.
           additionalProperties:
             type: object
             properties:
@@ -98,6 +99,7 @@ components:
               'rowNumbersSample': [ "4", "42" ]
         warnings:
           type: object
+          description: Sample warnings found in feed. Limited to 1000 distinct warning types.
           additionalProperties:
             type: object
             properties:
