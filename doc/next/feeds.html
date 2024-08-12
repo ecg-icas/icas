@@ -258,10 +258,21 @@ For more information see <em>FAQ</em> section.</p>
 <details class="summary-tsv">
 <summary>TSV</summary><div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Beware that double quotes are accepted within a field.
-However, a leading quote in a field indicates that the field is quoted.
-In that situation, the parser must look for a terminating quote before the next separator (tab).
-This means that “First” second third will not be accepted as a single field, whereas First “second” third is a valid single field.</p>
+<p>Beware that although double quotes are accepted within a field, a leading quote indicates that the complete field is quoted.
+In that situation, the parser must look for a terminating quote before the next separator (tab).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;First&quot;</span> <span class="pre">second</span> <span class="pre">third</span></code> will not be interpreted as a single field</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">&quot;second&quot;</span> <span class="pre">third</span></code> is a valid single field</p></li>
+</ul>
+</div></blockquote>
+<p>If you need to start a field with quotes then the complete field needs to be enclosed in quotes as well</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;First&quot;</span> <span class="pre">second</span> <span class="pre">third&quot;</span></code> is a valid single field (notice the complete field is enclosed in quotes)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;\&quot;First\&quot;</span> <span class="pre">second</span> <span class="pre">third&quot;</span></code> is a valid single field (you can escape inner quotes, but field also needs to be enclosed in quotes)</p></li>
+</ul>
+</div></blockquote>
 </div>
 <p>TSV format follows specification described on <a class="reference external" href="https://en.wikipedia.org/wiki/Tab-separated_values">wiki</a>.
 Column names used in TSV feed must superset <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a> specified.
