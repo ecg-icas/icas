@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html">OpenAPI reference</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#september-2024-deprecated-handler-clean-up">September 2024: ‘Deprecated handler clean up’</a></li>
 </ul>
 </li>
 </ul>
@@ -409,7 +410,7 @@ Deleting a campaign is currently not allowed.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v2"><span class="std std-ref">GET /ad/{id} v2</span></a></p></td>
 <td><p><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v5"><span class="std std-ref">GET /ad/{id} v5</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id-v3"><span class="std std-ref">GET /ad/byVendor/{vendorId} v3</span></a></p></td>
+<tr class="row-odd"><td><p><span class="xref std std-ref">get_ad_vendor_id_v3</span></p></td>
 <td><p><a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id-v5"><span class="std std-ref">GET /ad/byVendor/{vendorId} v5</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id-v2"><span class="std std-ref">GET /ad/byVendor/{vendorId} v2</span></a></p></td>
@@ -441,6 +442,29 @@ Deleting a campaign is currently not allowed.</p>
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+<section id="september-2024-deprecated-handler-clean-up">
+<h2>September 2024: ‘Deprecated handler clean up’<a class="headerlink" href="#september-2024-deprecated-handler-clean-up" title="Permalink to this heading">¶</a></h2>
+<section id="id2">
+<h3>Synopsis<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Removal of deprecated unused endpoints, types and fields</p></li>
+</ul>
+<section id="removed-endpoints">
+<h4>Removed Endpoints<a class="headerlink" href="#removed-endpoints" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Removed GET /ad/byVendor/{vendorId} <cite>get_ad_vendor_id_v3</cite></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><ul>
+<li><p><span class="xref std std-ref">get_ad_vendor_id_v3</span></p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</section>
 </section>
 </section>
 </section>
