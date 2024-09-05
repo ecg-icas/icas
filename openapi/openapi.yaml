@@ -1044,9 +1044,6 @@ paths:
             application/sellside.ad-v5+json:
               schema:
                 $ref: './ads/responses.yaml#/components/schemas/V5'
-            application/sellside.ad-v3+json:
-              schema:
-                $ref: './ads/responses.yaml#/components/schemas/V3'
             application/sellside.ad-v2+json:
               schema:
                 $ref: './ads/responses.yaml#/components/schemas/V2'
