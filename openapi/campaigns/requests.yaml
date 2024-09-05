@@ -16,7 +16,7 @@ components:
           description: 'The name of the campaign.'
         vendorId:
           type: string
-          description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating s campaign or when updating an existing one. However, once set, it can no longer be modified.'
+          description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified.'
           example: 'OURSHOP-1423453-34'
           maxLength: 255
         status:
