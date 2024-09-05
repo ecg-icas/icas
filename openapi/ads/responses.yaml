@@ -247,7 +247,6 @@ components:
           maxLength: 64
           description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
           example: 'OURSHOP-1423453-34'
-          deprecated: true
         status:
           $ref: '#/components/schemas/StatusV2'
         statusReasons:
@@ -442,7 +441,6 @@ components:
           maxLength: 64
           description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
           example: 'OURSHOP-1423453-34'
-          deprecated: true
         status:
           $ref: '#/components/schemas/StatusV2'
         priceType:
