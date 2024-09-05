@@ -142,7 +142,7 @@ components:
         shippingOptions:
           example:
             - type: 'SHIP'
-              cost: 0
+              costCents: 0
               time: '2d-5d'
             - type: 'PICKUP'
               pickupLocation: '1097DN'
