@@ -2096,7 +2096,7 @@ paths:
       tags:
         - Campaigns
       summary: 'Creates a new campaign for the user'
-      description: 'Creates a new campaign for the user. If successful, it returns an object representing the campaign, with default values on certain fields, if not provided. A minimum payload is an empty JSON, as none of the fields are mandatory.'
+      description: 'Creates a new campaign for the user. If successful, it returns an object representing the campaign, with default values on certain fields, if not provided.'
       operationId: postCampaignV2
       parameters:
         - name: Accept
@@ -2111,9 +2111,6 @@ paths:
           application/sellside.campaign-v5+json:
             schema:
               $ref: './campaigns/requests.yaml#/components/schemas/V5'
-          application/sellside.campaign-v2+json:
-            schema:
-              $ref: './campaigns/requests.yaml#/components/schemas/V2'
       responses:
         '201':
           description: 'Campaign created'
@@ -2132,9 +2129,6 @@ paths:
             application/sellside.campaign-v5+json:
               schema:
                 $ref: './campaigns/responses.yaml#/components/schemas/V5'
-            application/sellside.campaign-v2+json:
-              schema:
-                $ref: './campaigns/responses.yaml#/components/schemas/V2'
           links:
             vendorIdLink:
               operationId: getCampaignByVendorId
@@ -2229,9 +2223,6 @@ paths:
             application/sellside.campaign-v5+json:
               schema:
                 $ref: './campaigns/responses.yaml#/components/schemas/V5'
-            application/sellside.campaign-v2+json:
-              schema:
-                $ref: './campaigns/requests.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2307,9 +2298,6 @@ paths:
             application/sellside.campaign-v5+json:
               schema:
                 $ref: './campaigns/responses.yaml#/components/schemas/V5'
-            application/sellside.campaign-v2+json:
-              schema:
-                $ref: './campaigns/responses.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2371,10 +2359,6 @@ paths:
           application/sellside.campaign-v5+json:
             schema:
               $ref: './campaigns/requests.yaml#/components/schemas/V5'
-          application/sellside.campaign-v2+json:
-            schema:
-              deprecated: true
-              $ref: './campaigns/requests.yaml#/components/schemas/V2'
       responses:
         '200':
           description: 'Success'
@@ -2393,9 +2377,6 @@ paths:
             application/sellside.campaign-v5+json:
               schema:
                 $ref: './campaigns/responses.yaml#/components/schemas/V5'
-            application/sellside.campaign-v2+json:
-              schema:
-                $ref: './campaigns/responses.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2496,11 +2477,7 @@ paths:
                     type: array
                     items:
                       $ref: './campaigns//responses.yaml#/components/schemas/V5'
-            application/sellside.campaign.list-v2+json:
-              schema:
-                type: array
-                items:
-                  $ref: './campaigns/responses.yaml#/components/schemas/V2'
+
         '401':
           description: 'Unauthorized'
           content:
