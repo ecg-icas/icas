@@ -2188,12 +2188,11 @@ paths:
       tags:
         - Campaigns
       summary: 'Returns a single campaign with the given vendorId.'
-      description: 'If the campaign does not exist or does not belong to the user the server returns 404 Not Found. If the vendorId is bigger than 64 characters the server returns 400 Bad Request. The vendorId is unique for a user; It is not possible for a single user to create multiple campaigns with the same vendorId (even if other campaigns are in status DELETED)'
       operationId: getCampaignByVendorId
       parameters:
         - name: vendorId
           in: path
-          description: 'Case-insensitive filter for a keyword in the title; will include only ads which contain the given keyword in their title.'
+          description: 'value of the vendorId field of the campaign'
           schema:
             type: string
             example: 'my-christmas-campaign-2020'
@@ -2416,7 +2415,7 @@ paths:
     get:
       tags:
         - Campaigns
-      summary: 'Get all campaigns for the authenticated user.'
+      summary: 'Get all campaigns for the user.'
       parameters:
         - name: Accept
           in: header
@@ -2517,7 +2516,7 @@ paths:
     put:
       tags:
         - Campaigns
-      summary: 'Updates the status of the campaign.'
+      summary: 'Updates the status of the campaign. It does not change the individual status of the ads in the campaign, but it can change their visibility. This means, if the campaign is paused, all its ads will not be shown. If the campaign is active, only the ads with `ACTIVE` individual status will be shown.'
       parameters:
         - name: id
           in: path
@@ -2530,7 +2529,7 @@ paths:
           required: true
         - name: status
           in: path
-          description: 'The desired status of the campaign'
+          description: 'The desired status of the campaign. Possible values are: ACTIVE, PAUSED. When pausing or activating, the status of the individual ads in the campaign is not changed. However, the visibility of the ads is affected by the campaign status.'
           required: true
           schema:
             $ref: './campaigns/params.yaml#/components/parameters/StatusV5'
@@ -2611,7 +2610,7 @@ paths:
     put:
       tags:
         - Campaigns
-      summary: 'Updates the budget limits of a campaign.'
+      summary: 'Updates the daily and total budget limits of a campaign.'
       parameters:
         - name: id
           in: path

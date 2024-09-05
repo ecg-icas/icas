@@ -35,7 +35,7 @@ components:
     BudgetsV5:
       type: object
       description: 'An object containing the current budget limits for this campaign. If either of these run out, ads from this campaign will no longer be visible on site.
-           The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited).
+           The unit for limit and spent is micros. The default limit values are set to -1 (Unlimited).
            '
       properties:
         daily:
@@ -46,7 +46,7 @@ components:
       type: object
       required:
         - limitMicros
-      description: 'The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
+      description: 'The maximum amount all the ads combined in this campaign may spend per day, in micros. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
       properties:
         limitMicros:
           type: string
@@ -55,7 +55,7 @@ components:
       type: object
       required:
         - limitMicros
-      description: 'The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
+      description: 'The maximum amount all the ads combined in this campaign may spend, in micros. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
       properties:
         limitMicros:
           type: string
