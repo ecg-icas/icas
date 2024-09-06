@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html">OpenAPI reference</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#september-2024-deprecated-handler-clean-up">September 2024: ‘Deprecated handler clean up’</a></li>
 </ul>
 </li>
 </ul>
@@ -365,12 +366,12 @@
 <h3>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h3>
 <p>Added first campaign support. See <a class="reference internal" href="campaigns.html#campaigns"><span class="std std-ref">Campaigns</span></a> for full details.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="reference/get-campaigns.html#get-campaigns"><span class="std std-ref">GET /campaigns</span></a> to get list of campaigns for a user. Expected 0 or 1 result.</p></li>
-<li><p><a class="reference internal" href="reference/get-campaign-id.html#get-campaign-id"><span class="std std-ref">GET /campaign/{id}</span></a> to fetch the individual campaign.</p></li>
-<li><p><a class="reference internal" href="reference/post-campaign.html#post-campaign"><span class="std std-ref">POST /campaign</span></a> to create a campaign. Currently only 1 allowed per seller.</p></li>
-<li><p><a class="reference internal" href="reference/put-campaign-id.html#put-campaign-id"><span class="std std-ref">PUT /campaign/{id}</span></a> to update the campaign. Currently only status &amp; budgets can be updated.</p></li>
-<li><p><a class="reference internal" href="reference/put-campaign-id-status.html#put-campaign-id-status"><span class="std std-ref">PUT /campaign/{id}/status/{status}</span></a> to manage the campaign status (ACTIVE,PAUSED) directly.</p></li>
-<li><p><a class="reference internal" href="reference/put-campaign-id-budgets.html#put-campaign-id-budgets"><span class="std std-ref">PUT /campaign/{id}/budgets</span></a> to manage the campaign’s budgets directly.</p></li>
+<li><p><span class="xref std std-ref">get_campaigns</span> to get list of campaigns for a user. Expected 0 or 1 result.</p></li>
+<li><p><span class="xref std std-ref">get_campaign_id</span> to fetch the individual campaign.</p></li>
+<li><p><span class="xref std std-ref">post_campaign</span> to create a campaign. Currently only 1 allowed per seller.</p></li>
+<li><p><span class="xref std std-ref">put_campaign_id</span> to update the campaign. Currently only status &amp; budgets can be updated.</p></li>
+<li><p><span class="xref std std-ref">put_campaign_id_status</span> to manage the campaign status (ACTIVE,PAUSED) directly.</p></li>
+<li><p><span class="xref std std-ref">put_campaign_id_budgets</span> to manage the campaign’s budgets directly.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -381,7 +382,7 @@ Deleting a campaign is currently not allowed.</p>
 </section>
 <section id="user">
 <h3>User<a class="headerlink" href="#user" title="Permalink to this heading">¶</a></h3>
-<p>See <a class="reference internal" href="reference/get-user.html#get-user"><span class="std std-ref">GET /user</span></a> for full details.</p>
+<p>See <span class="xref std std-ref">get_user</span> for full details.</p>
 <p>Start using V4. There are 2 new fields in comparison with V2:
 <code class="docutils literal notranslate"><span class="pre">hasAds</span></code> (<strong>bool</strong>), whether a user has ads in the system and
 <code class="docutils literal notranslate"><span class="pre">isApiManaged</span></code> (<strong>bool</strong>), whether we see API partners managing ads for the user (not true if an api partner is using RO scopes only)</p>
@@ -400,47 +401,70 @@ Deleting a campaign is currently not allowed.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="reference/get-ad.html#get-ad-v4"><span class="std std-ref">GET /ad v4</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-ad.html#get-ad-v5"><span class="std std-ref">GET /ad v5</span></a></p></td>
+<tr class="row-even"><td><p><span class="xref std std-ref">get_ad_v4</span></p></td>
+<td><p><span class="xref std std-ref">get_ad_v5</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v3"><span class="std std-ref">GET /ad/{id} v3</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v5"><span class="std std-ref">GET /ad/{id} v5</span></a></p></td>
+<tr class="row-odd"><td><p><span class="xref std std-ref">get_ad_id_v3</span></p></td>
+<td><p><span class="xref std std-ref">get_ad_id_v5</span></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v2"><span class="std std-ref">GET /ad/{id} v2</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-ad-id.html#get-ad-id-v5"><span class="std std-ref">GET /ad/{id} v5</span></a></p></td>
+<tr class="row-even"><td><p><span class="xref std std-ref">get_ad_id_v2</span></p></td>
+<td><p><span class="xref std std-ref">get_ad_id_v5</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id-v3"><span class="std std-ref">GET /ad/byVendor/{vendorId} v3</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id-v5"><span class="std std-ref">GET /ad/byVendor/{vendorId} v5</span></a></p></td>
+<tr class="row-odd"><td><p><span class="xref std std-ref">get_ad_vendor_id_v3</span></p></td>
+<td><p><span class="xref std std-ref">get_ad_vendor_id_v5</span></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id-v2"><span class="std std-ref">GET /ad/byVendor/{vendorId} v2</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id-v5"><span class="std std-ref">GET /ad/byVendor/{vendorId} v5</span></a></p></td>
+<tr class="row-even"><td><p><span class="xref std std-ref">get_ad_vendor_id_v2</span></p></td>
+<td><p><span class="xref std std-ref">get_ad_vendor_id_v5</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="reference/post-ad.html#post-ad-v3"><span class="std std-ref">POST /ad v3</span></a></p></td>
-<td><p><a class="reference internal" href="reference/post-ad.html#post-ad-v5"><span class="std std-ref">POST /ad/ v5</span></a></p></td>
+<tr class="row-odd"><td><p><span class="xref std std-ref">post_ad_v3</span></p></td>
+<td><p><span class="xref std std-ref">post_ad_v5</span></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="reference/post-ad.html#post-ad-v2"><span class="std std-ref">POST /ad v2</span></a></p></td>
-<td><p><a class="reference internal" href="reference/post-ad.html#post-ad-v5"><span class="std std-ref">POST /ad/ v5</span></a></p></td>
+<tr class="row-even"><td><p><span class="xref std std-ref">post_ad_v2</span></p></td>
+<td><p><span class="xref std std-ref">post_ad_v5</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v3"><span class="std std-ref">PUT /ad/{id} v3</span></a></p></td>
-<td><p><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v5"><span class="std std-ref">PUT /ad/{id} v5</span></a></p></td>
+<tr class="row-odd"><td><p><span class="xref std std-ref">put_ad_id_v3</span></p></td>
+<td><p><span class="xref std std-ref">put_ad_id_v5</span></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v2"><span class="std std-ref">PUT /ad/{id} v2</span></a></p></td>
-<td><p><a class="reference internal" href="reference/put-ad-id.html#put-ad-id-v5"><span class="std std-ref">PUT /ad/{id} v5</span></a></p></td>
+<tr class="row-even"><td><p><span class="xref std std-ref">put_ad_id_v2</span></p></td>
+<td><p><span class="xref std std-ref">put_ad_id_v5</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="reference/get-user.html#get-user-v2"><span class="std std-ref">GET /user v2</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-user.html#get-user-v4"><span class="std std-ref">GET /user v4</span></a></p></td>
+<tr class="row-odd"><td><p><span class="xref std std-ref">get_user_v2</span></p></td>
+<td><p><span class="xref std std-ref">get_user_v4</span></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="reference/get-user.html#get-user-v3"><span class="std std-ref">GET /user v3</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-user.html#get-user-v4"><span class="std std-ref">GET /user v4</span></a></p></td>
+<tr class="row-even"><td><p><span class="xref std std-ref">get_user_v3</span></p></td>
+<td><p><span class="xref std std-ref">get_user_v4</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="reference/get-category-id.html#get-category-id-v2"><span class="std std-ref">GET /category/{id} v2</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-category-id.html#get-category-id-v5"><span class="std std-ref">GET /category/{id} v5</span></a></p></td>
+<tr class="row-odd"><td><p><span class="xref std std-ref">get_category_id_v2</span></p></td>
+<td><p><span class="xref std std-ref">get_category_id_v5</span></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="reference/get-categories.html#get-categories-v1"><span class="std std-ref">GET /categories V1</span></a></p></td>
-<td><p><a class="reference internal" href="reference/get-categories.html#get-categories-v5"><span class="std std-ref">GET /categories V5</span></a></p></td>
+<tr class="row-even"><td><p><span class="xref std std-ref">get_categories_v1</span></p></td>
+<td><p><span class="xref std std-ref">get_categories_v5</span></p></td>
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+<section id="september-2024-deprecated-handler-clean-up">
+<h2>September 2024: ‘Deprecated handler clean up’<a class="headerlink" href="#september-2024-deprecated-handler-clean-up" title="Permalink to this heading">¶</a></h2>
+<section id="id2">
+<h3>Synopsis<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Removal of deprecated unused endpoints, types and fields</p></li>
+</ul>
+<section id="removed-endpoints">
+<h4>Removed Endpoints<a class="headerlink" href="#removed-endpoints" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Removed GET /ad/byVendor/{vendorId} <cite>get_ad_vendor_id_v3</cite></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><ul>
+<li><p><span class="xref std std-ref">get_ad_vendor_id_v3</span></p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</section>
 </section>
 </section>
 </section>

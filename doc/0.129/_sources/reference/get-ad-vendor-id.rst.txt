@@ -5,7 +5,7 @@
 GET /ad/byVendor/{vendorId}
 ===========================
 
-:ref:`get_ad_vendor_id_v5` | :ref:`get_ad_vendor_id_v3` | :ref:`get_ad_vendor_id_v2`
+:ref:`get_ad_vendor_id_v5` | :ref:`get_ad_vendor_id_v2`
 
 .. warning::
 
@@ -13,6 +13,7 @@ GET /ad/byVendor/{vendorId}
 
     :ref:`get_ad_vendor_id_v3` is now officially deprecated and scheduled for removal on May, 1st 2023. Please move to use :ref:`get_ad_vendor_id_v5`.
 
+    :ref:`get_ad_vendor_id_v3` is now officially unused and removed on September, 1st 2024. Please move to use :ref:`get_ad_vendor_id_v5`.
 
 .. _get_ad_vendor_id_v5:
 
@@ -38,30 +39,6 @@ Example
 """""""
 
 .. include:: ../examples/get-ad-vendorid-v5-example.rst
-
-.. _get_ad_vendor_id_v3:
-
-GET /ad/byVendor/{vendorId} v3
-------------------------------
-
-.. list-table::
- :widths: 20 80
-
- * - Scope
-   - ``api_ro`` or ``console_ro``
-
- * - Accept
-   - ``application/sellside.ad-v3+json, application/json``
-
-Version 3 works just like :ref:`get_ad_vendor_id_v2`, except the response body contains an additional field **statusReasons**.
-This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system.
-This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.
-
-Example
-"""""""
-
-.. include:: ../examples/get-ad-id-v3-by-vendor.rst
-
 
 .. _get_ad_vendor_id_v2:
 
@@ -115,4 +92,3 @@ Example
 """""""
 
 .. include:: ../examples/get-ad-id-v2-by-vendor.rst
-

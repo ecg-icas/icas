@@ -196,6 +196,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html">OpenAPI reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#september-2024-deprecated-handler-clean-up">September 2024: ‘Deprecated handler clean up’</a></li>
 </ul>
 </li>
 </ul>
@@ -245,8 +246,8 @@ seller has ads, these will be part of the campaign.</p>
 <p>The first campaign to be created, either explicitly or by us ensuring there is one, will also become the <cite>default campaign</cite>. This
 means that whenever ads are created through API without specifying a campaign Id, the ad will become part of this <cite>default campaign</cite>.
 For markets where only one campaign per seller is allowed at the moment, this campaign is also the default.</p>
-<p>You can get your campaign by calling <a class="reference internal" href="reference/get-campaigns.html#get-campaigns"><span class="std std-ref">GET /campaigns</span></a> or <a class="reference internal" href="reference/get-campaign-id.html#get-campaign-id"><span class="std std-ref">GET /campaign/{id}</span></a>. Campaign budgets can be modified by using
-<a class="reference internal" href="reference/put-campaign-id-budgets.html#put-campaign-id-budgets"><span class="std std-ref">PUT /campaign/{id}/budgets</span></a>, and controlling campaign status can be done by <a class="reference internal" href="reference/put-campaign-id-status.html#put-campaign-id-status"><span class="std std-ref">PUT /campaign/{id}/status/{status}</span></a>. We expect to
+<p>You can get your campaign by calling <span class="xref std std-ref">get_campaigns</span> or <span class="xref std std-ref">get_campaign_id</span>. Campaign budgets can be modified by using
+<span class="xref std std-ref">put_campaign_id_budgets</span>, and controlling campaign status can be done by <span class="xref std std-ref">put_campaign_id_status</span>. We expect to
 add more campaign functionality in the future.</p>
 <section id="fields">
 <span id="campaign-fields"></span><h2>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h2>
@@ -348,11 +349,11 @@ add more campaign functionality in the future.</p>
 </table>
 <section id="campaign-id">
 <span id="index-1"></span><span id="id"></span><h3>id<a class="headerlink" href="#campaign-id" title="Permalink to this heading">¶</a></h3>
-<p>Unique reference to the campaign, needs to be omitted in a POST action. One of <a class="reference internal" href="reference/campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a></p>
+<p>Unique reference to the campaign, needs to be omitted in a POST action. One of <span class="xref std std-ref">campaign_status_overview</span></p>
 </section>
 <section id="status">
 <span id="campaign-status"></span><span id="index-2"></span><h3>status<a class="headerlink" href="#status" title="Permalink to this heading">¶</a></h3>
-<p>The status of the campaign, one of <a class="reference internal" href="reference/campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>.</p>
+<p>The status of the campaign, one of <span class="xref std std-ref">campaign_status_overview</span>.</p>
 </section>
 <section id="datecreated">
 <span id="campaign-datecreated"></span><span id="index-3"></span><h3>dateCreated<a class="headerlink" href="#datecreated" title="Permalink to this heading">¶</a></h3>
