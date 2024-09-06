@@ -41,6 +41,7 @@ Contents
    error-handling
    OpenAPI reference <https://ecg-icas.github.io/icas/openapi/index.html>
    release-notes
+   migration-guide
 
 
 .. _History:
