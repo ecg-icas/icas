@@ -823,6 +823,7 @@ paths:
         The ``averageCpc`` field in the response marks the required cpc value to place the ad on page one in its category. We will rename this field in a future version of the endpoint to make this clearer.
         '
       operationId: getAdFunnel
+      deprecated: true
       parameters:
         - name: id
           in: path
@@ -939,6 +940,156 @@ paths:
                 - code: 2001
                   text: 'invalid argument'
                   msg: 'the value of the field ''cpc'' was invalid'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /ad/{id}/position:
+    get:
+      tags:
+        - Ads
+      summary: 'Get the current page position of an ad in an L1 category browsing context, as well as the required bidMicros which would place the ad on the first L1 category page.'
+      operationId: getAdPosition
+      parameters:
+        - name: id
+          in: path
+          description: 'ID of the ad for which the position funnel is requested.'
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 423920348
+        - name: bidMicros
+          in: query
+          description: 'The bidMicros value (in micros) for which to make the position funnel calculation.'
+          required: true
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            example: 50000
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+          content:
+            application/sellside.position-v1+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/PositionV1'
+        '204':
+          description: 'No Content'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+        '400':
+          description: 'Bad Request'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'the value of the field ''bidMicros'' was invalid'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /ad//positions:
+    get:
+      tags:
+        - Ads
+      summary: 'Get the current page positions of list of ads in an L1 category browsing context, as well as the required bidMicros which would place each ad on the first L1 category page.'
+      description: 'This is a bulk version of the ``/ad/{id}/position`` endpoint. It returns the same information for a list of ads.'
+      operationId: getAdPositions
+      parameters:
+        - name: adIds
+          in: path
+          description: 'A list of adIds for the ads for which the position funnel is requested.'
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+          example: [ 11232, 2231, 32453 ]
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+          content:
+            application/sellside.position.mapping-v1+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/PositionsV1'
+        '204':
+          description: 'No Content'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+        '400':
+          description: 'Bad Request'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
       security:
         - bearerAuth: [ ]
           oAuth2ClientCredentials:

@@ -848,6 +848,36 @@ components:
           type: number
           format: int64
           example: 600
+    PositionV1:
+      type: object
+      readOnly: true
+      description: 'A struct encapsulating the ad position funnel.'
+      properties:
+        bidMicrosP1Browse:
+          type: number
+          format: int64
+          description: 'The required bidMicros value which would place the ad on the  first L1 category browse page.'
+          example: 50000
+        pageNumberBrowse:
+            type: number
+            format: int64
+            description: 'The L1 browse page on which the ad is displayed for the corresponding bidMicros value.'
+            example: 3
+    PositionsV1:
+      type: object
+      readOnly: true
+      description: 'A struct encapsulating a map of adIds to the ad position funnel for each corresponding ad.'
+      additionalProperties:
+        $ref: '#/components/schemas/PositionV1'
+      example:
+          "232": {
+              "bidMicrosP1Browse": 100000,
+              "pageNumberBrowse": 12
+          }
+          "235234": {
+              "bidMicrosP1Browse": 123000,
+              "pageNumberBrowse": 2
+          }
     MappingExternalIdsV2:
       deprecated: true
       type: object
