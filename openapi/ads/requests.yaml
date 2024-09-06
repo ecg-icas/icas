@@ -34,6 +34,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Image'
+        externalId:
+          type: string
+          maxLength: 64
+          description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
+          example: 'OURSHOP-1423453-34'
+          deprecated: true
         categoryId:
           description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
           type: integer
@@ -142,7 +148,7 @@ components:
         shippingOptions:
           example:
             - type: 'SHIP'
-              cost: 0
+              costCents: 0
               time: '2d-5d'
             - type: 'PICKUP'
               pickupLocation: '1097DN'
@@ -225,7 +231,6 @@ components:
           maxLength: 64
           description: 'Any non-empty string with a maximum length of 64 characters. When fetching an existing ad which does not have an externalId, the field is empty or omitted.'
           example: 'OURSHOP-1423453-34'
-          deprecated: true
         status:
           $ref: '#/components/schemas/Status'
         priceType:

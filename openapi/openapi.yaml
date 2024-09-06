@@ -2239,7 +2239,7 @@ paths:
             - 'api_ro'
 
   # CAMPAIGNS
-  /campaign/:
+  /campaign:
     post:
       tags:
         - Campaigns
