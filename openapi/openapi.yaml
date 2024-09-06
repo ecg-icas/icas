@@ -2096,7 +2096,7 @@ paths:
       tags:
         - Campaigns
       summary: 'Creates a new campaign for the user'
-      description: 'Creates a new campaign for the user. If successful, it returns an object representing the campaign, with default values on certain fields, if not provided. A minimum payload is an empty JSON, as none of the fields are mandatory.'
+      description: 'Creates a new campaign for the user. If successful, it returns an object representing the campaign, with default values on certain fields, if not provided.'
       operationId: postCampaignV2
       parameters:
         - name: Accept
@@ -2111,9 +2111,6 @@ paths:
           application/sellside.campaign-v5+json:
             schema:
               $ref: './campaigns/requests.yaml#/components/schemas/V5'
-          application/sellside.campaign-v2+json:
-            schema:
-              $ref: './campaigns/requests.yaml#/components/schemas/V2'
       responses:
         '201':
           description: 'Campaign created'
@@ -2132,9 +2129,6 @@ paths:
             application/sellside.campaign-v5+json:
               schema:
                 $ref: './campaigns/responses.yaml#/components/schemas/V5'
-            application/sellside.campaign-v2+json:
-              schema:
-                $ref: './campaigns/responses.yaml#/components/schemas/V2'
           links:
             vendorIdLink:
               operationId: getCampaignByVendorId
@@ -2194,12 +2188,11 @@ paths:
       tags:
         - Campaigns
       summary: 'Returns a single campaign with the given vendorId.'
-      description: 'If the campaign does not exist or does not belong to the user the server returns 404 Not Found. If the vendorId is bigger than 64 characters the server returns 400 Bad Request. The vendorId is unique for a user; It is not possible for a single user to create multiple campaigns with the same vendorId (even if other campaigns are in status DELETED)'
       operationId: getCampaignByVendorId
       parameters:
         - name: vendorId
           in: path
-          description: 'Case-insensitive filter for a keyword in the title; will include only ads which contain the given keyword in their title.'
+          description: 'value of the vendorId field of the campaign'
           schema:
             type: string
             example: 'my-christmas-campaign-2020'
@@ -2229,9 +2222,6 @@ paths:
             application/sellside.campaign-v5+json:
               schema:
                 $ref: './campaigns/responses.yaml#/components/schemas/V5'
-            application/sellside.campaign-v2+json:
-              schema:
-                $ref: './campaigns/requests.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2307,9 +2297,6 @@ paths:
             application/sellside.campaign-v5+json:
               schema:
                 $ref: './campaigns/responses.yaml#/components/schemas/V5'
-            application/sellside.campaign-v2+json:
-              schema:
-                $ref: './campaigns/responses.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2371,10 +2358,6 @@ paths:
           application/sellside.campaign-v5+json:
             schema:
               $ref: './campaigns/requests.yaml#/components/schemas/V5'
-          application/sellside.campaign-v2+json:
-            schema:
-              deprecated: true
-              $ref: './campaigns/requests.yaml#/components/schemas/V2'
       responses:
         '200':
           description: 'Success'
@@ -2393,9 +2376,6 @@ paths:
             application/sellside.campaign-v5+json:
               schema:
                 $ref: './campaigns/responses.yaml#/components/schemas/V5'
-            application/sellside.campaign-v2+json:
-              schema:
-                $ref: './campaigns/responses.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -2435,7 +2415,7 @@ paths:
     get:
       tags:
         - Campaigns
-      summary: 'Get all campaigns for the authenticated user.'
+      summary: 'Get all campaigns for the user.'
       parameters:
         - name: Accept
           in: header
@@ -2496,11 +2476,7 @@ paths:
                     type: array
                     items:
                       $ref: './campaigns//responses.yaml#/components/schemas/V5'
-            application/sellside.campaign.list-v2+json:
-              schema:
-                type: array
-                items:
-                  $ref: './campaigns/responses.yaml#/components/schemas/V2'
+
         '401':
           description: 'Unauthorized'
           content:
@@ -2540,7 +2516,7 @@ paths:
     put:
       tags:
         - Campaigns
-      summary: 'Updates the status of the campaign.'
+      summary: 'Updates the status of the campaign. It does not change the individual status of the ads in the campaign, but it can change their visibility. This means, if the campaign is paused, all its ads will not be shown. If the campaign is active, only the ads with `ACTIVE` individual status will be shown.'
       parameters:
         - name: id
           in: path
@@ -2553,7 +2529,7 @@ paths:
           required: true
         - name: status
           in: path
-          description: 'The desired status of the campaign'
+          description: 'The desired status of the campaign. Possible values are: ACTIVE, PAUSED. When pausing or activating, the status of the individual ads in the campaign is not changed. However, the visibility of the ads is affected by the campaign status.'
           required: true
           schema:
             $ref: './campaigns/params.yaml#/components/parameters/StatusV5'
@@ -2634,7 +2610,7 @@ paths:
     put:
       tags:
         - Campaigns
-      summary: 'Updates the budget limits of a campaign.'
+      summary: 'Updates the daily and total budget limits of a campaign.'
       parameters:
         - name: id
           in: path
