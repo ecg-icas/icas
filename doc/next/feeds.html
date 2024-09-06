@@ -236,8 +236,8 @@
   <section id="feeds">
 <span id="id1"></span><h1>Feeds<a class="headerlink" href="#feeds" title="Permalink to this heading">¶</a></h1>
 <p>A feed is a file that contains a list of ads you want to advertise and is a way to handle repetitive asynchronous bulk uploading of ads.</p>
-<p>Once a feed is created you can link your HTTP(s) URL through <a class="reference internal" href="reference/post-feed-config.html#post-feed-config"><span class="std std-ref">POST /feed/config</span></a> or the seller console frontend to make our system fetch your file and import your ads.
-After that, scheduled fetches happen once per day synchronizing the system with any updates you may want to introduce to the ads list.  You can stop the feed advertising process using <a class="reference internal" href="reference/post-feed-config.html#post-feed-config"><span class="std std-ref">POST /feed/config</span></a>, or the console.</p>
+<p>Once a feed is created you can link your HTTP(s) URL through <span class="xref std std-ref">post_feed_config</span> or the seller console frontend to make our system fetch your file and import your ads.
+After that, scheduled fetches happen once per day synchronizing the system with any updates you may want to introduce to the ads list.  You can stop the feed advertising process using <span class="xref std std-ref">post_feed_config</span>, or the console.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you have a dedicated account manager, they can also support you by ensuring the URL of your feed is properly connected to your account.</p>
@@ -281,7 +281,7 @@ Some complex fields, like <a class="reference internal" href="feed-details.html#
 <p><a class="reference download internal" download="" href="_downloads/93dbf90792498ee82059295c17c481bd/feed-example.tsv"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">example</span></code></a></p>
 </details><details class="summary-xml">
 <summary>XML</summary><p>The contents of this XML file need to adhere to the XSD available for sellers
-at <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a>.
+at <span class="xref std std-ref">get_feed_xsd</span>.
 All the values provided should conform to the rules specified for the valid XML document.
 For the more complex data (that contains, for example HTML tags) we recommend using <a class="reference external" href="https://en.wikipedia.org/wiki/CDATA">character data (CDATA)</a>.
 XML escape characters are also supported.</p>
@@ -368,8 +368,8 @@ XML escape characters are also supported.</p>
 </section>
 <section id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
-<p><a class="reference internal" href="reference/get-feed-import.html#get-feed-import"><span class="std std-ref">GET /feed/import</span></a> shows the overview of imported feeds of the user, and
-<a class="reference internal" href="reference/get-feed-import-id-detail.html#get-feed-import-id-detail"><span class="std std-ref">GET /feed/import/{id}/detail</span></a> can be a good source of information on possible errors
+<p><span class="xref std std-ref">get_feed_import</span> shows the overview of imported feeds of the user, and
+<span class="xref std std-ref">get_feed_import_id_detail</span> can be a good source of information on possible errors
 or warnings on ads, such as missing mandatory attributes or too low CPC etc.</p>
 </section>
 <section id="frequently-asked-questions">
@@ -422,7 +422,7 @@ to your ads. Existing ads will remain unchanged and no new ads will be created.<
 </details><details class="larger-collapse summary-how-to-validate-xml-against-xsd">
 <summary>How to validate XML against XSD?</summary><p>Next to various online capabilities where you can provide both your XML and XSD files,
 a way to check quickly and locally is to use a tool called xmllint. With this tool
-you can use our XSD downloaded from <a class="reference internal" href="reference/get-feed-xsd.html#get-feed-xsd"><span class="std std-ref">GET /feed/xsd</span></a> to test whether your feed is
+you can use our XSD downloaded from <span class="xref std std-ref">get_feed_xsd</span> to test whether your feed is
 working before you let our system fetch it using the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmllint<span class="w"> </span>--debug<span class="w"> </span>--noout<span class="w"> </span>--schema<span class="w"> </span>/path/to/admarkt1.0.xsd<span class="w"> </span>/path/to/yourfeed.xml
 </pre></div>

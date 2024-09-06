@@ -397,9 +397,9 @@ to include in or exclude from the response body. When both <code class="docutils
 <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> have a value, the <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> value will be ignored. By default,
 <code class="docutils literal notranslate"><span class="pre">_include</span></code> is set to all fields and <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> is empty.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">_include</span></code>  will require you to specify <em>each key in the path</em> of the data
-that you wish. For example, if you’re calling <a class="reference internal" href="reference/get-ad.html#get-ad-v5"><span class="std std-ref">GET /ad v5</span></a> and you
+that you wish. For example, if you’re calling <span class="xref std std-ref">get_ad_v5</span> and you
 want the ad ID and title, you’ll have to provide <code class="docutils literal notranslate"><span class="pre">_include=ads,id,title</span></code>.</p>
-<p>Here’s an example of the <code class="docutils literal notranslate"><span class="pre">_include</span></code> parameter used while calling <a class="reference internal" href="reference/get-ad.html#get-ad-v5"><span class="std std-ref">GET /ad v5</span></a>.
+<p>Here’s an example of the <code class="docutils literal notranslate"><span class="pre">_include</span></code> parameter used while calling <span class="xref std std-ref">get_ad_v5</span>.
 The normal response has the following shape:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="s2">&quot;ads&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
@@ -492,9 +492,9 @@ body. Otherwise, the server returns <code class="docutils literal notranslate"><
 errors. The following endpoints support dry-run validation:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="reference/post-ad.html#post-ad"><span class="std std-ref">POST  /ad</span></a></p></li>
-<li><p><a class="reference internal" href="reference/put-ad-id.html#put-ad-id"><span class="std std-ref">PUT /ad/{id}</span></a></p></li>
-<li><p><a class="reference internal" href="reference/put-ad-id-status.html#put-ad-id-status"><span class="std std-ref">PUT /ad/{id}/status/{status}</span></a></p></li>
+<li><p><span class="xref std std-ref">post_ad</span></p></li>
+<li><p><span class="xref std std-ref">put_ad_id</span></p></li>
+<li><p><span class="xref std std-ref">put_ad_id_status</span></p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -502,7 +502,7 @@ errors. The following endpoints support dry-run validation:</p>
 <span id="id2"></span><h2>Vendor Ids<a class="headerlink" href="#vendor-ids" title="Permalink to this heading">¶</a></h2>
 <p>For <a class="reference internal" href="ads.html#ad-vendorid"><span class="std std-ref">ads</span></a> and <a class="reference internal" href="campaigns.html#campaign-vendorid"><span class="std std-ref">campaigns</span></a>, it is possible to provide a so-called <cite>vendorId</cite>.
 The intention of this <cite>vendorId</cite> is to allow the API partner to use their own primary key on this ad or campaign.
-The API partner can also fetch the ad or campaign _by_ <cite>vendorId</cite> - see <a class="reference internal" href="reference/get-ad-vendor-id.html#get-ad-vendor-id"><span class="std std-ref">GET /ad/byVendor/{vendorId}</span></a> and <a class="reference internal" href="reference/get-campaign-vendor-id.html#get-campaign-vendor-id"><span class="std std-ref">GET /campaign/byVendor/{vendorId}</span></a>
+The API partner can also fetch the ad or campaign _by_ <cite>vendorId</cite> - see <span class="xref std std-ref">get_ad_vendor_id</span> and <span class="xref std std-ref">get_campaign_vendor_id</span>
 for details - to  get the necessary primary key to perform other operations through the API.
 This means the API partner does not need to keep an explicit mapping between their own primary key and the one generated
 by our system, making integration simpler.</p>
