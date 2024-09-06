@@ -162,3 +162,18 @@ The following calls are deprecated and scheduled to be removed on May 1st, 2023:
    * :ref:`get_category_id_v5`
  - * :ref:`get_categories_v1`
    * :ref:`get_categories_v5`
+
+
+September 2024: 'Deprecated handler clean up'
+------------------------------
+
+Synopsis
+""""""""
+
+* Removal of deprecated unused endpoints, types and fields
+
+Removed Endpoints
+^^^^^^^^^^^^^^
+
+* Removed GET /ad/byVendor/{vendorId} `get_ad_vendor_id_v3`
+ - * :ref:`get_ad_vendor_id_v3`
