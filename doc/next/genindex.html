@@ -193,8 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html">OpenAPI reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#september-2024-deprecated-handler-clean-up">September 2024: ‘Deprecated handler clean up’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
 </ul>
 </li>
 </ul>
@@ -238,10 +238,12 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
@@ -254,8 +256,39 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    ACTIVE
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-1">Ad Status</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-1">Campaign Status</a>
+</li>
+      </ul></li>
+      <li><a href="reference/ad-status.html#index-0">Ad Status</a>
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-1">ACTIVE</a>
+</li>
+        <li><a href="reference/ad-status.html#index-6">BUDGET_REACHED</a>
+</li>
+        <li><a href="reference/ad-status.html#index-7">DAILY_BUDGET_REACHED</a>
+</li>
+        <li><a href="reference/ad-status.html#index-3">DELETED</a>
+</li>
+        <li><a href="reference/ad-status.html#index-4">DELETED_BY_CS</a>
+</li>
+        <li><a href="reference/ad-status.html#index-8">DOMAIN_PENDING</a>
+</li>
+        <li><a href="reference/ad-status.html#index-2">PAUSED</a>
+</li>
+        <li><a href="reference/ad-status.html#index-5">SUSPENDED_BY_CS</a>
+</li>
+      </ul></li>
       <li><a href="ads.html#index-21">ad_budgetsobj_daily</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-23">ad_budgetsobj_daily_limitMicros</a>
 </li>
       <li><a href="ads.html#index-25">ad_budgetsobj_daily_spentMicros</a>
@@ -268,8 +301,6 @@
 </li>
       <li><a href="ads.html#index-0">Ads</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-0">Advertisments</a>
 </li>
       <li><a href="feed-details.html#index-33">ageGroup</a>
@@ -290,18 +321,41 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    BIDDING
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
+      <li>
+    BIDDING_FROM
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
       <li><a href="ads.html#index-18">bidMicros</a>
 </li>
       <li><a href="feed-details.html#index-23">brand</a>
 </li>
+      <li>
+    BUDGET_REACHED
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-6">Ad Status</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-3">Campaign Status</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="feed-details.html#index-14">budgetDetails</a>
 </li>
       <li><a href="ads.html#index-20">budgets</a>, <a href="campaigns.html#index-8">[1]</a>
 </li>
       <li><a href="campaigns.html#index-9">budgets.daily</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="campaigns.html#index-11">budgets.daily.limitMicros</a>
 </li>
       <li><a href="campaigns.html#index-13">budgets.daily.spentMicros</a>
@@ -318,22 +372,41 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/campaign-status.html#index-0">Campaign Status</a>
+
+      <ul>
+        <li><a href="reference/campaign-status.html#index-1">ACTIVE</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-3">BUDGET_REACHED</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-4">DAILY_BUDGET_REACHED</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-2">PAUSED</a>
+</li>
+      </ul></li>
       <li><a href="ads.html#index-17">campaignId</a>
 </li>
       <li><a href="campaigns.html#index-0">Campaigns</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="categories.html#index-0">categoryConfigV2</a>
 </li>
       <li><a href="ads.html#index-4">categoryId</a>, <a href="feed-details.html#index-5">[1]</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="feed-details.html#index-31">color</a>
 </li>
       <li><a href="feed-details.html#index-26">condition</a>
 </li>
       <li><a href="ads.html#index-19">cpc</a>
 </li>
+      <li>
+    CREDIBLE_BID
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
       <li><a href="ads.html#index-7">currency</a>
 </li>
   </ul></td>
@@ -342,20 +415,50 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    DAILY_BUDGET_REACHED
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-7">Ad Status</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-4">Campaign Status</a>
+</li>
+      </ul></li>
       <li><a href="ads.html#index-28">dailyBudget</a>
 </li>
       <li><a href="ads.html#index-29">dailySpent</a>
 </li>
       <li><a href="ads.html#index-40">dateCreated</a>, <a href="campaigns.html#index-3">[1]</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-42">dateDeleted</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-41">dateLastUpdated</a>, <a href="campaigns.html#index-4">[1]</a>
 </li>
+      <li>
+    DELETED
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-3">Ad Status</a>
+</li>
+      </ul></li>
+      <li>
+    DELETED_BY_CS
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-4">Ad Status</a>
+</li>
+      </ul></li>
       <li><a href="ads.html#index-3">description</a>, <a href="feed-details.html#index-4">[1]</a>
 </li>
+      <li>
+    DOMAIN_PENDING
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-8">Ad Status</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -368,10 +471,34 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/error-codes.html#index-0">Error Codes</a>
+</li>
       <li><a href="error-handling.html#index-0">Error Handling</a>
 </li>
       <li><a href="ads.html#index-5">externalId</a>, <a href="feed-details.html#index-1">[1]</a>
 </li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    FIXED_PRICE
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    FREE
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -443,8 +570,39 @@
   </ul></td>
 </tr></table>
 
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    NEGOTIABLE
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    NOT_APPLICABLE
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    ON_DEMAND
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="feed-details.html#index-11">originalPrice</a>
 </li>
@@ -456,6 +614,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-35">pageNumber</a>
 </li>
+      <li>
+    PAUSED
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-2">Ad Status</a>
+</li>
+        <li><a href="reference/campaign-status.html#index-2">Campaign Status</a>
+</li>
+      </ul></li>
       <li><a href="ads.html#index-37">phoneNumber</a>, <a href="feed-details.html#index-16">[1]</a>
 </li>
       <li><a href="ads.html#index-33">postcode</a>
@@ -466,10 +633,36 @@
         <li><a href="ads.html#index-10">(integer)</a>
 </li>
       </ul></li>
-      <li><a href="ads.html#index-12">price.amountCents</a>
+      <li><a href="reference/price-types.html#index-0">Price Types</a>
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">BIDDING</a>
 </li>
+        <li><a href="reference/price-types.html#index-0">BIDDING_FROM</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">CREDIBLE_BID</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">FIXED_PRICE</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">FREE</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">NEGOTIABLE</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">NOT_APPLICABLE</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">ON_DEMAND</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">RESERVED</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">SEE_DESCRIPTION</a>
+</li>
+        <li><a href="reference/price-types.html#index-0">SWAP</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ads.html#index-12">price.amountCents</a>
+</li>
       <li><a href="ads.html#index-15">price.originalAmountCents</a>
 </li>
       <li><a href="ads.html#index-13">price.priceType</a>
@@ -490,10 +683,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-34">regionId</a>, <a href="feed-details.html#index-18">[1]</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="release-notes.html#index-0">Release Notes</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    RESERVED
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -502,22 +702,43 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-31">salutation</a>
 </li>
+      <li>
+    SEE_DESCRIPTION
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
       <li><a href="ads.html#index-32">sellerName</a>, <a href="feed-details.html#index-2">[1]</a>
 </li>
       <li><a href="ads.html#index-52">shippingOptions</a>, <a href="feed-details.html#index-15">[1]</a>
 </li>
       <li><a href="feed-details.html#index-34">size</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-30">spentBudget</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ads.html#index-6">status</a>, <a href="campaigns.html#index-2">[1]</a>, <a href="feed-details.html#index-6">[2]</a>
 </li>
       <li><a href="ads.html#index-16">statusReasons</a>
 </li>
       <li><a href="ads.html#index-36">suggestedCpcForPageOne</a>
 </li>
+      <li>
+    SUSPENDED_BY_CS
+
+      <ul>
+        <li><a href="reference/ad-status.html#index-5">Ad Status</a>
+</li>
+      </ul></li>
+      <li>
+    SWAP
+
+      <ul>
+        <li><a href="reference/price-types.html#index-0">Price Types</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 

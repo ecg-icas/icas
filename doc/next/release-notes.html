@@ -194,8 +194,8 @@
 <li class="toctree-l1"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html">OpenAPI reference</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#september-2024-deprecated-handler-clean-up">September 2024: ‘Deprecated handler clean up’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
 </ul>
 </li>
 </ul>
@@ -235,10 +235,33 @@
   <section id="release-notes">
 <span id="index-0"></span><span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this heading">¶</a></h1>
 <p>This section gives insight on what our current and previous releases contain.</p>
-<section id="feb-2023-campaigns-micros">
-<h2>Feb 2023: ‘Campaigns &amp; Micros’<a class="headerlink" href="#feb-2023-campaigns-micros" title="Permalink to this heading">¶</a></h2>
+<section id="september-2024-deprecated-handler-clean-up">
+<h2>September 2024: ‘Deprecated handler clean up’<a class="headerlink" href="#september-2024-deprecated-handler-clean-up" title="Permalink to this heading">¶</a></h2>
 <section id="synopsis">
 <h3>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Removal of deprecated unused endpoints, types and fields</p></li>
+</ul>
+<section id="removed-endpoints">
+<h4>Removed Endpoints<a class="headerlink" href="#removed-endpoints" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Removed GET /ad/byVendor/{vendorId} <cite>get_ad_vendor_id_v3</cite></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><ul>
+<li><p><span class="xref std std-ref">get_ad_vendor_id_v3</span></p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+</section>
+<section id="feb-2023-campaigns-micros">
+<h2>Feb 2023: ‘Campaigns &amp; Micros’<a class="headerlink" href="#feb-2023-campaigns-micros" title="Permalink to this heading">¶</a></h2>
+<section id="id2">
+<h3>Synopsis<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>changing wording of <code class="docutils literal notranslate"><span class="pre">cpc</span></code> to <code class="docutils literal notranslate"><span class="pre">bid</span></code>, Functionality has not changed.</p></li>
 <li><p>For bid, budgets &amp; spent values we now communicate in micros: 1 cent == 10000 micros. Fields representing a monetary value will now also be named accordingly, mentioning whether they represent a value in cents or micros. This will result in fields like <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">amountCents</span></code>. The change into micros is also represented in the category data, where the interval of allowed values is defined.</p></li>
@@ -442,29 +465,6 @@ Deleting a campaign is currently not allowed.</p>
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="september-2024-deprecated-handler-clean-up">
-<h2>September 2024: ‘Deprecated handler clean up’<a class="headerlink" href="#september-2024-deprecated-handler-clean-up" title="Permalink to this heading">¶</a></h2>
-<section id="id2">
-<h3>Synopsis<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
-<ul class="simple">
-<li><p>Removal of deprecated unused endpoints, types and fields</p></li>
-</ul>
-<section id="removed-endpoints">
-<h4>Removed Endpoints<a class="headerlink" href="#removed-endpoints" title="Permalink to this heading">¶</a></h4>
-<ul class="simple">
-<li><p>Removed GET /ad/byVendor/{vendorId} <cite>get_ad_vendor_id_v3</cite></p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><ul>
-<li><p><span class="xref std std-ref">get_ad_vendor_id_v3</span></p></li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
-</section>
 </section>
 </section>
 </section>
