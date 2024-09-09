@@ -1,6 +1,6 @@
 .. _migration-guide:
 
-Migration guide
+Migration Guide
 ===============
 
 **Purpose**: This guide is designed to help API partners migrate from older deprecated API versions (``v2``, ``v3``, ``v4``) to the latest version (``v5``) of the Sellside API.
