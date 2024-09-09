@@ -1,0 +1,3 @@
+- **CPC**: `cpc` is replaced by ``bidMicros``. The interval values require conversion from a micros unit when interpreting them as cents.
+- **Budget Fields**: ``dailyBudget`` and ``totalBudget`` map to ``dailyBudgetMicros`` and ``totalBudgetMicros`` respectively. The interval values require conversion from a micros unit, when interpreting them as cents.
+- **Removed** field(s): ``suggestedCpcForPageOne``, ``currency``, ``paypalEnabled``.
