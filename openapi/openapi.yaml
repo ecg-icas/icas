@@ -140,7 +140,10 @@ paths:
       tags:
         - Ads
       summary: 'Updates the ad with the given ID'
-      description: 'Version 3 works just like v2, except the response body contains an additional field statusReasons. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
+
+      description: 'Version 5 has a slightly different backwards-incompatible structure than v3. Version 4 is omitted on purpose. <br>
+                     To use the automatic bidding functionality, tt is <b>necessary to [set a campaign daily budget](#/paths/~1campaign~1{id}~1budgets/put)</b> when using automatic bidding. Setting an <b>ad budget</b>, however, is not necessary.
+                     <br><br>Version 3 works just like v2, except the response body contains an additional field ``statusReasons``. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
       operationId: updateAdById
       parameters:
         - name: adId
@@ -635,9 +638,9 @@ paths:
       tags:
         - Ads
       summary: 'Creates a new ad for the current user.'
-      description: '<br>
-                     Version 5 has a slightly different backwards-incompatible structure than v3. Version 4 is omitted on purpose. <br>
-                     Version 3 works just like v2, except the response body contains an additional field ``statusReasons``. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
+      description: 'Version 5 has a slightly different backwards-incompatible structure than v3. Version 4 is omitted on purpose. <br>
+                     To use the automatic bidding functionality, tt is <b>necessary to [set a campaign daily budget](#/paths/~1campaign~1{id}~1budgets/put)</b> when using automatic bidding. Setting an <b>ad budget</b>, however, is not necessary.
+                     <br><br>Version 3 works just like v2, except the response body contains an additional field ``statusReasons``. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
       operationId: postAd
       requestBody:
         required: true
