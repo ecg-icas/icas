@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mapping details &mdash; iCAS Sellside API 0.129 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="iCAS Sellside API 0.129 documentation" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> iCAS Sellside API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#media-types">Media Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#feed-downloads">Feed Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#customize-response-body">Customize response body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#dates-and-times">Dates and Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#prices-and-currencies">Prices and Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#http-response-codes-and-error-handling">HTTP Response Codes and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#vendor-ids">Vendor Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#page-tokens">Page tokens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-an-access-token">Getting an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#using-an-access-token">Using an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#scopes">Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ads.html">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ads.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ads.html#images">Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../categories.html">Categories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../categories.html#attribute-rendering">Attribute Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html#category-attributes">Category Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../attributes.html#user-defined-attributes">User-Defined Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../regions.html">Regions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-ids">Region Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-levels">Region Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-label">Region label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#region-center">Region center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regions.html#leaf-regions">Leaf Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feeds.html">Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#file-format">File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#errors">Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feeds.html#frequently-asked-questions">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feed-details.html">Feed Fields</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#vendor-id">vendor id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#external-id">external id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#seller-name">seller name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#title">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#description">description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#category-id">category id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#status">status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#url">url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#vanity-url">vanity url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#price-type">price type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#price">price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#original-price">original price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#item-images">item images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#attributes">attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#budget-details">budget details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#shipping-pick-up">shipping &amp; pick-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#phone-number">phone number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#email-advertiser">email advertiser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#region-id">region id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#micro-tip">micro tip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#mpn">MPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#google-product-category">google product category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#product-type">product type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#brand">brand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#gtin">GTIN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#item-group-id">item group id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#condition">condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#material">material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#energy-efficiency-class">energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#min-energy-efficiency-class">min energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#max-energy-efficiency-class">max energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#color">color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#gender">gender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#age-group">age group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#size">size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#unit-pricing-base-measure">unit pricing base measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feed-details.html#unit-pricing-measure">unit pricing measure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reporting.html">Reporting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#dimensions-and-metrics">Dimensions and Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#time-ranges">Time Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#time-aggregation">Time Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#filters">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#sorting">Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#pagination-with-offset-and-limit">Pagination with offset and limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#enrichment">Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#query-and-response">Query and Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting.html#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../error-handling.html">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html">OpenAPI reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../migration-guide.html">Migration guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#key-changes-and-benefits-of-migrating">Key changes and benefits of migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#step-by-step-guide">Step by step guide</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">iCAS Sellside API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li><strong>Mapping details</strong></li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/migration-guide/get-ad.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+   <br>
+
+<div style="display: flex; gap: 20px;">
+
+<div style="flex: 1; padding-right: 10px;">
+
+ <p> <strong>Deprecated version</strong> </p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;statusReasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DOMAIN_PENDING&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;priceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5600</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;originalPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6500</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;totalBudget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dailyBudget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;spentBudget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dailySpent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pageNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;suggestedCpcForPageOne&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;allowPayPal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;shippingOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d-5d&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div style="flex: 1; padding-left: 10px;">
+ <p> <strong>New version</strong> </p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;amountCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5600</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;originalAmountCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6500</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;priceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;campaignId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">54212</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;bidMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10000&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;budgets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;daily&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;limitMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UNLIMITED&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;spentMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;500000&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;limitMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10000000&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;spentMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1200000&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;shippingOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;costCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d-5d&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div><section id="mapping-details">
+<h1><strong>Mapping details</strong><a class="headerlink" href="#mapping-details" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
+<li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
+<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, and is stringified. This requires a conversion of the values from a micros unit, when interpreting them as cents.</p></li>
+<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. All these require conversion of the values from a micros unit (and are stringified), when interpreting them as cents. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
+<li><p><strong>Shipping Cost</strong>: <code class="docutils literal notranslate"><span class="pre">cost</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">costCents</span></code> in V5. The value was already in cents so there is no need for conversion.</p></li>
+<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">pageNumber,</span> <span class="pre">suggestedCpcForPageOne,</span> <span class="pre">currency,</span> <span class="pre">allowPayPal,</span> <span class="pre">externalId</span></code> , <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> is a replacement for <code class="docutils literal notranslate"><span class="pre">externalId</span></code>.</p></li>
+<li><p><strong>New</strong> field(s): <code class="docutils literal notranslate"><span class="pre">campaignId</span></code>: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See &lt;campaigns&gt; for more.</p></li>
+<li><p>If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement GET /ad/{id}/position endpoint (see below).</p></li>
+</ul>
+</section>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The iCAS Team.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.129',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
