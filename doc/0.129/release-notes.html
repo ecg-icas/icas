@@ -247,23 +247,6 @@
 <h2>September 2024: ‘Deprecated handler clean up’<a class="headerlink" href="#september-2024-deprecated-handler-clean-up" title="Permalink to this heading">¶</a></h2>
 <section id="synopsis">
 <h3>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h3>
-<ul class="simple">
-<li><p>Removal of deprecated unused endpoints, types and fields</p></li>
-</ul>
-<section id="removed-endpoints">
-<h4>Removed Endpoints<a class="headerlink" href="#removed-endpoints" title="Permalink to this heading">¶</a></h4>
-<ul class="simple">
-<li><p>Removed GET /ad/byVendor/{vendorId} <cite>get_ad_vendor_id_v3</cite></p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><ul>
-<li><p><span class="xref std std-ref">get_ad_vendor_id_v3</span></p></li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
-</section>
 </section>
 </section>
 <section id="feb-2023-campaigns-micros">
@@ -397,12 +380,12 @@
 <h3>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h3>
 <p>Added first campaign support. See <a class="reference internal" href="campaigns.html#campaigns"><span class="std std-ref">Campaigns</span></a> for full details.</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">get_campaigns</span> to get list of campaigns for a user. Expected 0 or 1 result.</p></li>
-<li><p><span class="xref std std-ref">get_campaign_id</span> to fetch the individual campaign.</p></li>
-<li><p><span class="xref std std-ref">post_campaign</span> to create a campaign. Currently only 1 allowed per seller.</p></li>
-<li><p><span class="xref std std-ref">put_campaign_id</span> to update the campaign. Currently only status &amp; budgets can be updated.</p></li>
-<li><p><span class="xref std std-ref">put_campaign_id_status</span> to manage the campaign status (ACTIVE,PAUSED) directly.</p></li>
-<li><p><span class="xref std std-ref">put_campaign_id_budgets</span> to manage the campaign’s budgets directly.</p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaigns">GET /campaigns</a> to get list of campaigns for a user. Expected 0 or 1 result.</p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaign__id_">GET /campaign/{id}</a> to fetch the individual campaign.</p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/postCampaignV2">POST /campaign</a> to create a campaign. Currently only 1 allowed per seller.</p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id_">PUT /campaign/{id}</a> to update the campaign. Currently only status &amp; budgets can be updated.</p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__status__status_">PUT /campaign/{id}/status/{status}</a> to manage the campaign status (ACTIVE,PAUSED) directly.</p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets">PUT /campaign/{id}/budgets</a> to manage the campaign’s budgets directly.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -413,66 +396,10 @@ Deleting a campaign is currently not allowed.</p>
 </section>
 <section id="user">
 <h3>User<a class="headerlink" href="#user" title="Permalink to this heading">¶</a></h3>
-<p>See <span class="xref std std-ref">get_user</span> for full details.</p>
+<p>See <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/default/get_user">GET /user</a> for full details.</p>
 <p>Start using V4. There are 2 new fields in comparison with V2:
 <code class="docutils literal notranslate"><span class="pre">hasAds</span></code> (<strong>bool</strong>), whether a user has ads in the system and
 <code class="docutils literal notranslate"><span class="pre">isApiManaged</span></code> (<strong>bool</strong>), whether we see API partners managing ads for the user (not true if an api partner is using RO scopes only)</p>
-</section>
-<section id="deprecation-list">
-<h3>Deprecation list<a class="headerlink" href="#deprecation-list" title="Permalink to this heading">¶</a></h3>
-<p>The following calls are deprecated and scheduled to be removed on May 1st, 2023:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>deprecated endpoint</p></th>
-<th class="head"><p>replaced by</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="xref std std-ref">get_ad_v4</span></p></td>
-<td><p><span class="xref std std-ref">get_ad_v5</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">get_ad_id_v3</span></p></td>
-<td><p><span class="xref std std-ref">get_ad_id_v5</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">get_ad_id_v2</span></p></td>
-<td><p><span class="xref std std-ref">get_ad_id_v5</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">get_ad_vendor_id_v3</span></p></td>
-<td><p><span class="xref std std-ref">get_ad_vendor_id_v5</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">get_ad_vendor_id_v2</span></p></td>
-<td><p><span class="xref std std-ref">get_ad_vendor_id_v5</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">post_ad_v3</span></p></td>
-<td><p><span class="xref std std-ref">post_ad_v5</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">post_ad_v2</span></p></td>
-<td><p><span class="xref std std-ref">post_ad_v5</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">put_ad_id_v3</span></p></td>
-<td><p><span class="xref std std-ref">put_ad_id_v5</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">put_ad_id_v2</span></p></td>
-<td><p><span class="xref std std-ref">put_ad_id_v5</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">get_user_v2</span></p></td>
-<td><p><span class="xref std std-ref">get_user_v4</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">get_user_v3</span></p></td>
-<td><p><span class="xref std std-ref">get_user_v4</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="xref std std-ref">get_category_id_v2</span></p></td>
-<td><p><span class="xref std std-ref">get_category_id_v5</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="xref std std-ref">get_categories_v1</span></p></td>
-<td><p><span class="xref std std-ref">get_categories_v5</span></p></td>
-</tr>
-</tbody>
-</table>
 </section>
 </section>
 </section>

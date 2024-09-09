@@ -5,8 +5,8 @@ Feeds
 
 A feed is a file that contains a list of ads you want to advertise and is a way to handle repetitive asynchronous bulk uploading of ads.
 
-Once a feed is created you can link your HTTP(s) URL through :ref:`post_feed_config` or the seller console frontend to make our system fetch your file and import your ads. 
-After that, scheduled fetches happen once per day synchronizing the system with any updates you may want to introduce to the ads list.  You can stop the feed advertising process using :ref:`post_feed_config`, or the console.
+Once a feed is created you can link your HTTP(s) URL through `POST /feed/config <https://ecg-icas.github.io/icas/openapi/index.html#/Feeds/postFeedConfigV1>`_ or the seller console frontend to make our system fetch your file and import your ads.
+After that, scheduled fetches happen once per day synchronizing the system with any updates you may want to introduce to the ads list.  You can stop the feed advertising process using `POST /feed/config/ <https://ecg-icas.github.io/icas/openapi/index.html#/Feeds/postFeedConfigV1>`_, or the console.
 
 .. note::
     If you have a dedicated account manager, they can also support you by ensuring the URL of your feed is properly connected to your account. 
@@ -54,7 +54,7 @@ For instructions on how to create your feed in specific formats, please expand t
 .. collapse:: XML
 
     The contents of this XML file need to adhere to the XSD available for sellers
-    at :ref:`get_feed_xsd`.
+    at `GET /feed/xsd <https://ecg-icas.github.io/icas/openapi/index.html#/Feeds/getFeedXSDv1>`_.
     All the values provided should conform to the rules specified for the valid XML document.
     For the more complex data (that contains, for example HTML tags) we recommend using `character data (CDATA) <https://en.wikipedia.org/wiki/CDATA>`_.
     XML escape characters are also supported.
@@ -70,8 +70,8 @@ For instructions on how to create your feed in specific formats, please expand t
 
 Errors
 ------
-:ref:`get_feed_import` shows the overview of imported feeds of the user, and
-:ref:`get_feed_import_id_detail` can be a good source of information on possible errors
+`GET /feed/import <https://ecg-icas.github.io/icas/openapi/index.html#/Feeds/getFeedImport>`_ shows the overview of imported feeds of the user, and
+`GET /feed/import/{id}/detail <https://ecg-icas.github.io/icas/openapi/index.html#/Feeds/getFeedImportDetail>`_ can be a good source of information on possible errors
 or warnings on ads, such as missing mandatory attributes or too low CPC etc. 
 
 
@@ -163,7 +163,7 @@ Below are some common scenarios and questions with their explanations/answers.
 
     Next to various online capabilities where you can provide both your XML and XSD files,
     a way to check quickly and locally is to use a tool called xmllint. With this tool
-    you can use our XSD downloaded from :ref:`get_feed_xsd` to test whether your feed is
+    you can use our XSD downloaded from `GET /feed/xsd <https://ecg-icas.github.io/icas/openapi/index.html#/Feeds/getFeedXSDv1>`_ to test whether your feed is
     working before you let our system fetch it using the following command:
 
     .. code-block:: bash

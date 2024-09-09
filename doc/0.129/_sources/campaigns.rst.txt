@@ -19,8 +19,8 @@ The first campaign to be created, either explicitly or by us ensuring there is o
 means that whenever ads are created through API without specifying a campaign Id, the ad will become part of this `default campaign`.
 For markets where only one campaign per seller is allowed at the moment, this campaign is also the default.
 
-You can get your campaign by calling :ref:`get_campaigns` or :ref:`get_campaign_id`. Campaign budgets can be modified by using 
-:ref:`put_campaign_id_budgets`, and controlling campaign status can be done by :ref:`put_campaign_id_status`. We expect to 
+You can get your campaign by calling `GET /campaigns <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaigns>`_ or `GET /campaign/{id} <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaign__id_>`_. Campaign budgets can be modified by using
+`PUT /campaign/{id}/budgets <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets>`_, and controlling campaign status can be done by `PUT /campaign/{id}/status/{status} <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__status__status_>`_. We expect to
 add more campaign functionality in the future.
 
 .. _campaign-fields:

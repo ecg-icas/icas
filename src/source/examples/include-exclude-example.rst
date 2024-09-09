@@ -1,4 +1,4 @@
-Here's an example of the ``_include`` parameter used while calling :ref:`get_ad_v5`.
+Here's an example of the ``_include`` parameter used while calling `GET /ad <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters>`_.
 The normal response has the following shape:
 
 .. code-block:: javascript
