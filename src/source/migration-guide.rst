@@ -36,7 +36,7 @@ Campaigns
 ---------
 The Campaigns API helps you manage your campaign(s) efficiently. Think of a campaign as a container for ads, with key details like the campaign ID, name, creation date, and daily and total budget limits. Each campaign also has a status field that shows whether it is active or inactive.
 
-By default, campaign management is largely automated behind the scenes. All seller ads are automatically grouped into a single default campaign that is created and managed under the hood. However, as an API partner, you have the flexibility to create, update, and manage campaigns yourself, allowing for more granular control over your advertising strategy.
+**By default, campaign management is largely automated behind the scenes.** All seller ads are automatically grouped into a single default campaign that is created and managed under the hood. However, as an API partner, you have the flexibility to create, update, and manage campaigns yourself, allowing for more granular control over your advertising strategy.
 
 When using the campaigns API for the first time, it’s handy to remember to:
 
@@ -45,6 +45,9 @@ When using the campaigns API for the first time, it’s handy to remember to:
  * ○ `Update a campaign budgets <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets>`_ to set or change a daily and total budget for the campaign. This is a prerequisite for using the autobidding feature. Beware that the budget limits apply to all ads within the campaign, which means that when the budget limit is reached, all ads in the campaign will be taken offline.
 
  * ○ You can also `work with a vendorId <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId>`_ in case you manage multiple campaigns and want to keep track of them in your own system too.
+
+.. note::
+    The ability to manage multiple campaigns is currently only available for Kleinanzeigen sellers. Please contact our Pro team for access to the functionality of managing *multiple* campaigns per seller.
 
 
 .. _faq-migration:
@@ -69,7 +72,7 @@ FAQ
 
 ○ **What is the new** ``campaignId`` **field in the ad payload?**
 
-    The ``campaignId`` field is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See <campaigns> for more.
+    The ``campaignId`` field is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See :ref:`campaigns-migration` for more.
 
 
 ○ **What does the status value** ``DOMAIN_PENDING`` **in ads mean?**

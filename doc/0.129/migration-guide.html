@@ -659,7 +659,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 <section id="campaigns">
 <span id="campaigns-migration"></span><h2>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h2>
 <p>The Campaigns API helps you manage your campaign(s) efficiently. Think of a campaign as a container for ads, with key details like the campaign ID, name, creation date, and daily and total budget limits. Each campaign also has a status field that shows whether it is active or inactive.</p>
-<p>By default, campaign management is largely automated behind the scenes. All seller ads are automatically grouped into a single default campaign that is created and managed under the hood. However, as an API partner, you have the flexibility to create, update, and manage campaigns yourself, allowing for more granular control over your advertising strategy.</p>
+<p><strong>By default, campaign management is largely automated behind the scenes.</strong> All seller ads are automatically grouped into a single default campaign that is created and managed under the hood. However, as an API partner, you have the flexibility to create, update, and manage campaigns yourself, allowing for more granular control over your advertising strategy.</p>
 <p>When using the campaigns API for the first time, it’s handy to remember to:</p>
 <blockquote>
 <div><ul class="simple">
@@ -668,6 +668,10 @@ Only change the media type to a versioned one <span style="font-family: monospac
 <li><p>○ You can also <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId">work with a vendorId</a> in case you manage multiple campaigns and want to keep track of them in your own system too.</p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ability to manage multiple campaigns is currently only available for Kleinanzeigen sellers. Please contact our Pro team for access to the functionality of managing <em>multiple</em> campaigns per seller.</p>
+</div>
 </section>
 <section id="faq">
 <span id="faq-migration"></span><h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading">¶</a></h2>
@@ -685,7 +689,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 </div></blockquote>
 <p>○ <strong>What is the new</strong> <code class="docutils literal notranslate"><span class="pre">campaignId</span></code> <strong>field in the ad payload?</strong></p>
 <blockquote>
-<div><p>The <code class="docutils literal notranslate"><span class="pre">campaignId</span></code> field is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See &lt;campaigns&gt; for more.</p>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">campaignId</span></code> field is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See <a class="reference internal" href="#campaigns-migration"><span class="std std-ref">Campaigns</span></a> for more.</p>
 </div></blockquote>
 <p>○ <strong>What does the status value</strong> <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> <strong>in ads mean?</strong></p>
 <blockquote>
