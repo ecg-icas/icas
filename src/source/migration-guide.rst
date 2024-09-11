@@ -30,6 +30,7 @@ Step by step guide
 .. include:: migration-guide/step-by-step.rst
 
 
+.. _campaigns-migration:
 
 Campaigns
 ---------
@@ -45,7 +46,10 @@ When using the campaigns API for the first time, it’s handy to remember to:
 
  * ○ You can also `work with a vendorId <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId>`_ in case you manage multiple campaigns and want to keep track of them in your own system too.
 
-Q&A
+
+.. _faq-migration:
+
+FAQ
 ---
 
 ○ **What should I do with the** ``externalId`` **? I need it for keeping track of ads.**

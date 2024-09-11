@@ -1,5 +1,5 @@
-This section provides a detailed overview of the changes for each affected API endpoint, mapping fields from the old versions to the new `v5`.
-Follow this guide to ensure a smooth migration by understanding the modifications and how to adapt your implementation accordingly.
+This section provides a detailed overview of the changes for each affected API endpoint, mapping fields from the old and deprecated versions to the new `v5`.
+Follow this guide to understand the modifications and learn how to update your implementation for a smooth migration.
 
 .. raw:: html
 
@@ -160,7 +160,7 @@ Follow this guide to ensure a smooth migration by understanding the modification
    <summary><code>PUT /ad/{id}/status/{status}</code></summary>
 
    <br>
-   Only change the media type to a versioned one <span style="font-family: monospace; color: red;">application/sellside.ad-v5+json</span>, it should be completely backwards compatible. See the Q&A section for details.
+   Only change the media type to a versioned one <span style="font-family: monospace; color: red;">application/sellside.ad-v5+json</span>, it should be completely backwards compatible. See the :ref:`faq-migration` section for details.
 
    </details>
 
@@ -235,7 +235,7 @@ Follow this guide to ensure a smooth migration by understanding the modification
    <div>
    <p><strong>Mapping details</strong></p>
 
-.. include:: migration-guide/get-categories-mapping.rst
+.. include:: migration-guide/get-category-mapping.rst
 
 .. raw:: html
 

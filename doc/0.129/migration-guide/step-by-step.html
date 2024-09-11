@@ -201,7 +201,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#key-changes-and-benefits-of-migrating">Key changes and benefits of migrating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#step-by-step-guide">Step by step guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#campaigns">Campaigns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#q-a">Q&amp;A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#faq">FAQ</a></li>
 </ul>
 </li>
 </ul>
@@ -238,8 +238,8 @@
 </div>
           <div role="main">
             
-  <p>This section provides a detailed overview of the changes for each affected API endpoint, mapping fields from the old versions to the new <cite>v5</cite>.
-Follow this guide to ensure a smooth migration by understanding the modifications and how to adapt your implementation accordingly.</p>
+  <p>This section provides a detailed overview of the changes for each affected API endpoint, mapping fields from the old and deprecated versions to the new <cite>v5</cite>.
+Follow this guide to understand the modifications and learn how to update your implementation for a smooth migration.</p>
 <details>
 <summary><code>GET /ad/{id}</code></summary>
 
@@ -304,7 +304,7 @@ Follow this guide to ensure a smooth migration by understanding the modification
 <summary><code>PUT /ad/{id}/status/{status}</code></summary>
 
 <br>
-Only change the media type to a versioned one <span style="font-family: monospace; color: red;">application/sellside.ad-v5+json</span>, it should be completely backwards compatible. See the Q&A section for details.
+Only change the media type to a versioned one <span style="font-family: monospace; color: red;">application/sellside.ad-v5+json</span>, it should be completely backwards compatible. See the :ref:`faq-migration` section for details.
 
 </details><details>
 <summary><code>GET /categories</code></summary>

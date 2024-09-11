@@ -201,7 +201,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#key-changes-and-benefits-of-migrating">Key changes and benefits of migrating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#step-by-step-guide">Step by step guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#campaigns">Campaigns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#q-a">Q&amp;A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration-guide.html#faq">FAQ</a></li>
 </ul>
 </li>
 </ul>
@@ -239,6 +239,7 @@
           <div role="main">
             
   <ul class="simple">
+<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and stringifying, when supplying them.</p></li>
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">daiyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. <strong>Beware that they are now mandatory to supply.</strong> All fields require conversion of the values to a micros unit (and should be stringified) in the payload. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>

@@ -1,3 +1,4 @@
+- New media type: ``application/sellside.ad-v5+json``
 - **Price**: ``price`` and ``originalPrice`` map to ``price.amountCents`` and ``price.originalAmountCents`` respectively. The value was already in cents so there is no need for conversion.
 - **CPC**: ``cpc`` is replaced by ``bidMicros``. This requires a conversion of the values to a micros unit, and stringifying, when supplying them.
 - **Budget Fields**: ``daiyBudget`` and ``totalBudget`` map to ``budgets.daily.limitMicros`` and ``budgets.total.limitMicros`` respectively. ``dailySpent`` and ``spentBudget`` map to ``budgets.daily.spentMicros`` and ``budgets.total.spentMicros``. **Beware that they are now mandatory to supply.** All fields require conversion of the values to a micros unit (and should be stringified) in the payload. The limits can also be ``UNLIMITED``.

@@ -202,7 +202,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#key-changes-and-benefits-of-migrating">Key changes and benefits of migrating</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-by-step-guide">Step by step guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#campaigns">Campaigns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#q-a">Q&amp;A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#faq">FAQ</a></li>
 </ul>
 </li>
 </ul>
@@ -260,8 +260,8 @@
 </section>
 <section id="step-by-step-guide">
 <h2>Step by step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">¶</a></h2>
-<p>This section provides a detailed overview of the changes for each affected API endpoint, mapping fields from the old versions to the new <cite>v5</cite>.
-Follow this guide to ensure a smooth migration by understanding the modifications and how to adapt your implementation accordingly.</p>
+<p>This section provides a detailed overview of the changes for each affected API endpoint, mapping fields from the old and deprecated versions to the new <cite>v5</cite>.
+Follow this guide to understand the modifications and learn how to update your implementation for a smooth migration.</p>
 <details>
 <summary><code>GET /ad/{id}</code></summary>
 
@@ -335,8 +335,8 @@ Follow this guide to ensure a smooth migration by understanding the modification
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. All these require conversion of the values from a micros unit (and are stringified), when interpreting them as cents. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
 <li><p><strong>Shipping Cost</strong>: <code class="docutils literal notranslate"><span class="pre">cost</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">costCents</span></code> in V5. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">statusReasons</span></code>, <code class="docutils literal notranslate"><span class="pre">pageNumber</span></code>, <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>, <code class="docutils literal notranslate"><span class="pre">externalId</span></code>. The field <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> should be used instead of <code class="docutils literal notranslate"><span class="pre">externalId</span></code>.</p></li>
-<li><p><strong>New</strong> field(s): <code class="docutils literal notranslate"><span class="pre">campaignId</span></code>: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See &lt;campaigns&gt; for more.</p></li>
-<li><p>If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdPosition">GET /ad/{id}/position</a> endpoint (see below).</p></li>
+<li><p><strong>New</strong> field(s): <code class="docutils literal notranslate"><span class="pre">campaignId</span></code>: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See <a class="reference internal" href="#campaigns-migration"><span class="std std-ref">Campaigns</span></a> for more.</p></li>
+<li><p>If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdPosition">GET /ad/{id}/position</a> endpoint (see the <a class="reference internal" href="#faq-migration"><span class="std std-ref">FAQ</span></a>).</p></li>
 </ul>
 </div>
 </details><details>
@@ -412,8 +412,8 @@ Follow this guide to ensure a smooth migration by understanding the modification
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. All these require conversion of the values from a micros unit (and are stringified), when interpreting them as cents. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
 <li><p><strong>Shipping Cost</strong>: <code class="docutils literal notranslate"><span class="pre">cost</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">costCents</span></code> in V5. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">statusReasons</span></code>, <code class="docutils literal notranslate"><span class="pre">pageNumber</span></code>, <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>, <code class="docutils literal notranslate"><span class="pre">externalId</span></code>. The field <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> should be used instead of <code class="docutils literal notranslate"><span class="pre">externalId</span></code>.</p></li>
-<li><p><strong>New</strong> field(s): <code class="docutils literal notranslate"><span class="pre">campaignId</span></code>: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See &lt;campaigns&gt; for more.</p></li>
-<li><p>If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdPosition">GET /ad/{id}/position</a> endpoint (see below).</p></li>
+<li><p><strong>New</strong> field(s): <code class="docutils literal notranslate"><span class="pre">campaignId</span></code>: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See <a class="reference internal" href="#campaigns-migration"><span class="std std-ref">Campaigns</span></a> for more.</p></li>
+<li><p>If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdPosition">GET /ad/{id}/position</a> endpoint (see the <a class="reference internal" href="#faq-migration"><span class="std std-ref">FAQ</span></a>).</p></li>
 </ul>
 </div>
 </details><details>
@@ -476,6 +476,7 @@ Follow this guide to ensure a smooth migration by understanding the modification
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and stringifying, when supplying them.</p></li>
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">daiyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. <strong>Beware that they are now mandatory to supply.</strong> All fields require conversion of the values to a micros unit (and should be stringified) in the payload. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
@@ -543,6 +544,7 @@ Follow this guide to ensure a smooth migration by understanding the modification
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and stringifying, when supplying them.</p></li>
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">daiyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. <strong>Beware that they are now mandatory to supply.</strong> All fields require conversion of the values to a micros unit (and should be stringified) in the payload. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
@@ -554,7 +556,7 @@ Follow this guide to ensure a smooth migration by understanding the modification
 <summary><code>PUT /ad/{id}/status/{status}</code></summary>
 
 <br>
-Only change the media type to a versioned one <span style="font-family: monospace; color: red;">application/sellside.ad-v5+json</span>, it should be completely backwards compatible. See the Q&A section for details.
+Only change the media type to a versioned one <span style="font-family: monospace; color: red;">application/sellside.ad-v5+json</span>, it should be completely backwards compatible. See the :ref:`faq-migration` section for details.
 
 </details><details>
 <summary><code>GET /categories</code></summary>
@@ -596,6 +598,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.category.list-v5+json</span></code></p></li>
 <li><p><strong>CPC</strong>: <cite>cpc</cite> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. The interval values require conversion from a micros unit when interpreting them as cents.</p></li>
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">dailyBudgetMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudgetMicros</span></code> respectively. The interval values require conversion from a micros unit, when interpreting them as cents.</p></li>
 <li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">paypalEnabled</span></code>.</p></li>
@@ -641,6 +644,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.category-v5+json</span></code></p></li>
 <li><p><strong>CPC</strong>: <cite>cpc</cite> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. The interval values require conversion from a micros unit when interpreting them as cents.</p></li>
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">dailyBudgetMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudgetMicros</span></code> respectively. The interval values require conversion from a micros unit, when interpreting them as cents.</p></li>
 <li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">paypalEnabled</span></code>.</p></li>
@@ -653,7 +657,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 
  <br><br></section>
 <section id="campaigns">
-<h2>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h2>
+<span id="campaigns-migration"></span><h2>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h2>
 <p>The Campaigns API helps you manage your campaign(s) efficiently. Think of a campaign as a container for ads, with key details like the campaign ID, name, creation date, and daily and total budget limits. Each campaign also has a status field that shows whether it is active or inactive.</p>
 <p>By default, campaign management is largely automated behind the scenes. All seller ads are automatically grouped into a single default campaign that is created and managed under the hood. However, as an API partner, you have the flexibility to create, update, and manage campaigns yourself, allowing for more granular control over your advertising strategy.</p>
 <p>When using the campaigns API for the first time, it’s handy to remember to:</p>
@@ -665,8 +669,8 @@ Only change the media type to a versioned one <span style="font-family: monospac
 </ul>
 </div></blockquote>
 </section>
-<section id="q-a">
-<h2>Q&amp;A<a class="headerlink" href="#q-a" title="Permalink to this heading">¶</a></h2>
+<section id="faq">
+<span id="faq-migration"></span><h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading">¶</a></h2>
 <p>○ <strong>What should I do with the</strong> <code class="docutils literal notranslate"><span class="pre">externalId</span></code> <strong>? I need it for keeping track of ads.</strong></p>
 <blockquote>
 <div><p>Please move to using <code class="docutils literal notranslate"><span class="pre">vendorId</span></code>, keep in mind that it needs to be unique per seller.</p>

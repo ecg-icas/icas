@@ -10,6 +10,6 @@
 
 - **Removed** field(s): ``statusReasons``, ``pageNumber``, ``suggestedCpcForPageOne``, ``currency``, ``allowPayPal``, ``externalId``. The field ``vendorId`` should be used instead of ``externalId``.
 
-- **New** field(s): ``campaignId``: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See <campaigns> for more.
+- **New** field(s): ``campaignId``: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See :ref:`campaigns-migration` for more.
 
-- If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement `GET /ad/{id}/position <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdPosition>`_ endpoint (see below).
+- If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement `GET /ad/{id}/position <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdPosition>`_ endpoint (see the :ref:`faq-migration`).

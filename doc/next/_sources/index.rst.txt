@@ -43,7 +43,6 @@ Contents
    release-notes
    migration-guide
 
-
 .. _History:
 
 History
