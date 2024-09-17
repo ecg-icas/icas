@@ -230,7 +230,7 @@
     <li>&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/migration-guide/post-ad-mapping.rst.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/migration-guide/get-category-mapping.rst.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -239,13 +239,10 @@
           <div role="main">
             
   <ul class="simple">
-<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
-<li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and supplying it as string type, instead of integer.</p></li>
-<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">daiyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. <strong>Beware that they are now mandatory to supply.</strong>
-Values should be supplied in string type, instead of integer, and at micro precision, instead of cents. The budget limits can also be <code class="docutils literal notranslate"><span class="pre">&quot;UNLIMITED&quot;</span></code>.</p></li>
-<li><p><strong>Shipping Cost</strong>: <code class="docutils literal notranslate"><span class="pre">cost</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">costCents</span></code>. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">currency,</span></code> <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>. <code class="docutils literal notranslate"><span class="pre">externalId</span></code> is marked as deprecated and planned for removal, please use <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> instead.</p></li>
+<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.category-v5+json</span></code></p></li>
+<li><p><strong>CPC</strong>: <cite>cpc</cite> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. The interval values require conversion from a micros unit when interpreting them as cents.</p></li>
+<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">dailyBudgetMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudgetMicros</span></code> respectively. The interval values require conversion from a micros unit, when interpreting them as cents.</p></li>
+<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">paypalEnabled</span></code>.</p></li>
 </ul>
 
 

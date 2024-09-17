@@ -270,7 +270,7 @@ Follow this guide to understand the modifications and learn how to update your i
 <div style="display: flex; gap: 20px;">
 
 <div style="flex: 1; padding-right: 10px;">
-<p><strong>Deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Response payload: deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;statusReasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DOMAIN_PENDING&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;priceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
@@ -296,7 +296,7 @@ Follow this guide to understand the modifications and learn how to update your i
 </div>
 </div>
 <div style="flex: 1; padding-left: 10px;">
-<p><strong>New version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Response payload: new version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;amountCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5600</span><span class="p">,</span>
@@ -331,10 +331,11 @@ Follow this guide to understand the modifications and learn how to update your i
 <p><strong>Mapping details</strong></p><ul class="simple">
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, and is stringified. This requires a conversion of the values from a micros unit, when interpreting them as cents.</p></li>
-<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. All these require conversion of the values from a micros unit (and are stringified), when interpreting them as cents. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
+<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, and is represented as a string type, instead of integer. This requires a conversion of the values from a micros unit, when interpreting them as cents.</p></li>
+<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>.
+Values are represented in string type, instead of integer, and at micro precision, instead of cents. The limits can also be <code class="docutils literal notranslate"><span class="pre">&quot;UNLIMITED&quot;</span></code>.</p></li>
 <li><p><strong>Shipping Cost</strong>: <code class="docutils literal notranslate"><span class="pre">cost</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">costCents</span></code> in V5. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">statusReasons</span></code>, <code class="docutils literal notranslate"><span class="pre">pageNumber</span></code>, <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>, <code class="docutils literal notranslate"><span class="pre">externalId</span></code>. The field <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> should be used instead of <code class="docutils literal notranslate"><span class="pre">externalId</span></code>.</p></li>
+<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">statusReasons</span></code>, <code class="docutils literal notranslate"><span class="pre">pageNumber</span></code>, <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>. The field <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> should be used instead of <code class="docutils literal notranslate"><span class="pre">externalId</span></code>, which is deprecated and planned for removal.</p></li>
 <li><p><strong>New</strong> field(s): <code class="docutils literal notranslate"><span class="pre">campaignId</span></code>: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See <a class="reference internal" href="#campaigns-migration"><span class="std std-ref">Campaigns</span></a> for more.</p></li>
 <li><p>If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdPosition">GET /ad/{id}/position</a> endpoint (see the <a class="reference internal" href="#faq-migration"><span class="std std-ref">FAQ</span></a>).</p></li>
 </ul>
@@ -347,7 +348,7 @@ Follow this guide to understand the modifications and learn how to update your i
 <div style="display: flex; gap: 20px;">
 
 <div style="flex: 1; padding-right: 10px;">
-<p><strong>Deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Response payload: deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;statusReasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DOMAIN_PENDING&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;priceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
@@ -408,10 +409,11 @@ Follow this guide to understand the modifications and learn how to update your i
 <p><strong>Mapping details</strong></p><ul class="simple">
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, and is stringified. This requires a conversion of the values from a micros unit, when interpreting them as cents.</p></li>
-<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. All these require conversion of the values from a micros unit (and are stringified), when interpreting them as cents. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
+<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, and is represented as a string type, instead of integer. This requires a conversion of the values from a micros unit, when interpreting them as cents.</p></li>
+<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>.
+Values are represented in string type, instead of integer, and at micro precision, instead of cents. The limits can also be <code class="docutils literal notranslate"><span class="pre">&quot;UNLIMITED&quot;</span></code>.</p></li>
 <li><p><strong>Shipping Cost</strong>: <code class="docutils literal notranslate"><span class="pre">cost</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">costCents</span></code> in V5. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">statusReasons</span></code>, <code class="docutils literal notranslate"><span class="pre">pageNumber</span></code>, <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>, <code class="docutils literal notranslate"><span class="pre">externalId</span></code>. The field <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> should be used instead of <code class="docutils literal notranslate"><span class="pre">externalId</span></code>.</p></li>
+<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">statusReasons</span></code>, <code class="docutils literal notranslate"><span class="pre">pageNumber</span></code>, <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code>, <code class="docutils literal notranslate"><span class="pre">currency</span></code>, <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>. The field <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> should be used instead of <code class="docutils literal notranslate"><span class="pre">externalId</span></code>, which is deprecated and planned for removal.</p></li>
 <li><p><strong>New</strong> field(s): <code class="docutils literal notranslate"><span class="pre">campaignId</span></code>: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See <a class="reference internal" href="#campaigns-migration"><span class="std std-ref">Campaigns</span></a> for more.</p></li>
 <li><p>If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdPosition">GET /ad/{id}/position</a> endpoint (see the <a class="reference internal" href="#faq-migration"><span class="std std-ref">FAQ</span></a>).</p></li>
 </ul>
@@ -424,7 +426,7 @@ Follow this guide to understand the modifications and learn how to update your i
 <div style="display: flex; gap: 20px;">
 
 <div style="flex: 1; padding-right: 10px;">
-<p><strong>Deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Request payload: deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;priceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
@@ -445,7 +447,7 @@ Follow this guide to understand the modifications and learn how to update your i
 </div>
 </div>
 <div style="flex: 1; padding-left: 10px;">
-<p><strong>New version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Request payload: new version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;amountCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5600</span><span class="p">,</span>
@@ -478,10 +480,11 @@ Follow this guide to understand the modifications and learn how to update your i
 <p><strong>Mapping details</strong></p><ul class="simple">
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and stringifying, when supplying them.</p></li>
-<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">daiyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. <strong>Beware that they are now mandatory to supply.</strong> All fields require conversion of the values to a micros unit (and should be stringified) in the payload. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
+<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and supplying it as string type, instead of integer.</p></li>
+<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">daiyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. <strong>Beware that they are now mandatory to supply.</strong>
+Values should be supplied in string type, instead of integer, and at micro precision, instead of cents. The budget limits can also be <code class="docutils literal notranslate"><span class="pre">&quot;UNLIMITED&quot;</span></code>.</p></li>
 <li><p><strong>Shipping Cost</strong>: <code class="docutils literal notranslate"><span class="pre">cost</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">costCents</span></code>. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">currency,</span></code> <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>. <code class="docutils literal notranslate"><span class="pre">externalId</span></code> is marked as deprecated, please use <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> instead.</p></li>
+<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">currency,</span></code> <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>. <code class="docutils literal notranslate"><span class="pre">externalId</span></code> is marked as deprecated and planned for removal, please use <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> instead.</p></li>
 </ul>
 </div>
 </details><details>
@@ -492,7 +495,7 @@ Follow this guide to understand the modifications and learn how to update your i
 <div style="display: flex; gap: 20px;">
 
 <div style="flex: 1; padding-right: 10px;">
-<p><strong>Deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Request payload: deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;priceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
@@ -513,7 +516,7 @@ Follow this guide to understand the modifications and learn how to update your i
 </div>
 </div>
 <div style="flex: 1; padding-left: 10px;">
-<p><strong>New version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Request payload: new version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;amountCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5600</span><span class="p">,</span>
@@ -546,10 +549,11 @@ Follow this guide to understand the modifications and learn how to update your i
 <p><strong>Mapping details</strong></p><ul class="simple">
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and stringifying, when supplying them.</p></li>
-<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">daiyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. <strong>Beware that they are now mandatory to supply.</strong> All fields require conversion of the values to a micros unit (and should be stringified) in the payload. The limits can also be <code class="docutils literal notranslate"><span class="pre">UNLIMITED</span></code>.</p></li>
+<li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and supplying it as string type, instead of integer.</p></li>
+<li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">daiyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.limitMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.limitMicros</span></code> respectively. <code class="docutils literal notranslate"><span class="pre">dailySpent</span></code> and <code class="docutils literal notranslate"><span class="pre">spentBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">budgets.daily.spentMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">budgets.total.spentMicros</span></code>. <strong>Beware that they are now mandatory to supply.</strong>
+Values should be supplied in string type, instead of integer, and at micro precision, instead of cents. The budget limits can also be <code class="docutils literal notranslate"><span class="pre">&quot;UNLIMITED&quot;</span></code>.</p></li>
 <li><p><strong>Shipping Cost</strong>: <code class="docutils literal notranslate"><span class="pre">cost</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">costCents</span></code>. The value was already in cents so there is no need for conversion.</p></li>
-<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">currency,</span></code> <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>. <code class="docutils literal notranslate"><span class="pre">externalId</span></code> is marked as deprecated, please use <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> instead.</p></li>
+<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">currency,</span></code> <code class="docutils literal notranslate"><span class="pre">allowPayPal</span></code>. <code class="docutils literal notranslate"><span class="pre">externalId</span></code> is marked as deprecated and planned for removal, please use <code class="docutils literal notranslate"><span class="pre">vendorId</span></code> instead.</p></li>
 </ul>
 </div>
 </details><details>
@@ -566,7 +570,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 <div style="display: flex; gap: 20px;">
 
 <div style="flex: 1; padding-right: 10px;">
-<p><strong>Deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Request payload: deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
@@ -582,7 +586,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 </div>
 </div>
 <div style="flex: 1; padding-left: 10px;">
-<p><strong>New version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Request payload: new version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
@@ -612,7 +616,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 <div style="display: flex; gap: 20px;">
 
 <div style="flex: 1; padding-right: 10px;">
-<p><strong>Deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Request payload: deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
@@ -628,7 +632,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 </div>
 </div>
 <div style="flex: 1; padding-left: 10px;">
-<p><strong>New version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p><strong>Request payload: new version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
@@ -660,6 +664,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 <span id="campaigns-migration"></span><h2>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h2>
 <p>The Campaigns API helps you manage your campaign(s) efficiently. Think of a campaign as a container for ads, with key details like the campaign ID, name, creation date, and daily and total budget limits. Each campaign also has a status field that shows whether it is active or inactive.</p>
 <p><strong>By default, campaign management is largely automated behind the scenes.</strong> All seller ads are automatically grouped into a single default campaign that is created and managed under the hood. However, as an API partner, you have the flexibility to create, update, and manage campaigns yourself, allowing for more granular control over your advertising strategy.</p>
+<p>An ad can only be inside one campaign at a given moment. If you want to move an ad to a different campaign, you need to update the ad with the new campaignId.</p>
 <p>When using the campaigns API for the first time, it’s handy to remember to:</p>
 <blockquote>
 <div><ul class="simple">
