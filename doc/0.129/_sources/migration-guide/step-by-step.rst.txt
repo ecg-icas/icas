@@ -176,7 +176,7 @@ Follow this guide to understand the modifications and learn how to update your i
    <div style="display: flex; gap: 20px;">
 
    <div style="flex: 1; padding-right: 10px;">
-   <p><strong>Request payload: deprecated version</strong></p>
+   <p><strong>Response payload: deprecated version</strong></p>
 
 .. include:: migration-guide/get-categories-payload-old.rst
 
@@ -184,7 +184,7 @@ Follow this guide to understand the modifications and learn how to update your i
 
    </div>
    <div style="flex: 1; padding-left: 10px;">
-   <p><strong>Request payload: new version</strong></p>
+   <p><strong>Response payload: new version</strong></p>
 
 .. include:: migration-guide/get-categories-payload-new.rst
 
@@ -215,7 +215,7 @@ Follow this guide to understand the modifications and learn how to update your i
    <div style="display: flex; gap: 20px;">
 
    <div style="flex: 1; padding-right: 10px;">
-   <p><strong>Request payload: deprecated version</strong></p>
+   <p><strong>Response payload: deprecated version</strong></p>
 
 .. include:: migration-guide/get-categories-payload-old.rst
 
@@ -223,7 +223,7 @@ Follow this guide to understand the modifications and learn how to update your i
 
    </div>
    <div style="flex: 1; padding-left: 10px;">
-   <p><strong>Request payload: new version</strong></p>
+   <p><strong>Response payload: new version</strong></p>
 
 .. include:: migration-guide/get-categories-payload-new.rst
 
