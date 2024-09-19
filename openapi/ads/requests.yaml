@@ -104,7 +104,8 @@ components:
           type: string
           description: 'The cost per click (bid) in micro-euros/micro-dollars as defined by the seller (10000 micro-euros == 1 cent). The minimum and maximum values depend on the category. The values can be retrieved from [the categories endpoint](#/paths/categories/get).
             <br>
-            The type is string, allowing the seller to specify “AUTOMATIC”, to let our system take care of the bid and try to optimise costs vs clicks.'
+            The type is string, allowing the seller to specify “AUTOMATIC”, to let our system take care of the bid and try to optimise costs vs clicks.
+            It is <b>necessary to set a campaign daily budget</b> when using automatic bidding. Setting an <b>ad budget</b>, however, is not necessary.'
           example: '10000'
           minimum: 1
         budgets:
