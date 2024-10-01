@@ -357,7 +357,55 @@ Follow this guide to understand the modifications and learn how to update your i
 
 
 
- <br><br>
+ <br><br><p><strong>Summary of API version changes</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 43%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>API Endpoint</strong></p></th>
+<th class="head"><p><strong>Deprecated Versions</strong></p></th>
+<th class="head"><p><strong>New Version</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ad/{id}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v2</span></code>, <code class="docutils literal notranslate"><span class="pre">v3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ad/byVendor/{vendorId}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v2</span></code>, <code class="docutils literal notranslate"><span class="pre">v3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v5</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/ad</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v2</span></code>, <code class="docutils literal notranslate"><span class="pre">v3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/ad/{id}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v2</span></code>, <code class="docutils literal notranslate"><span class="pre">v3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v5</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ad/</span> <span class="pre">(list)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v4</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/ad/{id}/status/{status}</span></code></p></td>
+<td><p>unversioned</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v5</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/categories</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/category/{id}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">v5</span></code></p></td>
+</tr>
+</tbody>
+</table>
+
 
           </div>
           <footer>

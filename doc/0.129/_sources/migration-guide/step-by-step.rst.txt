@@ -294,3 +294,37 @@ Each API endpoint is presented in a expandable/collapsible section, with the dep
 
     <br><br>
 
+**Summary of API version changes**
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 30 20
+   :align: center
+
+   * - **API Endpoint**
+     - **Deprecated Versions**
+     - **New Version**
+   * - ``GET /ad/{id}``
+     - ``v2``, ``v3``
+     - ``v5``
+   * - ``GET /ad/byVendor/{vendorId}``
+     - ``v2``, ``v3``
+     - ``v5``
+   * - ``POST /ad``
+     - ``v2``, ``v3``
+     - ``v5``
+   * - ``PUT /ad/{id}``
+     - ``v2``, ``v3``
+     - ``v5``
+   * - ``GET /ad/ (list)``
+     - ``v4``
+     - ``v5``
+   * - ``PUT /ad/{id}/status/{status}``
+     - unversioned
+     - ``v5``
+   * - ``GET /categories``
+     - ``v1``
+     - ``v5``
+   * - ``GET /category/{id}``
+     - ``v1``
+     - ``v5``
