@@ -8,15 +8,15 @@ Migration Guide
 Key changes and benefits of migrating
 -------------------------------------
 
-* ○ Introducing **micros** as the monetary unit enables more precise cost management, allowing finer granularity in ad spending and budget allocation. **1 cent is equal to 10000 micros.**
+* ○ **Autobidding** allows the use of an automated (smart) bidding strategy. [See more here (in Dutch)](https://help.marktplaats.nl/s/article/marktplaats-pro-automatische-cost-per-click-instellingen)
 
-* ○ **Autobidding** allows the use of an automated (smart) bidding strategy.
+* ○ Introducing **micros** as the monetary unit enables more precise cost management, allowing finer granularity in ad spending and budget allocation. **1 cent is equal to 10000 micros.**
 
 * ○ **Improved pagination** with the more efficient industry-standard ``pageToken``, as a replacement for the old ``offset/limit`` pagination mechanism.
 
 * ○ Optional **campaign (and campaign budget)** management allows for better control over spending, by setting a campaign-level budget as well as pausing an entire campaign, effectively taking all the ads in the campaign offline.
 
-* ○ Budgets and price fields are streamlined into a clear format, improving accuracy and consistency across the API.
+* ○ Budgets and price fields are streamlined into a clear format, improving accuracy and consistency across the API.  The Step By Step guide explains how to convert the values to the new format.
 
 * ○ **Removal of** ``pageNumber`` & ``suggestedCpcForPageOne`` from ad and category endpoints.
 
@@ -27,6 +27,7 @@ Key changes and benefits of migrating
 
 Step by step guide
 ------------------
+
 .. include:: migration-guide/step-by-step.rst
 
 

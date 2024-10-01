@@ -245,11 +245,11 @@
 <section id="key-changes-and-benefits-of-migrating">
 <h2>Key changes and benefits of migrating<a class="headerlink" href="#key-changes-and-benefits-of-migrating" title="Permalink to this heading">¶</a></h2>
 <ul>
+<li><p>○ <strong>Autobidding</strong> allows the use of an automated (smart) bidding strategy. [See more here (in Dutch)](<a class="reference external" href="https://help.marktplaats.nl/s/article/marktplaats-pro-automatische-cost-per-click-instellingen">https://help.marktplaats.nl/s/article/marktplaats-pro-automatische-cost-per-click-instellingen</a>)</p></li>
 <li><p>○ Introducing <strong>micros</strong> as the monetary unit enables more precise cost management, allowing finer granularity in ad spending and budget allocation. <strong>1 cent is equal to 10000 micros.</strong></p></li>
-<li><p>○ <strong>Autobidding</strong> allows the use of an automated (smart) bidding strategy.</p></li>
 <li><p>○ <strong>Improved pagination</strong> with the more efficient industry-standard <code class="docutils literal notranslate"><span class="pre">pageToken</span></code>, as a replacement for the old <code class="docutils literal notranslate"><span class="pre">offset/limit</span></code> pagination mechanism.</p></li>
 <li><p>○ Optional <strong>campaign (and campaign budget)</strong> management allows for better control over spending, by setting a campaign-level budget as well as pausing an entire campaign, effectively taking all the ads in the campaign offline.</p></li>
-<li><p>○ Budgets and price fields are streamlined into a clear format, improving accuracy and consistency across the API.</p></li>
+<li><p>○ Budgets and price fields are streamlined into a clear format, improving accuracy and consistency across the API.  The Step By Step guide explains how to convert the values to the new format.</p></li>
 <li><p>○ <strong>Removal of</strong> <code class="docutils literal notranslate"><span class="pre">pageNumber</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">suggestedCpcForPageOne</span></code> from ad and category endpoints.</p>
 <blockquote>
 <div><p><strong>Context</strong>: In the desktop era, most traffic came from leaf category browse actions, leading to the introduction of the “suggested CPC for page one.” However, as traffic sources have diversified to include search actions and personalized recommendations, the relevance of these fields has decreased.</p>
@@ -260,9 +260,10 @@
 </section>
 <section id="step-by-step-guide">
 <h2>Step by step guide<a class="headerlink" href="#step-by-step-guide" title="Permalink to this heading">¶</a></h2>
-<p>This section provides a detailed overview of the changes for each affected API endpoint, mapping fields from the old and deprecated versions to the new <cite>v5</cite>.
+<p>This section provides a detailed view of the changes for each affected API endpoint, mapping fields from the old and deprecated versions to the new <cite>v5</cite>.
 Follow this guide to understand the modifications and learn how to update your implementation for a smooth migration.</p>
-<details>
+<p>Each API endpoint is presented in a expandable/collapsible section, with the deprecated and new versions side by side for easy comparison.</p>
+<details open>
 <summary><code>GET /ad/{id}</code></summary>
 
 <br>
@@ -329,6 +330,7 @@ Follow this guide to understand the modifications and learn how to update your i
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p><strong>Deprecated</strong> media type(s): <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v2+json</span></code> <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v3+json</span></code></p></li>
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, and is represented as a string type, instead of integer. This requires a conversion of the values from a micros unit, when interpreting them as cents.</p></li>
@@ -407,6 +409,7 @@ Values are represented in string type, instead of integer, and at micro precisio
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p><strong>Deprecated</strong> media type(s): <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v2+json</span></code> <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v3+json</span></code></p></li>
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>, and is represented as a string type, instead of integer. This requires a conversion of the values from a micros unit, when interpreting them as cents.</p></li>
@@ -478,6 +481,7 @@ Values are represented in string type, instead of integer, and at micro precisio
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p><strong>Deprecated</strong> media type(s): <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v2+json</span></code> <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v3+json</span></code></p></li>
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and supplying it as string type, instead of integer.</p></li>
@@ -547,6 +551,7 @@ Values should be supplied in string type, instead of integer, and at micro preci
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p><strong>Deprecated</strong> media type(s): <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v2+json</span></code> <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v3+json</span></code></p></li>
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code></p></li>
 <li><p><strong>Price</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">originalPrice</span></code> map to <code class="docutils literal notranslate"><span class="pre">price.amountCents</span></code> and <code class="docutils literal notranslate"><span class="pre">price.originalAmountCents</span></code> respectively. The value was already in cents so there is no need for conversion.</p></li>
 <li><p><strong>CPC</strong>: <code class="docutils literal notranslate"><span class="pre">cpc</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. This requires a conversion of the values to a micros unit, and supplying it as string type, instead of integer.</p></li>
@@ -557,11 +562,97 @@ Values should be supplied in string type, instead of integer, and at micro preci
 </ul>
 </div>
 </details><details>
+<summary><code>GET /ad/ (list)</code></summary>
+
+<br>
+
+<div style="display: flex; gap: 20px;">
+
+<div style="flex: 1; padding-right: 10px;">
+<p><strong>Request payload: deprecated version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ads&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// ...</span>
+<span class="w">      </span><span class="nt">&quot;statusReasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DOMAIN_PENDING&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;priceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5600</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;originalPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6500</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;totalBudget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;dailyBudget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;spentBudget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;dailySpent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;pageNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;suggestedCpcForPageOne&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;allowPayPal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;shippingOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d-5d&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;nextPageToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJK&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div style="flex: 1; padding-left: 10px;">
+<p><strong>Request payload: new version</strong></p><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ads&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// ...</span>
+<span class="w">      </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;amountCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5600</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;originalAmountCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6500</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;priceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIXED_PRICE&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;campaignId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">54212</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;bidMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10000&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;budgets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;daily&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;limitMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UNLIMITED&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;spentMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;500000&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;limitMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10000000&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;spentMicros&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1200000&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;shippingOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;costCents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d-5d&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+<div>
+<p><strong>Mapping details</strong></p><ul class="simple">
+<li><p><strong>Deprecated</strong> media type(s): <code class="docutils literal notranslate"><span class="pre">application/sellside.ad.list-v4+json</span></code></p></li>
+<li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.ad.list-v5+json</span></code></p></li>
+<li><p><strong>Ads</strong>: the list of ads under <code class="docutils literal notranslate"><span class="pre">ads</span></code> is now of the v5 format.</p></li>
+<li><p><strong>Removed</strong> field(s): <code class="docutils literal notranslate"><span class="pre">offset</span></code>, <code class="docutils literal notranslate"><span class="pre">paremainingBudget</span></code></p></li>
+<li><p><strong>New</strong> field(s): <code class="docutils literal notranslate"><span class="pre">nextPageToken</span></code>: this replaces the usage of <code class="docutils literal notranslate"><span class="pre">offset</span></code> for pagination. The value is a string that should be used as a query parameter in the next request to get the next page of results.</p></li>
+</ul>
+</div>
+</details><details>
 <summary><code>PUT /ad/{id}/status/{status}</code></summary>
 
 <br>
-Only change the media type to a versioned one <span style="font-family: monospace; color: red;">application/sellside.ad-v5+json</span>, it should be completely backwards compatible. See the :ref:`faq-migration` section for details.
 
+<div><p>Only change the media type to a versioned one <code class="docutils literal notranslate"><span class="pre">application/sellside.ad-v5+json</span></code>, it should be completely backwards compatible. See the <a class="reference internal" href="#faq-migration"><span class="std std-ref">FAQ</span></a> section for details.</p>
+</div>
 </details><details>
 <summary><code>GET /categories</code></summary>
 
@@ -602,6 +693,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p><strong>Deprecated</strong> media type(s): <code class="docutils literal notranslate"><span class="pre">application/sellside.category.list-v1+json</span></code></p></li>
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.category.list-v5+json</span></code></p></li>
 <li><p><strong>CPC</strong>: <cite>cpc</cite> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. The interval values require conversion from a micros unit when interpreting them as cents.</p></li>
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">dailyBudgetMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudgetMicros</span></code> respectively. The interval values require conversion from a micros unit, when interpreting them as cents.</p></li>
@@ -648,6 +740,7 @@ Only change the media type to a versioned one <span style="font-family: monospac
 
 <div>
 <p><strong>Mapping details</strong></p><ul class="simple">
+<li><p><strong>Deprecated</strong> media type(s): <code class="docutils literal notranslate"><span class="pre">application/sellside.category-v2+json</span></code></p></li>
 <li><p>New media type: <code class="docutils literal notranslate"><span class="pre">application/sellside.category-v5+json</span></code></p></li>
 <li><p><strong>CPC</strong>: <cite>cpc</cite> is replaced by <code class="docutils literal notranslate"><span class="pre">bidMicros</span></code>. The interval values require conversion from a micros unit when interpreting them as cents.</p></li>
 <li><p><strong>Budget Fields</strong>: <code class="docutils literal notranslate"><span class="pre">dailyBudget</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudget</span></code> map to <code class="docutils literal notranslate"><span class="pre">dailyBudgetMicros</span></code> and <code class="docutils literal notranslate"><span class="pre">totalBudgetMicros</span></code> respectively. The interval values require conversion from a micros unit, when interpreting them as cents.</p></li>

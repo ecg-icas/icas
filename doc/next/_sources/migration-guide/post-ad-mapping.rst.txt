@@ -1,3 +1,4 @@
+- **Deprecated** media type(s): ``application/sellside.ad-v2+json`` ``application/sellside.ad-v3+json``
 - New media type: ``application/sellside.ad-v5+json``
 
 - **Price**: ``price`` and ``originalPrice`` map to ``price.amountCents`` and ``price.originalAmountCents`` respectively. The value was already in cents so there is no need for conversion.

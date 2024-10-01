@@ -1,9 +1,12 @@
-This section provides a detailed overview of the changes for each affected API endpoint, mapping fields from the old and deprecated versions to the new `v5`.
+This section provides a detailed view of the changes for each affected API endpoint, mapping fields from the old and deprecated versions to the new `v5`.
 Follow this guide to understand the modifications and learn how to update your implementation for a smooth migration.
+
+Each API endpoint is presented in a expandable/collapsible section, with the deprecated and new versions side by side for easy comparison.
+
 
 .. raw:: html
 
-   <details>
+   <details open>
    <summary><code>GET /ad/{id}</code></summary>
 
    <br>
@@ -37,6 +40,7 @@ Follow this guide to understand the modifications and learn how to update your i
 
    </div>
    </details>
+
 
 .. raw:: html
 
@@ -157,13 +161,56 @@ Follow this guide to understand the modifications and learn how to update your i
 .. raw:: html
 
    <details>
+   <summary><code>GET /ad/ (list)</code></summary>
+
+   <br>
+
+   <div style="display: flex; gap: 20px;">
+
+   <div style="flex: 1; padding-right: 10px;">
+   <p><strong>Request payload: deprecated version</strong></p>
+
+.. include:: migration-guide/get-ads-payload-old.rst
+
+.. raw:: html
+
+   </div>
+   <div style="flex: 1; padding-left: 10px;">
+   <p><strong>Request payload: new version</strong></p>
+
+.. include:: migration-guide/get-ads-payload-new.rst
+
+.. raw:: html
+
+   </div>
+   </div>
+
+   <div>
+   <p><strong>Mapping details</strong></p>
+
+.. include:: migration-guide/get-ads-mapping.rst
+
+.. raw:: html
+
+   </div>
+   </details>
+
+
+.. raw:: html
+
+   <details>
    <summary><code>PUT /ad/{id}/status/{status}</code></summary>
 
    <br>
-   Only change the media type to a versioned one <span style="font-family: monospace; color: red;">application/sellside.ad-v5+json</span>, it should be completely backwards compatible. See the :ref:`faq-migration` section for details.
 
+   <div>
+
+.. include:: migration-guide/put-ad-status-mapping.rst
+
+.. raw:: html
+
+   </div>
    </details>
-
 
 
 .. raw:: html
