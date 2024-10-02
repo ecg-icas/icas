@@ -10,37 +10,38 @@ components:
       name: orderBy
       in: query
       required: false
-      description: 'Orders the result set by the given field. Default value is DATE_CREATED. (v5)'
+      description: "Orders the result set by the given field. Default value is DATE_CREATED. (v5)"
       schema:
         enum:
-          - 'DATE_CREATED'
-          - 'DATE_LAST_UPDATED'
-          - 'STATUS'
-          - 'CLICKS'
-          - 'TITLE'
-          - 'CPC'
-          - 'SPENT'
-          - 'REMAINING_BUDGET'
-          - 'AD_ID'
-        example: 'DATE_CREATED'
-        default: 'DATE_CREATED'
+          - "DATE_CREATED"
+          - "DATE_LAST_UPDATED"
+          - "STATUS"
+          - "CLICKS"
+          - "TITLE"
+          - "CPC"
+          - "SPENT"
+          - "REMAINING_BUDGET"
+          - "AD_ID"
+        example: "DATE_CREATED"
+        default: "DATE_CREATED"
     Direction:
       name: direction
       in: query
-      description: 'Determines the direction of the sort.'
+      description: "Determines the direction of the sort."
       schema:
         enum:
-          - 'ASCENDING'
-          - 'DESCENDING'
-        example: 'DESCENDING'
-        default: 'ASCENDING'
+          - "ASCENDING"
+          - "DESCENDING"
+        example: "DESCENDING"
+        default: "ASCENDING"
     ChangedSince:
       name: changedSince
       in: query
       schema:
         type: string
         format: date-time
-      description: 'Retrieve only ads whose date of last update is newer, or equal to, this ISO 8601 UTC timestamp, that is in the past.
-    <br><br>
-    Filtering by ``status`` and ``titleKeyword`` may be used but ``orderBy`` and ``direction`` cannot be changed since this would break the pagination.'
-      example: '2019-04-18T13:55:10Z'
+      description: >-
+        Retrieve only ads whose date of last update is newer, or equal to, this ISO 8601 UTC timestamp, that is in the past.
+        <br><br>
+        Filtering by ``status`` and ``titleKeyword`` may be used but ``orderBy`` and ``direction`` cannot be changed since this would break the pagination.
+      example: "2019-04-18T13:55:10Z"
