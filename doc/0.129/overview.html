@@ -199,6 +199,13 @@
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="migration-guide.html">Migration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#key-changes-and-benefits-of-migrating">Key changes and benefits of migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#step-by-step-guide">Step by step guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#campaigns">Campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#faq">FAQ</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -397,9 +404,9 @@ to include in or exclude from the response body. When both <code class="docutils
 <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> have a value, the <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> value will be ignored. By default,
 <code class="docutils literal notranslate"><span class="pre">_include</span></code> is set to all fields and <code class="docutils literal notranslate"><span class="pre">_exclude</span></code> is empty.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">_include</span></code>  will require you to specify <em>each key in the path</em> of the data
-that you wish. For example, if you’re calling <span class="xref std std-ref">get_ad_v5</span> and you
+that you wish. For example, if you’re calling <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters">GET /ad</a> and you
 want the ad ID and title, you’ll have to provide <code class="docutils literal notranslate"><span class="pre">_include=ads,id,title</span></code>.</p>
-<p>Here’s an example of the <code class="docutils literal notranslate"><span class="pre">_include</span></code> parameter used while calling <span class="xref std std-ref">get_ad_v5</span>.
+<p>Here’s an example of the <code class="docutils literal notranslate"><span class="pre">_include</span></code> parameter used while calling <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters">GET /ad</a>.
 The normal response has the following shape:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="s2">&quot;ads&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
@@ -492,17 +499,17 @@ body. Otherwise, the server returns <code class="docutils literal notranslate"><
 errors. The following endpoints support dry-run validation:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><span class="xref std std-ref">post_ad</span></p></li>
-<li><p><span class="xref std std-ref">put_ad_id</span></p></li>
-<li><p><span class="xref std std-ref">put_ad_id_status</span></p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAd">POST /ad</a></p></li>
+<li><p><a href="#id3"><span class="problematic" id="id4">:ref:`PUT /ad/{id} &lt;https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById&gt;`_</span></a></p></li>
+<li><p><a href="#id5"><span class="problematic" id="id6">:ref:`PUT /ad/{id}/status/{status} &lt;https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdStatus&gt;`_</span></a></p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="vendor-ids">
-<span id="id2"></span><h2>Vendor Ids<a class="headerlink" href="#vendor-ids" title="Permalink to this heading">¶</a></h2>
+<span id="id7"></span><h2>Vendor Ids<a class="headerlink" href="#vendor-ids" title="Permalink to this heading">¶</a></h2>
 <p>For <a class="reference internal" href="ads.html#ad-vendorid"><span class="std std-ref">ads</span></a> and <a class="reference internal" href="campaigns.html#campaign-vendorid"><span class="std std-ref">campaigns</span></a>, it is possible to provide a so-called <cite>vendorId</cite>.
 The intention of this <cite>vendorId</cite> is to allow the API partner to use their own primary key on this ad or campaign.
-The API partner can also fetch the ad or campaign _by_ <cite>vendorId</cite> - see <span class="xref std std-ref">get_ad_vendor_id</span> and <span class="xref std std-ref">get_campaign_vendor_id</span>
+The API partner can also fetch the ad or campaign _by_ <cite>vendorId</cite> - see <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdByVendorId">GET /ad/byVendor/{vendorId}</a> and <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId">GET /campaign/byVendor/{vendorId}</a>
 for details - to  get the necessary primary key to perform other operations through the API.
 This means the API partner does not need to keep an explicit mapping between their own primary key and the one generated
 by our system, making integration simpler.</p>
@@ -515,9 +522,9 @@ are identical. The retrieval will have the same capitalization used on insertion
 vendorID “abc123” (lower case A) but the payload will returned with vendorID “Abc123”, same case as insertion.</p>
 </section>
 <section id="page-tokens">
-<span id="id3"></span><h2>Page tokens<a class="headerlink" href="#page-tokens" title="Permalink to this heading">¶</a></h2>
-<p>In some calls, while calling for a list of items, you get a response containing a <cite>nextPageToken</cite>. This encoded token is necessary for
-efficient pagination. To get the next list (page) of items, you repeat the exact same call, but you add the <cite>&amp;pageToken=&lt;encoded value&gt;</cite>
+<span id="id8"></span><h2>Page tokens<a class="headerlink" href="#page-tokens" title="Permalink to this heading">¶</a></h2>
+<p>In some calls, while calling for a list of items, you get a response containing a <code class="docutils literal notranslate"><span class="pre">nextPageToken</span></code>. This encoded token is necessary for
+efficient pagination. To get the next list (page) of items, you repeat the exact same call, but you add the <code class="docutils literal notranslate"><span class="pre">&amp;pageToken=&lt;encoded</span> <span class="pre">value&gt;</span></code>
 parameter to the call.
 In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making
 that call more efficient. For the very first page, a pageToken should not be provided. For any following page, callers should use the exact same request with an added <cite>pageToken</cite> parameter.

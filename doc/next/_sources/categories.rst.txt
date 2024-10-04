@@ -24,7 +24,7 @@ The category tree has the following properties:
  - * ads can only be placed in leaf categories
  - * only leaf categories contain attributes
 
-The full tree (or a subtree) can be fetched using :ref:`get_categories`.
+The full tree (or a subtree) can be fetched using :ref:`GET /categories <https://ecg-icas.github.io/icas/openapi/index.html#/Categories/get_categories>`_.
 
 Category Ids
 ------------
@@ -566,7 +566,7 @@ parameters allow to render the attribute in a certain way depending on the
  * - identifying
    - bool 
    - 
-   - Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with :ref:`post_ad_prefill`, where you can potentially get a sample title, description and additional attributes based on 3rd party databases.
+   - Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with `POST /ad/prefill <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdPrefil>`_, where you can potentially get a sample title, description and additional attributes based on 3rd party databases.
 
  * - precision
    - int

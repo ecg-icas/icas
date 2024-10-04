@@ -508,7 +508,7 @@ components:
             - 'PICKUP'
           description: 'SHIP means the item can be delivered to the buyer in the provided time and for the provided cost. PICKUP means the item can be picked up at the provided location.'
           example: 'SHIP'
-        cost:
+        costCents:
           type: integer
           format: int64
           description: 'Cost of shipping in cents. Only valid when type is SHIP.'

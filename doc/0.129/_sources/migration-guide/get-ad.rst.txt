@@ -1,0 +1,94 @@
+.. raw:: html
+
+    <br>
+
+   <div style="display: flex; gap: 20px;">
+
+   <div style="flex: 1; padding-right: 10px;">
+
+    <p> <strong>Deprecated version</strong> </p>
+
+
+.. code-block:: json
+
+    {
+      "statusReasons": ["DOMAIN_PENDING"],
+      "priceType": "FIXED_PRICE",
+      "currency": "EUR",
+      "price": 5600,
+      "originalPrice": 6500,
+      "cpc": 15,
+      "totalBudget": 1000,
+      "dailyBudget": 500,
+      "spentBudget": 120,
+      "dailySpent": 50,
+      "pageNumber": 2,
+      "suggestedCpcForPageOne": 15,
+      "allowPayPal": true,
+      "shippingOptions": [
+        {
+          "cost": 500,
+          "time": "2d-5d"
+        }
+      ]
+    }
+
+.. raw:: html
+
+   </div>
+   <div style="flex: 1; padding-left: 10px;">
+    <p> <strong>New version</strong> </p>
+
+.. code-block:: json
+
+    {
+      "price": {
+        "amountCents": 5600,
+        "originalAmountCents": 6500,
+        "priceType": "FIXED_PRICE"
+      },
+      "campaignId": 54212,
+      "bidMicros": "10000",
+      "budgets": {
+        "daily": {
+          "limitMicros": "UNLIMITED",
+          "spentMicros": "500000"
+        },
+        "total": {
+          "limitMicros": "10000000",
+          "spentMicros": "1200000"
+        }
+      },
+      "shippingOptions": [
+        {
+          "costCents": 500,
+          "time": "2d-5d"
+        }
+      ]
+    }
+
+.. raw:: html
+
+   </div>
+   </div>
+
+
+**Mapping details**
+~~~~~~~~~~~~~~~~~~~
+
+- New media type: ``application/sellside.ad-v5+json``
+
+- **Price**: ``price`` and ``originalPrice`` map to ``price.amountCents`` and ``price.originalAmountCents`` respectively. The value was already in cents so there is no need for conversion.
+
+- **CPC**: ``cpc`` is replaced by ``bidMicros``, and is stringified. This requires a conversion of the values from a micros unit, when interpreting them as cents.
+
+- **Budget Fields**: ``dailyBudget`` and ``totalBudget`` map to ``budgets.daily.limitMicros`` and ``budgets.total.limitMicros`` respectively. ``dailySpent`` and ``spentBudget`` map to ``budgets.daily.spentMicros`` and ``budgets.total.spentMicros``. All these require conversion of the values from a micros unit (and are stringified), when interpreting them as cents. The limits can also be ``UNLIMITED``.
+
+- **Shipping Cost**: ``cost`` is renamed to ``costCents`` in V5. The value was already in cents so there is no need for conversion.
+
+- **Removed** field(s): ``pageNumber, suggestedCpcForPageOne, currency, allowPayPal, externalId`` , ``vendorId`` is a replacement for ``externalId``.
+
+- **New** field(s): ``campaignId``: this is an identifier for the campaign which this ad is part of. Campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. See <campaigns> for more.
+
+- If necessary, position (page number and suggested cost per click) funnel information can be obtained from the replacement GET /ad/{id}/position endpoint (see below).
+

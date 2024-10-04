@@ -13,16 +13,6 @@ September 2024: 'Deprecated handler clean up'
 Synopsis
 """"""""
 
-* Removal of deprecated unused endpoints, types and fields
-
-Removed Endpoints
-^^^^^^^^^^^^^^^^^
-
-* Removed GET /ad/byVendor/{vendorId} `get_ad_vendor_id_v3`
-
- - * :ref:`get_ad_vendor_id_v3`
-
-
 
 Feb 2023: 'Campaigns & Micros'
 ------------------------------
@@ -121,12 +111,12 @@ Campaigns
 """""""""
 Added first campaign support. See :ref:`campaigns` for full details.
 
-* :ref:`get_campaigns` to get list of campaigns for a user. Expected 0 or 1 result.
-* :ref:`get_campaign_id` to fetch the individual campaign.
-* :ref:`post_campaign` to create a campaign. Currently only 1 allowed per seller.
-* :ref:`put_campaign_id` to update the campaign. Currently only status & budgets can be updated.
-* :ref:`put_campaign_id_status` to manage the campaign status (ACTIVE,PAUSED) directly.
-* :ref:`put_campaign_id_budgets` to manage the campaign's budgets directly.
+* `GET /campaigns <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaigns>`_ to get list of campaigns for a user. Expected 0 or 1 result.
+* `GET /campaign/{id} <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaign__id_>`_ to fetch the individual campaign.
+* `POST /campaign <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/postCampaignV2>`_ to create a campaign. Currently only 1 allowed per seller.
+* `PUT /campaign/{id} <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id_>`_ to update the campaign. Currently only status & budgets can be updated.
+* `PUT /campaign/{id}/status/{status} <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__status__status_>`_ to manage the campaign status (ACTIVE,PAUSED) directly.
+* `PUT /campaign/{id}/budgets <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets>`_ to manage the campaign's budgets directly.
 
 .. note::
  For the time being, we will create a campaign underwater for users who start placing ads without first having created a campaign. All subsequent ads will belong to that default campaign.
@@ -136,48 +126,9 @@ Added first campaign support. See :ref:`campaigns` for full details.
 User
 """"
 
-See :ref:`get_user` for full details.
+See `GET /user <https://ecg-icas.github.io/icas/openapi/index.html#/default/get_user>`_ for full details.
 
 Start using V4. There are 2 new fields in comparison with V2:
 ``hasAds`` (**bool**), whether a user has ads in the system and 
 ``isApiManaged`` (**bool**), whether we see API partners managing ads for the user (not true if an api partner is using RO scopes only)
-
-
-Deprecation list
-""""""""""""""""
-
-The following calls are deprecated and scheduled to be removed on May 1st, 2023:
-
-.. list-table::
- :widths: 80 80
- :header-rows: 1
-
- - * deprecated endpoint
-   * replaced by 
- - * :ref:`get_ad_v4`
-   * :ref:`get_ad_v5`
- - * :ref:`get_ad_id_v3`
-   * :ref:`get_ad_id_v5`
- - * :ref:`get_ad_id_v2`
-   * :ref:`get_ad_id_v5`
- - * :ref:`get_ad_vendor_id_v3`
-   * :ref:`get_ad_vendor_id_v5`
- - * :ref:`get_ad_vendor_id_v2`
-   * :ref:`get_ad_vendor_id_v5`
- - * :ref:`post_ad_v3`
-   * :ref:`post_ad_v5`
- - * :ref:`post_ad_v2`
-   * :ref:`post_ad_v5`
- - * :ref:`put_ad_id_v3`
-   * :ref:`put_ad_id_v5`
- - * :ref:`put_ad_id_v2`
-   * :ref:`put_ad_id_v5`
- - * :ref:`get_user_v2`
-   * :ref:`get_user_v4`
- - * :ref:`get_user_v3`
-   * :ref:`get_user_v4`
- - * :ref:`get_category_id_v2`
-   * :ref:`get_category_id_v5`
- - * :ref:`get_categories_v1`
-   * :ref:`get_categories_v5`
 

@@ -186,7 +186,7 @@ to include in or exclude from the response body. When both ``_include`` and
 
 
 Using ``_include``  will require you to specify *each key in the path* of the data 
-that you wish. For example, if you're calling :ref:`get_ad_v5` and you
+that you wish. For example, if you're calling `GET /ad <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters>`_ and you
 want the ad ID and title, you'll have to provide ``_include=ads,id,title``. 
 
 .. include:: examples/include-exclude-example.rst
@@ -248,9 +248,9 @@ URL. If the validation succeeds the server returns ``200 OK`` and an empty
 body. Otherwise, the server returns ``400 Bad Request`` with the list of
 errors. The following endpoints support dry-run validation:
 
- * :ref:`post_ad`
- * :ref:`put_ad_id`
- * :ref:`put_ad_id_status`
+ * `POST /ad <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAd>`_
+ * :ref:`PUT /ad/{id} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById>`_
+ * :ref:`PUT /ad/{id}/status/{status} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdStatus>`_
 
 .. _vendor_ids:
 
@@ -259,7 +259,7 @@ Vendor Ids
 
 For :ref:`ads<ad_vendorId>` and :ref:`campaigns<campaign_vendorId>`, it is possible to provide a so-called `vendorId`.
 The intention of this `vendorId` is to allow the API partner to use their own primary key on this ad or campaign. 
-The API partner can also fetch the ad or campaign _by_ `vendorId` - see :ref:`get_ad_vendor_id` and :ref:`get_campaign_vendor_id` 
+The API partner can also fetch the ad or campaign _by_ `vendorId` - see `GET /ad/byVendor/{vendorId} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdByVendorId>`_ and `GET /campaign/byVendor/{vendorId} <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId>`_
 for details - to  get the necessary primary key to perform other operations through the API.
 This means the API partner does not need to keep an explicit mapping between their own primary key and the one generated
 by our system, making integration simpler.
@@ -278,8 +278,8 @@ vendorID "abc123" (lower case A) but the payload will returned with vendorID "Ab
 Page tokens
 -----------
 
-In some calls, while calling for a list of items, you get a response containing a `nextPageToken`. This encoded token is necessary for
-efficient pagination. To get the next list (page) of items, you repeat the exact same call, but you add the `&pageToken=<encoded value>`
+In some calls, while calling for a list of items, you get a response containing a ``nextPageToken``. This encoded token is necessary for
+efficient pagination. To get the next list (page) of items, you repeat the exact same call, but you add the ``&pageToken=<encoded value>``
 parameter to the call.
 In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making
 that call more efficient. For the very first page, a pageToken should not be provided. For any following page, callers should use the exact same request with an added `pageToken` parameter.

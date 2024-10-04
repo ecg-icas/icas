@@ -199,6 +199,13 @@
 <li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="migration-guide.html">Migration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#key-changes-and-benefits-of-migrating">Key changes and benefits of migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#step-by-step-guide">Step by step guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#campaigns">Campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#faq">FAQ</a></li>
+</ul>
+</li>
 </ul>
 
         
@@ -257,7 +264,7 @@ attribute definitions and validation rules for placing ads.</p>
 </tr>
 </tbody>
 </table>
-<p>The full tree (or a subtree) can be fetched using <span class="xref std std-ref">get_categories</span>.</p>
+<p>The full tree (or a subtree) can be fetched using <a href="#id2"><span class="problematic" id="id3">:ref:`GET /categories &lt;https://ecg-icas.github.io/icas/openapi/index.html#/Categories/get_categories&gt;`_</span></a>.</p>
 <section id="category-ids">
 <h2>Category Ids<a class="headerlink" href="#category-ids" title="Permalink to this heading">¶</a></h2>
 <p>The root node has category id 0.</p>
@@ -879,7 +886,7 @@ must not exceed 512 bytes.</p></td>
 <tr class="row-even"><td><p>identifying</p></td>
 <td><p>bool</p></td>
 <td></td>
-<td><p>Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with <span class="xref std std-ref">post_ad_prefill</span>, where you can potentially get a sample title, description and additional attributes based on 3rd party databases.</p></td>
+<td><p>Whether this attribute could serve as an identifier for the entire item sold. This can be used in combination with <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdPrefil">POST /ad/prefill</a>, where you can potentially get a sample title, description and additional attributes based on 3rd party databases.</p></td>
 </tr>
 <tr class="row-odd"><td><p>precision</p></td>
 <td><p>int</p></td>

@@ -1,0 +1,16 @@
+.. _migration-guide:
+
+API Migration Guide
+===================
+
+**Purpose**: This guide is designed to help API partners migrate from older deprecated API versions (v2/v3/v4) to the latest version (v5) of the Sellside API.
+**Key Changes and Benefits of migrating to v5:**
+
+- Introducing **micros** as the monetary unit enables more precise financial management, allowing finer granularity in ad spending and budget allocation. ***1 cent is equal to 10000 micros.***
+- **Autobidding** allows taking advantage of using automated (smart) bidding strategy
+- **Improved pagination** with the more efficient industry-standard `pageToken`, as a replacement of the old `offset/limit` pagination mechanism.
+- Optional **campaign (and campaign budget)** management, allows for setting a campaign level budget as well as pausing an entire campaign, effectively taking all the ads in the campaign offline.
+- Budgets and price fields are also streamlined into a clear format, improving accuracy and consistency across the API.
+- **Removal of `pageNumber` & `suggestedCpcForPageOne`**from ad and category endpoints
+**Context**: In the desktop era, most traffic came from leaf category browse actions, leading to the introduction of the "suggested CPC for page one". However, as traffic sources have diversified to include search actions and personalized recommendations, the relevance of these fields has decreased.
+The removal reflects the shift towards a more dynamic and diverse traffic landscape where different ranking methods are more effective. This simplifies ad management by removing outdated metrics.

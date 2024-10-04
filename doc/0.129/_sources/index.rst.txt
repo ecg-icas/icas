@@ -41,7 +41,7 @@ Contents
    error-handling
    OpenAPI reference <https://ecg-icas.github.io/icas/openapi/index.html>
    release-notes
-
+   migration-guide
 
 .. _History:
 
@@ -70,12 +70,12 @@ History
   * added separate :ref:`feed-details` page
   * added collapse feature to docs engine
   * added campaignID to supported dimension in reporting :ref:`metrics_reporting`
-  * added error too many ads in the category to PUT /ad/{id}  :ref:`put_ad_id_v5`
+  * added error too many ads in the category to `PUT /ad/{id} v5 <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById>`_
 
 * v.0.126 - 26 Apr 2023 - tw
 
-  * improved :ref:`get_ad_v5` docs
-  * added explanation about nextPageToken
+  * improved :ref:`GET /ad <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters>`_ docs
+  * added explanation about ``nextPageToken``
   * added information about small difference in workings of ``_include`` and ``_exclude``
 
 * v 0.126 - 2 Mar 2023 - pm
