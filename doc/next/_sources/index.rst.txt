@@ -42,6 +42,10 @@ Contents
    OpenAPI reference <https://ecg-icas.github.io/icas/openapi/index.html>
    release-notes
    migration-guide
+   reference/ad-status
+   reference/campaign-status
+   reference/error-codes
+   reference/price-types
 
 .. _History:
 
