@@ -24,7 +24,7 @@ The category tree has the following properties:
  - * ads can only be placed in leaf categories
  - * only leaf categories contain attributes
 
-The full tree (or a subtree) can be fetched using :ref:`GET /categories <https://ecg-icas.github.io/icas/openapi/index.html#/Categories/get_categories>`_.
+The full tree (or a subtree) can be fetched using `GET /categories <https://ecg-icas.github.io/icas/openapi/index.html#/Categories/get_categories>`_.
 
 Category Ids
 ------------

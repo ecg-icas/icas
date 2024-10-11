@@ -74,7 +74,7 @@ History
 
 * v.0.126 - 26 Apr 2023 - tw
 
-  * improved :ref:`GET /ad <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters>`_ docs
+  * improved `GET /ad <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters>`_ docs
   * added explanation about ``nextPageToken``
   * added information about small difference in workings of ``_include`` and ``_exclude``
 

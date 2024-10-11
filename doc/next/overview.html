@@ -500,13 +500,13 @@ errors. The following endpoints support dry-run validation:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAd">POST /ad</a></p></li>
-<li><p><a href="#id3"><span class="problematic" id="id4">:ref:`PUT /ad/{id} &lt;https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById&gt;`_</span></a></p></li>
-<li><p><a href="#id5"><span class="problematic" id="id6">:ref:`PUT /ad/{id}/status/{status} &lt;https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdStatus&gt;`_</span></a></p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById">PUT /ad/{id}</a></p></li>
+<li><p><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdStatus">PUT /ad/{id}/status/{status}</a></p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="vendor-ids">
-<span id="id7"></span><h2>Vendor Ids<a class="headerlink" href="#vendor-ids" title="Permalink to this heading">¶</a></h2>
+<span id="id3"></span><h2>Vendor Ids<a class="headerlink" href="#vendor-ids" title="Permalink to this heading">¶</a></h2>
 <p>For <a class="reference internal" href="ads.html#ad-vendorid"><span class="std std-ref">ads</span></a> and <a class="reference internal" href="campaigns.html#campaign-vendorid"><span class="std std-ref">campaigns</span></a>, it is possible to provide a so-called <cite>vendorId</cite>.
 The intention of this <cite>vendorId</cite> is to allow the API partner to use their own primary key on this ad or campaign.
 The API partner can also fetch the ad or campaign _by_ <cite>vendorId</cite> - see <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdByVendorId">GET /ad/byVendor/{vendorId}</a> and <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId">GET /campaign/byVendor/{vendorId}</a>
@@ -522,7 +522,7 @@ are identical. The retrieval will have the same capitalization used on insertion
 vendorID “abc123” (lower case A) but the payload will returned with vendorID “Abc123”, same case as insertion.</p>
 </section>
 <section id="page-tokens">
-<span id="id8"></span><h2>Page tokens<a class="headerlink" href="#page-tokens" title="Permalink to this heading">¶</a></h2>
+<span id="id4"></span><h2>Page tokens<a class="headerlink" href="#page-tokens" title="Permalink to this heading">¶</a></h2>
 <p>In some calls, while calling for a list of items, you get a response containing a <code class="docutils literal notranslate"><span class="pre">nextPageToken</span></code>. This encoded token is necessary for
 efficient pagination. To get the next list (page) of items, you repeat the exact same call, but you add the <code class="docutils literal notranslate"><span class="pre">&amp;pageToken=&lt;encoded</span> <span class="pre">value&gt;</span></code>
 parameter to the call.
