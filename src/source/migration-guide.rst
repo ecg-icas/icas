@@ -28,7 +28,7 @@ Key changes and benefits of migrating
 Step by step guide
 ------------------
 
-.. include:: migration-guide/step-by-step.rst
+.. include:: migration-guide-step-by-step.rst
 
 
 .. _campaigns-migration:
