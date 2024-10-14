@@ -671,7 +671,8 @@
 <span id="feed-vendorid"></span><span id="index-0"></span><h2>vendor id<a class="headerlink" href="#vendor-id" title="Permalink to this heading">¶</a></h2>
 <p>The <strong>vendor id</strong> field is the unique identifier of the ad. It is there to let us know, for consecutive imports, which
 ads are the same. This results is allowing us to track and update an existing ad with the same <strong>vendor id</strong> instead
-of creating a new ad. <strong>vendor id</strong> is mandatory and, unique for each ad in the feed.</p>
+of creating a new ad.</p>
+<p>The <strong>vendor id</strong> is mandatory and must be unique for each ad in the feed. Duplicate vendor ids are not allowed and will invalidate the entire feed, preventing further processing.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If an ad in the feed remains unchanged (compared to previous import, including image urls), we will skip over this ad and leave
@@ -706,7 +707,7 @@ ad and trigger image re-processing.</p>
 </details><div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Restrictions: Non-empty string with a maximum of 64 characters.</p>
+<p>Restrictions: Non-empty unique-per-add string with a maximum of 64 characters.</p>
 </section>
 <section id="external-id">
 <span id="feed-externalid"></span><span id="index-1"></span><h2>external id<a class="headerlink" href="#external-id" title="Permalink to this heading">¶</a></h2>
