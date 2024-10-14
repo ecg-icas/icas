@@ -143,7 +143,7 @@ The **vendor id** is mandatory and must be unique for each ad in the feed. Dupli
 
 |
 
-Restrictions: Non-empty unique-per-add string with a maximum of 64 characters.
+Restrictions: Non-empty unique-per-ad string with a maximum of 64 characters.
 
 .. index:: externalId
 .. _feed_externalId:
