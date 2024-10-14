@@ -108,7 +108,9 @@ vendor id
 
 The **vendor id** field is the unique identifier of the ad. It is there to let us know, for consecutive imports, which
 ads are the same. This results is allowing us to track and update an existing ad with the same **vendor id** instead
-of creating a new ad. **vendor id** is mandatory and, unique for each ad in the feed.
+of creating a new ad.
+
+The **vendor id** is mandatory and must be unique for each ad in the feed. Duplicate vendor ids are not allowed and will invalidate the entire feed, preventing further processing.
 
 .. note::
    If an ad in the feed remains unchanged (compared to previous import, including image urls), we will skip over this ad and leave
@@ -141,7 +143,7 @@ of creating a new ad. **vendor id** is mandatory and, unique for each ad in the 
 
 |
 
-Restrictions: Non-empty string with a maximum of 64 characters.
+Restrictions: Non-empty unique-per-add string with a maximum of 64 characters.
 
 .. index:: externalId
 .. _feed_externalId:
