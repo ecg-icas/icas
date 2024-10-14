@@ -249,8 +249,8 @@ body. Otherwise, the server returns ``400 Bad Request`` with the list of
 errors. The following endpoints support dry-run validation:
 
  * `POST /ad <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAd>`_
- * :ref:`PUT /ad/{id} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById>`_
- * :ref:`PUT /ad/{id}/status/{status} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdStatus>`_
+ * `PUT /ad/{id} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById>`_
+ * `PUT /ad/{id}/status/{status} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdStatus>`_
 
 .. _vendor_ids:
 

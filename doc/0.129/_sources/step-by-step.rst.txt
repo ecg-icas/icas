@@ -1,0 +1,20 @@
+This section provides a detailed view of the changes for each affected API endpoint, mapping fields from the old and deprecated versions to the new `v5`.
+Follow this guide to understand the modifications and learn how to update your implementation for a smooth migration.
+
+Each API endpoint is presented in a expandable/collapsible section, with the deprecated and new versions side by side for easy comparison.
+
+
+.. raw:: html
+
+   <details open>
+   <summary><code>GET /ad/{id}</code></summary>
+
+   <br>
+
+   <div style="display: flex; gap: 20px;">
+
+   <div style="flex: 1; padding-right: 10px;">
+   <p><strong>Response payload: deprecated version</strong></p>
+
+.. include:: migration-guide/get-ad-payload-old.rst
+
