@@ -26,3 +26,14 @@ components:
         code: '1000'
         text: 'internal error'
         msg: 'The server encountered an error'
+    APIMiddlewareClientError:
+      type: object
+      readOnly: true
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 400
+        message:
+          type: string
+          example: 'invalid authorization header'

@@ -440,6 +440,7 @@ paths:
         - name: status
           in: query
           required: false
+          explode: false
           description: 'Filters the result set by the ad status. Should be a comma separated list of possible statuses'
           schema:
             type: array
@@ -3245,6 +3246,34 @@ paths:
                     postalCode: 1432AB
                     phoneNumber: '0612345678'
                 hasAds: true
+        415:
+          description: 'Unsupported Media Type'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'invalid content type'
+                  msg: 'ContentType text/xml is not supported'
+        400:
+          description: 'Bad Request'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                $ref: './errors.yaml#/components/schemas/APIMiddlewareClientError'
+              example:
+                - status: 400
+                  message: 'invalid authorization header'
+        401:
+          description: 'Unauthorized'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                $ref: './errors.yaml#/components/schemas/APIMiddlewareClientError'
+              example:
+                - status: 401
+                  message: 'token expired'
       security:
         - bearerAuth: [ ]
           oAuth2ClientCredentials:
