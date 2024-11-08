@@ -663,6 +663,16 @@ paths:
       responses:
         '201':
           description: 'Created'
+          content:
+            application/sellside.ad-v5+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V5'
+            application/sellside.ad-v3+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V3'
+            application/sellside.ad-v2+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V2'
         '401':
           description: 'Unauthorized'
           content:
@@ -1032,7 +1042,7 @@ paths:
           oAuth2ClientCredentials:
             - 'console_ro'
             - 'api_ro'
-  /ad//positions:
+  /ad/positions:
     get:
       tags:
         - Ads
@@ -1807,6 +1817,10 @@ paths:
       responses:
         '200':
           description: 'Success'
+          content:
+            application/sellside.feedconfig-v1+json:
+              schema:
+                $ref: './feeds/responses.yaml#/components/schemas/ConfigV1'
           headers:
             Oauth-Scope:
               description: 'Oauth scopes that are available with the supplied token'
@@ -1948,14 +1962,6 @@ paths:
       summary: 'Creates a new campaign for the user'
       description: 'Creates a new campaign for the user. If successful, it returns an object representing the campaign, with default values on certain fields, if not provided.'
       operationId: postCampaignV2
-      parameters:
-        - name: Accept
-          in: header
-          description: 'This header represents the version of the response acceptable by the client.'
-          schema:
-            type: string
-            example: 'application/sellside.campaign-v5+json'
-          required: true
       requestBody:
         content:
           application/sellside.campaign-v5+json:
@@ -2046,13 +2052,6 @@ paths:
           schema:
             type: string
             example: 'my-christmas-campaign-2020'
-          required: true
-        - name: Accept
-          in: header
-          description: 'This header represents the version of the response acceptable by the client.'
-          schema:
-            type: string
-            example: 'application/sellside.campaign-v5+json'
           required: true
       responses:
         '200':
