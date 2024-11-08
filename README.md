@@ -7,7 +7,7 @@ For changes to the **freeform part** of the documentation (**anything under src/
 
 Run
 ```
-make install-version
+make install
 ```
 to make sure the necessary html files are generated properly.
  
