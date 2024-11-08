@@ -4,7 +4,7 @@
 SPHINXOPTS    =
 SPHINXBUILD   = poetry run sphinx-build
 BUILDDIR      = build
-WEBAPPDIR     = ../doc/prod  # Set to your /prod folder
+WEBAPPDIR     = ../doc/prod
 
 # Internal variables.
 ALLSPHINXOPTS = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) source
