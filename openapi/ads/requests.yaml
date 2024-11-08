@@ -261,6 +261,10 @@ components:
           format: int64
           description: 'The cost of the item, in cents. The meaning of the value depends on priceType. If it is FIXED_PRICE or BIDDING_FROM then price has to be greater than 0.'
           maximum: 100000000
+        originalPrice:
+          type: integer
+          format: int64
+          description: 'The cost of the item, in cents, before discount was applied. Not available to all users. Needs to be larger than price.'
         cpc:
           type: integer
           format: int64
