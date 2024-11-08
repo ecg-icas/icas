@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Attributes &mdash; iCAS Sellside API  documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iCAS Sellside API  documentation" href="index.html"/>
+        <link rel="next" title="Regions" href="regions.html"/>
+        <link rel="prev" title="Categories" href="categories.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> iCAS Sellside API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#media-types">Media Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#content-type-and-accept-headers">Content-Type and Accept Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#image-downloads">Image Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#feed-downloads">Feed Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#customize-response-body">Customize response body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#dates-and-times">Dates and Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#prices-and-currencies">Prices and Currencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#http-response-codes-and-error-handling">HTTP Response Codes and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#dry-run-request-validation">Dry-Run Request Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#vendor-ids">Vendor Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#page-tokens">Page tokens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#what-is-oauth-2-0">What is OAuth 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-roles">OAuth 2.0 Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#oauth-2-0-endpoints">OAuth 2.0 Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-an-access-token">Getting an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#using-an-access-token">Using an Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#getting-another-access-token">Getting another Access Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#refresh-tokens-and-token-expiration">Refresh Tokens and Token Expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-status">Category Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#category-configuration">Category Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#locales">Locales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#price-types">Price Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#leaf-categories">Leaf Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-groups">Attribute Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-rendering">Attribute Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#category-attributes">Category Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-defined-attributes">User-Defined Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-ids">Region Ids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-levels">Region Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-label">Region label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#region-center">Region center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#non-leaf-regions">Non-Leaf Regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regions.html#leaf-regions">Leaf Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="feeds.html">Feeds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#file-format">File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#errors">Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feeds.html#frequently-asked-questions">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="feed-details.html">Feed Fields</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#vendor-id">vendor id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#external-id">external id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#seller-name">seller name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#title">title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#description">description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#category-id">category id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#status">status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#url">url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#vanity-url">vanity url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#price-type">price type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#price">price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#original-price">original price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#item-images">item images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#attributes">attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#budget-details">budget details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#shipping-pick-up">shipping &amp; pick-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#phone-number">phone number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#email-advertiser">email advertiser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#region-id">region id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#micro-tip">micro tip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#mpn">MPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#google-product-category">google product category</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#product-type">product type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#brand">brand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#gtin">GTIN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#item-group-id">item group id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#condition">condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#material">material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#energy-efficiency-class">energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#min-energy-efficiency-class">min energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#max-energy-efficiency-class">max energy efficiency class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#color">color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#gender">gender</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#age-group">age group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#size">size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#unit-pricing-base-measure">unit pricing base measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feed-details.html#unit-pricing-measure">unit pricing measure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reporting.html">Reporting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#dimensions-and-metrics">Dimensions and Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#time-ranges">Time Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#time-aggregation">Time Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#filters">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#sorting">Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#pagination-with-offset-and-limit">Pagination with offset and limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#enrichment">Enrichment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#query-and-response">Query and Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reporting.html#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html">OpenAPI reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#september-2024-deprecated-handler-clean-up">September 2024: ‘Deprecated handler clean up’</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-notes.html#feb-2023-campaigns-micros">Feb 2023: ‘Campaigns &amp; Micros’</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration-guide.html">Migration Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#key-changes-and-benefits-of-migrating">Key changes and benefits of migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#step-by-step-guide">Step by step guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#campaigns">Campaigns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration-guide.html#faq">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">iCAS Sellside API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Attributes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="attributes">
+<span id="index-0"></span><span id="id1"></span><h1>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">¶</a></h1>
+<p>The Sellside API supports attributes for both categories and
+advertisements to specify additional properties of a product like <em>size</em> and
+<em>color</em>.</p>
+<section id="category-attributes">
+<span id="id2"></span><h2>Category Attributes<a class="headerlink" href="#category-attributes" title="Permalink to this heading">¶</a></h2>
+<p>Category attributes are recommended attribute names and values for a given
+category. They help constructing automatic user interfaces in which sellers
+can select one or more values from a pre-defined list of attributes.</p>
+<p>They serve as a basis for the attributes the seller can supply in addition
+to his own user-defined attributes. You cannot post/put category attributes.
+In order to add attributes to an ad you need to supply user defined attributes (See below).</p>
+<p>Category attributes are provided as part of the category taxonomy  tree, in the <strong>attributes</strong>
+subsection. Each category attribute has a <strong>key</strong>, a <strong>label</strong>, a <strong>locale</strong> for the label and values,
+a <strong>type</strong> and depending on the type one or more additional properties describing the constraints.
+For more information on category attributes, see <a class="reference internal" href="categories.html#category-attributes-v2"><span class="std std-ref">Attributes</span></a>.</p>
+<p>The following types are supported:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>STRING</p></td>
+<td><p>User can select a single value from  <strong>values</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>LIST</p></td>
+<td><p>User can select one or more values from <strong>values</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>NUMBER</p></td>
+<td><p>User can provide a number between <strong>minValue</strong> and <strong>maxValue</strong></p></td>
+</tr>
+</tbody>
+</table>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<p>Below is an excerpt from the attributes section of a category tree, for a particular category</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;delivery&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Levering&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;en_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Delivery&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;values&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Ophalen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Verzenden&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Ophalen of Verzenden&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;en_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Pickup&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Deliver&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Pickup or Deliver&quot;</span><span class="p">]</span>
+
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ophalen&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;en_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Pickup&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="s2">&quot;mandatory&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;subtitles&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Ondertiteling&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;en_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Subtitles&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;values&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Engels&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Duits&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Nederlands&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="s2">&quot;en_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;English&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;German&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Dutch&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;defaults&quot;</span><span class="o">:</span><span class="p">{},</span>
+<span class="w">        </span><span class="s2">&quot;mandatory&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;motorinhoud&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;nl_NL&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Motorinhoud&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;en_NL&quot;</span><span class="o">:</span><span class="s2">&quot;Engine capacity&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;range&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="mf">8500</span><span class="p">],</span>
+<span class="w">        </span><span class="s2">&quot;mandatory&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;writable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;updatable&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="user-defined-attributes">
+<span id="id3"></span><h2>User-Defined Attributes<a class="headerlink" href="#user-defined-attributes" title="Permalink to this heading">¶</a></h2>
+<p>User-defined attributes are the actual names and values provided by the user
+for a given ad. They contain any valid key/value combination as described
+below and are not limited by the category attributes. This means the user can
+determine not only the value of the attribute, but also the name of the key.
+The maximum length of the key is 32 characters, and it should contain at least one
+non-whitespace character. The possible values for the type are described below, and
+the maximum character length for the value is 512 characters. User defined attributes
+must also contain a <strong>label</strong> and a <strong>locale</strong>. The locale specifies the language
+for the label and the value. The maximum length of the label is 32 characters.
+The label can contain the same value as the key.
+Locale must contain a valid locale string (e.g. one of en, nl, fr, en_US, en_GB, da_dk, no_NO_NY)</p>
+<p>All of the user attributes will be stored with the ad. After placing an ad the
+system will analyze the user-defined attributes for familiarities with respect to
+category attributes. If a user-defined attribute is recognized by
+us, the <strong>recognized</strong> flag is set to <strong>true</strong>. An attribute is recognized if the provided
+type and value(s) for that particular attribute key match the type and possible values
+as defined in the category tree. The recognized attributes can be used to apply the desired
+filtering criteria supplied by potential buyers searching on the tenant marketplace.</p>
+<p>Beware that category attributes which are marked as <code class="docutils literal notranslate"><span class="pre">mandatory</span></code> in the category tree must
+be supplied with the ad, otherwise the ad will be invalidated. Attributes that are not <code class="docutils literal notranslate"><span class="pre">updatable</span></code>
+cannot be changed, once they are supplied. An attempt to change the value of such attribute will also result in ad invalidation.</p>
+<section id="id4">
+<h3>Example<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;key&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;kleur&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;locale&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nl_NL&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zwart&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;key&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;locale&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;en_EN&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Black&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;key&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;size&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;size&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;locale&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;en_EN&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NUMBER&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">6</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;key&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;daysOfWeek&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;label&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Days of the week&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;locale&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;en_EN&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LIST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Friday&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>For user-defined attributes the following types are supported:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>constraints</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>STRING</p></td>
+<td><p>max. 512 chars</p></td>
+<td><p>A single string value, e.g. “rood”</p></td>
+</tr>
+<tr class="row-odd"><td><p>LIST</p></td>
+<td><p>max. 512 chars <a class="footnote-reference brackets" href="#f1" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+<td><p>A list of string or number values, e.g. [“S”, “M”, “L”, “XL”]</p></td>
+</tr>
+<tr class="row-even"><td><p>NUMBER</p></td>
+<td><p>int or double</p></td>
+<td><p>A single number value, e.g. 1500 or 46.5</p></td>
+</tr>
+</tbody>
+</table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>The JSON representation <strong>of the value</strong> of a <em>list</em> attribute must not exceed 512 characters.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regions.html" class="btn btn-neutral float-right" title="Regions"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="categories.html" class="btn btn-neutral" title="Categories"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The iCAS Team.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/documentation_options.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
