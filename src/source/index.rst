@@ -1,5 +1,3 @@
-.. _Discord: https://discord.com
-
 .. _index:
 
 .. _introduction:
@@ -17,7 +15,7 @@ Help / Feedback
 ===============
 
 If you have questions or would like to provide feedback, you can do so via our
-`Discord`_ channel. Please talk to your contact at the tenant (local marketplace) to get access, this
+Slack channel. Please talk to your contact at the tenant (local marketplace) to get access, this
 is an **invite-only** chat channel. This channel is highly interactive, and contains
 several of our developers as well so deeper technical support can also be found here.
 Notifications about maintenance will also go through this channel.

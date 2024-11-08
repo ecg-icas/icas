@@ -2,7 +2,6 @@
 .. _ISO 4217: http://en.wikipedia.org/wiki/ISO_4217
 .. _ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
 .. _windows-1252: https://en.wikipedia.org/wiki/Windows-1252
-.. _Discord: http://https://discordapp.com
 .. _overview:
 
 Overview
@@ -69,7 +68,7 @@ password to get an access token.
 
 To request a client id and secret please ask your contact at the respective tenant
 (marktplaats, kijiji.ca, tweedehands). Your contact can also send you an invite
-for our `Discord`_ channel, where you can go for maintenance notifications and
+for our Slack channel, where you can go for maintenance notifications and
 support.
 
 See the :ref:`authentication` section for the full details and also
