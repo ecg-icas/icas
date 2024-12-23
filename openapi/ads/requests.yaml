@@ -140,7 +140,11 @@ components:
               example: 'Click here to buy this product'
         vendorId:
           type: string
-          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.
+          When an ad gets teh status ``DELETED``, this does *NOT* mean the vendorId is forgotten, which means inserting a new ad with the same vendorId will fail.
+          <br><br>Only [Latin-1](https://en.wikipedia.org/wiki/Windows-1252) characters are allowed. 
+          
+          Keep in mind that this field is case-insensitive. This means that an ad created with vendor ``abc123`` can be retrieved by querying for ``ABC123`` or ``AbC123``.'
           example: 'OURSHOP-1423453-34'
         attributes:
           type: array
@@ -340,21 +344,6 @@ components:
           description: 'Must be an non empty string.'
           example: '1703 GB'
           maxLength: 6
-        regionId:
-          type: integer
-          format: int64
-          description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
-          example: 10034535
-        pageNumber:
-          type: integer
-          format: int
-          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
-          example: 2
-        suggestedCpcForPageOne:
-          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
-          type: integer
-          format: int64
-          example: 15
         links:
           type: object
           description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
@@ -384,8 +373,13 @@ components:
               example: 'Click here to buy this product'
         vendorId:
           type: string
-          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.
+          When an ad gets teh status ``DELETED``, this does *NOT* mean the vendorId is forgotten, which means inserting a new ad with the same vendorId will fail.
+          <br><br>Only [Latin-1](https://en.wikipedia.org/wiki/Windows-1252) characters are allowed. 
+          
+          Keep in mind that this field is case-insensitive. This means that an ad created with vendor ``abc123`` can be retrieved by querying for ``ABC123`` or ``AbC123``.'
           example: 'OURSHOP-1423453-34'
+          maxLength: 64
         attributes:
           type: array
           description: 'An optional list of user-defined attributes'
@@ -536,7 +530,7 @@ components:
           example: '3541CB'
     PriceUnit:
       type: string
-      description: 'Must be a valid price unit identifier from the list of available price units of the category'
+      description: 'Must be a valid price unit identifier from the list of available price units of the category.'
       example: 'per_sqm'
     Price:
       description: 'Price is an object containing all the information about the cost of the item for sale.'
