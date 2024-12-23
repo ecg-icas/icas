@@ -83,21 +83,9 @@ The endpoint URLs per tenant and environment are as follows:
    -
    - https://admarkt.marktplaats.nl/accounts/oauth/token
 
- * - Kijiji Canada
-   - Sandbox
-   - https://admarkt.qa10.kjdev.ca/accounts/oauth/authorize
-
  * -
    -
    - https://admarkt.qa10.kjdev.ca/accounts/oauth/token
-
- * -
-   - Production
-   - https://admarkt.kijiji.ca/accounts/oauth/authorize
-
- * -
-   -
-   - https://admarkt.kijiji.ca/accounts/oauth/token
 
  * - 2dehands Belgium
    - Sandbox

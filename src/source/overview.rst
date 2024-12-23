@@ -26,14 +26,6 @@ own account or on behalf of other users. The base URLs for the API are:
    - Production
    - https://admarkt.marktplaats.nl/api/sellside
 
- * - Kijiji Canada
-   - Sandbox
-   - https://admarkt.qa10.kjdev.ca/api/sellside
-
- * -
-   - Production
-   - https://admarkt.kijiji.ca/api/sellside
-
  * - 2dehands Belgium
    - Sandbox
    - https://admarkt.demo-2dehands.qa-mp.so/api/sellside
