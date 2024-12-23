@@ -28,7 +28,8 @@ components:
           example: 'Buy the new iPhone here'
         description:
           type: string
-          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title. All HTML elements except 
+          for ``<i> <em> <b> <strong> <ul> <li> <u> <br/>`` will be stripped from the description.'
           example: 'Extra sale, buy the new iPhone today and save!'
         images:
           type: array
@@ -215,14 +216,16 @@ components:
           example: 'Buy the new iPhone here'
         description:
           type: string
-          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.
+          All HTML elements except for ``<i> <em> <b> <strong> <ul> <li> <u> <br/>`` will be stripped from the description.'
           example: 'Extra sale, buy the new iPhone today and save!'
         categoryId:
-          description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
+          description: 'The ID of the category in which the ad is placed. Each ad belongs to one and only one category; this can be updated. Must be an ID
+          of a category with a non-zero parent ID.'
           type: integer
           format: int64
           example: 2353465
-          minimum: 0
+          minimum: 1
         images:
           type: array
           items:

@@ -46,6 +46,7 @@ tags:
   - name: Categories
   - name: Regions
   - name: Reporting
+  - name: Oauth2
 paths:
    # ADS
   '/ad/{adId}':
@@ -3278,6 +3279,184 @@ paths:
           oAuth2ClientCredentials:
             - 'console_ro'
             - 'api_ro'
+  /accounts/oauth/authorize:
+    get:
+      summary: 'Authorize a client to access the API.'
+      description: 'This will redirect the resource owner (user) to the authorization url with a short-lived authorization code to 
+      be exchanged for a long-lived access token. The client must be registered with the authorization server.'
+      tags:
+        - Oauth2
+      parameters:
+        - name: response_type
+          in: query
+          description: 'The response type. Must be set to ``code``.'
+          schema:
+            type: string
+            example: 'code'
+          required: true
+        - name: client_id
+          in: query
+          description: 'The client id.'
+          schema:
+            type: string
+            example: 'YOUR_CLIENT_ID'
+          required: true
+        - name: redirect_uri
+          in: query
+          description: 'The URL to which the authorization server redirects the user with an authorization code after successful authorization.
+          This url can be matched against a list of expressions, in case the client is experiencing or generating abuse. This list should then
+          be discussed with your contact point.'
+          schema:
+            type: string
+            example: 'https://yoursite.com/code'
+          required: true
+        - name: scope
+          in: query
+          description: 'The scope of the access request. This should be a space-separated list of scopes.'
+          schema:
+            type: string
+            example: 'api_ro api_rw'
+          required: true
+        - name: state
+          in: query
+          description: 'An opaque value used by the client to maintain state between the request and callback. 
+          The authorization server includes this value when redirecting back to the client.'
+          schema:
+            type: string
+            example: 'YOUR_STATE'
+          required: false
+      responses:
+        '302':
+          description: 'Redirect t URL'
+          headers:
+            Location:
+              schema:
+                type: string
+                example: 'https://yoursite.com/code?code=AUTHORIZATION_CODE&state=YOUR_STATE'
+        401:
+          description: 'Invalid client'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'invalid_client'
+                  error_description:
+                    type: string
+                    example: 'client_id mismatch'
+        400:
+          description: 'Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'invalid_grant'
+                  error_description:
+                    type: string
+                    example: 'expired refresh_token'
+
+  /accounts/oauth/token:
+    post:
+      summary: 'Exchange an authorization code for a refresh/access token.'
+      description: 'This endpoint is used to exchange an authorization code for a refresh token, or a refresh for an access token. The client must be registered with the authorization server.'
+      tags:
+        - Oauth2
+      parameters:
+        - name: grant_type
+          in: query
+          description: 'The grant type. Must be set to ``authorization_code`` or ``refresh_token``.'
+          schema:
+            type: string
+            example: 'authorization_code'
+          required: true
+        - name: code
+          in: query
+          description: 'The authorization code received from the authorization server with [the authorization endpoint](#/paths/~1oauth~1authorize)'
+          schema:
+            type: string
+            example: 'AUTH_CODE'
+        - name: refresh_token
+          in: query
+          description: 'The refresh token received from the authorization server with a previous token request.'
+          schema:
+            type: string
+            example: 'REFRESH_TOKEN'
+        - name: client_id
+          in: query
+          description: 'The client id.'
+          schema:
+              type: string
+              example: 'YOUR_CLIENT_ID'
+          required: true
+        - name: client_secret
+          in: query
+          description: 'The client secret.'
+          schema:
+            type: string
+            example: 'YOUR_CLIENT_SECRET'
+          required: true
+        - name: redirect_uri
+          in: query
+          description: 'The URL to which the authorization server redirects the user with an authorization code after successful authorization.
+          Must be the same as the ``redirect_uri`` used in the [authorization endpoint](#/paths/~1oauth~1authorize).'
+          schema:
+            type: string
+            example: 'https://yoursite.com/code'
+          required: true
+      responses:
+        200:
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: 'eyJhbGciOiJIUzI1NiIsInR5c'
+                  token_type:
+                    type: string
+                    example: 'bearer'
+                  expires_in:
+                    type: integer
+                    example: 3600
+                  refresh_token:
+                    type: string
+                    example: 'tGzv3JOkF0XG5Qx2TlKWIA'
+                  scope:
+                    type: string
+                    example: 'api_ro console_ro'
+        401:
+          description: 'Invalid client'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'invalid_client'
+                  error_description:
+                    type: string
+                    example: 'client_id mismatch'
+        400:
+          description: 'Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'invalid_grant'
+                  error_description:
+                    type: string
+                    example: 'expired refresh_token'
 #-------------------------------
 # Reusable schemas (data models)
 #-------------------------------
