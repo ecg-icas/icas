@@ -74,7 +74,6 @@ Errors
 `GET /feed/import/{id}/detail <https://ecg-icas.github.io/icas/openapi/index.html#/Feeds/getFeedImportDetail>`_ can be a good source of information on possible errors
 or warnings on ads, such as missing mandatory attributes or too low CPC etc. 
 
-
 .. _feeds_qna:
 
 Frequently Asked Questions

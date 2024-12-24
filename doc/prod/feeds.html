@@ -141,7 +141,6 @@
 <li class="toctree-l2"><a class="reference internal" href="feed-details.html#shipping-pick-up">shipping &amp; pick-up</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feed-details.html#phone-number">phone number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feed-details.html#email-advertiser">email advertiser</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feed-details.html#region-id">region id</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feed-details.html#micro-tip">micro tip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feed-details.html#mpn">MPN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feed-details.html#google-product-category">google product category</a></li>
@@ -241,7 +240,7 @@ After that, scheduled fetches happen once per day synchronizing the system with 
 <h2>File Format<a class="headerlink" href="#file-format" title="Permalink to this heading">¶</a></h2>
 <p>We support feed files in either an TSV or XML format.
 Feeds are expected to be in UTF-8 encoding.
-Information on the most actual set of supported data is described on the <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">details</span></a> page.</p>
+Information on the most actual set of supported data is described on the <span class="xref std std-ref">details</span> page.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Currently, we have introduced a number of new fields for describing the feed ad.
@@ -270,7 +269,7 @@ In that situation, the parser must look for a terminating quote before the next 
 </div></blockquote>
 </div>
 <p>TSV format follows specification described on <a class="reference external" href="https://en.wikipedia.org/wiki/Tab-separated_values">wiki</a>.
-Column names used in TSV feed must superset <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a> specified.
+Column names used in TSV feed must superset <span class="xref std std-ref">column names</span> specified.
 Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p>
 <p><a class="reference download internal" download="" href="_downloads/93dbf90792498ee82059295c17c481bd/feed-example.tsv"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">example</span></code></a></p>
 </details><details class="summary-xml">
@@ -375,7 +374,7 @@ Our customers commonly use spreadsheets to store and manipulate the data,
 and “TSV export” is a standard option for the majority of spreadsheet programs.</p>
 <p>The three important things to remember for successful integration:</p>
 <ol class="arabic simple">
-<li><p>There are some <a class="reference internal" href="feed-details.html#feed-details"><span class="std std-ref">column names</span></a>, that we will look for, and expect to find in your TSV feed.</p></li>
+<li><p>There are some <span class="xref std std-ref">column names</span>, that we will look for, and expect to find in your TSV feed.</p></li>
 <li><p>Multiline fields need to be escaped with double quotes, or all the line breaks changed to \n.</p></li>
 <li><p>Some complex fields, like <a class="reference internal" href="feed-details.html#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a> or <a class="reference internal" href="feed-details.html#feed-attr"><span class="std std-ref">attributes</span></a> must follow the specified encoding conventions.</p></li>
 </ol>

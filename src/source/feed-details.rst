@@ -32,7 +32,6 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     :ref:`pickup location <feed_ship>`        pickup location                      :ref:`feed_ship`     no
     :ref:`feed_phoneNumber`                   phone number                         max. 32 chars        no
     :ref:`feed_emailAdvertiser`               allow emails to the seller           true,false           no
-    :ref:`feed_regionId`                      only applicable for Kijiji Canada    numeric              no
     :ref:`feed_microTip`                      tiny item highlight                  max. 18 chars        no
     :ref:`feed_mpn`                           Manufacturer Part Number (MPN)       2-70 chars           no
     :ref:`feed_googleProductCategory`         google category for your item        string               no
@@ -76,7 +75,6 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     :ref:`shipping options <feed_ship>`    shipping options                     :ref:`feed_ship`     no
     :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no
     :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
-    :ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no
     :ref:`feed_microTip`                   tiny item highlight                  max. 18 chars        no
     :ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no
     :ref:`feed_googleProductCategory`      google category for your item        string               no
@@ -911,45 +909,6 @@ The default value is false.
 |
 
 Restrictions: Allowed values *true* and *false*
-
-.. index:: regionId
-.. _feed_regionId:
-
-region id
-"""""""""
-
-The region in which the ad is placed. (only applicable for Kijiji Canada)
-
-Each ad belongs to one and only one region and region of an ad cannot be updated.
-This field can only be set once during creation of an ad.
-
-.. collapse:: TSV
-
-    Stored in **region id** column.
-
-    ========= ========================
-     Example	 .. code-block:: text
-
-                    1700274
-    ========= ========================
-
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-
-                 <admarkt:regionId>1700274</admarkt:regionId>
-    ======= ===========================================================
-
-|
-
-Restrictions: An integer value from the region tree. Must be the id of a leaf region.
-
-This field is mandatory if the `region` field of category configuration is ``MANDATORY``
-and optional if the `region` field is ``OPTIONAL``.
-This field must be omitted if the `region` field of category configuration is ``DISABLED``.
-
-Please refer to :ref:`categories` and :ref:`regions`
 
 .. index:: microTip
 .. _feed_microTip:
