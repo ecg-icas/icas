@@ -19,7 +19,7 @@ File Format
 
 We support feed files in either an TSV or XML format.
 Feeds are expected to be in UTF-8 encoding.
-Information on the most actual set of supported data is described on the :ref:`details <feed-details>` page.
+Information on the most actual set of supported data is described below in the :ref:`feed-fields` section.
 
 .. note::
     Currently, we have introduced a number of new fields for describing the feed ad. 
@@ -46,7 +46,6 @@ For instructions on how to create your feed in specific formats, please expand t
 
 
     TSV format follows specification described on `wiki <https://en.wikipedia.org/wiki/Tab-separated_values>`__.
-    Column names used in TSV feed must superset :ref:`column names <feed-details>` specified.
     Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
 
     :download:`download example<examples/feed-example.tsv>`
@@ -67,6 +66,110 @@ For instructions on how to create your feed in specific formats, please expand t
     |
 
 |
+
+
+.. _feed-fields:
+
+Feed Fields
+-----------
+
+
+A set of required and optional fields defined by a feed for XML and TSV file formats are listed below.
+
+.. collapse:: TSV
+
+    ========================================= ==================================== ===================  ===========
+    Field                                     Description                          Restrictions         Mandatory
+    ========================================= ==================================== ===================  ===========
+    :ref:`feed_vendorId`                      **unique** ad identifier             max. 64 chars        yes
+    :ref:`feed_sellerName`                    your company name                    max. 60 chars        no
+    :ref:`feed_t`                             item title                           :ref:`feed_t`        yes
+    :ref:`feed_descr`                         item description                     :ref:`feed_descr`    yes
+    :ref:`feed_categoryId`                    category identifier                  numeric, positive    yes
+    :ref:`feed_status`                        desired status (default ACTIVE)      ACTIVE,PAUSED        no
+    :ref:`feed_url`                           item URL                             max. 2048 chars      no
+    :ref:`feed_vanityUrl`                     displayed URL                        max. 256 chars       no
+    :ref:`feed_priceType`                     sales model for item                 enum                 yes
+    :ref:`feed_price`                         item price in cents if applicable    positive integer     yes/no
+    :ref:`feed_originalPrice`                 original price before discount       positive integer     no
+    :ref:`image link <feed_media>`            primary image                        :ref:`feed_media`    no
+    :ref:`additional image link <feed_media>` additional images                    :ref:`feed_media`    no
+    :ref:`feed_attr`                          collection of item attributes        :ref:`feed_attr`     no
+    :ref:`autobid <feed_budget>`              budget details                       :ref:`feed_budget`   no
+    :ref:`cpc <feed_budget>`                  budget details                       :ref:`feed_budget`   no
+    :ref:`total budget <feed_budget>`         budget details                       :ref:`feed_budget`   no
+    :ref:`daily budget <feed_budget>`         budget details                       :ref:`feed_budget`   no
+    :ref:`shipping <feed_ship>`               shipping options                     :ref:`feed_ship`     no
+    :ref:`pickup location <feed_ship>`        pickup location                      :ref:`feed_ship`     no
+    :ref:`feed_phoneNumber`                   phone number                         max. 32 chars        no
+    :ref:`feed_emailAdvertiser`               allow emails to the seller           true,false           no
+    :ref:`feed_microTip`                      tiny item highlight                  max. 18 chars        no
+    :ref:`feed_mpn`                           Manufacturer Part Number (MPN)       2-70 chars           no
+    :ref:`feed_googleProductCategory`         google category for your item        string               no
+    :ref:`feed_productType`                   item product type                    max. 750 chars       no
+    :ref:`feed_brand`                         item brand name                      max. 70 chars        no
+    :ref:`feed_gtin`                          Global Trade Identification Number   max. 50 chars        no
+    :ref:`feed_itemGroupId`                   groups item variants                 max. 50 chars        no
+    :ref:`feed_condition`                     condition of item                    enum                 no
+    :ref:`feed_material`                      main item fabrics or materials       max. 200 chars       no
+    :ref:`feed_energyEfficiencyClass`         energy efficiency class              enum                 no
+    :ref:`feed_minEnergyEfficiencyClass`      minimal energy efficiency class      enum                 no
+    :ref:`feed_maxEnergyEfficiencyClass`      maximal energy efficiency class      enum                 no
+    :ref:`feed_color`                         item colors                          max. 100 chars       no
+    :ref:`feed_gender`                        gender item is designed for          enum                 no
+    :ref:`feed_ageGroup`                      age group item is intended for       enum                 no
+    :ref:`feed_size`                          size information                     enum                 no
+    :ref:`feed_unitPricingBaseMeasure`        denominator for item unit price      string               no
+    :ref:`feed_unitPricingMeasure`            measure and dimension of item        string               no
+    ========================================= ==================================== ===================  ===========
+
+.. collapse:: XML
+
+    ====================================== ==================================== ===================  ===========
+    Field                                  Description                          Restrictions         Mandatory
+    ====================================== ==================================== ===================  ===========
+    :ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
+    :ref:`feed_externalId`                 **deprecated**                       --                   --
+    :ref:`feed_sellerName`                 your company name                    max. 60 chars        no
+    :ref:`feed_t`                          item title                           :ref:`feed_t`        yes
+    :ref:`feed_descr`                      item description                     :ref:`feed_descr`    yes
+    :ref:`feed_categoryId`                 category identifier                  numeric, positive    yes
+    :ref:`feed_status`                     desired status (default ACTIVE)      ACTIVE,PAUSED        no
+    :ref:`feed_url`                        item URL                             max. 2048 chars      no
+    :ref:`feed_vanityUrl`                  displayed URL                        max. 256 chars       no
+    :ref:`feed_priceType`                  sales model for item                 enum                 yes
+    :ref:`feed_price`                      item price in cents if applicable    positive integer     yes/no
+    :ref:`feed_originalPrice`              original price before discount       positive integer     no
+    :ref:`media <feed_media>`              item images                          :ref:`feed_media`    no
+    :ref:`feed_attr`                       collection of item attributes        :ref:`feed_attr`     no
+    :ref:`budget <feed_budget>`            budget details                       :ref:`feed_budget`   no
+    :ref:`shipping options <feed_ship>`    shipping options                     :ref:`feed_ship`     no
+    :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no
+    :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
+    :ref:`feed_microTip`                   tiny item highlight                  max. 18 chars        no
+    :ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no
+    :ref:`feed_googleProductCategory`      google category for your item        string               no
+    :ref:`feed_productType`                item product type                    max. 750 chars       no
+    :ref:`feed_brand`                      item brand name                      max. 70 chars        no
+    :ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no
+    :ref:`feed_itemGroupId`                groups item variants                 max. 50 chars        no
+    :ref:`feed_condition`                  condition of item                    enum                 no
+    :ref:`feed_material`                   main item fabrics or materials       max. 200 chars       no
+    :ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
+    :ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
+    :ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
+    :ref:`feed_color`                      item colors                          max. 100 chars       no
+    :ref:`feed_gender`                     gender item is designed for          enum                 no
+    :ref:`feed_ageGroup`                   age group item is intended for       enum                 no
+    :ref:`feed_size`                       size information                     enum                 no
+    :ref:`feed_unitPricingBaseMeasure`     denominator for item unit price      string               no
+    :ref:`feed_unitPricingMeasure`         measure and dimension of item        string               no
+    ====================================== ==================================== ===================  ===========
+
+|
+
+.. include:: feed-details.rst
+
 
 Errors
 ------
@@ -94,7 +197,7 @@ Below are some common scenarios and questions with their explanations/answers.
 
     The three important things to remember for successful integration:
 
-    1. There are some :ref:`column names <feed-details>`, that we will look for, and expect to find in your TSV feed.
+    1. There are some column names that we will look for, and expect to find in your TSV feed.
     2. Multiline fields need to be escaped with double quotes, or all the line breaks changed to \\n.
     3. Some complex fields, like :ref:`feed_ship` or :ref:`feed_attr` must follow the specified encoding conventions.
 
