@@ -32,7 +32,6 @@ Contents
    campaigns
    categories
    attributes
-   regions
    feeds
    feed-details
    reporting
