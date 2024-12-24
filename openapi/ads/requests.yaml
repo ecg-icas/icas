@@ -148,7 +148,15 @@ components:
           example: 'OURSHOP-1423453-34'
         attributes:
           type: array
-          description: 'An optional list of user-defined attributes'
+          description: 'An optional list of user-defined attributes. All of them will be stored with the ad.
+          After placing or updating the ad, the system will analyse them for familiarities with respect to category attributes.
+          If a user-defined attributes is recognised, or matched, with a category attribute, the ``recognized`` flag will be set to ``true``.
+          An attribute is recognized if the provided type and value(s) for that particular attribute key match the type and 
+          possible values as defined in the category taxonomy. The recognized attributes can be used to apply the desired filtering 
+          criteria supplied by potential buyers searching on the Marketplace.<br><br>
+          Beware that the category attributes which are marked as ``mandatory`` in the category taxonomy must be supplied
+          with the ad, otherwise the ad will be invalidated. Attributes that are not ``updatable`` cannot be changed once 
+          they are supplied. The system will invalidate the ad if an attempt is made to update them.'
           items:
             $ref: '#/components/schemas/UserAttribute'
         shippingOptions:
@@ -161,7 +169,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ShippingOption'
-          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. 
+          Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+        microTip:
+          description: 'A short freeform text excluding any characters in ``.,/@#,.``. It is a feature as part of a package that sellers can
+          purchase to promote their ads. It provides extra attention on the ad in the search results. At the time of writing, this will only
+          have an effect on ads created via the Console. However, it can be adjusted through the API.'
+          type: string
+          maxLength: 18
+          example: 'Buy now!'
       type: object
     CampaignId:
       description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
@@ -382,7 +398,15 @@ components:
           maxLength: 64
         attributes:
           type: array
-          description: 'An optional list of user-defined attributes'
+          description: 'An optional list of user-defined attributes. All of them will be stored with the ad.
+                    After placing or updating the ad, the system will analyse them for familiarities with respect to category attributes.
+                    If a user-defined attributes is recognised, or matched, with a category attribute, the ``recognized`` flag will be set to ``true``.
+                    An attribute is recognized if the provided type and value(s) for that particular attribute key match the type and 
+                    possible values as defined in the category taxonomy. The recognized attributes can be used to apply the desired filtering 
+                    criteria supplied by potential buyers searching on the Marketplace.<br><br>
+                    Beware that the category attributes which are marked as ``mandatory`` in the category taxonomy must be supplied
+                    with the ad, otherwise the ad will be invalidated. Attributes that are not ``updatable`` cannot be changed once 
+                    they are supplied. The system will invalidate the ad if an attempt is made to update them.'
           items:
             $ref: '#/components/schemas/UserAttribute'
         shippingOptions:
@@ -396,11 +420,23 @@ components:
           items:
             $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+        microTip:
+          description: 'A short freeform text excluding any characters in ``.,/@#,.``. It is a feature as part of a package that sellers can
+          purchase to promote their ads. It provides extra attention on the ad in the search results. At the time of writing, this will only
+          have an effect on ads created via the Console. However, it can be adjusted through the API.'
+          type: string
+          maxLength: 18
+          example: 'Buy now!'
     Image:
       readOnly: true
       description: 'When an ad is created or updated the caller provides the images as a list of image objects which contain only the source url. 
-                   The images are then downloaded by iCAS and the server adds additional fields which describe the status of the download. 
-                   The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
+                        Each ad can contain a limited number of images (range is defined per category in the taxonomy).
+                        <br><br>
+                        The system will download the images and if they meet the requirements, then they will be stored on our servers
+                        in several sizes. The system may add additional fields which describe the status of the download.
+                        An image is valid if it is in JPG, PNG, GIF, or BMP format and is smaller than 8MB in size. 
+                        Images larger than 1024x1024 pixels will be scaled down. <br><br>
+                        The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
       properties:
         src:
           type: string
@@ -410,7 +446,9 @@ components:
           example: 'https://example.nl/8228771/wit-met-stiksel.jpg'
     Status:
       type: string
-      description: 'The ad status as desired and controlled by the user.'
+      description: 'The ad status as desired and controlled by the user. <br><br>
+      If the ad is ``ACTIVE`` it should be shown on the site. If the 
+      ad is ``PAUSED`` it is not shown on the site and can be re-activated. A ``DELETED`` ad cannot be re-activated.'
       enum:
         - 'ACTIVE'
         - 'PAUSED'
@@ -442,7 +480,7 @@ components:
       externalDocs:
         url: 'http://ecg-icas.github.io/icas/doc/next/attributes.html#user-defined-attributes'
       type: object
-      description: 'User-defined attributes are the actual names and values provided by the user for a given ad. 
+      description: 'User-defined attributes are the actual names and values of attributes provided by the user for a given ad. 
       They contain any valid key/value combination as described below and are not limited by the category attributes. <br>
       This means the user can determine not only the value of the attribute, but also the name of the key.'
       properties:
@@ -501,6 +539,8 @@ components:
       example:
         type: 'PICKUP'
         pickupLocation: '1097DN'
+        required:
+          - type
       properties:
         type:
           type: string
