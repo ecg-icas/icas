@@ -93,15 +93,8 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="campaigns.html#fields">Fields</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
@@ -207,7 +200,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
@@ -269,14 +261,6 @@ own account or on behalf of other users. The base URLs for the API are:</p>
 <tr class="row-odd"><td></td>
 <td><p>Production</p></td>
 <td><p><a class="reference external" href="https://admarkt.marktplaats.nl/api/sellside">https://admarkt.marktplaats.nl/api/sellside</a></p></td>
-</tr>
-<tr class="row-even"><td><p>Kijiji Canada</p></td>
-<td><p>Sandbox</p></td>
-<td><p><a class="reference external" href="https://admarkt.qa10.kjdev.ca/api/sellside">https://admarkt.qa10.kjdev.ca/api/sellside</a></p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>Production</p></td>
-<td><p><a class="reference external" href="https://admarkt.kijiji.ca/api/sellside">https://admarkt.kijiji.ca/api/sellside</a></p></td>
 </tr>
 <tr class="row-even"><td><p>2dehands Belgium</p></td>
 <td><p>Sandbox</p></td>
@@ -357,9 +341,6 @@ URLs are accessible by these ip addresses and that there is no rate limit.</p>
 <li><p>34.253.123.82  (Production)</p></li>
 <li><p>34.246.217.218 (Production)</p></li>
 <li><p>52.214.29.214  (Production)</p></li>
-<li><p>3.98.109.128   (Production - Canada IP for Clients with Geo-blocking)</p></li>
-<li><p>3.99.27.64     (Production - Canada IP for Clients with Geo-blocking)</p></li>
-<li><p>3.97.250.121   (Production - Canada IP for Clients with Geo-blocking)</p></li>
 <li><p>3.68.139.10    (Sandbox)</p></li>
 <li><p>3.77.63.23     (Sandbox)</p></li>
 <li><p>3.77.131.63    (Sandbox)</p></li>
@@ -512,7 +493,7 @@ errors. The following endpoints support dry-run validation:</p>
 </section>
 <section id="vendor-ids">
 <span id="id3"></span><h2>Vendor Ids<a class="headerlink" href="#vendor-ids" title="Permalink to this heading">¶</a></h2>
-<p>For <a class="reference internal" href="ads.html#ad-vendorid"><span class="std std-ref">ads</span></a> and <a class="reference internal" href="campaigns.html#campaign-vendorid"><span class="std std-ref">campaigns</span></a>, it is possible to provide a so-called <cite>vendorId</cite>.
+<p>For ads and campaigns, it is possible to provide a so-called <cite>vendorId</cite>.
 The intention of this <cite>vendorId</cite> is to allow the API partner to use their own primary key on this ad or campaign.
 The API partner can also fetch the ad or campaign _by_ <cite>vendorId</cite> - see <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdByVendorId">GET /ad/byVendor/{vendorId}</a> and <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId">GET /campaign/byVendor/{vendorId}</a>
 for details - to  get the necessary primary key to perform other operations through the API.

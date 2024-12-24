@@ -46,7 +46,18 @@ components:
           example: true
     StatusV5:
       type: string
-      description: 'Each campaign can be in one of a predefined set of states.'
+      description: 'Each campaign can be in one of a predefined set of states. Some of the states can be set by the user,
+      others are set by the system. <br><br>
+      If the campaign is ``ACTIVE`` the ads within the campaign should be shown on the site. **Beware** that the individual
+      ads can still be paused or invisible due to other reasons. The individual statuses of the ads are unaffected by changes
+      to the campaign status; campaign status changes only affect their effective visibility for the buyers on the site. 
+      <br>For an ad to be live on the site, both the ad and the campaign must be active.
+      If the campaign is ``PAUSED``, the ads within the campaign are not shown on the site and can be re-activated.
+      The individual ads can be ``ACTIVE`` but they will not be shown on the site if the campaign is not also active.
+      <br> <br>
+      Two system-controlled statuses ``BUDGET_REACHED`` and ``DAILY_BUDGET_REACHED`` are set when the total and daily budget is reached, 
+      respectively. The ads within the campaign will not be live until the budget is increased, even though the individual
+      ads within the campaign may be ``ACTIVE``.'
       enum:
         - 'ACTIVE'
         - 'PAUSED'

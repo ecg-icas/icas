@@ -93,15 +93,8 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ads.html#images">Images</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Campaigns</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="ads.html">Advertisements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Campaigns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
@@ -207,7 +200,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/ad-status.html">Ad Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
@@ -249,10 +241,9 @@
 <span id="index-0"></span><span id="id1"></span><h1>Campaigns<a class="headerlink" href="#campaigns" title="Permalink to this heading">¶</a></h1>
 <p>A Campaign is a group of ads, sharing a campaign budget. With campaigns, it is possible to control spending for this entire list of ads and,
 in one go, start/stop advertising with the entire list of (active) ads.
-Campaigns can have their own budgets, both daily and total. If these are not set, the total budget will automatically be set to “UNLIMITED” and the
-daily budget will be set to a default value.</p>
+Campaigns can have their own budgets, both daily and total.</p>
 <p>For the time being, we only allow multiple campaigns for sellers of Kleinanzeigen. This means for all other markets,
-we allow only 1 campaign per seller, effectively grouping _all_ the ads in that one campaign.
+we allow only 1 campaign per seller, effectively grouping <em>all</em> the ads in that one campaign.
 To make transitions to use campaigns easier, we will ensure that each (new or existing) seller already has a campaign, and if the
 seller has ads, these will be part of the campaign.</p>
 <p>The first campaign to be created, either explicitly or by us ensuring there is one, will also become the <cite>default campaign</cite>. This
@@ -261,203 +252,7 @@ For markets where only one campaign per seller is allowed at the moment, this ca
 <p>You can get your campaign by calling <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaigns">GET /campaigns</a> or <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaign__id_">GET /campaign/{id}</a>. Campaign budgets can be modified by using
 <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets">PUT /campaign/{id}/budgets</a>, and controlling campaign status can be done by <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__status__status_">PUT /campaign/{id}/status/{status}</a>. We expect to
 add more campaign functionality in the future.</p>
-<section id="fields">
-<span id="campaign-fields"></span><h2>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h2>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Constraints</p></th>
-<th class="head"><p>Mandatory</p></th>
-<th class="head"><p>Writable</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#campaign-id"><span class="std std-ref">id</span></a></p></td>
-<td><p>integer</p></td>
-<td><p>positive,readonly</p></td>
-<td><p>–</p></td>
-<td><p>no</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-status"><span class="std std-ref">status</span></a></p></td>
-<td><p>string</p></td>
-<td><p>enum</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#campaign-datecreated"><span class="std std-ref">dateCreated</span></a></p></td>
-<td><p>string</p></td>
-<td><p>readonly</p></td>
-<td><p>–</p></td>
-<td><p>no</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-datelastupdated"><span class="std std-ref">datLastUpdated</span></a></p></td>
-<td><p>string</p></td>
-<td><p>readonly</p></td>
-<td><p>–</p></td>
-<td><p>no</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#campaign-vendorid"><span class="std std-ref">vendorId</span></a></p></td>
-<td><p>string</p></td>
-<td><p>readonly once set</p></td>
-<td><p>no</p></td>
-<td><p>only once</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-title"><span class="std std-ref">title</span></a></p></td>
-<td><p>string</p></td>
-<td><p>max 64 chars</p></td>
-<td><p>no</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#campaign-isdefault"><span class="std std-ref">isDefault</span></a></p></td>
-<td><p>bool</p></td>
-<td><p>–</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj"><span class="std std-ref">budgets</span></a></p></td>
-<td><p>[]Budget</p></td>
-<td><p>readonly</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj-daily"><span class="std std-ref">budgets.daily</span></a></p></td>
-<td><p>object</p></td>
-<td><p>see below</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj-total"><span class="std std-ref">budgets.total</span></a></p></td>
-<td><p>object</p></td>
-<td><p>see below</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj-daily-limitmicros"><span class="std std-ref">budgets.daily.limitMicros</span></a></p></td>
-<td><p>string</p></td>
-<td><p>see below</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj-daily-spentmicros"><span class="std std-ref">budgets.daily.spentMicros</span></a></p></td>
-<td><p>string</p></td>
-<td><p>see below</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#campaign-budgetsobj-total-limitmicros"><span class="std std-ref">budgets.total.limitMicros</span></a></p></td>
-<td><p>string</p></td>
-<td><p>see below</p></td>
-<td><p>yes</p></td>
-<td><p>yes</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#campaign-budgetsobj-total-spentmicros"><span class="std std-ref">budgets.total.spentMicros</span></a></p></td>
-<td><p>string</p></td>
-<td><p>see below</p></td>
-<td><p>no</p></td>
-<td><p>no</p></td>
-</tr>
-</tbody>
-</table>
-<section id="campaign-id">
-<span id="index-1"></span><span id="id"></span><h3>id<a class="headerlink" href="#campaign-id" title="Permalink to this heading">¶</a></h3>
-<p>Unique reference to the campaign, needs to be omitted in a POST action. One of <a class="reference internal" href="reference/campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a></p>
-</section>
-<section id="status">
-<span id="campaign-status"></span><span id="index-2"></span><h3>status<a class="headerlink" href="#status" title="Permalink to this heading">¶</a></h3>
-<p>The status of the campaign, one of <a class="reference internal" href="reference/campaign-status.html#campaign-status-overview"><span class="std std-ref">Campaign Status</span></a>.</p>
-</section>
-<section id="datecreated">
-<span id="campaign-datecreated"></span><span id="index-3"></span><h3>dateCreated<a class="headerlink" href="#datecreated" title="Permalink to this heading">¶</a></h3>
-<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date and time the campaign was created.</p>
-</section>
-<section id="datlastupdated">
-<span id="campaign-datelastupdated"></span><span id="index-4"></span><h3>datLastUpdated<a class="headerlink" href="#datlastupdated" title="Permalink to this heading">¶</a></h3>
-<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> UTC date and time the campaign was last updated.</p>
-</section>
-<section id="vendorid">
-<span id="campaign-vendorid"></span><span id="index-5"></span><h3>vendorId<a class="headerlink" href="#vendorid" title="Permalink to this heading">¶</a></h3>
-<p>Any non-empty string with a maximum length of 64 characters. Should be unique
-per customer. Can either be set when creating a campaign or when updating an
-existing campaign. However, once set, it can no longer be modified. When fetching an
-existing campaign which does not have a <strong>vendorId</strong>, the field is omitted.
-Inserting a new campaign with the same vendorId will still fail if you
-already have a campaign with that vendorId, regardless of its status. See <a class="reference internal" href="overview.html#vendor-ids"><span class="std std-ref">Vendor Ids</span></a> for more explanation.</p>
-</section>
-<section id="title">
-<span id="campaign-title"></span><span id="index-6"></span><h3>title<a class="headerlink" href="#title" title="Permalink to this heading">¶</a></h3>
-<p>A string of maximum 64 characters. This is purely a label for the seller, to potentially differentiate between
-multiple campaigns easier. This is not shown to buyers anywhere. This field will be omitted if the campaign does
-not have a title set.</p>
-</section>
-<section id="isdefault">
-<span id="campaign-isdefault"></span><span id="index-7"></span><h3>isDefault<a class="headerlink" href="#isdefault" title="Permalink to this heading">¶</a></h3>
-<p>A boolean indicating whether this campaign is the default campaign for the seller or not. If so, any ads that will
-be placed without campaignId, will be added to this default campaign. Whenever we create a campaign under water for
-new sellers having no campaigns yet, these campaigns will automatically become the default campaign.</p>
-</section>
-<section id="budgets">
-<span id="campaign-budgetsobj"></span><span id="index-8"></span><h3>budgets<a class="headerlink" href="#budgets" title="Permalink to this heading">¶</a></h3>
-<p>The budgets for this campaign. If either of these run out, ads from this campaign will no longer be
-visible on site.</p>
-</section>
-<section id="budgets-daily">
-<span id="campaign-budgetsobj-daily"></span><span id="index-9"></span><h3>budgets.daily<a class="headerlink" href="#budgets-daily" title="Permalink to this heading">¶</a></h3>
-<p>The daily budget for the campaign. Includes <a class="reference internal" href="#campaign-budgetsobj-daily-limitmicros"><span class="std std-ref">budgets.daily.limitMicros</span></a> and <a class="reference internal" href="#campaign-budgetsobj-daily-spentmicros"><span class="std std-ref">budgets.daily.spentMicros</span></a>.</p>
-</section>
-<section id="budgets-total">
-<span id="campaign-budgetsobj-total"></span><span id="index-10"></span><h3>budgets.total<a class="headerlink" href="#budgets-total" title="Permalink to this heading">¶</a></h3>
-<p>The total budget for the campaign. Includes <a class="reference internal" href="#campaign-budgetsobj-total-limitmicros"><span class="std std-ref">budgets.total.limitMicros</span></a> and <a class="reference internal" href="#campaign-budgetsobj-total-spentmicros"><span class="std std-ref">budgets.total.spentMicros</span></a>.</p>
-</section>
-<section id="budgets-daily-limitmicros">
-<span id="campaign-budgetsobj-daily-limitmicros"></span><span id="index-11"></span><h3>budgets.daily.limitMicros<a class="headerlink" href="#budgets-daily-limitmicros" title="Permalink to this heading">¶</a></h3>
-<p>The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign
-will remain offline for the rest of the day.</p>
-</section>
-<section id="budgets-total-limitmicros">
-<span id="campaign-budgetsobj-total-limitmicros"></span><span id="index-12"></span><h3>budgets.total.limitMicros<a class="headerlink" href="#budgets-total-limitmicros" title="Permalink to this heading">¶</a></h3>
-<p>The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign
-will remain offline until this limit has been increased.</p>
-</section>
-<section id="budgets-daily-spentmicros">
-<span id="campaign-budgetsobj-daily-spentmicros"></span><span id="index-13"></span><h3>budgets.daily.spentMicros<a class="headerlink" href="#budgets-daily-spentmicros" title="Permalink to this heading">¶</a></h3>
-<p>The amount all the ads combined in this campaign have spent so far, today. This will be reset every day around midnight.</p>
-</section>
-<section id="budgets-total-spentmicros">
-<span id="campaign-budgetsobj-total-spentmicros"></span><span id="index-14"></span><h3>budgets.total.spentMicros<a class="headerlink" href="#budgets-total-spentmicros" title="Permalink to this heading">¶</a></h3>
-<p>The amount all the ads combined in this campaign have spent so far. This will never be reset.</p>
-</section>
-<section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">campaign</span><span class="o">/</span><span class="mf">123</span>
-<span class="nx">Accept</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
-
-<span class="mf">200</span><span class="w"> </span><span class="nx">OK</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">sellside</span><span class="p">.</span><span class="nx">campaign</span><span class="o">-</span><span class="nx">v5</span><span class="o">+</span><span class="nx">json</span><span class="p">;</span><span class="w"> </span><span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mf">8</span>
-
-<span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;dateCreated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2022-12-25T10:04:23Z&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;dateLastUpdated&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2022-12-28T22:40:15Z&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;vendorId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123-abc-vjlkna-124&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;christmas stuff&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;isDefault&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;budgets&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;daily&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;limitMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;10000000&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;spentMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9520000&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="s2">&quot;total&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s2">&quot;limitMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;UNLIMITED&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;spentMicros&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;124520000&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-</section>
+<p>Check our extensive <a class="reference internal" href="migration-guide.html#migration-guide"><span class="std std-ref">Migration Guide</span></a> for more information on how to transition to using campaigns.</p>
 </section>
 
 
