@@ -31,7 +31,9 @@ components:
           minimum: 0
           example: 0
         level:
-          description: 'Level at which the category is defined.'
+          description: 'Level at which the category is defined. Although the number of sub levels is not limited, the
+          category tree has up tp three levels of categories (L1-3). The root node is considered special and reside 
+          at level 0 (L0).'
           type: number
           minimum: 0
           example: 1
@@ -164,6 +166,20 @@ components:
           description: 'The category configuration, only available for leaf categories.'
           properties:
             priceType:
+              description: 'A list of available price types for ads in this category. Each leaf category has one or more price types configured
+              which define the payment options the seller wants to offer. 
+              <br><br>
+              ``BIDDING``: Request a bid on the item of the ad, starting from price 0.<br> 
+              ``BIDDING_FROM``: Request a bid on the item of the ad, starting from a specific price. In that case,
+              the ``price`` field of the ad is mandatory.<br>
+              ``FIXED_PRICE``: Request a fixed price for the item of the ad.<br> 
+              ``NEGOTIABLE``: Requedt a negotiation between buyer and seller.<br>
+              ``SEE_DESCRIPTION``: Additional information is in the description of the ad.<br>
+              ``SWAP``: Request an exchange of one item for another.<br>
+              ``CREDIBLE_BID``: Request for any reasonable offer. <br>
+              ``ON_DEMAND``: Price is communicated on request.<br>
+              ``NOT_APPLICABLE``: Price is not applicable for the item of this ad.<br> 
+              ``RESERVED``: Flag for transaction in progress.'
               type: array
               items:
                 type: string
@@ -259,7 +275,9 @@ components:
                     - 'nl_NL': 'per nacht'
         attributeGroups:
           description: 'Ordered list of attribute groups. Attribute groups combine a list of attributes with a label and an optional tooltip.<br>
-           Multiple attribute groups allow the user interface to render multiple groups in separate blocks. Expect that attributes are rendered in the order given therefore the order in the attributes field matters. The same applies to the order of the attribute groups themselves.'
+           Multiple attribute groups allow the user interface to render multiple groups in separate blocks. 
+           Expect that attributes are rendered in the order given therefore the order in the attributes field matters. 
+           The same applies to the order of the attribute groups themselves.'
           type: array
           items:
             type: object

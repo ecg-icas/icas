@@ -513,7 +513,6 @@ by providing a list of item :ref:`user_defined_attributes` that can be used to i
 You can provide an arbitrary number of **attributes** sharing the same structure.
 When **attributes** are processed we check if there are is a match to any **attribute** defined at category level.
 User-defined attributes that match a category's predefined key and value are automatically recognized as :ref:`category_attributes`.
-For more information on **category attributes**, see :ref:`category_attributes_v2`.
 
 .. collapse:: TSV
 
@@ -748,7 +747,10 @@ The **'time'** field must be represented through the following formats, applicab
 
 Restrictions: Shipping options can be disabled/optional/mandatory for an item.
 An item can contain a maximum one shipping option per shipping option type (SHIP/PICKUP).
-Shipping options are configured per category, see :ref:`category_config_v2`.
+The available shipping options are configured per category,
+see the ``config`` field of the response in
+`GET /categories <https://ecg-icas.github.io/icas/openapi/index.html#/Categories/get_categories>`_.
+
 
 .. index:: phoneNumber
 .. _feed_phoneNumber:

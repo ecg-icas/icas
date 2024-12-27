@@ -12,6 +12,7 @@ python = "^3.11"
 [tool.poetry.group.dev.dependencies]
 sphinx = "^6"
 sphinx-toolbox = "^3.4.0"
+setuptools = "^75.6.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -98,17 +98,10 @@
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-levels">Category Levels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories.html#category-status">Category Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-configuration">Category Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#intervals">Intervals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#locales">Locales</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories.html#price-types">Price Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories.html#data-model">Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories.html#non-leaf-categories">Non-Leaf Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories.html#leaf-categories">Leaf Categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-groups">Attribute Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories.html#attributes">Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="categories.html#attribute-rendering">Attribute Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="categories.html#attributes-and-attribute-rendering">Attributes and Attribute Rendering</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
@@ -151,7 +144,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/campaign-status.html">Campaign Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
 </ul>
@@ -191,17 +183,23 @@
   <section id="advertisements">
 <span id="ads"></span><span id="index-0"></span><h1>Advertisements<a class="headerlink" href="#advertisements" title="Permalink to this heading">¶</a></h1>
 <p>Advertisements or ads are the main resource on the Sellside API. You can
-create( calling <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAd">POST /ad</a>),
-update and delete them (calling <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById">PUT /ad/{adId}</a>
+create (calling <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAd">POST /ad</a>),
+update and delete them (<a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById">PUT /ad/{adId}</a>
 and <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/postAdStatus">PUT /ad/{adId}/status/{status}</a> respectively),
-and get a list of your ads matching various criteria (calling <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters">GET /ad/</a>)
+and get a list of your ads matching various criteria (<a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters">GET /ad/</a>)
 Through the API you only have access to your own ads. Ads from other
 advertisers are not accessible to you.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We introduced a new monetary unit of micros across our product more recently, where <strong>one cent equals 10000 micros</strong>. <strong>One micro is 1-millionth of the local tenant currency</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
-<p>We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic.</p>
-<p>This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.</p>
+<p>We introduced a new monetary unit of micros across our product more recently, where <strong>one cent equals 10000 micros</strong>.
+<strong>One micro is 1-millionth of the local tenant currency (Euro)</strong>. This will allow for a higher level of granularity when specifying the cost (per click).</p>
+<p>We are substituting the current CPC values across the API with a bid value,
+and the actual (incurred) billed cost value - this to allow for better differentiation between the two.
+This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value
+for the quality of the traffic.</p>
+<p>This new micros unit, as well as the distinction between bid and billed cost, are a core part of the product.
+We will gradually deprecate any fields with cents and local currency units across the API. Check our extensive
+<a class="reference internal" href="migration-guide.html#migration-guide"><span class="std std-ref">Migration Guide</span></a> for more information on how to transition to using micros units.</p>
 </div>
 </section>
 

@@ -77,6 +77,7 @@ Feed Fields
 A set of required and optional fields defined by a feed for XML and TSV file formats are listed below.
 
 .. collapse:: TSV
+    :open:
 
     ========================================= ==================================== ===================  ===========
     Field                                     Description                          Restrictions         Mandatory
@@ -124,6 +125,7 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     ========================================= ==================================== ===================  ===========
 
 .. collapse:: XML
+    :open:
 
     ====================================== ==================================== ===================  ===========
     Field                                  Description                          Restrictions         Mandatory
