@@ -217,10 +217,12 @@ The authentication server is hosting the authentication of a user account (resou
 <span id="oauth2-endpoints"></span><h2>OAuth 2.0 Endpoints<a class="headerlink" href="#oauth-2-0-endpoints" title="Permalink to this heading">¶</a></h2>
 <p><strong>Authorization Endpoint:</strong> This is the endpoint on the authorization server
 where the resource owner logs in, and grants authorization to the client
-application.</p>
+application.
+Check our OpenAPI spec <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/OAuth2/get_accounts_oauth_authorize">GET /accounts/oauth/authorize</a>.</p>
 <p><strong>Token Endpoint:</strong>  This is the endpoint on the authorization server where
 the client application exchanges the authorization code, client ID and client
-secret, for an access token.</p>
+secret, for an access token.
+Check our OpenAPI spec <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/OAuth2/post_accounts_oauth_token">POST /accounts/oauth/token</a>.</p>
 <p>The endpoint URLs per tenant and environment are as follows:</p>
 <table class="docutils align-default">
 <colgroup>

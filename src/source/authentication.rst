@@ -52,10 +52,12 @@ OAuth 2.0 Endpoints
 **Authorization Endpoint:** This is the endpoint on the authorization server
 where the resource owner logs in, and grants authorization to the client
 application.
+Check our OpenAPI spec `GET /accounts/oauth/authorize <https://ecg-icas.github.io/icas/openapi/index.html#/OAuth2/get_accounts_oauth_authorize>`_.
 
 **Token Endpoint:**  This is the endpoint on the authorization server where
 the client application exchanges the authorization code, client ID and client
 secret, for an access token.
+Check our OpenAPI spec `POST /accounts/oauth/token <https://ecg-icas.github.io/icas/openapi/index.html#/OAuth2/post_accounts_oauth_token>`_.
 
 The endpoint URLs per tenant and environment are as follows:
 

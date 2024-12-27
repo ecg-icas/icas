@@ -40,7 +40,7 @@ tags:
   - name: Categories
   - name: Regions
   - name: Reporting
-  - name: Oauth2
+  - name: OAuth2
 paths:
    # ADS
   '/ad/{adId}':
