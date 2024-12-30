@@ -32,7 +32,7 @@ components:
           example: 0
         level:
           description: 'Level at which the category is defined. Although the number of sub levels is not limited, the
-          category tree has up tp three levels of categories (L1-3). The root node is considered special and reside 
+          category tree has up to three levels of categories (L1-L3). The root node is considered special and reside 
           at level 0 (L0).'
           type: number
           minimum: 0
