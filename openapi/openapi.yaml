@@ -292,8 +292,12 @@ paths:
     put:
       tags:
         - Ads
-      summary: 'Updates the status of the ad with the given '
+      summary: 'Updates the status of the ad with the given id.'
       description: 'To set the new status append it to the base url. <br>
+        <br>
+        The user can set only one of the user controlled states ``ACTIVE``, ``PAUSED`` or ``DELETED``.
+        If the ad is ``ACTIVE`` it should be shown on the site. If the 
+        ad is ``PAUSED`` it is not shown on the site and can be re-activated. A ``DELETED`` ad cannot be re-activated.                     
         Changing the status to ACTIVE also changes the number of active ads in this category for this user.
         If the current number of active ads for this user in this category exceeds ``maxNumberOfActiveAds`` as defined in the category then an error is returned.
         Setting a different status than ``ACTIVE`` is always allowed.
