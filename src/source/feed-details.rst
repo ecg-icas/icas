@@ -1,104 +1,3 @@
-.. _feed-details:
-
-Feed Fields
-===========
-
-A set of required and optional fields defined by a feed for XML and TSV file formats are listed below.
-
-.. collapse:: TSV
-
-    ========================================= ==================================== ===================  ===========
-    Field                                     Description                          Restrictions         Mandatory
-    ========================================= ==================================== ===================  ===========
-    :ref:`feed_vendorId`                      **unique** ad identifier             max. 64 chars        yes
-    :ref:`feed_sellerName`                    your company name                    max. 60 chars        no
-    :ref:`feed_t`                             item title                           :ref:`feed_t`        yes
-    :ref:`feed_descr`                         item description                     :ref:`feed_descr`    yes
-    :ref:`feed_categoryId`                    category identifier                  numeric, positive    yes
-    :ref:`feed_status`                        desired status (default ACTIVE)      ACTIVE,PAUSED        no
-    :ref:`feed_url`                           item URL                             max. 2048 chars      no
-    :ref:`feed_vanityUrl`                     displayed URL                        max. 256 chars       no
-    :ref:`feed_priceType`                     sales model for item                 enum                 yes
-    :ref:`feed_price`                         item price in cents if applicable    positive integer     yes/no
-    :ref:`feed_originalPrice`                 original price before discount       positive integer     no
-    :ref:`image link <feed_media>`            primary image                        :ref:`feed_media`    no
-    :ref:`additional image link <feed_media>` additional images                    :ref:`feed_media`    no
-    :ref:`feed_attr`                          collection of item attributes        :ref:`feed_attr`     no
-    :ref:`autobid <feed_budget>`              budget details                       :ref:`feed_budget`   no
-    :ref:`cpc <feed_budget>`                  budget details                       :ref:`feed_budget`   no
-    :ref:`total budget <feed_budget>`         budget details                       :ref:`feed_budget`   no
-    :ref:`daily budget <feed_budget>`         budget details                       :ref:`feed_budget`   no
-    :ref:`shipping <feed_ship>`               shipping options                     :ref:`feed_ship`     no
-    :ref:`pickup location <feed_ship>`        pickup location                      :ref:`feed_ship`     no
-    :ref:`feed_phoneNumber`                   phone number                         max. 32 chars        no
-    :ref:`feed_emailAdvertiser`               allow emails to the seller           true,false           no
-    :ref:`feed_regionId`                      only applicable for Kijiji Canada    numeric              no
-    :ref:`feed_microTip`                      tiny item highlight                  max. 18 chars        no
-    :ref:`feed_mpn`                           Manufacturer Part Number (MPN)       2-70 chars           no
-    :ref:`feed_googleProductCategory`         google category for your item        string               no
-    :ref:`feed_productType`                   item product type                    max. 750 chars       no
-    :ref:`feed_brand`                         item brand name                      max. 70 chars        no
-    :ref:`feed_gtin`                          Global Trade Identification Number   max. 50 chars        no
-    :ref:`feed_itemGroupId`                   groups item variants                 max. 50 chars        no
-    :ref:`feed_condition`                     condition of item                    enum                 no
-    :ref:`feed_material`                      main item fabrics or materials       max. 200 chars       no
-    :ref:`feed_energyEfficiencyClass`         energy efficiency class              enum                 no
-    :ref:`feed_minEnergyEfficiencyClass`      minimal energy efficiency class      enum                 no
-    :ref:`feed_maxEnergyEfficiencyClass`      maximal energy efficiency class      enum                 no
-    :ref:`feed_color`                         item colors                          max. 100 chars       no
-    :ref:`feed_gender`                        gender item is designed for          enum                 no
-    :ref:`feed_ageGroup`                      age group item is intended for       enum                 no
-    :ref:`feed_size`                          size information                     enum                 no
-    :ref:`feed_unitPricingBaseMeasure`        denominator for item unit price      string               no
-    :ref:`feed_unitPricingMeasure`            measure and dimension of item        string               no
-    ========================================= ==================================== ===================  ===========
-
-.. collapse:: XML
-
-    ====================================== ==================================== ===================  ===========
-    Field                                  Description                          Restrictions         Mandatory
-    ====================================== ==================================== ===================  ===========
-    :ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
-    :ref:`feed_externalId`                 **deprecated**                       --                   --
-    :ref:`feed_sellerName`                 your company name                    max. 60 chars        no
-    :ref:`feed_t`                          item title                           :ref:`feed_t`        yes
-    :ref:`feed_descr`                      item description                     :ref:`feed_descr`    yes
-    :ref:`feed_categoryId`                 category identifier                  numeric, positive    yes
-    :ref:`feed_status`                     desired status (default ACTIVE)      ACTIVE,PAUSED        no
-    :ref:`feed_url`                        item URL                             max. 2048 chars      no
-    :ref:`feed_vanityUrl`                  displayed URL                        max. 256 chars       no
-    :ref:`feed_priceType`                  sales model for item                 enum                 yes
-    :ref:`feed_price`                      item price in cents if applicable    positive integer     yes/no
-    :ref:`feed_originalPrice`              original price before discount       positive integer     no
-    :ref:`media <feed_media>`              item images                          :ref:`feed_media`    no
-    :ref:`feed_attr`                       collection of item attributes        :ref:`feed_attr`     no
-    :ref:`budget <feed_budget>`            budget details                       :ref:`feed_budget`   no
-    :ref:`shipping options <feed_ship>`    shipping options                     :ref:`feed_ship`     no
-    :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no
-    :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
-    :ref:`feed_regionId`                   only applicable for Kijiji Canada    numeric              no
-    :ref:`feed_microTip`                   tiny item highlight                  max. 18 chars        no
-    :ref:`feed_mpn`                        Manufacturer Part Number (MPN)       2-70 chars           no
-    :ref:`feed_googleProductCategory`      google category for your item        string               no
-    :ref:`feed_productType`                item product type                    max. 750 chars       no
-    :ref:`feed_brand`                      item brand name                      max. 70 chars        no
-    :ref:`feed_gtin`                       Global Trade Identification Number   max. 50 chars        no
-    :ref:`feed_itemGroupId`                groups item variants                 max. 50 chars        no
-    :ref:`feed_condition`                  condition of item                    enum                 no
-    :ref:`feed_material`                   main item fabrics or materials       max. 200 chars       no
-    :ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
-    :ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
-    :ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
-    :ref:`feed_color`                      item colors                          max. 100 chars       no
-    :ref:`feed_gender`                     gender item is designed for          enum                 no
-    :ref:`feed_ageGroup`                   age group item is intended for       enum                 no
-    :ref:`feed_size`                       size information                     enum                 no
-    :ref:`feed_unitPricingBaseMeasure`     denominator for item unit price      string               no
-    :ref:`feed_unitPricingMeasure`         measure and dimension of item        string               no
-    ====================================== ==================================== ===================  ===========
-
-|
-
 
 .. index:: vendorId
 .. _feed_vendorId:
@@ -614,7 +513,6 @@ by providing a list of item :ref:`user_defined_attributes` that can be used to i
 You can provide an arbitrary number of **attributes** sharing the same structure.
 When **attributes** are processed we check if there are is a match to any **attribute** defined at category level.
 User-defined attributes that match a category's predefined key and value are automatically recognized as :ref:`category_attributes`.
-For more information on **category attributes**, see :ref:`category_attributes_v2`.
 
 .. collapse:: TSV
 
@@ -849,7 +747,10 @@ The **'time'** field must be represented through the following formats, applicab
 
 Restrictions: Shipping options can be disabled/optional/mandatory for an item.
 An item can contain a maximum one shipping option per shipping option type (SHIP/PICKUP).
-Shipping options are configured per category, see :ref:`category_config_v2`.
+The available shipping options are configured per category,
+see the ``config`` field of the response in
+`GET /categories <https://ecg-icas.github.io/icas/openapi/index.html#/Categories/get_categories>`_.
+
 
 .. index:: phoneNumber
 .. _feed_phoneNumber:
@@ -911,45 +812,6 @@ The default value is false.
 |
 
 Restrictions: Allowed values *true* and *false*
-
-.. index:: regionId
-.. _feed_regionId:
-
-region id
-"""""""""
-
-The region in which the ad is placed. (only applicable for Kijiji Canada)
-
-Each ad belongs to one and only one region and region of an ad cannot be updated.
-This field can only be set once during creation of an ad.
-
-.. collapse:: TSV
-
-    Stored in **region id** column.
-
-    ========= ========================
-     Example	 .. code-block:: text
-
-                    1700274
-    ========= ========================
-
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-
-                 <admarkt:regionId>1700274</admarkt:regionId>
-    ======= ===========================================================
-
-|
-
-Restrictions: An integer value from the region tree. Must be the id of a leaf region.
-
-This field is mandatory if the `region` field of category configuration is ``MANDATORY``
-and optional if the `region` field is ``OPTIONAL``.
-This field must be omitted if the `region` field of category configuration is ``DISABLED``.
-
-Please refer to :ref:`categories` and :ref:`regions`
 
 .. index:: microTip
 .. _feed_microTip:

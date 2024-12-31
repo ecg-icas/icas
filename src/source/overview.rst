@@ -118,9 +118,6 @@ URLs are accessible by these ip addresses and that there is no rate limit.
  * 34.253.123.82  (Production)
  * 34.246.217.218 (Production)
  * 52.214.29.214  (Production)
- * 3.98.109.128   (Production - Canada IP for Clients with Geo-blocking)
- * 3.99.27.64     (Production - Canada IP for Clients with Geo-blocking)
- * 3.97.250.121   (Production - Canada IP for Clients with Geo-blocking)
  * 3.68.139.10    (Sandbox)
  * 3.77.63.23     (Sandbox)
  * 3.77.131.63    (Sandbox)
@@ -248,7 +245,7 @@ errors. The following endpoints support dry-run validation:
 Vendor Ids
 ----------
 
-For :ref:`ads<ad_vendorId>` and :ref:`campaigns<campaign_vendorId>`, it is possible to provide a so-called `vendorId`.
+For ads and campaigns, it is possible to provide a so-called `vendorId`.
 The intention of this `vendorId` is to allow the API partner to use their own primary key on this ad or campaign. 
 The API partner can also fetch the ad or campaign _by_ `vendorId` - see `GET /ad/byVendor/{vendorId} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdByVendorId>`_ and `GET /campaign/byVendor/{vendorId} <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId>`_
 for details - to  get the necessary primary key to perform other operations through the API.

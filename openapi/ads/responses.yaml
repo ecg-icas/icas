@@ -159,7 +159,11 @@ components:
               example: 'Click here to buy this product'
         vendorId:
           type: string
-          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.
+          When an ad gets teh status ``DELETED``, this does *NOT* mean the vendorId is forgotten, which means inserting a new ad with the same vendorId will fail.
+          <br><br>Only [Latin-1](https://en.wikipedia.org/wiki/Windows-1252) characters are allowed. 
+          
+          Keep in mind that this field is case-insensitive. This means that an ad created with vendor ``abc123`` can be retrieved by querying for ``ABC123`` or ``AbC123``.'
           example: 'OURSHOP-1423453-34'
         attributes:
           type: array
@@ -177,6 +181,13 @@ components:
           items:
             $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+        microTip:
+          description: 'A short freeform text excluding any characters in ``.,/@#,.``. It is a feature as part of a package that sellers can
+          purchase to promote their ads. It provides extra attention on the ad in the search results. At the time of writing, this will only
+          have an effect on ads created via the Console. However, it can be adjusted through the API.'
+          type: string
+          maxLength: 18
+          example: 'Buy now!'
       type: object
     Budgets:
       type: object
@@ -230,18 +241,20 @@ components:
           example: 'Buy the new iPhone here'
         description:
           type: string
-          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.
+          All HTML elements except for ``<i> <em> <b> <strong> <ul> <li> <u> <br/>`` will be stripped from the description.'
           example: 'Extra sale, buy the new iPhone today and save!'
+        categoryId:
+          description: 'The ID of the category in which the ad is placed. Each ad belongs to one and only one category; this can be updated. Must be an ID
+          of a category with a non-zero parent ID.'
+          type: integer
+          format: int64
+          example: 2353465
+          minimum: 1
         images:
           type: array
           items:
             $ref: '#/components/schemas/Image'
-        categoryId:
-          description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
-          type: integer
-          format: int64
-          example: 2353465
-          minimum: 0
         externalId:
           type: string
           maxLength: 64
@@ -353,10 +366,13 @@ components:
         pageNumber:
           type: integer
           format: int
-          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
+          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.
+          This field is expensive to compute. If you do not need the value consider excluding it from the response, using the ``_exclude`` parameter.'
           example: 2
         suggestedCpcForPageOne:
-          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
+          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.
+          If the returned value is ``-1``, then there is no CPC within the allowed range of the category, to put the ad on page 1.
+          This field is expensive to compute. If you do not need the value consider excluding it from the response, using the ``_exclude`` parameter.'
           type: integer
           format: int64
           example: 15
@@ -407,6 +423,13 @@ components:
           items:
             $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+        microTip:
+          description: 'A short freeform text excluding any characters in ``.,/@#,.``. It is a feature as part of a package that sellers can
+         purchase to promote their ads. It provides extra attention on the ad in the search results. At the time of writing, this will only
+         have an effect on ads created via the Console. However, it can be adjusted through the API.'
+          type: string
+          maxLength: 18
+          example: 'Buy now!'
     V2:
       deprecated: true
       readOnly: true
@@ -550,10 +573,14 @@ components:
         pageNumber:
           type: integer
           format: int
-          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
+          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.
+          This field is expensive to compute. If you do not need the value consider excluding it from the response, using the ``_exclude`` parameter.'
           example: 2
         suggestedCpcForPageOne:
-          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
+          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. 
+          If the returned value is ``-1``, then there is no CPC within the allowed range of the category, to put the ad on page 1.
+          This value is very volatile and might change very quickly depending on the performance of the ad.
+          This field is expensive to compute. If you do not need the value consider excluding it from the response, using the ``_exclude`` parameter.'
           type: integer
           format: int64
           example: 15
@@ -604,6 +631,13 @@ components:
           items:
             $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+        microTip:
+          description: 'A short freeform text excluding any characters in ``.,/@#,.``. It is a feature as part of a package that sellers can
+          purchase to promote their ads. It provides extra attention on the ad in the search results. At the time of writing, this will only
+          have an effect on ads created via the Console. However, it can be adjusted through the API.'
+          type: string
+          maxLength: 18
+          example: 'Buy now!'
     Price:
       readOnly: true
       description: 'Price is an object containing all the information about the cost of the item for sale.'
@@ -626,7 +660,7 @@ components:
     PriceUnit:
       type: string
       readOnly: true
-      description: 'Must be a valid price unit identifier from the list of available price units of the category'
+      description: 'Must be a valid price unit identifier from the list of available price units of the category.'
       example: 'per_sqm'
     PriceType:
       type: string
@@ -645,9 +679,14 @@ components:
       description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.'
       example: 'FIXED_PRICE'
     Image: # only rename with Version when multiple versions of this field exist
-      description: 'When an ad is created or updated the caller provides the images as a list of image objects which contain only the source url.
-        The images are then downloaded by iCAS and the server adds additional fields which describe the status of the download.
-        The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
+      description: 'When an ad is created or updated the caller provides the images as a list of image objects which contain only the source url. 
+                  Each ad can contain a limited number of images (range is defined per category in the taxonomy).
+                  <br><br>
+                  The system will download the images and if they meet the requirements, then they will be stored on our servers
+                  in several sizes. The system may add additional fields which describe the status of the download.
+                  An image is valid if it is in JPG, PNG, GIF, or BMP format and is smaller than 8MB in size. 
+                  Images larger than 1024x1024 pixels will be scaled down. <br><br>
+                  The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
       properties:
         src:
           type: string
@@ -682,7 +721,18 @@ components:
     StatusV2:
       type: string
       readOnly: true
-      description: 'The current ad status. Each ad can be in one of the listed states.'
+      description: 'The current ad status. Each ad can be in one of the listed states. Some of the states can be set by the user,
+      others are set by the system or by customer support. 
+      <br><br>
+      If the ad is ``ACTIVE`` it should be shown on the site. If the 
+      ad is ``PAUSED`` it is not shown on the site and can be re-activated. A ``DELETED`` ad cannot be re-activated.
+      <br>A ``DELETED_BY_CS`` ad is deleted by customer support and cannot be re-activated. 
+      <br>A ``SUSPENDED_BY_CS`` ad is suspended by customer support and can be re-activated by the user by updating the ad to comply
+      to the terms and conditions. The seller should have received an email with the reason for the suspension.
+      <br>
+      Two system-controlled statuses ``BUDGET_REACHED`` and ``DAILY_BUDGET_REACHED`` are set when the total and daily budget is reached, 
+      respectively.
+      '
       enum:
         - 'ACTIVE'
         - 'PAUSED'
@@ -695,7 +745,20 @@ components:
     StatusV5:
       type: string
       readOnly: true
-      description: 'The current ad status. Each ad can be in one of the listed states. <br> The ad will be put from ``DOMAIN_PENDING`` to ``ACTIVE`` after the seller confirms the domain the links.url is pointing to. The first time a seller uses a new domain, they will receive an email to confirm they want to create an ad directing people to that domain (for security reasons).'
+      description: 'The current ad status. Each ad can be in one of the listed states. Some of the states can be set by the user,
+            others are set by the system or by customer support. 
+            <br><br>
+            If the ad is ``ACTIVE`` it should be shown on the site. If the 
+            ad is ``PAUSED`` it is not shown on the site and can be re-activated. A ``DELETED`` ad cannot be re-activated.
+            <br>A ``DELETED_BY_CS`` ad is deleted by customer support and cannot be re-activated. 
+            <br>A ``SUSPENDED_BY_CS`` ad is suspended by customer support and can be re-activated by the user by updating the ad to comply
+            to the terms and conditions. The seller should have received an email with the reason for the suspension.
+            <br>
+            Two system-controlled statuses ``BUDGET_REACHED`` and ``DAILY_BUDGET_REACHED`` are set when the total and daily budget is reached, 
+            respectively.
+            The ad will be put in ``DOMAIN_PENDING`` if a new URL domain is used. Once the seller confirms the domain via email,
+            the ad will be put in ``ACTIVE`` state. This is for security reasons.
+            '
       enum:
         - 'ACTIVE'
         - 'PAUSED'

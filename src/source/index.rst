@@ -32,9 +32,7 @@ Contents
    campaigns
    categories
    attributes
-   regions
    feeds
-   feed-details
    reporting
    error-handling
    OpenAPI reference <https://ecg-icas.github.io/icas/openapi/index.html>
@@ -66,7 +64,7 @@ History
 * v.0.127 - 9 May 2023 - pm
 
   * improved :ref:`feeds` docs
-  * added separate :ref:`feed-details` page
+  * added feed details content
   * added collapse feature to docs engine
   * added campaignID to supported dimension in reporting :ref:`metrics_reporting`
   * added error too many ads in the category to `PUT /ad/{id} v5 <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/updateAdById>`_

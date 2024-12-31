@@ -24,7 +24,7 @@ In order to add attributes to an ad you need to supply user defined attributes (
 Category attributes are provided as part of the category taxonomy  tree, in the **attributes**
 subsection. Each category attribute has a **key**, a **label**, a **locale** for the label and values,
 a **type** and depending on the type one or more additional properties describing the constraints.
-For more information on category attributes, see :ref:`category_attributes_v2`.
+For more information on category attributes, see :ref:`categories`.
 
 The following types are supported:
 

@@ -28,7 +28,8 @@ components:
           example: 'Buy the new iPhone here'
         description:
           type: string
-          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title. All HTML elements except 
+          for ``<i> <em> <b> <strong> <ul> <li> <u> <br/>`` will be stripped from the description.'
           example: 'Extra sale, buy the new iPhone today and save!'
         images:
           type: array
@@ -139,11 +140,23 @@ components:
               example: 'Click here to buy this product'
         vendorId:
           type: string
-          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.
+          When an ad gets teh status ``DELETED``, this does *NOT* mean the vendorId is forgotten, which means inserting a new ad with the same vendorId will fail.
+          <br><br>Only [Latin-1](https://en.wikipedia.org/wiki/Windows-1252) characters are allowed. 
+          
+          Keep in mind that this field is case-insensitive. This means that an ad created with vendor ``abc123`` can be retrieved by querying for ``ABC123`` or ``AbC123``.'
           example: 'OURSHOP-1423453-34'
         attributes:
           type: array
-          description: 'An optional list of user-defined attributes'
+          description: 'An optional list of user-defined attributes. All of them will be stored with the ad.
+          After placing or updating the ad, the system will analyse them for familiarities with respect to category attributes.
+          If a user-defined attributes is recognised, or matched, with a category attribute, the ``recognized`` flag will be set to ``true``.
+          An attribute is recognized if the provided type and value(s) for that particular attribute key match the type and 
+          possible values as defined in the category taxonomy. The recognized attributes can be used to apply the desired filtering 
+          criteria supplied by potential buyers searching on the Marketplace.<br><br>
+          Beware that the category attributes which are marked as ``mandatory`` in the category taxonomy must be supplied
+          with the ad, otherwise the ad will be invalidated. Attributes that are not ``updatable`` cannot be changed once 
+          they are supplied. The system will invalidate the ad if an attempt is made to update them.'
           items:
             $ref: '#/components/schemas/UserAttribute'
         shippingOptions:
@@ -156,7 +169,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ShippingOption'
-          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+          description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. 
+          Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+        microTip:
+          description: 'A short freeform text excluding any characters in ``.,/@#,.``. It is a feature as part of a package that sellers can
+          purchase to promote their ads. It provides extra attention on the ad in the search results. At the time of writing, this will only
+          have an effect on ads created via the Console. However, it can be adjusted through the API.'
+          type: string
+          maxLength: 18
+          example: 'Buy now!'
       type: object
     CampaignId:
       description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.'
@@ -215,14 +236,16 @@ components:
           example: 'Buy the new iPhone here'
         description:
           type: string
-          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.'
+          description: 'The description field of the ad. Any string, with minimum and maximum length determined by the category. URLs are not allowed as part of the title.
+          All HTML elements except for ``<i> <em> <b> <strong> <ul> <li> <u> <br/>`` will be stripped from the description.'
           example: 'Extra sale, buy the new iPhone today and save!'
         categoryId:
-          description: 'The category in which the ad is placed. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad.'
+          description: 'The ID of the category in which the ad is placed. Each ad belongs to one and only one category; this can be updated. Must be an ID
+          of a category with a non-zero parent ID.'
           type: integer
           format: int64
           example: 2353465
-          minimum: 0
+          minimum: 1
         images:
           type: array
           items:
@@ -337,21 +360,6 @@ components:
           description: 'Must be an non empty string.'
           example: '1703 GB'
           maxLength: 6
-        regionId:
-          type: integer
-          format: int64
-          description: 'The region in which the ad is placed. A long value from the region tree. Must be the id of a leaf region. Each ad belongs to one and only one region and region of an ad cannot be updated. This field can only set once during creation of an ad. This field is mandatory if the region field of category configuration is MANDATORY and optional if the region field is OPTIONAL. This field must be omitted if the region field of category configuration is DISABLED.'
-          example: 10034535
-        pageNumber:
-          type: integer
-          format: int
-          description: 'Page number on which this ad is shown. Page number is highly volatile and might change very quickly depending on the performance of the ad.'
-          example: 2
-        suggestedCpcForPageOne:
-          description: 'Suggested CPC value in (euro/dollar) cents for this ad to be shown on page one. This value is very volatile and might change very quickly depending on the performance of the ad.'
-          type: integer
-          format: int64
-          example: 15
         links:
           type: object
           description: 'Provides various hypermedia URLs to access linked resources. Also contains a self link, which points to the current resource.'
@@ -381,11 +389,24 @@ components:
               example: 'Click here to buy this product'
         vendorId:
           type: string
-          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.'
+          description: 'Any non-empty string, unique per customer. Can either be set when creating an ad or when updating an existing ad. However, once set, it can no longer be modified. When fetching an existing ad which does not have a vendorId, the field is omitted.
+          When an ad gets teh status ``DELETED``, this does *NOT* mean the vendorId is forgotten, which means inserting a new ad with the same vendorId will fail.
+          <br><br>Only [Latin-1](https://en.wikipedia.org/wiki/Windows-1252) characters are allowed. 
+          
+          Keep in mind that this field is case-insensitive. This means that an ad created with vendor ``abc123`` can be retrieved by querying for ``ABC123`` or ``AbC123``.'
           example: 'OURSHOP-1423453-34'
+          maxLength: 64
         attributes:
           type: array
-          description: 'An optional list of user-defined attributes'
+          description: 'An optional list of user-defined attributes. All of them will be stored with the ad.
+                    After placing or updating the ad, the system will analyse them for familiarities with respect to category attributes.
+                    If a user-defined attributes is recognised, or matched, with a category attribute, the ``recognized`` flag will be set to ``true``.
+                    An attribute is recognized if the provided type and value(s) for that particular attribute key match the type and 
+                    possible values as defined in the category taxonomy. The recognized attributes can be used to apply the desired filtering 
+                    criteria supplied by potential buyers searching on the Marketplace.<br><br>
+                    Beware that the category attributes which are marked as ``mandatory`` in the category taxonomy must be supplied
+                    with the ad, otherwise the ad will be invalidated. Attributes that are not ``updatable`` cannot be changed once 
+                    they are supplied. The system will invalidate the ad if an attempt is made to update them.'
           items:
             $ref: '#/components/schemas/UserAttribute'
         shippingOptions:
@@ -399,11 +420,23 @@ components:
           items:
             $ref: '#/components/schemas/ShippingOption'
           description: 'A list of shipping options available for an ad. Ads can contain maximum one shipping option per shipping option type. Whether shipping options are disabled/optional/mandatory for an ad is configured per category.'
+        microTip:
+          description: 'A short freeform text excluding any characters in ``.,/@#,.``. It is a feature as part of a package that sellers can
+          purchase to promote their ads. It provides extra attention on the ad in the search results. At the time of writing, this will only
+          have an effect on ads created via the Console. However, it can be adjusted through the API.'
+          type: string
+          maxLength: 18
+          example: 'Buy now!'
     Image:
       readOnly: true
       description: 'When an ad is created or updated the caller provides the images as a list of image objects which contain only the source url. 
-                   The images are then downloaded by iCAS and the server adds additional fields which describe the status of the download. 
-                   The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
+                        Each ad can contain a limited number of images (range is defined per category in the taxonomy).
+                        <br><br>
+                        The system will download the images and if they meet the requirements, then they will be stored on our servers
+                        in several sizes. The system may add additional fields which describe the status of the download.
+                        An image is valid if it is in JPG, PNG, GIF, or BMP format and is smaller than 8MB in size. 
+                        Images larger than 1024x1024 pixels will be scaled down. <br><br>
+                        The images will be shown in the order they are provided. The first image is shown in search results and it is the main image on the item page.'
       properties:
         src:
           type: string
@@ -413,7 +446,9 @@ components:
           example: 'https://example.nl/8228771/wit-met-stiksel.jpg'
     Status:
       type: string
-      description: 'The ad status as desired and controlled by the user.'
+      description: 'The ad status as desired and controlled by the user. <br><br>
+      If the ad is ``ACTIVE`` it should be shown on the site. If the 
+      ad is ``PAUSED`` it is not shown on the site and can be re-activated. A ``DELETED`` ad cannot be re-activated.'
       enum:
         - 'ACTIVE'
         - 'PAUSED'
@@ -445,7 +480,7 @@ components:
       externalDocs:
         url: 'http://ecg-icas.github.io/icas/doc/next/attributes.html#user-defined-attributes'
       type: object
-      description: 'User-defined attributes are the actual names and values provided by the user for a given ad. 
+      description: 'User-defined attributes are the actual names and values of attributes provided by the user for a given ad. 
       They contain any valid key/value combination as described below and are not limited by the category attributes. <br>
       This means the user can determine not only the value of the attribute, but also the name of the key.'
       properties:
@@ -504,6 +539,8 @@ components:
       example:
         type: 'PICKUP'
         pickupLocation: '1097DN'
+        required:
+          - type
       properties:
         type:
           type: string
@@ -533,7 +570,7 @@ components:
           example: '3541CB'
     PriceUnit:
       type: string
-      description: 'Must be a valid price unit identifier from the list of available price units of the category'
+      description: 'Must be a valid price unit identifier from the list of available price units of the category.'
       example: 'per_sqm'
     Price:
       description: 'Price is an object containing all the information about the cost of the item for sale.'

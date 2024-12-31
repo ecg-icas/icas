@@ -52,73 +52,12 @@ OAuth 2.0 Endpoints
 **Authorization Endpoint:** This is the endpoint on the authorization server
 where the resource owner logs in, and grants authorization to the client
 application.
+Check our OpenAPI spec `GET /accounts/oauth/authorize <https://ecg-icas.github.io/icas/openapi/index.html#/OAuth2/get_accounts_oauth_authorize>`_.
 
 **Token Endpoint:**  This is the endpoint on the authorization server where
 the client application exchanges the authorization code, client ID and client
 secret, for an access token.
-
-The endpoint URLs per tenant and environment are as follows:
-
-.. list-table::
- :widths: 20 10 70
- :header-rows: 1
-
- * - Tenant
-   - Env
-   - Endpoint
-
- * - Marktplaats
-   - Sandbox
-   - https://admarkt.demo.qa-mp.so/accounts/oauth/authorize
-
- * -
-   -
-   - https://admarkt.demo.qa-mp.so/accounts/oauth/token
-
- * -
-   - Production
-   - https://admarkt.marktplaats.nl/accounts/oauth/authorize
-
- * -
-   -
-   - https://admarkt.marktplaats.nl/accounts/oauth/token
-
- * -
-   -
-   - https://admarkt.qa10.kjdev.ca/accounts/oauth/token
-
- * - 2dehands Belgium
-   - Sandbox
-   - https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/authorize
-
- * -
-   -
-   - https://admarkt.demo-2dehands.qa-mp.so/accounts/oauth/token
-
- * -
-   - Production
-   - https://admarkt.2dehands.be/accounts/oauth/authorize
-
- * -
-   -
-   - https://admarkt.2dehands.be/accounts/oauth/token
-
- * - Kleinanzeigen
-   - Sandbox
-   - https://internet.ebayk.qa.icas.io/accounts/oauth/authorize
-
- * -
-   -
-   - https://internet.ebayk.qa.icas.io/accounts/oauth/token
-
- * -
-   - Production
-   - https://admarkt.kleinanzeigen.de/accounts/oauth/authorize
-
- * -
-   -
-   - https://admarkt.kleinanzeigen.de/accounts/oauth/token
-
+Check our OpenAPI spec `POST /accounts/oauth/token <https://ecg-icas.github.io/icas/openapi/index.html#/OAuth2/post_accounts_oauth_token>`_.
 
 .. note::
 
