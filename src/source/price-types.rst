@@ -12,10 +12,9 @@
     pair: Price Types; NOT_APPLICABLE
     pair: Price Types; RESERVED
 
-.. _price_types:
 
 Price Types
-===========
+-----------
 
 Each advertisement has a price type which determines the type of transaction the seller would like to perform.
 The following table lists the valid price types and their descriptions.
