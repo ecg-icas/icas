@@ -93,7 +93,10 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#scopes">Scopes</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Advertisements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advertisements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#price-types">Price Types</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="campaigns.html">Campaigns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="categories.html">Categories</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="categories.html#category-ids">Category Ids</a></li>
@@ -145,7 +148,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">References</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference/error-codes.html">Error Codes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/price-types.html">Price Types</a></li>
 </ul>
 </li>
 </ul>
@@ -201,6 +203,65 @@ for the quality of the traffic.</p>
 We will gradually deprecate any fields with cents and local currency units across the API. Check our extensive
 <a class="reference internal" href="migration-guide.html#migration-guide"><span class="std std-ref">Migration Guide</span></a> for more information on how to transition to using micros units.</p>
 </div>
+<section id="price-types">
+<span id="index-1"></span><h2>Price Types<a class="headerlink" href="#price-types" title="Permalink to this heading">¶</a></h2>
+<p>Each advertisement has a price type which determines the type of transaction the seller would like to perform.
+The following table lists the valid price types and their descriptions.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>PRICE_TYPE</p></th>
+<th class="head"><p>Price required?</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BIDDING</p></td>
+<td><p>no</p></td>
+<td><p>Request a bid on the ad starting from 0 EUR.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BIDDING_FROM</p></td>
+<td><p>yes</p></td>
+<td><p>Request a bid with a starting price &gt; 0 EUR. <strong>price</strong> must contain a value in the interval of <code class="docutils literal notranslate"><span class="pre">(0,10000000000]</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>FIXED_PRICE</p></td>
+<td><p>yes</p></td>
+<td><p>Request a fixed price. <strong>price</strong> must contain a value in the interval of <code class="docutils literal notranslate"><span class="pre">(0,10000000000]</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FREE</p></td>
+<td><p>no</p></td>
+<td><p>Request no price.</p></td>
+</tr>
+<tr class="row-even"><td><p>NEGOTIABLE</p></td>
+<td><p>no</p></td>
+<td><p>Request a negotiation between buyer and seller.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SEE_DESCRIPTION</p></td>
+<td><p>no</p></td>
+<td><p>Additional information is in the description of the ad.</p></td>
+</tr>
+<tr class="row-even"><td><p>SWAP</p></td>
+<td><p>no</p></td>
+<td><p>Request an exchange of one item for another.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CREDIBLE_BID</p></td>
+<td><p>no</p></td>
+<td><p>Request for any reasonable offer.</p></td>
+</tr>
+<tr class="row-even"><td><p>ON_DEMAND</p></td>
+<td><p>no</p></td>
+<td><p>Price is communicated on request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>NOT_APPLICABLE</p></td>
+<td><p>no</p></td>
+<td><p>Price is not applicable for this ad (e.g. a Jobs ad).</p></td>
+</tr>
+<tr class="row-even"><td><p>RESERVED</p></td>
+<td></td>
+<td><p>Flag for transaction in progress.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 

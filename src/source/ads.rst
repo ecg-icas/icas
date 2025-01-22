@@ -13,3 +13,6 @@ Through the API you only have access to your own ads. Ads from other
 advertisers are not accessible to you.
 
 .. include:: bidding-micros.rst
+
+
+..  include:: price-types.rst

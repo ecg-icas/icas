@@ -5,4 +5,3 @@ References
    :maxdepth: 2
 
    error-codes
-   price-types
