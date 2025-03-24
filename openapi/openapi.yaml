@@ -509,6 +509,14 @@ paths:
               type: integer
               format: int64
           example: [55500, 1280000]
+        - name: campaignId
+          in: query
+          required: false
+          description: 'Filters the result set by the campaign ID to which the ads belong.'
+          schema:
+              type: integer
+              format: int64
+          example: 1234
         - name: _include
           in: query
           required: false
