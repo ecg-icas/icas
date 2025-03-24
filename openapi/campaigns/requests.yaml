@@ -13,10 +13,12 @@ components:
         title:
           type: string
           example: 'Christmas 2025 campaign'
-          description: 'The name of the campaign.'
+          description: 'The name of the campaign. It must be unique per seller. All HTML elements except for <i> <em> <b> <strong> <ul> <li> <u> <br/> will be stripped from the title. Uniqueness check is case-insensitive.'
+          minLength: 1
+          maxLength: 64
         vendorId:
           type: string
-          description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified.'
+          description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified. Uniqueness check is case-insensitive.'
           example: 'OURSHOP-1423453-34'
           maxLength: 255
         status:
@@ -26,6 +28,7 @@ components:
       required:
         - status
         - budgets
+        - title
     StatusV5:
       description: 'Each campaign can be set in one of a predefined set of user-controlled states.
             <br><br>
