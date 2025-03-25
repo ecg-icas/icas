@@ -13,7 +13,7 @@ components:
         title:
           type: string
           example: 'Christmas 2025 campaign'
-          description: 'The name of the campaign. It must be unique per seller. All HTML elements except for <i> <em> <b> <strong> <ul> <li> <u> <br/> will be stripped from the title. Uniqueness check is case-insensitive.'
+          description: 'The name of the campaign. It must be unique per seller. All HTML elements except for ``<i> <em> <b> <strong> <ul> <li> <u> <br/>`` will be stripped from the title. Uniqueness check is case-insensitive.'
           minLength: 1
           maxLength: 64
         vendorId:
