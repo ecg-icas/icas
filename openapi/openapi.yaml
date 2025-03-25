@@ -2595,6 +2595,14 @@ paths:
           schema:
             $ref: './reporting/params.yaml#/components/parameters/AdIDs'
           required: false
+        - name: campaignId
+          in: query
+          description: 'A campaignId to filter the result set on. Default empty to include data for all campaigns the ads have been in.'
+          required: false
+          schema:
+            type: integer
+            format: int64
+          example: 123
         - name: status
           in: query
           description: 'Comma-separated-list of ad statuses which to filter the result set on.'
