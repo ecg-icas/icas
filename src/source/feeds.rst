@@ -83,6 +83,7 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     Field                                     Description                          Restrictions         Mandatory
     ========================================= ==================================== ===================  ===========
     :ref:`feed_vendorId`                      **unique** ad identifier             max. 64 chars        yes
+    :ref:`feed_campaignVendorId`              Identifier for the campaign          positive integer     no
     :ref:`feed_sellerName`                    your company name                    max. 60 chars        no
     :ref:`feed_t`                             item title                           :ref:`feed_t`        yes
     :ref:`feed_descr`                         item description                     :ref:`feed_descr`    yes
@@ -131,6 +132,7 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     Field                                  Description                          Restrictions         Mandatory
     ====================================== ==================================== ===================  ===========
     :ref:`feed_vendorId`                   **unique** ad identifier             max. 64 chars        yes
+    :ref:`feed_campaignVendorId`              Identifier for the campaign          positive integer     no
     :ref:`feed_externalId`                 **deprecated**                       --                   --
     :ref:`feed_sellerName`                 your company name                    max. 60 chars        no
     :ref:`feed_t`                          item title                           :ref:`feed_t`        yes

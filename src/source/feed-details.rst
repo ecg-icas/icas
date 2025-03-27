@@ -44,6 +44,45 @@ The **vendor id** is mandatory and must be unique for each ad in the feed. Dupli
 
 Restrictions: Non-empty unique-per-ad string with a maximum of 64 characters.
 
+.. index:: feed_campaignVendorId
+.. feed_campaignVendorId:
+
+campaign vendor id
+""""""""""""""""""
+
+The **campaign vendor id** field is the unique identifier of a campaign to which the ad belongs.
+It is optional and only needs to be provided if the seller uses multiple campaigns.
+Otherwise the ad will be placed in the default campaign automatically.
+Changing the campaign vendor id will move the ad to the campaign identified by that vendor id. If one does not
+exist, a new campaign with that vendor id will be created.
+
+
+.. collapse:: TSV
+
+    Stored in **campaign vendor id** column.
+
+    ========= ================================================
+     Example
+
+                .. code-block:: text
+
+                    my-christmas-campaign-2020
+    ========= ================================================
+
+.. collapse:: XML
+
+    ========= ================================================
+    Example:
+
+                .. code-block:: html
+
+                    <admarkt:campaignVendorId>my-christmas-campaign-2020</admarkt:campaignVendorId>
+    ========= ================================================
+
+
+Restrictions: Any non-empty latin-1 characters string with a maximum of 64 characters.
+
+
 .. index:: externalId
 .. _feed_externalId:
 
