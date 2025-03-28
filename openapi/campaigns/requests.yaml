@@ -20,7 +20,7 @@ components:
           type: string
           description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified. Uniqueness check is case-insensitive.'
           example: 'OURSHOP-1423453-34'
-          maxLength: 255
+          maxLength: 64
         status:
           $ref: '#/components/schemas/StatusV5'
         budgets:
