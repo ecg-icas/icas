@@ -6,6 +6,17 @@ Release Notes
 
 This section gives insight on what our current and previous releases contain.
 
+April 2025: 'Deprecating certain price types'
+----------------------------------------------
+The following price types are deprecated and will be removed after June 2025:
+
+* FREE
+* NEGOTIABLE
+* SWAP
+* CREDIBLE_BID
+* NOT_APPLICABLE
+
+Please update your ads to use the new price types.
 
 September 2024: 'Deprecated handler clean up'
 ----------------------------------------------
