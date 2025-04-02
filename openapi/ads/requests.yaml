@@ -180,7 +180,7 @@ components:
           example: 'Buy now!'
       type: object
     CampaignId:
-      description: 'Identifier of the campaign this ad belongs to. For the time being, we create a campaign underwater if the seller has no campaign created yet, to ensure there is at least one for the seller, that each ad belongs to.
+      description: 'Identifier of the campaign this ad belongs to. If not provided, the ad will be placed in the default campaign. For the time being, if no campaigns exist for the seller, we create a campaign underwater. This to ensure there is one default campaign where each ad belongs to.
       Changing the campaignId of an ad is effectively moving the ad to another campaign.'
       type: integer
       example: 54212
