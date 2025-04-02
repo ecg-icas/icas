@@ -10,13 +10,29 @@ April 2025: 'Deprecating certain price types'
 ----------------------------------------------
 The following price types are deprecated and will be removed after June 2025:
 
-* FREE
-* NEGOTIABLE
-* SWAP
-* CREDIBLE_BID
-* NOT_APPLICABLE
+FREE
 
-Please update your ads to use the new price types.
+NEGOTIABLE
+
+SWAP
+
+CREDIBLE_BID
+
+NOT_APPLICABLE
+
+
+Please update your ads to use the new price types. Ads with these values will be migrated to the closest new price type.
+Below is the mapping we will use:
+
+FREE -> SEE_DESCRIPTION
+
+NEGOTIABLE -> BIDDING
+
+SWAP -> SEE_DESCRIPTION
+
+CREDIBLE_BID -> BIDDING
+
+NOT_APPLICABLE -> SEE_DESCRIPTION
 
 September 2024: 'Deprecated handler clean up'
 ----------------------------------------------
