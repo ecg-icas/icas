@@ -173,13 +173,8 @@ components:
               ``BIDDING_FROM``: Request a bid on the item of the ad, starting from a specific price. In that case,
               the ``price`` field of the ad is mandatory.<br>
               ``FIXED_PRICE``: Request a fixed price for the item of the ad.<br> 
-              ``NEGOTIABLE``: Requedt a negotiation between buyer and seller.<br>
               ``SEE_DESCRIPTION``: Additional information is in the description of the ad.<br>
-              ``SWAP``: Request an exchange of one item for another.<br>
               ``CREDIBLE_BID``: Request for any reasonable offer. <br>
-              ``ON_DEMAND``: Price is communicated on request.<br>
-              ``NOT_APPLICABLE``: Price is not applicable for the item of this ad.<br> 
-              ``RESERVED``: Flag for transaction in progress.'
               type: array
               items:
                 type: string
@@ -188,13 +183,8 @@ components:
                 'BIDDING_FROM',
                 'FIXED_PRICE',
                 'FREE',
-                'NEGOTIABLE',
                 'SEE_DESCRIPTION',
-                'SWAP',
-                'CREDIBLE_BID',
-                'ON_DEMAND',
-                'NOT_APPLICABLE',
-                'RESERVED'
+                'CREDIBLE_BID'
               ]
             bidMicros:
               description: 'Allowed bid value in micros for ads in this category.'
