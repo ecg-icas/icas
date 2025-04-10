@@ -10,23 +10,22 @@ April 2025: 'Deprecating certain price types'
 ----------------------------------------------
 The following price types are deprecated and will be removed after June 2025:
 
-
-* NEGOTIABLE
-* SWAP
-* NOT_APPLICABLE
-* ON_DEMAND
-* RESERVED
+ * ○ NEGOTIABLE
+ * ○ SWAP
+ * ○ NOT_APPLICABLE
+ * ○ ON_DEMAND
+ * ○ RESERVED
 
 
 Please update your ads to use the new price types. Ads with these values will be migrated to the closest new price type.
 Below is the mapping we will use:
 
 
-* NEGOTIABLE -> SEE_DESCRIPTION
-* SWAP -> SEE_DESCRIPTION
-* NOT_APPLICABLE -> SEE_DESCRIPTION
-* ON_DEMAND -> SEE_DESCRIPTION
-* RESERVED -> SEE_DESCRIPTION
+ * ○ NEGOTIABLE -> SEE_DESCRIPTION
+ * ○ SWAP -> SEE_DESCRIPTION
+ * ○ NOT_APPLICABLE -> SEE_DESCRIPTION
+ * ○ ON_DEMAND -> SEE_DESCRIPTION
+ * ○ RESERVED -> SEE_DESCRIPTION
 
 September 2024: 'Deprecated handler clean up'
 ----------------------------------------------

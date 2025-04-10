@@ -413,7 +413,7 @@ Use **price type** to define :ref:`pricing model<price_types>` for your item.
 
 |
 
-Restrictions: Allowed Values are *BIDDING*, *BIDDING_FROM*, *FIXED_PRICE*, *FREE*, *NEGOTIABLE*, *SEE_DESCRIPTION*, *SWAP*, *CREDIBLE_BID*, *ON_DEMAND*, *NOT_APPLICABLE*, *RESERVED*
+Restrictions: Allowed Values are *BIDDING*, *BIDDING_FROM*, *FIXED_PRICE*, *FREE*, *SEE_DESCRIPTION*, *CREDIBLE_BID*
 
 .. index:: price
 .. _feed_price:

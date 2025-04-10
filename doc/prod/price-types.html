@@ -184,8 +184,11 @@
   <section id="price-types">
 <span id="index-0"></span><h1>Price Types<a class="headerlink" href="#price-types" title="Permalink to this heading">¶</a></h1>
 <p>Each advertisement has a price type which determines the type of transaction the seller would like to perform.
-The following table lists the valid price types and their descriptions. Please notice the deprecated price types,
-they will be removed after a grace period.</p>
+The following table lists the valid price types and their descriptions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please notice the deprecated price types, after the grace period they will be migrated to <code class="docutils literal notranslate"><span class="pre">SEE_DESCRIPTION</span></code> and support will be removed from the API.</p>
+</div>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>PRICE_TYPE</p></th>
@@ -197,57 +200,57 @@ they will be removed after a grace period.</p>
 <tbody>
 <tr class="row-even"><td><p>BIDDING</p></td>
 <td><p>no</p></td>
-<td><p>No</p></td>
+<td><p>no</p></td>
 <td><p>Request a bid on the ad starting from 0 EUR.</p></td>
 </tr>
 <tr class="row-odd"><td><p>BIDDING_FROM</p></td>
 <td><p>yes</p></td>
-<td><p>No</p></td>
+<td><p>no</p></td>
 <td><p>Request a bid with a starting price &gt; 0 EUR. <strong>price</strong> must contain a value in the interval of <code class="docutils literal notranslate"><span class="pre">(0,10000000000]</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>FIXED_PRICE</p></td>
 <td><p>yes</p></td>
-<td><p>No</p></td>
+<td><p>no</p></td>
 <td><p>Request a fixed price. <strong>price</strong> must contain a value in the interval of <code class="docutils literal notranslate"><span class="pre">(0,10000000000]</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FREE</p></td>
 <td><p>no</p></td>
-<td><p>No</p></td>
+<td><p>no</p></td>
 <td><p>Request no price.</p></td>
 </tr>
 <tr class="row-even"><td><p>NEGOTIABLE</p></td>
 <td><p>no</p></td>
-<td><p>Yes</p></td>
+<td><p>yes</p></td>
 <td><p>Request a negotiation between buyer and seller.</p></td>
 </tr>
 <tr class="row-odd"><td><p>SEE_DESCRIPTION</p></td>
 <td><p>no</p></td>
-<td><p>No</p></td>
+<td><p>no</p></td>
 <td><p>Additional information is in the description of the ad.</p></td>
 </tr>
 <tr class="row-even"><td><p>SWAP</p></td>
 <td><p>no</p></td>
-<td><p>Yes</p></td>
+<td><p>yes</p></td>
 <td><p>Request an exchange of one item for another.</p></td>
 </tr>
 <tr class="row-odd"><td><p>CREDIBLE_BID</p></td>
 <td><p>no</p></td>
-<td><p>No</p></td>
+<td><p>no</p></td>
 <td><p>Request for any reasonable offer.</p></td>
 </tr>
 <tr class="row-even"><td><p>ON_DEMAND</p></td>
 <td><p>no</p></td>
-<td><p>Yes</p></td>
+<td><p>yes</p></td>
 <td><p>Price is communicated on request.</p></td>
 </tr>
 <tr class="row-odd"><td><p>NOT_APPLICABLE</p></td>
 <td><p>no</p></td>
-<td><p>Yes</p></td>
+<td><p>yes</p></td>
 <td><p>Price is not applicable for this ad (e.g. a Jobs ad).</p></td>
 </tr>
 <tr class="row-even"><td><p>RESERVED</p></td>
 <td><p>no</p></td>
-<td><p>Yes</p></td>
+<td><p>yes</p></td>
 <td><p>Flag for transaction in progress.</p></td>
 </tr>
 </tbody>
