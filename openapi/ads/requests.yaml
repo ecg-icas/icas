@@ -265,14 +265,10 @@ components:
             - 'BIDDING_FROM'
             - 'FIXED_PRICE'
             - 'FREE'
-            - 'NEGOTIABLE'
             - 'SEE_DESCRIPTION'
-            - 'SWAP'
             - 'CREDIBLE_BID'
-            - 'ON_DEMAND'
-            - 'NOT_APPLICABLE'
           description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.
-          See more about each price type in the [price type documentation](https://ecg-icas.github.io/icas/doc/prod/ads.html#price-types).'
+          See more about each price type in the [price type documentation](https://ecg-icas.github.io/icas/doc/prod/ads.html#index-1).'
           example: 'FIXED_PRICE'
         currency:
           type: string
@@ -595,18 +591,14 @@ components:
     PriceType:
       type: string
       description: 'Each ad has a price type which determines the type of transaction the seller would like to perform. Must be a valid price type identifier from the list.
-      See more about each price type in the [price type documentation](https://ecg-icas.github.io/icas/doc/prod/ads.html#price-types).'
+      See more about each price type in the [price type documentation](https://ecg-icas.github.io/icas/doc/prod/ads.html#index-1).'
       enum:
         - 'BIDDING'
         - 'BIDDING_FROM'
         - 'FIXED_PRICE'
         - 'FREE'
-        - 'NEGOTIABLE'
         - 'SEE_DESCRIPTION'
-        - 'SWAP'
         - 'CREDIBLE_BID'
-        - 'ON_DEMAND'
-        - 'NOT_APPLICABLE'
   examples:
     ManualBiddingV5:
       summary: 'Ad with manual bidding'
