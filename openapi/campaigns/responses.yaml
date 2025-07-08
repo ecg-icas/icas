@@ -38,6 +38,12 @@ components:
           description: 'The ISO 8601 UTC date and time the campaign was last updated.'
         status:
           $ref: '#/components/schemas/StatusV5'
+        scheduledResumeDate:
+          description: 'The date at which the paused campaign should be automatically resumed (activated) by the sistem. 
+           It must be between one calendar day and 365 calendar days in the future (in local Netherlands timezone). 
+           This field will be cleared the moment the campaign is activated, regardless whether automatically or manually.'
+          format: date
+          example: '2025-12-31'
         budgets:
           $ref: '#/components/schemas/BudgetsV5'
         isDefault:
