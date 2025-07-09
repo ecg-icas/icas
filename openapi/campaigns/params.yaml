@@ -19,8 +19,8 @@ components:
     ScheduledResumeDate:
       name: scheduledResumeDate
       in: query
-      description: 'The date at which the paused campaign should be automatically resumed (activated) by the sistem. 
-           It must be between one calendar day and 365 calendar days in the future (in local Netherlands timezone). 
+      description: 'The date at which the paused campaign should be automatically resumed (activated) by the system. 
+           It must be between one calendar day and 365 calendar days in the future (in local tenant timezone). 
            This field will be cleared the moment the campaign is activated, either automatically or manually.'
       schema:
         type: string
