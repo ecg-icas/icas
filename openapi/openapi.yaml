@@ -2390,6 +2390,17 @@ paths:
           schema:
             $ref: './campaigns/params.yaml#/components/parameters/StatusV5'
             example: 'PAUSED'
+        - name: scheduledResumeDate
+          in: query
+          required: false
+          description: 'The date at which the paused campaign should be automatically resumed (activated) by the system.
+            It must be between one calendar day and 365 calendar days in the future (in local tenant timezone). It can only
+            be provided when the campaign is set to paused.
+            This field will be cleared the moment the campaign is activated, either automatically or manually.'
+          schema:
+            type: string
+            format: date
+            example: '2026-01-01'
         - name: Accept
           in: header
           description: 'This header represents the version of the response acceptable by the client.'
