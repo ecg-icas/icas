@@ -14,6 +14,9 @@ advertisers are not accessible to you.
 
 .. include:: bidding-micros.rst
 
+.. _ad_status_guide:
+
+.. include:: ad-status-guide.rst
 
 .. _price_types:
 ..  include:: price-types.rst
