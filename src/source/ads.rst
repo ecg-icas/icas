@@ -16,6 +16,9 @@ advertisers are not accessible to you.
 
 .. _ad_status_guide:
 
+Ad Status Guide
+---------------
+
 .. include:: ad-status-guide.rst
 
 .. _price_types:
