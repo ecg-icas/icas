@@ -5,11 +5,11 @@ Ad statuses control whether your ads are eligible for serving and provide insigh
    :align: center
    :scale: 80%
 
-Ad Status Values
+Ad status values
 ^^^^^^^^^^^^^^^^
 
-Partner-Controllable Statuses
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+API-controllable statuses
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These statuses can be set directly through the API:
 
@@ -34,8 +34,8 @@ These statuses can be set directly through the API:
      - ❌ Does not serve
      - Cannot be changed
 
-System-Managed Statuses
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+System-managed statuses
+^^^^^^^^^^^^^^^^^^^^^^^
 
 These statuses are set automatically by our system and cannot be directly changed via API:
 
@@ -68,14 +68,14 @@ These statuses are set automatically by our system and cannot be directly change
      - ❌ Does not serve
      - Cannot be restored
 
-Status Precedence Rules
+Status precedence rules
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. important::
    When multiple conditions affect an ad, we show the most actionable status for you as the advertiser.
 
-Non-Budget Statuses Take Priority
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Non-budget statuses take priority
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If your ad has multiple issues, we prioritize showing you the status you can directly act upon:
 
@@ -107,134 +107,121 @@ If your ad has multiple issues, we prioritize showing you the status you can dir
 .. note::
    Budget-related statuses (``BUDGET_REACHED``, ``DAILY_LIMIT_REACHED``) are only shown when your ad would otherwise be ``ACTIVE``.
 
-Automatic Status Changes
+Automatic status changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Budget Exhaustion
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Budget exhaustion
+^^^^^^^^^^^^^^^^^
 
-* **Total Budget**: When your ad's lifetime budget is fully spent, status changes to ``BUDGET_REACHED``
-* **Daily Budget**: When today's spending limit is reached, status changes to ``DAILY_LIMIT_REACHED``
-* **Reset**: Daily limits automatically reset at midnight; total budgets require manual increase
+* **Total budget exhausted** → ``BUDGET_REACHED``
+* **Daily budget exhausted** → ``DAILY_LIMIT_REACHED`` (resets at midnight)
 
-Domain Verification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Domain verification
+^^^^^^^^^^^^^^^^^^^
 
-**Trigger**: When you change an ad's URL to a domain we haven't verified for your account
-
-**Process**:
-
-1. Ad status automatically changes to ``DOMAIN_PENDING`` (overrides any previous status, including ``PAUSED``)
-2. Verification email sent to your account
-3. Click verification link to approve domain
-4. **All ``DOMAIN_PENDING`` ads with that specific domain are set to ``ACTIVE`` status**
-
-.. important::
-   Domain verification always activates ads that are pending verification, regardless of their previous state. If you had paused an ad before changing its domain, the ad will become active after domain verification. Only ads currently in ``DOMAIN_PENDING`` status for that specific domain are affected - other ads using the same domain remain unchanged. You'll need to manually pause it again if desired.
+1. URL changed to unverified domain → ``DOMAIN_PENDING``
+2. Verify via email link → All pending ads for that domain become ``ACTIVE``
 
 .. note::
-   **Domain Protection Availability**: 
+   Domain verification activates all pending ads for that domain, regardless of previous status.
+
+.. note::
+   Domain protection only available on Marktplaats Console interface.
+
+Policy enforcement
+^^^^^^^^^^^^^^^^^^
+
+* Policy violations → ``SUSPENDED_BY_CS`` or ``DELETED_BY_CS``
+* Recovery requires content updates and support approval
+
+Campaign status impact
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. important::
+   For an ad to be **visible to buyers**, both the ad status AND campaign status must allow serving:
    
-   * Domain protection is currently **only available on Marktplaats**
-   * Protection **only applies to ads managed through Console interface**
-   * All status values and API responses work consistently across all platforms
-   * Only the automatic transition to ``DOMAIN_PENDING`` and email verification process is platform-specific
+   * **Campaign must be active** (not paused or out of budget)
+   * **Ad must have a serving status** (``ACTIVE`` and not affected by budget/domain/CS restrictions)
 
-Policy Enforcement
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Campaign status affects **ad visibility** (whether ads appear to buyers), not ad status itself. Individual ad statuses remain unchanged when campaign status changes.
 
-* **Automatic Review**: Our systems may flag ads for policy violations
-* **Customer Support Action**: Violating ads may be suspended or removed
-* **Recovery**: Suspended ads require content updates and support approval
+**Key behaviors:**
 
-Common Workflows
+* **Campaign paused or out of budget** → All ads in campaign become invisible to buyers
+* **Individual ad statuses are never modified** by campaign status changes  
+* **When campaign returns to active** → Ads return to visibility based on their individual statuses
+
+Common workflows
 ^^^^^^^^^^^^^^^^
 
-Budget Management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Budget management
+^^^^^^^^^^^^^^^^^
 
-.. code-block:: text
+* Daily budget reached → ``DAILY_LIMIT_REACHED`` (resets at midnight)
+* Total budget reached → ``BUDGET_REACHED`` (increase budget to resume)
 
-   1. Ad serving normally (ACTIVE)
-   2. Daily budget reached → DAILY_LIMIT_REACHED
-   3. Options:
-      - Wait for midnight reset → Returns to ACTIVE
-      - Increase daily budget → Returns to ACTIVE
-      - Pause campaign → Changes to PAUSED
+Domain change
+^^^^^^^^^^^^^
 
-Domain Change
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* New domain → ``DOMAIN_PENDING`` (Marktplaats Console only)
+* Verify via email → Becomes ``ACTIVE``
 
-.. code-block:: text
+Handling suspensions
+^^^^^^^^^^^^^^^^^^^^
 
-   1. Update ad URL to new domain
-   2. Status automatically changes to DOMAIN_PENDING (regardless of previous status)
-   3. Check email for verification link
-   4. Verify domain → Ad becomes ACTIVE (even if it was PAUSED before)
-      Note: Only applies to Marktplaats ads managed via Console
+* ``SUSPENDED_BY_CS`` → Update content and contact support → ``ACTIVE``
 
-Handling Suspensions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: text
-
-   1. Ad suspended → SUSPENDED_BY_CS
-   2. Contact customer support for reason
-   3. Update ad content to address violations
-   4. Resubmit ad → Returns to ACTIVE (if approved)
-
-API Integration Best Practices
+API integration best practices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Status Polling
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Status polling
+^^^^^^^^^^^^^^
 
-* **Check status regularly** if ad serving is critical
-* **Budget statuses** can change throughout the day as spend accumulates
-* **Domain pending** requires immediate action to resume serving
+* Check status regularly for critical ads
+* Budget statuses change as spend accumulates
+* ``DOMAIN_PENDING`` requires immediate action
 
-Error Handling
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error handling
+^^^^^^^^^^^^^^
 
-* **Invalid transitions**: API will reject attempts to set impossible statuses
-* **Terminal states**: ``DELETED`` and ``DELETED_BY_CS`` cannot be changed
-* **Suspended ads**: Cannot be directly activated - require content updates
+* API rejects invalid status transitions
+* ``DELETED`` and ``DELETED_BY_CS`` are terminal states
+* ``SUSPENDED_BY_CS`` requires content updates, not status changes
 
-Monitoring Recommendations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Monitoring recommendations
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* **Set up alerts** for budget-related status changes
-* **Monitor domain pending** notifications in your email
-* **Track suspended ads** for policy compliance issues
+* Alert on budget status changes
+* Monitor ``DOMAIN_PENDING`` email notifications
+* Track ``SUSPENDED_BY_CS`` for policy issues
 
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
-Ad Not Serving?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ad not serving?
+^^^^^^^^^^^^^^^
 
-1. **Check status** - Only ``ACTIVE`` ads serve
-2. **Budget issues** - Look for ``BUDGET_REACHED`` or ``DAILY_LIMIT_REACHED``
-3. **Domain verification** - Check for ``DOMAIN_PENDING`` (Marktplaats Console only)
-4. **Policy violations** - Look for ``SUSPENDED_BY_CS``
+1. Check ad status - only ``ACTIVE`` ads serve
+2. Check campaign status - must be active
+3. Look for ``BUDGET_REACHED``, ``DAILY_LIMIT_REACHED``, ``DOMAIN_PENDING``, ``SUSPENDED_BY_CS``
 
-Status Won't Change?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Status won't change?
+^^^^^^^^^^^^^^^^^^^^
 
-1. **Terminal states** (``DELETED``, ``DELETED_BY_CS``) cannot be modified
-2. **System-managed statuses** cannot be directly set via API
-3. **Suspended ads** require content updates, not just status changes
+1. ``DELETED`` and ``DELETED_BY_CS`` are terminal
+2. System-managed statuses cannot be set via API
+3. ``SUSPENDED_BY_CS`` requires content updates
 
-Unexpected Status Changes?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Unexpected status changes?
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. **Budget exhaustion** happens automatically as spend accumulates
-2. **Domain changes** trigger immediate verification requirements
-3. **Policy reviews** can suspend ads without prior warning
+1. Budget exhaustion happens automatically
+2. Domain changes trigger verification
+3. Policy reviews can suspend ads
 
 Support
 ^^^^^^^
 
-* **Technical integration**: Check API documentation for status field details
-* **Policy questions**: Contact customer support for suspension reasons
-* **Domain verification**: Check your registered email for verification links
+* Technical integration: API documentation
+* Policy questions: Customer support
+* Domain verification: Check email

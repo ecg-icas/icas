@@ -210,10 +210,10 @@ We will gradually deprecate any fields with cents and local currency units acros
 <p>Ad statuses control whether your ads are eligible for serving and provide insight into why ads might not be active. Understanding these statuses is essential for managing your advertising campaigns effectively through our API.</p>
 <a class="reference internal image-reference" href="_images/ad-state-machine-api-partner.png"><img alt="Ad State Machine Diagram" class="align-center" src="_images/ad-state-machine-api-partner.png" style="width: 2214.4px; height: 520.0px;" /></a>
 <section id="ad-status-values">
-<h3>Ad Status Values<a class="headerlink" href="#ad-status-values" title="Permalink to this heading">¶</a></h3>
+<h3>Ad status values<a class="headerlink" href="#ad-status-values" title="Permalink to this heading">¶</a></h3>
 </section>
-<section id="partner-controllable-statuses">
-<h3>Partner-Controllable Statuses<a class="headerlink" href="#partner-controllable-statuses" title="Permalink to this heading">¶</a></h3>
+<section id="api-controllable-statuses">
+<h3>API-controllable statuses<a class="headerlink" href="#api-controllable-statuses" title="Permalink to this heading">¶</a></h3>
 <p>These statuses can be set directly through the API:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -249,7 +249,7 @@ We will gradually deprecate any fields with cents and local currency units acros
 </table>
 </section>
 <section id="system-managed-statuses">
-<h3>System-Managed Statuses<a class="headerlink" href="#system-managed-statuses" title="Permalink to this heading">¶</a></h3>
+<h3>System-managed statuses<a class="headerlink" href="#system-managed-statuses" title="Permalink to this heading">¶</a></h3>
 <p>These statuses are set automatically by our system and cannot be directly changed via API:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -295,14 +295,14 @@ We will gradually deprecate any fields with cents and local currency units acros
 </table>
 </section>
 <section id="status-precedence-rules">
-<h3>Status Precedence Rules<a class="headerlink" href="#status-precedence-rules" title="Permalink to this heading">¶</a></h3>
+<h3>Status precedence rules<a class="headerlink" href="#status-precedence-rules" title="Permalink to this heading">¶</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>When multiple conditions affect an ad, we show the most actionable status for you as the advertiser.</p>
 </div>
 </section>
 <section id="non-budget-statuses-take-priority">
-<h3>Non-Budget Statuses Take Priority<a class="headerlink" href="#non-budget-statuses-take-priority" title="Permalink to this heading">¶</a></h3>
+<h3>Non-budget statuses take priority<a class="headerlink" href="#non-budget-statuses-take-priority" title="Permalink to this heading">¶</a></h3>
 <p>If your ad has multiple issues, we prioritize showing you the status you can directly act upon:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -347,143 +347,138 @@ We will gradually deprecate any fields with cents and local currency units acros
 </div>
 </section>
 <section id="automatic-status-changes">
-<h3>Automatic Status Changes<a class="headerlink" href="#automatic-status-changes" title="Permalink to this heading">¶</a></h3>
+<h3>Automatic status changes<a class="headerlink" href="#automatic-status-changes" title="Permalink to this heading">¶</a></h3>
 </section>
 <section id="budget-exhaustion">
-<h3>Budget Exhaustion<a class="headerlink" href="#budget-exhaustion" title="Permalink to this heading">¶</a></h3>
+<h3>Budget exhaustion<a class="headerlink" href="#budget-exhaustion" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Total Budget</strong>: When your ad’s lifetime budget is fully spent, status changes to <code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code></p></li>
-<li><p><strong>Daily Budget</strong>: When today’s spending limit is reached, status changes to <code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code></p></li>
-<li><p><strong>Reset</strong>: Daily limits automatically reset at midnight; total budgets require manual increase</p></li>
+<li><p><strong>Total budget exhausted</strong> → <code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code></p></li>
+<li><p><strong>Daily budget exhausted</strong> → <code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code> (resets at midnight)</p></li>
 </ul>
 </section>
 <section id="domain-verification">
-<h3>Domain Verification<a class="headerlink" href="#domain-verification" title="Permalink to this heading">¶</a></h3>
-<p><strong>Trigger</strong>: When you change an ad’s URL to a domain we haven’t verified for your account</p>
-<p><strong>Process</strong>:</p>
+<h3>Domain verification<a class="headerlink" href="#domain-verification" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Ad status automatically changes to <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> (overrides any previous status, including <code class="docutils literal notranslate"><span class="pre">PAUSED</span></code>)</p></li>
-<li><p>Verification email sent to your account</p></li>
-<li><p>Click verification link to approve domain</p></li>
-<li><p><strong>All ``DOMAIN_PENDING`` ads with that specific domain are set to ``ACTIVE`` status</strong></p></li>
+<li><p>URL changed to unverified domain → <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code></p></li>
+<li><p>Verify via email link → All pending ads for that domain become <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code></p></li>
 </ol>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Domain verification always activates ads that are pending verification, regardless of their previous state. If you had paused an ad before changing its domain, the ad will become active after domain verification. Only ads currently in <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> status for that specific domain are affected - other ads using the same domain remain unchanged. You’ll need to manually pause it again if desired.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Domain verification activates all pending ads for that domain, regardless of previous status.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Domain Protection Availability</strong>:</p>
-<ul class="simple">
-<li><p>Domain protection is currently <strong>only available on Marktplaats</strong></p></li>
-<li><p>Protection <strong>only applies to ads managed through Console interface</strong></p></li>
-<li><p>All status values and API responses work consistently across all platforms</p></li>
-<li><p>Only the automatic transition to <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> and email verification process is platform-specific</p></li>
-</ul>
+<p>Domain protection only available on Marktplaats Console interface.</p>
 </div>
 </section>
 <section id="policy-enforcement">
-<h3>Policy Enforcement<a class="headerlink" href="#policy-enforcement" title="Permalink to this heading">¶</a></h3>
+<h3>Policy enforcement<a class="headerlink" href="#policy-enforcement" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Automatic Review</strong>: Our systems may flag ads for policy violations</p></li>
-<li><p><strong>Customer Support Action</strong>: Violating ads may be suspended or removed</p></li>
-<li><p><strong>Recovery</strong>: Suspended ads require content updates and support approval</p></li>
+<li><p>Policy violations → <code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> or <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code></p></li>
+<li><p>Recovery requires content updates and support approval</p></li>
+</ul>
+</section>
+<section id="campaign-status-impact">
+<h3>Campaign status impact<a class="headerlink" href="#campaign-status-impact" title="Permalink to this heading">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For an ad to be <strong>visible to buyers</strong>, both the ad status AND campaign status must allow serving:</p>
+<ul class="simple">
+<li><p><strong>Campaign must be active</strong> (not paused or out of budget)</p></li>
+<li><p><strong>Ad must have a serving status</strong> (<code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> and not affected by budget/domain/CS restrictions)</p></li>
+</ul>
+</div>
+<p>Campaign status affects <strong>ad visibility</strong> (whether ads appear to buyers), not ad status itself. Individual ad statuses remain unchanged when campaign status changes.</p>
+<p><strong>Key behaviors:</strong></p>
+<ul class="simple">
+<li><p><strong>Campaign paused or out of budget</strong> → All ads in campaign become invisible to buyers</p></li>
+<li><p><strong>Individual ad statuses are never modified</strong> by campaign status changes</p></li>
+<li><p><strong>When campaign returns to active</strong> → Ads return to visibility based on their individual statuses</p></li>
 </ul>
 </section>
 <section id="common-workflows">
-<h3>Common Workflows<a class="headerlink" href="#common-workflows" title="Permalink to this heading">¶</a></h3>
+<h3>Common workflows<a class="headerlink" href="#common-workflows" title="Permalink to this heading">¶</a></h3>
 </section>
 <section id="budget-management">
-<h3>Budget Management<a class="headerlink" href="#budget-management" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Ad serving normally (ACTIVE)
-2. Daily budget reached → DAILY_LIMIT_REACHED
-3. Options:
-   - Wait for midnight reset → Returns to ACTIVE
-   - Increase daily budget → Returns to ACTIVE
-   - Pause campaign → Changes to PAUSED
-</pre></div>
-</div>
+<h3>Budget management<a class="headerlink" href="#budget-management" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Daily budget reached → <code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code> (resets at midnight)</p></li>
+<li><p>Total budget reached → <code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code> (increase budget to resume)</p></li>
+</ul>
 </section>
 <section id="domain-change">
-<h3>Domain Change<a class="headerlink" href="#domain-change" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Update ad URL to new domain
-2. Status automatically changes to DOMAIN_PENDING (regardless of previous status)
-3. Check email for verification link
-4. Verify domain → Ad becomes ACTIVE (even if it was PAUSED before)
-   Note: Only applies to Marktplaats ads managed via Console
-</pre></div>
-</div>
+<h3>Domain change<a class="headerlink" href="#domain-change" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>New domain → <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> (Marktplaats Console only)</p></li>
+<li><p>Verify via email → Becomes <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code></p></li>
+</ul>
 </section>
 <section id="handling-suspensions">
-<h3>Handling Suspensions<a class="headerlink" href="#handling-suspensions" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Ad suspended → SUSPENDED_BY_CS
-2. Contact customer support for reason
-3. Update ad content to address violations
-4. Resubmit ad → Returns to ACTIVE (if approved)
-</pre></div>
-</div>
+<h3>Handling suspensions<a class="headerlink" href="#handling-suspensions" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> → Update content and contact support → <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code></p></li>
+</ul>
 </section>
 <section id="api-integration-best-practices">
-<h3>API Integration Best Practices<a class="headerlink" href="#api-integration-best-practices" title="Permalink to this heading">¶</a></h3>
+<h3>API integration best practices<a class="headerlink" href="#api-integration-best-practices" title="Permalink to this heading">¶</a></h3>
 </section>
 <section id="status-polling">
-<h3>Status Polling<a class="headerlink" href="#status-polling" title="Permalink to this heading">¶</a></h3>
+<h3>Status polling<a class="headerlink" href="#status-polling" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Check status regularly</strong> if ad serving is critical</p></li>
-<li><p><strong>Budget statuses</strong> can change throughout the day as spend accumulates</p></li>
-<li><p><strong>Domain pending</strong> requires immediate action to resume serving</p></li>
+<li><p>Check status regularly for critical ads</p></li>
+<li><p>Budget statuses change as spend accumulates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> requires immediate action</p></li>
 </ul>
 </section>
 <section id="error-handling">
-<h3>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this heading">¶</a></h3>
+<h3>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Invalid transitions</strong>: API will reject attempts to set impossible statuses</p></li>
-<li><p><strong>Terminal states</strong>: <code class="docutils literal notranslate"><span class="pre">DELETED</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code> cannot be changed</p></li>
-<li><p><strong>Suspended ads</strong>: Cannot be directly activated - require content updates</p></li>
+<li><p>API rejects invalid status transitions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETED</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code> are terminal states</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> requires content updates, not status changes</p></li>
 </ul>
 </section>
 <section id="monitoring-recommendations">
-<h3>Monitoring Recommendations<a class="headerlink" href="#monitoring-recommendations" title="Permalink to this heading">¶</a></h3>
+<h3>Monitoring recommendations<a class="headerlink" href="#monitoring-recommendations" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Set up alerts</strong> for budget-related status changes</p></li>
-<li><p><strong>Monitor domain pending</strong> notifications in your email</p></li>
-<li><p><strong>Track suspended ads</strong> for policy compliance issues</p></li>
+<li><p>Alert on budget status changes</p></li>
+<li><p>Monitor <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> email notifications</p></li>
+<li><p>Track <code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> for policy issues</p></li>
 </ul>
 </section>
 <section id="troubleshooting">
 <h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">¶</a></h3>
 </section>
 <section id="ad-not-serving">
-<h3>Ad Not Serving?<a class="headerlink" href="#ad-not-serving" title="Permalink to this heading">¶</a></h3>
+<h3>Ad not serving?<a class="headerlink" href="#ad-not-serving" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
-<li><p><strong>Check status</strong> - Only <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> ads serve</p></li>
-<li><p><strong>Budget issues</strong> - Look for <code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code> or <code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code></p></li>
-<li><p><strong>Domain verification</strong> - Check for <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> (Marktplaats Console only)</p></li>
-<li><p><strong>Policy violations</strong> - Look for <code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code></p></li>
+<li><p>Check ad status - only <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> ads serve</p></li>
+<li><p>Check campaign status - must be active</p></li>
+<li><p>Look for <code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code>, <code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code>, <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code></p></li>
 </ol>
 </section>
 <section id="status-won-t-change">
-<h3>Status Won’t Change?<a class="headerlink" href="#status-won-t-change" title="Permalink to this heading">¶</a></h3>
+<h3>Status won’t change?<a class="headerlink" href="#status-won-t-change" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
-<li><p><strong>Terminal states</strong> (<code class="docutils literal notranslate"><span class="pre">DELETED</span></code>, <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code>) cannot be modified</p></li>
-<li><p><strong>System-managed statuses</strong> cannot be directly set via API</p></li>
-<li><p><strong>Suspended ads</strong> require content updates, not just status changes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETED</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code> are terminal</p></li>
+<li><p>System-managed statuses cannot be set via API</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> requires content updates</p></li>
 </ol>
 </section>
 <section id="unexpected-status-changes">
-<h3>Unexpected Status Changes?<a class="headerlink" href="#unexpected-status-changes" title="Permalink to this heading">¶</a></h3>
+<h3>Unexpected status changes?<a class="headerlink" href="#unexpected-status-changes" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
-<li><p><strong>Budget exhaustion</strong> happens automatically as spend accumulates</p></li>
-<li><p><strong>Domain changes</strong> trigger immediate verification requirements</p></li>
-<li><p><strong>Policy reviews</strong> can suspend ads without prior warning</p></li>
+<li><p>Budget exhaustion happens automatically</p></li>
+<li><p>Domain changes trigger verification</p></li>
+<li><p>Policy reviews can suspend ads</p></li>
 </ol>
 </section>
 <section id="support">
 <h3>Support<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Technical integration</strong>: Check API documentation for status field details</p></li>
-<li><p><strong>Policy questions</strong>: Contact customer support for suspension reasons</p></li>
-<li><p><strong>Domain verification</strong>: Check your registered email for verification links</p></li>
+<li><p>Technical integration: API documentation</p></li>
+<li><p>Policy questions: Customer support</p></li>
+<li><p>Domain verification: Check email</p></li>
 </ul>
 <span class="target" id="price-types"></span></section>
 </section>
