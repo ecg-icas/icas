@@ -3505,3 +3505,4 @@ components:
             api_rw: Grants API write access
             console_ro: Grants Console read access
             console_rw: Grants Console write access
+            reporting:  Grants access to reporting endpoints
