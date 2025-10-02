@@ -8,10 +8,12 @@ Ad statuses control whether your ads are eligible for serving and provide insigh
 Ad status values
 ^^^^^^^^^^^^^^^^
 
-API-controllable statuses
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Understanding who controls ad status changes is essential for managing your advertising campaigns effectively. There are three types of actors that can affect ad status:
 
-These statuses can be set directly through the API:
+Seller/API Partner Actions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These statuses are controlled by you (the seller) or your API partners acting on your behalf:
 
 .. list-table::
    :header-rows: 1
@@ -21,23 +23,45 @@ These statuses can be set directly through the API:
      - Meaning
      - Ad Serving
      - Available Actions
-   * - ``ACTIVE``
+   * - ``ACTIVATED``
      - Ad is running and eligible for serving
      - ✅ **Serves**
-     - Can pause or delete
+     - Can pause or delete via API
    * - ``PAUSED``
      - Ad is temporarily stopped by you
      - ❌ Does not serve
-     - Can activate or delete
+     - Can activate or delete via API
    * - ``DELETED``
      - Ad is permanently removed by you
      - ❌ Does not serve
-     - Cannot be changed
+     - Terminal state - cannot be changed
 
-System-managed statuses
-^^^^^^^^^^^^^^^^^^^^^^^
+Admin/CS Actions
+^^^^^^^^^^^^^^^^
 
-These statuses are set automatically by our system and cannot be directly changed via API:
+These statuses are set by Customer Support, Account Managers, or Platform Administrators for policy enforcement:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 25 15 20
+
+   * - Status
+     - Meaning
+     - Ad Serving
+     - Resolution
+   * - ``SUSPENDED_BY_CS``
+     - Ad violates platform policies and is suspended by support
+     - ❌ Does not serve
+     - Contact support AND update ad content
+   * - ``DELETED_BY_CS``
+     - Ad permanently removed for policy violations by support
+     - ❌ Does not serve
+     - Terminal state - cannot be restored
+
+System Actions
+^^^^^^^^^^^^^^
+
+These statuses are set automatically by our system based on conditions and cannot be directly changed via API:
 
 .. list-table::
    :header-rows: 1
@@ -48,25 +72,17 @@ These statuses are set automatically by our system and cannot be directly change
      - Ad Serving
      - Resolution
    * - ``BUDGET_REACHED``
-     - Total ad budget is exhausted
+     - Total ad budget is exhausted (automatic)
      - ❌ Does not serve
      - Increase total budget
    * - ``DAILY_LIMIT_REACHED``
-     - Daily ad budget is exhausted
+     - Daily ad budget is exhausted (automatic)
      - ❌ Does not serve
      - Wait for new day or increase daily budget
    * - ``DOMAIN_PENDING``
-     - New domain requires verification (Marktplaats Console only)
+     - New domain requires verification (automatic anti-phishing protection)
      - ❌ Does not serve
-     - Verify domain via email
-   * - ``SUSPENDED_BY_CS``
-     - Ad violates platform policies
-     - ❌ Does not serve
-     - Contact support and update ad content
-   * - ``DELETED_BY_CS``
-     - Ad permanently removed for violations
-     - ❌ Does not serve
-     - Cannot be restored
+     - Verify domain via email (Marktplaats Console only)
 
 Status precedence rules
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -107,20 +123,29 @@ If your ad has multiple issues, we prioritize showing you the status you can dir
 .. note::
    Budget-related statuses (``BUDGET_REACHED``, ``DAILY_LIMIT_REACHED``) are only shown when your ad would otherwise be ``ACTIVE``.
 
-Automatic status changes
-^^^^^^^^^^^^^^^^^^^^^^^^
+Status change workflows
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Budget exhaustion
-^^^^^^^^^^^^^^^^^
+Seller/API Partner Workflows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **Create ad** → ``ACTIVATED`` (if valid) or ``DOMAIN_PENDING`` (if new domain)
+* **Pause campaign** → Set status to ``PAUSED`` via API
+* **Resume campaign** → Set status to ``ACTIVATED`` via API
+* **End campaign** → Set status to ``DELETED`` via API (terminal)
+
+System Automated Workflows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Budget exhaustion (automatic):**
 
 * **Total budget exhausted** → ``BUDGET_REACHED``
 * **Daily budget exhausted** → ``DAILY_LIMIT_REACHED`` (resets at midnight)
 
-Domain verification
-^^^^^^^^^^^^^^^^^^^
+**Domain verification (automatic anti-phishing):**
 
 1. URL changed to unverified domain → ``DOMAIN_PENDING``
-2. Verify via email link → All pending ads for that domain become ``ACTIVE``
+2. Verify via email link → All pending ads for that domain become ``ACTIVATED``
 
 .. note::
    Domain verification activates all pending ads for that domain, regardless of previous status.
@@ -128,11 +153,14 @@ Domain verification
 .. note::
    Domain protection only available on Marktplaats Console interface.
 
-Policy enforcement
+Admin/CS Workflows
 ^^^^^^^^^^^^^^^^^^
 
-* Policy violations → ``SUSPENDED_BY_CS`` or ``DELETED_BY_CS``
-* Recovery requires content updates and support approval
+**Policy enforcement (manual review):**
+
+* **Policy violations detected** → Admin sets ``SUSPENDED_BY_CS`` or ``DELETED_BY_CS``
+* **Recovery from suspension** → Requires content updates AND support approval
+* **Permanent deletion** → ``DELETED_BY_CS`` is terminal, cannot be restored
 
 Campaign status impact
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -208,16 +236,20 @@ Ad not serving?
 Status won't change?
 ^^^^^^^^^^^^^^^^^^^^
 
-1. ``DELETED`` and ``DELETED_BY_CS`` are terminal
-2. System-managed statuses cannot be set via API
-3. ``SUSPENDED_BY_CS`` requires content updates
+**Check who controls the status:**
+
+1. **Terminal states**: ``DELETED`` and ``DELETED_BY_CS`` cannot be changed
+2. **System-controlled**: ``BUDGET_REACHED``, ``DAILY_LIMIT_REACHED``, ``DOMAIN_PENDING`` cannot be set via API - resolve the underlying condition
+3. **Admin-controlled**: ``SUSPENDED_BY_CS`` requires support approval after content updates
 
 Unexpected status changes?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Budget exhaustion happens automatically
-2. Domain changes trigger verification
-3. Policy reviews can suspend ads
+**Identify the actor that caused the change:**
+
+1. **System actions**: Budget exhaustion and domain verification happen automatically
+2. **Admin actions**: Policy reviews can result in ``SUSPENDED_BY_CS`` or ``DELETED_BY_CS``
+3. **Check your API calls**: Verify your integration isn't making unintended status changes
 
 Support
 ^^^^^^^

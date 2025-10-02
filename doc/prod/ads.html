@@ -211,10 +211,11 @@ We will gradually deprecate any fields with cents and local currency units acros
 <a class="reference internal image-reference" href="_images/ad-state-machine-api-partner.png"><img alt="Ad State Machine Diagram" class="align-center" src="_images/ad-state-machine-api-partner.png" style="width: 2214.4px; height: 520.0px;" /></a>
 <section id="ad-status-values">
 <h3>Ad status values<a class="headerlink" href="#ad-status-values" title="Permalink to this heading">¶</a></h3>
+<p>Understanding who controls ad status changes is essential for managing your advertising campaigns effectively. There are three types of actors that can affect ad status:</p>
 </section>
-<section id="api-controllable-statuses">
-<h3>API-controllable statuses<a class="headerlink" href="#api-controllable-statuses" title="Permalink to this heading">¶</a></h3>
-<p>These statuses can be set directly through the API:</p>
+<section id="seller-api-partner-actions">
+<h3>Seller/API Partner Actions<a class="headerlink" href="#seller-api-partner-actions" title="Permalink to this heading">¶</a></h3>
+<p>These statuses are controlled by you (the seller) or your API partners acting on your behalf:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 18.8%" />
@@ -230,27 +231,58 @@ We will gradually deprecate any fields with cents and local currency units acros
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ACTIVATED</span></code></p></td>
 <td><p>Ad is running and eligible for serving</p></td>
 <td><p>✅ <strong>Serves</strong></p></td>
-<td><p>Can pause or delete</p></td>
+<td><p>Can pause or delete via API</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PAUSED</span></code></p></td>
 <td><p>Ad is temporarily stopped by you</p></td>
 <td><p>❌ Does not serve</p></td>
-<td><p>Can activate or delete</p></td>
+<td><p>Can activate or delete via API</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DELETED</span></code></p></td>
 <td><p>Ad is permanently removed by you</p></td>
 <td><p>❌ Does not serve</p></td>
-<td><p>Cannot be changed</p></td>
+<td><p>Terminal state - cannot be changed</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="system-managed-statuses">
-<h3>System-managed statuses<a class="headerlink" href="#system-managed-statuses" title="Permalink to this heading">¶</a></h3>
-<p>These statuses are set automatically by our system and cannot be directly changed via API:</p>
+<section id="admin-cs-actions">
+<h3>Admin/CS Actions<a class="headerlink" href="#admin-cs-actions" title="Permalink to this heading">¶</a></h3>
+<p>These statuses are set by Customer Support, Account Managers, or Platform Administrators for policy enforcement:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 31.2%" />
+<col style="width: 18.8%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Status</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Ad Serving</p></th>
+<th class="head"><p>Resolution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code></p></td>
+<td><p>Ad violates platform policies and is suspended by support</p></td>
+<td><p>❌ Does not serve</p></td>
+<td><p>Contact support AND update ad content</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code></p></td>
+<td><p>Ad permanently removed for policy violations by support</p></td>
+<td><p>❌ Does not serve</p></td>
+<td><p>Terminal state - cannot be restored</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="system-actions">
+<h3>System Actions<a class="headerlink" href="#system-actions" title="Permalink to this heading">¶</a></h3>
+<p>These statuses are set automatically by our system based on conditions and cannot be directly changed via API:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -267,29 +299,19 @@ We will gradually deprecate any fields with cents and local currency units acros
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code></p></td>
-<td><p>Total ad budget is exhausted</p></td>
+<td><p>Total ad budget is exhausted (automatic)</p></td>
 <td><p>❌ Does not serve</p></td>
 <td><p>Increase total budget</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code></p></td>
-<td><p>Daily ad budget is exhausted</p></td>
+<td><p>Daily ad budget is exhausted (automatic)</p></td>
 <td><p>❌ Does not serve</p></td>
 <td><p>Wait for new day or increase daily budget</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code></p></td>
-<td><p>New domain requires verification (Marktplaats Console only)</p></td>
+<td><p>New domain requires verification (automatic anti-phishing protection)</p></td>
 <td><p>❌ Does not serve</p></td>
-<td><p>Verify domain via email</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code></p></td>
-<td><p>Ad violates platform policies</p></td>
-<td><p>❌ Does not serve</p></td>
-<td><p>Contact support and update ad content</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code></p></td>
-<td><p>Ad permanently removed for violations</p></td>
-<td><p>❌ Does not serve</p></td>
-<td><p>Cannot be restored</p></td>
+<td><p>Verify domain via email (Marktplaats Console only)</p></td>
 </tr>
 </tbody>
 </table>
@@ -346,21 +368,29 @@ We will gradually deprecate any fields with cents and local currency units acros
 <p>Budget-related statuses (<code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code>, <code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code>) are only shown when your ad would otherwise be <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>.</p>
 </div>
 </section>
-<section id="automatic-status-changes">
-<h3>Automatic status changes<a class="headerlink" href="#automatic-status-changes" title="Permalink to this heading">¶</a></h3>
+<section id="status-change-workflows">
+<h3>Status change workflows<a class="headerlink" href="#status-change-workflows" title="Permalink to this heading">¶</a></h3>
 </section>
-<section id="budget-exhaustion">
-<h3>Budget exhaustion<a class="headerlink" href="#budget-exhaustion" title="Permalink to this heading">¶</a></h3>
+<section id="seller-api-partner-workflows">
+<h3>Seller/API Partner Workflows<a class="headerlink" href="#seller-api-partner-workflows" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Create ad</strong> → <code class="docutils literal notranslate"><span class="pre">ACTIVATED</span></code> (if valid) or <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> (if new domain)</p></li>
+<li><p><strong>Pause campaign</strong> → Set status to <code class="docutils literal notranslate"><span class="pre">PAUSED</span></code> via API</p></li>
+<li><p><strong>Resume campaign</strong> → Set status to <code class="docutils literal notranslate"><span class="pre">ACTIVATED</span></code> via API</p></li>
+<li><p><strong>End campaign</strong> → Set status to <code class="docutils literal notranslate"><span class="pre">DELETED</span></code> via API (terminal)</p></li>
+</ul>
+</section>
+<section id="system-automated-workflows">
+<h3>System Automated Workflows<a class="headerlink" href="#system-automated-workflows" title="Permalink to this heading">¶</a></h3>
+<p><strong>Budget exhaustion (automatic):</strong></p>
 <ul class="simple">
 <li><p><strong>Total budget exhausted</strong> → <code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code></p></li>
 <li><p><strong>Daily budget exhausted</strong> → <code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code> (resets at midnight)</p></li>
 </ul>
-</section>
-<section id="domain-verification">
-<h3>Domain verification<a class="headerlink" href="#domain-verification" title="Permalink to this heading">¶</a></h3>
+<p><strong>Domain verification (automatic anti-phishing):</strong></p>
 <ol class="arabic simple">
 <li><p>URL changed to unverified domain → <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code></p></li>
-<li><p>Verify via email link → All pending ads for that domain become <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code></p></li>
+<li><p>Verify via email link → All pending ads for that domain become <code class="docutils literal notranslate"><span class="pre">ACTIVATED</span></code></p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -371,11 +401,13 @@ We will gradually deprecate any fields with cents and local currency units acros
 <p>Domain protection only available on Marktplaats Console interface.</p>
 </div>
 </section>
-<section id="policy-enforcement">
-<h3>Policy enforcement<a class="headerlink" href="#policy-enforcement" title="Permalink to this heading">¶</a></h3>
+<section id="admin-cs-workflows">
+<h3>Admin/CS Workflows<a class="headerlink" href="#admin-cs-workflows" title="Permalink to this heading">¶</a></h3>
+<p><strong>Policy enforcement (manual review):</strong></p>
 <ul class="simple">
-<li><p>Policy violations → <code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> or <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code></p></li>
-<li><p>Recovery requires content updates and support approval</p></li>
+<li><p><strong>Policy violations detected</strong> → Admin sets <code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> or <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code></p></li>
+<li><p><strong>Recovery from suspension</strong> → Requires content updates AND support approval</p></li>
+<li><p><strong>Permanent deletion</strong> → <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code> is terminal, cannot be restored</p></li>
 </ul>
 </section>
 <section id="campaign-status-impact">
@@ -459,18 +491,20 @@ We will gradually deprecate any fields with cents and local currency units acros
 </section>
 <section id="status-won-t-change">
 <h3>Status won’t change?<a class="headerlink" href="#status-won-t-change" title="Permalink to this heading">¶</a></h3>
+<p><strong>Check who controls the status:</strong></p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">DELETED</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code> are terminal</p></li>
-<li><p>System-managed statuses cannot be set via API</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> requires content updates</p></li>
+<li><p><strong>Terminal states</strong>: <code class="docutils literal notranslate"><span class="pre">DELETED</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code> cannot be changed</p></li>
+<li><p><strong>System-controlled</strong>: <code class="docutils literal notranslate"><span class="pre">BUDGET_REACHED</span></code>, <code class="docutils literal notranslate"><span class="pre">DAILY_LIMIT_REACHED</span></code>, <code class="docutils literal notranslate"><span class="pre">DOMAIN_PENDING</span></code> cannot be set via API - resolve the underlying condition</p></li>
+<li><p><strong>Admin-controlled</strong>: <code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> requires support approval after content updates</p></li>
 </ol>
 </section>
 <section id="unexpected-status-changes">
 <h3>Unexpected status changes?<a class="headerlink" href="#unexpected-status-changes" title="Permalink to this heading">¶</a></h3>
+<p><strong>Identify the actor that caused the change:</strong></p>
 <ol class="arabic simple">
-<li><p>Budget exhaustion happens automatically</p></li>
-<li><p>Domain changes trigger verification</p></li>
-<li><p>Policy reviews can suspend ads</p></li>
+<li><p><strong>System actions</strong>: Budget exhaustion and domain verification happen automatically</p></li>
+<li><p><strong>Admin actions</strong>: Policy reviews can result in <code class="docutils literal notranslate"><span class="pre">SUSPENDED_BY_CS</span></code> or <code class="docutils literal notranslate"><span class="pre">DELETED_BY_CS</span></code></p></li>
+<li><p><strong>Check your API calls</strong>: Verify your integration isn’t making unintended status changes</p></li>
 </ol>
 </section>
 <section id="support">
