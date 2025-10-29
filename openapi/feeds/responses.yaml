@@ -20,7 +20,7 @@ components:
           type: string
           description: 'Contains the configured feed URL for the current user.'
           example: 'http://www.ourshop.com/feed.xml'
-          maxLength: 512
+          maxLength: 2048
     ImportDetailV2:
       type: object
       readOnly: true
@@ -131,7 +131,7 @@ components:
           url:
             type: string
             description: 'The configured feed URL for the current user.'
-            maxLength: 512
+            maxLength: 2048
           status:
             type: string
             enum:
