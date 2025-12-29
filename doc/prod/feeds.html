@@ -298,8 +298,6 @@ XML escape characters are also supported.</p>
 <span class="w">        </span><span class="nt">&lt;admarkt:brand&gt;</span>Bally<span class="nt">&lt;/admarkt:brand&gt;</span>
 <span class="w">        </span><span class="nt">&lt;admarkt:condition&gt;</span>refurbished<span class="nt">&lt;/admarkt:condition&gt;</span>
 <span class="w">        </span><span class="nt">&lt;admarkt:energyEfficiencyClass&gt;</span>E<span class="nt">&lt;/admarkt:energyEfficiencyClass&gt;</span>
-<span class="w">        </span><span class="nt">&lt;admarkt:minEnergyEfficiencyClass&gt;</span>F<span class="nt">&lt;/admarkt:minEnergyEfficiencyClass&gt;</span>
-<span class="w">        </span><span class="nt">&lt;admarkt:maxEnergyEfficiencyClass&gt;</span>D<span class="nt">&lt;/admarkt:maxEnergyEfficiencyClass&gt;</span>
 <span class="w">        </span><span class="nt">&lt;admarkt:color&gt;</span>black/white/green<span class="nt">&lt;/admarkt:color&gt;</span>
 <span class="w">        </span><span class="nt">&lt;admarkt:gender&gt;</span>unisex<span class="nt">&lt;/admarkt:gender&gt;</span>
 <span class="w">        </span><span class="nt">&lt;admarkt:ageGroup&gt;</span>adult<span class="nt">&lt;/admarkt:ageGroup&gt;</span>
@@ -494,16 +492,6 @@ XML escape characters are also supported.</p>
 <td><p>enum</p></td>
 <td><p>no</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#feed-minenergyefficiencyclass"><span class="std std-ref">min energy efficiency class</span></a></p></td>
-<td><p>minimal energy efficiency class</p></td>
-<td><p>enum</p></td>
-<td><p>no</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#feed-maxenergyefficiencyclass"><span class="std std-ref">max energy efficiency class</span></a></p></td>
-<td><p>maximal energy efficiency class</p></td>
-<td><p>enum</p></td>
-<td><p>no</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#feed-color"><span class="std std-ref">color</span></a></p></td>
 <td><p>item colors</p></td>
 <td><p>max. 100 chars</p></td>
@@ -688,16 +676,6 @@ XML escape characters are also supported.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a></p></td>
 <td><p>energy efficiency class</p></td>
-<td><p>enum</p></td>
-<td><p>no</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#feed-minenergyefficiencyclass"><span class="std std-ref">min energy efficiency class</span></a></p></td>
-<td><p>minimal energy efficiency class</p></td>
-<td><p>enum</p></td>
-<td><p>no</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#feed-maxenergyefficiencyclass"><span class="std std-ref">max energy efficiency class</span></a></p></td>
-<td><p>maximal energy efficiency class</p></td>
 <td><p>enum</p></td>
 <td><p>no</p></td>
 </tr>
@@ -1966,70 +1944,8 @@ See <a class="reference external" href="https://support.google.com/merchants/ans
 </div>
 <p>Allowed values: <em>A+++</em>, <em>A++</em>, <em>A+</em>, <em>A</em>, <em>B</em>, <em>C</em>, <em>B</em>, <em>E</em>, <em>F</em>, <em>G</em></p>
 </section>
-<section id="min-energy-efficiency-class">
-<span id="feed-minenergyefficiencyclass"></span><span id="index-29"></span><h3>min energy efficiency class<a class="headerlink" href="#min-energy-efficiency-class" title="Permalink to this heading">¶</a></h3>
-<p>Used in combination with <strong>max energy efficiency class</strong> to describe the item energy efficiency label.
-Possible values defined in <a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a></p>
-<details class="summary-tsv">
-<summary>TSV</summary><p>Stored in <strong>min energy efficiency class</strong> column.</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Example</p></td>
-<td><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>G
-</pre></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</details><details class="summary-xml">
-<summary>XML</summary><table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Example</p></td>
-<td><div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">admarkt:minEnergyEfficiencyClass</span><span class="p">&gt;</span>G<span class="p">&lt;/</span><span class="nt">admarkt:minEnergyEfficiencyClass</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</details><div class="line-block">
-<div class="line"><br /></div>
-</div>
-</section>
-<section id="max-energy-efficiency-class">
-<span id="feed-maxenergyefficiencyclass"></span><span id="index-30"></span><h3>max energy efficiency class<a class="headerlink" href="#max-energy-efficiency-class" title="Permalink to this heading">¶</a></h3>
-<p>Used in combination with <strong>min energy efficiency class</strong> to describe the item energy efficiency label.
-Possible values defined in <a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a></p>
-<details class="summary-tsv">
-<summary>TSV</summary><p>Stored in <strong>max energy efficiency class</strong> column.</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Example</p></td>
-<td><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>B
-</pre></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</details><details class="summary-xml">
-<summary>XML</summary><table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Example</p></td>
-<td><div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">admarkt:maxEnergyEfficiencyClass</span><span class="p">&gt;</span>B<span class="p">&lt;/</span><span class="nt">admarkt:maxEnergyEfficiencyClass</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</details><div class="line-block">
-<div class="line"><br /></div>
-</div>
-</section>
 <section id="color">
-<span id="feed-color"></span><span id="index-31"></span><h3>color<a class="headerlink" href="#color" title="Permalink to this heading">¶</a></h3>
+<span id="feed-color"></span><span id="index-29"></span><h3>color<a class="headerlink" href="#color" title="Permalink to this heading">¶</a></h3>
 <p>Use <strong>color</strong> field to tell buyers about the dominant colors of your item.
 Color definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324487">Google Merchant Center</a> guidelines.</p>
 <details class="summary-tsv">
@@ -2063,7 +1979,7 @@ When providing multiple colors separate each entry with a slash (“/”).
 Maximum of 100 characters.</p>
 </section>
 <section id="gender">
-<span id="feed-gender"></span><span id="index-32"></span><h3>gender<a class="headerlink" href="#gender" title="Permalink to this heading">¶</a></h3>
+<span id="feed-gender"></span><span id="index-30"></span><h3>gender<a class="headerlink" href="#gender" title="Permalink to this heading">¶</a></h3>
 <p>Use <strong>gender</strong> field to describe the gender your item is designed for.
 Gender definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324479">Google Merchant Center</a> guidelines.</p>
 <details class="summary-tsv">
@@ -2095,7 +2011,7 @@ Gender definition follows <a class="reference external" href="https://support.go
 <p>Restrictions: Allowed values are <em>male</em>, <em>female</em>, <em>unisex</em></p>
 </section>
 <section id="age-group">
-<span id="feed-agegroup"></span><span id="index-33"></span><h3>age group<a class="headerlink" href="#age-group" title="Permalink to this heading">¶</a></h3>
+<span id="feed-agegroup"></span><span id="index-31"></span><h3>age group<a class="headerlink" href="#age-group" title="Permalink to this heading">¶</a></h3>
 <p>Use <strong>age group</strong> field to describe the age group your item is targeted at.
 Definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324463">Google Merchant Center</a> guidelines.</p>
 <details class="summary-tsv">
@@ -2127,7 +2043,7 @@ Definition follows <a class="reference external" href="https://support.google.co
 <p>Allowed values: <em>newborn</em>, <em>infant</em>, <em>toddler</em>, <em>kids</em>, <em>adult</em></p>
 </section>
 <section id="size">
-<span id="feed-size"></span><span id="index-34"></span><h3>size<a class="headerlink" href="#size" title="Permalink to this heading">¶</a></h3>
+<span id="feed-size"></span><span id="index-32"></span><h3>size<a class="headerlink" href="#size" title="Permalink to this heading">¶</a></h3>
 <p>Use <strong>size</strong> field to describe standardized size of your item.
 Size definition follows <a class="reference external" href="https://support.google.com/merchants/answer/6324492">Google Merchant Center</a> guidelines.</p>
 <details class="summary-tsv">
@@ -2159,7 +2075,7 @@ Size definition follows <a class="reference external" href="https://support.goog
 <p>Restrictions: Non-empty string with a maximum of 100 characters.</p>
 </section>
 <section id="unit-pricing-base-measure">
-<span id="feed-unitpricingbasemeasure"></span><span id="index-35"></span><h3>unit pricing base measure<a class="headerlink" href="#unit-pricing-base-measure" title="Permalink to this heading">¶</a></h3>
+<span id="feed-unitpricingbasemeasure"></span><span id="index-33"></span><h3>unit pricing base measure<a class="headerlink" href="#unit-pricing-base-measure" title="Permalink to this heading">¶</a></h3>
 <p>The denominator for item unit price.
 See <a class="reference external" href="https://support.google.com/merchants/answer/6324490">Google Merchant Center</a>.
 This field attribute tells the buyers how the price of your item translates per unit.</p>
@@ -2202,7 +2118,7 @@ This field attribute tells the buyers how the price of your item translates per 
 </dl>
 </section>
 <section id="unit-pricing-measure">
-<span id="feed-unitpricingmeasure"></span><span id="index-36"></span><h3>unit pricing measure<a class="headerlink" href="#unit-pricing-measure" title="Permalink to this heading">¶</a></h3>
+<span id="feed-unitpricingmeasure"></span><span id="index-34"></span><h3>unit pricing measure<a class="headerlink" href="#unit-pricing-measure" title="Permalink to this heading">¶</a></h3>
 <p>Defines the measure and dimension of the item. That value helps buyers to understand the exact price per unit for your item.
 Example 125ml, 100g.
 See <a class="reference external" href="https://support.google.com/merchants/answer/6324455">Google Merchant Center</a>.</p>
@@ -2267,8 +2183,8 @@ and “TSV export” is a standard option for the majority of spreadsheet progra
 </details><details class="larger-collapse summary-what-are-the-newly-added-fields">
 <summary>What are the newly added fields?</summary><p>Those fields are considered a ‘widely adopted market standard’, required, or recommended for advertising on many other channels:
 <a class="reference internal" href="#feed-mpn"><span class="std std-ref">MPN</span></a>, <a class="reference internal" href="#feed-googleproductcategory"><span class="std std-ref">google product category</span></a>, <a class="reference internal" href="#feed-producttype"><span class="std std-ref">product type</span></a>, <a class="reference internal" href="#feed-brand"><span class="std std-ref">brand</span></a>, <a class="reference internal" href="#feed-gtin"><span class="std std-ref">GTIN</span></a>,
-<a class="reference internal" href="#feed-itemgroupid"><span class="std std-ref">item group id</span></a>, <a class="reference internal" href="#feed-condition"><span class="std std-ref">condition</span></a>, <a class="reference internal" href="#feed-material"><span class="std std-ref">material</span></a>, <a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a>, <a class="reference internal" href="#feed-minenergyefficiencyclass"><span class="std std-ref">min energy efficiency class</span></a>,
-<a class="reference internal" href="#feed-maxenergyefficiencyclass"><span class="std std-ref">max energy efficiency class</span></a>, <a class="reference internal" href="#feed-color"><span class="std std-ref">color</span></a>, <a class="reference internal" href="#feed-gender"><span class="std std-ref">gender</span></a>, <a class="reference internal" href="#feed-agegroup"><span class="std std-ref">age group</span></a>, <a class="reference internal" href="#feed-size"><span class="std std-ref">size</span></a>, <a class="reference internal" href="#feed-unitpricingbasemeasure"><span class="std std-ref">unit pricing base measure</span></a>, <a class="reference internal" href="#feed-unitpricingmeasure"><span class="std std-ref">unit pricing measure</span></a>.</p>
+<a class="reference internal" href="#feed-itemgroupid"><span class="std std-ref">item group id</span></a>, <a class="reference internal" href="#feed-condition"><span class="std std-ref">condition</span></a>, <a class="reference internal" href="#feed-material"><span class="std std-ref">material</span></a>, <a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a>,
+<a class="reference internal" href="#feed-color"><span class="std std-ref">color</span></a>, <a class="reference internal" href="#feed-gender"><span class="std std-ref">gender</span></a>, <a class="reference internal" href="#feed-agegroup"><span class="std std-ref">age group</span></a>, <a class="reference internal" href="#feed-size"><span class="std std-ref">size</span></a>, <a class="reference internal" href="#feed-unitpricingbasemeasure"><span class="std std-ref">unit pricing base measure</span></a>, <a class="reference internal" href="#feed-unitpricingmeasure"><span class="std std-ref">unit pricing measure</span></a>.</p>
 </details><details class="larger-collapse summary-what-happens-if-my-feed-file-cannot-be-fetched">
 <summary>What happens if my feed file cannot be fetched?</summary><p>When a feed file cannot be fetched, nothing will change on the user’s ads.
 It’s as if the import didn’t happen.
