@@ -1177,63 +1177,7 @@ See `Google Merchant Center <https://support.google.com/merchants/answer/7562785
 
 Allowed values: *A+++*, *A++*, *A+*, *A*, *B*, *C*, *B*, *E*, *F*, *G*
 
-.. index:: minEnergyEfficiencyClass
-.. _feed_minEnergyEfficiencyClass:
 
-min energy efficiency class
-"""""""""""""""""""""""""""
-
-Used in combination with **max energy efficiency class** to describe the item energy efficiency label.
-Possible values defined in :ref:`feed_energyEfficiencyClass`
-
-.. collapse:: TSV
-
-    Stored in **min energy efficiency class** column.
-
-    ========= ========================
-     Example	 .. code-block:: text
-
-                    G
-    ========= ========================
-
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-
-                <admarkt:minEnergyEfficiencyClass>G</admarkt:minEnergyEfficiencyClass>
-    ======= ===========================================================
-
-|
-
-.. index:: maxEnergyEfficiencyClass
-.. _feed_maxEnergyEfficiencyClass:
-
-max energy efficiency class
-""""""""""""""""""""""""""""
-
-Used in combination with **min energy efficiency class** to describe the item energy efficiency label.
-Possible values defined in :ref:`feed_energyEfficiencyClass`
-
-.. collapse:: TSV
-
-    Stored in **max energy efficiency class** column.
-
-    ========= ========================
-     Example	 .. code-block:: text
-
-                    B
-    ========= ========================
-
-.. collapse:: XML
-
-    ======= ===========================================================
-    Example .. code-block:: html
-
-                <admarkt:maxEnergyEfficiencyClass>B</admarkt:maxEnergyEfficiencyClass>
-    ======= ===========================================================
-
-|
 
 .. index:: color
 .. _feed_color:

@@ -115,8 +115,6 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     :ref:`feed_condition`                     condition of item                    enum                 no
     :ref:`feed_material`                      main item fabrics or materials       max. 200 chars       no
     :ref:`feed_energyEfficiencyClass`         energy efficiency class              enum                 no
-    :ref:`feed_minEnergyEfficiencyClass`      minimal energy efficiency class      enum                 no
-    :ref:`feed_maxEnergyEfficiencyClass`      maximal energy efficiency class      enum                 no
     :ref:`feed_color`                         item colors                          max. 100 chars       no
     :ref:`feed_gender`                        gender item is designed for          enum                 no
     :ref:`feed_ageGroup`                      age group item is intended for       enum                 no
@@ -160,8 +158,6 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     :ref:`feed_condition`                  condition of item                    enum                 no
     :ref:`feed_material`                   main item fabrics or materials       max. 200 chars       no
     :ref:`feed_energyEfficiencyClass`      energy efficiency class              enum                 no
-    :ref:`feed_minEnergyEfficiencyClass`   minimal energy efficiency class      enum                 no
-    :ref:`feed_maxEnergyEfficiencyClass`   maximal energy efficiency class      enum                 no
     :ref:`feed_color`                      item colors                          max. 100 chars       no
     :ref:`feed_gender`                     gender item is designed for          enum                 no
     :ref:`feed_ageGroup`                   age group item is intended for       enum                 no
@@ -209,9 +205,9 @@ Below are some common scenarios and questions with their explanations/answers.
     :class: larger-collapse
 
     Those fields are considered a 'widely adopted market standard', required, or recommended for advertising on many other channels:
-    :ref:`feed_mpn`, :ref:`feed_googleProductCategory`, :ref:`feed_productType`, :ref:`feed_brand`, :ref:`feed_gtin`, 
-    :ref:`feed_itemGroupId`, :ref:`feed_condition`, :ref:`feed_material`, :ref:`feed_energyEfficiencyClass`, :ref:`feed_minEnergyEfficiencyClass`,
-    :ref:`feed_maxEnergyEfficiencyClass`, :ref:`feed_color`, :ref:`feed_gender`, :ref:`feed_ageGroup`, :ref:`feed_size`, :ref:`feed_unitPricingBaseMeasure`, :ref:`feed_unitPricingMeasure`.
+    :ref:`feed_mpn`, :ref:`feed_googleProductCategory`, :ref:`feed_productType`, :ref:`feed_brand`, :ref:`feed_gtin`,
+    :ref:`feed_itemGroupId`, :ref:`feed_condition`, :ref:`feed_material`, :ref:`feed_energyEfficiencyClass`,
+    :ref:`feed_color`, :ref:`feed_gender`, :ref:`feed_ageGroup`, :ref:`feed_size`, :ref:`feed_unitPricingBaseMeasure`, :ref:`feed_unitPricingMeasure`.
 
 .. collapse:: What happens if my feed file cannot be fetched?
     :class: larger-collapse

@@ -61,8 +61,6 @@
         <admarkt:brand>Bally</admarkt:brand>
         <admarkt:condition>refurbished</admarkt:condition>
         <admarkt:energyEfficiencyClass>E</admarkt:energyEfficiencyClass>
-        <admarkt:minEnergyEfficiencyClass>F</admarkt:minEnergyEfficiencyClass>
-        <admarkt:maxEnergyEfficiencyClass>D</admarkt:maxEnergyEfficiencyClass>
         <admarkt:color>black/white/green</admarkt:color>
         <admarkt:gender>unisex</admarkt:gender>
         <admarkt:ageGroup>adult</admarkt:ageGroup>
