@@ -517,6 +517,25 @@ paths:
               type: integer
               format: int64
           example: 1234
+        - name: bidLevel
+          in: query
+          required: false
+          explode: false
+          description: 'Filters the result set by the bid level. Should be a comma separated list of possible bid levels. Only applies to ads with automatic bidding (bidMicros = "AUTOMATIC").'
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - 'UNSET'
+                - 'LOW'
+                - 'MEDIUM'
+                - 'HIGH'
+                - 'TOP'
+            uniqueItems: true
+          example:
+            - 'MEDIUM'
+            - 'HIGH'
         - name: _include
           in: query
           required: false
@@ -534,6 +553,7 @@ paths:
                     - 'status'
                     - 'price'
                     - 'bidMicros'
+                    - 'bidLevel'
                     - 'budgets'
                     - 'salutation'
                     - 'sellerName'
@@ -569,6 +589,7 @@ paths:
                     - 'status'
                     - 'price'
                     - 'bidMicros'
+                    - 'bidLevel'
                     - 'budgets'
                     - 'salutation'
                     - 'sellerName'
