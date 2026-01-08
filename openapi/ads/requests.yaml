@@ -126,7 +126,7 @@ components:
             <br>
             - "TOP": Highest bids for maximum visibility
             <br><br>
-            This field is only applicable when ``bidMicros`` is "AUTOMATIC". If ``bidMicros`` is a specific value and ``bidLevel`` is provided (and not an empty string), an error will be returned.
+            This field is only applicable when ``bidMicros`` is "AUTOMATIC". If ``bidMicros`` is set to any value other than "AUTOMATIC" and ``bidLevel`` is provided (and not an empty string), an error will be returned.
             If an invalid value is provided, the endpoint will return an error.'
           enum:
             - ''
