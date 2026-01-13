@@ -127,6 +127,9 @@ components:
             - "TOP": Highest bids for maximum visibility
             <br><br>
             This field is only applicable when ``bidMicros`` is "AUTOMATIC". If ``bidMicros`` is set to any value other than "AUTOMATIC" and ``bidLevel`` is provided (and not an empty string), an error will be returned.
+            <br><br>
+            <b>Important update constraint:</b> Once ``bidLevel`` is set to a non-empty value ("LOW", "MEDIUM", "HIGH", or "TOP"), it cannot be changed back to an empty string. Attempting to do so will return an error.
+            <br><br>
             If an invalid value is provided, the endpoint will return an error.'
           enum:
             - ''
