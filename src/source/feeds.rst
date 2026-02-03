@@ -98,6 +98,7 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     :ref:`additional image link <feed_media>` additional images                    :ref:`feed_media`    no
     :ref:`feed_attr`                          collection of item attributes        :ref:`feed_attr`     no
     :ref:`autobid <feed_budget>`              budget details                       :ref:`feed_budget`   no
+    :ref:`bidLevel <feed_budget>`             bid level for auto bidding      :ref:`feed_budget`   no
     :ref:`cpc <feed_budget>`                  budget details                       :ref:`feed_budget`   no
     :ref:`total budget <feed_budget>`         budget details                       :ref:`feed_budget`   no
     :ref:`daily budget <feed_budget>`         budget details                       :ref:`feed_budget`   no
@@ -145,6 +146,7 @@ A set of required and optional fields defined by a feed for XML and TSV file for
     :ref:`media <feed_media>`              item images                          :ref:`feed_media`    no
     :ref:`feed_attr`                       collection of item attributes        :ref:`feed_attr`     no
     :ref:`budget <feed_budget>`            budget details                       :ref:`feed_budget`   no
+    :ref:`bidLevel <feed_budget>`          bid level for auto bidding      :ref:`feed_budget`   no
     :ref:`shipping options <feed_ship>`    shipping options                     :ref:`feed_ship`     no
     :ref:`feed_phoneNumber`                phone number                         max. 32 chars        no
     :ref:`feed_emailAdvertiser`            allow emails to the seller           true,false           no
