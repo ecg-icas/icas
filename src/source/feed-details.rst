@@ -639,6 +639,7 @@ Use the following values to describe your model:
 Name          Description                                Mandatory
 ============= ========================================== ========
 autobid       use auto bidding option true/false         No
+bidLevel      bid level for auto bidding                 No
 cpc           CPC for the given ad in cents              No
 total budget  total budget for the given ad in cents     No
 daily budget  daily budget for the given ad in cents     No
@@ -653,6 +654,15 @@ daily budget  daily budget for the given ad in cents     No
      Example	 .. code-block:: text
 
                     true
+    ========= ========================
+
+    Use **bidLevel** column to set the bid level when using auto bidding.
+    This field is optional and only applies when autobid is set to true.
+
+    ========= ========================
+     Example	 .. code-block:: text
+
+                    HIGH
     ========= ========================
 
     Use **cpc** to provide your cost per click in cents.
@@ -684,10 +694,18 @@ daily budget  daily budget for the given ad in cents     No
     ======= ===========================================================
     Example .. code-block:: html
 
+                <!-- Manual bidding example -->
                 <admarkt:budget>
+                    <admarkt:cpc>15</admarkt:cpc>
+                    <admarkt:autobid>false</admarkt:autobid>
                     <admarkt:totalBudget>5000</admarkt:totalBudget>
                     <admarkt:dailyBudget>1000</admarkt:dailyBudget>
-                    <admarkt:cpc>2</admarkt:cpc>
+                </admarkt:budget>
+
+                <!-- Auto bidding example -->
+                <admarkt:budget>
+                    <admarkt:autobid>true</admarkt:autobid>
+                    <admarkt:bidLevel>HIGH</admarkt:bidLevel>
                 </admarkt:budget>
     ======= ===========================================================
 
@@ -701,6 +719,26 @@ When this value of the daily budget is reached the ad will be offline for the re
 The minimum value depends on the category.
 
 The minimum and maximum values of the cost per click (CPC) depend on the category.
+
+The **bidLevel** field is optional and only applies when auto bidding (autobid=true) is enabled.
+It controls the bid level to optimize for different goals. The field can be left empty or set to one of the following values:
+
+============= =========================================================================
+Value         Description
+============= =========================================================================
+LOW           Conservative bidding with lower spend and lower visibility
+MEDIUM        Balanced bidding optimizing cost vs. performance
+HIGH          Aggressive bidding prioritizing visibility and clicks
+TOP           Maximum bidding for highest visibility and performance
+============= =========================================================================
+
+If the **bidLevel** field is not provided or left empty, the system will use the default bid level.
+
+**Important constraints:**
+
+1. **Manual bidding incompatibility**: If an ad has **autobid=false** (manual bidding) and **bidLevel** is set to any value (LOW, MEDIUM, HIGH, or TOP), the feed import will return an error. The bidLevel field must be empty or omitted when using manual bidding.
+
+2. **No reverting to default**: Once an ad with auto bidding has been assigned a specific **bidLevel** (LOW, MEDIUM, HIGH, or TOP), it cannot be changed back to the default bid level by leaving the field empty. To change the bid level, you must explicitly set it to a different valid value (LOW, MEDIUM, HIGH, or TOP).
 
 .. index:: shippingOptions
 .. _feed_ship:
