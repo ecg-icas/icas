@@ -1,0 +1,104 @@
+# campaigns/responses.yaml
+openapi: 3.0.0
+info:
+  title: Campaigns response component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    V5:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1235
+          minimum: 0
+          readOnly: true
+          description: 'Unique reference to the iCAS campaign.'
+        title:
+          type: string
+          example: 'Christmas 2025 campaign'
+          description: 'The name of the campaign.'
+        vendorId:
+          type: string
+          description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating s campaign or when updating an existing one. However, once set, it can no longer be modified.'
+          example: 'OURSHOP-1423453-34'
+        dateCreated:
+          type: string
+          format: date-time
+          description: 'The ISO 8601 UTC date and time the campaign was created.'
+          readOnly: true
+          example: '2019-04-18T13:55:10Z'
+        dateLastUpdated:
+          type: string
+          format: dateTime
+          example: '2018-07-26T14:56:51Z'
+          readOnly: true
+          description: 'The ISO 8601 UTC date and time the campaign was last updated.'
+        status:
+          $ref: '#/components/schemas/StatusV5'
+        scheduledResumeDate:
+          description: 'The date at which the paused campaign should be automatically resumed (activated) by the system. 
+           It must be between one calendar day and 365 calendar days in the future (in local tenant timezone).
+           It can only be provided when the campaign is set to paused. 
+           This field will be cleared the moment the campaign is activated, either automatically or manually.'
+          format: date
+          example: '2025-12-31'
+        budgets:
+          $ref: '#/components/schemas/BudgetsV5'
+        isDefault:
+          type: boolean
+          description: 'Indicates whether this campaign is the default campaign for the user. The first ever created campaign is always the default one, typically created automatically by the system.'
+          example: true
+    StatusV5:
+      type: string
+      description: 'Each campaign can be in one of a predefined set of states. Some of the states can be set by the user,
+      others are set by the system. <br><br>
+      If the campaign is ``ACTIVE`` the ads within the campaign should be shown on the site. **Beware** that the individual
+      ads can still be paused or invisible due to other reasons. The individual statuses of the ads are unaffected by changes
+      to the campaign status; campaign status changes only affect their effective visibility for the buyers on the site. 
+      <br>For an ad to be live on the site, both the ad and the campaign must be active.
+      If the campaign is ``PAUSED``, the ads within the campaign are not shown on the site and can be re-activated.
+      The individual ads can be ``ACTIVE`` but they will not be shown on the site if the campaign is not also active.
+      <br> <br>
+      Two system-controlled statuses ``BUDGET_REACHED`` and ``DAILY_BUDGET_REACHED`` are set when the total and daily budget is reached, 
+      respectively. The ads within the campaign will not be live until the budget is increased, even though the individual
+      ads within the campaign may be ``ACTIVE``.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+        - 'BUDGET_REACHED'
+        - 'DAILY_BUDGET_REACHED'
+      example: 'ACTIVE'
+    BudgetsV5:
+      description: 'An object containing the current budget limits and spent for this campaign. The unit for limit and spent is cents. The default limit values are set to -1 (Unlimited). If the campaign is DELETED, no budgets are shown.'
+      properties:
+        daily:
+          $ref: '#/components/schemas/DailyBudgetV5'
+        total:
+          $ref: '#/components/schemas/TotalBudgetV5'
+    TotalBudgetV5:
+      type: object
+      description: 'The total budget for the campaign, including the limit and the current spent.'
+      properties:
+        limitMicros:
+          description: 'The maximum amount all the ads combined in this campaign may spend. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
+          type: string
+          example: 'UNLIMITED'
+        spentMicros:
+          description: 'The amount all the ads combined in this campaign have spent so far. This will never be reset.'
+          type: string
+          example: '124520000'
+    DailyBudgetV5:
+      type: object
+      description: 'The daily budget for the campaign, including the limit and the current spent.'
+      properties:
+        limitMicros:
+          description: 'The maximum amount all the ads combined in this campaign may spend per day. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
+          type: string
+          example: '10000000'
+        spentMicros:
+          description: 'The amount all the ads combined in this campaign have spent so far, today. This will be reset every day around midnight.'
+          type: string
+          example: '9520000'

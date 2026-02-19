@@ -1,0 +1,46 @@
+# regions/params.yaml
+openapi: 3.0.0
+info:
+  title: Region request parameters
+  version: 1.0.0
+paths: {}
+components:
+  parameters:
+    ID:
+      in: path
+      name: id
+      description: 'The starting region ID of the taxonomy (sub) tree.'
+      required: true
+      schema:
+        type: integer
+        example: 1700194
+        minimum: 0
+    IDs:
+      required: true
+      name: regionIds
+      in: query
+      description: 'Comma-separated list of IDs for the requested regions from the regions taxonomy tree.'
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+        example: [ 1700093,1700195,1700196 ]
+        maxItems: 100
+    IncludeExcludeRegionFields:
+      in: query
+      name: _include
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    Levels:
+      in: query
+      name: levels
+      required: false
+      schema:
+        type: integer
+        default: 0
+        example: 1
+        minimum: 0

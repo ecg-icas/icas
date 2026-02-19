@@ -1,0 +1,3529 @@
+openapi: 3.0.0
+info:
+  description: 'This document describes the iCAS Sellside API to place ads on iCAS.
+    For more information, see the <a href="../doc/prod/overview.html">Documentation</a>.'
+  version: '0.119'
+  title: 'iCAS Sellside API'
+servers:
+  - url: 'https://www.mp.test/api/sellside'
+    description: 'Local environment [marktplaats.nl]'
+
+  - url: 'https://internet.mp.qa.icas.io/api/sellside'
+    description: 'QA environment [marktplaats.nl]'
+  - url: 'https:/internet.twhbe-nl.qa.icas.io/api/sellside'
+    description: 'QA environment [2dehands.be] NL'
+  - url: 'https://internet.twhbe-fr.qa.icas.io/api/sellside'
+    description: 'QA environment [2ememain.be] FR'
+  - url: 'https://internet.ebayk.qa.icas.io/api/sellside'
+    description: 'QA environment [kleinanzeigen.de]'
+
+  - url: 'https://admarkt.demo.qa-mp.so/api/sellside'
+    description: 'Pre-prod (demo/sandbox) environment [marktplaats.nl]'
+  - url: 'https://admarkt.demo-2dehands.qa-mp.so/api/sellside'
+    description: 'Pre-prod (demo/sandbox) environment [2dehands.be] NL'
+  - url: 'https://admarkt.demo-2ememain.qa-mp.so//api/sellside'
+    description: 'QA environment [2ememain.be] FR'
+  - url: 'https://internet.ka.pre-prod.icas.io/api/sellside'
+    description: 'Pre-prod (demo/sandbox) environment [kleinanzeigen.de]'
+
+  - url: 'https://admarkt.marktplaats.nl/api/sellside'
+    description: 'Production environment [marktplaats.nl]'
+  - url: 'https://admarkt.2dehands.be/api/sellside'
+    description: 'Production environment [2dehands.be]'
+  - url: 'https://admarkt.2ememain.be/api/sellside'
+    description: 'Production environment [2ememain.be] FR'
+  - url: 'https://admarkt.kleinanzeigen.de/api/sellside'
+    description: 'Production environment [kleinanzeigen.de]'
+tags:
+  - name: Ads
+  - name: Campaigns
+  - name: Categories
+  - name: Regions
+  - name: Reporting
+  - name: OAuth2
+paths:
+   # ADS
+  '/ad/{adId}':
+    get:
+      tags:
+        - Ads
+      summary: 'Get ad by ID'
+      description: 'Version 5 has a slightly different backwards-incompatible structure than v3. Version 4 is omitted on purpose. <br>
+                     Version 3 works just like v2, except the response body contains an additional field ``statusReasons``. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
+      operationId: getAdById
+      parameters:
+        - name: adId
+          in: path
+          description: 'ID of ad to return'
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 1235
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad'
+          content:
+            application/sellside.ad-v5+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V5'
+            application/sellside.ad-v3+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V3'
+            application/sellside.ad-v2+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V2'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+    put:
+      tags:
+        - Ads
+      summary: 'Updates the ad with the given ID'
+
+      description: 'Version 5 has a slightly different backwards-incompatible structure than v3. Version 4 is omitted on purpose. <br>
+                     To use the automatic bidding functionality, tt is <b>necessary to [set a campaign daily budget](#/paths/~1campaign~1{id}~1budgets/put)</b> when using automatic bidding. Setting an <b>ad budget</b>, however, is not necessary.
+                     <br><br>Version 3 works just like v2, except the response body contains an additional field ``statusReasons``. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
+      operationId: updateAdById
+      parameters:
+        - name: adId
+          in: path
+          description: 'ID of ad to return'
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 1235
+      requestBody:
+        required: true
+        content:
+          application/sellside.ad-v5+json:
+            schema:
+              $ref: './ads/requests.yaml#/components/schemas/V5'
+            examples:
+              manualBidding:
+                $ref: './ads/requests.yaml#/components/examples/ManualBiddingV5'
+              autoBidding:
+                $ref: './ads/requests.yaml#/components/examples/AutoBiddingV5'
+          application/sellside.ad-v3+json:
+            schema:
+              $ref: './ads/requests.yaml#/components/schemas/V3'
+          application/sellside.ad-v2+json:
+            schema:
+              $ref: './ads/requests.yaml#/components/schemas/V2'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'put_ad'
+          content:
+            application/sellside.ad-v5+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V5'
+            application/sellside.ad-v3+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V3'
+            application/sellside.ad-v2+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V2'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              examples:
+                example1:
+                  value:
+                    - code: 2001
+                      text: 'invalid argument'
+                      msg: 'must be either ACTIVE, PAUSED or DELETED'
+                      field: 'status'
+                example2:
+                  value:
+                    - code: 2002
+                      text: 'out of range'
+                      msg: 'totalBudget is not within max(category.minBudget, ad.spentBudget) and category.maxBudget'
+                      field: 'totalBudget'
+                example3:
+                  value:
+                    - code: 2012
+                      text: 'category change not allowed'
+                      msg: 'Changing the category of an ad is not allowed'
+                      field: 'categoryId'
+                example4:
+                  value:
+                    - code: 2017
+                      text: 'ad status change not allowed'
+                      msg: 'Changing the status of an ad is not allowed'
+                      field: 'status'
+                example5:
+                  value:
+                    - code: 2019
+                      text: 'insufficient budget'
+                      msg: 'Budget for ad is insufficient'
+                      field: 'totalBudget'
+                example6:
+                  value:
+                    - code: 2020
+                      text: 'insufficient daily budget'
+                      msg: 'Daily budget for ad is insufficient'
+                      field: 'dailyBudget'
+                example7:
+                  value:
+                    - code: 2023
+                      text: 'category deleted'
+                      msg: 'The category has been deleted and will not allow creation/updating of ads'
+                      field: 'categoryId'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /ad/{id}/status/{status}:
+    put:
+      tags:
+        - Ads
+      summary: 'Updates the status of the ad with the given id.'
+      description: 'To set the new status append it to the base url. <br>
+        <br>
+        The user can set only one of the user controlled states ``ACTIVE``, ``PAUSED`` or ``DELETED``.
+        If the ad is ``ACTIVE`` it should be shown on the site. If the 
+        ad is ``PAUSED`` it is not shown on the site and can be re-activated. A ``DELETED`` ad cannot be re-activated.                     
+        Changing the status to ACTIVE also changes the number of active ads in this category for this user.
+        If the current number of active ads for this user in this category exceeds ``maxNumberOfActiveAds`` as defined in the category then an error is returned.
+        Setting a different status than ``ACTIVE`` is always allowed.
+        If an ad has is in status ``PAUSED`` and also has no daily budget or total budget remaining, this call will succeed. The resulting status of the ad will be either ``BUDGET_REACHED`` or ``DAILY_BUDGET_REACHED``, depending on which budget has run out.
+        In this case the ad will go live as soon as budget is added.
+        '
+      operationId: postAdStatus
+      parameters:
+        - name: id
+          in: path
+          description: 'The ID of the ad for which status update is requested.'
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 42
+        - name: status
+          in: path
+          $ref: './ads/requests.yaml#/components/schemas/Status' # same as v2
+          required: true
+          description: 'The desired ad status from a user perspective.'
+          example: 'PAUSED'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'OAuth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'console_rw api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'put_ad_status'
+          content:
+            application/sellside.ad-v5+json:
+              schema: {} # Accept header in request, but response empty
+            application/json:
+              schema: {} # Accept header in request, but response empty
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              examples:
+                invalidArgument:
+                  value:
+                    - code: 2001
+                      text: 'invalid argument'
+                      msg: 'The value of field ''id'' was invalid'
+                      field: 'id'
+                    - code: 2001
+                      text: 'invalid argument'
+                      msg: 'The value of field ''status'' was invalid'
+                      field: 'status'
+                adStatusChangeNotAllowed:
+                  value:
+                    - code: 2017
+                      text: 'ad status change not allowed'
+                      msg: 'changing the status of the ad to the provided status is not allowed'
+                      field: 'status'
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+                  field: 'id'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /ad:
+    get:
+      tags:
+        - Ads
+      summary: 'Get a list of ads with filter criteria'
+      description: 'Returns a list of ads for the current user and the total size of the result set matching the filter criteria. <br>
+              <br><br>
+              Version 5 is similar to version 3, except for some changes in the Ads data structure and the addition of the ``nextPageToken`` field in the response.
+              <br>
+              This replaces the usage of the ``offset`` parameter and allows the caller to paginate through a large list of ads more efficiently.
+              In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for
+              the next result set, making that call more efficient. For the very first page, a ``PageToken`` should not be provided.
+              For any following page, callers should use the exact same request with an added ``pageToken`` parameter.
+              The value for the ``pageToken`` parameter for page N+1 is the ``nextPageToken`` field in the response of your call to fetch page N.
+              When a response does not contain a ``nextPageToken``, you have reached the last page of results and there are no more to fetch.
+              <br><br>
+              Note the difference in naming between response field nextPageToken and request parameter pageToken.
+              '
+      operationId: getListOfAdsWithFilters
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          description: 'Limits the number of records returned.'
+          schema:
+            type: integer
+            maximum: 100
+            default: 100
+          example: 50
+        - name: pageToken
+          in: query
+          required: false
+          description: 'Encoded information on where the previous page ended, send this along with the same request to get the next page of results. Scales better than ``offset``.'
+          schema:
+            type: string
+            format: byte
+          example: 'eyJpZCI6MTAwMT'
+        - name: adIds
+          in: query
+          required: false
+          description: 'List of ad IDs'
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+          example: [11232, 2231, 32453]
+        - name: titleKeywords
+          in: query
+          required: false
+          description: 'Case-insensitive filter for a keyword in the title; will include only ads which contain the given keyword in their title.'
+          schema:
+            type: string
+            example: 'fiets'
+        - name: status
+          in: query
+          required: false
+          explode: false
+          description: 'Filters the result set by the ad status. Should be a comma separated list of possible statuses'
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+               - 'ACTIVE'
+               - 'PAUSED'
+               - 'DELETED'
+               - 'DELETED_BY_CS'
+               - 'SUSPENDED_BY_CS'
+               - 'BUDGET_REACHED'
+               - 'DAILY_BUDGET_REACHED'
+            uniqueItems: true
+          example:
+            - 'ACTIVE'
+            - 'PAUSED'
+        - name: orderBy
+          in: query
+          required: false
+          schema:
+            $ref: './ads/params.yaml#/components/parameters/OrderBy'
+        - name: direction
+          in: query
+          schema:
+            $ref: './ads/params.yaml#/components/parameters/Direction'
+        - name: changedSince
+          in: query
+          required: false
+          schema:
+            $ref: './ads/params.yaml#/components/parameters/ChangedSince'
+        - name: remainingBudget
+          in: query
+          required: false
+          description: 'Used to retrieve only ads whose remaining budget (``totalBudget - spentBudget``) is below a given threshold value (absolute number or a percentage).'
+          schema:
+            type: number
+            format: int64
+          examples:
+            remainingBudgetAbsoluteNumber:
+              value: 34534500
+            remainingBudgetPercentage:
+              value: 70%
+        - name: startDate
+          in: query
+          required: false
+          description: 'Determines the start date of the period to select ads with activity for.'
+          schema:
+            type: string
+            format: date
+          example: '2022-12-04'
+        - name: endDate
+          in: query
+          required: false
+          description: 'Determines the end date of the period to select ads with activity for. Should represent a date equal to or after the ``startDate``.'
+          schema:
+            type: string
+            format: date
+          example: '2023-06-13'
+        - name: categoryIds
+          in: query
+          required: false
+          description: 'List of category IDs to filter by. Only leaf category id’s are useful, since ads can only be placed in leaf categories.'
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+          example: [55500, 1280000]
+        - name: campaignId
+          in: query
+          required: false
+          description: 'Filters the result set by the campaign ID to which the ads belong.'
+          schema:
+              type: integer
+              format: int64
+          example: 1234
+        - name: bidLevel
+          in: query
+          required: false
+          explode: false
+          description: 'Filters the result set by the bid level. Should be a comma separated list of possible bid levels. Only applies to ads with automatic bidding (bidMicros = "AUTOMATIC").'
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - 'UNSET'
+                - 'LOW'
+                - 'MEDIUM'
+                - 'HIGH'
+                - 'TOP'
+            uniqueItems: true
+          example:
+            - 'MEDIUM'
+            - 'HIGH'
+        - name: _include
+          in: query
+          required: false
+          description: 'Comma-separated-list of ad fields to include.'
+          schema:
+            type: array
+            items:
+              uniqueItems: true
+              anyOf:
+                - enum:
+                    - 'id'
+                    - 'title'
+                    - 'description'
+                    - 'categoryId'
+                    - 'status'
+                    - 'price'
+                    - 'bidMicros'
+                    - 'bidLevel'
+                    - 'budgets'
+                    - 'salutation'
+                    - 'sellerName'
+                    - 'postcode'
+                    - 'regionId'
+                    - 'phoneNumber'
+                    - 'allowContactByEmail'
+                    - 'dateCreated'
+                    - 'dateLastUpdated'
+                    - 'vendorId'
+                    - 'links'
+                    - 'images'
+                    - 'attributes'
+                    - 'shippingOptions'
+              example:
+                - 'title'
+                - 'description'
+                - 'status'
+        - name: _exclude
+          in: query
+          required: false
+          description: 'Comma-separated-list of ad fields to omit.'
+          schema:
+            type: array
+            items:
+              uniqueItems: true
+              anyOf:
+                - enum:
+                    - 'id'
+                    - 'title'
+                    - 'description'
+                    - 'categoryId'
+                    - 'status'
+                    - 'price'
+                    - 'bidMicros'
+                    - 'bidLevel'
+                    - 'budgets'
+                    - 'salutation'
+                    - 'sellerName'
+                    - 'postcode'
+                    - 'regionId'
+                    - 'phoneNumber'
+                    - 'allowContactByEmail'
+                    - 'dateCreated'
+                    - 'dateLastUpdated'
+                    - 'vendorId'
+                    - 'links'
+                    - 'images'
+                    - 'attributes'
+                    - 'shippingOptions'
+              example:
+                - 'images'
+                - 'attributes'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ads'
+          content:
+            application/sellside.ad.list-v5+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/ListV5'
+            application/sellside.ad.list-v3+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/ListV3'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+    post:
+      tags:
+        - Ads
+      summary: 'Creates a new ad for the current user.'
+      description: 'Version 5 has a slightly different backwards-incompatible structure than v3. Version 4 is omitted on purpose. <br>
+                     To use the automatic bidding functionality, tt is <b>necessary to [set a campaign daily budget](#/paths/~1campaign~1{id}~1budgets/put)</b> when using automatic bidding. Setting an <b>ad budget</b>, however, is not necessary.
+                     <br><br>Version 3 works just like v2, except the response body contains an additional field ``statusReasons``. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
+      operationId: postAd
+      requestBody:
+        required: true
+        content:
+          application/sellside.ad-v5+json:
+            schema:
+              $ref: './ads/requests.yaml#/components/schemas/V5'
+            examples:
+              manualBidding:
+                $ref: './ads/requests.yaml#/components/examples/ManualBiddingV5'
+              autoBidding:
+                $ref: './ads/requests.yaml#/components/examples/AutoBiddingV5'
+          application/sellside.ad-v3+json:
+            schema:
+              $ref: './ads/requests.yaml#/components/schemas/V3'
+          application/sellside.ad-v2+json:
+            schema:
+              $ref: './ads/requests.yaml#/components/schemas/V2'
+      responses:
+        '201':
+          description: 'Created'
+          content:
+            application/sellside.ad-v5+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V5'
+            application/sellside.ad-v3+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V3'
+            application/sellside.ad-v2+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V2'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /ad/prefill:
+    post:
+      tags:
+        - Ads
+      summary: 'Returns a template for an ad, to be used for prefilling. This template can contain suggestions for title, category, description and attributes.'
+      description: 'Retrieving prefill information is possible only for ads from categories that have defined identifying attributes. Identifying attributes are attributes that can uniquely identify advertised items. An example of identifying attribute is ISBN, which can be used to uniquely identify a specific version of a book.'
+      operationId: postAdPrefil
+      requestBody:
+        content:
+          application/sellside.ad.template-v1+json:
+            schema:
+              $ref: './ads/requests.yaml#/components/schemas/PrefillTemplate'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'prefill_ad'
+            Location:
+              description: 'When the ad is successfully created, this contains the URL location of the ad.'
+              schema:
+                type: string
+                example: '/api/sellside/ad/1234234'
+          content:
+            application/sellside.ad.template-v1+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/PrefillTemplate'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+              examples:
+                typeMismatch:
+                  value:
+                    - code: 1006
+                      text: 'type mismatch'
+                      msg: 'The type of field ''categoryId'' does not match'
+                      field: 'categoryId'
+                missingArgument:
+                  value:
+                    - code: 2000
+                      text: 'missing argument'
+                      msg: 'The field ''categoryId'' was missing'
+                      field: 'categoryId'
+                invalidArgument:
+                  value:
+                    - code: 2001
+                      text: 'invalid argument'
+                      msg: 'The value of field ''categoryId'' was invalid'
+                      field: 'categoryId'
+                categoryPrefillNotSupported:
+                  value:
+                    - code: 2029
+                      text: 'category prefill not supported'
+                      msg: 'Prefill is not supported for the category'
+                      field: 'categoryId'
+                MissingIdentifyingAttribute:
+                  value:
+                    - code: 2030
+                      text: 'missing identifying attribute'
+                      msg: 'Missing one of the identifying attributes: licensePlate'
+                      field: 'attributes'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /ad/{id}/funnel:
+    get:
+      tags:
+        - Ads
+      summary: 'Get performance funnel for an ad.'
+      description: 'Returns performance predictions such as number of impressions, clicks and url clicks for a given ad and cpc value.<br>
+        The endpoint also returns information regarding the current page on which the ad is displayed (``pageNumber``) and the required cpc value which would place the ad on page one (``averageCpc``). If ``cpc`` is greater than ``maxCpc`` then this ad does not perform well enough to be placed on page one. <br>
+        The ``averageCpc`` field in the response marks the required cpc value to place the ad on page one in its category. We will rename this field in a future version of the endpoint to make this clearer.
+        '
+      operationId: getAdFunnel
+      deprecated: true
+      parameters:
+        - name: id
+          in: path
+          description: 'ID of the ad for which performance funnel is requested.'
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 423920348
+        - name: cpc
+          in: query
+          description: 'The CPC value in euro cents for which to make the prediction.'
+          required: true
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            example: 50
+        - name: _include
+          in: query
+          required: false
+          description: 'Comma-separated-list of ad fields to include.'
+          schema:
+            type: array
+            items:
+              uniqueItems: true
+              anyOf:
+                - enum:
+                    - 'cpc'
+                    - 'pageNumber'
+                    - 'averageClicks'
+                    - 'averageCpc'
+                    - 'averageImpressions'
+                    - 'averageUrlClicks'
+                    - 'ctr'
+                    - 'urlCtr'
+                    - 'maxCpc'
+              example:
+                - 'cpc'
+                - 'averageClicks'
+        - name: _exclude
+          in: query
+          required: false
+          description: 'Comma-separated-list of ad fields to omit.'
+          schema:
+            type: array
+            items:
+              uniqueItems: true
+              anyOf:
+                - enum:
+                    - 'cpc'
+                    - 'pageNumber'
+                    - 'averageClicks'
+                    - 'averageCpc'
+                    - 'averageImpressions'
+                    - 'averageUrlClicks'
+                    - 'ctr'
+                    - 'urlCtr'
+                    - 'maxCpc'
+              example:
+                - 'averageImpressions'
+                - 'urlCtr'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+          content:
+            application/sellside.funnel-v1+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/FunnelV1'
+        '204':
+          description: 'No Content'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+        '400':
+          description: 'Bad Request'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'the value of the field ''cpc'' was invalid'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /ad/{id}/position:
+    get:
+      tags:
+        - Ads
+      summary: 'Get the current page position of an ad in an L1 category browsing context, as well as the required bidMicros which would place the ad on the first L1 category page.'
+      operationId: getAdPosition
+      parameters:
+        - name: id
+          in: path
+          description: 'ID of the ad for which the position funnel is requested.'
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 423920348
+        - name: bidMicros
+          in: query
+          description: 'The bidMicros value (in micros) for which to make the position funnel calculation.'
+          required: true
+          schema:
+            type: number
+            format: int64
+            minimum: 1
+            example: 50000
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+          content:
+            application/sellside.position-v1+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/PositionV1'
+        '204':
+          description: 'No Content'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+        '400':
+          description: 'Bad Request'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'the value of the field ''bidMicros'' was invalid'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /ad/positions:
+    get:
+      tags:
+        - Ads
+      summary: 'Get the current page positions of list of ads in an L1 category browsing context, as well as the required bidMicros which would place each ad on the first L1 category page.'
+      description: 'This is a bulk version of the ``/ad/{id}/position`` endpoint. It returns the same information for a list of ads.'
+      operationId: getAdPositions
+      parameters:
+        - name: adIds
+          in: path
+          description: 'A list of adIds for the ads for which the position funnel is requested.'
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+          example: [ 11232, 2231, 32453 ]
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+          content:
+            application/sellside.position.mapping-v1+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/PositionsV1'
+        '204':
+          description: 'No Content'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+        '400':
+          description: 'Bad Request'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad_funnel'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /ad/mapping/externalids:
+    get:
+      tags:
+        - Ads
+      summary: 'Get a map of ad IDs for the user to the externalId the ad has'
+      description: 'Returns a map of adIds for the current user to the externalId the ad has.
+        <br>
+        This utility call is intended for uncommon usecases, such as when a client on-boards an already existing admarkt user and needs to do a one-time sync of adIds vs externalIds, or other cases where data got lost at the client.
+        <br>
+        Ads without externalId will not be present in the resulting map.'
+      deprecated: true
+      parameters:
+        - name: status
+          description: 'One of the possible Ad Status values to filter on.'
+          in: query
+          schema:
+            type: string
+            enum:
+              - 'ACTIVE'
+              - 'PAUSED'
+              - 'BUDGET_REACHED'
+              - 'DAILY_BUDGET_REACHED'
+              - 'DELETED'
+              - 'DELETED_BY_CS'
+              - 'SUSPENDED_BY_CS'
+              - 'DOMAIN_PENDING'
+            default: 'ACTIVE'
+
+        - name: limit
+          in: query
+          description: 'Limits the number of records returned.'
+          schema:
+            type: number
+            default: 1000
+            maximum: 10000
+          example: 10
+        - name: offset
+          in: query
+          description: 'Skips the first N records.'
+          schema:
+            type: number
+          example: 5
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad'
+          content:
+            application/sellside.ad.external.id.mapping-v2+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/MappingExternalIdsV2'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /ad/byVendor/{vendorId}:
+    get:
+      tags:
+        - Ads
+      summary: 'Get ad by vendorId'
+      description: 'Returns a single ad with the given ``vendorId``. Version 5 has a slightly different backwards-incompatible structure than v3. Version 4 is omitted on purpose. <br>
+          Version 3 works just like v2, except the response body contains an additional field ``statusReasons``. This field is currently used to indicate the reason why a certain ad might be set to a certain status by our system. This could be due to, for example, an action (like new website domain approval) pending from the user, which is a mechanism used to prevent account takeovers from setting the website URL to a malicious one.'
+      operationId: getAdByVendorId
+      parameters:
+        - name: vendorId
+          in: path
+          description: 'The vendorId of ad to return'
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            example: 'OURSHOP-1423453-34'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_ad'
+          content:
+            application/sellside.ad-v5+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V5'
+            application/sellside.ad-v2+json:
+              schema:
+                $ref: './ads/responses.yaml#/components/schemas/V2'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2005
+                  text: 'value too long'
+                  msg: 'max. length is 64 characters'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /image/{id}:
+    get:
+      tags:
+        - Ads
+      summary: 'Retrieves an image uploaded via POST /image by the same user.'
+      description: 'Images which have not been saved with an ad are removed after 30 minutes.'
+      operationId: getImageByID
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of a previously uploaded ad image, that is requested.'
+          required: true
+          schema:
+            type: string
+            format: byte
+            example: '9beac3db90c27aa8476cb880a362ceba'
+        - name: Accept
+          in: header
+          description: 'The content type of the image to be returned'
+          required: true
+          schema:
+            type: string
+            enum: [ 'image/*' ]
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_image'
+          content:
+            image/jpg: {}
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+                  field: 'id'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /image:
+    post:
+      tags:
+        - Ads
+      summary: 'Upload ad images.'
+      description: 'The maximum image size is 8MB and the supported image formats are: PNG, GIF, BMP and JPG. <br>
+        All images are converted to JPG with maximum dimensions of 1024x1024 while the aspect ratio is maintained.'
+      operationId: postImage
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+            example: '...image bytes...'
+      parameters:
+        - name: Accept
+          in: header
+          description: 'map with the name and a unique identifier for that image. The name is taken from the name parameter of the Content-Disposition header.'
+          required: true
+          schema:
+            type: string
+            enum: [ 'image/*' ]
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_rw console_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'post_image'
+            Content-Disposition:
+              schema:
+                type: string
+                example: 'form-data; name="image1"; filename="logo.png"'
+          content:
+            application/sellside.image.list-v1+json:
+              schema:
+                type: object
+                description: 'A map with the name and a unique identifier for each uploaded image.'
+                properties:
+                  image1:
+                    type: string
+                    format: url
+                    example: 'https://localhost/api/sellside/image/9beac3db90c27aa8476cb880a362ceba/b2c11184b33bdd3e12a1f46152d37a89.jpg'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  
+  # CATEGORIES
+  /categories:
+    get:
+      tags:
+        - Categories
+      summary: 'Returns the a map of id to categories in the format described in the category taxonomy.'
+      description: 'The category tree contains all the information about category definitions, attribute definitions and validation rules for placing ads.'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+            example: 'application/sellside.category.list-v5+json'
+          required: true
+        - name: categoryIds
+          in: query
+          description: 'Comma-separated list of IDs for the requested categories from the category taxonomy tree.'
+          required: true
+          $ref: './categories/params.yaml#/components/parameters/IDs'
+        - name: _include
+          in: query
+          description: 'Comma-separated-list of fields to include. Optional, default is all fields.'
+          required: false
+          $ref: './categories/params.yaml#/components/parameters/IncludeExcludeFields'
+        - name: _exclude
+          in: query
+          description: 'Comma-separated-list of fields to omit. Optional, default empty.'
+          required: false
+          $ref: './categories/params.yaml#/components/parameters/IncludeExcludeFields'
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/sellside.category.list-v5+json:
+              schema:
+                $ref: './categories/responses.yaml#/components/schemas/NonLeafV5'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2000
+                  text: 'missing argument'
+                  msg: 'The field ''categoryIds'' was missing'
+                  field: 'categoryIds'
+  /category/{id}:
+    get:
+      tags:
+        - Categories
+      summary: 'Returns the category tree or parts of it in the category taxonomy format, starting from the category with the given category id.'
+      description: 'To return the category tree starting from the root node use id 0. To retrieve all sub levels specify a sufficiently large number, e.g. 9999.'
+      parameters:
+        - name: id
+          in: path
+          description: 'The starting category ID of the taxonomy (sub) tree.'
+          required: true
+          schema:
+            $ref: './categories/params.yaml#/components/parameters/ID'
+        - name: levels
+          in: query
+          description: 'Specifies how many levels starting from the current one you want to retrieve.'
+          $ref: './categories/params.yaml#/components/parameters/Levels'
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/sellside.category-v5+json:
+              schema:
+                $ref: './categories/responses.yaml#/components/schemas/NonLeafV5'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2000
+                  text: 'missing argument'
+                  msg: 'The field ''id'' was missing'
+                  field: 'id'
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'The value of field ''levels'' was invalid'
+                  field: 'levels'
+                  value: -1
+  /category/{id}/funnel:
+    get:
+      tags:
+        - Categories
+      summary: 'Returns performance predictions such as number of impressions, clicks and url clicks for a given category and cpc value.'
+      description: 'The endpoint also returns information regarding the page on which a new ad will be displayed if placed in the given category and with the given ``cpc`` value (``pageNumber``).
+      The response also contains a suggested cpc value to place an ad on page one in this category (``averageCpc``). If cpc is greater than ``maxCpc`` then the ads of this seller generally do not perform well enough to place new ads on the first page.'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 'The starting category ID of the taxonomy (sub) tree.'
+          schema:
+            type: integer
+            example: 856
+        - name: regionId
+          in: query
+          description: 'The region ID for which to make the prediction. MP & TWH users should omit this field.'
+          schema:
+            type: integer
+        - name: cpc
+          in: query
+          description: 'The cpc value in euro cents for which to make the prediction.'
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 2
+          example: 50
+        - name: _include
+          in: query
+          required: false
+          description: 'Comma-separated-list of ad fields to include.'
+          $ref: './categories/params.yaml#/components/parameters/IncludeExcludeFunnelFields'
+        - name: _exclude
+          in: query
+          required: false
+          description: 'Comma-separated-list of ad fields to omit.'
+          $ref: './categories/params.yaml#/components/parameters/IncludeExcludeFunnelFields'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_funnel'
+          content:
+            application/sellside.funnel-v1+json:
+              schema:
+                $ref: './categories/responses.yaml#/components/schemas/FunnelResponse'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'The value of field ''cpc'' was invalid'
+                  field: 'cpc'
+                  value: -1
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+
+  # REGIONS
+  /regions:
+    get:
+      tags:
+        - Regions
+      summary: 'Returns the a map of id to regions in the format described in the regions taxonomy.'
+      description: 'The region tree contains all the information about region definitions for placing ads.'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+            example: 'application/sellside.region.list-v1+json'
+          required: true
+        - name: regionIds
+          $ref: './regions/params.yaml#/components/parameters/IDs'
+          in: query
+          description: 'Comma-separated list of IDs for the requested regions from the regions taxonomy tree.'
+          required: true
+        - name: _include
+          $ref: './regions/params.yaml#/components/parameters/IncludeExcludeRegionFields'
+          in: query
+          description: 'Comma-separated-list of fields to include. Optional, default is all fields.'
+          required: false
+        - name: _exclude
+          $ref: './regions/params.yaml#/components/parameters/IncludeExcludeRegionFields'
+          in: query
+          description: 'Comma-separated-list of fields to omit. Optional, default empty.'
+          required: false
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/sellside.category.list-v5+json:
+              schema:
+                $ref: './regions/responses.yaml#/components/schemas/NonLeaf'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2000
+                  text: 'missing argument'
+                  msg: 'The field ''regionIds'' was missing'
+                  field: 'regionIds'
+  /region/{id}:
+    get:
+      tags:
+        - Regions
+      summary: 'Returns the region tree or parts of it starting from the node with the given region id.'
+      description: 'To return the region tree starting from the root node use id 0. To retrieve all sub levels specify a sufficiently large number, e.g. 9999.'
+      parameters:
+        - name: id
+          in: path
+          description: 'The starting region ID of the taxonomy (sub) tree.'
+          required: true
+          $ref: './regions/params.yaml#/components/parameters/ID'
+        - name: levels
+          in: query
+          description: 'Specifies how many levels starting from the current one you want to retrieve.'
+          required: false
+          $ref: './regions/params.yaml#/components/parameters/Levels'
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/sellside.region.list-v5+json:
+              schema:
+                $ref: './regions/responses.yaml#/components/schemas/NonLeaf'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2000
+                  text: 'missing argument'
+                  msg: 'The field ''id'' was missing'
+                  field: 'id'
+                - code: 2001
+                  text: 'invalid argument'
+                  msg: 'The value of field ''levels'' was invalid'
+                  field: 'levels'
+                  value: -1
+
+# FEEDS
+  /feed/import/{id}/detail:
+    get:
+      tags:
+        - Feeds
+      summary: 'Returns a summary of the particular feed import'
+      description: 'Provides information on whether there were any errors or warnings associated with a specific import.'
+      operationId: getFeedImportDetail
+      parameters:
+        - name: id
+          in: path
+          description: 'the import ID for which details are requested'
+          $ref: './feeds/params.yaml#/components/parameters/ImportID'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_feed_import'
+          content:
+            application/sellside.feedimportdetail-v2+json:
+              schema:
+                $ref: './feeds/responses.yaml#/components/schemas/ImportDetailV2'
+              examples:
+                successWarningsErrors:
+                  value:
+                    id: 123
+                    url: 'https://feed.com/id/5324'
+                    dateCreated: '2021-08-31T16:12:53Z'
+                    status: 'DONE'
+                    error: ''
+                    totalRecordsRead: 110
+                    recordsSucceeded: 106
+                    recordsFailed: 4
+                    recordsWithWarnings: 10
+                    errors:
+                      price should be lower than originalPrice:
+                        count: 4
+                        vendorIdsSample:
+                          - '566'
+                          - 'abc-788'
+                          - '990232'
+                          - '000mcakjn'
+                        rowNumbersSample: []
+                      field 'autobid' has invalid boolean value, allowed values '[TRUE FALSE]':
+                        count: 2
+                        vendorIdsSample: []
+                        rowNumbersSample:
+                          - '4'
+                          - '42'
+                    warnings:
+                      externalId is deprecated (use only vendorId):
+                        count: 2
+                        vendorIdsSample:
+                          - 'vid6778787'
+                          - 'vendorid124'
+                      mandatory attribute 240 absent:
+                        count: 8
+                        vendorIdsSample:
+                          - 'vendorid124'
+                          - 'vendorid224'
+                successXMLValidationRejected:
+                  value:
+                    id: 123
+                    url: 'https://feed.com/id/5324'
+                    dateCreated: '2021-08-31T16:12:53Z'
+                    status: 'REJECTED'
+                    error: 'feed validation failure: invalid feed: parsing xml feed: XML syntax error on line 34: invalid character entity &raquo;'
+                    totalCount: 0
+                    okCount: 0
+                    errorCount: 0
+                    warningCount: 0
+                    errors: { }
+                    warnings: { }
+                successURLFetchFailure:
+                  value:
+                    id: 123
+                    url: 'https://feed.com/id/5324.xml'
+                    dateCreated: '2021-08-31T16:12:53Z'
+                    status: 'REJECTED'
+                    error: 'HTTP 404 Not Found for: https://feed.com/id/5324.xml: fetch url failure'
+                    totalCount: 0
+                    okCount: 0
+                    errorCount: 0
+                    warningCount: 0
+                    errors: { }
+                    warnings: { }
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /feed/config:
+    get:
+      tags:
+        - Feeds
+      summary: 'Returns the feed configuration of the current user'
+      description: 'A user can update his or her ads by describing them in an XML document, called **feed**. The system reads all user feeds once per day and synchronizes ads in the system.
+      <br><br>
+      The feed configuration object contains an ``enabled`` field. It is **true** when the current user has enabled feed publication and **false** otherwise.
+      <br>
+      When feed publication is enabled, the feed configuration object contains a field ``feedUrl`` which contains the configured feed url for the current user.
+      <br>
+      Access to the feed functionality may be granted per user by the Customer Service.
+      '
+      operationId: getFeedConfigV1
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_feed_config'
+          content:
+            application/sellside.feedconfig-v1+json:
+              schema:
+                $ref: './feeds/responses.yaml#/components/schemas/ConfigV1'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1008
+                  text: 'access denied'
+                  msg: 'The user is invalid'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+    post:
+      tags:
+        - Feeds
+      summary: 'Updates the feed configuration of the current user.'
+      description: 'The feed configuration object must contain a boolean field ``enabled``.
+      <br>
+      Depending on its value the feed will be activated or disabled. If the feed is being activated, the field feedUrl is mandatory and should contain a valid URL to a feed XML document.'
+      operationId: postFeedConfigV1
+      requestBody:
+        required: true
+        content:
+          application/sellside.feedconfig-v1+json:
+            schema:
+              $ref: './feeds/requests.yaml#/components/schemas/ConfigV1'
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/sellside.feedconfig-v1+json:
+              schema:
+                $ref: './feeds/responses.yaml#/components/schemas/ConfigV1'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'console_rw api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'post_feed_config'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1008
+                  text: 'invalid url'
+                  msg: 'The value of field ''feedUrl'' is not a valid url'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /feed/xsd:
+    get:
+      tags:
+        - Feeds
+      summary: 'Returns the XSD used to validate feed XML files against.'
+      description: 'Users can use this XSD to check their feed XML themselves, instead of just submitting it and waiting for results the next day.'
+      operationId: getFeedXSDv1
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            text/xml: # TODO: move the whole XSD XML schema here
+              schema:
+                type: string
+  /feed/empty:
+    get:
+      tags:
+        - Feeds
+      summary: 'Returns an empty file that can be used to temporarily pause the entire ad inventory.'
+      description: 'It provides a downloadable file with a unique name, sufficient to upload it to your xml web server and change the URL to it.'
+      operationId: getFeedEmptyV1
+      parameters:
+        - name: format
+          in: query
+          description: 'Provide the format of the file.'
+          required: false
+          $ref: './feeds/params.yaml#/components/parameters/Format'
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            text/xml:
+              schema:
+                type: object
+                xml:
+                  name: ads
+            text/tab-separated-values:
+              schema:
+                type: string
+                example: 'id\ttitle\tdescription'
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+                description: 'An example of the Content-Disposition header'
+                example: 'attachment; filename="empty-234897234.xml'
+  /feed/import:
+    get:
+      tags:
+        - Feeds
+      summary: 'Returns the feed imports of the current user in descending chronological order.'
+      description: 'Feed imports are triggered automatically by the system once per day or on demand by Customer Service agents. <br>
+      Each feed import object contains the time when it was started (``dateCreated``), the URL of the user’s XML document (``url``) and whether the document could successfully be processed (``status``). <br>
+
+      <br><br>
+      The feed import object also contains counters to denote the total number of ads specified in the XML document (``totalCount``), the number of ads which were processed without errors (``okCount``),
+      the number of ads which were processed with warnings (``warningCount``) and the number of ads which were rejected due to errors (``errorCount``).
+      '
+      operationId: getFeedImport
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          description: 'Limits the number of records returned.'
+          schema:
+            type: integer
+            maximum: 100
+            default: 10
+          example: 50
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_feed_import'
+          content:
+            application/sellside.feedimport.list-v1+json:
+              schema:
+                $ref: './feeds/responses.yaml#/components/schemas/ImportListV1'
+        '400':
+          description: 'Bad Request'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 2002
+                  text: 'out of range'
+                  msg: 'The value of the field ''limit'' was out of range (n > 1)'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+
+  # CAMPAIGNS
+  /campaign:
+    post:
+      tags:
+        - Campaigns
+      summary: 'Creates a new campaign for the user'
+      description: 'Creates a new campaign for the user. If successful, it returns an object representing the campaign, with default values on certain fields, if not provided.'
+      operationId: postCampaignV2
+      requestBody:
+        content:
+          application/sellside.campaign-v5+json:
+            schema:
+              $ref: './campaigns/requests.yaml#/components/schemas/V5'
+      responses:
+        '201':
+          description: 'Campaign created'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro api_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'post_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns/responses.yaml#/components/schemas/V5'
+          links:
+            vendorIdLink:
+              operationId: getCampaignByVendorId
+              parameters:
+                vendorId: '$response.body#/vendorId'
+        '400':
+          description: 'Validation error'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+                example:
+                  - code: 2034
+                    text: 'campaign already exists'
+                    msg: 'Campaign can only be created once for the same user'
+                    field: 'campaign'
+                    arg: ''
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  '/campaign/byVendor/{vendorId}':
+    get:
+      tags:
+        - Campaigns
+      summary: 'Returns a single campaign with the given vendorId.'
+      operationId: getCampaignByVendorId
+      parameters:
+        - name: vendorId
+          in: path
+          description: 'value of the vendorId field of the campaign'
+          schema:
+            type: string
+            example: 'my-christmas-campaign-2020'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns/responses.yaml#/components/schemas/V5'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: []
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /campaign/{id}:
+    get:
+      tags:
+        - Campaigns
+      summary: 'Returns a single existing campaign with the given id.'
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of requested campaign.'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            example: 123
+          required: true
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns/responses.yaml#/components/schemas/V5'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+    put:
+      tags:
+        - Campaigns
+      summary: 'Updates an existing campaign identified by a campaign id.'
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of requested campaign.'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            example: 123
+          required: true
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      requestBody:
+        content:
+          application/sellside.campaign-v5+json:
+            schema:
+              $ref: './campaigns/requests.yaml#/components/schemas/V5'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_rw console_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'put_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                $ref: './campaigns/responses.yaml#/components/schemas/V5'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /campaigns:
+    get:
+      tags:
+        - Campaigns
+      summary: 'Get all campaigns for the user.'
+      parameters:
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign.list-v5+json'
+          required: true
+        - name: limit
+          in: query
+          required: false
+          description: 'Limits the number of campaigns returned.'
+          schema:
+            type: integer
+            maximum: 100
+            default: 100
+          example: 50
+        - name: pageToken
+          in: query
+          required: false
+          description: 'Encoded information on where the previous page ended, send this along with the same request to get the next page of results.'
+          schema:
+            type: string
+            format: byte
+          example: 'eyJpZCI6MTAwMT'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_campaign'
+          content:
+            application/sellside.campaign.list-v5+json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    description: 'The total number of campaigns for the authenticated user.'
+                    type: integer
+                    format: int64
+                    example: 1
+                    minimum: 0
+                  nextPageToken:
+                    description: 'Replaces the usage of the ‘offset’ parameter and allows the caller to paginate through a large list of ads more efficiently. In essence, it contains encoded information on where the returned result ended, so it can serve as additional filters in the call for the next result set, making that call more efficient.
+                    When a response does not contain a nextPageToken you have reached the last page of results and there are no more to fetch.
+                      '
+                    type: string
+                    example: 'eyJpZCI6MTAwMTgz'
+                  campaigns:
+                    type: array
+                    items:
+                      $ref: './campaigns//responses.yaml#/components/schemas/V5'
+
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /campaign/{id}/status/{status}:
+    put:
+      tags:
+        - Campaigns
+      summary: 'Updates the status of the campaign. It does not change the individual status of the ads in the campaign, but it can change their visibility. This means, if the campaign is paused, all its ads will not be shown. If the campaign is active, only the ads with `ACTIVE` individual status will be shown.'
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of requested campaign.'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            example: 123
+          required: true
+        - name: status
+          in: path
+          description: 'The desired status of the campaign. Possible values are: ACTIVE, PAUSED. When pausing or activating, the status of the individual ads in the campaign is not changed. However, the visibility of the ads is affected by the campaign status.'
+          required: true
+          schema:
+            $ref: './campaigns/params.yaml#/components/parameters/StatusV5'
+            example: 'PAUSED'
+        - name: scheduledResumeDate
+          in: query
+          required: false
+          description: 'The date at which the paused campaign should be automatically resumed (activated) by the system.
+            It must be between one calendar day and 365 calendar days in the future (in local tenant timezone). It can only
+            be provided when the campaign is set to paused.
+            This field will be cleared the moment the campaign is activated, either automatically or manually.'
+          schema:
+            type: string
+            format: date
+            example: '2026-01-01'
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign-v5+json'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_rw console_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'put_campaign'
+          content:
+            application/sellside.campaign-v5+json:
+              schema:
+                type: object # empty
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+  /campaign/{id}/budgets:
+    put:
+      tags:
+        - Campaigns
+      summary: 'Updates the daily and total budget limits of a campaign.'
+      parameters:
+        - name: id
+          in: path
+          description: 'A unique identifier of requested campaign.'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            example: 123
+          required: true
+        - name: Accept
+          in: header
+          description: 'This header represents the version of the response acceptable by the client.'
+          schema:
+            type: string
+            example: 'application/sellside.campaign.budgets-v5+json'
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/sellside.campaign.budgets-v5+json:
+            schema:
+              $ref: './campaigns/requests.yaml#/components/schemas/BudgetsV5'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_rw console_rw'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'put_campaign'
+          content:
+            application/sellside.campaign.budgets-v5+json:
+              schema:
+                $ref: './campaigns//responses.yaml#/components/schemas/BudgetsV5'
+        '404':
+          description: 'Not Found'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1004
+                  text: 'not found'
+                  msg: 'The entity was not found'
+        '401':
+          description: 'Unauthorized'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'missing token'
+                  msg: 'Authorization header is missing or in the wrong format'
+        '406':
+          description: 'Not Acceptable'
+          content:
+            application/json:
+              schema:
+                $ref: './errors.yaml#/components/schemas/NotSupportedError'
+        '500':
+          description: 'Server Error'
+          content:
+            application/sellside.error-v1+json; charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1000
+                  text: 'internal error'
+                  msg: 'The server encountered an error'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_rw'
+            - 'api_rw'
+
+  # REPORTING
+  /metrics/report:
+    get:
+      tags:
+        - Reporting
+      summary: 'Returns a performance report for a selected date period, per ad. '
+      description: 'The report contains statistics for performance events like impressions, clicks, url clicks, emails for all ads which have had performance-related activity.<br>
+      <span>&#9888;</span><br>
+      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
+      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
+
+      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
+      parameters:
+        - name: Accept
+          in: header
+          description: 'This header depends on the choice of the scope for the metrics. A scope for a metric defines the level at which that metric is defined — hit, session, or user.
+          Conceptually, user is the highest level scope and hit is the lowest level scope.
+          For example, ``clicks`` counts the number of clicks that ad received when the scope is _hit_, whereas it counts the number of sessions with clicks when the scope is _session_.
+          We plan to extend support for user-level scoped metrics if there is demand for it.'
+          schema:
+            type: string
+            example: 'application/sellside.metrics.ad-hit-v2+json'
+          required: true
+        - name: startDate
+          in: query
+          description: 'Report start date'
+          schema:
+            $ref: './reporting/params.yaml#/components/parameters/Date'
+        - name: endDate
+          in: query
+          description: 'Report end date (inclusive)'
+          schema:
+            $ref: './reporting/params.yaml#/components/parameters/Date'
+        - name: adIds
+          in: query
+          description: 'Comma-separated-list of ad id’s which to filter the result set on. Optional, default empty to include data for all ads.'
+          schema:
+            $ref: './reporting/params.yaml#/components/parameters/AdIDs'
+          required: false
+        - name: campaignId
+          in: query
+          description: 'A campaignId to filter the result set on. Default empty to include data for all campaigns the ads have been in.'
+          required: false
+          schema:
+            type: integer
+            format: int64
+          example: 123
+        - name: status
+          in: query
+          description: 'Comma-separated-list of ad statuses which to filter the result set on.'
+          required: false
+          schema:
+            $ref: './reporting/params.yaml#/components/parameters/AdStatus'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_report'
+          content:
+            application/sellside.metrics.ad-hit-v2+json:
+              schema:
+                $ref: './reporting/responses.yaml#/components/schemas/ReportV2'
+            application/sellside.metrics.ad-session-v2+json:
+              schema:
+                $ref: './reporting/responses.yaml#/components/schemas/ReportV2'
+            application/sellside.metrics.ad-hit-v1+json:
+              schema:
+                $ref: './reporting/responses.yaml#/components/schemas/ReportV1'
+            application/sellside.metrics.ad-session-v1+json:
+              schema:
+                $ref: './reporting/responses.yaml#/components/schemas/ReportV1'
+        '400':
+          description: 'Bad Request'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                  - code: 2000
+                    text: 'missing argument'
+                    msg: 'The field ''startDate'' was missing'
+                    field: 'startDate'
+                  - code: 2000
+                    text: 'missing argument'
+                    msg: 'The field ''endDate'' was missing'
+                    field: 'endDate'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /metrics/ads:
+    get:
+      tags:
+        - Reporting
+      summary: 'Returns an ads performance report either in Excel or in CSV format.'
+      description: 'The report represents a timeseries breakdown of the performance of each ad **which has had performance-related activity in the requested period.**
+      <span>&#9888;</span><br>
+      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
+      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
+
+      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
+      parameters:
+        - name: accept
+          in: header
+          description: 'If the Accept header is ``application/vnd.ms-excel;v=2`` an Excel document is created, in ``.xlsx`` format.
+          If the Accept header is ``text/csv;v=2`` a CSV document is created, in the standard ``RFC-4180`` format. Fields with a comma, fields with a quote or newline, and fields which start with a space will be enclosed in quotes. Empty strings are not enclosed in quotes.'
+          required: true
+          schema:
+            type: string
+            example: 'text/csv;v=2'
+        - name: accept-language
+          in: header
+          description: 'advertises the preferred client locales (
+          language and region) for the report column names. Both ``language_REGION`` and ``language-REGION`` are supported formats, and can be assigned optional weights. If the preferred locale(s) are not available, a default one is used. Currently available locales are tenant-specific, and are listed below:'
+          schema:
+            type: string
+            example: 'nl-NL'
+        - name: aggregate
+          in: query
+          required: false
+          description: 'Granularity of the timeseries breakdown.'
+          $ref: './reporting/params.yaml#/components/parameters/TimeAggregation'
+        - name: startDate
+          in: query
+          required: true
+          description: 'Start date of the report in ``YYYY-MM-DD`` format (inclusive). Tenant timezone is assumed.'
+          $ref: './reporting/params.yaml#/components/parameters/Date'
+        - name: endDate
+          required: true
+          description: 'End date of the report in ```YYYY-MM-DD``` (inclusive). Tenant timezone is assumed.'
+          in: query
+          $ref: './reporting/params.yaml#/components/parameters/Date'
+        - name: includeDeleted
+          in: query
+          required: false
+          description: 'Deleted ads are included/excluded.'
+          schema:
+            type: boolean
+            default: false
+        - name: query
+          required: false
+          in: query
+          description: 'Search phrase to filter on ad titles.'
+          schema:
+            type: string
+            example: 'Interesting'
+        - name: fields
+          in: query
+          required: false
+          description: 'Comma-separated list of column fields to include in the report. Possible values are the response model fields. By default all fields are included, and this may affect the speed of data generation.'
+          $ref: './reporting/params.yaml#/components/parameters/AdsFields'
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_report'
+            Content-Type:
+              schema:
+                type: string
+                example: 'text/csv;v=2'
+            Content-Language:
+              schema:
+                description: ''
+                type: string
+                example: 'nl-NL'
+            Content-Disposition:
+              schema:
+                type: string
+                example: 'attachment; filename=mp-report-1-20180202-144340.csv'
+          content:
+            text/csv;v=2:
+              schema:
+                $ref: './reporting/responses.yaml#/components/schemas/AdsV2'
+              examples:
+                example1:
+                  value: |
+                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=yearly&fields=date,adID,clicks,spentMicros
+                    Accept: text/csv;v=2
+
+                    HTTP/1.1 200 OK
+                    Content-Type: text/csv;v=2
+                    Content-Language: nl-NL
+                    Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv
+                    Datum (geaggregeerde),Advertentie nummer,Totaal besteed (Micros),Clicks
+
+                    2018,7,0.3000000000,200000
+                    2018,8,0.1500000000,3000000
+                example2:
+                  value: |
+                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting
+                    Accept: text/csv
+                    Accept-Language: nl_NL, fr_NL;q=0.5
+
+                    HTTP/1.1 200 OK
+                    Content-Type: text/csv
+                    Content-Language: nl-NL
+                    Content-Disposition: attachment; filename=mp-report-1-20180202-144320.csv
+                    Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region
+                    2018-02-02,7,Cd's en Dvd's,Cd's | Country en Western,,"Interesting title, what about ""quotes""",2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht
+                    2018-02-03,8,Cd's en Dvd's,Cd's | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,2,4,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam
+                example3:
+                  value: |
+                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=monthly
+                    Accept: text/csv
+
+                    HTTP/1.1 200 OK
+                    Content-Type: text/csv
+                    Content-Language: nl-NL
+                    Content-Disposition: attachment; filename=mp-report-1-20180202-144330.csv
+                    Datum (geaggregeerde),Advertentie nummer,Groep,Rubriek,,Advertentietitel,Start,Eind,CPC (EUR),Totaal besteed (EUR),Clicks,Impressies,CTR (%),URL Clicks,E-mails,Engagement CTR (%),Vendor ID,Region
+                    2018-02,7,Cd's en Dvd's,Cd's | Country en Western,,"Interesting title, what about ""quotes""",2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor7,Utrecht
+                    2018-02,8,Cd's en Dvd's,Cd's | Country en Western,,Interesting CD with country music,2018-02-02 11:48:52,,0.1500000000,0.3000000000,20,40,50.0000000000,0,0,0.0000000000,someVendor8,Amsterdam
+                example4:
+                  value: |
+                    GET /api/sellside/metrics/ads?startDate=2018-01-01&endDate=2018-05-01&query=Interesting&aggregate=yearly&fields=date,adID,clicks,spent
+                    Accept: text/csv
+
+                    HTTP/1.1 200 OK
+                    Content-Type: text/csv
+                    Content-Language: nl-NL
+                    Content-Disposition: attachment; filename=mp-report-1-20180202-144340.csv
+                    Datum (geaggregeerde),Advertentie nummer,Totaal besteed (EUR),Clicks
+                    2018,7,0.3000000000,20
+                    2018,8,0.1500000000,0.3000000000
+            application/vnd.ms-excel;v=2:
+              schema:
+                type: object
+                $ref: './reporting/responses.yaml#/components/schemas/AdsV2'
+        '400':
+          description: 'Bad Request'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              examples:
+                missingArgument:
+                  value:
+                    - code: 2000
+                      text: 'missing argument'
+                      msg: 'The field ''endDate'' was missing'
+                      field: 'endDate'
+                outOfRange:
+                  value:
+                    - code: 2002
+                      text: 'out of range'
+                      msg: 'The value of the field ''endDate'' was out of range (< startDate)'
+                      field: 'endDate'
+                invalidArgument:
+                  value:
+                    - code: 2001
+                      text: 'invalid argument'
+                      msg: 'The value of field ''fields'' was invalid: unknown column ''spent'''
+                      field: 'endDate'
+        '415':
+          description: 'Unsupported Media Type'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+                example:
+                  - code: 2007
+                    text: 'unsupported format'
+                    msg: 'unsupported media type'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /metrics/data:
+    post:
+      tags:
+        - Reporting
+      summary: 'Returns the requested reporting metrics in a json format described in the new Reporting documentation.'
+      description: '
+      V2 removes ``am:cpc`` from dimensions. It replaces ``am:spent``, ``am:avgCPC``, ``am:eCPC``, ``am:sessionECPC`` metrics with their corresponding ``am:spentMicros``, ``am:avgBidMicros``, ``am:eSpentMicros``, ``am:sessionESpentMicros``. It replaces ``am:currentAdCPC`` enrichment with ``am:currentAdBidMicros``.
+      <span>&#9888;</span><br>
+      We introduce a new monetary unit of micros across our product, where one cent equals 10000 micros. <b>One micro is 1-millionth of the local tenant currency. This will allow for a higher level of granularity when specifying the cost (per click)</b>.<br><br>
+      We are substituting the current CPC values across the API with a bid value, and the actual (incurred) billed cost value - this to allow for better differentiation between the two. This split between bid and billed values is currently utilised for an experimental feature which adjusts the bid value for the quality of the traffic. <br><br>
+
+      This new micros unit, as well as the distinction between bid and billed cost, are to become a core part of the product. We will gradually deprecate any fields with cents and local currency units across the API.'
+      requestBody:
+        content:
+          application/sellside.metrics.data-v2+json:
+            schema:
+              $ref: './reporting/requests.yaml#/components/schemas/DataV2'
+            examples:
+              example1:
+                description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week.'
+                value:
+                  timeRanges:
+                    - period: lastWeek
+                  dimensions: [ ]
+                  metrics:
+                    - am:clicks
+                    - am:impressions
+                  filters:
+                    - field: am:categoryID
+                      operator: in
+                      value:
+                        - 1234
+                        - 5678
+              example2:
+                description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week,
+                but split performance metrics per day and category. In addition, sort by date in ascending direction.'
+                value:
+                  timeRanges:
+                    - period: lastWeek
+                  dimensions:
+                    - am:date
+                    - am:categoryID
+                  metrics:
+                    - am:clicks
+                    - am:impressions
+                  filters:
+                    - field: am:categoryID
+                      operator: in
+                      value:
+                        - 1234
+                        - 5678
+                  sorts:
+                    - field: am:date
+                      direction: asc
+              example3:
+                description: 'Get all clicks, and average spent micros for categories 1234 and 5678 for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results.'
+                value:
+                  timeRanges:
+                    - period: lastWeek
+                  dimensions:
+                    - am:adID
+                  metrics:
+                    - am:clicks
+                    - am:avgSpentMicros
+                  filters:
+                    - field: am:categoryID
+                      operator: in
+                      value:
+                        - 1234
+                        - 5678
+                  enrichment:
+                    - am:currentAdTitle
+                    - am:currentAdVendorID
+                  limit: 3
+              example4:
+                description: 'A sample request with all top-level query fields expanded.'
+                value:
+                  timeRanges:
+                    - period: lastWeek
+                  aggregate: daily
+                  dimensions:
+                    - am:date
+                    - am:adID
+                  metrics:
+                    - am:clicks
+                    - am:impressions
+                    - am:engagementCTR
+                  sorts:
+                    - field: date
+                      direction: asc
+                  filters:
+                    - field: am:categoryID
+                      operator: in
+                      value:
+                        - 1235
+                    - field: am:regionID
+                      operator: in
+                      value:
+                        - 1
+                        - 2
+                        - 3
+                        - 4
+                  enrichment:
+                    - am:currentAdTitle
+                    - am:currentAdCategoryL1
+                    - am:currentAdStartDate
+                    - am:currentAdEndDate
+                    - am:currentAdVendorID
+                    - am:currentAdRegion
+                    - am:currentAdImage
+                  limit: 5
+                  offset: 2
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_report'
+            Content-Type:
+              schema:
+                type: string
+                example: 'application/sellside.metrics.data-v2+json'
+          content:
+            application/sellside.metrics.data-v2+json:
+              schema:
+                $ref: './reporting/responses.yaml#/components/schemas/DataV2'
+              examples:
+                example1:
+                  description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week.'
+                  value:
+                    data:
+                      - rows:
+                        - dimensions: [ ]
+                          metrics:
+                            - 1483
+                            - 36623
+                        count: 1
+                example2:
+                  description: 'Get all clicks and impressions for categories ``1234`` and ``5678`` for the previous week,
+                  but split performance metrics per day and category. In addition, sort by date in ascending direction.'
+                  value:
+                    data:
+                      - rows:
+                        - dimensions:
+                            - '2018-12-08 00:00:00'
+                            - '1234'
+                          metrics:
+                            - 11
+                            - 12
+                        - dimensions:
+                            - '2018-12-08 00:00:00'
+                            - '5678'
+                          metrics:
+                            - 9
+                            - 20
+                        - dimensions:
+                            - '2018-12-09 00:00:00'
+                            - '1234'
+                          metrics:
+                            - 34
+                            - 67
+                        - dimensions:
+                            - '2018-12-09 00:00:00'
+                            - '5678'
+                          metrics:
+                            - 19
+                            - 20
+                        - dimensions:
+                            - '2018-12-14 00:00:00'
+                            - '1234'
+                          metrics:
+                            - 12
+                            - 90
+                        - dimensions:
+                            - '2018-12-14 00:00:00'
+                            - '5678'
+                          metrics:
+                            - 43
+                            - 76
+                        count: 54
+                example3:
+                  description: 'Get all clicks, and average spent micros for categories 1234 and 5678 for the previous week, but split performance metrics per ad ID. In addition, enrich the response rows with current ad title and vendorID. Limit to 3 results.'
+                  value:
+                    data:
+                      - rows:
+                        - dimensions:
+                            - '11111'
+                          metrics:
+                            - 11
+                            - 45000
+                          enrichment:
+                            - 'Ad title #11111'
+                            - vendor11111
+                        - dimensions:
+                            - '33333'
+                          metrics:
+                            - 9
+                            - 3
+                          enrichment:
+                            - 'Ad title #33333'
+                            - vendor33333
+                        - dimensions:
+                            - '22222'
+                          metrics:
+                            - 34
+                            - 2.3
+                          enrichment:
+                            - 'Ad title #33333'
+                            - vendor33333
+                        count: 3
+                example4:
+                  description: 'A sample response with all top-level query fields expanded.'
+                  value:
+                    data:
+                      - rows:
+                        - dimensions:
+                            - '2018-01-10 00:00:00'
+                            - '4444'
+                          metrics:
+                            - 11
+                            - 22
+                            - 0.634
+                          enrichment:
+                            - 'Some title of ad #4444'
+                            - 'Category L1 description'
+                            - '2016-02-10 10:15:15'
+                            - ''
+                            - 'fsd23432'
+                            - 'City of Toronto'
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/cd/cd41d66f-ff99-4abc-8ea8-ef2131c92b8e?rule=r-726x726'
+                        - dimensions:
+                            - '2018-01-11 00:00:00'
+                            - '5555'
+                          metrics:
+                            - 9
+                            - 20
+                            - 0.244
+                          enrichment:
+                            - 'Some title of ad #5555'
+                            - 'Category L1 description'
+                            - '2016-05-11 09:10:15'
+                            - '2016-07-11 06:10:10'
+                            - '123425d'
+                            - 'Canada'
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/66/6628f902-6c59-4c71-bf37-8d127a53e277?rule=r-726x726'
+                        - dimensions:
+                            - '2018-01-12 00:00:00'
+                            - '4444'
+                          metrics:
+                            - 34
+                            - 67
+                            - 0.252
+                          enrichment:
+                            - 'Some title of ad #4444'
+                            - 'Category L1 description'
+                            - '2016-02-10 10:15:15'
+                            - ''
+                            - 'fsd23432'
+                            - City of Toronto
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/fb/fba866a4-ff7b-4134-bb58-c12cfa02649e?rule=r-726x726'
+                        - dimensions:
+                            - '2018-01-13 00:00:00'
+                            - '5555'
+                          metrics:
+                            - 55
+                            - 61
+                            - 0.312
+                          enrichment:
+                            - 'Some title of ad #5555'
+                            - 'Category L1 description'
+                            - '2016-05-11 09:10:15'
+                            - '2016-07-11 06:10:10'
+                            - '123425d'
+                            - 'Canada'
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/d7/d7d25c7b-4494-491c-980a-7f6cdde14c21?rule=r-726x726'
+                        - dimensions:
+                            - '2018-01-14 00:00:00'
+                            - '5555'
+                          metrics:
+                            - 43
+                            - 76
+                            - 0.543
+                          enrichment:
+                            - 'Some title of ad #5555'
+                            - 'Category L1 description'
+                            - '2016-05-11 09:10:15'
+                            - '2016-07-11 06:10:10'
+                            - '123425d'
+                            - 'Canada'
+                            - 'https://mp.images.icas.io/api/v1/a6519ad0/images/f1/f16052a4-c08a-480a-855e-cbc4cd3a8e59?rule=r-726x726'
+                        count: 5
+        '400':
+          description: 'Bad Request'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              examples:
+                missingArgument1:
+                  value:
+                    - code: 2000
+                      text: 'missing argument'
+                      msg: 'The field ''aggregate'' was missing'
+                      field: 'endDate'
+                missingArgument2:
+                  value:
+                    - code: 2000
+                      text: 'missing argument'
+                      msg: 'The field ''metrics'' was missing'
+                      field: 'metrics'
+                invalidArgument:
+                  value:
+                    - code: 2001
+                      text: 'invalid argument'
+                      msg: 'The value of field ''dimensions:[am:wrongDimension]'' was invalid'
+        '500':
+          description: 'internal error'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                type: array
+                items:
+                  $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                  - code: 1000
+                    text: 'internal error'
+                    msg: 'Failed to execute query'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /user:
+    get:
+      summary: 'Returns information of the current authenticated user.'
+      parameters:
+        - name: Accept
+          in: header
+          description: 'The version of the response data model.'
+          schema:
+            type: string
+            example: 'application/sellside.user-v4+json'
+          required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers:
+            Oauth-Scope:
+              description: 'Oauth scopes that are available with the supplied token'
+              schema:
+                type: string
+                example: 'api_ro console_ro'
+            Oauth-Scope-Required:
+              description: 'The required permission for this particular call'
+              schema:
+                type: string
+                example: 'get_user'
+            Content-Type:
+              schema:
+                type: string
+                example: 'application/sellside.user-v4+json'
+          content:
+            application/sellside.user-v4+json:
+              schema:
+                $ref: './user/responses.yaml#/components/schemas/V4'
+              example:
+                id: 123
+                emailAddress: someuser@somewhere.org
+                sellerName: Some User
+                phoneNumber: '0612345678'
+                options:
+                  feed: true
+                  vanityUrl: false
+                locations:
+                  - houseNumber: '123'
+                    streetName: Some street
+                    city: Some city
+                    country: Some country
+                    postalCode: 1432AB
+                    phoneNumber: '0612345678'
+                hasAds: true
+                isAPIManaged: true
+            application/sellside.user-v3+json:
+              schema:
+                $ref: './user/responses.yaml#/components/schemas/V3'
+              example:
+                id: 123
+                emailAddress: someuser@somewhere.org
+                sellerName: Some User
+                phoneNumber: '0612345678'
+                options:
+                  feed: true
+                  vanityUrl: false
+                locations:
+                  - houseNumber: '123'
+                    streetName: Some street
+                    city: Some city
+                    country: Some country
+                    postalCode: 1432AB
+                    phoneNumber: '0612345678'
+                hasAds: true
+        415:
+          description: 'Unsupported Media Type'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                $ref: './errors.yaml#/components/schemas/ApiResponseError'
+              example:
+                - code: 1009
+                  text: 'invalid content type'
+                  msg: 'ContentType text/xml is not supported'
+        400:
+          description: 'Bad Request'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                $ref: './errors.yaml#/components/schemas/APIMiddlewareClientError'
+              example:
+                - status: 400
+                  message: 'invalid authorization header'
+        401:
+          description: 'Unauthorized'
+          content:
+            'content-type: application/json; charset=utf-8':
+              schema:
+                $ref: './errors.yaml#/components/schemas/APIMiddlewareClientError'
+              example:
+                - status: 401
+                  message: 'token expired'
+      security:
+        - bearerAuth: [ ]
+          oAuth2ClientCredentials:
+            - 'console_ro'
+            - 'api_ro'
+  /accounts/oauth/authorize:
+    get:
+      summary: 'Authorize a client to access the API.'
+      description: 'This will redirect the resource owner (user) to the authorization url with a short-lived authorization code to 
+      be exchanged for a long-lived access token. The client must be registered with the authorization server.'
+      tags:
+        - Oauth2
+      parameters:
+        - name: response_type
+          in: query
+          description: 'The response type. Must be set to ``code``.'
+          schema:
+            type: string
+            example: 'code'
+          required: true
+        - name: client_id
+          in: query
+          description: 'The client id.'
+          schema:
+            type: string
+            example: 'YOUR_CLIENT_ID'
+          required: true
+        - name: redirect_uri
+          in: query
+          description: 'The URL to which the authorization server redirects the user with an authorization code after successful authorization.
+          This url can be matched against a list of expressions, in case the client is experiencing or generating abuse. This list should then
+          be discussed with your contact point.'
+          schema:
+            type: string
+            example: 'https://yoursite.com/code'
+          required: true
+        - name: scope
+          in: query
+          description: 'The scope of the access request. This should be a space-separated list of scopes.'
+          schema:
+            type: string
+            example: 'api_ro api_rw'
+          required: true
+        - name: state
+          in: query
+          description: 'An opaque value used by the client to maintain state between the request and callback. 
+          The authorization server includes this value when redirecting back to the client.'
+          schema:
+            type: string
+            example: 'YOUR_STATE'
+          required: false
+      responses:
+        '302':
+          description: 'Redirect t URL'
+          headers:
+            Location:
+              schema:
+                type: string
+                example: 'https://yoursite.com/code?code=AUTHORIZATION_CODE&state=YOUR_STATE'
+        401:
+          description: 'Invalid client'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'invalid_client'
+                  error_description:
+                    type: string
+                    example: 'client_id mismatch'
+        400:
+          description: 'Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'invalid_grant'
+                  error_description:
+                    type: string
+                    example: 'expired refresh_token'
+
+  /accounts/oauth/token:
+    post:
+      summary: 'Exchange an authorization code for a refresh/access token.'
+      description: 'This endpoint is used to exchange an authorization code for a refresh token, or a refresh for an access token. The client must be registered with the authorization server.'
+      tags:
+        - Oauth2
+      parameters:
+        - name: grant_type
+          in: query
+          description: 'The grant type. Must be set to ``authorization_code`` or ``refresh_token``.'
+          schema:
+            type: string
+            example: 'authorization_code'
+          required: true
+        - name: code
+          in: query
+          description: 'The authorization code received from the authorization server with [the authorization endpoint](#/paths/~1oauth~1authorize)'
+          schema:
+            type: string
+            example: 'AUTH_CODE'
+        - name: refresh_token
+          in: query
+          description: 'The refresh token received from the authorization server with a previous token request.'
+          schema:
+            type: string
+            example: 'REFRESH_TOKEN'
+        - name: client_id
+          in: query
+          description: 'The client id.'
+          schema:
+              type: string
+              example: 'YOUR_CLIENT_ID'
+          required: true
+        - name: client_secret
+          in: query
+          description: 'The client secret.'
+          schema:
+            type: string
+            example: 'YOUR_CLIENT_SECRET'
+          required: true
+        - name: redirect_uri
+          in: query
+          description: 'The URL to which the authorization server redirects the user with an authorization code after successful authorization.
+          Must be the same as the ``redirect_uri`` used in the [authorization endpoint](#/paths/~1oauth~1authorize).'
+          schema:
+            type: string
+            example: 'https://yoursite.com/code'
+          required: true
+      responses:
+        200:
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: 'eyJhbGciOiJIUzI1NiIsInR5c'
+                  token_type:
+                    type: string
+                    example: 'bearer'
+                  expires_in:
+                    type: integer
+                    example: 3600
+                  refresh_token:
+                    type: string
+                    example: 'tGzv3JOkF0XG5Qx2TlKWIA'
+                  scope:
+                    type: string
+                    example: 'api_ro console_ro'
+        401:
+          description: 'Invalid client'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'invalid_client'
+                  error_description:
+                    type: string
+                    example: 'client_id mismatch'
+        400:
+          description: 'Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'invalid_grant'
+                  error_description:
+                    type: string
+                    example: 'expired refresh_token'
+#-------------------------------
+# Reusable schemas (data models)
+#-------------------------------
+components:
+#  schemas:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'https://www.api-test.dev/'
+    oAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: /accounts/oauth/authorize
+          refreshUrl: /accounts/oauth/token
+          tokenUrl: /accounts/oauth/token
+          scopes:
+            api_ro: Grants API read access
+            api_rw: Grants API write access
+            console_ro: Grants Console read access
+            console_rw: Grants Console write access
+            reporting:  Grants reporting access

@@ -1,0 +1,80 @@
+
+# ads/requests.yaml
+openapi: 3.0.0
+info:
+  title: Campaign request component schemas
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    V5:
+      type: object
+      properties:
+        title:
+          type: string
+          example: 'Christmas 2025 campaign'
+          description: 'The name of the campaign. It must be unique per seller. All HTML elements except for ``<i> <em> <b> <strong> <ul> <li> <u> <br/>`` will be stripped from the title. Leading and trailing empty spaces will also be stripped. Uniqueness check is case-insensitive.'
+          minLength: 1
+          maxLength: 64
+        vendorId:
+          type: string
+          description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified. Uniqueness check is case-insensitive.'
+          example: 'OURSHOP-1423453-34'
+          maxLength: 64
+        status:
+          $ref: '#/components/schemas/StatusV5'
+        scheduledResumeDate:
+          description: 'The date at which the paused campaign should be automatically resumed (activated) by the system. 
+           It must be between one calendar day and 365 calendar days in the future (in local tenant timezone). It can only
+           be provided when the campaign is set to paused. 
+           This field will be cleared the moment the campaign is activated, either automatically or manually.'
+          format: date
+          example: '2025-12-31'
+        budgets:
+          $ref: '#/components/schemas/BudgetsV5'
+      required:
+        - status
+        - budgets
+        - title
+    StatusV5:
+      description: 'Each campaign can be set in one of a predefined set of user-controlled states.
+            <br><br>
+            If the campaign is ``ACTIVE`` the ads within the campaign should be shown on the site. **Beware** that the individual
+            ads can still be paused or invisible due to other reasons. The individual statuses of the ads are unaffected by changes
+            to the campaign status; campaign status changes only affect their effective visibility for the buyers on the site. 
+            <br>For an ad to be live on the site, both the ad and the campaign must be active.
+            If the campaign is ``PAUSED``, the ads within the campaign are not shown on the site and can be re-activated.
+            The individual ads can be ``ACTIVE`` but they will not be shown on the site if the campaign is not also active.'
+      enum:
+        - 'ACTIVE'
+        - 'PAUSED'
+      example: 'ACTIVE'
+    BudgetsV5:
+      type: object
+      description: 'An object containing the current budget limits for this campaign. If either of these run out, ads from this campaign will no longer be visible on site.
+           The unit for limit and spent is micros. The default limit values are set to -1 (Unlimited).
+           '
+      properties:
+        daily:
+          $ref: '#/components/schemas/DailyBudgetV5'
+        total:
+          $ref: '#/components/schemas/TotalBudgetV5'
+    DailyBudgetV5:
+      type: object
+      required:
+        - limitMicros
+      description: 'The maximum amount all the ads combined in this campaign may spend per day, in micros. When this amount is reached, the ads in this campaign will remain offline for the rest of the day.'
+      properties:
+        limitMicros:
+          type: string
+          example: '10000000'
+    TotalBudgetV5:
+      type: object
+      required:
+        - limitMicros
+      description: 'The maximum amount all the ads combined in this campaign may spend, in micros. When this amount is reached, the ads in this campaign will remain offline until this limit has been increased.'
+      properties:
+        limitMicros:
+          type: string
+          example: 'UNLIMITED'
+          default: 'UNLIMITED'
