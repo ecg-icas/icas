@@ -14,8 +14,6 @@ servers:
     description: 'QA environment [2dehands.be] NL'
   - url: 'https://internet.twhbe-fr.qa.icas.io/api/sellside'
     description: 'QA environment [2ememain.be] FR'
-  - url: 'https://internet.ebayk.qa.icas.io/api/sellside'
-    description: 'QA environment [kleinanzeigen.de]'
 
   - url: 'https://admarkt.demo.qa-mp.so/api/sellside'
     description: 'Pre-prod (demo/sandbox) environment [marktplaats.nl]'
@@ -23,8 +21,6 @@ servers:
     description: 'Pre-prod (demo/sandbox) environment [2dehands.be] NL'
   - url: 'https://admarkt.demo-2ememain.qa-mp.so//api/sellside'
     description: 'QA environment [2ememain.be] FR'
-  - url: 'https://internet.ka.pre-prod.icas.io/api/sellside'
-    description: 'Pre-prod (demo/sandbox) environment [kleinanzeigen.de]'
 
   - url: 'https://admarkt.marktplaats.nl/api/sellside'
     description: 'Production environment [marktplaats.nl]'
@@ -32,8 +28,6 @@ servers:
     description: 'Production environment [2dehands.be]'
   - url: 'https://admarkt.2ememain.be/api/sellside'
     description: 'Production environment [2ememain.be] FR'
-  - url: 'https://admarkt.kleinanzeigen.de/api/sellside'
-    description: 'Production environment [kleinanzeigen.de]'
 tags:
   - name: Ads
   - name: Campaigns
