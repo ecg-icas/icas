@@ -45,7 +45,7 @@ When using the campaigns API for the first time, it’s handy to remember to:
 
  * ○ `Get a list of campaigns <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaigns>`_ to check if the user already has an automatic “default” campaign created by the system. It will provide you with a campaign identifier can then use for the rest of the endpoints.
 
- * ○ `Update a campaign budgets <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets>`_ to set or change a daily and total budget for the campaign. This is a prerequisite for using the autobidding feature. Beware that the budget limits apply to all ads within the campaign, which means that when the budget limit is reached, all ads in the campaign will be taken offline.
+ * ○ `Update a campaign budgets <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets>`_ to set or change a daily and total budget for the campaign. Beware that the budget limits apply to all ads within the campaign, which means that when the budget limit is reached, all ads in the campaign will be taken offline.
 
  * ○ You can also `work with a vendorId <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId>`_ in case you manage multiple campaigns and want to keep track of them in your own system too.
 
@@ -83,7 +83,7 @@ FAQ
 
 ○ **Do I have to use the campaign related endpoints?**
 
-    No, campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. However, if you plan to leverage our autobidding features, you'll need to use the campaign-related endpoints, specifically to set a daily budget limit at the campaign level. This is a prerequisite for using the autobidding.
+    No, campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign.
     Setting a daily limit also helps you optimize your cost per click and maximize conversions while controlling your budget from being depleted too quickly.
 
 
