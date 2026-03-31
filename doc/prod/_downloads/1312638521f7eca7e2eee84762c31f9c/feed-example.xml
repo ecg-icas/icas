@@ -20,7 +20,7 @@
             <admarkt:image url="https://pinball.com/game/bally-adams-family/3.jpg"/>
         </admarkt:media>
         <admarkt:budget>
-            <admarkt:cpc/>
+            <admarkt:cpc>15</admarkt:cpc>
             <admarkt:autobid>false</admarkt:autobid>
             <admarkt:totalBudget>10000</admarkt:totalBudget>
             <admarkt:dailyBudget>1000</admarkt:dailyBudget>
@@ -61,11 +61,61 @@
         <admarkt:brand>Bally</admarkt:brand>
         <admarkt:condition>refurbished</admarkt:condition>
         <admarkt:energyEfficiencyClass>E</admarkt:energyEfficiencyClass>
-        <admarkt:minEnergyEfficiencyClass>F</admarkt:minEnergyEfficiencyClass>
-        <admarkt:maxEnergyEfficiencyClass>D</admarkt:maxEnergyEfficiencyClass>
         <admarkt:color>black/white/green</admarkt:color>
         <admarkt:gender>unisex</admarkt:gender>
         <admarkt:ageGroup>adult</admarkt:ageGroup>
         <admarkt:itemGroupId>BC23456</admarkt:itemGroupId>
+    </admarkt:ad>
+    <admarkt:ad>
+        <admarkt:vendorId>43</admarkt:vendorId>
+        <admarkt:title>Williams 1993 Twilight Zone</admarkt:title>
+        <admarkt:description>Rare collectible pinball</admarkt:description>
+        <admarkt:categoryId>999</admarkt:categoryId>
+        <admarkt:url>https://pinball.com/game/williams-twilight-zone/</admarkt:url>
+        <admarkt:vanityUrl>https://pinball.com</admarkt:vanityUrl>
+        <admarkt:price>1200000</admarkt:price>
+        <admarkt:priceType>FIXED_PRICE</admarkt:priceType>
+        <admarkt:phoneNumber>16123456789</admarkt:phoneNumber>
+        <admarkt:emailAdvertiser>true</admarkt:emailAdvertiser>
+        <admarkt:sellerName>Pinball King</admarkt:sellerName>
+        <admarkt:status>ACTIVE</admarkt:status>
+        <admarkt:media>
+            <admarkt:image url="https://pinball.com/game/williams-twilight-zone/1.jpg"/>
+            <admarkt:image url="https://pinball.com/game/williams-twilight-zone/2.jpg"/>
+        </admarkt:media>
+        <admarkt:budget>
+            <admarkt:autobid>true</admarkt:autobid>
+            <admarkt:bidLevel>HIGH</admarkt:bidLevel>
+        </admarkt:budget>
+        <admarkt:shippingOptions>
+            <admarkt:shippingOption>
+                <admarkt:shippingType>PICKUP</admarkt:shippingType>
+                <admarkt:location>1097DN</admarkt:location>
+            </admarkt:shippingOption>
+            <admarkt:shippingOption>
+                <admarkt:shippingType>SHIP</admarkt:shippingType>
+                <admarkt:cost>795</admarkt:cost>
+                <admarkt:time>2d-5d</admarkt:time>
+            </admarkt:shippingOption>
+        </admarkt:shippingOptions>
+        <admarkt:attributes>
+            <admarkt:attribute>
+                <admarkt:attributeName>model</admarkt:attributeName>
+                <admarkt:attributeValue>Twilight Zone</admarkt:attributeValue>
+            </admarkt:attribute>
+            <admarkt:attribute>
+                <admarkt:attributeName>multiball</admarkt:attributeName>
+                <admarkt:attributeValue>TRUE</admarkt:attributeValue>
+            </admarkt:attribute>
+        </admarkt:attributes>
+        <admarkt:gtin>938452789056</admarkt:gtin>
+        <admarkt:productType>Hobby &amp; Games &gt; Arcade Games &gt; Pinball Machines</admarkt:productType>
+        <admarkt:googleProductCategory>Electronics &gt; Arcade Equipment &gt; Pinball Machines</admarkt:googleProductCategory>
+        <admarkt:brand>Williams</admarkt:brand>
+        <admarkt:condition>used</admarkt:condition>
+        <admarkt:color>black/yellow</admarkt:color>
+        <admarkt:gender>unisex</admarkt:gender>
+        <admarkt:ageGroup>adult</admarkt:ageGroup>
+        <admarkt:itemGroupId>BC23457</admarkt:itemGroupId>
     </admarkt:ad>
 </admarkt:ads>
