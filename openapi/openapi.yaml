@@ -8,19 +8,12 @@ servers:
   - url: 'https://www.mp.test/api/sellside'
     description: 'Local environment [marktplaats.nl]'
 
-  - url: 'https://internet.mp.qa.icas.io/api/sellside'
-    description: 'QA environment [marktplaats.nl]'
-  - url: 'https:/internet.twhbe-nl.qa.icas.io/api/sellside'
-    description: 'QA environment [2dehands.be] NL'
-  - url: 'https://internet.twhbe-fr.qa.icas.io/api/sellside'
-    description: 'QA environment [2ememain.be] FR'
-
   - url: 'https://admarkt.demo.qa-mp.so/api/sellside'
     description: 'Pre-prod (demo/sandbox) environment [marktplaats.nl]'
   - url: 'https://admarkt.demo-2dehands.qa-mp.so/api/sellside'
     description: 'Pre-prod (demo/sandbox) environment [2dehands.be] NL'
   - url: 'https://admarkt.demo-2ememain.qa-mp.so//api/sellside'
-    description: 'QA environment [2ememain.be] FR'
+    description: 'Pre-prod (demo/sandbox) environment [2ememain.be] FR'
 
   - url: 'https://admarkt.marktplaats.nl/api/sellside'
     description: 'Production environment [marktplaats.nl]'
