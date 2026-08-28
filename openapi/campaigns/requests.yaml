@@ -18,7 +18,9 @@ components:
           maxLength: 64
         vendorId:
           type: string
-          description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified. Uniqueness check is case-insensitive.'
+          description: 'Any non-empty latin-1 characters string, unique per user. Can either be set when creating a campaign or when updating an existing one. However, once set, it can no longer be modified. Uniqueness check is case-insensitive.
+          <br><br>
+          <b>Console visibility limitation:</b> The Console currently only displays ads in the default campaign (campaigns without a vendorId). Ads in campaigns with a vendorId will not be visible in the Console or its performance metrics.'
           example: 'OURSHOP-1423453-34'
           maxLength: 64
         status:
