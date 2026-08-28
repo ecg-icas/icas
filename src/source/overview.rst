@@ -34,14 +34,6 @@ own account or on behalf of other users. The base URLs for the API are:
    - Production
    - https://admarkt.2dehands.be/api/sellside
 
- * - Kleinanzeigen.de
-   - Sandbox
-   - https://internet.ka.pre-prod.icas.io/api/sellside
-
- * -
-   - Production
-   - https://admarkt.kleinanzeigen.de/api/sellside
-
 With this the full URL for retrieving ad 1234 for the
 current customer on Marktplaats Production becomes::
 
@@ -59,7 +51,7 @@ an access token that the API provides. It is not possible to use username and
 password to get an access token.
 
 To request a client id and secret please ask your contact at the respective tenant
-(marktplaats, kijiji.ca, tweedehands). Your contact can also send you an invite
+(marktplaats, tweedehands). Your contact can also send you an invite
 for our Slack channel, where you can go for maintenance notifications and
 support.
 

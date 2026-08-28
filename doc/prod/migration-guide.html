@@ -755,7 +755,7 @@ Values should be supplied in string type, instead of integer, and at micro preci
 <blockquote>
 <div><ul class="simple">
 <li><p>○ <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/get_campaigns">Get a list of campaigns</a> to check if the user already has an automatic “default” campaign created by the system. It will provide you with a campaign identifier can then use for the rest of the endpoints.</p></li>
-<li><p>○ <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets">Update a campaign budgets</a> to set or change a daily and total budget for the campaign. This is a prerequisite for using the autobidding feature. Beware that the budget limits apply to all ads within the campaign, which means that when the budget limit is reached, all ads in the campaign will be taken offline.</p></li>
+<li><p>○ <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/put_campaign__id__budgets">Update a campaign budgets</a> to set or change a daily and total budget for the campaign. Beware that the budget limits apply to all ads within the campaign, which means that when the budget limit is reached, all ads in the campaign will be taken offline.</p></li>
 <li><p>○ You can also <a class="reference external" href="https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId">work with a vendorId</a> in case you manage multiple campaigns and want to keep track of them in your own system too.</p></li>
 </ul>
 </div></blockquote>
@@ -785,7 +785,7 @@ It’s important to note that this protection is currently only active for selle
 </div></blockquote>
 <p>○ <strong>Do I have to use the campaign related endpoints?</strong></p>
 <blockquote>
-<div><p>No, campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign. However, if you plan to leverage our autobidding features, you’ll need to use the campaign-related endpoints, specifically to set a daily budget limit at the campaign level. This is a prerequisite for using the autobidding.
+<div><p>No, campaign management is optional. By default, every seller has one campaign associated with them, with every ad attached to that campaign.
 Setting a daily limit also helps you optimize your cost per click and maximize conversions while controlling your budget from being depleted too quickly.</p>
 </div></blockquote>
 <p>○ <strong>What happens when I pause a campaign?</strong></p>
