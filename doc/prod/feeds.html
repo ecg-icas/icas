@@ -1450,7 +1450,13 @@ Use the following values to describe your model:</p>
 </tbody>
 </table>
 <details class="summary-tsv">
-<summary>TSV</summary><p>Use <strong>autobid</strong> column for your choice on that option.</p>
+<summary>TSV</summary><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All budget column headers (<code class="docutils literal notranslate"><span class="pre">cpc</span></code>, <code class="docutils literal notranslate"><span class="pre">autobid</span></code>, <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">budget</span></code>, <code class="docutils literal notranslate"><span class="pre">daily</span> <span class="pre">budget</span></code>, <code class="docutils literal notranslate"><span class="pre">bidLevel</span></code>) must be present in the TSV header row, even if you leave their values empty for some or all ads.
+The <em>Mandatory: No</em> above means the <strong>value</strong> can be omitted — the system will apply defaults (e.g. minimum CPC for the category, <code class="docutils literal notranslate"><span class="pre">autobid=false</span></code>).
+In XML you can omit the entire <code class="docutils literal notranslate"><span class="pre">&lt;budget&gt;</span></code> block; TSV has no equivalent concept of an optional block, so the columns must always appear in the header.</p>
+</div>
+<p>Use <strong>autobid</strong> column for your choice on that option.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Example</p></td>
