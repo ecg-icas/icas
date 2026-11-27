@@ -648,6 +648,12 @@ daily budget  daily budget for the given ad in cents     No
 
 .. collapse:: TSV
 
+    .. note::
+
+        All budget column headers (``cpc``, ``autobid``, ``total budget``, ``daily budget``, ``bidLevel``) must be present in the TSV header row, even if you leave their values empty for some or all ads.
+        The *Mandatory: No* above means the **value** can be omitted — the system will apply defaults (e.g. minimum CPC for the category, ``autobid=false``).
+        In XML you can omit the entire ``<budget>`` block; TSV has no equivalent concept of an optional block, so the columns must always appear in the header.
+
     Use **autobid** column for your choice on that option.
 
     ========= ========================
