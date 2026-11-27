@@ -582,7 +582,198 @@ XML escape characters are also supported.</p>
 </tbody>
 </table>
 </details><details class="summary-xml" open>
-<summary>XML</summary></details><div class="line-block">
+<summary>XML</summary><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Restrictions</p></th>
+<th class="head"><p>Mandatory</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-vendorid"><span class="std std-ref">vendor id</span></a></p></td>
+<td><p><strong>unique</strong> ad identifier</p></td>
+<td><p>max. 64 chars</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-campaignvendorid"><span class="std std-ref">campaign vendor id</span></a></p></td>
+<td><p>Identifier for the campaign</p></td>
+<td><p>max. 64 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-externalid"><span class="std std-ref">external id</span></a></p></td>
+<td><p><strong>deprecated</strong></p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-sellername"><span class="std std-ref">seller name</span></a></p></td>
+<td><p>your company name</p></td>
+<td><p>max. 60 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-t"><span class="std std-ref">title</span></a></p></td>
+<td><p>item title</p></td>
+<td><p><a class="reference internal" href="#feed-t"><span class="std std-ref">title</span></a></p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-descr"><span class="std std-ref">description</span></a></p></td>
+<td><p>item description</p></td>
+<td><p><a class="reference internal" href="#feed-descr"><span class="std std-ref">description</span></a></p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-categoryid"><span class="std std-ref">category id</span></a></p></td>
+<td><p>category identifier</p></td>
+<td><p>numeric, positive</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-status"><span class="std std-ref">status</span></a></p></td>
+<td><p>desired status (default ACTIVE)</p></td>
+<td><p>ACTIVE,PAUSED</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-url"><span class="std std-ref">url</span></a></p></td>
+<td><p>item URL</p></td>
+<td><p>max. 2048 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-vanityurl"><span class="std std-ref">vanity url</span></a></p></td>
+<td><p>displayed URL</p></td>
+<td><p>max. 256 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-pricetype"><span class="std std-ref">price type</span></a></p></td>
+<td><p>sales model for item</p></td>
+<td><p>enum</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-price"><span class="std std-ref">price</span></a></p></td>
+<td><p>item price in cents if applicable</p></td>
+<td><p>positive integer</p></td>
+<td><p>yes/no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-originalprice"><span class="std std-ref">original price</span></a></p></td>
+<td><p>original price before discount</p></td>
+<td><p>positive integer</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-media"><span class="std std-ref">media</span></a></p></td>
+<td><p>item images</p></td>
+<td><p><a class="reference internal" href="#feed-media"><span class="std std-ref">item images</span></a></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-attr"><span class="std std-ref">attributes</span></a></p></td>
+<td><p>collection of item attributes</p></td>
+<td><p><a class="reference internal" href="#feed-attr"><span class="std std-ref">attributes</span></a></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-budget"><span class="std std-ref">budget</span></a></p></td>
+<td><p>budget details</p></td>
+<td><p><a class="reference internal" href="#feed-budget"><span class="std std-ref">budget details</span></a></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-budget"><span class="std std-ref">bidLevel</span></a></p></td>
+<td><p>bid level for auto bidding</p></td>
+<td><p><a class="reference internal" href="#feed-budget"><span class="std std-ref">budget details</span></a></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-ship"><span class="std std-ref">shipping options</span></a></p></td>
+<td><p>shipping options</p></td>
+<td><p><a class="reference internal" href="#feed-ship"><span class="std std-ref">shipping &amp; pick-up</span></a></p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-phonenumber"><span class="std std-ref">phone number</span></a></p></td>
+<td><p>phone number</p></td>
+<td><p>max. 32 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-emailadvertiser"><span class="std std-ref">email advertiser</span></a></p></td>
+<td><p>allow emails to the seller</p></td>
+<td><p>true,false</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-microtip"><span class="std std-ref">micro tip</span></a></p></td>
+<td><p>tiny item highlight</p></td>
+<td><p>max. 18 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-mpn"><span class="std std-ref">MPN</span></a></p></td>
+<td><p>Manufacturer Part Number (MPN)</p></td>
+<td><p>2-70 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-googleproductcategory"><span class="std std-ref">google product category</span></a></p></td>
+<td><p>google category for your item</p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-producttype"><span class="std std-ref">product type</span></a></p></td>
+<td><p>item product type</p></td>
+<td><p>max. 750 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-brand"><span class="std std-ref">brand</span></a></p></td>
+<td><p>item brand name</p></td>
+<td><p>max. 70 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-gtin"><span class="std std-ref">GTIN</span></a></p></td>
+<td><p>Global Trade Identification Number</p></td>
+<td><p>max. 50 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-itemgroupid"><span class="std std-ref">item group id</span></a></p></td>
+<td><p>groups item variants</p></td>
+<td><p>max. 50 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-condition"><span class="std std-ref">condition</span></a></p></td>
+<td><p>condition of item</p></td>
+<td><p>enum</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-material"><span class="std std-ref">material</span></a></p></td>
+<td><p>main item fabrics or materials</p></td>
+<td><p>max. 200 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-energyefficiencyclass"><span class="std std-ref">energy efficiency class</span></a></p></td>
+<td><p>energy efficiency class</p></td>
+<td><p>enum</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-color"><span class="std std-ref">color</span></a></p></td>
+<td><p>item colors</p></td>
+<td><p>max. 100 chars</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-gender"><span class="std std-ref">gender</span></a></p></td>
+<td><p>gender item is designed for</p></td>
+<td><p>enum</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-agegroup"><span class="std std-ref">age group</span></a></p></td>
+<td><p>age group item is intended for</p></td>
+<td><p>enum</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-size"><span class="std std-ref">size</span></a></p></td>
+<td><p>size information</p></td>
+<td><p>enum</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#feed-unitpricingbasemeasure"><span class="std std-ref">unit pricing base measure</span></a></p></td>
+<td><p>denominator for item unit price</p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#feed-unitpricingmeasure"><span class="std std-ref">unit pricing measure</span></a></p></td>
+<td><p>measure and dimension of item</p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</details><div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="vendor-id">
@@ -634,6 +825,21 @@ It is optional and only needs to be provided if the seller uses multiple campaig
 Otherwise the ad will be placed in the default campaign automatically.
 Changing the campaign vendor id will move the ad to the campaign identified by that vendor id. If one does not
 exist, a new campaign with that vendor id will be created.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Console visibility limitation:</strong></p>
+<p>The Console currently only displays ads in the default campaign (ads with no
+campaign vendor id specified).</p>
+<ul class="simple">
+<li><p>Empty/omitted → ad in default campaign (<strong>visible in Console</strong>)</p></li>
+<li><p>Any value specified → ad in that campaign (<strong>NOT visible in Console or performance metrics</strong>)</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>“Campaign” is a Marktplaats Pro concept</strong> for grouping ads with shared budgets.
+See <a class="reference internal" href="campaigns.html#campaigns"><span class="std std-ref">Campaigns</span></a> for details.</p>
+</div>
 <details class="summary-tsv">
 <summary>TSV</summary><p>Stored in <strong>campaign vendor id</strong> column.</p>
 <table class="docutils align-default">

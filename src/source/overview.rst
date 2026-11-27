@@ -123,6 +123,10 @@ headers using a ``HEAD`` request.
 Keep in mind that when feeds are imported, we potentially have to download
 many images. Make sure your hosting can handle bursts of image downloads.
 
+Image downloads are performed using the following user agent::
+
+    admarktbot-image/1.0 (+https://ecg-icas.github.io/icas/doc/prod/)
+
 .. _overview_feed_downloads:
 
 Feed Downloads
@@ -148,10 +152,14 @@ URLs are accessible by these ip addresses and that there is no rate limit.
  * 91.211.74.6    (Sandbox)
 
 We typically run our feed import at 07:00 in the morning (local time), but we can trigger
-additional import runs at any time if we deem it necessary (due to maintenance, tests, whutnot). 
+additional import runs at any time if we deem it necessary (due to maintenance, tests, whutnot).
 
 Feed files usually contain links for the images of the ads too, so make sure you have your
 whitelisting and/or rate limiting in order.
+
+Feed downloads are performed using the following user agent::
+
+    admarktbot-feed/1.0 (+https://ecg-icas.github.io/icas/doc/prod/)
 
 .. _overview_customize_response_body:
 
@@ -165,9 +173,9 @@ to include in or exclude from the response body. When both ``_include`` and
 ``_include`` is set to all fields and ``_exclude`` is empty.
 
 
-Using ``_include``  will require you to specify *each key in the path* of the data 
+Using ``_include``  will require you to specify *each key in the path* of the data
 that you wish. For example, if you're calling `GET /ad <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getListOfAdsWithFilters>`_ and you
-want the ad ID and title, you'll have to provide ``_include=ads,id,title``. 
+want the ad ID and title, you'll have to provide ``_include=ads,id,title``.
 
 .. include:: examples/include-exclude-example.rst
 
@@ -193,8 +201,8 @@ Prices and Currencies
 ---------------------
 
 Monetary amounts like prices and budgets are currently undergoing changes; newer
-versions of endpoints mention whether the amount is either in cents or in micro 
-units of the currency the local markets. If this is not mentioned, this is 
+versions of endpoints mention whether the amount is either in cents or in micro
+units of the currency the local markets. If this is not mentioned, this is
 represented as (euro/dollar) cents. Currencies are specified as three character `ISO 4217`_ code.
 1 euro/dollar == 100 cents == 1000000 micros.
 
@@ -238,7 +246,7 @@ Vendor Ids
 ----------
 
 For ads and campaigns, it is possible to provide a so-called `vendorId`.
-The intention of this `vendorId` is to allow the API partner to use their own primary key on this ad or campaign. 
+The intention of this `vendorId` is to allow the API partner to use their own primary key on this ad or campaign.
 The API partner can also fetch the ad or campaign _by_ `vendorId` - see `GET /ad/byVendor/{vendorId} <https://ecg-icas.github.io/icas/openapi/index.html#/Ads/getAdByVendorId>`_ and `GET /campaign/byVendor/{vendorId} <https://ecg-icas.github.io/icas/openapi/index.html#/Campaigns/getCampaignByVendorId>`_
 for details - to  get the necessary primary key to perform other operations through the API.
 This means the API partner does not need to keep an explicit mapping between their own primary key and the one generated
@@ -248,9 +256,9 @@ Such a vendorId cannot, once set, be changed or removed. It has become as strong
 that's being used. This also means that within all ads of a seller, the vendorIds must be unique. Similarly, within all campaigns
 of a seller, the vendorIds must be unique.
 
-Keep in mind that vendorId is case-insensitive and only allows `windows-1252`_ (also known as Latin-1) characters. For example, an ad is created with vendorId "abc123", 
-and this ad can be retrieved by vendorId "Abc123". If you want to create another ad with vendorId "aBc123", the creation will fail. Because "abc123", "Abc123" and "aBc123" 
-are identical. The retrieval will have the same capitalization used on insertion. For example: an ad is created with vendorID "Abc123", the ad can be retrieved by 
+Keep in mind that vendorId is case-insensitive and only allows `windows-1252`_ (also known as Latin-1) characters. For example, an ad is created with vendorId "abc123",
+and this ad can be retrieved by vendorId "Abc123". If you want to create another ad with vendorId "aBc123", the creation will fail. Because "abc123", "Abc123" and "aBc123"
+are identical. The retrieval will have the same capitalization used on insertion. For example: an ad is created with vendorID "Abc123", the ad can be retrieved by
 vendorID "abc123" (lower case A) but the payload will returned with vendorID "Abc123", same case as insertion.
 
 .. _page_tokens:

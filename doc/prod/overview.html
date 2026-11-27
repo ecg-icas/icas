@@ -292,6 +292,10 @@ when the image itself has changed. It should also be possible to check these
 headers using a <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> request.</p>
 <p>Keep in mind that when feeds are imported, we potentially have to download
 many images. Make sure your hosting can handle bursts of image downloads.</p>
+<p>Image downloads are performed using the following user agent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">admarktbot</span><span class="o">-</span><span class="n">image</span><span class="o">/</span><span class="mf">1.0</span> <span class="p">(</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ecg</span><span class="o">-</span><span class="n">icas</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">icas</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">prod</span><span class="o">/</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="feed-downloads">
 <span id="overview-feed-downloads"></span><h2>Feed Downloads<a class="headerlink" href="#feed-downloads" title="Permalink to this heading">¶</a></h2>
@@ -320,6 +324,10 @@ URLs are accessible by these ip addresses and that there is no rate limit.</p>
 additional import runs at any time if we deem it necessary (due to maintenance, tests, whutnot).</p>
 <p>Feed files usually contain links for the images of the ads too, so make sure you have your
 whitelisting and/or rate limiting in order.</p>
+<p>Feed downloads are performed using the following user agent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">admarktbot</span><span class="o">-</span><span class="n">feed</span><span class="o">/</span><span class="mf">1.0</span> <span class="p">(</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ecg</span><span class="o">-</span><span class="n">icas</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">icas</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">prod</span><span class="o">/</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="customize-response-body">
 <span id="overview-customize-response-body"></span><h2>Customize response body<a class="headerlink" href="#customize-response-body" title="Permalink to this heading">¶</a></h2>

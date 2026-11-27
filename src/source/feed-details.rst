@@ -56,6 +56,21 @@ Otherwise the ad will be placed in the default campaign automatically.
 Changing the campaign vendor id will move the ad to the campaign identified by that vendor id. If one does not
 exist, a new campaign with that vendor id will be created.
 
+.. warning::
+
+   **Console visibility limitation:**
+
+   The Console currently only displays ads in the default campaign (ads with no
+   campaign vendor id specified).
+
+   - Empty/omitted → ad in default campaign (**visible in Console**)
+   - Any value specified → ad in that campaign (**NOT visible in Console or performance metrics**)
+
+.. note::
+
+   **"Campaign" is a Marktplaats Pro concept** for grouping ads with shared budgets.
+   See :ref:`campaigns` for details.
+
 
 .. collapse:: TSV
 
